@@ -1,0 +1,11 @@
+Package: canvasXpress
+Type: Package
+Title: CanvasXpress Visualization Package
+Version: 1.0
+Date: 2015-08-27
+Author: Isaac Neuhaus
+Maintainer: <imnphd@gmail.com>
+BugReports: <imnphd@gmail.com>
+Description: A package to create visualizations in CanvasXpress
+Imports: htmlwidgets, testit, BBmisc, shiny
+License: GPL3
