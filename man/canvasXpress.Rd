@@ -29,11 +29,17 @@ smpAnnot <- as.matrix(iris[,5])
 colnames(smpAnnot) <- "Species"
 canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(groupSamples=c('Species')))
 
-## Scatter Plot Example
+## Scatter 2D Plot Example
 data <- t(iris[,1:4])
 varAnnot <- as.matrix(iris[,5])
 colnames(varAnnot) <- "Species"
 canvasXpress(t(data), varAnnot=varAnnot, scatterPlotMatrix=1, colorBy='Species')
+
+## Scatter 3D Plot Example
+data <- t(iris[,1:4])
+varAnnot <- as.matrix(iris[,5])
+colnames(varAnnot) <- "Species"
+canvasXpress(t(data), varAnnot=varAnnot, graphType='Scatter3D', colorBy='Species')
 
 ## Network Example
 nodeData <- data.frame(id=c("Alice", "Bob", "Cecil", "David", "Esmeralda"), age=c(48,33,45,34,21), gender=c("F","M","F","M","F"))

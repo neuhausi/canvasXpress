@@ -1,4 +1,8 @@
-assertCanvasXpressData <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
+arraysCanvasXpress <- function() {
+  a <- c('colors', 'colorSpectrum', 'shapes', 'sizes', 'patterns', 'images', 'highlightSmp', 'highlightVar', 'smpOverlays', 'varOverlays', 'decorations', 'decorationsColors', 'groupingFactors', 'segregateSamplesBy', 'segregateVariablesBy', 'xAxis', 'xAxisValues', 'xAxisMinorValues', 'timeValues', 'timeValueIndices', 'xAxis2Values', 'xAxis2MinorValues', 'yAxis', 'yAxisValues', 'yAxisMinorValues','zAxis', 'zAxisValues', 'zAxisMinorValues', 'rAxisValues', 'rAxisMinorValues', 'includeDOE', 'vennCompartments', 'vennColors', 'pieColors', 'ringsType', 'ringsWeight', 'stockIndicators', 'highlightNode', 'layoutBoxLabelColors', 'nodesProperties', 'edgesProperties', 'featuresProperties')
+}
+
+assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
 
 	if (graphType == 'Network') {   
     if (is.null(nodeData) && is.null(edgeData)) {
@@ -22,7 +26,7 @@ assertCanvasXpressData <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL
 	
 }
 
-assertCanvasXpressDataFrame <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
+assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
     
 	if (graphType == 'Network') {
     if (!is.null(nodeData) && !is.data.frame(nodeData) && !is.matrix(nodeData)) {
@@ -90,16 +94,51 @@ assignCanvasXpressRownames <- function(x) {
   }
 }
 
-canvasXpress.data.frame <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter', events=NULL, afterRender=NULL, width=600, height=400) {
+convertDataFrameCols <- function(df) {
+  # From BBmisc
+  df = x = as.list(df)
+  i = vapply(df, is.factor, TRUE)
+  if (any(i)) { 
+    x[i] = lapply(x[i], as.character)
+  }
+  as.data.frame(x, stringsAsFactors = FALSE)  
+}
+
+rowLapply <- function (df, fun, ..., unlist = FALSE) {
+  # From BBmisc
+  fun = match.fun(fun)
+  if (unlist) {
+    .wrap = function(.i, .df, .fun, ...) .fun(unlist(.df[.i, , drop = FALSE], recursive = FALSE, use.names = TRUE), ...)
+  } else {
+    .wrap = function(.i, .df, .fun, ...) .fun(as.list(.df[.i, , drop = FALSE]), ...)
+  }
+  lapply(seq_row(df), .wrap, .fun = fun, .df = df, ...)
+}
+
+seq_row <- function (x) {
+  # From BBmisc
+  seq_len(nrow(x))
+}
+
+convertRowsToList <- function(x) {
+  # From BBmisc
+  if (is.matrix(x)) {
+    res = lapply(seq_row(x), function(i) setNames(x[i,], NULL))
+  } else if (is.data.frame(x)) {
+    x = convertDataFrameCols(x)
+    res = rowLapply(x, function(row) setNames(as.list(row), NULL))
+  }
+  setNames(res, rownames(x))
+}
+
+canvasXpress.data.frame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4) {
   canvasXpress(data, smpAnnot, varAnnot, nodeData, edgeData, vennData, genomeData, graphType, events, afterRender, width, height)
 }
   
-canvasXpress <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400) {
+canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4) {
 
-  library(testit)
-  library(BBmisc)
-  assertCanvasXpressData(data, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
-  assertCanvasXpressDataFrame(data, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)  
+  assertCanvasXpressData(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
+  assertCanvasXpressDataFrame(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)  
   dataframe = "columns"
   
   # Data
@@ -141,7 +180,7 @@ canvasXpress <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData
       if (!identical(vars2, smps)) {
 	      stop("Column names in smpAnnot are different from column names in data")
       }
-      x <- convertRowsToList(t(smpAnnot))
+      x <- lapply(convertRowsToList(t(smpAnnot)), function (d) if (length(d) > 1) d else list(d))
     }
     if (!is.null(varAnnot)) {
       vars3 = as.list(assignCanvasXpressRownames(varAnnot))
@@ -149,9 +188,13 @@ canvasXpress <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData
       if (!identical(vars3, vars)) {
 	      stop("Row names in varAnnot are different from row names in data")
       }
-      z <- convertRowsToList(t(varAnnot))
+      z <- lapply(convertRowsToList(t(varAnnot)), function (d) if (length(d) > 1) d else list(d))
     }
-    data <- list(y = y, x = x, z = z)
+    if (!is.null(decorData)) {
+      data <- list(y = y, x = x, z = z, d = decorData)
+    } else {
+      data <- list(y = y, x = x, z = z)
+    }
   }
 
   # Config
@@ -167,7 +210,7 @@ canvasXpress <- function(data = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData
   cx = list(data = data, config = config, events = events, afterRender = afterRender)
   
   ## toJSON option
-  options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe))
+  options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe, pretty = pretty, digits = digits))
   
   # Create the widget
   htmlwidgets::createWidget("canvasXpress", cx, width = width, height = height)

@@ -10,8 +10,8 @@ Package to create CanvasXpress visualizations
 \tabular{ll}{
 Package: \tab canvasxpress\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2015-08-27\cr
+Version: \tab 1.1\cr
+Date: \tab 2016-03-11\cr
 License: \tab GPL3\cr
 }
 }
@@ -33,11 +33,17 @@ smpAnnot <- as.matrix(iris[,5])
 colnames(smpAnnot) <- "Species"
 canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(groupSamples=c('Species')))
 
-## Scatter Plot Example
+## Scatter 2D Plot Example
 data <- t(iris[,1:4])
 varAnnot <- as.matrix(iris[,5])
 colnames(varAnnot) <- "Species"
 canvasXpress(t(data), varAnnot=varAnnot, scatterPlotMatrix=1, colorBy='Species')
+
+## Scatter 3D Plot Example
+data <- t(iris[,1:4])
+varAnnot <- as.matrix(iris[,5])
+colnames(varAnnot) <- "Species"
+canvasXpress(t(data), varAnnot=varAnnot, graphType='Scatter3D', colorBy='Species')
 
 ## Network Example
 nodeData <- data.frame(id=c("Alice", "Bob", "Cecil", "David", "Esmeralda"), age=c(48,33,45,34,21), gender=c("F","M","F","M","F"))
