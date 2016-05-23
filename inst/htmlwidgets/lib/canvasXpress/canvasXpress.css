@@ -73,6 +73,9 @@ img.CanvasXpressCode {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+pre.CanvasXpressCode {
+	text-align : left;
+}
 div.CanvasXpressCodeContainer {
     background-color: rgb(240,240,240);
     clear: both;
@@ -1325,6 +1328,14 @@ span.CanvasXpressListItemText {
     line-height: 16px;
     list-style: none;
     margin-right: 50px;
+    white-space: nowrap;
+}
+input.CanvasXpressListItemText {
+    color: rgb(34,34,34);
+    cursor: pointer;
+    font: normal 11px arial, tahoma, sans-serif;
+    line-height: 16px;
+    list-style: none;
     white-space: nowrap;
 }
 span.CanvasXpressListItemTextShort {
