@@ -189,6 +189,7 @@ div.CanvasXpressTooltip {
     padding: 2px 3px;
     position: absolute;
     white-space: nowrap;
+    text-align: left;
 }
 img.CanvasXpressTooltip {
     cursor: default;
@@ -214,6 +215,7 @@ span.CanvasXpressTooltip {
     padding: 2px 3px;
     position: absolute;
     white-space: nowrap;
+    text-align: left;
 }
 div.CanvasXpressCanvasResizer {
   /*
