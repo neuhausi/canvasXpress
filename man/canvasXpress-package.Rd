@@ -31,7 +31,9 @@ http://www.canvasxpress.org
 data <- t(iris[,1:4])
 smpAnnot <- as.matrix(iris[,5])
 colnames(smpAnnot) <- "Species"
-canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(groupSamples=c('Species')))
+canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', groupingFactors=list('Species'))
+# or
+canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(list('groupSamples', list('Species'))))
 
 ## Scatter 2D Plot Example
 data <- t(iris[,1:4])

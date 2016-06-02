@@ -15,7 +15,7 @@ canvasXpress(data, smpAnnot=smpAnnot, varAnnot=varAnnot, nodeData=nodeData, edge
 \item{genomeData}{Not implemented... yet.}
 \item{graphType}{The graph type for the plot. See \url{http://www.canvasxpress.org} for additional information.}
 \item{events}{JavaScript functions to attach to the elements of the plot. See \url{http://www.canvasxpress.org} for additional information.}
-\item{afterRender}{A list object with function that will be applied after the plot is rendered. The value for each item of the list must contain the parameter for the corresponding function. For more information about CanvasXpress functions please visit \url{http://www.canvasxpress.org}.}
+\item{afterRender}{A two dimensional array with functions and parameters that will be applied after the plot is rendered. The first item of each array is character string with the name of the function and the second item of each array is an array with the parameters for the corresponding function. For more information about CanvasXpress functions please visit \url{http://www.canvasxpress.org}.}
 \item{width}{The width of the plot.}
 \item{height}{The height of the plot.}
 }
@@ -27,7 +27,9 @@ Package to create CanvasXpress visualizations
 data <- t(iris[,1:4])
 smpAnnot <- as.matrix(iris[,5])
 colnames(smpAnnot) <- "Species"
-canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(groupSamples=c('Species')))
+canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', groupingFactors=list('Species'))
+# or
+canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(list('groupSamples', list('Species'))))
 
 ## Scatter 2D Plot Example
 data <- t(iris[,1:4])
