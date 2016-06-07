@@ -171,6 +171,41 @@ span.CanvasXpressBin {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+div.CanvasXpressDataExplorerActive {
+    border: 2px dashed rgb(113,139,183);
+    border-radius: 5px;
+    font: normal 11px arial, tahoma, sans-serif;
+    margin: 3px;
+    padding: 3px;
+    white-space: normal;
+}
+div.CanvasXpressDataExplorer {
+    border: 1px solid rgb(113,139,183);
+    border-radius: 5px;
+    font: normal 11px arial, tahoma, sans-serif;
+    margin: 3px;
+    padding: 3px;
+	  white-space: normal;
+}
+span.CanvasXpressDataExplorerNumeric {
+    border: 1px solid rgb(113,139,183);
+    border-radius: 5px;
+    font: normal 11px arial, tahoma, sans-serif;
+    margin: 3px;
+    padding: 3px;
+    word-wrap: normal;
+    display: inline-block;
+}
+span.CanvasXpressDataExplorerString {
+    border: 1px solid rgb(113,139,183);
+    border-radius: 5px;
+    color: rgb(255,0,0);
+    font: normal 11px arial, tahoma, sans-serif;
+    margin: 3px;
+    padding: 3px;
+    word-wrap: normal;
+    display: inline-block;
+}
 div.CanvasXpressDrag {
     opacity: 0.5;
     filter: alpha(opacity=50);
