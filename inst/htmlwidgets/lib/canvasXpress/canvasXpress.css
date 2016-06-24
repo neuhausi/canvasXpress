@@ -171,8 +171,28 @@ span.CanvasXpressBin {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+hr.CanvasXpressDataExplorer {
+    border: 0; 
+    background-color: rgb(113,139,183);
+    height: 1px;
+    margin: 1px -3px 1px;
+}
+img.CanvasXpressDataExplorerActive {
+    border: 1px dashed rgb(255,0,0);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+    padding: 3px;
+}
+img.CanvasXpressDataExplorer {
+    border: 1px solid rgb(113,139,183);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
+    padding: 3px;
+}
 div.CanvasXpressDataExplorerActive {
-    border: 2px dashed rgb(113,139,183);
+    border: 1px dashed rgb(255,0,0);
     border-radius: 5px;
     font: normal 11px arial, tahoma, sans-serif;
     margin: 3px;
