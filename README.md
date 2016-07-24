@@ -12,8 +12,8 @@ as well as the zooming, panning and drag'n drop capabilities are features that m
 class.
 
 ***canvasXpress*** can be now simply used within R at the console to generate conventional plots, in R-Studio
-or seamlessly embeded in [Shiny](http://shiny.rstudio.com) web applications. This ***CanvasXpress*** library
-was created using the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package.
+or seamlessly embeded in [Shiny](http://shiny.rstudio.com) web applications. This ***CanvasXpress*** R library
+was created with the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package.
 
 ### Getting Started
 
