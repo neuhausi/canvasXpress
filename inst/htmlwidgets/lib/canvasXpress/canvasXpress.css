@@ -256,6 +256,16 @@ span.CanvasXpressDataExplorerString {
 	display: inline-block;
 }
 
+span.CanvasXpressDataExplorer {
+  border: 1px solid rgb(113, 139, 183);
+  border-radius: 5px;
+  cursor : pointer;
+  font: bold 11px arial, tahoma, sans-serif;
+  line-height: 380%;
+  padding: 6px 23px;
+  margin-left: -4px;
+}
+
 div.CanvasXpressDrag {
 	opacity: 0.5;
 	filter: alpha(opacity = 50);
@@ -1890,6 +1900,11 @@ canvas.CanvasXpress {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+canvas.CanvasXpress:hover {
+  border: 1px solid rgb(113, 139, 183);
+  margin: -1px 2px 2px -1px;
 }
 
 #full-screen-warning-container {
