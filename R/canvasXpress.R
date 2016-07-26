@@ -4,7 +4,7 @@ arraysCanvasXpress <- function() {
 
 assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
 
-	if (graphType == 'Network') {   
+	if (graphType == 'Network') {
     if (is.null(nodeData) && is.null(edgeData)) {
 		  stop("Missing data for Network visualization!")
     }
@@ -23,11 +23,11 @@ assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NUL
 	} else if (is.null(data)) {
 		stop("Missing canvasXpress data!")
 	}
-	
+
 }
 
 assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter') {
-    
+
 	if (graphType == 'Network') {
     if (!is.null(nodeData) && !is.data.frame(nodeData) && !is.matrix(nodeData)) {
       stop("nodeData must be a data frame or a matrix class object.")
@@ -49,9 +49,9 @@ assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot 
       stop("vennData must be a data frame or a matrix class object.")
     }
     if (length(vennData) == 15) {
-      comp = c("A", "B", "C", "D", "AB", "AC", "AD", "BC", "BD", "CD", "ABC", "ABD", "ACD", "BCD", "ABCD") 
+      comp = c("A", "B", "C", "D", "AB", "AC", "AD", "BC", "BD", "CD", "ABC", "ABD", "ACD", "BCD", "ABCD")
     } else if (length(vennData) == 7) {
-      comp = c("A", "B", "C", "AB", "AC", "BC", "ABC") 
+      comp = c("A", "B", "C", "AB", "AC", "BC", "ABC")
     } else {
       comp = c("A", "B", "AB")
     }
@@ -75,12 +75,12 @@ assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot 
       stop("varAnnot must be a data frame or a matrix class object.")
     }
   }
-	
+
 }
 
 assignCanvasXpressColnames <- function(x) {
   if (is.null(colnames(x))) {
-    paste("V", seq(length = ncol(x)), sep = "")  
+    paste("V", seq(length = ncol(x)), sep = "")
   } else {
     colnames(x)
   }
@@ -88,7 +88,7 @@ assignCanvasXpressColnames <- function(x) {
 
 assignCanvasXpressRownames <- function(x) {
   if (is.null(rownames(x))) {
-    paste("V", seq(length = nrow(x)), sep = "")  
+    paste("V", seq(length = nrow(x)), sep = "")
   } else {
     rownames(x)
   }
@@ -98,10 +98,10 @@ convertDataFrameCols <- function(df) {
   # From BBmisc
   df = x = as.list(df)
   i = vapply(df, is.factor, TRUE)
-  if (any(i)) { 
+  if (any(i)) {
     x[i] = lapply(x[i], as.character)
   }
-  as.data.frame(x, stringsAsFactors = FALSE)  
+  as.data.frame(x, stringsAsFactors = FALSE)
 }
 
 rowLapply <- function (df, fun, ..., unlist = FALSE) {
@@ -131,16 +131,16 @@ convertRowsToList <- function(x) {
   setNames(res, rownames(x))
 }
 
-canvasXpress.data.frame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4) {
-  canvasXpress(data, smpAnnot, varAnnot, nodeData, edgeData, vennData, genomeData, graphType, events, afterRender, width, height)
+canvasXpress.data.frame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType='Scatter', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4, ...) {
+  canvasXpress(data, smpAnnot, varAnnot, nodeData, edgeData, vennData, genomeData, graphType, events, afterRender, width, height, pretty, digits, ...)
 }
-  
-canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, ..., graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4) {
+
+canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4, ...) {
 
   assertCanvasXpressData(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
-  assertCanvasXpressDataFrame(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)  
+  assertCanvasXpressDataFrame(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
   dataframe = "columns"
-  
+
   # Data
   if (graphType == 'Network') {
     nodes <- NULL
@@ -198,7 +198,7 @@ canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnno
   }
 
   # Config
-  config <- list(graphType = graphType, isR = TRUE, ...)  
+  config <- list(graphType = graphType, isR = TRUE, ...)
 
   # Events
   # Nothing to do
@@ -208,10 +208,10 @@ canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnno
 
   # CanvasXpress Object
   cx = list(data = data, config = config, events = events, afterRender = afterRender)
-  
+
   ## toJSON option
   options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe, pretty = pretty, digits = digits))
-  
+
   # Create the widget
   htmlwidgets::createWidget("canvasXpress", cx, width = width, height = height)
 
