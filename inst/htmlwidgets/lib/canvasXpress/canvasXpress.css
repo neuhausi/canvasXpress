@@ -1903,8 +1903,9 @@ canvas.CanvasXpress {
 }
 
 canvas.CanvasXpress:hover {
-  border: 1px solid rgb(113, 139, 183);
-  margin: -1px 2px 2px -1px;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  margin: -1px;
 }
 
 #full-screen-warning-container {
