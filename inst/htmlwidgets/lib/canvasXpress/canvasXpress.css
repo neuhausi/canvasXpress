@@ -320,8 +320,7 @@ div.CanvasXpressCanvasResizer { /*
    * background-image: url(data:image/gif;base64,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);
    * background-position: 50% 50%;
    * background-repeat: no-repeat;
-   */
-	
+   */	
 }
 
 div.CanvasXpressCanvasResizerClose {
@@ -1121,8 +1120,7 @@ input[type=checkbox].CanvasXpressDataFilterContainerItemSelected {
 	border: 0;
 }
 
-input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel
-	{
+input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
 	padding-left: 18px;
 	height: 13px;
 	display: inline-block;
@@ -1135,8 +1133,7 @@ input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel
 	cursor: pointer;
 }
 
-input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheckboxLabel
-	{
+input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheckboxLabel {
 	padding-left: 18px;
 	height: 13px;
 	display: inline-block;
@@ -1149,8 +1146,7 @@ input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheck
 	cursor: pointer;
 }
 
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel
-	{
+input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
 	padding-left: 18px;
 	height: 13px;
 	display: inline-block;
@@ -1163,13 +1159,11 @@ input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpr
 	cursor: pointer;
 }
 
-input[type=checkbox].CanvasXpressCheckbox:checked+label.CanvasXpressCheckboxLabel
-	{
+input[type=checkbox].CanvasXpressCheckbox:checked+label.CanvasXpressCheckboxLabel {
 	background-position: 0 -13px;
 }
 
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.CanvasXpressCheckboxLabel
-	{
+input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.CanvasXpressCheckboxLabel {
 	background-position: 0 -13px;
 }
 
@@ -1392,33 +1386,28 @@ input.CanvasXpressTabMenuConfigurator {
 	display: none;
 }
 
-input:not(:checked).CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator
-	{
+input:not(:checked).CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator {
 	display: none;
 }
 
-section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator {
 	float: left;
 }
 
-section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator {
 	float: right;
 	width: 100%;
 	margin: 22 0 0 -100%;
 }
 
-section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator > label.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator > label.CanvasXpressTabMenuConfigurator {
 	cursor: pointer;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	-webkit-user-select: none;
 }
 
-section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator {
 	box-sizing: border-box;
 	padding: 0.5px;
 	border: 1px solid #ddd;
@@ -1426,8 +1415,7 @@ section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator
 	background: #fff;
 }
 
-section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0.5px;
@@ -1436,8 +1424,7 @@ section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator
   line-height: 100%;
 }
 
-section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator > label.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator > label.CanvasXpressTabMenuConfigurator {
 	display: block;
 	padding: 5px;
 	border: 1px solid #ddd;
@@ -1447,19 +1434,16 @@ section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator > l
 	background: #fff;
 }
 
-input:first-child.CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator
-	{
+input:first-child.CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator {
 	padding-left: 0;
 }
 
-section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator
-	{
+section.CanvasXpressTabMenuConfigurator > div.CanvasXpressTabMenuConfigurator {
 	position: relative;
 	z-index: 1;
 }
 
-input:checked.CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator
-	{
+input:checked.CanvasXpressTabMenuConfigurator + section.CanvasXpressTabMenuConfigurator > h1.CanvasXpressTabMenuConfigurator {
 	position: relative;
 	z-index: 2;
 }
