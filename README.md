@@ -4,8 +4,7 @@
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/gallery.html)to display scientific and non-scientific
-data. ***canvasXpress*** also includes a standalone unobtrusive data table and a filtering widget to allow data
-exploration similar to those only seen in other high-end commercial applications as well as an 'out of the box'
+data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](http://www.canvasxpress.org/user-interface.html) to explore complex data sets, a sofisticated and unique mechanism to keep track of all user customization for [Reproducible Researck ](http://www.canvasxpress.org/gallery.html) purposes, as well as an 'out of the box'
 broadcasting capability to synchronize selected data points in all ***canvasXpress*** plots in a page. Data can
 be easily sorted, grouped, transposed, transformed or clustered dynamically. The fully customizable mouse events
 as well as the zooming, panning and drag'n drop capabilities are features that make this library unique in its
