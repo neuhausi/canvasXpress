@@ -1,6 +1,6 @@
 # canvasXpress R Library
 
-<a href="http://www.canvasxpress.org"><img src="http://www.canvasxpress.org/images/CanvasXpress.jpg" align="left" hspace="10" vspace="6" width="100"></a>
+<a href="http://www.canvasxpress.org"><img src="http://www.canvasxpress.org/images/brand3.png" align="left" hspace="10" vspace="6" width="100"></a>
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/gallery.html)to display scientific and non-scientific
