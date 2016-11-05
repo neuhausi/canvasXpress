@@ -587,6 +587,11 @@ div.CanvasXpressCanvasResizerNextTop {
 		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAlUlEQVR42mM8e/bsfwYCgPH37394FV26dJ5ERRYWpgwnTpzGrujnz99gRVZWFmDBY8dOoCi6cuUSpiJ0hTgVISsEK/r6/SdYkZ2NFYqiQ0eOgekb164wMH769B2syNHRBq5g//4jcPbt29cwFSErgCt69+ErWJGrsx3D7r2HMILg/t0bDIxv33/GG5gP7t0iUhExEQwAhNtro/juysQAAAAASUVORK5CYII=);
 }
 
+div.CanvasXpressMotion {
+  color: rgb(34, 34, 34);
+  font: normal 11px arial, tahoma, sans-serif;
+}
+
 div.CanvasXpressDataTable {
   box-sizing: content-box;
 	border: 1px solid rgb(51, 122, 183);
