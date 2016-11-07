@@ -218,10 +218,10 @@ canvasXpress <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnno
 }
 
 canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
-  shinyWidgetOutput(outputId, "canvasXpress", width, height, package = "canvasXpress")
+  htmlwidgets::shinyWidgetOutput(outputId, "canvasXpress", width, height, package = "canvasXpress")
 }
 
 renderCanvasXpress <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  shinyRenderWidget(expr, canvasXpressOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, canvasXpressOutput, env, quoted = TRUE)
 }
