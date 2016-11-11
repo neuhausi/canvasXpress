@@ -267,6 +267,7 @@ span.CanvasXpressDataExplorerNumeric {
 	padding: 3px;
 	word-wrap: normal;
 	display: inline-block;
+	text-align: start;
 }
 
 span.CanvasXpressDataExplorerString {
@@ -278,6 +279,7 @@ span.CanvasXpressDataExplorerString {
 	padding: 3px;
 	word-wrap: normal;
 	display: inline-block;
+  text-align: start;
 }
 
 span.CanvasXpressDataExplorer {
