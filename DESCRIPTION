@@ -1,11 +1,19 @@
 Package: canvasXpress
-Type: Package
+Version: 1.2.9000
 Title: CanvasXpress Visualization Package
-Version: 1.1
-Date: 2016-03-21
-Author: Isaac Neuhaus
+Description: 
+    A package to assist in creating visualizations in CanvasXpress in R.  CanvasXpress is a standalone JavaScript library for reproducible research with complete tracking of data and end-user modifications stored in a single PNG image that can be played back.  See http://canvasxpress.org for more information.  
+Type: Package
+License: GPL-3
+Encoding: UTF-8
+Author: 
+    Isaac Neuhaus [aut, cre],
+    Connie Brett [ctb]
 Maintainer: <imnphd@gmail.com>
 BugReports: <imnphd@gmail.com>
-Description: A package to create visualizations in CanvasXpress
-Imports: htmlwidgets, shiny
-License: GPL3
+Depends: 
+    R (>= 3.2.1)
+Imports: 
+    htmlwidgets (>= 0.7), 
+    shiny (>= 0.13.2)
+RoxygenNote: 5.0.1
