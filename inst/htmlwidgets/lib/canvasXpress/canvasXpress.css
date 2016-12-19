@@ -267,6 +267,7 @@ span.CanvasXpressDataExplorerNumeric {
 	padding: 3px;
 	word-wrap: normal;
 	display: inline-block;
+	text-align: start;
 }
 
 span.CanvasXpressDataExplorerString {
@@ -278,6 +279,7 @@ span.CanvasXpressDataExplorerString {
 	padding: 3px;
 	word-wrap: normal;
 	display: inline-block;
+  text-align: start;
 }
 
 span.CanvasXpressDataExplorer {
@@ -1687,8 +1689,8 @@ li.CanvasXpressListItemScrollTopActive {
 	border-color: rgb(170, 204, 246);
 	border-style: solid;
 	cursor: pointer;
-	height: 7px;
-	line-height: 7px;
+	height: 9px;
+	line-height: 9px;
 	width: 100%;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -1722,13 +1724,33 @@ li.CanvasXpressListItemScrollBottomActive {
 	border-color: rgb(170, 204, 246);
 	border-style: solid;
 	cursor: pointer;
-	height: 7px;
-	line-height: 7px;
+	height: 9px;
+	line-height: 9px;
 	width: 100%;
 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+li.CanvasXpressListItemScrollSearch {
+  border-color: rgb(170, 204, 246);
+  border-style: solid;
+  border-width: 1px;
+	width: 100%;
+}
+
+input.CanvasXpressListItemScrollSearch {
+  color: rgb(34, 34, 34);
+	cursor : default;
+  font: normal 11px arial, tahoma, sans-serif;
+  line-height: 16px;
+  list-style: none;
+  margin : 3px;
+  outline-style: none;
+  outline-width: 0px;
+  padding-left: 5px;
+  width : 97%;
 }
 
 a.CanvasXpressListItemA {
