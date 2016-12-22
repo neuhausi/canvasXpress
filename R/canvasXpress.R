@@ -43,7 +43,7 @@
 #'
 #' @seealso \link[canvasXpress]{canvasXpressOutput}
 #' 
-#' @doctype method
+#' @docType method
 #' @export
 canvasXpress <- function(data = NULL,     decorData = NULL, 
                          smpAnnot = NULL, varAnnot = NULL, 
