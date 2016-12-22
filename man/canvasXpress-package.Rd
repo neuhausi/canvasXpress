@@ -2,7 +2,7 @@
 % Please edit documentation in R/canvasXpress.R
 \docType{package}
 \name{canvasXpress-package}
-\alias{canvasXpress}
+\alias{_PACKAGE}
 \alias{canvasXpress-package}
 \title{CanvasXpress Visualization Package}
 \description{

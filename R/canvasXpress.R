@@ -11,7 +11,9 @@
 #'
 #' @section More Information:
 #' \url{http://canvasxpress.org}
-#'
+#' 
+#' @docType package
+#' @aliases canvasXpress-package
 "_PACKAGE"
 
 #' canvasXpress
@@ -41,6 +43,7 @@
 #'
 #' @seealso \link[canvasXpress]{canvasXpressOutput}
 #' 
+#' @doctype method
 #' @export
 canvasXpress <- function(data = NULL,     decorData = NULL, 
                          smpAnnot = NULL, varAnnot = NULL, 
