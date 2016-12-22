@@ -11,6 +11,9 @@
 #'
 #' @section More Information:
 #' \url{http://canvasxpress.org}
+#' \code{browseVignettes(package = 'canvasXpress')}
+#'
+#' 
 #' 
 #' @docType package
 #' @aliases canvasXpress-package
@@ -43,7 +46,6 @@
 #'
 #' @seealso \link[canvasXpress]{canvasXpressOutput}
 #' 
-#' @docType method
 #' @export
 canvasXpress <- function(data = NULL,     decorData = NULL, 
                          smpAnnot = NULL, varAnnot = NULL, 

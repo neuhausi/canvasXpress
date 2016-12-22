@@ -21,5 +21,6 @@ TBD
 \section{More Information}{
 
 \url{http://canvasxpress.org}
+\code{browseVignettes(package = 'canvasXpress')}
 }
 
