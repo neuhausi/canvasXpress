@@ -1,7 +1,3 @@
-library(shiny)
-library(htmlwidgets)
-library(canvasXpress)
-library(limma)
 
 shinyUI(fluidPage(
 				titlePanel('Identification of gene expression profiles in cervical cancer [GSE9750]'),

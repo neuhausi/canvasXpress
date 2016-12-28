@@ -1,10 +1,6 @@
-library(shiny)
-library(htmlwidgets)
-library(canvasXpress)
-library(limma)
 
 shinyServer(function(input, output, session) {
-      
+    
       output$plot <- renderCanvasXpress({
             tbl <- as.data.frame(table(GSE9750$x[,input$factor]))
             df <- data.frame(as.vector(tbl[,2]), row.names = as.vector(tbl[,1]))
@@ -18,7 +14,8 @@ shinyServer(function(input, output, session) {
           })
       
       output$selectLevel <- renderUI({
-            levs = unique(GSE9750$x[,colnames(GSE9750$x)==input$factor])
+          
+          levs = unique(GSE9750$x[,colnames(GSE9750$x)==input$factor])
             selectInput('level', 'Select Level', levs[levs!=""])
           })
       
