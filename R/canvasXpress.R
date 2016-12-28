@@ -57,11 +57,20 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
                          width=600, height=400, 
                          pretty=FALSE, digits=4, ...) {
     
-    assertCanvasXpressData(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
-    assertCanvasXpressDataFrame(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType)
+    assertCanvasXpressData(data, decorData, 
+                           smpAnnot, varAnnot, 
+                           nodeData, edgeData, 
+                           vennData, vennLegend, 
+                           genomeData, 
+                           graphType)
+    assertCanvasXpressDataFrame(data, decorData, 
+                                smpAnnot, varAnnot, 
+                                nodeData, edgeData, 
+                                vennData, vennLegend, 
+                                genomeData, 
+                                graphType)
     dataframe = "columns"
     
-    # Data
     if (graphType == 'Network') {
         nodes <- NULL
         edges <- NULL
@@ -71,17 +80,23 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
         if (!is.null(edgeData)) {
             edges <- edgeData
             if (is.null(nodeData)) {
-                nodes <- unique(c(as.vector(edgeData[,grep("id1", colnames(edgeData))]), as.vector(edgeData[,grep("id2", colnames(edgeData))])))
+                nodes <- unique(c(
+                        as.vector(edgeData[,grep("id1", colnames(edgeData))]), 
+                        as.vector(edgeData[,grep("id2", colnames(edgeData))])))
                 names(nodes) <- rep("id", length(nodes))
             }
         }
         dataframe = "rows"
         data <- list(nodes = nodes, edges = edges)
-    } else if (graphType == 'Venn') {
+    } 
+    else if (graphType == 'Venn') {
         dataframe = "columns"
         data <- list(venn = list(data = vennData, legend = vennLegend))
-    } else if (graphType == 'Genome') {
-    } else {
+    } 
+    else if (graphType == 'Genome') {
+        #TBD
+    } 
+    else {
         vars = as.list(assignCanvasXpressRownames(data))
         smps = as.list(assignCanvasXpressColnames(data))
         dy <- as.matrix(data)
@@ -127,13 +142,20 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
     # Nothing to do
     
     # CanvasXpress Object
-    cx = list(data = data, config = config, events = events, afterRender = afterRender)
+    cx = list(data = data, 
+              config = config, 
+              events = events, 
+              afterRender = afterRender)
     
     ## toJSON option
-    options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe, pretty = pretty, digits = digits))
+    options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe, 
+                                           pretty = pretty, 
+                                           digits = digits))
     
     # Create the widget
-    htmlwidgets::createWidget("canvasXpress", cx, width = width, height = height)
+    htmlwidgets::createWidget("canvasXpress", cx, 
+                              width = width, 
+                              height = height)
 }
 
 
@@ -152,7 +174,9 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
 #' 
 #' @export
 canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
-    htmlwidgets::shinyWidgetOutput(outputId, "canvasXpress", width, height, package = "canvasXpress")
+    htmlwidgets::shinyWidgetOutput(outputId, "canvasXpress", 
+                                   width, height, 
+                                   package = "canvasXpress")
 }
 
 #' renderCanvasXpress
@@ -170,6 +194,8 @@ canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
 #' 
 #' @export
 renderCanvasXpress <- function(expr, env = parent.frame(), quoted = FALSE) {
-    if (!quoted) { expr <- substitute(expr) } # force quoted
+    if (!quoted) { 
+        expr <- substitute(expr) 
+    } # force quoted
     htmlwidgets::shinyRenderWidget(expr, canvasXpressOutput, env, quoted = TRUE)
 }
