@@ -3,3 +3,4 @@
 export(canvasXpress)
 export(canvasXpressOutput)
 export(renderCanvasXpress)
+export(runExample)
