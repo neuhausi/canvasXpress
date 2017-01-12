@@ -7,11 +7,11 @@
 renderCanvasXpress(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
-\item{expr}{tbd}
+\item{expr}{expression used to render the canvasXpressOutput}
 
-\item{env}{tbd}
+\item{env}{environment to use - default = parent.frame()}
 
-\item{quoted}{tbd}
+\item{quoted}{whether the expression is quoted - default = FALSE}
 }
 \value{
 Render function that enables the use of the widget in applications
@@ -22,5 +22,7 @@ interactive Rmd documents
 }
 \seealso{
 \link[canvasXpress]{canvasXpressOutput}
+
+\link[canvasXpress]{cxShinyExample}
 }
 

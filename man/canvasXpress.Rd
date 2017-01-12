@@ -11,39 +11,40 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
   pretty = FALSE, digits = 4, ...)
 }
 \arguments{
-\item{data}{tbd}
+\item{data}{canvasXpress data frame
+\emph{(rows are refered to variables; columns are refered to samples)}}
 
 \item{decorData}{tbd}
 
-\item{smpAnnot}{tbd}
+\item{smpAnnot}{additional data that applies to samples (columns)}
 
-\item{varAnnot}{tbd}
+\item{varAnnot}{additional data that applies to variables (rows)}
 
-\item{nodeData}{tbd}
+\item{nodeData}{network visualization data nodes}
 
-\item{edgeData}{tbd}
+\item{edgeData}{network visualization data edges}
 
-\item{vennData}{tbd}
+\item{vennData}{venn visualization data}
 
-\item{vennLegend}{tbd}
+\item{vennLegend}{venn visualization legend}
 
-\item{genomeData}{tbd}
+\item{genomeData}{genome visualization data}
 
-\item{graphType}{tbd}
+\item{graphType}{type of graph to be plotted - default = 'Scatter2D'}
 
-\item{events}{tbd}
+\item{events}{user-defined events (eg. mousemove, mouseout, click and dblclick)}
 
-\item{afterRender}{tbd}
+\item{afterRender}{event triggered after rendering}
 
-\item{width}{tbd}
+\item{width}{plot width (valid CSS units) - default = 600px}
 
-\item{height}{tbd}
+\item{height}{plot height (valid CSS units) - default = 400px}
 
-\item{pretty}{tbd}
+\item{pretty}{print tagged code (json/html) nicely - default = FALSE}
 
-\item{digits}{tbd}
+\item{digits}{display digits - default = 4}
 
-\item{...}{tbd}
+\item{...}{additional configuration options passed to canvasXpress}
 }
 \value{
 htmlwidget object
@@ -51,8 +52,5 @@ htmlwidget object
 \description{
 Custom HTML widget creation function based on widget YAML and JavaScript for 
 use in any html-compatible context
-}
-\seealso{
-\link[canvasXpress]{canvasXpressOutput}
 }
 

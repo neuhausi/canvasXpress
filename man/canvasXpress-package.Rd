@@ -13,14 +13,10 @@ CanvasXpress is a standalone JavaScript library for reproducible research
 with complete tracking of data and end-user modifications stored in a single 
 PNG image that can be played back.
 }
-\section{Function Overview}{
-
-TBD
-}
-
 \section{More Information}{
 
-\url{http://canvasxpress.org}
+\url{http://canvasxpress.org}  
+
 \code{browseVignettes(package = 'canvasXpress')}
 }
 

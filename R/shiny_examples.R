@@ -4,18 +4,14 @@
 #' list of available example applications run the function with a missing example 
 #' value
 #' 
-#' @param example - character name of a valid example application.
+#' @param example character name of a valid example application.
 #'
-#' @return - a running shiny example application
+#' @return Launches a running shiny example application
+#' 
+#' @seealso \link[canvasXpress]{canvasXpressOutput}
+#' @seealso \link[canvasXpress]{renderCanvasXpress}
+#' 
 #' @export
-#'
-#' @examples
-#' #list all examples available
-#' cxShinyExample()
-#' 
-#' # run example1
-#' cxShinyExample("example1")
-#' 
 cxShinyExample <- function(example = NULL) {
     # locate all the shiny app examples that exist
     validExamples <- list.files(system.file("shiny-examples", package = "canvasXpress"))

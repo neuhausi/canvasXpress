@@ -7,22 +7,19 @@
 cxShinyExample(example = NULL)
 }
 \arguments{
-\item{example}{- character name of a valid example application.}
+\item{example}{character name of a valid example application.}
 }
 \value{
-- a running shiny example application
+Launches a running shiny example application
 }
 \description{
 This function runs one of the available shiny example applications.  To see the 
 list of available example applications run the function with a missing example 
 value
 }
-\examples{
-#list all examples available
-cxShinyExample()
+\seealso{
+\link[canvasXpress]{canvasXpressOutput}
 
-# run example1
-cxShinyExample("example1")
-
+\link[canvasXpress]{renderCanvasXpress}
 }
 

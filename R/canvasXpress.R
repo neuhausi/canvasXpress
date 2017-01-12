@@ -6,15 +6,12 @@
 #' with complete tracking of data and end-user modifications stored in a single 
 #' PNG image that can be played back.
 #'
-#' @section Function Overview:
-#' TBD
 #'
 #' @section More Information:
-#' \url{http://canvasxpress.org}
+#' \url{http://canvasxpress.org}  
+#' 
 #' \code{browseVignettes(package = 'canvasXpress')}
 #'
-#' 
-#' 
 #' @docType package
 #' @aliases canvasXpress-package
 "_PACKAGE"
@@ -24,28 +21,27 @@
 #' Custom HTML widget creation function based on widget YAML and JavaScript for 
 #' use in any html-compatible context
 #'  
-#' @param data tbd
+#' @param data canvasXpress data frame
+#' \emph{(rows are refered to variables; columns are refered to samples)}
 #' @param decorData tbd
-#' @param smpAnnot tbd
-#' @param varAnnot tbd
-#' @param nodeData tbd
-#' @param edgeData tbd
-#' @param vennData tbd
-#' @param vennLegend tbd
-#' @param genomeData tbd
-#' @param graphType tbd
-#' @param events tbd
-#' @param afterRender tbd
-#' @param width tbd
-#' @param height tbd
-#' @param pretty tbd
-#' @param digits tbd
-#' @param ... tbd
+#' @param smpAnnot additional data that applies to samples (columns)
+#' @param varAnnot additional data that applies to variables (rows)
+#' @param nodeData network visualization data nodes
+#' @param edgeData network visualization data edges
+#' @param vennData venn visualization data
+#' @param vennLegend venn visualization legend
+#' @param genomeData genome visualization data
+#' @param graphType type of graph to be plotted - default = 'Scatter2D'
+#' @param events user-defined events (eg. mousemove, mouseout, click and dblclick)
+#' @param afterRender event triggered after rendering
+#' @param width plot width (valid CSS units) - default = 600px
+#' @param height plot height (valid CSS units) - default = 400px
+#' @param pretty print tagged code (json/html) nicely - default = FALSE
+#' @param digits display digits - default = 4
+#' @param ... additional configuration options passed to canvasXpress
 #' 
 #' @return htmlwidget object
 #'
-#' @seealso \link[canvasXpress]{canvasXpressOutput}
-#' 
 #' @export
 canvasXpress <- function(data = NULL,     decorData = NULL, 
                          smpAnnot = NULL, varAnnot = NULL, 
@@ -164,13 +160,14 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
 #' Output creation function for canvasXpressOutput in Shiny applications and 
 #' interactive Rmd documents
 #'  
-#' @param outputId tbd
-#' @param width tbd
-#' @param height tbd
+#' @param outputId shiny unique ID
+#' @param width width of the element - default = 100\%
+#' @param height height of the element - default = 400px
 #'
 #' @return Output function that enables the use of the widget in applications
 #'
 #' @seealso \link[canvasXpress]{renderCanvasXpress}
+#' @seealso \link[canvasXpress]{cxShinyExample}
 #' 
 #' @export
 canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
@@ -184,13 +181,14 @@ canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
 #' Render function for canvasXpressOutput in Shiny applications and 
 #' interactive Rmd documents
 #'  
-#' @param expr tbd
-#' @param env tbd
-#' @param quoted tbd
+#' @param expr expression used to render the canvasXpressOutput
+#' @param env environment to use - default = parent.frame()
+#' @param quoted whether the expression is quoted - default = FALSE
 #'
 #' @return Render function that enables the use of the widget in applications
 #'
 #' @seealso \link[canvasXpress]{canvasXpressOutput}
+#' @seealso \link[canvasXpress]{cxShinyExample}
 #' 
 #' @export
 renderCanvasXpress <- function(expr, env = parent.frame(), quoted = FALSE) {

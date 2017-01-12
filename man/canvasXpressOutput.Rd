@@ -7,11 +7,11 @@
 canvasXpressOutput(outputId, width = "100\%", height = "400px")
 }
 \arguments{
-\item{outputId}{tbd}
+\item{outputId}{shiny unique ID}
 
-\item{width}{tbd}
+\item{width}{width of the element - default = 100\%}
 
-\item{height}{tbd}
+\item{height}{height of the element - default = 400px}
 }
 \value{
 Output function that enables the use of the widget in applications
@@ -22,5 +22,7 @@ interactive Rmd documents
 }
 \seealso{
 \link[canvasXpress]{renderCanvasXpress}
+
+\link[canvasXpress]{cxShinyExample}
 }
 
