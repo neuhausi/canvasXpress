@@ -1,20 +1,36 @@
+#' Create Shiny Example Application
+#'
+#' This function runs one of the available shiny example applications.  To see the 
+#' list of available example applications run the function with a missing example 
+#' value
+#' 
+#' @param example - character name of a valid example application.
+#'
+#' @return - a running shiny example application
 #' @export
-cxShinyExample <- function(example) {
+#'
+#' @examples
+#' #list all examples available
+#' cxShinyExample()
+#' 
+#' # run example1
+#' cxShinyExample("example1")
+#' 
+cxShinyExample <- function(example = NULL) {
     # locate all the shiny app examples that exist
     validExamples <- list.files(system.file("shiny-examples", package = "canvasXpress"))
     
     validExamplesMsg <- paste0("Valid examples are: '", 
                                paste(validExamples, collapse = "', '"), 
                                "'")
-    
-    # invalid example
-    if (missing(example) || !nzchar(example) ||
+
+    if (is.null(example)) {
+        message(validExamplesMsg)
+        return(invisible(NULL))
+    }
+    else if (missing(example) || !nzchar(example) ||
         !example %in% validExamples) {
-        stop(
-            paste('Please run `runExample()` with a valid example app', 
-                  'as an argument.'),
-            validExamplesMsg,
-            call. = FALSE)
+        stop(validExamplesMsg, call. = FALSE)
     }
     
     # find and launch the app
