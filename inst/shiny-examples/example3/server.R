@@ -6,7 +6,7 @@ library(dplyr)
 library(htmlwidgets)
 library(canvasXpress)
 source("./customCanvasXpress.R")
-exData <- readRDS("./exData.rds")
+exData <- readRDS("./exData-sm.rds")
 
 shinyServer(function(input, output, session) {
   
