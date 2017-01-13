@@ -17,8 +17,8 @@ Imports:
     htmlwidgets (>= 0.7)
 RoxygenNote: 5.0.1
 Suggests:
+    shiny (>= 0.13.2),
     knitr,
     rmarkdown,
-    shiny (>= 0.13.2),
     testthat
 VignetteBuilder: knitr
