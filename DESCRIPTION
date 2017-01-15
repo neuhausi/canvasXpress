@@ -20,5 +20,7 @@ Suggests:
     shiny (>= 0.13.2),
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    limma,
+    grDevices
 VignetteBuilder: knitr

@@ -31,5 +31,6 @@ cxShinyExample <- function(example = NULL) {
     
     # find and launch the app
     appDir <- system.file("shiny-examples", example, package = "canvasXpress")
-    shiny::runApp(appDir, display.mode = "normal")
+print(appDir)
+    shiny::runApp(appDir, display.mode = "showcase")
 }
