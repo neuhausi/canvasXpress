@@ -6,7 +6,7 @@ library(dplyr)
 library(htmlwidgets)
 library(canvasXpress)
 source("./customCanvasXpress.R")
-exData <- readRDS("./exData-sm.rds")
+exData <- readRDS("./exData-sm2.rds")
 
 shinyUI(fluidPage(
   titlePanel('IPF Fibroblast data'),
