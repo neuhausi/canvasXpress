@@ -32,7 +32,7 @@ test_that("missing data", {
                  regexp = "Missing data for Genome visualization")
 })
 
-test_that("general input tests", {
+test_that("general graph input", {
     data.df <- data.frame(col1=c(1:20))
     data.m  <- matrix(1:20, ncol=1)
     data.l  <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
@@ -62,9 +62,18 @@ test_that("general input tests", {
                  regexp = "varAnnot must be a data frame or a matrix class object")
     expect_silent(canvasXpress(data = data.df, varAnnot = A.df))
     expect_silent(canvasXpress(data = data.m, varAnnot = A.m))
+    
+    expect_error(canvasXpress(data = data.df, smpAnnot = A.m),
+                 regexp = "Column names in smpAnnot are different from column names in data")
+    expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
+ 
+    expect_error(canvasXpress(data = data.df, varAnnot = A.m),
+                 regexp = "Row names in varAnnot are different from row names in data")
+    expect_silent(canvasXpress(data = data.df, varAnnot = A.df))   
+    
 })
 
-test_that("Network input tests", {
+test_that("Network Graph Input", {
     ndata <- matrix(1:10, nrow = 2, dimnames = list(c("row1", "row2"), c("id", "C2", "C3", "C4", "C5")))
     edata <- matrix(1:10, nrow = 2, dimnames = list(c("row1", "row2"), c("id1", "id2", "C3", "C4", "C5")))
 
@@ -103,7 +112,7 @@ test_that("Network input tests", {
                                nodeData = n.df, edgeData = e.df))
 })
 
-test_that("Venn input tests", {
+test_that("Venn Graph Input", {
     data <- data.frame(A=57, B=12, C=67, D=72, AB=4, AC=67, AD=25, BC=67, 
                        BD=27, CD=38, ABC=69, ABD=28, ACD=52, BCD=46, ABCD=3)
     legend <- list(A="List1", B="List2", C="List3", D="List4")
@@ -112,7 +121,21 @@ test_that("Venn input tests", {
                                vennData = data, vennLegend = legend))
 })
 
-test_that("Genome input tests", {
+test_that("Genome Graph Input", {
     expect_error(canvasXpress(graphType = "Genome",
                               genomeData = c(1, 2, 3)))
 })
+
+
+# Shiny Functionality
+test_that("Shiny UI Object Creation", {
+    obj <- suppressWarnings(canvasXpressOutput("testID"))
+    
+    expect_s3_class(obj, "shiny.tag.list")
+    expect_match(obj[[1]]$name,  "div")
+    expect_match(obj[[1]]$attribs$id,    "testID")
+    expect_match(obj[[1]]$attribs$class, "canvasXpress html-widget html-widget-output")
+    expect_match(obj[[1]]$attribs$style, "width:100%; height:400px;")
+})
+
+
