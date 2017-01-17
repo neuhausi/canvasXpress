@@ -4,7 +4,7 @@
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress)](https://cran.r-project.org/package=canvasXpress)
 [![Travis-CI Build Status](https://travis-ci.org/cb4ds/canvasXpress.svg?branch=dev-cran)](https://travis-ci.org/cb4ds/canvasXpress)
-[![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/master.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=dev-cran)
+[![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/dev-cran.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=dev-cran)
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/html/gallery.html)to display scientific and non-scientific

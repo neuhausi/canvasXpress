@@ -1,9 +1,11 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
+sudo: required
 cache: packages
+env: _R_CHECK_FORCE_SUGGESTS_=FALSE
+
 r_packages:
   - covr
 after_success:
-  - Rscript -e 'library(covr); codecov(quiet = FALSE)'
+  - Rscript -e 'library(covr); codecov()'
