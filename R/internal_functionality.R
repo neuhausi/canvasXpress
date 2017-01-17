@@ -1,8 +1,4 @@
 
-arraysCanvasXpress <- function() {
-    a <- c('colors', 'colorSpectrum', 'shapes', 'sizes', 'patterns', 'images', 'highlightSmp', 'highlightVar', 'smpOverlays', 'varOverlays', 'decorations', 'decorationsColors', 'groupingFactors', 'segregateSamplesBy', 'segregateVariablesBy', 'xAxis', 'xAxisValues', 'xAxisMinorValues', 'timeValues', 'timeValueIndices', 'xAxis2Values', 'xAxis2MinorValues', 'yAxis', 'yAxisValues', 'yAxisMinorValues','zAxis', 'zAxisValues', 'zAxisMinorValues', 'rAxisValues', 'rAxisMinorValues', 'includeDOE', 'vennCompartments', 'vennColors', 'pieColors', 'ringsType', 'ringsWeight', 'stockIndicators', 'highlightNode', 'layoutBoxLabelColors', 'nodesProperties', 'edgesProperties', 'featuresProperties')
-}
-
 assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter2D') {
     
     if (graphType == 'Network') {
@@ -19,8 +15,8 @@ assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NUL
     } else if (graphType == 'Genome') {
         if (is.null(genomeData)) {
             stop("Missing data for Genome visualization")
-            stop("Not implemented yet!")
         }
+        stop("Not implemented yet!")
     } else if (is.null(data)) {
         stop("Missing canvasXpress data!")
     }

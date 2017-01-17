@@ -51,6 +51,8 @@ test_that("Genome input tests", {
     expect_error(canvasXpress(graphType = "Genome",
                               genomeData = NULL), 
                  regexp = "Missing data for Genome visualization")
+    expect_error(canvasXpress(graphType = "Genome",
+                              genomeData = c(1, 2, 3)))
 })
 
 
