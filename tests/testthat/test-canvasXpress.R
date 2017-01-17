@@ -1,7 +1,6 @@
 context("canvasXpress")
 
-test_that("valid run - return type is correct", {
-    
+test_that("Main Function - Check Return Type", {
     data <- t(iris[,1:4])
     varAnnot <- as.matrix(iris[,5])
     colnames(varAnnot) <- "Species"
@@ -11,7 +10,7 @@ test_that("valid run - return type is correct", {
     expect_s3_class(result, "htmlwidget")
 })
 
-test_that("missing data", {
+test_that("Missing Data", {
     expect_error(canvasXpress(NULL), 
                  regexp = "Missing canvasXpress data!")
 
@@ -32,9 +31,9 @@ test_that("missing data", {
                  regexp = "Missing data for Genome visualization")
 })
 
-test_that("general graph input", {
-    data.df <- data.frame(col1=c(1:20))
-    data.m  <- matrix(1:20, ncol=1)
+test_that("Graph Input", {
+    data.df <- data.frame(col1 = c(1:20))
+    data.m  <- matrix(1:20, ncol = 1)
     data.l  <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
     
     expect_error(canvasXpress(data = NA),
@@ -52,9 +51,10 @@ test_that("general graph input", {
                  regexp = "smpAnnot must be a data frame or a matrix class object")
     expect_error(canvasXpress(data = data.m, smpAnnot = A.l),
                  regexp = "smpAnnot must be a data frame or a matrix class object")
-    expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
-    expect_silent(canvasXpress(data = data.m, smpAnnot = A.m))
     
+    expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
+    expect_silent(canvasXpress(data = data.m,  smpAnnot = A.m))
+
     
     expect_error(canvasXpress(data = data.df, varAnnot = NA),
                  regexp = "varAnnot must be a data frame or a matrix class object")
@@ -113,17 +113,24 @@ test_that("Network Graph Input", {
 })
 
 test_that("Venn Graph Input", {
-    data <- data.frame(A=57, B=12, C=67, D=72, AB=4, AC=67, AD=25, BC=67, 
-                       BD=27, CD=38, ABC=69, ABD=28, ACD=52, BCD=46, ABCD=3)
-    legend <- list(A="List1", B="List2", C="List3", D="List4")
+    data <- data.frame(A = 57, B = 12, C = 67, D = 72, AB = 4, AC = 67,
+                       AD = 25, BC = 67, BD = 27, CD = 38, ABC = 69, 
+                       ABD = 28, ACD = 52, BCD = 46, ABCD = 3)
+    data.l <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
+    legend <- list(A = "List1", B = "List2", C = "List3", D = "List4")
     
     expect_silent(canvasXpress(graphType = "Venn",
                                vennData = data, vennLegend = legend))
+    
+    expect_error(canvasXpress(graphType = "Venn", 
+                              vennData = data.l, vennLegend = legend),
+                 regexp = "vennData must be a data frame or a matrix class object.")
 })
 
 test_that("Genome Graph Input", {
     expect_error(canvasXpress(graphType = "Genome",
-                              genomeData = c(1, 2, 3)))
+                              genomeData = c(1, 2, 3)),
+                 regexp = "Not implemented yet!")
 })
 
 
@@ -136,6 +143,10 @@ test_that("Shiny UI Object Creation", {
     expect_match(obj[[1]]$attribs$id,    "testID")
     expect_match(obj[[1]]$attribs$class, "canvasXpress html-widget html-widget-output")
     expect_match(obj[[1]]$attribs$style, "width:100%; height:400px;")
+})
+
+test_that("Shiny Render", {
+    expect_s3_class(renderCanvasXpress(NULL), "shiny.render.function")
 })
 
 

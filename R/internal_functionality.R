@@ -134,8 +134,3 @@ convertRowsToList <- function(x) {
     }
     stats::setNames(res, rownames(x))
 }
-
-canvasXpress.data.frame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4, ...) {
-    canvasXpress(data, decorData, smpAnnot, varAnnot, nodeData, edgeData, vennData, vennLegend, genomeData, graphType, events, afterRender, width, height, pretty, digits, ...)
-}
-
