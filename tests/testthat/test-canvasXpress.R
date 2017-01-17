@@ -17,7 +17,10 @@ test_that("missing data", {
 
     expect_error(canvasXpress(graphType = "Network", 
                               nodeData = NULL, edgeData = NULL), 
-                 regexp = "Missing data for Network visualization!")
+                 regexp = "Missing nodeData for Network visualization")
+    expect_error(canvasXpress(graphType = "Network", 
+                              nodeData = c(1:10), edgeData = NULL), 
+                 regexp = "Missing edgeData for Network visualization")
     expect_error(canvasXpress(graphType = "Venn",
                               vennData = NULL, vennLegend = NULL),
                  regexp = "Missing data for Venn visualization")
@@ -62,13 +65,42 @@ test_that("general input tests", {
 })
 
 test_that("Network input tests", {
-    ndata <- matrix(1:20, nrow = 2)
-    edata <- matrix(1:20, nrow = 2)
+    ndata <- matrix(1:10, nrow = 2, dimnames = list(c("row1", "row2"), c("id", "C2", "C3", "C4", "C5")))
+    edata <- matrix(1:10, nrow = 2, dimnames = list(c("row1", "row2"), c("id1", "id2", "C3", "C4", "C5")))
 
     expect_silent(canvasXpress(graphType = "Network",
-                              nodeData = ndata, edgeData = NULL))
+                               nodeData = ndata, edgeData = edata))
+    
+    n.df <- as.data.frame(ndata)
+    e.df <- as.data.frame(edata)
+    l    <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
+    bad  <- data.frame(oops = c(1, 2), bad = c("fred", "barney"))
+    bad2 <- data.frame(id1 = c(1, 2),  bad = c("fred", "barney"))
+
+    expect_error(canvasXpress(graphType = "Network",
+                              nodeData = l, edgeData = e.df),
+                 regexp = "nodeData must be a data frame or a matrix class object")
+    expect_error(canvasXpress(graphType = "Network",
+                              nodeData = n.df, edgeData = l),
+                 regexp = "edgeData must be a data frame or a matrix class object")
+    
+    expect_error(canvasXpress(graphType = "Network",
+                              nodeData = bad, edgeData = edata),
+                 regexp = "missing 'id' header in nodeData dataframe")
+    expect_error(canvasXpress(graphType = "Network",
+                              nodeData = ndata, edgeData = bad),
+                 regexp = "missing 'id1' header in edgeData dataframe")
+    
+    expect_error(canvasXpress(graphType = "Network",
+                              nodeData = ndata, edgeData = bad2),
+                 regexp = "missing 'id2' header in edgeData dataframe")
+
     expect_silent(canvasXpress(graphType = "Network",
-                              nodeData = NULL, edgeData = edata))
+                               nodeData = n.df, edgeData = edata))
+    expect_silent(canvasXpress(graphType = "Network",
+                               nodeData = ndata, edgeData = e.df))
+    expect_silent(canvasXpress(graphType = "Network",
+                               nodeData = n.df, edgeData = e.df))
 })
 
 test_that("Venn input tests", {

@@ -2,8 +2,11 @@
 assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter2D') {
     
     if (graphType == 'Network') {
-        if (is.null(nodeData) && is.null(edgeData)) {
-            stop("Missing data for Network visualization!")
+        if (is.null(nodeData)) {
+            stop("Missing nodeData for Network visualization!")
+        }
+        if (is.null(edgeData)) {
+            stop("Missing edgeData for Network visualization!")
         }
     } else if (graphType == 'Venn') {
         if (is.null(vennData)) {
@@ -28,12 +31,16 @@ assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot 
     if (graphType == 'Network') {
         if (!is.null(nodeData) && !is.data.frame(nodeData) && !is.matrix(nodeData)) {
             stop("nodeData must be a data frame or a matrix class object.")
+        }
+        else {
             if (!"id" %in% colnames(nodeData)) {
                 stop("missing 'id' header in nodeData dataframe.")
             }
         }
         if (!is.null(edgeData) && !is.data.frame(edgeData) && !is.matrix(edgeData)) {
             stop("edgeData must be a data frame or a matrix class object.")
+        }
+        else {
             if (!"id1" %in% colnames(edgeData)) {
                 stop("missing 'id1' header in edgeData dataframe.")
             }
