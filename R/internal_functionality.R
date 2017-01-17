@@ -124,12 +124,12 @@ seq_row <- function (x) {
 convertRowsToList <- function(x) {
     # From BBmisc
     if (is.matrix(x)) {
-        res = lapply(seq_row(x), function(i) setNames(x[i,], NULL))
+        res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
     } else if (is.data.frame(x)) {
         x = convertDataFrameCols(x)
-        res = rowLapply(x, function(row) setNames(as.list(row), NULL))
+        res = rowLapply(x, function(row) stats::setNames(as.list(row), NULL))
     }
-    setNames(res, rownames(x))
+    stats::setNames(res, rownames(x))
 }
 
 canvasXpress.data.frame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType='Scatter2D', events=NULL, afterRender=NULL, width=600, height=400, pretty=FALSE, digits=4, ...) {
