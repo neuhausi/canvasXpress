@@ -11,18 +11,60 @@ test_that("valid run - return type is correct", {
     expect_s3_class(result, "htmlwidget")
 })
 
-test_that("missing data - all", {
+test_that("missing data", {
     expect_error(canvasXpress(NULL), 
                  regexp = "Missing canvasXpress data!")
+
+    expect_error(canvasXpress(graphType = "Network", 
+                              nodeData = NULL, edgeData = NULL), 
+                 regexp = "Missing data for Network visualization!")
+    expect_error(canvasXpress(graphType = "Venn",
+                              vennData = NULL, vennLegend = NULL),
+                 regexp = "Missing data for Venn visualization")
+    expect_error(canvasXpress(graphType = "Venn",
+                              vennData = NA, vennLegend = NULL),
+                 regexp = "Missing legend for Venn visualization")
+    expect_error(canvasXpress(graphType = "Genome",
+                              genomeData = NULL), 
+                 regexp = "Missing data for Genome visualization")
+})
+
+test_that("general input tests", {
+    data.df <- data.frame(col1=c(1:20))
+    data.m  <- matrix(1:20, ncol=1)
+    data.l  <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
+    
+    expect_error(canvasXpress(data = NA),
+                 regexp = "data must be a data frame or a matrix class object")
+    expect_error(canvasXpress(data = data.l),
+                 regexp = "data must be a data frame or a matrix class object")
+    expect_silent(canvasXpress(data = data.df))
+    expect_silent(canvasXpress(data = data.m))
+    
+    A.df <- data.df
+    A.m  <- data.m
+    A.l  <- data.l
+    
+    expect_error(canvasXpress(data = data.df, smpAnnot = NA),
+                 regexp = "smpAnnot must be a data frame or a matrix class object")
+    expect_error(canvasXpress(data = data.m, smpAnnot = A.l),
+                 regexp = "smpAnnot must be a data frame or a matrix class object")
+    expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
+    expect_silent(canvasXpress(data = data.m, smpAnnot = A.m))
+    
+    
+    expect_error(canvasXpress(data = data.df, varAnnot = NA),
+                 regexp = "varAnnot must be a data frame or a matrix class object")
+    expect_error(canvasXpress(data = data.m, varAnnot = A.l),
+                 regexp = "varAnnot must be a data frame or a matrix class object")
+    expect_silent(canvasXpress(data = data.df, varAnnot = A.df))
+    expect_silent(canvasXpress(data = data.m, varAnnot = A.m))
 })
 
 test_that("Network input tests", {
     ndata <- matrix(1:20, nrow = 2)
     edata <- matrix(1:20, nrow = 2)
 
-    expect_error(canvasXpress(graphType = "Network", 
-                              nodeData = NULL, edgeData = NULL), 
-                 regexp = "Missing data for Network visualization!")
     expect_silent(canvasXpress(graphType = "Network",
                               nodeData = ndata, edgeData = NULL))
     expect_silent(canvasXpress(graphType = "Network",
@@ -34,26 +76,11 @@ test_that("Venn input tests", {
                        BD=27, CD=38, ABC=69, ABD=28, ACD=52, BCD=46, ABCD=3)
     legend <- list(A="List1", B="List2", C="List3", D="List4")
     
-    expect_error(canvasXpress(graphType = "Venn",
-                              vennData = NULL, vennLegend = NULL),
-                 regexp = "Missing data for Venn visualization")
-    expect_error(canvasXpress(graphType = "Venn",
-                              vennData = NULL, vennLegend = legend),
-                 regexp = "Missing data for Venn visualization")
-    expect_error(canvasXpress(graphType = "Venn",
-                              vennData = data, vennLegend = NULL),
-                 regexp = "Missing legend for Venn visualization")
     expect_silent(canvasXpress(graphType = "Venn",
                                vennData = data, vennLegend = legend))
 })
 
 test_that("Genome input tests", {
     expect_error(canvasXpress(graphType = "Genome",
-                              genomeData = NULL), 
-                 regexp = "Missing data for Genome visualization")
-    expect_error(canvasXpress(graphType = "Genome",
                               genomeData = c(1, 2, 3)))
 })
-
-
-# Tests to be written
