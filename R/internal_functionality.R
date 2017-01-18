@@ -98,26 +98,6 @@ assignCanvasXpressRownames <- function(x) {
     }
 }
 
-convertDataFrameCols <- function(df) {
-    # From BBmisc
-    df = x = as.list(df)
-    i = vapply(df, is.factor, TRUE)
-    if (any(i)) {
-        x[i] = lapply(x[i], as.character)
-    }
-    as.data.frame(x, stringsAsFactors = FALSE)
-}
-
-rowLapply <- function (df, fun, ..., unlist = FALSE) {
-    # From BBmisc
-    fun = match.fun(fun)
-    if (unlist) {
-        .wrap = function(.i, .df, .fun, ...) .fun(unlist(.df[.i, , drop = FALSE], recursive = FALSE, use.names = TRUE), ...)
-    } else {
-        .wrap = function(.i, .df, .fun, ...) .fun(as.list(.df[.i, , drop = FALSE]), ...)
-    }
-    lapply(seq_row(df), .wrap, .fun = fun, .df = df, ...)
-}
 
 seq_row <- function (x) {
     # From BBmisc
@@ -126,11 +106,6 @@ seq_row <- function (x) {
 
 convertRowsToList <- function(x) {
     # From BBmisc
-    if (is.matrix(x)) {
-        res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
-    } else if (is.data.frame(x)) {
-        x = convertDataFrameCols(x)
-        res = rowLapply(x, function(row) stats::setNames(as.list(row), NULL))
-    }
+    res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
     stats::setNames(res, rownames(x))
 }
