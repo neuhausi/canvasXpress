@@ -2,6 +2,10 @@
 
 <a href="http://www.canvasxpress.org"><img src="http://www.canvasxpress.org/images/brand3.png" align="left" hspace="10" vspace="6" width="100"></a>
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress)](https://cran.r-project.org/package=canvasXpress)
+[![Travis-CI Build Status](https://travis-ci.org/cb4ds/canvasXpress.svg?branch=master)](https://travis-ci.org/cb4ds/canvasXpress)
+[![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/master.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=master)
+
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/html/gallery.html)to display scientific and non-scientific
 data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](http://www.canvasxpress.org/html/user-interface.html) to explore complex data sets, a sofisticated and unique mechanism to keep track of all user customization for [Reproducible Research ](http://www.canvasxpress.org/html/reproducible-research.html) purposes, as well as an 'out of the box'
@@ -28,7 +32,7 @@ varAnnot <- as.matrix(iris[,5])
 colnames(varAnnot) <- "Species"
 canvasXpress(t(data), varAnnot=varAnnot, graphType='Scatter3D', colorBy='Species')
 ```
-![Scatter3D](images/R-Scatter3D.png)
+![Scatter3D](vignettes/images/R-Scatter3D.png)
 
 ### Scatter 2D Plot Example
 
@@ -38,7 +42,7 @@ varAnnot <- as.matrix(iris[,5])
 colnames(varAnnot) <- "Species"
 canvasXpress(t(data), varAnnot=varAnnot, scatterPlotMatrix=1, colorBy='Species')
 ```
-![Scatter2D](images/R-Scatter2D.png)
+![Scatter2D](vignettes/images/R-Scatter2D.png)
 
 ### Boxplot Example
 
@@ -50,7 +54,7 @@ canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', groupingFactors=list(
 # or
 canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(list('groupSamples', list('Species'))))
 ```
-![Boxplot](images/R-Boxplot.png)
+![Boxplot](vignettes/images/R-Boxplot.png)
 
 ### Heatmap Example
 
@@ -60,7 +64,7 @@ smpAnnot <- as.matrix(iris[,5])
 colnames(smpAnnot) <- "Species"
 canvasXpress(data, smpAnnot=smpAnnot, graphType='Heatmap', smpOverlays=list('Species'), variablesClustered=TRUE, showSampleNames=FALSE)
 ```
-![Heatmap](images/R-Heatmap.png)
+![Heatmap](vignettes/images/R-Heatmap.png)
 
 ### Four way Venn Diagram Example
 
@@ -68,7 +72,7 @@ canvasXpress(data, smpAnnot=smpAnnot, graphType='Heatmap', smpOverlays=list('Spe
 vennData <- data.frame(A=57, B=12, C=67, D=72, AB=4, AC=67, AD=25, BC=67, BD=27, CD=38, ABC=69, ABD=28, ACD=52, BCD=46, ABCD=3)
 canvasXpress(vennData=vennData, graphType='Venn', vennGroups=4, vennLegend=list(A="List1", B="List2", C="List3", D="List4"))
 ```
-![Venn](images/R-Venn.png)
+![Venn](vignettes/images/R-Venn.png)
 
 Additional information and many examples with the JavaScript ***canvasXpress*** library can be found
 [here](http://www.canvasxpress.org).
