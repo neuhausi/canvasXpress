@@ -12,34 +12,34 @@ test_that("Main Function - Check Return Type", {
 
 test_that("Missing Data", {
     expect_error(canvasXpress(NULL), 
-                 regexp = "Missing canvasXpress data!")
+                 regexpr =  "Missing canvasXpress data!")
 
     expect_error(canvasXpress(graphType = "Network", 
                               nodeData = NULL, edgeData = NULL), 
-                 regexp = "Missing nodeData for Network visualization")
+                 regexpr =  "Missing nodeData for Network visualization")
     expect_error(canvasXpress(graphType = "Network", 
                               nodeData = c(1:10), edgeData = NULL), 
-                 regexp = "Missing edgeData for Network visualization")
+                 regexpr =  "Missing edgeData for Network visualization")
     expect_error(canvasXpress(graphType = "Venn",
                               vennData = NULL, vennLegend = NULL),
-                 regexp = "Missing data for Venn visualization")
+                 regexpr =  "Missing data for Venn visualization")
     expect_error(canvasXpress(graphType = "Venn",
                               vennData = NA, vennLegend = NULL),
-                 regexp = "Missing legend for Venn visualization")
+                 regexpr =  "Missing legend for Venn visualization")
     expect_error(canvasXpress(graphType = "Genome",
                               genomeData = NULL), 
-                 regexp = "Missing data for Genome visualization")
+                 regexpr =  "Missing data for Genome visualization")
 })
 
-test_that("Graph Input", {
+test_that("General Graph Input", {
     data.df <- data.frame(col1 = c(1:20))
     data.m  <- matrix(1:20, ncol = 1)
     data.l  <- list(col1 = c(1:20), col2 = c("fred", "barney", "wilma"))
     
     expect_error(canvasXpress(data = NA),
-                 regexp = "data must be a data frame or a matrix class object")
+                 regexpr =  "data must be a data frame or a matrix class object")
     expect_error(canvasXpress(data = data.l),
-                 regexp = "data must be a data frame or a matrix class object")
+                 regexpr =  "data must be a data frame or a matrix class object")
     expect_silent(canvasXpress(data = data.df))
     expect_silent(canvasXpress(data = data.m))
     
@@ -48,27 +48,27 @@ test_that("Graph Input", {
     A.l  <- data.l
     
     expect_error(canvasXpress(data = data.df, smpAnnot = NA),
-                 regexp = "smpAnnot must be a data frame or a matrix class object")
+                 regexpr =  "smpAnnot must be a data frame or a matrix class object")
     expect_error(canvasXpress(data = data.m, smpAnnot = A.l),
-                 regexp = "smpAnnot must be a data frame or a matrix class object")
+                 regexpr =  "smpAnnot must be a data frame or a matrix class object")
     
     expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
     expect_silent(canvasXpress(data = data.m,  smpAnnot = A.m))
 
     
     expect_error(canvasXpress(data = data.df, varAnnot = NA),
-                 regexp = "varAnnot must be a data frame or a matrix class object")
+                 regexpr =  "varAnnot must be a data frame or a matrix class object")
     expect_error(canvasXpress(data = data.m, varAnnot = A.l),
-                 regexp = "varAnnot must be a data frame or a matrix class object")
+                 regexpr =  "varAnnot must be a data frame or a matrix class object")
     expect_silent(canvasXpress(data = data.df, varAnnot = A.df))
     expect_silent(canvasXpress(data = data.m, varAnnot = A.m))
     
     expect_error(canvasXpress(data = data.df, smpAnnot = A.m),
-                 regexp = "Column names in smpAnnot are different from column names in data")
+                 regexpr =  "Column names in smpAnnot are different from column names in data")
     expect_silent(canvasXpress(data = data.df, smpAnnot = A.df))
  
     expect_error(canvasXpress(data = data.df, varAnnot = A.m),
-                 regexp = "Row names in varAnnot are different from row names in data")
+                 regexpr =  "Row names in varAnnot are different from row names in data")
     expect_silent(canvasXpress(data = data.df, varAnnot = A.df))   
     
 })
@@ -88,21 +88,21 @@ test_that("Network Graph Input", {
 
     expect_error(canvasXpress(graphType = "Network",
                               nodeData = l, edgeData = e.df),
-                 regexp = "nodeData must be a data frame or a matrix class object")
+                 regexpr =  "nodeData must be a data frame or a matrix class object")
     expect_error(canvasXpress(graphType = "Network",
                               nodeData = n.df, edgeData = l),
-                 regexp = "edgeData must be a data frame or a matrix class object")
+                 regexpr =  "edgeData must be a data frame or a matrix class object")
     
     expect_error(canvasXpress(graphType = "Network",
                               nodeData = bad, edgeData = edata),
-                 regexp = "missing 'id' header in nodeData dataframe")
+                 regexpr =  "missing 'id' header in nodeData dataframe")
     expect_error(canvasXpress(graphType = "Network",
                               nodeData = ndata, edgeData = bad),
-                 regexp = "missing 'id1' header in edgeData dataframe")
+                 regexpr =  "missing 'id1' header in edgeData dataframe")
     
     expect_error(canvasXpress(graphType = "Network",
                               nodeData = ndata, edgeData = bad2),
-                 regexp = "missing 'id2' header in edgeData dataframe")
+                 regexpr =  "missing 'id2' header in edgeData dataframe")
 
     expect_silent(canvasXpress(graphType = "Network",
                                nodeData = n.df, edgeData = edata))
@@ -124,13 +124,13 @@ test_that("Venn Graph Input", {
     
     expect_error(canvasXpress(graphType = "Venn", 
                               vennData = data.l, vennLegend = legend),
-                 regexp = "vennData must be a data frame or a matrix class object.")
+                 regexpr =  "vennData must be a data frame or a matrix class object.")
 })
 
 test_that("Genome Graph Input", {
     expect_error(canvasXpress(graphType = "Genome",
                               genomeData = c(1, 2, 3)),
-                 regexp = "Not implemented yet!")
+                 regexpr =  "Not implemented yet!")
 })
 
 
@@ -149,4 +149,8 @@ test_that("Shiny Render", {
     expect_s3_class(renderCanvasXpress(NULL), "shiny.render.function")
 })
 
+test_that("Shiny Examples", {
+    expect_error(cxShinyExample("badexample"),
+                 regexpr = "Valid examples are: 'example1', 'example2', 'example3'")
+})
 
