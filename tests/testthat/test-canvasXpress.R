@@ -152,5 +152,7 @@ test_that("Shiny Render", {
 test_that("Shiny Examples", {
     expect_error(cxShinyExample("badexample"),
                  regexpr = "Valid examples are: 'example1', 'example2', 'example3'")
+    expect_message(cxShinyExample(NULL),
+                 regexpr = "Valid examples are: 'example1', 'example2', 'example3'")
 })
 
