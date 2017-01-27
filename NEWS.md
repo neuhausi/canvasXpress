@@ -6,12 +6,15 @@ information on the stand-alone JavaScript CanvasXpress library see the
 
 ---
 
+## v0.13.8
+* Updated CanvasXpress JavasScript and CSS libraries to v13.8
+* Added the CDNJ tag to the README file
+
 ## v0.13.7
 
 * Updated CanvasXpress JavasScript and CSS libraries to v13.7
 * Package Version Updated - will generally follow the JS library version for 
 clarity
-
 
 ## v0.13.5
 
