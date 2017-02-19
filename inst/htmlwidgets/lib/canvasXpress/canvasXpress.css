@@ -278,6 +278,18 @@ span.CanvasXpressDataExplorerString {
   text-align: start;
 }
 
+span.CanvasXpressDataExplorerUnique {
+  border: 1px solid rgb(51, 122, 183);
+  border-radius: 5px;
+  color: rgb(0, 0, 255);
+  font: normal 12px arial, tahoma, sans-serif;
+  margin: 3px;
+  padding: 3px;
+  word-wrap: normal;
+  display: inline-block;
+  text-align: start;
+}
+
 span.CanvasXpressDataExplorer {
   border: 1px solid rgb(51, 122, 183);
   border-radius: 5px;
