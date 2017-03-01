@@ -50,6 +50,19 @@ td.cxy {
 	padding: 1px;
 }
 
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
 div.cxc {
 	left: 0px;
 	top: 0px;
@@ -328,6 +341,7 @@ img.CanvasXpressTooltip {
 	cursor: default;
 	float: right;
 	margin: 2px 3px 0px 0px;
+	padding-bottom: 2px;
 	cursor: default;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -601,25 +615,50 @@ div.CanvasXpressMotion {
   font: normal 12px arial, tahoma, sans-serif;
 }
 
+
+/**********/
+/* Marker */
+/**********/
+
+div.CanvasXpressMarker {
+  box-sizing: content-box;
+  border: 1px solid rgb(51, 122, 183);
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
+  color: rgb(34, 34, 34);
+  cursor: move;
+  font: normal 12px arial, tahoma, sans-serif;
+  height: 320px;
+  width: 286px;
+  left: 0px;
+  line-height: 100%;
+  position: absolute;
+  top: 0px;
+  padding : 2px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+/**************/
+/* Data Table */
+/**************/
+
 div.CanvasXpressDataTable {
   box-sizing: content-box;
-	border: 1px solid rgb(51, 122, 183);
-	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
-	clear: both;
-	color: rgb(34, 34, 34);
-	font: normal 12px arial, tahoma, sans-serif;
-	overflow: hidden;
-	position: absolute;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
+  border: 1px solid rgb(51, 122, 183);
+  border-radius: 5px;
+  background-color: rgb(245, 245, 245);
+  clear: both;
+  color: rgb(34, 34, 34);
+  font: normal 12px arial, tahoma, sans-serif;
+  overflow: hidden;
+  position: absolute;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
-
-/***************/
-/* Data Table */
-/***************/
 
 div.CanvasXpressDataTableToolbar {
   box-sizing: content-box;
