@@ -2,7 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-
-*.Rproj
-
-.Rbuildignore
+**/.DS_Store
