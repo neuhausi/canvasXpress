@@ -1,6 +1,16 @@
+This is a resubmission.  Compared to the last submission I have:  
+
+* enclosed the URL in the DESCRIPTION file in angle brackets (<...>)
+
+---
 ## Test environments
 * local OS X install, R 3.2.1
 * local OS X install, R 3.3.1
+* local OS X install, R 3.3.3
+* ubuntu 16.04, R 3.2.5
+* ubuntu 16.04, R 3.3.1
+* ubuntu 16.04, R 3.3.2
+* ubuntu 16.04, R 3.3.3
 * ubuntu 12.04.5 (on travis-ci), R 3.2.5
 * ubuntu 12.04.5 (on travis-ci), R 3.3.2
 * win-builder (devel and release)
