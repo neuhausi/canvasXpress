@@ -1,3 +1,8 @@
+This is a resubmission.  Compared to the last submission I have:  
+
+* enclosed the URL in the DESCRIPTION file in angle brackets (<...>)
+
+---
 ## Test environments
 * local OS X install, R 3.2.1
 * local OS X install, R 3.3.1
