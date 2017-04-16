@@ -91,10 +91,12 @@ img.CanvasXpressCode {
 	float: right;
 	margin: 2px 3px 0px 0px;
 	padding-bottom: 5px;
-	-moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  -ms-user-select: none;
 }
 
 pre.CanvasXpressCode {
@@ -164,10 +166,12 @@ img.CanvasXpressBin {
 	float: right;
 	margin: 2px 3px 0px 0px;
 	padding-bottom: 5px;
-	-moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  -ms-user-select: none;
 }
 
 div.CanvasXpressBinContainer {
@@ -342,11 +346,13 @@ img.CanvasXpressTooltip {
 	float: right;
 	margin: 2px 3px 0px 0px;
 	padding-bottom: 2px;
-	cursor: default;
+  user-select: none;
+  cursor: default;
 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  -ms-user-select: none;
 }
 
 span.CanvasXpressTooltip {
@@ -674,7 +680,9 @@ div.CanvasXpressDataTableToolbar {
 	position: absolute;
 	top: 0px;
 	padding : 2px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -684,10 +692,12 @@ img.CanvasXpressDataTableToolbarImage {
 	cursor: default;
 	float: right;
 	margin: 2px 5px 0px 0px;
-	-moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  -ms-user-select: none;
 }
 
 div.CanvasXpressDataTableContainer {
@@ -701,7 +711,9 @@ div.CanvasXpressDataTableContainer {
 	line-height: 100%;
 	position: absolute;
 	top: 24px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -715,7 +727,9 @@ div.CanvasXpressDataTableVertical {
 	right: 4px;
 	top : 0px;
 	width: 24px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -729,7 +743,9 @@ div.CanvasXpressDataTableHorizontal {
 	left: 24px;
 	overflow: auto;
 	position: absolute;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -747,7 +763,9 @@ div.CanvasXpressDataTableResizer {
 	position: absolute;
 	right: 0px;
 	width: 15px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -763,7 +781,9 @@ table.CanvasXpressDataTable {
 	position: absolute;
 	table-layout: fixed;
 	top: 1px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -776,7 +796,9 @@ div.CanvasXpressDataTableMask {
 	position: absolute;
 	top: 0px;
 	overflow: hidden;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -793,7 +815,9 @@ th.CanvasXpressTableCellHead {
 	padding: 2px;
 	text-align: left;
 	vertical-align: middle;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -810,7 +834,9 @@ th.CanvasXpressTableCellHeadActive {
 	padding: 2px;
 	text-align: left;
 	vertical-align: middle;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -829,7 +855,9 @@ a.CanvasXpressTableCellHead {
 	top: 0px;
 	white-space: normal;
 	width: 14px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -848,7 +876,9 @@ a.CanvasXpressTableCellHeadActive {
 	top: 0px;
 	white-space: normal;
 	width: 14px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -863,7 +893,9 @@ td.CanvasXpressTableCell {
 	line-height: 20px;
 	padding: 2px;
 	vertical-align: middle;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -878,7 +910,9 @@ td.CanvasXpressTableCellActive {
 	line-height: 20px;
 	padding: 2px;
 	vertical-align: middle;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -933,7 +967,9 @@ div.CanvasXpressConfigurator {
 	cursor: default;
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 16px;
-	-moz-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
+ 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
@@ -1971,10 +2007,12 @@ img.CanvasXpressToolbarHelp {
 	cursor: default;
 	float: right;
 	margin-left: 2px;
-	-moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  -ms-user-select: none;
 }
 
 div.CanvasXpressToolbarHelp {
@@ -1991,6 +2029,8 @@ div.CanvasXpressToolbarHelp {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
 }
 
 p.CanvasXpressToolbarHelp {
@@ -2005,6 +2045,12 @@ img.CanvasXpressToolbarImage {
 	margin-top: 2px;
 	margin-right: 4px;
 	float: right;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
 }
 
 div.CanvasXpressForm {
@@ -2039,6 +2085,8 @@ input.CanvasXpressFormButton {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
 }
 
 input.CanvasXpressFormButtonActive {
@@ -2060,6 +2108,8 @@ input.CanvasXpressFormButtonActive {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
 }
 
 input.CanvasXpressFormText {
@@ -2089,6 +2139,8 @@ canvas.CanvasXpress {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+  user-select: none;
+  -ms-user-select: none;
 }
 
 canvas.CanvasXpress:hover {
