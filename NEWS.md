@@ -6,8 +6,8 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
-## v0.15.3
-* Updated CanvasXpress JavaScript and CSS libraries to v15.3
+## v0.15.4
+* Updated CanvasXpress JavaScript and CSS libraries to v15.4
 
 ## v0.15.2
 * Updated CanvasXpress JavaScript and CSS libraries to v15.2
