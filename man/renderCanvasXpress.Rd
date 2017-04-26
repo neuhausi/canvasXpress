@@ -25,4 +25,3 @@ interactive Rmd documents
 
 \link[canvasXpress]{cxShinyExample}
 }
-
