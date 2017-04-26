@@ -12,7 +12,7 @@ n/a
 * ubuntu 16.04, R 3.3.3
 
 * ubuntu 12.04.5 (on travis-ci), R 3.2.5
-* ubuntu 12.04.5 (on travis-ci), R 3.3.2
+* ubuntu 12.04.5 (on travis-ci), R 3.3.3
 
 * win-builder (devel and release)
 
