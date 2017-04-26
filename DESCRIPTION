@@ -15,7 +15,7 @@ Depends:
     R (>= 3.2.1)
 Imports:
     htmlwidgets (>= 0.7)
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests:
     shiny (>= 0.13.2),
     knitr,
