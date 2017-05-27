@@ -29,6 +29,10 @@ test_that("Missing Data", {
     expect_error(canvasXpress(graphType = "Genome",
                               genomeData = NULL), 
                  regexpr =  "Missing data for Genome visualization")
+    expect_error(canvasXpress(graphType = "Boxplot",
+                              data = data.frame(bad = c(1, 2)),
+                              boxplotGroupData = "TESTING"),
+                 regexpr =  "Incorrect Vars for Boxplot Group Data!*")
 })
 
 test_that("General Graph Input", {
@@ -70,7 +74,28 @@ test_that("General Graph Input", {
     expect_error(canvasXpress(data = data.df, varAnnot = A.m),
                  regexpr =  "Row names in varAnnot are different from row names in data")
     expect_silent(canvasXpress(data = data.df, varAnnot = A.df))   
+})
+
+test_that("Summarized Boxplot Input", {
+    data <- data.frame(iqr1   = c(3,  25),
+                       iqr3   = c(10, 30),
+                       qtl1   = c(6,  25),
+                       qtl3   = c(10, 29),
+                       median = c(8,  27))
     
+    data.box <- t(data)
+    
+    data.box.out <- data
+    data.box.out$outliers <- c("2, 40", NA)
+    data.box.out <- t(data.box.out)
+        
+    expect_silent(canvasXpress(graphType = "Boxplot",
+                               data = data.box,
+                               boxplotGroupData = "TESTING"))
+    
+    expect_silent(canvasXpress(graphType = "Boxplot",
+                               data = data.box.out,
+                               boxplotGroupData = "TESTING"))
 })
 
 test_that("Network Graph Input", {

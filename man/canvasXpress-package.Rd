@@ -2,8 +2,8 @@
 % Please edit documentation in R/canvasXpress.R
 \docType{package}
 \name{canvasXpress-package}
-\alias{canvasXpress-package}
 \alias{_PACKAGE}
+\alias{canvasXpress-package}
 \title{CanvasXpress Visualization Package}
 \description{
 A package to assist in creating visualizations in CanvasXpress in R.

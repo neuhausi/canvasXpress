@@ -1,0 +1,71 @@
+---
+title: "Additional Examples for canvasXpress in R "
+author: "Connie Brett"
+date: "`r Sys.Date()`"
+output: 
+    rmarkdown::html_vignette:
+        toc: TRUE
+        toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{Additional Examples for canvasXpress in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Data from an R perspective
+
+The canvasXpress javaScript functionality in the browser generally expects data to be in a wide format and utilizes both column and row names to cross-reference and access the various slices of data needed to make the charts.  The package will warn you if that data you provide doesn't match up, and it is likely that one of your structures is simply the wrong format.
+
+
+### Variables
+
+Variables are the rows of data and the variable names are drawn from the row names.  It is helpful to keep in mind that there are a number of manipulations and functions in R that remove or reset rownames on various data structures.
+
+
+### Samples
+
+Samples are the columns of data and the sample names are drawn from the column names.  
+
+
+### Annotations
+
+Annotations are considered to be *extra* information or characteristics.  These data add to the information about samples or variables but are not a part of the main dataset.
+
+
+### Item Indexing
+
+Some charts can be built in canvasXpress based on the index of the data instead of names.  The JavaScript language uses 0-based indexing whereas the R language uses 1-based indexing.  This means that to access the first item in a vectors column, row, etc in JavaScript the index would is 0, whereas the first item in that same structure in R would have an index of 1.
+
+This discrepancy in indexing means that when sending data indexes to canvasXpress from R it is crucial to adjust your R index (subtract 1) since the canvasXpress charts (even within RStudio) are *always* created from a JavaScript perspective.
+
+### JSON Data match-up
+
+The JSON format for the data is essentially a list of lists.  From a data perspective the y list (compartment) is where the numerical data resides with three sub-lists - the names of the variables, the names of the samples, and the actual data.  The x list contains the sample annotation data, and the z list contains the variable annotation data.  
+
+When utilizing the canvasXpress functions from R the following mappings are made, which coveres the most common charts.  There are additional named lists and properties that are mapped for specific chart types and covered with those chart examples below.
+
+> data -> y  
+> &nbsp;&nbsp;&nbsp;&nbsp;*y.vars = row names*  
+> &nbsp;&nbsp;&nbsp;&nbsp;*y.smps = column names*  
+> &nbsp;&nbsp;&nbsp;&nbsp;*y.data = values*  
+> smpAnnot -> x  
+> varAnnot -> z
+
+
+## Examples
+
+### Scatter 3D Plot
+
+```r
+data <- t(iris[,1:4])
+varAnnot <- as.matrix(iris[,5])
+colnames(varAnnot) <- "Species"
+canvasXpress(t(data), varAnnot=varAnnot, graphType='Scatter3D', colorBy='Species')
+```
+![Scatter3D](images/R-Scatter3D.png)
+
+
+## Additional Information 
+
+Additional information and many examples with the JavaScript ***canvasXpress*** library can be found
+[here](http://www.canvasxpress.org).

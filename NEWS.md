@@ -8,6 +8,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ## v0.16.1
 * Updated CanvasXpress JavaScript and CSS libraries to v16.1
+* Added dendrogram functionality compatibility (Newick tree format)
+* Added precalculated boxplot data functionality (5-number summary + outliers)
+* Updated documentation for the above additions
 
 ## v0.15.5
 * Updated CanvasXpress JavaScript and CSS libraries to v15.5
