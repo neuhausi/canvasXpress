@@ -62,10 +62,11 @@ Examples here use data manipulated with the tidyverse related packages (dplyr, t
 
 A variety of commonly-used canvasXpress options are used below to provide examples of how to position, resize and configure various aspects of the charts from the call to the CanvasXpress function in R.  This includes items such as the Axis Titles, Legends, Colors, etc.  All of these optional parameters are documented on the main CanvasXpress site at http://canvasXpress.org.
 
-```{r dataPrep, message = FALSE}
+```r
 library(canvasXpress)
 library(dplyr)
 library(tibble)
+library(tidyr)
 
 data <- USArrests %>%
     rownames_to_column(var = "State") %>%
@@ -75,10 +76,30 @@ data <- USArrests %>%
                           ordered_result = T)) 
 ```
 
+### Scatter 2D Chart
+
+```r
+cxdata          <- data %>% select(Murder, Assault)
+cxdata.varAnnot <- data %>% select(UrbanPop, Category) 
+
+rownames(cxdata) <- data[, "State"]
+rownames(cxdata.varAnnot) <- data[, "State"]
+
+canvasXpress(data                    = cxdata,
+             varAnnot                = cxdata.varAnnot,
+             graphType               = "Scatter2D",
+             colorBy                 = "UrbanPop",
+             shapeBy                 = "Category",
+             legendPosition          = "right",
+             legendOrder             = list("Category" = list("low", "med", "high")),
+             title                   = "Murder vs Assault Rates",
+             titleScaleFontFactor    = 0.5)
+```
+![Scatter2D](images/R-Scatter2D.png)
 
 ### Stacked Bar Chart
 
-```{r ex1}
+```r
 cxdata           <- t(data %>% select(Assault, Rape, Murder))
 colnames(cxdata) <- data$State
 
@@ -94,12 +115,13 @@ canvasXpress(data                  = cxdata,
              xAxisTitle            = "Total Arrests",
              xAxis2Title           = "Total Arrests")
 ```
+![StackedBar](images/R-StackedBar.png)
 
 ### Clustered Bar Chart
 
 #### CanvasXpress clustering
 
-```{r ex2a}
+```r
 cxdata           <- t(data %>% select(Assault, Rape, Murder))
 colnames(cxdata) <- data$State
 
@@ -122,10 +144,11 @@ canvasXpress(data                    = cxdata,
              distance                = "manhattan",
              smpDendrogramPosition   = "left")
 ```
+![ClusteredBar1](images/R-ClusteredBar1.png)
 
 #### Preclustered data in Newick format
 
-```{r ex2b, }
+```r
 cxdata           <- t(data %>% select(Assault, Rape, Murder))
 colnames(cxdata) <- data$State
 
@@ -135,7 +158,7 @@ cxdata.tree      <- list("smps" = "((8,32):20.2,(((4,((0,7):14.7,(23,(1,(27,(21,
 canvasXpress(data                    = cxdata,
              graphType               = "Stacked",
              graphOrientation        = "horizontal",
-             colorScheme             = "Blues",
+             colorScheme             = "Reds",
 
              showSampleNames         = FALSE,
              title                   = "Clustered Arrests",
@@ -151,10 +174,60 @@ canvasXpress(data                    = cxdata,
              smpDendrogramPosition = "left",
              showSmpDendrogram     = TRUE)
 ```
+![ClusteredBar2](images/R-ClusteredBar2.png)
 
-### TBD
+
+### BoxPlot
+#### CanvasXpress statistics
+
+```r
+reshape <- data %>% gather(key = "Type", value = "Rate", 
+                           Assault, Rape, Murder)
+
+cxdata           <- t(reshape %>% select(Rate))
+cxdata.smpAnnot  <- t(reshape %>% select(Type))
+
+colnames(cxdata.smpAnnot) <- colnames(cxdata)
 
 
+canvasXpress(data                  = cxdata,
+             smpAnnot              = cxdata.smpAnnot,
+             graphType             = "Boxplot",
+             colorScheme           = "Pastel",
+             graphOrientation      = "vertical",
+             groupingFactors       = list("Type"),
+             smpLabelFontStyle     = "italic",
+             smpLabelRotate        = 90,
+             showLegend            = FALSE,
+             title                 = "US Arrests by Type",
+             titleScaleFontFactor  = 0.5,)
+```
+![BoxPlot1](images/R-BoxPlot1.png)
+
+#### Precalculated statistics
+
+```r
+precalc.stats <- apply(data %>% select(Assault, Rape, Murder), 2, boxplot.stats)
+precalc.data  <- as.data.frame(lapply(precalc.stats, function(x) { x$stats }))
+precalc.out   <- data.frame(lapply(precalc.stats, function(x) { paste(x$out, collapse=',') }), stringsAsFactors = F)
+
+cxdata <- precalc.data %>% mutate_all(as.character)
+cxdata <- bind_rows(cxdata, precalc.out)
+rownames(cxdata) <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
+
+canvasXpress(data                  = cxdata,
+             graphType             = "Boxplot",
+             boxplotGroupData      = "Type",
+             colorScheme           = "Pastel",
+             graphOrientation      = "vertical",
+             groupingFactors       = list("Type"),
+             smpLabelFontStyle     = "italic",
+             smpLabelRotate        = 90,
+             showLegend            = FALSE,
+             title                 = "US Arrests by Type",
+             titleScaleFontFactor  = 0.5,)
+```
+![BoxPlot2](images/R-BoxPlot2.png)
 
 
 
