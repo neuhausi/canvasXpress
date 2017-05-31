@@ -51,7 +51,9 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
 
 \item{boxplotGroupData}{character label for grouped boxplot data.  If there is a 
 non-null value and graphType is 'Boxplot' pre-calculated boxplot data is used from
-the variables (iqr1, iqr3, qtl1, qtl3, median)}
+the variables (iqr1, iqr3, qtl1, qtl3, median) and optionally the variable (outliers)
+in the data parameter.  Note: Boxplot outliers should be specified as 
+comma-separated string values in the outliers variable.}
 }
 \value{
 htmlwidget object
