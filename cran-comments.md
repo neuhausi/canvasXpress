@@ -11,8 +11,8 @@ n/a
 * ubuntu 16.04, R 3.3.3
 * ubuntu 16.04, R 3.4.0
 
-* ubuntu 12.04.5 (on travis-ci), R 3.2.5
 * ubuntu 12.04.5 (on travis-ci), R 3.3.3
+* ubuntu 12.04.5 (on travis-ci), R 3.4.0
 
 * win-builder (devel and release)
 
@@ -38,8 +38,9 @@ R CMD check results
 **NONE**
 
 ```
-tools::package_dependencies(packages = c('canvasXpress'),  
-                            reverse  = TRUE)  
+pdb <- available.packages()
+tools::package_dependencies(packages = c('canvasXpress'),
+                            db = pdb, reverse = TRUE)
                             
 $canvasXpress  
 character(0)  
