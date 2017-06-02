@@ -1,18 +1,18 @@
-# canvasXpress R Library
+---
+title:  "CanvasXpress R Library"
+output: html_document
+---
 
 <a href="http://www.canvasxpress.org"><img src="http://www.canvasxpress.org/images/brand3.png" align="left" hspace="10" vspace="6" width="100"></a>
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress)](https://cran.r-project.org/package=canvasXpress)
-[![CDNJ version](https://img.shields.io/cdnjs/v/canvasXpress.svg)](https://cdnjs.com/libraries/canvasXpress)
-[![Travis-CI Build Status](https://travis-ci.org/cb4ds/canvasXpress.svg?branch=master)](https://travis-ci.org/cb4ds/canvasXpress)
-[![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/master.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=master)
+<!-- Badge Location -->
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/html/gallery.html)to display scientific and non-scientific
-data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](http://www.canvasxpress.org/html/user-interface.html) to explore complex data sets, a sofisticated and unique mechanism to keep track of all user customization for [Reproducible Research ](http://www.canvasxpress.org/html/reproducible-research.html) purposes, as well as an 'out of the box'
+data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](http://www.canvasxpress.org/html/user-interface.html) to explore complex data sets, a sophisticated and unique mechanism to keep track of all user customization for [Reproducible Research ](http://www.canvasxpress.org/html/reproducible-research.html) purposes, as well as an 'out of the box'
 broadcasting capability to synchronize selected data points in all ***canvasXpress*** plots in a page. Data can
 be easily sorted, grouped, transposed, transformed or clustered dynamically. The fully customizable mouse events
-as well as the zooming, panning and drag'n drop capabilities are features that make this library unique in its
+as well as the zooming, panning and drag-and-drop capabilities are features that make this library unique in its
 class.
 
 ***canvasXpress*** can be now simply used within R at the console to generate conventional plots, in R-Studio
@@ -77,3 +77,4 @@ canvasXpress(vennData=vennData, graphType='Venn', vennGroups=4, vennLegend=list(
 
 Additional information and many examples with the JavaScript ***canvasXpress*** library can be found
 [here](http://www.canvasxpress.org).
+
