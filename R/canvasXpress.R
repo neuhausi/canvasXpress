@@ -23,7 +23,7 @@
 #'  
 #' @param data canvasXpress data frame
 #' \emph{(rows are refered to variables; columns are refered to samples)}
-#' @param decorData tbd
+#' @param decorData decoration/annotation data for the chart
 #' @param smpAnnot additional data that applies to samples (columns)
 #' @param varAnnot additional data that applies to variables (rows)
 #' @param nodeData network visualization data nodes
@@ -31,6 +31,7 @@
 #' @param vennData venn visualization data
 #' @param vennLegend venn visualization legend
 #' @param genomeData genome visualization data
+#' @param newickData dendrogram data in Newick format
 #' @param graphType type of graph to be plotted - default = 'Scatter2D'
 #' @param events user-defined events (eg. mousemove, mouseout, click and dblclick)
 #' @param afterRender event triggered after rendering
@@ -39,34 +40,34 @@
 #' @param pretty print tagged code (json/html) nicely - default = FALSE
 #' @param digits display digits - default = 4
 #' @param ... additional configuration options passed to canvasXpress
+#' @param boxplotGroupData character label for grouped boxplot data.  If there is a 
+#' non-null value and graphType is 'Boxplot' pre-calculated boxplot data is used from
+#' the variables (iqr1, iqr3, qtl1, qtl3, median) and optionally the variable (outliers)
+#' in the data parameter.  Note: Boxplot outliers should be specified as 
+#' comma-separated string values in the outliers variable.
 #' 
 #' @return htmlwidget object
 #'
 #' @export
-canvasXpress <- function(data = NULL,     decorData = NULL, 
-                         smpAnnot = NULL, varAnnot = NULL, 
-                         nodeData = NULL, edgeData = NULL, 
-                         vennData = NULL, vennLegend = NULL, 
-                         genomeData = NULL, 
-                         graphType='Scatter2D', 
-                         events=NULL, afterRender=NULL, 
-                         width=600, height=400, 
-                         pretty=FALSE, digits=4, ...) {
+canvasXpress <- function(data = NULL,       decorData = NULL, 
+                         smpAnnot = NULL,   varAnnot = NULL, 
+                         nodeData = NULL,   edgeData = NULL, 
+                         vennData = NULL,   vennLegend = NULL, 
+                         genomeData = NULL, newickData = NULL,
+                         graphType ='Scatter2D', events = NULL, afterRender=NULL, 
+                         width  = 600, height=400, pretty = FALSE, digits=4, ..., 
+                         boxplotGroupData = NULL) {
     
-    assertCanvasXpressData(data, decorData, 
-                           smpAnnot, varAnnot, 
+    assertCanvasXpressData(graphType, data, 
                            nodeData, edgeData, 
                            vennData, vennLegend, 
-                           genomeData, 
-                           graphType)
-    assertCanvasXpressDataFrame(data, decorData, 
+                           genomeData, boxplotGroupData)
+    assertCanvasXpressDataFrame(graphType, data, 
                                 smpAnnot, varAnnot, 
                                 nodeData, edgeData, 
                                 vennData, vennLegend, 
-                                genomeData, 
-                                graphType)
+                                genomeData)
     dataframe = "columns"
-    
     if (graphType == 'Network') {
         nodes <- NULL
         edges <- NULL
@@ -95,9 +96,47 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
     else {
         vars = as.list(assignCanvasXpressRownames(data))
         smps = as.list(assignCanvasXpressColnames(data))
-        dy <- as.matrix(data)
-        dimnames(dy) <- NULL
-        y <- list(vars = vars, smps = smps, data = dy)
+        
+        if (graphType == 'Boxplot' && !is.null(boxplotGroupData)) {
+            iqr1 = as.matrix(data["iqr1", ])
+            dimnames(iqr1) <- NULL
+            
+            iqr3 = as.matrix(data["iqr3" ,])
+            dimnames(iqr3) <- NULL
+            
+            median = as.matrix(data["median" ,])
+            dimnames(median) <- NULL
+            
+            qtl1 = as.matrix(data["qtl1" ,])
+            dimnames(qtl1) <- NULL
+            
+            qtl3 = as.matrix(data["qtl3" ,])
+            dimnames(qtl3) <- NULL
+            
+            y <- list(vars = as.list(boxplotGroupData),
+                      smps = smps,
+                      iqr1 = iqr1, 
+                      iqr3 = iqr3, 
+                      median = median,
+                      qtl1 = qtl1,
+                      qtl3 = qtl3
+            )
+            if ("outliers" %in% vars) {
+                out <- t(as.matrix(data["outliers", ]))
+
+                out.new <- sapply(out, strsplit, ",")
+                out.new <- unname(sapply(out.new, as.numeric))
+                out.new <- sapply(out.new, as.list)
+
+                y$out <- list(out.new)
+            }
+        } #boxplot with summarized data
+        else {
+            dy <- as.matrix(data)
+            dimnames(dy) <- NULL
+            y <- list(vars = vars, smps = smps, data = dy)
+        }
+        
         x <- NULL
         z <- NULL
         if (!is.null(smpAnnot)) {
@@ -121,10 +160,15 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
             }
             z <- lapply(convertRowsToList(t(varAnnot)), function (d) if (length(d) > 1) d else list(d))
         }
+        
+        data <- list(y = y, x = x, z = z)
+        
         if (!is.null(decorData)) {
-            data <- list(y = y, x = x, z = z, d = decorData)
-        } else {
-            data <- list(y = y, x = x, z = z)
+            data[["d"]] <- decorData
+        } 
+        
+        if (!is.null(newickData)) {
+            data[["t"]] <- newickData
         }
     }
     
@@ -149,9 +193,10 @@ canvasXpress <- function(data = NULL,     decorData = NULL,
                                            digits = digits))
     
     # Create the widget
-    htmlwidgets::createWidget("canvasXpress", cx, 
+    widget <- htmlwidgets::createWidget("canvasXpress", cx, 
                               width = width, 
                               height = height)
+    widget
 }
 
 

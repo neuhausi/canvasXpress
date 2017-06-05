@@ -6,15 +6,16 @@
 \usage{
 canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
   varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL,
-  vennLegend = NULL, genomeData = NULL, graphType = "Scatter2D",
-  events = NULL, afterRender = NULL, width = 600, height = 400,
-  pretty = FALSE, digits = 4, ...)
+  vennLegend = NULL, genomeData = NULL, newickData = NULL,
+  graphType = "Scatter2D", events = NULL, afterRender = NULL,
+  width = 600, height = 400, pretty = FALSE, digits = 4, ...,
+  boxplotGroupData = NULL)
 }
 \arguments{
 \item{data}{canvasXpress data frame
 \emph{(rows are refered to variables; columns are refered to samples)}}
 
-\item{decorData}{tbd}
+\item{decorData}{decoration/annotation data for the chart}
 
 \item{smpAnnot}{additional data that applies to samples (columns)}
 
@@ -29,6 +30,8 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
 \item{vennLegend}{venn visualization legend}
 
 \item{genomeData}{genome visualization data}
+
+\item{newickData}{dendrogram data in Newick format}
 
 \item{graphType}{type of graph to be plotted - default = 'Scatter2D'}
 
@@ -45,6 +48,12 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
 \item{digits}{display digits - default = 4}
 
 \item{...}{additional configuration options passed to canvasXpress}
+
+\item{boxplotGroupData}{character label for grouped boxplot data.  If there is a 
+non-null value and graphType is 'Boxplot' pre-calculated boxplot data is used from
+the variables (iqr1, iqr3, qtl1, qtl3, median) and optionally the variable (outliers)
+in the data parameter.  Note: Boxplot outliers should be specified as 
+comma-separated string values in the outliers variable.}
 }
 \value{
 htmlwidget object
