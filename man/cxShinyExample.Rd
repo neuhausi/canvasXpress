@@ -22,4 +22,3 @@ value
 
 \link[canvasXpress]{renderCanvasXpress}
 }
-
