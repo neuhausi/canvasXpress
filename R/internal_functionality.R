@@ -1,5 +1,9 @@
 
-assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter2D') {
+assertCanvasXpressData <- function(graphType = 'Scatter2D',
+                                   data = NULL, 
+                                   nodeData = NULL, edgeData = NULL, 
+                                   vennData = NULL, vennLegend = NULL, 
+                                   genomeData = NULL, boxplotGroupData = NULL) {
     
     if (graphType == 'Network') {
         if (is.null(nodeData)) {
@@ -20,13 +24,27 @@ assertCanvasXpressData <- function(data = NULL, decorData = NULL, smpAnnot = NUL
             stop("Missing data for Genome visualization")
         }
         stop("Not implemented yet!")
-    } else if (is.null(data)) {
+    } 
+    else if (is.null(data)) {
         stop("Missing canvasXpress data!")
+    }
+    else if (graphType == 'Boxplot' && !is.null(boxplotGroupData)) {
+        vars = as.list(assignCanvasXpressRownames(data))
+        
+        if (!("iqr1" %in% vars) || !("iqr3" %in% vars) ||
+            !("qtl1" %in% vars) || !("qtl3" %in% vars) ||
+            !("median" %in% vars)) {
+            stop('Incorrect Vars for Boxplot Group Data!\n', 'Must include: <iqr1, iqr3, qtl1, qtl3, median>')
+        }  
     }
     
 }
 
-assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot = NULL, varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL, vennLegend = NULL, genomeData = NULL, graphType = 'Scatter2D') {
+assertCanvasXpressDataFrame <- function(graphType = 'Scatter2D',
+                                        data = NULL, smpAnnot = NULL, varAnnot = NULL, 
+                                        nodeData = NULL, edgeData = NULL, 
+                                        vennData = NULL, vennLegend = NULL, 
+                                        genomeData = NULL) {
     
     if (graphType == 'Network') {
         if (!is.null(nodeData) && !is.data.frame(nodeData) && !is.matrix(nodeData)) {
@@ -61,7 +79,7 @@ assertCanvasXpressDataFrame <- function(data = NULL, decorData = NULL, smpAnnot 
         }
         for (c in comp) {
             if (!c %in% colnames(vennData)) {
-                stop(cat("missing '", c, "' header in edgeData dataframe.", sep=''))
+                stop(cat("missing '", c, "' header in edgeData dataframe.", sep = ''))
             }
         }
     } else if (graphType == 'Genome') {
@@ -99,7 +117,7 @@ assignCanvasXpressRownames <- function(x) {
 }
 
 
-seq_row <- function (x) {
+seq_row <- function(x) {
     # From BBmisc
     seq_len(nrow(x))
 }
