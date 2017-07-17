@@ -1,16 +1,18 @@
 ---
 title:  "CanvasXpress R Library"
 output: 
-    html_document
+    html_document:
+        self_contained: no
 ---
 
-<a href="http://www.canvasxpress.org"><img src="http://www.canvasxpress.org/images/brand3.png" align="left" hspace="10" vspace="6" width="100"></a>
+<a href="http://www.canvasxpress.org"><img src="inst/supporting/brand3.png" align="left" hspace="10" vspace="6" width="100"></a>
 
 <!-- Badge Location -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress)](https://cran.r-project.org/package=canvasXpress)
 [![CDNJ version](https://img.shields.io/cdnjs/v/canvasXpress.svg)](https://cdnjs.com/libraries/canvasXpress)
 [![Travis-CI Build Status](https://travis-ci.org/cb4ds/canvasXpress.svg?branch=master)](https://travis-ci.org/cb4ds/canvasXpress)
 [![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/master.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=master)
+
 <!-- End Badges -->
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
