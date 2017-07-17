@@ -22,7 +22,7 @@
 #' use in any html-compatible context
 #'  
 #' @param data canvasXpress data frame
-#' \emph{(rows are refered to variables; columns are refered to samples)}
+#' \emph{(rows are referred to as variables; columns are refered to as samples)}
 #' @param decorData decoration/annotation data for the chart
 #' @param smpAnnot additional data that applies to samples (columns)
 #' @param varAnnot additional data that applies to variables (rows)
@@ -33,7 +33,7 @@
 #' @param genomeData genome visualization data
 #' @param newickData dendrogram data in Newick format
 #' @param graphType type of graph to be plotted - default = 'Scatter2D'
-#' @param events user-defined events (eg. mousemove, mouseout, click and dblclick)
+#' @param events user-defined events (e.g. mousemove, mouseout, click and dblclick)
 #' @param afterRender event triggered after rendering
 #' @param width plot width (valid CSS units) - default = 600px
 #' @param height plot height (valid CSS units) - default = 400px
