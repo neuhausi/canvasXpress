@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-n/a
+Updated internal libraries and also fixed pandoc failure in vignettes for CRAN check results.
 
 ---  
 
