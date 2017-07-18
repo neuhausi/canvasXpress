@@ -6,6 +6,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v0.16.6
+* Updated CanvasXpress JavasScript and CSS libraries to v16.6
+
 ## v0.16.2
 * Updated CanvasXpress JavaScript and CSS libraries to v16.2
 * Added dendrogram functionality compatibility (Newick tree format)
