@@ -369,6 +369,7 @@ span.CanvasXpressTooltip {
 	position: absolute;
 	white-space: nowrap;
 	text-align: left;
+	z-index: 1;
 }
 
 div.CanvasXpressCanvasResizer { /*
