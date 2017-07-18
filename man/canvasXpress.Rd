@@ -13,7 +13,7 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
 }
 \arguments{
 \item{data}{canvasXpress data frame
-\emph{(rows are refered to variables; columns are refered to samples)}}
+\emph{(rows are referred to as variables; columns are referred to as samples)}}
 
 \item{decorData}{decoration/annotation data for the chart}
 
@@ -35,7 +35,7 @@ canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
 
 \item{graphType}{type of graph to be plotted - default = 'Scatter2D'}
 
-\item{events}{user-defined events (eg. mousemove, mouseout, click and dblclick)}
+\item{events}{user-defined events (e.g. mousemove, mouseout, click and dblclick)}
 
 \item{afterRender}{event triggered after rendering}
 

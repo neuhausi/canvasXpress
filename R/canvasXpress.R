@@ -22,7 +22,7 @@
 #' use in any html-compatible context
 #'  
 #' @param data canvasXpress data frame
-#' \emph{(rows are referred to as variables; columns are refered to as samples)}
+#' \emph{(rows are referred to as variables; columns are referred to as samples)}
 #' @param decorData decoration/annotation data for the chart
 #' @param smpAnnot additional data that applies to samples (columns)
 #' @param varAnnot additional data that applies to variables (rows)
