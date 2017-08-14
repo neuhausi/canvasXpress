@@ -11,7 +11,7 @@ Updated internal libraries and also fixed pandoc failure in vignettes for CRAN c
 * ubuntu 16.04, R 3.4.1
 
 * ubuntu 12.04.5 (on travis-ci), R 3.3.3
-* ubuntu 12.04.5 (on travis-ci), R 3.4.0
+* ubuntu 12.04.5 (on travis-ci), R 3.4.1
 
 * win-builder (devel and release)
 
