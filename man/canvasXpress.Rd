@@ -62,3 +62,4 @@ htmlwidget object
 Custom HTML widget creation function based on widget YAML and JavaScript for 
 use in any html-compatible context
 }
+
