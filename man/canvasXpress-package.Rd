@@ -20,3 +20,11 @@ PNG image that can be played back.
 \code{browseVignettes(package = 'canvasXpress')}
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/neuhausi/canvasXpress.git}
+  \item Report bugs at \url{https://github.com/neuhausi/canvasXpress/issues}
+}
+
+}
