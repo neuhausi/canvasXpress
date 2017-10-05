@@ -14,8 +14,7 @@ Launches a running shiny example application
 }
 \description{
 This function runs one of the available shiny example applications.  To see the 
-list of available example applications run the function with a missing example 
-value
+list of available example applications run the function with no inputs
 }
 \seealso{
 \link[canvasXpress]{canvasXpressOutput}

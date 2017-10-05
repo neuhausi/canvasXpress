@@ -1,0 +1,5 @@
+	Sample1	Sample2	Sample3	Sample4	Sample5	Sample6
+Variable1	5	10	25	40	45	50
+Variable2	95	80	75	70	55	40
+Variable3	25	30	45	60	65	70
+Variable4	55	40	35	30	15	1

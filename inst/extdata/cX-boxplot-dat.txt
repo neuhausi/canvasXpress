@@ -1,0 +1,3 @@
+	Sample1	Sample2	Sample3	Sample4	Sample5	Sample6	Sample7	Sample8	Sample9	Sample10	Sample11	Sample12
+Variable1	5	8	10	6	8	20	25	27	30	27	6	29
+Variable2	49	18	14	16	18	15	65	67	60	72	76	9

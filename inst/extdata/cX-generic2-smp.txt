@@ -1,0 +1,7 @@
+	Factor1	Factor2	Factor3
+Sample1	Lev:1	Lev:A	Lev:X
+Sample2	Lev:2	Lev:B	Lev:X
+Sample3	Lev:3	Lev:A	Lev:Y
+Sample4	Lev:1	Lev:B	Lev:Y
+Sample5	Lev:2	Lev:A	Lev:Z
+Sample6	Lev:3	Lev:B	Lev:Z

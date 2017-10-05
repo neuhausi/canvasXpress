@@ -1,0 +1,39 @@
+	Country
+Buick Estate Wagon	U.S.
+Ford Country Squire Wagon	U.S.
+Chevy Malibu Wagon	U.S.
+Chrysler LeBaron Wagon	U.S.
+Chevette	U.S.
+Toyota Corona	Japan
+Datsun 510	Japan
+Dodge Omni	U.S.
+Audi 5000	Germany
+Volvo 240 GL	Sweden
+Saab 99 GLE	Sweden
+Peugeot 694 SL	France
+Buick Century Special	U.S.
+Mercury Zephyr	U.S.
+Dodge Aspen	U.S.
+AMC Concord D/L	U.S.
+Chevy Caprice Classic	U.S.
+Ford LTD	U.S.
+Mercury Grand Marquis	U.S.
+Dodge St Regis	U.S.
+Ford Mustang 4	U.S.
+Ford Mustang Ghia	U.S.
+Mazda GLC	Japan
+Dodge Colt	Japan
+AMC Spirit	U.S.
+VW Scirocco	Germany
+Honda Accord LX	Japan
+Buick Skylark	U.S.
+Chevy Citation	U.S.
+Olds Omega	U.S.
+Pontiac Phoenix	U.S.
+Plymouth Horizon	U.S.
+Datsun 210	Japan
+Fiat Strada	Italy
+VW Dasher	Germany
+Datsun 810	Japan
+BMW 320i	Germany
+VW Rabbit	Germany

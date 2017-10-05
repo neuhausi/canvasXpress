@@ -1,0 +1,2 @@
+	Description
+Survival	Survival time in days

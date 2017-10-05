@@ -1,129 +1,236 @@
-
-assertCanvasXpressData <- function(graphType = 'Scatter2D',
-                                   data = NULL, 
-                                   nodeData = NULL, edgeData = NULL, 
-                                   vennData = NULL, vennLegend = NULL, 
-                                   genomeData = NULL, boxplotGroupData = NULL) {
+assertDataCorrectness <- function(data, graphType, config) {
     
-    if (graphType == 'Network') {
-        if (is.null(nodeData)) {
-            stop("Missing nodeData for Network visualization!")
-        }
-        if (is.null(edgeData)) {
-            stop("Missing edgeData for Network visualization!")
-        }
-    } else if (graphType == 'Venn') {
-        if (is.null(vennData)) {
-            stop("Missing data for Venn visualization")
-        }
-        if (is.null(vennLegend)) {
-            stop("Missing legend for Venn visualization")
-        }
-    } else if (graphType == 'Genome') {
-        if (is.null(genomeData)) {
-            stop("Missing data for Genome visualization")
-        }
-        stop("Not implemented yet!")
-    } 
-    else if (is.null(data)) {
-        stop("Missing canvasXpress data!")
+    validGraphTypes <- c("Area", "AreaLine", "Bar", "BarLine", "Boxplot",
+                         "Circular", "Correlation", "Dotplot", "DotLine", 
+                         "Genome", "Heatmap", "Line", "Map", "Network", "Pie", 
+                         "ParallelCoordinates", "Sankey", "Scatter2D", 
+                         "Scatter3D", "ScatterBubble2D", "Stacked", 
+                         "StackedPercent", "StackedLine", "StackedPercentLine", 
+                         "Tree", "Treemap", "TagCloud", "Venn")
+    noDataNecessary  <- c("Map")
+    
+    if (is.null(graphType)) stop("graphType cannot be NULL!")
+
+    if (!(graphType %in% validGraphTypes)) {
+        stop("graphType is invalid, must be one of <",
+             paste(validGraphTypes, collapse = ", "), ">")
     }
-    else if (graphType == 'Boxplot' && !is.null(boxplotGroupData)) {
-        vars = as.list(assignCanvasXpressRownames(data))
+    
+    # for backwards compatibility we accept both data and vennData
+    if (graphType == "Venn") {
+        vdata <- data
         
-        if (!("iqr1" %in% vars) || !("iqr3" %in% vars) ||
-            !("qtl1" %in% vars) || !("qtl3" %in% vars) ||
-            !("median" %in% vars)) {
-            stop('Incorrect Vars for Boxplot Group Data!\n', 'Must include: <iqr1, iqr3, qtl1, qtl3, median>')
-        }  
-    }
-    
-}
+        if (is.null(vdata)) {
+            if (!("vennData" %in% names(config))) {
+                stop("vennData cannot be NULL!")
+            }
+            else {
+                vdata <- config$vennData
+            }
+        }
+        
+        if (!inherits(vdata, c("data.frame", "matrix", "list"))) {
+            stop("vennData must be a data.frame, matrix, or named list")
+        }
+        
+        if (inherits(vdata, c("list")) & (length(vdata) > 1)) {
+            stop("Venn diagrams do not support multiple datasets")
+        }
+        else if (is.null(vdata[[1]])) {
+            stop("vennData cannot be NULL!")
+        }
 
-assertCanvasXpressDataFrame <- function(graphType = 'Scatter2D',
-                                        data = NULL, smpAnnot = NULL, varAnnot = NULL, 
-                                        nodeData = NULL, edgeData = NULL, 
-                                        vennData = NULL, vennLegend = NULL, 
-                                        genomeData = NULL) {
-    
-    if (graphType == 'Network') {
-        if (!is.null(nodeData) && !is.data.frame(nodeData) && !is.matrix(nodeData)) {
-            stop("nodeData must be a data frame or a matrix class object.")
+        if (!("vennLegend" %in% names(config)) | 
+            !("vennGroups" %in% names(config))) {
+            stop("Venn diagrams must specify both the <vennLegend> and <vennGroups> parameters")
+        }
+    }
+    else if (graphType == "Network") {
+        ndata <- NULL
+        edata <- NULL
+        if (!is.null(data)) {
+            if (!("nodeData" %in% names(data)) & !("edgeData" %in% names(data))) {
+                stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
+            }
+            ndata <- data$nodeData
+            edata <- data$edgeData
         }
         else {
-            if (!"id" %in% colnames(nodeData)) {
-                stop("missing 'id' header in nodeData dataframe.")
+            if (!("nodeData" %in% names(config)) | 
+                !("edgeData" %in% names(config))) {
+                stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
             }
+            ndata <- config$nodeData
+            edata <- config$edgeData
         }
-        if (!is.null(edgeData) && !is.data.frame(edgeData) && !is.matrix(edgeData)) {
-            stop("edgeData must be a data frame or a matrix class object.")
+        
+        if (is.null(ndata)) {
+            stop("nodeData cannot be NULL!")
         }
-        else {
-            if (!"id1" %in% colnames(edgeData)) {
-                stop("missing 'id1' header in edgeData dataframe.")
+        
+        if (is.null(edata)) {
+            stop("edgeData cannot be NULL!")
+        }
+        
+        if (!inherits(ndata, c("data.frame", "matrix"))) {
+            stop("nodeData must be a data.frame or matrix")
+        }
+        
+        if (!inherits(edata, c("data.frame", "matrix"))) {
+            stop("edgeData must be a data.frame or matrix")
+        }
+    }
+    else if (!(graphType %in% noDataNecessary)) {
+        if (is.null(data)) {
+            stop("data cannot be NULL!")
+        }
+
+        if (!inherits(data, c("data.frame", "matrix", "list"))) {
+            stop("data must be a data.frame, matrix, or named list")
+        }
+        
+        if (inherits(data, c("list"))) {
+            if (length(data) < 1) {
+                stop("data specified as a list must contain at least one item")
             }
-            if (!"id2" %in% colnames(edgeData)) {
-                stop("missing 'id2' header in edgeData dataframe.")
+
+            precalcBoxplot <- FALSE
+            
+            if (length(data) > 1 ) {
+                if (is.null(names(data))) {
+                    stop("data specified as a list of multiple items must have named elements") 
+                }
+                else if (graphType == "Boxplot") {
+                    req <- c("iqr1", "qtl1", "median", "qtl3", "iqr3")
+                    precalcBoxplot <- (length(intersect(names(data), req)) == 5 ||
+                                       length(intersect(rownames(data), req)) == 5)
+                    
+                    if (!precalcBoxplot && !("y" %in% names(data))) {
+                        stop("data specified as a list of multiple items must contain a <y> element")
+                    }
+                }
+                else if (!("y" %in% names(data))) {
+                    stop("data specified as a list of multiple items must contain a <y> element") 
+                }
             }
-        }
-    } else if (graphType == 'Venn') {
-        if (!is.data.frame(vennData) && !is.matrix(vennData)) {
-            stop("vennData must be a data frame or a matrix class object.")
-        }
-        if (length(vennData) == 15) {
-            comp = c("A", "B", "C", "D", "AB", "AC", "AD", "BC", "BD", "CD", "ABC", "ABD", "ACD", "BCD", "ABCD")
-        } else if (length(vennData) == 7) {
-            comp = c("A", "B", "C", "AB", "AC", "BC", "ABC")
-        } else {
-            comp = c("A", "B", "AB")
-        }
-        for (c in comp) {
-            if (!c %in% colnames(vennData)) {
-                stop(cat("missing '", c, "' header in edgeData dataframe.", sep = ''))
+            
+            fail <- vector(mode = "character", length = 0)
+
+            for (name in names(data)) {
+                if (!inherits(data[[name]], c("data.frame", "matrix"))) {
+                    fail <- c(fail, name)
+                }
             }
-        }
-    } else if (graphType == 'Genome') {
-        if (!is.data.frame(genomeData) && !is.matrix(genomeData)) {
-            stop("genomeData must be a data frame or a matrix class object.")
-        }
-    } else {
-        if (!is.data.frame(data) && !is.matrix(data)) {
-            stop("data must be a data frame or a matrix class object.")
-        }
-        if (!is.null(smpAnnot) && !is.data.frame(smpAnnot) && !is.matrix(smpAnnot)) {
-            stop("smpAnnot must be a data frame or a matrix class object.")
-        }
-        if (!is.null(varAnnot) && !is.data.frame(varAnnot) && !is.matrix(varAnnot)) {
-            stop("varAnnot must be a data frame or a matrix class object.")
+            if (!precalcBoxplot && length(fail) > 0) {
+                stop("data list elements <", paste(fail, collapse = ", "), 
+                     "> are not data.frame or matrix elements")
+            }
         }
     }
     
-}
+} #assertDataCorrectness
+
 
 assignCanvasXpressColnames <- function(x) {
     if (is.null(colnames(x))) {
-        paste("V", seq(length = ncol(x)), sep = "")
+        names <- paste("V", seq(length = ncol(x)), sep = "")
     } else {
-        colnames(x)
+        names <- colnames(x)
     }
+    return(names)
 }
+
 
 assignCanvasXpressRownames <- function(x) {
     if (is.null(rownames(x))) {
-        paste("V", seq(length = nrow(x)), sep = "")
+        names <- paste("V", seq(length = nrow(x)), sep = "")
     } else {
-        rownames(x)
+        names <- rownames(x)
     }
+    return(names)
 }
 
-
-seq_row <- function(x) {
-    # From BBmisc
-    seq_len(nrow(x))
-}
 
 convertRowsToList <- function(x) {
+    seq_row <- function(x) {
+        # From BBmisc
+        seq_len(nrow(x))
+    }
+    
     # From BBmisc
     res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
     stats::setNames(res, rownames(x))
 }
+
+
+setup_y <- function(data) {
+    
+    y <- NULL
+    
+    if (inherits(data, "list")) {
+        if (length(data) > 1) {
+            y      <- lapply(data, as.matrix, dimnames = list())
+            y$smps <- as.list(assignCanvasXpressColnames(data$y))
+            y$vars <- as.list(assignCanvasXpressRownames(data$y))
+            
+            #rename y to data for canvasXpress
+            y$data <- y$y  
+            y$y    <- NULL
+        }
+        else {
+            y <- list(vars = as.list(assignCanvasXpressRownames(data[[1]])), 
+                      smps = as.list(assignCanvasXpressColnames(data[[1]])), 
+                      data = as.matrix(data[[1]], dimnames = list()))
+        }
+    }
+    else {
+        y <- list(vars = as.list(assignCanvasXpressRownames(data)), 
+                  smps = as.list(assignCanvasXpressColnames(data)), 
+                  data = as.matrix(data, dimnames = list()))
+    }
+    
+    y
+}
+
+setup_x <- function(y_smps, smpAnnot) {
+    x <- NULL
+    
+    if (!is.null(smpAnnot)) {
+        test <- as.list(assignCanvasXpressRownames(smpAnnot))
+        
+        if (!identical(test, y_smps)) {
+            smpAnnot <- t(smpAnnot)
+            test <- as.list(assignCanvasXpressRownames(smpAnnot))
+        }
+
+        if (!identical(test, y_smps)) {
+            stop("Row names in smpAnnot are different from column names in data")
+        }
+
+        x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
+    }
+    
+    x
+}
+
+setup_z <- function(y_vars, varAnnot) {
+    z <- NULL
+    
+    if (!is.null(varAnnot)) {
+        test <- as.list(assignCanvasXpressRownames(varAnnot))
+        
+        if (!identical(test, y_vars)) {
+            varAnnot <- t(varAnnot)
+            test <- as.list(assignCanvasXpressRownames(varAnnot))
+        }
+        
+        if (!identical(test, y_vars)) {
+            stop("Row names in varAnnot are different from row names in data")
+        }
+
+        z <- lapply(convertRowsToList(t(varAnnot)), function(d) if (length(d) > 1) d else list(d))
+    }
+    
+    z
+}
+

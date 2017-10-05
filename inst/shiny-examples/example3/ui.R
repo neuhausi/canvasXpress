@@ -9,7 +9,7 @@ source("./customCanvasXpress.R")
 exData <- readRDS("./exData-sm2.rds")
 
 shinyUI(fluidPage(
-  titlePanel('IPF Fibroblast data'),
+  titlePanel("IPF Fibroblast data"),
   mainPanel(
     tabsetPanel(
       tabPanel("Project Exploration",
@@ -25,10 +25,10 @@ shinyUI(fluidPage(
                ),
                fluidRow(
                  column(6,
-                        selectInput('contrast', 'Select Contrast', names(exData$contrasts), selectize = FALSE)
+                        selectInput("contrast", "Select Contrast", names(exData$contrasts), selectize = FALSE)
                  ),
                  column(6,
-                        uiOutput('selectGenes')
+                        uiOutput("selectGenes")
                  )
                ),
                fluidRow(
@@ -41,10 +41,10 @@ shinyUI(fluidPage(
                ),
                fluidRow(
                  column(6,
-                        canvasXpressOutput('profilePlot')
+                        canvasXpressOutput("profilePlot")
                  ),   
                  column(6,
-                        canvasXpressOutput('genePlot')
+                        canvasXpressOutput("genePlot")
                  )    
                ),
                fluidRow(
@@ -52,15 +52,15 @@ shinyUI(fluidPage(
                         p("")
                  ),
                  column(6,
-                        selectInput('compare', 'Select Contrast to Compare', names(exData$contrasts), selectize = FALSE, selected = names(exData$contrasts)[2])
+                        selectInput("compare", "Select Contrast to Compare", names(exData$contrasts), selectize = FALSE, selected = names(exData$contrasts)[2])
                  )
                ),
                fluidRow(
                  column(6,
-                        canvasXpressOutput('volcanoPlot')
+                        canvasXpressOutput("volcanoPlot")
                  ),
                  column(6,
-                        canvasXpressOutput('comparePlot')
+                        canvasXpressOutput("comparePlot")
                  )
                )   
       )

@@ -1,0 +1,7 @@
+	Factor1	Factor2	Factor3	Factor4	Factor5	Factor6
+Sample1	Lev:1	Lev:A	Lev:X	5	8	10
+Sample2	Lev:2	Lev:B	Lev:X	10	16	20
+Sample3	Lev:3	Lev:A	Lev:Y	15	24	30
+Sample4	Lev:1	Lev:B	Lev:Y	20	32	40
+Sample5	Lev:2	Lev:A	Lev:Z	25	40	50
+Sample6	Lev:3	Lev:B	Lev:Z	30	48	60

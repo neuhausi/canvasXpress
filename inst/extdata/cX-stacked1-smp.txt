@@ -1,0 +1,189 @@
+	GNI	ISO3	Id	continent
+Bermuda	106140	BMU	3	North America
+Norway	103630	NOR	4	Europe
+Qatar	92200	QAT	5	Asia
+Switzerland	88120	CHE	6	Europe
+Macao SAR, China	76270	MAC	7	Asia
+Luxembourg	75990	LUX	8	Europe
+Australia	64540	AUS	10	Oceania
+Sweden	61610	SWE	11	Europe
+Denmark	61310	DNK	12	Europe
+United States	55200	USA	14	North America
+Singapore	55150	SGP	15	Asia
+Netherlands	51890	NLD	18	Europe
+Canada	51630	CAN	19	North America
+Austria	49670	AUT	20	Europe
+Kuwait	49300	KWT	21	Asia
+Finland	48420	FIN	22	Europe
+Germany	47640	DEU	23	Europe
+Iceland	46350	ISL	24	Europe
+Belgium	47260	BEL	25	Europe
+Ireland	46550	IRL	26	Europe
+United Arab Emirates	44600	ARE	27	Asia
+United Kingdom	43430	GBR	28	Europe
+France	42960	FRA	29	Europe
+Japan	42000	JPN	30	Asia
+Andorra	43270	ADO	31	Europe
+New Zealand	41070	NZL	32	Oceania
+Hong Kong SAR, China	40320	HKG	33	Asia
+Brunei Darussalam	37320	BRN	34	Asia
+Israel	35320	ISR	35	Asia
+Italy	34270	ITA	36	Europe
+Spain	29440	ESP	37	Europe
+Korea, Rep.	27090	KOR	38	Asia
+Cyprus	26370	CYP	39	Asia
+Saudi Arabia	25140	SAU	40	Asia
+Slovenia	23580	SVN	41	Europe
+Greece	22680	GRC	42	Europe
+Portugal	21360	PRT	43	Europe
+Bahrain	21060	BHR	44	Asia
+Bahamas, The	20980	BHS	45	North America
+Malta	21000	MLT	46	Europe
+Trinidad and Tobago	20070	TTO	47	North America
+Puerto Rico	19310	PRI	48	North America
+Estonia	19030	EST	49	Europe
+Czech Republic	18370	CZE	50	Europe
+Oman	16870	OMN	51	Asia
+Slovak Republic	17750	SVK	52	Europe
+Uruguay	16350	URY	53	South America
+Lithuania	15430	LTU	54	Europe
+Latvia	15280	LVA	55	Europe
+Barbados	15310	BRB	56	North America
+St. Kitts and Nevis	14920	KNA	57	North America
+Chile	14910	CHL	58	South America
+Seychelles	14100	SYC	59	Seven seas
+Poland	13690	POL	60	Europe
+Argentina	13480	ARG	61	South America
+Hungary	13340	HUN	62	Europe
+Antigua and Barbuda	13300	ATG	63	North America
+Russian Federation	13220	RUS	64	Europe
+Croatia	12980	HRV	65	Europe
+Venezuela, RB	12500	VEN	66	South America
+Kazakhstan	11850	KAZ	67	Asia
+Brazil	11530	BRA	68	South America
+Panama	11130	PAN	69	North America
+Malaysia	11120	MYS	70	Asia
+Palau	11110	PLW	71	Oceania
+Turkey	10830	TUR	72	Asia
+Equatorial Guinea	10210	GNQ	73	Africa
+Costa Rica	10120	CRI	74	North America
+Lebanon	10030	LBN	75	Asia
+Suriname	9950	SUR	76	South America
+Mexico	9870	MEX	77	North America
+Gabon	9720	GAB	78	Africa
+Mauritius	9630	MUS	79	Seven seas
+Romania	9520	ROU	80	Europe
+Turkmenistan	8020	TKM	81	Asia
+Colombia	7970	COL	82	South America
+Grenada	7910	GRD	83	North America
+Libya	7820	LBY	84	Africa
+Bulgaria	7620	BGR	85	Europe
+Azerbaijan	7590	AZE	86	Asia
+China	7400	CHN	87	Asia
+Belarus	7340	BLR	88	Europe
+Montenegro	7320	MNE	89	Europe
+St. Lucia	7260	LCA	90	North America
+Botswana	7240	BWA	91	Africa
+Dominica	6930	DMA	92	North America
+South Africa	6800	ZAF	93	Africa
+St. Vincent and the Grenadines	6610	VCT	94	North America
+Iraq	6500	IRQ	95	Asia
+Maldives	6410	MDV	96	Seven seas
+Peru	6360	PER	97	South America
+Iran, Islamic Rep.	7120	IRN	98	Asia
+Ecuador	6090	ECU	99	South America
+Dominican Republic	6040	DOM	100	North America
+Serbia	5820	SRB	101	Europe
+Thailand	5780	THA	102	Asia
+Tuvalu	5720	TUV	103	Oceania
+Namibia	5630	NAM	104	Africa
+Algeria	5490	DZA	105	Africa
+Jordan	5160	JOR	106	Asia
+Jamaica	5150	JAM	107	North America
+Macedonia, FYR	5150	MKD	108	Europe
+Fiji	4870	FJI	109	Oceania
+Bosnia and Herzegovina	4760	BIH	110	Europe
+Belize	4350	BLZ	111	North America
+Albania	4450	ALB	112	Europe
+Paraguay	4400	PRY	113	South America
+Marshall Islands	4390	MHL	114	Oceania
+Mongolia	4280	MNG	115	Asia
+Tonga	4260	TON	116	Oceania
+Tunisia	4230	TUN	117	Africa
+Samoa	4060	WSM	118	Oceania
+Armenia	4020	ARM	119	Asia
+Kosovo	3990	KSV	120	Europe
+Guyana	3940	GUY	121	South America
+El Salvador	3920	SLV	122	North America
+Georgia	3720	GEO	123	Asia
+Indonesia	3630	IDN	124	Asia
+Ukraine	3560	UKR	125	Europe
+Swaziland	3550	SWZ	126	Africa
+Philippines	3500	PHL	127	Asia
+Sri Lanka	3460	LKA	128	Asia
+Cabo Verde	3450	CPV	129	Africa
+Guatemala	3430	GTM	130	North America
+Micronesia, Fed. Sts.	3200	FSM	131	Oceania
+Vanuatu	3160	VUT	132	Oceania
+Morocco	3070	MAR	133	Africa
+West Bank and Gaza	3060	WBG	134	Asia
+Egypt, Arab Rep.	3050	EGY	135	Africa
+Nigeria	2970	NGA	136	Africa
+Kiribati	2950	KIR	137	Oceania
+Bolivia	2870	BOL	138	South America
+Congo, Rep.	2720	COG	139	Africa
+Timor-Leste	2680	TMP	140	Asia
+Moldova	2560	MDA	141	Europe
+Bhutan	2370	BTN	142	Asia
+Honduras	2270	HND	143	North America
+Papua New Guinea	2240	PNG	144	Oceania
+Uzbekistan	2090	UZB	145	Asia
+Vietnam	1890	VNM	146	Asia
+Nicaragua	1870	NIC	147	North America
+Solomon Islands	1830	SLB	148	Oceania
+Sudan	1710	SDN	149	Africa
+Zambia	1680	ZMB	150	Africa
+Sao Tome and Principe	1670	STP	151	Africa
+Lao PDR	1660	LAO	152	Asia
+Ghana	1590	GHA	153	Africa
+India	1570	IND	154	Asia
+Cote d'Ivoire	1450	CIV	155	Africa
+Pakistan	1400	PAK	156	Asia
+Yemen, Rep.	1300	YEM	157	Asia
+Cameroon	1350	CMR	158	Africa
+Lesotho	1330	LSO	159	Africa
+Kenya	1290	KEN	160	Africa
+Mauritania	1270	MRT	161	Africa
+Myanmar	1270	MMR	162	Asia
+Kyrgyz Republic	1250	KGZ	163	Asia
+Bangladesh	1080	BGD	164	Asia
+Tajikistan	1080	TJK	165	Asia
+Senegal	1050	SEN	166	Africa
+Cambodia	1020	KHM	167	Asia
+Chad	980	TCD	168	Africa
+South Sudan	970	SSD	169	Africa
+Tanzania	920	TZA	170	Africa
+Benin	890	BEN	171	Africa
+Zimbabwe	840	ZWE	172	Africa
+Haiti	820	HTI	173	North America
+Comoros	790	COM	174	Africa
+Nepal	730	NPL	175	Asia
+Burkina Faso	700	BFA	176	Africa
+Rwanda	700	RWA	177	Africa
+Sierra Leone	700	SLE	178	Africa
+Afghanistan	680	AFG	179	Asia
+Uganda	670	UGA	180	Africa
+Mali	650	MLI	181	Africa
+Mozambique	600	MOZ	182	Africa
+Togo	570	TGO	183	Africa
+Ethiopia	550	ETH	184	Africa
+Guinea-Bissau	550	GNB	185	Africa
+Guinea	470	GIN	186	Africa
+Gambia, The	500	GMB	187	Africa
+Madagascar	440	MDG	188	Africa
+Niger	410	NER	189	Africa
+Congo, Dem. Rep.	380	COD	190	Africa
+Liberia	370	LBR	191	Africa
+Central African Republic	320	CAF	192	Africa
+Burundi	270	BDI	193	Africa
+Malawi	250	MWI	194	Africa

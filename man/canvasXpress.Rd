@@ -4,59 +4,35 @@
 \alias{canvasXpress}
 \title{canvasXpress}
 \usage{
-canvasXpress(data = NULL, decorData = NULL, smpAnnot = NULL,
-  varAnnot = NULL, nodeData = NULL, edgeData = NULL, vennData = NULL,
-  vennLegend = NULL, genomeData = NULL, newickData = NULL,
+canvasXpress(data = NULL, smpAnnot = NULL, varAnnot = NULL,
   graphType = "Scatter2D", events = NULL, afterRender = NULL,
-  width = 600, height = 400, pretty = FALSE, digits = 4, ...,
-  boxplotGroupData = NULL)
+  pretty = FALSE, digits = 4, width = 600, height = 400, ...)
 }
 \arguments{
-\item{data}{canvasXpress data frame
-\emph{(rows are referred to as variables; columns are referred to as samples)}}
-
-\item{decorData}{decoration/annotation data for the chart}
+\item{data}{data.frame-, matrix-, or list- classed data object}
 
 \item{smpAnnot}{additional data that applies to samples (columns)}
 
 \item{varAnnot}{additional data that applies to variables (rows)}
 
-\item{nodeData}{network visualization data nodes}
-
-\item{edgeData}{network visualization data edges}
-
-\item{vennData}{venn visualization data}
-
-\item{vennLegend}{venn visualization legend}
-
-\item{genomeData}{genome visualization data}
-
-\item{newickData}{dendrogram data in Newick format}
-
-\item{graphType}{type of graph to be plotted - default = 'Scatter2D'}
+\item{graphType}{type of graph to be plotted - default = "Scatter2D"}
 
 \item{events}{user-defined events (e.g. mousemove, mouseout, click and dblclick)}
 
 \item{afterRender}{event triggered after rendering}
 
-\item{width}{plot width (valid CSS units) - default = 600px}
-
-\item{height}{plot height (valid CSS units) - default = 400px}
-
 \item{pretty}{print tagged code (json/html) nicely - default = FALSE}
 
 \item{digits}{display digits - default = 4}
 
-\item{...}{additional configuration options passed to canvasXpress}
+\item{width}{plot width (valid CSS units) - default = 600px}
 
-\item{boxplotGroupData}{character label for grouped boxplot data.  If there is a 
-non-null value and graphType is 'Boxplot' pre-calculated boxplot data is used from
-the variables (iqr1, iqr3, qtl1, qtl3, median) and optionally the variable (outliers)
-in the data parameter.  Note: Boxplot outliers should be specified as 
-comma-separated string values in the outliers variable.}
+\item{height}{plot height (valid CSS units) - default = 400px}
+
+\item{...}{additional parameters passed to canvasXpress}
 }
 \value{
-htmlwidget object
+htmlwidgets object
 }
 \description{
 Custom HTML widget creation function based on widget YAML and JavaScript for 

@@ -25,63 +25,147 @@ class.
 ***canvasXpress*** can be now simply used within R at the console to generate conventional plots, in R-Studio
 or seamlessly embeded in [Shiny](http://shiny.rstudio.com) web applications. An full-fledged example of the ***canvasXpress*** library including the mouse events, zooming, and broadcasting capabilities is included in this package in the [shiny](shiny/example3) directory. This ***canvasXpress*** R library was created with the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package.
 
-### Getting Started
+### Installation
 
-You can install the latest version of ***canvasXpress*** from GitHub as follows:
+canvasXpress is available for installation from 
+[CRAN](https://CRAN.R-project.org/package=canvasXpress) or you can install the
+latest version of ***canvasXpress*** from GitHub as follows:
 
 ```r
 devtools::install_github('neuhausi/canvasXpress')
 ```
-### Scatter 3D Plot Example
+
+### Examples
+
+These are included to get you started on basic charting - there are many more
+examples (including complex and compound visualizations) with R code available 
+in the Examples section of the main website at 
+[http://canvasxpress.org](http://canvasxpress.org)
+
+#### Scatter 3D Plot
 
 ```r
-data <- t(iris[,1:4])
-varAnnot <- as.matrix(iris[,5])
-colnames(varAnnot) <- "Species"
-canvasXpress(t(data), varAnnot=varAnnot, graphType='Scatter3D', colorBy='Species')
+y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+               
+canvasXpress(data      = y,
+             varAnnot  = z,
+             colorBy   = "Species",
+             ellipseBy = "Species",
+             graphType = "Scatter3D",
+             title     = "Iris Data Set",
+             xAxis     = list("Sepal.Length"),
+             yAxis     = list("Petal.Width"),
+             zAxis     = list("Petal.Length"))
 ```
 ![Scatter3D](vignettes/images/R-Scatter3D.png)
 
-### Scatter 2D Matrix Plot Example
+#### Scatter 2D Matrix Plot
 
 ```r
-data <- t(iris[,1:4])
-varAnnot <- as.matrix(iris[,5])
-colnames(varAnnot) <- "Species"
-canvasXpress(t(data), varAnnot=varAnnot, scatterPlotMatrix=1, colorBy='Species')
+y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+                   
+canvasXpress(data              = y,
+             varAnnot          = z,
+             graphType         = "Scatter2D",
+             scatterPlotMatrix = TRUE,
+             colorBy           = "Species",
+             showTransition    = TRUE)
 ```
 ![Scatter2DMatrix](vignettes/images/R-Scatter2DMatrix.png)
 
-### Boxplot Example
+#### Boxplot
 
 ```r
-data <- t(iris[,1:4])
-smpAnnot <- as.matrix(iris[,5])
-colnames(smpAnnot) <- "Species"
-canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', groupingFactors=list('Species'))
-# or
-canvasXpress(data, smpAnnot=smpAnnot, graphType='Boxplot', afterRender=list(list('groupSamples', list('Species'))))
+y <- read.table("http://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+x <- read.table("http://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep= "\t", 
+                quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+                
+canvasXpress(data              = y,
+             smpAnnot          = x,
+             graphType         = "Boxplot",
+             graphOrientation  = "vertical",
+             title             = "Iris flower data set",
+             smpTitle          = "Species",
+             smpLabelFontStyle = "italic",
+             smpLabelRotate    = 90,
+             xAxis2Show        = FALSE,
+             afterRender       = list(list("groupSamples", list("Species"))))
 ```
 ![Boxplot](vignettes/images/R-Boxplot.png)
 
-### Heatmap Example
+#### Heatmap (Multi-dimensional)
 
 ```r
-data <- t(iris[,1:4])
-smpAnnot <- as.matrix(iris[,5])
-colnames(smpAnnot) <- "Species"
-canvasXpress(data, smpAnnot=smpAnnot, graphType='Heatmap', smpOverlays=list('Species'), variablesClustered=TRUE, showSampleNames=FALSE)
+y  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+y2 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+y3 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+y4 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+x  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep= "\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+z  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
+                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+
+canvasXpress(data          = list(y = y, data2 = y2, data3 = y3, data4 = y4),
+             smpAnnot      = x,
+             varAnnot      = z,
+             graphType     = "Heatmap",
+             guides        = TRUE,
+             outlineBy     = "Outline",
+             outlineByData = "data2",
+             shapeBy       = "Shape",
+             shapeByData   = "data3",
+             sizeBy        = "Size",
+             sizeByData    = "data4")
 ```
 ![Heatmap](vignettes/images/R-Heatmap.png)
 
-### Four way Venn Diagram Example
+#### Four way Venn Diagram
 
 ```r
-vennData <- data.frame(A=57, B=12, C=67, D=72, AB=4, AC=67, AD=25, BC=67, BD=27, CD=38, ABC=69, ABD=28, ACD=52, BCD=46, ABCD=3)
-canvasXpress(vennData=vennData, graphType='Venn', vennGroups=4, vennLegend=list(A="List1", B="List2", C="List3", D="List4"))
+canvasXpress(vennData   = data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, 
+                            B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+             graphType  = "Venn",
+             vennLegend = list(A="List 1", D="List 4", C="List 3", B="List 2"),
+             vennGroups = 4)
 ```
 ![Venn](vignettes/images/R-Venn.png)
 
-Additional information and many examples with the JavaScript ***canvasXpress*** library can be found
-[here](http://www.canvasxpress.org).
 
+### More Examples and Resources
+
+In addition to the built-in package documentation there are vignettes with 
+more information on getting started and additional examples:
+
+```r
+#List all package vignettes
+vignette(package = "canvasXpress")
+
+#View a specific vignette
+vignette("getting_started", package = "canvasXpress")
+vignette("additional_examples", package = "canvasXpress")
+```
+
+For the use of canvasXpress plots in shiny there are interactive examples available through the
+package function *cxShinyExample*
+
+```r
+#List example names
+cxShinyExample()
+
+#Run an interactive shiny example
+cxShinyExample(example = "example1")
+```
+
+There is also a wealth of additional information including full API documentation 
+and extensive R and Javascript examples at [http://www.canvasxpress.org](http://www.canvasxpress.org).

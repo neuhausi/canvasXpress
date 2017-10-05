@@ -1,0 +1,6 @@
+color	id1	id2	type	width
+rgb(51,12,255)	Gene1	Gene2	curvedArrowHeadLine	3
+rgb(51,12,255)	Gene4	Gene3	curvedArrowHeadLine	3
+rgb(51,12,255)	Gene5	Met	arrowHeadLine	3
+rgb(51,12,255)	Gene3	DNA	bezierArrowHeadLine	3
+rgb(51,12,255)	Gene7	Gene1	bezierArrowHeadLine	3

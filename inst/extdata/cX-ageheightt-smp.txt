@@ -1,0 +1,3 @@
+	Description
+Age	Age in months
+Height	Mean height in centimeters for children at this age

@@ -1,0 +1,26 @@
+color	id	parentNode	shape
+rgb(255,0,0)	Gene1		square
+rgb(255,0,0)	Gene2		square
+rgb(255,0,0)	Gene3		square
+rgb(255,0,0)	Gene4		square
+rgb(255,0,0)	Gene5		square
+rgb(255,0,0)	Gene6		square
+rgb(255,0,0)	Gene7		square
+rgb(255,0,0)	Gene8		square
+rgb(0,255,0)	SNP1		sphere
+rgb(0,255,0)	SNP2		sphere
+rgb(0,255,0)	SNP3		sphere
+rgb(0,255,0)	SNP4		sphere
+rgb(0,255,0)	SNP5		sphere
+rgb(0,255,0)	SNP6		sphere
+rgb(0,255,0)	SNP7		sphere
+rgb(0,255,0)	SNP8		sphere
+rgb(0,255,255)	PH1		star
+rgb(0,255,255)	PH1a	PH1	star
+rgb(0,255,255)	PH1b	PH1	star
+rgb(0,255,255)	PH2		star
+rgb(0,255,255)	PH2a	PH2	star
+rgb(0,255,255)	PH2b	PH2	star
+rgb(0,255,255)	PH2ba	PH2b	star
+rgb(0,255,255)	PH3		star
+rgb(0,255,255)	PH4		star

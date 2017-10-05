@@ -1,0 +1,2 @@
+	smp1	smp2	smp3	smp4	smp5	smp6
+Weight	5	7	6	2	9	4

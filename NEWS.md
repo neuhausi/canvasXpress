@@ -6,17 +6,23 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
-## v0.17.4
-* Updated CanvasXpress JavasScript and CSS libraries to v17.4
+## v1.17.4 - _Major Release_
+* Updated CanvasXpress JavaScript and CSS libraries to v17.4
+* Functionality improved and streamlined to cover the full canvasXpress library functionality in a backwards-compatible way. (Genome plots will be supported at a future date)
+* Full automated test suite matching the examples from the main website
+* Updated documentation and examples
+* Version updated to 1 from 0 - the second and third parts of the version number still follow the canvasXpress JS library version so that it is clear to users which version of the JS library is being used.
+
+---
 
 ## v0.17.2
-* Updated CanvasXpress JavasScript and CSS libraries to v17.2
+* Updated CanvasXpress JavaScript and CSS libraries to v17.2
 
 ## v0.16.7
-* Updated CanvasXpress JavasScript and CSS libraries to v16.7
+* Updated CanvasXpress JavaScript and CSS libraries to v16.7
 
 ## v0.16.6
-* Updated CanvasXpress JavasScript and CSS libraries to v16.6
+* Updated CanvasXpress JavaScript and CSS libraries to v16.6
 
 ## v0.16.2
 * Updated CanvasXpress JavaScript and CSS libraries to v16.2

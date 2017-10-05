@@ -1,0 +1,26 @@
+	Dose	Dose-Type	Site	Treatment
+Sample1			Site1	Control
+Sample2			Site1	Control
+Sample3			Site1	Control
+Sample4			Site1	Control
+Sample5			Site1	Control
+Sample6	5	Dose1	Site2	TreatmentA
+Sample7	5	Dose1	Site2	TreatmentB
+Sample8	10	Dose2	Site2	TreatmentA
+Sample9	10	Dose2	Site2	TreatmentB
+Sample10	15	Dose3	Site2	TreatmentA
+Sample11	15	Dose3	Site2	TreatmentB
+Sample12	20	Dose4	Site2	TreatmentA
+Sample13	20	Dose4	Site2	TreatmentB
+Sample14	25	Dose5	Site2	TreatmentA
+Sample15	25	Dose5	Site2	TreatmentB
+Sample16	5	Dose1	Site3	TreatmentA
+Sample17	5	Dose1	Site3	TreatmentB
+Sample18	10	Dose2	Site3	TreatmentA
+Sample19	10	Dose2	Site3	TreatmentB
+Sample20	15	Dose3	Site3	TreatmentA
+Sample21	15	Dose3	Site3	TreatmentB
+Sample22	20	Dose4	Site3	TreatmentA
+Sample23	20	Dose4	Site3	TreatmentB
+Sample24	25	Dose5	Site3	TreatmentA
+Sample25	25	Dose5	Site3	TreatmentB
