@@ -67,7 +67,7 @@ shinyServer(function(input, output, session) {
   
   output$selectGenes <- renderUI({
     d <- ds1()
-    selectInput('genes', 'Select Gene(s)', rownames(d), selectize = FALSE, multiple = TRUE, selected = rownames(d)[1])
+    selectInput("genes", "Select Gene(s)", rownames(d), selectize = FALSE, multiple = TRUE, selected = rownames(d)[1])
   })
     
 })

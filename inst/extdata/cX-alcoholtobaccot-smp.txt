@@ -1,0 +1,3 @@
+	Description
+Alcohol	Average weekly household spending on alcoholic beverages in pounds
+Tobacco	Average weekly household spending on tobacco products in pounds

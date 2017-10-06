@@ -1,0 +1,3 @@
+	MIT	Stanford	Harvard	U.Penn	Princeton	Chicago	Georgetown	Tufts	Yale	Columbia	Duke	Dartmouth	NYU	Notre Dame	Cornell	Michigan	Brown	Berkeley	Emory	UCLA	SoCal
+Women	94	96	112	92	90	78	94	76	79	86	93	84	67	73	80	62	72	71	68	64	72
+Men	152	151	165	141	137	118	131	112	114	119	124	114	94	100	107	84	92	88	82	78	81

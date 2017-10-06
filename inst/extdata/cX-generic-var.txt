@@ -1,0 +1,5 @@
+	Annt1	Annt2	Annt3	Annt4	Annt5	Annt6
+Variable1	Desc:1	Desc:A	Desc:X	5	8	10
+Variable2	Desc:2	Desc:B	Desc:X	10	16	20
+Variable3	Desc:3	Desc:A	Desc:Y	15	24	30
+Variable4	Desc:4	Desc:B	Desc:Y	20	32	40

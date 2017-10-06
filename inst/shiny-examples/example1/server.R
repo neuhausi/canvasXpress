@@ -12,7 +12,7 @@ shinyServer(function(input, output, session) {
       output$plot <- renderCanvasXpress({
             smpAnnot <- as.matrix(iris[,5])
             colnames(smpAnnot) <- "Species"
-            canvasXpress(selectedData(), graphType='Scatter2D', width=500, height=500, title="Iris Data")
+            canvasXpress(selectedData(), graphType="Scatter2D", width=500, height=500, title="Iris Data")
           })
       
     })

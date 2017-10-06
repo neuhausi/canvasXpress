@@ -1,0 +1,16 @@
+	Color	Month	Quarter	Week
+Sales1	red	Jan	1st	
+Sales2	blue	Feb	1st	Week 1
+Sales3	green	Feb	1st	Week 2
+Sales4	grey	Feb	1st	Week 3
+Sales5	red	Feb	1st	Week 4
+Sales6	blue	Mar	1st	
+Sales7	green	Apr	2nd	
+Sales8	grey	May	2nd	
+Sales9	red	Jun	2nd	
+Sales10	blue	Jul	3rd	
+Sales11	green	Aug	3rd	
+Sales12	grey	Sep	3rd	
+Sales13	red	Oct	4th	
+Sales14	blue	Nov	4th	
+Sales15	green	Dec	4th	
