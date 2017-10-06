@@ -1,0 +1,7 @@
+	Description
+MPG	Miles per gallon, a measure of gas mileage
+Weight	Weight of vehicle
+Drive_Ratio	Drive ratio of the automobile
+Horsepower	Horsepower
+Displacement	Displacement of the car (in cubic inches)
+Cylinders	Number of cylinders

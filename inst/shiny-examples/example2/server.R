@@ -5,22 +5,22 @@ shinyServer(function(input, output, session) {
             tbl <- as.data.frame(table(GSE9750$x[,input$factor]))
             df <- data.frame(as.vector(tbl[,2]), row.names = as.vector(tbl[,1]))
             colnames(df) <- c("Freq")
-            canvasXpress(df, graphType='Pie', width=500, height=300)
+            canvasXpress(df, graphType="Pie", width=500, height=300)
           })
       
       output$plot2 <- renderCanvasXpress({
             pc <- prcomp(GSE9750$y)$rotation
-            canvasXpress(pc, varAnnot=GSE9750$x, graphType='Scatter3D', width=500, height=300, colorBy=input$factor)
+            canvasXpress(pc, varAnnot=GSE9750$x, graphType="Scatter3D", width=500, height=300, colorBy=input$factor)
           })
       
       output$selectLevel <- renderUI({
           
           levs = unique(GSE9750$x[,colnames(GSE9750$x)==input$factor])
-            selectInput('level', 'Select Level', levs[levs!=""])
+            selectInput("level", "Select Level", levs[levs!=""])
           })
       
       output$selectGenes <- renderUI({
-            selectInput('genes', 'Select Gene(s)', rownames(GSE9750$y), selectize=FALSE, multiple=TRUE, selected=rownames(GSE9750$y)[1])
+            selectInput("genes", "Select Gene(s)", rownames(GSE9750$y), selectize=FALSE, multiple=TRUE, selected=rownames(GSE9750$y)[1])
           })
       
       output$plot3 <- renderCanvasXpress({
@@ -39,16 +39,16 @@ shinyServer(function(input, output, session) {
             fit = eBayes(fit)
             tab = topTable(fit, number=length(dimnames(GSE9750$y)[[1]]))
             fc = tab[colnames(tab)==reflev];
-            lod = mapply('*', lapply(tab[colnames(tab)=='adj.P.Val'],log2), -1)
+            lod = mapply("*", lapply(tab[colnames(tab)=="adj.P.Val"],log2), -1)
             data = as.matrix(data.frame(FC=fc, LOD=lod))
-            #colnames(data) = c('FC', 'LOD')
-            canvasXpress(data, graphType='Scatter2D', events=events, width=500, height=300)
+            canvasXpress(data, graphType="Scatter2D", events=events, width=500, height=300)
           })
       
       output$plot4 <- renderCanvasXpress({
             genes = rownames(GSE9750$y)
-            data = as.matrix(GSE9750$y[genes[genes==input$genes],,drop=F])
-            canvasXpress(data, smpAnnot=GSE9750$x, graphType='Boxplot', afterRender=list(groupSamples=c(input$factor)))
+            data = as.matrix(GSE9750$y[genes[genes %in% input$genes],,drop=F])
+            canvasXpress(data, smpAnnot=GSE9750$x, graphType="Boxplot",
+                         groupingFactors = list(input$factor))
           })
       
     })

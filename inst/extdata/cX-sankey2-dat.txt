@@ -1,0 +1,2 @@
+	smp1	smp2	smp3	smp4	smp5	smp6	smp7	smp8	smp9	smp10	smp11	smp12	smp13	smp14	smp15	smp16	smp17	smp18	smp19	smp20	smp21	smp22	smp23	smp24	smp25	smp26	smp27	smp28	smp29	smp30	smp31	smp32	smp33	smp34	smp35	smp36	smp37	smp38	smp39	smp40	smp41	smp42	smp43	smp44	smp45	smp46
+Weight	5	1	1	1	1	5	1	1	1	5	1	1	1	1	5	2	1	1	3	1	3	3	3	1	1	3	1	1	1	2	7	5	1	3	5	1	3	5	1	3	5	1	3	5	1	3

@@ -1,0 +1,78 @@
+group	id	name
+1	Id0	Myriel
+1	Id1	Napoleon
+1	Id2	Mlle. Baptistine
+1	Id3	Mme. Magloire
+1	Id4	Countess de Lo
+1	Id5	Geborand
+1	Id6	Champtercier
+1	Id7	Cravatte
+1	Id8	Count
+1	Id9	Old Man
+2	Id10	Labarre
+2	Id11	Valjean
+3	Id12	Marguerite
+2	Id13	Mme. de R
+2	Id14	Isabeau
+2	Id15	Gervais
+3	Id16	Tholomyes
+3	Id17	Listolier
+3	Id18	Fameuil
+3	Id19	Blacheville
+3	Id20	Favourite
+3	Id21	Dahlia
+3	Id22	Zephine
+3	Id23	Fantine
+4	Id24	Mme. Thenardier
+4	Id25	Thenardier
+5	Id26	Cosette
+4	Id27	Javert
+0	Id28	Fauchelevent
+2	Id29	Bamatabois
+3	Id30	Perpetue
+2	Id31	Simplice
+2	Id32	Scaufflaire
+2	Id33	Woman 1
+2	Id34	Judge
+2	Id35	Champmathieu
+2	Id36	Brevet
+2	Id37	Chenildieu
+2	Id38	Cochepaille
+4	Id39	Pontmercy
+6	Id40	Boulatruelle
+4	Id41	Eponine
+4	Id42	Anzelma
+5	Id43	Woman 2
+0	Id44	Mother Innocent
+0	Id45	Gribier
+7	Id46	Jondrette
+7	Id47	Mme. Burgon
+8	Id48	Gavroche
+5	Id49	Gillenormand
+5	Id50	Magnon
+5	Id51	Mlle. Gillenormand
+5	Id52	Mme. Pontmercy
+5	Id53	Mlle. Vaubois
+5	Id54	Lt. Gillenormand
+8	Id55	Marius
+5	Id56	Baroness T
+8	Id57	Mabeuf
+8	Id58	Enjolras
+8	Id59	Combeferre
+8	Id60	Prouvaire
+8	Id61	Feuilly
+8	Id62	Courfeyrac
+8	Id63	Bahorel
+8	Id64	Bossuet
+8	Id65	Joly
+8	Id66	Grantaire
+9	Id67	Mother Plutarch
+4	Id68	Gueulemer
+4	Id69	Babet
+4	Id70	Claquesous
+4	Id71	Montparnasse
+5	Id72	Toussaint
+10	Id73	Child 1
+10	Id74	Child 2
+4	Id75	Brujon
+8	Id76	Mme. Hucheloup

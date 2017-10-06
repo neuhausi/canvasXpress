@@ -1,0 +1,4 @@
+	Smp1	Smp2	Smp3	Smp4	Smp5	Smp6	Smp7	Smp8	Smp9	Smp10	Smp11	Smp12	Smp13	Smp14	Smp15	Smp16	Smp17	Smp18	Smp19	Smp20	Smp21	Smp22	Smp23	Smp24
+Var1	2	4	6	8	3	5	7	9	2	4	6	8	3	5	7	9	3	5	7	9	4	6	8	10
+Var2	4	6	8	10	3	5	7	9	2	4	6	8	1	3	5	7	2	4	6	8	3	5	7	9
+Var3	3	5	7	9	4	6	8	10	3	5	7	9	2	4	6	8	4	6	8	10	3	5	7	9

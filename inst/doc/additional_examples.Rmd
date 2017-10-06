@@ -209,7 +209,7 @@ canvasXpress(data                  = cxdata,
 ```r
 precalc.stats <- apply(data %>% select(Assault, Rape, Murder), 2, boxplot.stats)
 precalc.data  <- as.data.frame(lapply(precalc.stats, function(x) { x$stats }))
-precalc.out   <- data.frame(lapply(precalc.stats, function(x) { paste(x$out, collapse=',') }), stringsAsFactors = F)
+precalc.out   <- data.frame(lapply(precalc.stats, function(x) { paste(x$out, collapse=",") }), stringsAsFactors = F)
 
 cxdata <- precalc.data %>% mutate_all(as.character)
 cxdata <- bind_rows(cxdata, precalc.out)

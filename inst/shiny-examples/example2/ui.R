@@ -1,6 +1,6 @@
 
 shinyUI(fluidPage(
-				titlePanel('Identification of gene expression profiles in cervical cancer [GSE9750]'),
+				titlePanel("Identification of gene expression profiles in cervical cancer [GSE9750]"),
 				mainPanel(
 						tabsetPanel(
 								tabPanel("ProjectQC",
@@ -12,7 +12,7 @@ shinyUI(fluidPage(
 										),
 										fluidRow(
 												column(12,
-														selectInput('factor', 'Select Factor', colnames(GSE9750$x), selectize=FALSE)
+														selectInput("factor", "Select Factor", colnames(GSE9750$x), selectize=FALSE)
 												)
 										),
 										fluidRow(
@@ -25,18 +25,18 @@ shinyUI(fluidPage(
 										),
 										fluidRow(
 												column(6,
-														canvasXpressOutput('plot')
+														canvasXpressOutput("plot")
 												),   
 												column(6,
-														canvasXpressOutput('plot2')
+														canvasXpressOutput("plot2")
 												)    
 										),
 										fluidRow(
 												column(6,
-														uiOutput('selectLevel')
+														uiOutput("selectLevel")
 												),
 												column(6,
-														uiOutput('selectGenes')
+														uiOutput("selectGenes")
 												)
 										),
 										fluidRow(
@@ -49,10 +49,10 @@ shinyUI(fluidPage(
 										),
 										fluidRow(
 												column(6,
-														canvasXpressOutput('plot3')
+														canvasXpressOutput("plot3")
 												),
 												column(6,
-														canvasXpressOutput('plot4')
+														canvasXpressOutput("plot4")
 												)
 										)   
 								)

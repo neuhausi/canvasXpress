@@ -1,0 +1,9 @@
+	Drug Sensitivity	IC50
+Sample1	Sensitive	0.08
+Sample2	Sensitive	0.07
+Sample3	Sensitive	0.06
+Sample4	Sensitive	0.05
+Sample5	Sensitive	0.04
+Sample6	Resistant	0.03
+Sample7	Resistant	0.02
+Sample8	Resistant	0.01

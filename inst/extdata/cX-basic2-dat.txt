@@ -1,0 +1,2 @@
+	Sample1	Sample2	Sample3
+Variable1	33	44	55

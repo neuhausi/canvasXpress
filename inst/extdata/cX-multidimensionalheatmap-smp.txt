@@ -1,0 +1,11 @@
+	Factor
+Sample1	Lev:1
+Sample2	Lev:2
+Sample3	Lev:1
+Sample4	Lev:2
+Sample5	Lev:1
+Sample6	Lev:2
+Sample7	Lev:1
+Sample8	Lev:2
+Sample9	Lev:1
+Sample10	Lev:2

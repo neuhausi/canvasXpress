@@ -53,10 +53,10 @@ profilePlot <- function(
   
   ## Size by
   if (sizeBySignificance == TRUE) {
-    sizeBy = 'negLog10P'
+    sizeBy = "negLog10P"
     sizeByShowLegend = TRUE
   } else {
-    sizeBy = 'Group'
+    sizeBy = "Group"
     sizes = c(10,10,4,10,12,14,16,18,20,22,24,26)
     sizeByShowLegend = FALSE
   }
@@ -117,8 +117,8 @@ volcanoPlot <- function(
     logIntCol = "AveExpr",
     pvalCol = "P.Value",
     pthreshold = 0.01,
-    xlab = 'logFC',
-    ylab = '-log10(P.Value)',
+    xlab = "logFC",
+    ylab = "-log10(P.Value)",
     title = NULL,
     sizes = c(4,10,12,14,16,18,20,22,24,26),
     colors = c("deepskyblue4", "red3", "grey25"),
@@ -170,10 +170,10 @@ volcanoPlot <- function(
   
   ## Size by
   if (sizeByIntensity == TRUE) {
-    sizeBy = 'LogInt'
+    sizeBy = "LogInt"
     sizeByShowLegend = TRUE
   } else {
-    sizeBy = 'Group'
+    sizeBy = "Group"
     sizes = c(10,10,4,10,12,14,16,18,20,22,24,26)
     sizeByShowLegend = FALSE
   }
@@ -186,7 +186,7 @@ volcanoPlot <- function(
   
   ## Create the canvasXpress df and var annotation
   cx = data.frame(a=round(df[colnames(df)==logRatioCol], digits=2), b=round(df$NegativeLogP, digits=2))
-  colnames(cx) = c(logRatioCol, 'NegativeLogP')
+  colnames(cx) = c(logRatioCol, "NegativeLogP")
   cx = cx[with(cx, order(rnk)),]
   va = data.frame(Group=df$Group, LogInt=round(df$LogInt, digits=2));
   va = va[with(va, order(rnk)),]
@@ -216,10 +216,10 @@ volcanoPlot <- function(
       title = title,
       canvasBox=FALSE,
       fontName="Arial",
-      xAxis =  c(logRatioCol, ''),
+      xAxis =  c(logRatioCol, ""),
       xAxisTickColor = tickColor,
       xAxisTitle = xlab,
-      yAxis = c('NegativeLogP', ''),
+      yAxis = c("NegativeLogP", ""),
       yAxisTickColor = tickColor,
       yAxisTitle = ylab,
       events=events) 
@@ -300,9 +300,9 @@ comparePlot <- function(
   colnames(cx) = c(xlabel, ylabel)
   rownames(cx) = rownames(df)
   va = data.frame(Group=df$group)
-  colnames(va) = c('Group')
+  colnames(va) = c("Group")
   rownames(va) = rownames(cx)
-  d = list(line=list(list(color='black',width=1,x=0), list(color='black',width=1,y=0), list(color=colors[1],width=linesWidth,x=-10,x2=10,y=-10,y2=10)))
+  d = list(line=list(list(color="black",width=1,x=0), list(color="black",width=1,y=0), list(color=colors[1],width=linesWidth,x=-10,x2=10,y=-10,y2=10)))
   
   ## CanvasXpress Plot
   canvasXpress(
@@ -321,7 +321,7 @@ comparePlot <- function(
       legendPosition = legendPosition,
       scatterAxesEqual = TRUE,
       showDecorations = TRUE,
-      sizeBy = 'Group',
+      sizeBy = "Group",
       sizes = c(10,4,10,10,12,14,16,18,20,22,24,26),
       sizeByShowLegend = FALSE,
       title = title,
@@ -355,10 +355,10 @@ heatmapPlot <- function (
       heatmapSmpSeparateBy = "Group",
       variablesClustered = TRUE,
       axisAlgorithm = "wilkinsonExtended",
-      graphType = 'Heatmap', 
+      graphType = "Heatmap", 
       showVarDendrogram = FALSE, 
-      heatmapIndicatorPosition = 'right', 
-      colorSpectrum=c('navy', 'white', 'firebrick3'),
+      heatmapIndicatorPosition = "right", 
+      colorSpectrum=c("navy", "white", "firebrick3"),
       title = title,
       canvasBox = FALSE,
       fontName = "Arial"

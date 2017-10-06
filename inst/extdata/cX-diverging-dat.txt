@@ -1,0 +1,7 @@
+	Big Fat Liar	Two-Faced	Honest Abe
+Pants on Fire	-35	-20	-5
+False	-25	-20	-10
+Mostly False	-15	-10	-10
+Half True	10	10	15
+Mostly True	10	20	25
+True	5	20	35

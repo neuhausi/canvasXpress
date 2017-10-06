@@ -1,0 +1,1001 @@
+	Continent	Country	Year
+R1	Asia	Afghanistan	1952
+R2	Asia	Afghanistan	1957
+R3	Asia	Afghanistan	1962
+R4	Asia	Afghanistan	1967
+R5	Asia	Afghanistan	1972
+R6	Asia	Afghanistan	1977
+R7	Asia	Afghanistan	1982
+R8	Asia	Afghanistan	1987
+R9	Asia	Afghanistan	1992
+R10	Asia	Afghanistan	1997
+R11	Asia	Afghanistan	2002
+R12	Asia	Afghanistan	2007
+R13	Europe	Albania	1952
+R14	Europe	Albania	1957
+R15	Europe	Albania	1962
+R16	Europe	Albania	1967
+R17	Europe	Albania	1972
+R18	Europe	Albania	1977
+R19	Europe	Albania	1982
+R20	Europe	Albania	1987
+R21	Europe	Albania	1992
+R22	Europe	Albania	1997
+R23	Europe	Albania	2002
+R24	Europe	Albania	2007
+R25	Africa	Algeria	1952
+R26	Africa	Algeria	1957
+R27	Africa	Algeria	1962
+R28	Africa	Algeria	1967
+R29	Africa	Algeria	1972
+R30	Africa	Algeria	1977
+R31	Africa	Algeria	1982
+R32	Africa	Algeria	1987
+R33	Africa	Algeria	1992
+R34	Africa	Algeria	1997
+R35	Africa	Algeria	2002
+R36	Africa	Algeria	2007
+R37	Africa	Angola	1952
+R38	Africa	Angola	1957
+R39	Africa	Angola	1962
+R40	Africa	Angola	1967
+R41	Africa	Angola	1972
+R42	Africa	Angola	1977
+R43	Africa	Angola	1982
+R44	Africa	Angola	1987
+R45	Africa	Angola	1992
+R46	Africa	Angola	1997
+R47	Africa	Angola	2002
+R48	Africa	Angola	2007
+R49	Americas	Argentina	1952
+R50	Americas	Argentina	1957
+R51	Americas	Argentina	1962
+R52	Americas	Argentina	1967
+R53	Americas	Argentina	1972
+R54	Americas	Argentina	1977
+R55	Americas	Argentina	1982
+R56	Americas	Argentina	1987
+R57	Americas	Argentina	1992
+R58	Americas	Argentina	1997
+R59	Americas	Argentina	2002
+R60	Americas	Argentina	2007
+R61	Oceania	Australia	1952
+R62	Oceania	Australia	1957
+R63	Oceania	Australia	1962
+R64	Oceania	Australia	1967
+R65	Oceania	Australia	1972
+R66	Oceania	Australia	1977
+R67	Oceania	Australia	1982
+R68	Oceania	Australia	1987
+R69	Oceania	Australia	1992
+R70	Oceania	Australia	1997
+R71	Oceania	Australia	2002
+R72	Oceania	Australia	2007
+R73	Europe	Austria	1952
+R74	Europe	Austria	1957
+R75	Europe	Austria	1962
+R76	Europe	Austria	1967
+R77	Europe	Austria	1972
+R78	Europe	Austria	1977
+R79	Europe	Austria	1982
+R80	Europe	Austria	1987
+R81	Europe	Austria	1992
+R82	Europe	Austria	1997
+R83	Europe	Austria	2002
+R84	Europe	Austria	2007
+R85	Asia	Bahrain	1952
+R86	Asia	Bahrain	1957
+R87	Asia	Bahrain	1962
+R88	Asia	Bahrain	1967
+R89	Asia	Bahrain	1972
+R90	Asia	Bahrain	1977
+R91	Asia	Bahrain	1982
+R92	Asia	Bahrain	1987
+R93	Asia	Bahrain	1992
+R94	Asia	Bahrain	1997
+R95	Asia	Bahrain	2002
+R96	Asia	Bahrain	2007
+R97	Asia	Bangladesh	1952
+R98	Asia	Bangladesh	1957
+R99	Asia	Bangladesh	1962
+R100	Asia	Bangladesh	1967
+R101	Asia	Bangladesh	1972
+R102	Asia	Bangladesh	1977
+R103	Asia	Bangladesh	1982
+R104	Asia	Bangladesh	1987
+R105	Asia	Bangladesh	1992
+R106	Asia	Bangladesh	1997
+R107	Asia	Bangladesh	2002
+R108	Asia	Bangladesh	2007
+R109	Europe	Belgium	1952
+R110	Europe	Belgium	1957
+R111	Europe	Belgium	1962
+R112	Europe	Belgium	1967
+R113	Europe	Belgium	1972
+R114	Europe	Belgium	1977
+R115	Europe	Belgium	1982
+R116	Europe	Belgium	1987
+R117	Europe	Belgium	1992
+R118	Europe	Belgium	1997
+R119	Europe	Belgium	2002
+R120	Europe	Belgium	2007
+R121	Africa	Benin	1952
+R122	Africa	Benin	1957
+R123	Africa	Benin	1962
+R124	Africa	Benin	1967
+R125	Africa	Benin	1972
+R126	Africa	Benin	1977
+R127	Africa	Benin	1982
+R128	Africa	Benin	1987
+R129	Africa	Benin	1992
+R130	Africa	Benin	1997
+R131	Africa	Benin	2002
+R132	Africa	Benin	2007
+R133	Americas	Bolivia	1952
+R134	Americas	Bolivia	1957
+R135	Americas	Bolivia	1962
+R136	Americas	Bolivia	1967
+R137	Americas	Bolivia	1972
+R138	Americas	Bolivia	1977
+R139	Americas	Bolivia	1982
+R140	Americas	Bolivia	1987
+R141	Americas	Bolivia	1992
+R142	Americas	Bolivia	1997
+R143	Americas	Bolivia	2002
+R144	Americas	Bolivia	2007
+R145	Europe	Bosnia and Herzegovina	1952
+R146	Europe	Bosnia and Herzegovina	1957
+R147	Europe	Bosnia and Herzegovina	1962
+R148	Europe	Bosnia and Herzegovina	1967
+R149	Europe	Bosnia and Herzegovina	1972
+R150	Europe	Bosnia and Herzegovina	1977
+R151	Europe	Bosnia and Herzegovina	1982
+R152	Europe	Bosnia and Herzegovina	1987
+R153	Europe	Bosnia and Herzegovina	1992
+R154	Europe	Bosnia and Herzegovina	1997
+R155	Europe	Bosnia and Herzegovina	2002
+R156	Europe	Bosnia and Herzegovina	2007
+R157	Africa	Botswana	1952
+R158	Africa	Botswana	1957
+R159	Africa	Botswana	1962
+R160	Africa	Botswana	1967
+R161	Africa	Botswana	1972
+R162	Africa	Botswana	1977
+R163	Africa	Botswana	1982
+R164	Africa	Botswana	1987
+R165	Africa	Botswana	1992
+R166	Africa	Botswana	1997
+R167	Africa	Botswana	2002
+R168	Africa	Botswana	2007
+R169	Americas	Brazil	1952
+R170	Americas	Brazil	1957
+R171	Americas	Brazil	1962
+R172	Americas	Brazil	1967
+R173	Americas	Brazil	1972
+R174	Americas	Brazil	1977
+R175	Americas	Brazil	1982
+R176	Americas	Brazil	1987
+R177	Americas	Brazil	1992
+R178	Americas	Brazil	1997
+R179	Americas	Brazil	2002
+R180	Americas	Brazil	2007
+R181	Europe	Bulgaria	1952
+R182	Europe	Bulgaria	1957
+R183	Europe	Bulgaria	1962
+R184	Europe	Bulgaria	1967
+R185	Europe	Bulgaria	1972
+R186	Europe	Bulgaria	1977
+R187	Europe	Bulgaria	1982
+R188	Europe	Bulgaria	1987
+R189	Europe	Bulgaria	1992
+R190	Europe	Bulgaria	1997
+R191	Europe	Bulgaria	2002
+R192	Europe	Bulgaria	2007
+R193	Africa	Burkina Faso	1952
+R194	Africa	Burkina Faso	1957
+R195	Africa	Burkina Faso	1962
+R196	Africa	Burkina Faso	1967
+R197	Africa	Burkina Faso	1972
+R198	Africa	Burkina Faso	1977
+R199	Africa	Burkina Faso	1982
+R200	Africa	Burkina Faso	1987
+R201	Africa	Burkina Faso	1992
+R202	Africa	Burkina Faso	1997
+R203	Africa	Burkina Faso	2002
+R204	Africa	Burkina Faso	2007
+R205	Africa	Burundi	1952
+R206	Africa	Burundi	1957
+R207	Africa	Burundi	1962
+R208	Africa	Burundi	1967
+R209	Africa	Burundi	1972
+R210	Africa	Burundi	1977
+R211	Africa	Burundi	1982
+R212	Africa	Burundi	1987
+R213	Africa	Burundi	1992
+R214	Africa	Burundi	1997
+R215	Africa	Burundi	2002
+R216	Africa	Burundi	2007
+R217	Asia	Cambodia	1952
+R218	Asia	Cambodia	1957
+R219	Asia	Cambodia	1962
+R220	Asia	Cambodia	1967
+R221	Asia	Cambodia	1972
+R222	Asia	Cambodia	1977
+R223	Asia	Cambodia	1982
+R224	Asia	Cambodia	1987
+R225	Asia	Cambodia	1992
+R226	Asia	Cambodia	1997
+R227	Asia	Cambodia	2002
+R228	Asia	Cambodia	2007
+R229	Africa	Cameroon	1952
+R230	Africa	Cameroon	1957
+R231	Africa	Cameroon	1962
+R232	Africa	Cameroon	1967
+R233	Africa	Cameroon	1972
+R234	Africa	Cameroon	1977
+R235	Africa	Cameroon	1982
+R236	Africa	Cameroon	1987
+R237	Africa	Cameroon	1992
+R238	Africa	Cameroon	1997
+R239	Africa	Cameroon	2002
+R240	Africa	Cameroon	2007
+R241	Americas	Canada	1952
+R242	Americas	Canada	1957
+R243	Americas	Canada	1962
+R244	Americas	Canada	1967
+R245	Americas	Canada	1972
+R246	Americas	Canada	1977
+R247	Americas	Canada	1982
+R248	Americas	Canada	1987
+R249	Americas	Canada	1992
+R250	Americas	Canada	1997
+R251	Americas	Canada	2002
+R252	Americas	Canada	2007
+R253	Africa	Central African Republic	1952
+R254	Africa	Central African Republic	1957
+R255	Africa	Central African Republic	1962
+R256	Africa	Central African Republic	1967
+R257	Africa	Central African Republic	1972
+R258	Africa	Central African Republic	1977
+R259	Africa	Central African Republic	1982
+R260	Africa	Central African Republic	1987
+R261	Africa	Central African Republic	1992
+R262	Africa	Central African Republic	1997
+R263	Africa	Central African Republic	2002
+R264	Africa	Central African Republic	2007
+R265	Africa	Chad	1952
+R266	Africa	Chad	1957
+R267	Africa	Chad	1962
+R268	Africa	Chad	1967
+R269	Africa	Chad	1972
+R270	Africa	Chad	1977
+R271	Africa	Chad	1982
+R272	Africa	Chad	1987
+R273	Africa	Chad	1992
+R274	Africa	Chad	1997
+R275	Africa	Chad	2002
+R276	Africa	Chad	2007
+R277	Americas	Chile	1952
+R278	Americas	Chile	1957
+R279	Americas	Chile	1962
+R280	Americas	Chile	1967
+R281	Americas	Chile	1972
+R282	Americas	Chile	1977
+R283	Americas	Chile	1982
+R284	Americas	Chile	1987
+R285	Americas	Chile	1992
+R286	Americas	Chile	1997
+R287	Americas	Chile	2002
+R288	Americas	Chile	2007
+R289	Asia	China	1952
+R290	Asia	China	1957
+R291	Asia	China	1962
+R292	Asia	China	1967
+R293	Asia	China	1972
+R294	Asia	China	1977
+R295	Asia	China	1982
+R296	Asia	China	1987
+R297	Asia	China	1992
+R298	Asia	China	1997
+R299	Asia	China	2002
+R300	Asia	China	2007
+R301	Americas	Colombia	1952
+R302	Americas	Colombia	1957
+R303	Americas	Colombia	1962
+R304	Americas	Colombia	1967
+R305	Americas	Colombia	1972
+R306	Americas	Colombia	1977
+R307	Americas	Colombia	1982
+R308	Americas	Colombia	1987
+R309	Americas	Colombia	1992
+R310	Americas	Colombia	1997
+R311	Americas	Colombia	2002
+R312	Americas	Colombia	2007
+R313	Africa	Comoros	1952
+R314	Africa	Comoros	1957
+R315	Africa	Comoros	1962
+R316	Africa	Comoros	1967
+R317	Africa	Comoros	1972
+R318	Africa	Comoros	1977
+R319	Africa	Comoros	1982
+R320	Africa	Comoros	1987
+R321	Africa	Comoros	1992
+R322	Africa	Comoros	1997
+R323	Africa	Comoros	2002
+R324	Africa	Comoros	2007
+R325	Africa	Congo, Dem. Rep.	1952
+R326	Africa	Congo, Dem. Rep.	1957
+R327	Africa	Congo, Dem. Rep.	1962
+R328	Africa	Congo, Dem. Rep.	1967
+R329	Africa	Congo, Dem. Rep.	1972
+R330	Africa	Congo, Dem. Rep.	1977
+R331	Africa	Congo, Dem. Rep.	1982
+R332	Africa	Congo, Dem. Rep.	1987
+R333	Africa	Congo, Dem. Rep.	1992
+R334	Africa	Congo, Dem. Rep.	1997
+R335	Africa	Congo, Dem. Rep.	2002
+R336	Africa	Congo, Dem. Rep.	2007
+R337	Africa	Congo, Rep.	1952
+R338	Africa	Congo, Rep.	1957
+R339	Africa	Congo, Rep.	1962
+R340	Africa	Congo, Rep.	1967
+R341	Africa	Congo, Rep.	1972
+R342	Africa	Congo, Rep.	1977
+R343	Africa	Congo, Rep.	1982
+R344	Africa	Congo, Rep.	1987
+R345	Africa	Congo, Rep.	1992
+R346	Africa	Congo, Rep.	1997
+R347	Africa	Congo, Rep.	2002
+R348	Africa	Congo, Rep.	2007
+R349	Americas	Costa Rica	1952
+R350	Americas	Costa Rica	1957
+R351	Americas	Costa Rica	1962
+R352	Americas	Costa Rica	1967
+R353	Americas	Costa Rica	1972
+R354	Americas	Costa Rica	1977
+R355	Americas	Costa Rica	1982
+R356	Americas	Costa Rica	1987
+R357	Americas	Costa Rica	1992
+R358	Americas	Costa Rica	1997
+R359	Americas	Costa Rica	2002
+R360	Americas	Costa Rica	2007
+R361	Africa	Cote d'Ivoire	1952
+R362	Africa	Cote d'Ivoire	1957
+R363	Africa	Cote d'Ivoire	1962
+R364	Africa	Cote d'Ivoire	1967
+R365	Africa	Cote d'Ivoire	1972
+R366	Africa	Cote d'Ivoire	1977
+R367	Africa	Cote d'Ivoire	1982
+R368	Africa	Cote d'Ivoire	1987
+R369	Africa	Cote d'Ivoire	1992
+R370	Africa	Cote d'Ivoire	1997
+R371	Africa	Cote d'Ivoire	2002
+R372	Africa	Cote d'Ivoire	2007
+R373	Europe	Croatia	1952
+R374	Europe	Croatia	1957
+R375	Europe	Croatia	1962
+R376	Europe	Croatia	1967
+R377	Europe	Croatia	1972
+R378	Europe	Croatia	1977
+R379	Europe	Croatia	1982
+R380	Europe	Croatia	1987
+R381	Europe	Croatia	1992
+R382	Europe	Croatia	1997
+R383	Europe	Croatia	2002
+R384	Europe	Croatia	2007
+R385	Americas	Cuba	1952
+R386	Americas	Cuba	1957
+R387	Americas	Cuba	1962
+R388	Americas	Cuba	1967
+R389	Americas	Cuba	1972
+R390	Americas	Cuba	1977
+R391	Americas	Cuba	1982
+R392	Americas	Cuba	1987
+R393	Americas	Cuba	1992
+R394	Americas	Cuba	1997
+R395	Americas	Cuba	2002
+R396	Americas	Cuba	2007
+R397	Europe	Czech Republic	1952
+R398	Europe	Czech Republic	1957
+R399	Europe	Czech Republic	1962
+R400	Europe	Czech Republic	1967
+R401	Europe	Czech Republic	1972
+R402	Europe	Czech Republic	1977
+R403	Europe	Czech Republic	1982
+R404	Europe	Czech Republic	1987
+R405	Europe	Czech Republic	1992
+R406	Europe	Czech Republic	1997
+R407	Europe	Czech Republic	2002
+R408	Europe	Czech Republic	2007
+R409	Europe	Denmark	1952
+R410	Europe	Denmark	1957
+R411	Europe	Denmark	1962
+R412	Europe	Denmark	1967
+R413	Europe	Denmark	1972
+R414	Europe	Denmark	1977
+R415	Europe	Denmark	1982
+R416	Europe	Denmark	1987
+R417	Europe	Denmark	1992
+R418	Europe	Denmark	1997
+R419	Europe	Denmark	2002
+R420	Europe	Denmark	2007
+R421	Africa	Djibouti	1952
+R422	Africa	Djibouti	1957
+R423	Africa	Djibouti	1962
+R424	Africa	Djibouti	1967
+R425	Africa	Djibouti	1972
+R426	Africa	Djibouti	1977
+R427	Africa	Djibouti	1982
+R428	Africa	Djibouti	1987
+R429	Africa	Djibouti	1992
+R430	Africa	Djibouti	1997
+R431	Africa	Djibouti	2002
+R432	Africa	Djibouti	2007
+R433	Americas	Dominican Republic	1952
+R434	Americas	Dominican Republic	1957
+R435	Americas	Dominican Republic	1962
+R436	Americas	Dominican Republic	1967
+R437	Americas	Dominican Republic	1972
+R438	Americas	Dominican Republic	1977
+R439	Americas	Dominican Republic	1982
+R440	Americas	Dominican Republic	1987
+R441	Americas	Dominican Republic	1992
+R442	Americas	Dominican Republic	1997
+R443	Americas	Dominican Republic	2002
+R444	Americas	Dominican Republic	2007
+R445	Americas	Ecuador	1952
+R446	Americas	Ecuador	1957
+R447	Americas	Ecuador	1962
+R448	Americas	Ecuador	1967
+R449	Americas	Ecuador	1972
+R450	Americas	Ecuador	1977
+R451	Americas	Ecuador	1982
+R452	Americas	Ecuador	1987
+R453	Americas	Ecuador	1992
+R454	Americas	Ecuador	1997
+R455	Americas	Ecuador	2002
+R456	Americas	Ecuador	2007
+R457	Africa	Egypt	1952
+R458	Africa	Egypt	1957
+R459	Africa	Egypt	1962
+R460	Africa	Egypt	1967
+R461	Africa	Egypt	1972
+R462	Africa	Egypt	1977
+R463	Africa	Egypt	1982
+R464	Africa	Egypt	1987
+R465	Africa	Egypt	1992
+R466	Africa	Egypt	1997
+R467	Africa	Egypt	2002
+R468	Africa	Egypt	2007
+R469	Americas	El Salvador	1952
+R470	Americas	El Salvador	1957
+R471	Americas	El Salvador	1962
+R472	Americas	El Salvador	1967
+R473	Americas	El Salvador	1972
+R474	Americas	El Salvador	1977
+R475	Americas	El Salvador	1982
+R476	Americas	El Salvador	1987
+R477	Americas	El Salvador	1992
+R478	Americas	El Salvador	1997
+R479	Americas	El Salvador	2002
+R480	Americas	El Salvador	2007
+R481	Africa	Equatorial Guinea	1952
+R482	Africa	Equatorial Guinea	1957
+R483	Africa	Equatorial Guinea	1962
+R484	Africa	Equatorial Guinea	1967
+R485	Africa	Equatorial Guinea	1972
+R486	Africa	Equatorial Guinea	1977
+R487	Africa	Equatorial Guinea	1982
+R488	Africa	Equatorial Guinea	1987
+R489	Africa	Equatorial Guinea	1992
+R490	Africa	Equatorial Guinea	1997
+R491	Africa	Equatorial Guinea	2002
+R492	Africa	Equatorial Guinea	2007
+R493	Africa	Eritrea	1952
+R494	Africa	Eritrea	1957
+R495	Africa	Eritrea	1962
+R496	Africa	Eritrea	1967
+R497	Africa	Eritrea	1972
+R498	Africa	Eritrea	1977
+R499	Africa	Eritrea	1982
+R500	Africa	Eritrea	1987
+R501	Africa	Eritrea	1992
+R502	Africa	Eritrea	1997
+R503	Africa	Eritrea	2002
+R504	Africa	Eritrea	2007
+R505	Africa	Ethiopia	1952
+R506	Africa	Ethiopia	1957
+R507	Africa	Ethiopia	1962
+R508	Africa	Ethiopia	1967
+R509	Africa	Ethiopia	1972
+R510	Africa	Ethiopia	1977
+R511	Africa	Ethiopia	1982
+R512	Africa	Ethiopia	1987
+R513	Africa	Ethiopia	1992
+R514	Africa	Ethiopia	1997
+R515	Africa	Ethiopia	2002
+R516	Africa	Ethiopia	2007
+R517	Europe	Finland	1952
+R518	Europe	Finland	1957
+R519	Europe	Finland	1962
+R520	Europe	Finland	1967
+R521	Europe	Finland	1972
+R522	Europe	Finland	1977
+R523	Europe	Finland	1982
+R524	Europe	Finland	1987
+R525	Europe	Finland	1992
+R526	Europe	Finland	1997
+R527	Europe	Finland	2002
+R528	Europe	Finland	2007
+R529	Europe	France	1952
+R530	Europe	France	1957
+R531	Europe	France	1962
+R532	Europe	France	1967
+R533	Europe	France	1972
+R534	Europe	France	1977
+R535	Europe	France	1982
+R536	Europe	France	1987
+R537	Europe	France	1992
+R538	Europe	France	1997
+R539	Europe	France	2002
+R540	Europe	France	2007
+R541	Africa	Gabon	1952
+R542	Africa	Gabon	1957
+R543	Africa	Gabon	1962
+R544	Africa	Gabon	1967
+R545	Africa	Gabon	1972
+R546	Africa	Gabon	1977
+R547	Africa	Gabon	1982
+R548	Africa	Gabon	1987
+R549	Africa	Gabon	1992
+R550	Africa	Gabon	1997
+R551	Africa	Gabon	2002
+R552	Africa	Gabon	2007
+R553	Africa	Gambia	1952
+R554	Africa	Gambia	1957
+R555	Africa	Gambia	1962
+R556	Africa	Gambia	1967
+R557	Africa	Gambia	1972
+R558	Africa	Gambia	1977
+R559	Africa	Gambia	1982
+R560	Africa	Gambia	1987
+R561	Africa	Gambia	1992
+R562	Africa	Gambia	1997
+R563	Africa	Gambia	2002
+R564	Africa	Gambia	2007
+R565	Europe	Germany	1952
+R566	Europe	Germany	1957
+R567	Europe	Germany	1962
+R568	Europe	Germany	1967
+R569	Europe	Germany	1972
+R570	Europe	Germany	1977
+R571	Europe	Germany	1982
+R572	Europe	Germany	1987
+R573	Europe	Germany	1992
+R574	Europe	Germany	1997
+R575	Europe	Germany	2002
+R576	Europe	Germany	2007
+R577	Africa	Ghana	1952
+R578	Africa	Ghana	1957
+R579	Africa	Ghana	1962
+R580	Africa	Ghana	1967
+R581	Africa	Ghana	1972
+R582	Africa	Ghana	1977
+R583	Africa	Ghana	1982
+R584	Africa	Ghana	1987
+R585	Africa	Ghana	1992
+R586	Africa	Ghana	1997
+R587	Africa	Ghana	2002
+R588	Africa	Ghana	2007
+R589	Europe	Greece	1952
+R590	Europe	Greece	1957
+R591	Europe	Greece	1962
+R592	Europe	Greece	1967
+R593	Europe	Greece	1972
+R594	Europe	Greece	1977
+R595	Europe	Greece	1982
+R596	Europe	Greece	1987
+R597	Europe	Greece	1992
+R598	Europe	Greece	1997
+R599	Europe	Greece	2002
+R600	Europe	Greece	2007
+R601	Americas	Guatemala	1952
+R602	Americas	Guatemala	1957
+R603	Americas	Guatemala	1962
+R604	Americas	Guatemala	1967
+R605	Americas	Guatemala	1972
+R606	Americas	Guatemala	1977
+R607	Americas	Guatemala	1982
+R608	Americas	Guatemala	1987
+R609	Americas	Guatemala	1992
+R610	Americas	Guatemala	1997
+R611	Americas	Guatemala	2002
+R612	Americas	Guatemala	2007
+R613	Africa	Guinea	1952
+R614	Africa	Guinea	1957
+R615	Africa	Guinea	1962
+R616	Africa	Guinea	1967
+R617	Africa	Guinea	1972
+R618	Africa	Guinea	1977
+R619	Africa	Guinea	1982
+R620	Africa	Guinea	1987
+R621	Africa	Guinea	1992
+R622	Africa	Guinea	1997
+R623	Africa	Guinea	2002
+R624	Africa	Guinea	2007
+R625	Africa	Guinea-Bissau	1952
+R626	Africa	Guinea-Bissau	1957
+R627	Africa	Guinea-Bissau	1962
+R628	Africa	Guinea-Bissau	1967
+R629	Africa	Guinea-Bissau	1972
+R630	Africa	Guinea-Bissau	1977
+R631	Africa	Guinea-Bissau	1982
+R632	Africa	Guinea-Bissau	1987
+R633	Africa	Guinea-Bissau	1992
+R634	Africa	Guinea-Bissau	1997
+R635	Africa	Guinea-Bissau	2002
+R636	Africa	Guinea-Bissau	2007
+R637	Americas	Haiti	1952
+R638	Americas	Haiti	1957
+R639	Americas	Haiti	1962
+R640	Americas	Haiti	1967
+R641	Americas	Haiti	1972
+R642	Americas	Haiti	1977
+R643	Americas	Haiti	1982
+R644	Americas	Haiti	1987
+R645	Americas	Haiti	1992
+R646	Americas	Haiti	1997
+R647	Americas	Haiti	2002
+R648	Americas	Haiti	2007
+R649	Americas	Honduras	1952
+R650	Americas	Honduras	1957
+R651	Americas	Honduras	1962
+R652	Americas	Honduras	1967
+R653	Americas	Honduras	1972
+R654	Americas	Honduras	1977
+R655	Americas	Honduras	1982
+R656	Americas	Honduras	1987
+R657	Americas	Honduras	1992
+R658	Americas	Honduras	1997
+R659	Americas	Honduras	2002
+R660	Americas	Honduras	2007
+R661	Asia	Hong Kong, China	1952
+R662	Asia	Hong Kong, China	1957
+R663	Asia	Hong Kong, China	1962
+R664	Asia	Hong Kong, China	1967
+R665	Asia	Hong Kong, China	1972
+R666	Asia	Hong Kong, China	1977
+R667	Asia	Hong Kong, China	1982
+R668	Asia	Hong Kong, China	1987
+R669	Asia	Hong Kong, China	1992
+R670	Asia	Hong Kong, China	1997
+R671	Asia	Hong Kong, China	2002
+R672	Asia	Hong Kong, China	2007
+R673	Europe	Hungary	1952
+R674	Europe	Hungary	1957
+R675	Europe	Hungary	1962
+R676	Europe	Hungary	1967
+R677	Europe	Hungary	1972
+R678	Europe	Hungary	1977
+R679	Europe	Hungary	1982
+R680	Europe	Hungary	1987
+R681	Europe	Hungary	1992
+R682	Europe	Hungary	1997
+R683	Europe	Hungary	2002
+R684	Europe	Hungary	2007
+R685	Europe	Iceland	1952
+R686	Europe	Iceland	1957
+R687	Europe	Iceland	1962
+R688	Europe	Iceland	1967
+R689	Europe	Iceland	1972
+R690	Europe	Iceland	1977
+R691	Europe	Iceland	1982
+R692	Europe	Iceland	1987
+R693	Europe	Iceland	1992
+R694	Europe	Iceland	1997
+R695	Europe	Iceland	2002
+R696	Europe	Iceland	2007
+R697	Asia	India	1952
+R698	Asia	India	1957
+R699	Asia	India	1962
+R700	Asia	India	1967
+R701	Asia	India	1972
+R702	Asia	India	1977
+R703	Asia	India	1982
+R704	Asia	India	1987
+R705	Asia	India	1992
+R706	Asia	India	1997
+R707	Asia	India	2002
+R708	Asia	India	2007
+R709	Asia	Indonesia	1952
+R710	Asia	Indonesia	1957
+R711	Asia	Indonesia	1962
+R712	Asia	Indonesia	1967
+R713	Asia	Indonesia	1972
+R714	Asia	Indonesia	1977
+R715	Asia	Indonesia	1982
+R716	Asia	Indonesia	1987
+R717	Asia	Indonesia	1992
+R718	Asia	Indonesia	1997
+R719	Asia	Indonesia	2002
+R720	Asia	Indonesia	2007
+R721	Asia	Iran	1952
+R722	Asia	Iran	1957
+R723	Asia	Iran	1962
+R724	Asia	Iran	1967
+R725	Asia	Iran	1972
+R726	Asia	Iran	1977
+R727	Asia	Iran	1982
+R728	Asia	Iran	1987
+R729	Asia	Iran	1992
+R730	Asia	Iran	1997
+R731	Asia	Iran	2002
+R732	Asia	Iran	2007
+R733	Asia	Iraq	1952
+R734	Asia	Iraq	1957
+R735	Asia	Iraq	1962
+R736	Asia	Iraq	1967
+R737	Asia	Iraq	1972
+R738	Asia	Iraq	1977
+R739	Asia	Iraq	1982
+R740	Asia	Iraq	1987
+R741	Asia	Iraq	1992
+R742	Asia	Iraq	1997
+R743	Asia	Iraq	2002
+R744	Asia	Iraq	2007
+R745	Europe	Ireland	1952
+R746	Europe	Ireland	1957
+R747	Europe	Ireland	1962
+R748	Europe	Ireland	1967
+R749	Europe	Ireland	1972
+R750	Europe	Ireland	1977
+R751	Europe	Ireland	1982
+R752	Europe	Ireland	1987
+R753	Europe	Ireland	1992
+R754	Europe	Ireland	1997
+R755	Europe	Ireland	2002
+R756	Europe	Ireland	2007
+R757	Asia	Israel	1952
+R758	Asia	Israel	1957
+R759	Asia	Israel	1962
+R760	Asia	Israel	1967
+R761	Asia	Israel	1972
+R762	Asia	Israel	1977
+R763	Asia	Israel	1982
+R764	Asia	Israel	1987
+R765	Asia	Israel	1992
+R766	Asia	Israel	1997
+R767	Asia	Israel	2002
+R768	Asia	Israel	2007
+R769	Europe	Italy	1952
+R770	Europe	Italy	1957
+R771	Europe	Italy	1962
+R772	Europe	Italy	1967
+R773	Europe	Italy	1972
+R774	Europe	Italy	1977
+R775	Europe	Italy	1982
+R776	Europe	Italy	1987
+R777	Europe	Italy	1992
+R778	Europe	Italy	1997
+R779	Europe	Italy	2002
+R780	Europe	Italy	2007
+R781	Americas	Jamaica	1952
+R782	Americas	Jamaica	1957
+R783	Americas	Jamaica	1962
+R784	Americas	Jamaica	1967
+R785	Americas	Jamaica	1972
+R786	Americas	Jamaica	1977
+R787	Americas	Jamaica	1982
+R788	Americas	Jamaica	1987
+R789	Americas	Jamaica	1992
+R790	Americas	Jamaica	1997
+R791	Americas	Jamaica	2002
+R792	Americas	Jamaica	2007
+R793	Asia	Japan	1952
+R794	Asia	Japan	1957
+R795	Asia	Japan	1962
+R796	Asia	Japan	1967
+R797	Asia	Japan	1972
+R798	Asia	Japan	1977
+R799	Asia	Japan	1982
+R800	Asia	Japan	1987
+R801	Asia	Japan	1992
+R802	Asia	Japan	1997
+R803	Asia	Japan	2002
+R804	Asia	Japan	2007
+R805	Asia	Jordan	1952
+R806	Asia	Jordan	1957
+R807	Asia	Jordan	1962
+R808	Asia	Jordan	1967
+R809	Asia	Jordan	1972
+R810	Asia	Jordan	1977
+R811	Asia	Jordan	1982
+R812	Asia	Jordan	1987
+R813	Asia	Jordan	1992
+R814	Asia	Jordan	1997
+R815	Asia	Jordan	2002
+R816	Asia	Jordan	2007
+R817	Africa	Kenya	1952
+R818	Africa	Kenya	1957
+R819	Africa	Kenya	1962
+R820	Africa	Kenya	1967
+R821	Africa	Kenya	1972
+R822	Africa	Kenya	1977
+R823	Africa	Kenya	1982
+R824	Africa	Kenya	1987
+R825	Africa	Kenya	1992
+R826	Africa	Kenya	1997
+R827	Africa	Kenya	2002
+R828	Africa	Kenya	2007
+R829	Asia	Korea, Dem. Rep.	1952
+R830	Asia	Korea, Dem. Rep.	1957
+R831	Asia	Korea, Dem. Rep.	1962
+R832	Asia	Korea, Dem. Rep.	1967
+R833	Asia	Korea, Dem. Rep.	1972
+R834	Asia	Korea, Dem. Rep.	1977
+R835	Asia	Korea, Dem. Rep.	1982
+R836	Asia	Korea, Dem. Rep.	1987
+R837	Asia	Korea, Dem. Rep.	1992
+R838	Asia	Korea, Dem. Rep.	1997
+R839	Asia	Korea, Dem. Rep.	2002
+R840	Asia	Korea, Dem. Rep.	2007
+R841	Asia	Korea, Rep.	1952
+R842	Asia	Korea, Rep.	1957
+R843	Asia	Korea, Rep.	1962
+R844	Asia	Korea, Rep.	1967
+R845	Asia	Korea, Rep.	1972
+R846	Asia	Korea, Rep.	1977
+R847	Asia	Korea, Rep.	1982
+R848	Asia	Korea, Rep.	1987
+R849	Asia	Korea, Rep.	1992
+R850	Asia	Korea, Rep.	1997
+R851	Asia	Korea, Rep.	2002
+R852	Asia	Korea, Rep.	2007
+R853	Asia	Kuwait	1952
+R854	Asia	Kuwait	1957
+R855	Asia	Kuwait	1962
+R856	Asia	Kuwait	1967
+R857	Asia	Kuwait	1972
+R858	Asia	Kuwait	1977
+R859	Asia	Kuwait	1982
+R860	Asia	Kuwait	1987
+R861	Asia	Kuwait	1992
+R862	Asia	Kuwait	1997
+R863	Asia	Kuwait	2002
+R864	Asia	Kuwait	2007
+R865	Asia	Lebanon	1952
+R866	Asia	Lebanon	1957
+R867	Asia	Lebanon	1962
+R868	Asia	Lebanon	1967
+R869	Asia	Lebanon	1972
+R870	Asia	Lebanon	1977
+R871	Asia	Lebanon	1982
+R872	Asia	Lebanon	1987
+R873	Asia	Lebanon	1992
+R874	Asia	Lebanon	1997
+R875	Asia	Lebanon	2002
+R876	Asia	Lebanon	2007
+R877	Africa	Lesotho	1952
+R878	Africa	Lesotho	1957
+R879	Africa	Lesotho	1962
+R880	Africa	Lesotho	1967
+R881	Africa	Lesotho	1972
+R882	Africa	Lesotho	1977
+R883	Africa	Lesotho	1982
+R884	Africa	Lesotho	1987
+R885	Africa	Lesotho	1992
+R886	Africa	Lesotho	1997
+R887	Africa	Lesotho	2002
+R888	Africa	Lesotho	2007
+R889	Africa	Liberia	1952
+R890	Africa	Liberia	1957
+R891	Africa	Liberia	1962
+R892	Africa	Liberia	1967
+R893	Africa	Liberia	1972
+R894	Africa	Liberia	1977
+R895	Africa	Liberia	1982
+R896	Africa	Liberia	1987
+R897	Africa	Liberia	1992
+R898	Africa	Liberia	1997
+R899	Africa	Liberia	2002
+R900	Africa	Liberia	2007
+R901	Africa	Libya	1952
+R902	Africa	Libya	1957
+R903	Africa	Libya	1962
+R904	Africa	Libya	1967
+R905	Africa	Libya	1972
+R906	Africa	Libya	1977
+R907	Africa	Libya	1982
+R908	Africa	Libya	1987
+R909	Africa	Libya	1992
+R910	Africa	Libya	1997
+R911	Africa	Libya	2002
+R912	Africa	Libya	2007
+R913	Africa	Madagascar	1952
+R914	Africa	Madagascar	1957
+R915	Africa	Madagascar	1962
+R916	Africa	Madagascar	1967
+R917	Africa	Madagascar	1972
+R918	Africa	Madagascar	1977
+R919	Africa	Madagascar	1982
+R920	Africa	Madagascar	1987
+R921	Africa	Madagascar	1992
+R922	Africa	Madagascar	1997
+R923	Africa	Madagascar	2002
+R924	Africa	Madagascar	2007
+R925	Africa	Malawi	1952
+R926	Africa	Malawi	1957
+R927	Africa	Malawi	1962
+R928	Africa	Malawi	1967
+R929	Africa	Malawi	1972
+R930	Africa	Malawi	1977
+R931	Africa	Malawi	1982
+R932	Africa	Malawi	1987
+R933	Africa	Malawi	1992
+R934	Africa	Malawi	1997
+R935	Africa	Malawi	2002
+R936	Africa	Malawi	2007
+R937	Asia	Malaysia	1952
+R938	Asia	Malaysia	1957
+R939	Asia	Malaysia	1962
+R940	Asia	Malaysia	1967
+R941	Asia	Malaysia	1972
+R942	Asia	Malaysia	1977
+R943	Asia	Malaysia	1982
+R944	Asia	Malaysia	1987
+R945	Asia	Malaysia	1992
+R946	Asia	Malaysia	1997
+R947	Asia	Malaysia	2002
+R948	Asia	Malaysia	2007
+R949	Africa	Mali	1952
+R950	Africa	Mali	1957
+R951	Africa	Mali	1962
+R952	Africa	Mali	1967
+R953	Africa	Mali	1972
+R954	Africa	Mali	1977
+R955	Africa	Mali	1982
+R956	Africa	Mali	1987
+R957	Africa	Mali	1992
+R958	Africa	Mali	1997
+R959	Africa	Mali	2002
+R960	Africa	Mali	2007
+R961	Africa	Mauritania	1952
+R962	Africa	Mauritania	1957
+R963	Africa	Mauritania	1962
+R964	Africa	Mauritania	1967
+R965	Africa	Mauritania	1972
+R966	Africa	Mauritania	1977
+R967	Africa	Mauritania	1982
+R968	Africa	Mauritania	1987
+R969	Africa	Mauritania	1992
+R970	Africa	Mauritania	1997
+R971	Africa	Mauritania	2002
+R972	Africa	Mauritania	2007
+R973	Africa	Mauritius	1952
+R974	Africa	Mauritius	1957
+R975	Africa	Mauritius	1962
+R976	Africa	Mauritius	1967
+R977	Africa	Mauritius	1972
+R978	Africa	Mauritius	1977
+R979	Africa	Mauritius	1982
+R980	Africa	Mauritius	1987
+R981	Africa	Mauritius	1992
+R982	Africa	Mauritius	1997
+R983	Africa	Mauritius	2002
+R984	Africa	Mauritius	2007
+R985	Americas	Mexico	1952
+R986	Americas	Mexico	1957
+R987	Americas	Mexico	1962
+R988	Americas	Mexico	1967
+R989	Americas	Mexico	1972
+R990	Americas	Mexico	1977
+R991	Americas	Mexico	1982
+R992	Americas	Mexico	1987
+R993	Americas	Mexico	1992
+R994	Americas	Mexico	1997
+R995	Americas	Mexico	2002
+R996	Americas	Mexico	2007
+R997	Asia	Mongolia	1952
+R998	Asia	Mongolia	1957
+R999	Asia	Mongolia	1962
+R1000	Asia	Mongolia	1967

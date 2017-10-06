@@ -1,0 +1,1001 @@
+	Group	Hit
+Gene1	Not Significant	N
+Gene2	Not Significant	N
+Gene3	Not Significant	N
+Gene4	Not Significant	N
+Gene5	Not Significant	N
+Gene6	Not Significant	N
+Gene7	Unique-X	Y
+Gene8	Not Significant	N
+Gene9	Not Significant	N
+Gene10	Unique-Y	Y
+Gene11	Not Significant	N
+Gene12	Not Significant	N
+Gene13	Not Significant	N
+Gene14	Not Significant	N
+Gene15	Not Significant	N
+Gene16	Unique-X	Y
+Gene17	Not Significant	N
+Gene18	Not Significant	N
+Gene19	Not Significant	N
+Gene20	Not Significant	N
+Gene21	Unique-Y	Y
+Gene22	Common	Y
+Gene23	Not Significant	N
+Gene24	Not Significant	N
+Gene25	Not Significant	N
+Gene26	Not Significant	N
+Gene27	Not Significant	N
+Gene28	Not Significant	N
+Gene29	Not Significant	N
+Gene30	Not Significant	N
+Gene31	Unique-X	Y
+Gene32	Unique-Y	Y
+Gene33	Not Significant	N
+Gene34	Not Significant	N
+Gene35	Unique-Y	Y
+Gene36	Not Significant	N
+Gene37	Not Significant	N
+Gene38	Not Significant	N
+Gene39	Not Significant	N
+Gene40	Not Significant	N
+Gene41	Not Significant	N
+Gene42	Not Significant	N
+Gene43	Not Significant	N
+Gene44	Not Significant	N
+Gene45	Not Significant	N
+Gene46	Not Significant	N
+Gene47	Common	Y
+Gene48	Common	Y
+Gene49	Not Significant	N
+Gene50	Not Significant	N
+Gene51	Not Significant	N
+Gene52	Not Significant	N
+Gene53	Not Significant	N
+Gene54	Not Significant	N
+Gene55	Not Significant	N
+Gene56	Not Significant	N
+Gene57	Not Significant	N
+Gene58	Not Significant	N
+Gene59	Not Significant	N
+Gene60	Not Significant	N
+Gene61	Not Significant	N
+Gene62	Not Significant	N
+Gene63	Not Significant	N
+Gene64	Not Significant	N
+Gene65	Not Significant	N
+Gene66	Not Significant	N
+Gene67	Unique-Y	Y
+Gene68	Not Significant	N
+Gene69	Not Significant	N
+Gene70	Not Significant	N
+Gene71	Not Significant	N
+Gene72	Not Significant	N
+Gene73	Not Significant	N
+Gene74	Not Significant	N
+Gene75	Not Significant	N
+Gene76	Not Significant	N
+Gene77	Not Significant	N
+Gene78	Unique-X	Y
+Gene79	Not Significant	N
+Gene80	Not Significant	N
+Gene81	Not Significant	N
+Gene82	Not Significant	N
+Gene83	Not Significant	N
+Gene84	Not Significant	N
+Gene85	Not Significant	N
+Gene86	Not Significant	N
+Gene87	Not Significant	N
+Gene88	Not Significant	N
+Gene89	Not Significant	N
+Gene90	Not Significant	N
+Gene91	Not Significant	N
+Gene92	Not Significant	N
+Gene93	Not Significant	N
+Gene94	Unique-X	Y
+Gene95	Not Significant	N
+Gene96	Not Significant	N
+Gene97	Not Significant	N
+Gene98	Not Significant	N
+Gene99	Not Significant	N
+Gene100	Not Significant	N
+Gene101	Not Significant	N
+Gene102	Not Significant	N
+Gene103	Not Significant	N
+Gene104	Not Significant	N
+Gene105	Not Significant	N
+Gene106	Not Significant	N
+Gene107	Not Significant	N
+Gene108	Not Significant	N
+Gene109	Not Significant	N
+Gene110	Not Significant	N
+Gene111	Unique-X	Y
+Gene112	Not Significant	N
+Gene113	Not Significant	N
+Gene114	Common	Y
+Gene115	Not Significant	N
+Gene116	Not Significant	N
+Gene117	Not Significant	N
+Gene118	Unique-Y	Y
+Gene119	Unique-X	Y
+Gene120	Not Significant	N
+Gene121	Not Significant	N
+Gene122	Not Significant	N
+Gene123	Not Significant	N
+Gene124	Unique-Y	Y
+Gene125	Not Significant	N
+Gene126	Unique-X	Y
+Gene127	Not Significant	N
+Gene128	Not Significant	N
+Gene129	Not Significant	N
+Gene130	Common	Y
+Gene131	Not Significant	N
+Gene132	Common	Y
+Gene133	Unique-Y	Y
+Gene134	Not Significant	N
+Gene135	Not Significant	N
+Gene136	Not Significant	N
+Gene137	Not Significant	N
+Gene138	Not Significant	N
+Gene139	Not Significant	N
+Gene140	Unique-X	Y
+Gene141	Not Significant	N
+Gene142	Not Significant	N
+Gene143	Unique-Y	Y
+Gene144	Not Significant	N
+Gene145	Not Significant	N
+Gene146	Not Significant	N
+Gene147	Not Significant	N
+Gene148	Not Significant	N
+Gene149	Not Significant	N
+Gene150	Not Significant	N
+Gene151	Not Significant	N
+Gene152	Unique-X	Y
+Gene153	Not Significant	N
+Gene154	Not Significant	N
+Gene155	Not Significant	N
+Gene156	Not Significant	N
+Gene157	Unique-X	Y
+Gene158	Not Significant	N
+Gene159	Unique-X	Y
+Gene160	Unique-X	Y
+Gene161	Not Significant	N
+Gene162	Not Significant	N
+Gene163	Not Significant	N
+Gene164	Not Significant	N
+Gene165	Not Significant	N
+Gene166	Not Significant	N
+Gene167	Unique-Y	Y
+Gene168	Common	Y
+Gene169	Not Significant	N
+Gene170	Not Significant	N
+Gene171	Not Significant	N
+Gene172	Not Significant	N
+Gene173	Unique-Y	Y
+Gene174	Not Significant	N
+Gene175	Not Significant	N
+Gene176	Not Significant	N
+Gene177	Not Significant	N
+Gene178	Unique-Y	Y
+Gene179	Common	Y
+Gene180	Not Significant	N
+Gene181	Not Significant	N
+Gene182	Not Significant	N
+Gene183	Not Significant	N
+Gene184	Not Significant	N
+Gene185	Not Significant	N
+Gene186	Unique-X	Y
+Gene187	Common	Y
+Gene188	Common	Y
+Gene189	Not Significant	N
+Gene190	Not Significant	N
+Gene191	Not Significant	N
+Gene192	Not Significant	N
+Gene193	Not Significant	N
+Gene194	Not Significant	N
+Gene195	Not Significant	N
+Gene196	Not Significant	N
+Gene197	Unique-X	Y
+Gene198	Not Significant	N
+Gene199	Not Significant	N
+Gene200	Not Significant	N
+Gene201	Not Significant	N
+Gene202	Not Significant	N
+Gene203	Not Significant	N
+Gene204	Common	Y
+Gene205	Not Significant	N
+Gene206	Not Significant	N
+Gene207	Unique-Y	Y
+Gene208	Not Significant	N
+Gene209	Not Significant	N
+Gene210	Not Significant	N
+Gene211	Not Significant	N
+Gene212	Not Significant	N
+Gene213	Not Significant	N
+Gene214	Common	Y
+Gene215	Not Significant	N
+Gene216	Not Significant	N
+Gene217	Not Significant	N
+Gene218	Unique-Y	Y
+Gene219	Not Significant	N
+Gene220	Not Significant	N
+Gene221	Not Significant	N
+Gene222	Not Significant	N
+Gene223	Not Significant	N
+Gene224	Not Significant	N
+Gene225	Unique-Y	Y
+Gene226	Not Significant	N
+Gene227	Not Significant	N
+Gene228	Not Significant	N
+Gene229	Unique-Y	Y
+Gene230	Not Significant	N
+Gene231	Not Significant	N
+Gene232	Not Significant	N
+Gene233	Not Significant	N
+Gene234	Unique-Y	Y
+Gene235	Not Significant	N
+Gene236	Not Significant	N
+Gene237	Common	Y
+Gene238	Not Significant	N
+Gene239	Not Significant	N
+Gene240	Not Significant	N
+Gene241	Not Significant	N
+Gene242	Not Significant	N
+Gene243	Not Significant	N
+Gene244	Unique-Y	Y
+Gene245	Unique-X	Y
+Gene246	Not Significant	N
+Gene247	Not Significant	N
+Gene248	Not Significant	N
+Gene249	Not Significant	N
+Gene250	Unique-Y	Y
+Gene251	Not Significant	N
+Gene252	Unique-X	Y
+Gene253	Not Significant	N
+Gene254	Not Significant	N
+Gene255	Unique-X	Y
+Gene256	Not Significant	N
+Gene257	Unique-X	Y
+Gene258	Not Significant	N
+Gene259	Not Significant	N
+Gene260	Not Significant	N
+Gene261	Not Significant	N
+Gene262	Not Significant	N
+Gene263	Not Significant	N
+Gene264	Not Significant	N
+Gene265	Not Significant	N
+Gene266	Not Significant	N
+Gene267	Not Significant	N
+Gene268	Not Significant	N
+Gene269	Common	Y
+Gene270	Not Significant	N
+Gene271	Unique-Y	Y
+Gene272	Unique-Y	Y
+Gene273	Unique-X	Y
+Gene274	Not Significant	N
+Gene275	Not Significant	N
+Gene276	Not Significant	N
+Gene277	Not Significant	N
+Gene278	Not Significant	N
+Gene279	Common	Y
+Gene280	Not Significant	N
+Gene281	Not Significant	N
+Gene282	Not Significant	N
+Gene283	Not Significant	N
+Gene284	Not Significant	N
+Gene285	Not Significant	N
+Gene286	Unique-Y	Y
+Gene287	Unique-Y	Y
+Gene288	Not Significant	N
+Gene289	Not Significant	N
+Gene290	Not Significant	N
+Gene291	Not Significant	N
+Gene292	Not Significant	N
+Gene293	Not Significant	N
+Gene294	Not Significant	N
+Gene295	Not Significant	N
+Gene296	Not Significant	N
+Gene297	Unique-X	Y
+Gene298	Unique-X	Y
+Gene299	Not Significant	N
+Gene300	Not Significant	N
+Gene301	Common	Y
+Gene302	Not Significant	N
+Gene303	Not Significant	N
+Gene304	Not Significant	N
+Gene305	Not Significant	N
+Gene306	Not Significant	N
+Gene307	Not Significant	N
+Gene308	Not Significant	N
+Gene309	Not Significant	N
+Gene310	Not Significant	N
+Gene311	Not Significant	N
+Gene312	Not Significant	N
+Gene313	Unique-Y	Y
+Gene314	Not Significant	N
+Gene315	Not Significant	N
+Gene316	Not Significant	N
+Gene317	Not Significant	N
+Gene318	Not Significant	N
+Gene319	Not Significant	N
+Gene320	Not Significant	N
+Gene321	Not Significant	N
+Gene322	Not Significant	N
+Gene323	Not Significant	N
+Gene324	Not Significant	N
+Gene325	Not Significant	N
+Gene326	Not Significant	N
+Gene327	Not Significant	N
+Gene328	Not Significant	N
+Gene329	Unique-Y	Y
+Gene330	Not Significant	N
+Gene331	Not Significant	N
+Gene332	Not Significant	N
+Gene333	Unique-Y	Y
+Gene334	Not Significant	N
+Gene335	Common	Y
+Gene336	Unique-X	Y
+Gene337	Not Significant	N
+Gene338	Unique-Y	Y
+Gene339	Not Significant	N
+Gene340	Unique-X	Y
+Gene341	Not Significant	N
+Gene342	Unique-X	Y
+Gene343	Not Significant	N
+Gene344	Not Significant	N
+Gene345	Not Significant	N
+Gene346	Not Significant	N
+Gene347	Not Significant	N
+Gene348	Not Significant	N
+Gene349	Not Significant	N
+Gene350	Not Significant	N
+Gene351	Unique-Y	Y
+Gene352	Unique-Y	Y
+Gene353	Unique-Y	Y
+Gene354	Not Significant	N
+Gene355	Not Significant	N
+Gene356	Unique-Y	Y
+Gene357	Not Significant	N
+Gene358	Not Significant	N
+Gene359	Common	Y
+Gene360	Not Significant	N
+Gene361	Not Significant	N
+Gene362	Not Significant	N
+Gene363	Not Significant	N
+Gene364	Not Significant	N
+Gene365	Not Significant	N
+Gene366	Not Significant	N
+Gene367	Not Significant	N
+Gene368	Not Significant	N
+Gene369	Not Significant	N
+Gene370	Not Significant	N
+Gene371	Unique-X	Y
+Gene372	Not Significant	N
+Gene373	Not Significant	N
+Gene374	Not Significant	N
+Gene375	Not Significant	N
+Gene376	Not Significant	N
+Gene377	Not Significant	N
+Gene378	Unique-Y	Y
+Gene379	Not Significant	N
+Gene380	Not Significant	N
+Gene381	Unique-Y	Y
+Gene382	Common	Y
+Gene383	Not Significant	N
+Gene384	Not Significant	N
+Gene385	Not Significant	N
+Gene386	Not Significant	N
+Gene387	Not Significant	N
+Gene388	Not Significant	N
+Gene389	Not Significant	N
+Gene390	Not Significant	N
+Gene391	Not Significant	N
+Gene392	Unique-Y	Y
+Gene393	Not Significant	N
+Gene394	Not Significant	N
+Gene395	Not Significant	N
+Gene396	Unique-Y	Y
+Gene397	Not Significant	N
+Gene398	Not Significant	N
+Gene399	Not Significant	N
+Gene400	Not Significant	N
+Gene401	Not Significant	N
+Gene402	Not Significant	N
+Gene403	Not Significant	N
+Gene404	Unique-Y	Y
+Gene405	Not Significant	N
+Gene406	Not Significant	N
+Gene407	Not Significant	N
+Gene408	Not Significant	N
+Gene409	Not Significant	N
+Gene410	Not Significant	N
+Gene411	Not Significant	N
+Gene412	Not Significant	N
+Gene413	Not Significant	N
+Gene414	Not Significant	N
+Gene415	Not Significant	N
+Gene416	Not Significant	N
+Gene417	Unique-Y	Y
+Gene418	Not Significant	N
+Gene419	Not Significant	N
+Gene420	Not Significant	N
+Gene421	Not Significant	N
+Gene422	Not Significant	N
+Gene423	Not Significant	N
+Gene424	Not Significant	N
+Gene425	Unique-X	Y
+Gene426	Not Significant	N
+Gene427	Not Significant	N
+Gene428	Unique-X	Y
+Gene429	Not Significant	N
+Gene430	Not Significant	N
+Gene431	Not Significant	N
+Gene432	Not Significant	N
+Gene433	Not Significant	N
+Gene434	Not Significant	N
+Gene435	Not Significant	N
+Gene436	Unique-Y	Y
+Gene437	Not Significant	N
+Gene438	Not Significant	N
+Gene439	Not Significant	N
+Gene440	Unique-X	Y
+Gene441	Not Significant	N
+Gene442	Not Significant	N
+Gene443	Not Significant	N
+Gene444	Not Significant	N
+Gene445	Unique-X	Y
+Gene446	Not Significant	N
+Gene447	Unique-Y	Y
+Gene448	Unique-X	Y
+Gene449	Unique-Y	Y
+Gene450	Not Significant	N
+Gene451	Not Significant	N
+Gene452	Not Significant	N
+Gene453	Not Significant	N
+Gene454	Not Significant	N
+Gene455	Not Significant	N
+Gene456	Not Significant	N
+Gene457	Not Significant	N
+Gene458	Not Significant	N
+Gene459	Not Significant	N
+Gene460	Not Significant	N
+Gene461	Not Significant	N
+Gene462	Not Significant	N
+Gene463	Not Significant	N
+Gene464	Unique-X	Y
+Gene465	Not Significant	N
+Gene466	Not Significant	N
+Gene467	Not Significant	N
+Gene468	Not Significant	N
+Gene469	Unique-Y	Y
+Gene470	Not Significant	N
+Gene471	Unique-Y	Y
+Gene472	Not Significant	N
+Gene473	Not Significant	N
+Gene474	Unique-X	Y
+Gene475	Not Significant	N
+Gene476	Not Significant	N
+Gene477	Not Significant	N
+Gene478	Not Significant	N
+Gene479	Not Significant	N
+Gene480	Not Significant	N
+Gene481	Not Significant	N
+Gene482	Not Significant	N
+Gene483	Not Significant	N
+Gene484	Not Significant	N
+Gene485	Not Significant	N
+Gene486	Unique-Y	Y
+Gene487	Not Significant	N
+Gene488	Not Significant	N
+Gene489	Not Significant	N
+Gene490	Not Significant	N
+Gene491	Not Significant	N
+Gene492	Not Significant	N
+Gene493	Not Significant	N
+Gene494	Not Significant	N
+Gene495	Not Significant	N
+Gene496	Not Significant	N
+Gene497	Not Significant	N
+Gene498	Unique-Y	Y
+Gene499	Unique-X	Y
+Gene500	Unique-Y	Y
+Gene501	Not Significant	N
+Gene502	Unique-Y	Y
+Gene503	Not Significant	N
+Gene504	Not Significant	N
+Gene505	Unique-Y	Y
+Gene506	Not Significant	N
+Gene507	Unique-X	Y
+Gene508	Unique-X	Y
+Gene509	Not Significant	N
+Gene510	Not Significant	N
+Gene511	Not Significant	N
+Gene512	Not Significant	N
+Gene513	Unique-Y	Y
+Gene514	Not Significant	N
+Gene515	Not Significant	N
+Gene516	Not Significant	N
+Gene517	Not Significant	N
+Gene518	Not Significant	N
+Gene519	Not Significant	N
+Gene520	Unique-X	Y
+Gene521	Not Significant	N
+Gene522	Not Significant	N
+Gene523	Not Significant	N
+Gene524	Not Significant	N
+Gene525	Common	Y
+Gene526	Not Significant	N
+Gene527	Not Significant	N
+Gene528	Unique-Y	Y
+Gene529	Not Significant	N
+Gene530	Not Significant	N
+Gene531	Not Significant	N
+Gene532	Unique-Y	Y
+Gene533	Not Significant	N
+Gene534	Not Significant	N
+Gene535	Not Significant	N
+Gene536	Not Significant	N
+Gene537	Not Significant	N
+Gene538	Unique-Y	Y
+Gene539	Unique-Y	Y
+Gene540	Not Significant	N
+Gene541	Unique-X	Y
+Gene542	Not Significant	N
+Gene543	Not Significant	N
+Gene544	Not Significant	N
+Gene545	Not Significant	N
+Gene546	Not Significant	N
+Gene547	Not Significant	N
+Gene548	Not Significant	N
+Gene549	Common	Y
+Gene550	Unique-Y	Y
+Gene551	Not Significant	N
+Gene552	Not Significant	N
+Gene553	Not Significant	N
+Gene554	Not Significant	N
+Gene555	Not Significant	N
+Gene556	Not Significant	N
+Gene557	Not Significant	N
+Gene558	Not Significant	N
+Gene559	Not Significant	N
+Gene560	Not Significant	N
+Gene561	Not Significant	N
+Gene562	Not Significant	N
+Gene563	Not Significant	N
+Gene564	Unique-Y	Y
+Gene565	Not Significant	N
+Gene566	Not Significant	N
+Gene567	Not Significant	N
+Gene568	Not Significant	N
+Gene569	Not Significant	N
+Gene570	Not Significant	N
+Gene571	Not Significant	N
+Gene572	Not Significant	N
+Gene573	Not Significant	N
+Gene574	Not Significant	N
+Gene575	Not Significant	N
+Gene576	Common	Y
+Gene577	Unique-Y	Y
+Gene578	Unique-X	Y
+Gene579	Not Significant	N
+Gene580	Not Significant	N
+Gene581	Unique-Y	Y
+Gene582	Not Significant	N
+Gene583	Not Significant	N
+Gene584	Common	Y
+Gene585	Not Significant	N
+Gene586	Not Significant	N
+Gene587	Not Significant	N
+Gene588	Not Significant	N
+Gene589	Not Significant	N
+Gene590	Not Significant	N
+Gene591	Not Significant	N
+Gene592	Common	Y
+Gene593	Not Significant	N
+Gene594	Common	Y
+Gene595	Not Significant	N
+Gene596	Not Significant	N
+Gene597	Not Significant	N
+Gene598	Not Significant	N
+Gene599	Not Significant	N
+Gene600	Not Significant	N
+Gene601	Not Significant	N
+Gene602	Unique-Y	Y
+Gene603	Not Significant	N
+Gene604	Unique-Y	Y
+Gene605	Unique-Y	Y
+Gene606	Not Significant	N
+Gene607	Not Significant	N
+Gene608	Not Significant	N
+Gene609	Not Significant	N
+Gene610	Not Significant	N
+Gene611	Not Significant	N
+Gene612	Unique-Y	Y
+Gene613	Unique-Y	Y
+Gene614	Unique-Y	Y
+Gene615	Not Significant	N
+Gene616	Common	Y
+Gene617	Unique-Y	Y
+Gene618	Not Significant	N
+Gene619	Not Significant	N
+Gene620	Not Significant	N
+Gene621	Unique-Y	Y
+Gene622	Not Significant	N
+Gene623	Not Significant	N
+Gene624	Not Significant	N
+Gene625	Unique-Y	Y
+Gene626	Not Significant	N
+Gene627	Unique-Y	Y
+Gene628	Unique-X	Y
+Gene629	Not Significant	N
+Gene630	Not Significant	N
+Gene631	Not Significant	N
+Gene632	Not Significant	N
+Gene633	Not Significant	N
+Gene634	Not Significant	N
+Gene635	Not Significant	N
+Gene636	Not Significant	N
+Gene637	Not Significant	N
+Gene638	Not Significant	N
+Gene639	Not Significant	N
+Gene640	Not Significant	N
+Gene641	Not Significant	N
+Gene642	Not Significant	N
+Gene643	Not Significant	N
+Gene644	Not Significant	N
+Gene645	Not Significant	N
+Gene646	Unique-Y	Y
+Gene647	Not Significant	N
+Gene648	Not Significant	N
+Gene649	Not Significant	N
+Gene650	Not Significant	N
+Gene651	Not Significant	N
+Gene652	Not Significant	N
+Gene653	Not Significant	N
+Gene654	Not Significant	N
+Gene655	Not Significant	N
+Gene656	Unique-Y	Y
+Gene657	Unique-X	Y
+Gene658	Unique-X	Y
+Gene659	Not Significant	N
+Gene660	Unique-X	Y
+Gene661	Not Significant	N
+Gene662	Not Significant	N
+Gene663	Not Significant	N
+Gene664	Not Significant	N
+Gene665	Not Significant	N
+Gene666	Not Significant	N
+Gene667	Not Significant	N
+Gene668	Not Significant	N
+Gene669	Not Significant	N
+Gene670	Not Significant	N
+Gene671	Not Significant	N
+Gene672	Not Significant	N
+Gene673	Not Significant	N
+Gene674	Not Significant	N
+Gene675	Not Significant	N
+Gene676	Not Significant	N
+Gene677	Unique-X	Y
+Gene678	Unique-X	Y
+Gene679	Not Significant	N
+Gene680	Not Significant	N
+Gene681	Not Significant	N
+Gene682	Not Significant	N
+Gene683	Not Significant	N
+Gene684	Not Significant	N
+Gene685	Not Significant	N
+Gene686	Not Significant	N
+Gene687	Not Significant	N
+Gene688	Common	Y
+Gene689	Not Significant	N
+Gene690	Not Significant	N
+Gene691	Not Significant	N
+Gene692	Not Significant	N
+Gene693	Not Significant	N
+Gene694	Not Significant	N
+Gene695	Not Significant	N
+Gene696	Not Significant	N
+Gene697	Not Significant	N
+Gene698	Not Significant	N
+Gene699	Not Significant	N
+Gene700	Not Significant	N
+Gene701	Not Significant	N
+Gene702	Not Significant	N
+Gene703	Unique-X	Y
+Gene704	Not Significant	N
+Gene705	Not Significant	N
+Gene706	Not Significant	N
+Gene707	Not Significant	N
+Gene708	Unique-X	Y
+Gene709	Not Significant	N
+Gene710	Not Significant	N
+Gene711	Unique-Y	Y
+Gene712	Not Significant	N
+Gene713	Not Significant	N
+Gene714	Not Significant	N
+Gene715	Unique-X	Y
+Gene716	Not Significant	N
+Gene717	Not Significant	N
+Gene718	Unique-X	Y
+Gene719	Not Significant	N
+Gene720	Not Significant	N
+Gene721	Not Significant	N
+Gene722	Not Significant	N
+Gene723	Not Significant	N
+Gene724	Unique-X	Y
+Gene725	Not Significant	N
+Gene726	Not Significant	N
+Gene727	Unique-Y	Y
+Gene728	Not Significant	N
+Gene729	Not Significant	N
+Gene730	Not Significant	N
+Gene731	Unique-X	Y
+Gene732	Not Significant	N
+Gene733	Unique-X	Y
+Gene734	Not Significant	N
+Gene735	Common	Y
+Gene736	Not Significant	N
+Gene737	Not Significant	N
+Gene738	Not Significant	N
+Gene739	Not Significant	N
+Gene740	Not Significant	N
+Gene741	Not Significant	N
+Gene742	Unique-Y	Y
+Gene743	Not Significant	N
+Gene744	Common	Y
+Gene745	Not Significant	N
+Gene746	Not Significant	N
+Gene747	Not Significant	N
+Gene748	Not Significant	N
+Gene749	Not Significant	N
+Gene750	Not Significant	N
+Gene751	Not Significant	N
+Gene752	Not Significant	N
+Gene753	Not Significant	N
+Gene754	Not Significant	N
+Gene755	Unique-X	Y
+Gene756	Not Significant	N
+Gene757	Not Significant	N
+Gene758	Not Significant	N
+Gene759	Not Significant	N
+Gene760	Not Significant	N
+Gene761	Common	Y
+Gene762	Not Significant	N
+Gene763	Not Significant	N
+Gene764	Unique-Y	Y
+Gene765	Not Significant	N
+Gene766	Not Significant	N
+Gene767	Not Significant	N
+Gene768	Not Significant	N
+Gene769	Not Significant	N
+Gene770	Not Significant	N
+Gene771	Not Significant	N
+Gene772	Not Significant	N
+Gene773	Not Significant	N
+Gene774	Unique-X	Y
+Gene775	Not Significant	N
+Gene776	Not Significant	N
+Gene777	Not Significant	N
+Gene778	Common	Y
+Gene779	Not Significant	N
+Gene780	Unique-Y	Y
+Gene781	Unique-Y	Y
+Gene782	Not Significant	N
+Gene783	Unique-Y	Y
+Gene784	Not Significant	N
+Gene785	Not Significant	N
+Gene786	Not Significant	N
+Gene787	Unique-Y	Y
+Gene788	Unique-Y	Y
+Gene789	Not Significant	N
+Gene790	Not Significant	N
+Gene791	Unique-X	Y
+Gene792	Not Significant	N
+Gene793	Not Significant	N
+Gene794	Not Significant	N
+Gene795	Common	Y
+Gene796	Not Significant	N
+Gene797	Not Significant	N
+Gene798	Not Significant	N
+Gene799	Not Significant	N
+Gene800	Not Significant	N
+Gene801	Not Significant	N
+Gene802	Not Significant	N
+Gene803	Unique-Y	Y
+Gene804	Not Significant	N
+Gene805	Not Significant	N
+Gene806	Not Significant	N
+Gene807	Unique-Y	Y
+Gene808	Unique-X	Y
+Gene809	Not Significant	N
+Gene810	Not Significant	N
+Gene811	Not Significant	N
+Gene812	Not Significant	N
+Gene813	Not Significant	N
+Gene814	Not Significant	N
+Gene815	Not Significant	N
+Gene816	Not Significant	N
+Gene817	Unique-X	Y
+Gene818	Unique-Y	Y
+Gene819	Not Significant	N
+Gene820	Not Significant	N
+Gene821	Not Significant	N
+Gene822	Not Significant	N
+Gene823	Not Significant	N
+Gene824	Not Significant	N
+Gene825	Not Significant	N
+Gene826	Unique-Y	Y
+Gene827	Not Significant	N
+Gene828	Not Significant	N
+Gene829	Not Significant	N
+Gene830	Not Significant	N
+Gene831	Not Significant	N
+Gene832	Not Significant	N
+Gene833	Not Significant	N
+Gene834	Not Significant	N
+Gene835	Unique-Y	Y
+Gene836	Not Significant	N
+Gene837	Not Significant	N
+Gene838	Not Significant	N
+Gene839	Not Significant	N
+Gene840	Not Significant	N
+Gene841	Not Significant	N
+Gene842	Not Significant	N
+Gene843	Not Significant	N
+Gene844	Not Significant	N
+Gene845	Not Significant	N
+Gene846	Not Significant	N
+Gene847	Not Significant	N
+Gene848	Not Significant	N
+Gene849	Not Significant	N
+Gene850	Common	Y
+Gene851	Not Significant	N
+Gene852	Not Significant	N
+Gene853	Not Significant	N
+Gene854	Not Significant	N
+Gene855	Not Significant	N
+Gene856	Not Significant	N
+Gene857	Not Significant	N
+Gene858	Not Significant	N
+Gene859	Not Significant	N
+Gene860	Not Significant	N
+Gene861	Not Significant	N
+Gene862	Unique-Y	Y
+Gene863	Common	Y
+Gene864	Not Significant	N
+Gene865	Not Significant	N
+Gene866	Not Significant	N
+Gene867	Not Significant	N
+Gene868	Not Significant	N
+Gene869	Not Significant	N
+Gene870	Not Significant	N
+Gene871	Not Significant	N
+Gene872	Not Significant	N
+Gene873	Not Significant	N
+Gene874	Not Significant	N
+Gene875	Not Significant	N
+Gene876	Not Significant	N
+Gene877	Not Significant	N
+Gene878	Not Significant	N
+Gene879	Not Significant	N
+Gene880	Not Significant	N
+Gene881	Not Significant	N
+Gene882	Unique-Y	Y
+Gene883	Not Significant	N
+Gene884	Not Significant	N
+Gene885	Not Significant	N
+Gene886	Unique-Y	Y
+Gene887	Not Significant	N
+Gene888	Not Significant	N
+Gene889	Not Significant	N
+Gene890	Not Significant	N
+Gene891	Not Significant	N
+Gene892	Not Significant	N
+Gene893	Not Significant	N
+Gene894	Not Significant	N
+Gene895	Not Significant	N
+Gene896	Unique-Y	Y
+Gene897	Not Significant	N
+Gene898	Not Significant	N
+Gene899	Not Significant	N
+Gene900	Common	Y
+Gene901	Not Significant	N
+Gene902	Unique-Y	Y
+Gene903	Unique-X	Y
+Gene904	Common	Y
+Gene905	Not Significant	N
+Gene906	Not Significant	N
+Gene907	Not Significant	N
+Gene908	Not Significant	N
+Gene909	Not Significant	N
+Gene910	Unique-Y	Y
+Gene911	Not Significant	N
+Gene912	Not Significant	N
+Gene913	Not Significant	N
+Gene914	Not Significant	N
+Gene915	Not Significant	N
+Gene916	Not Significant	N
+Gene917	Not Significant	N
+Gene918	Not Significant	N
+Gene919	Not Significant	N
+Gene920	Not Significant	N
+Gene921	Not Significant	N
+Gene922	Unique-Y	Y
+Gene923	Not Significant	N
+Gene924	Not Significant	N
+Gene925	Not Significant	N
+Gene926	Not Significant	N
+Gene927	Not Significant	N
+Gene928	Not Significant	N
+Gene929	Common	Y
+Gene930	Common	Y
+Gene931	Not Significant	N
+Gene932	Unique-X	Y
+Gene933	Not Significant	N
+Gene934	Not Significant	N
+Gene935	Not Significant	N
+Gene936	Not Significant	N
+Gene937	Not Significant	N
+Gene938	Not Significant	N
+Gene939	Unique-X	Y
+Gene940	Not Significant	N
+Gene941	Not Significant	N
+Gene942	Unique-Y	Y
+Gene943	Unique-X	Y
+Gene944	Not Significant	N
+Gene945	Not Significant	N
+Gene946	Unique-Y	Y
+Gene947	Not Significant	N
+Gene948	Not Significant	N
+Gene949	Not Significant	N
+Gene950	Not Significant	N
+Gene951	Not Significant	N
+Gene952	Unique-X	Y
+Gene953	Not Significant	N
+Gene954	Not Significant	N
+Gene955	Common	Y
+Gene956	Not Significant	N
+Gene957	Common	Y
+Gene958	Not Significant	N
+Gene959	Not Significant	N
+Gene960	Not Significant	N
+Gene961	Not Significant	N
+Gene962	Not Significant	N
+Gene963	Not Significant	N
+Gene964	Not Significant	N
+Gene965	Not Significant	N
+Gene966	Common	Y
+Gene967	Not Significant	N
+Gene968	Not Significant	N
+Gene969	Not Significant	N
+Gene970	Not Significant	N
+Gene971	Common	Y
+Gene972	Not Significant	N
+Gene973	Unique-Y	Y
+Gene974	Not Significant	N
+Gene975	Not Significant	N
+Gene976	Unique-X	Y
+Gene977	Not Significant	N
+Gene978	Not Significant	N
+Gene979	Not Significant	N
+Gene980	Not Significant	N
+Gene981	Not Significant	N
+Gene982	Not Significant	N
+Gene983	Common	Y
+Gene984	Common	Y
+Gene985	Not Significant	N
+Gene986	Not Significant	N
+Gene987	Not Significant	N
+Gene988	Not Significant	N
+Gene989	Not Significant	N
+Gene990	Not Significant	N
+Gene991	Not Significant	N
+Gene992	Not Significant	N
+Gene993	Not Significant	N
+Gene994	Unique-Y	Y
+Gene995	Unique-X	Y
+Gene996	Not Significant	N
+Gene997	Not Significant	N
+Gene998	Not Significant	N
+Gene999	Common	Y
+Gene1000	Unique-Y	Y

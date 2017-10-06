@@ -1,0 +1,13 @@
+	Factor1	Subject
+Sample1	Lev1	1
+Sample2	Lev1	2
+Sample3	Lev1	3
+Sample4	Lev1	4
+Sample5	Lev1	5
+Sample6	Lev1	6
+Sample7	Lev2	1
+Sample8	Lev2	2
+Sample9	Lev2	3
+Sample10	Lev2	4
+Sample11	Lev2	5
+Sample12	Lev2	6

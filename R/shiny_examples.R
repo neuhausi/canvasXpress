@@ -1,8 +1,7 @@
 #' Create Shiny Example Application
 #'
 #' This function runs one of the available shiny example applications.  To see the 
-#' list of available example applications run the function with a missing example 
-#' value
+#' list of available example applications run the function with no inputs
 #' 
 #' @param example character name of a valid example application.
 #'
@@ -31,6 +30,5 @@ cxShinyExample <- function(example = NULL) {
     
     # find and launch the app
     appDir <- system.file("shiny-examples", example, package = "canvasXpress")
-print(appDir)
     shiny::runApp(appDir, display.mode = "showcase")
 }

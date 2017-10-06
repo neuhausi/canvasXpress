@@ -1,0 +1,6 @@
+	Sample1	Sample2	Sample3	Sample4	Sample5	Sample6	Sample7	Sample8	Sample9	Sample10
+Variable1	A	A	B	B	C	C	D	D	E	E
+Variable2	E	E	D	D	C	C	B	B	A	A
+Variable3	A	A	B	B	C	C	D	D	E	E
+Variable4	E	E	D	D	C	C	B	B	A	A
+Variable5	A	A	B	B	C	C	D	D	E	E

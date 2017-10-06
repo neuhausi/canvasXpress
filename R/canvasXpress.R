@@ -4,200 +4,246 @@
 #' 
 #' CanvasXpress is a standalone JavaScript library for reproducible research
 #' with complete tracking of data and end-user modifications stored in a single 
-#' PNG image that can be played back.
+#' PNG image that can be played back for an extensive set of visualizations.
 #'
 #'
 #' @section More Information:
 #' \url{http://canvasxpress.org}  
 #' 
-#' \code{browseVignettes(package = 'canvasXpress')}
+#' \code{browseVignettes(package = "canvasXpress")}
 #'
 #' @docType package
 #' @aliases canvasXpress-package
 "_PACKAGE"
+
 
 #' canvasXpress
 #'
 #' Custom HTML widget creation function based on widget YAML and JavaScript for 
 #' use in any html-compatible context
 #'  
-#' @param data canvasXpress data frame
-#' \emph{(rows are referred to as variables; columns are referred to as samples)}
-#' @param decorData decoration/annotation data for the chart
+#' 
+#' @param data data.frame-, matrix-, or list- classed data object
 #' @param smpAnnot additional data that applies to samples (columns)
 #' @param varAnnot additional data that applies to variables (rows)
-#' @param nodeData network visualization data nodes
-#' @param edgeData network visualization data edges
-#' @param vennData venn visualization data
-#' @param vennLegend venn visualization legend
-#' @param genomeData genome visualization data
-#' @param newickData dendrogram data in Newick format
-#' @param graphType type of graph to be plotted - default = 'Scatter2D'
+#' @param graphType type of graph to be plotted - default = "Scatter2D"
 #' @param events user-defined events (e.g. mousemove, mouseout, click and dblclick)
 #' @param afterRender event triggered after rendering
-#' @param width plot width (valid CSS units) - default = 600px
-#' @param height plot height (valid CSS units) - default = 400px
 #' @param pretty print tagged code (json/html) nicely - default = FALSE
 #' @param digits display digits - default = 4
-#' @param ... additional configuration options passed to canvasXpress
-#' @param boxplotGroupData character label for grouped boxplot data.  If there is a 
-#' non-null value and graphType is 'Boxplot' pre-calculated boxplot data is used from
-#' the variables (iqr1, iqr3, qtl1, qtl3, median) and optionally the variable (outliers)
-#' in the data parameter.  Note: Boxplot outliers should be specified as 
-#' comma-separated string values in the outliers variable.
-#' 
-#' @return htmlwidget object
+#' @param width plot width (valid CSS units) - default = 600px
+#' @param height plot height (valid CSS units) - default = 400px
+#' @param ... additional parameters passed to canvasXpress
+#'
+#' @return htmlwidgets object
 #'
 #' @export
-canvasXpress <- function(data = NULL,       decorData = NULL, 
-                         smpAnnot = NULL,   varAnnot = NULL, 
-                         nodeData = NULL,   edgeData = NULL, 
-                         vennData = NULL,   vennLegend = NULL, 
-                         genomeData = NULL, newickData = NULL,
-                         graphType ='Scatter2D', events = NULL, afterRender=NULL, 
-                         width  = 600, height=400, pretty = FALSE, digits=4, ..., 
-                         boxplotGroupData = NULL) {
+canvasXpress <- function(data = NULL,
+                         smpAnnot = NULL,
+                         varAnnot = NULL,
+                         #config items
+                         graphType = "Scatter2D", 
+                         # straight-through
+                         events = NULL, 
+                         afterRender=NULL,
+                         #htmlwidgets options
+                         pretty = FALSE,
+                         digits = 4,
+                         width  = 600, 
+                         height = 400,
+                         ... ) {
     
-    assertCanvasXpressData(graphType, data, 
-                           nodeData, edgeData, 
-                           vennData, vennLegend, 
-                           genomeData, boxplotGroupData)
-    assertCanvasXpressDataFrame(graphType, data, 
-                                smpAnnot, varAnnot, 
-                                nodeData, edgeData, 
-                                vennData, vennLegend, 
-                                genomeData)
-    dataframe = "columns"
-    if (graphType == 'Network') {
-        nodes <- NULL
-        edges <- NULL
-        if (!is.null(nodeData)) {
-            nodes <- nodeData
-        }
-        if (!is.null(edgeData)) {
-            edges <- edgeData
-            if (is.null(nodeData)) {
-                nodes <- unique(c(
-                        as.vector(edgeData[,grep("id1", colnames(edgeData))]), 
-                        as.vector(edgeData[,grep("id2", colnames(edgeData))])))
-                names(nodes) <- rep("id", length(nodes))
+    config <- list(graphType = graphType, isR = TRUE, ...)
+    assertDataCorrectness(data, graphType, config)
+    
+    x             <- NULL
+    y             <- NULL
+    z             <- NULL
+    dataframe     <- "columns"
+    precalc.names <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
+    
+    
+    if (graphType == "Venn") {
+        vdata <- NULL
+        if (is.null(data)) {
+            if (inherits(config$vennData, "list")) {
+                vdata <- config$vennData[[1]]
+            }
+            else {
+                vdata <- config$vennData
             }
         }
-        dataframe = "rows"
-        data <- list(nodes = nodes, edges = edges)
-    } 
-    else if (graphType == 'Venn') {
-        dataframe = "columns"
-        data <- list(venn = list(data = vennData, legend = vennLegend))
-    } 
-    else if (graphType == 'Genome') {
-        #TBD
-    } 
-    else {
-        vars = as.list(assignCanvasXpressRownames(data))
-        smps = as.list(assignCanvasXpressColnames(data))
+        else {
+            if (inherits(data, "list")) {
+                vdata <- data[[1]]
+            }
+            else {
+                vdata <- data
+            }
+        }
+        legend <- config$vennLegend
+       
+        # Config - remove venn items
+        config <- config[!(names(config) %in% c("vennData", "vennLegend"))]
         
-        if (graphType == 'Boxplot' && !is.null(boxplotGroupData)) {
-            iqr1 = as.matrix(data["iqr1", ])
-            dimnames(iqr1) <- NULL
-            
-            iqr3 = as.matrix(data["iqr3" ,])
-            dimnames(iqr3) <- NULL
-            
-            median = as.matrix(data["median" ,])
-            dimnames(median) <- NULL
-            
-            qtl1 = as.matrix(data["qtl1" ,])
-            dimnames(qtl1) <- NULL
-            
-            qtl3 = as.matrix(data["qtl3" ,])
-            dimnames(qtl3) <- NULL
-            
-            y <- list(vars = as.list(boxplotGroupData),
-                      smps = smps,
-                      iqr1 = iqr1, 
-                      iqr3 = iqr3, 
-                      median = median,
-                      qtl1 = qtl1,
-                      qtl3 = qtl3
-            )
-            if ("outliers" %in% vars) {
-                out <- t(as.matrix(data["outliers", ]))
+        # CanvasXpress Object
+        cx_object <- list(data        = list(venn = list(data = vdata, legend = legend)),
+                          config      = config, 
+                          events      = events, 
+                          afterRender = afterRender)
+    }
+    else if (graphType == "Map" && 
+             (is.null(data) || (inherits(data, "logical") && data == FALSE))) {
 
+        # CanvasXpress Object
+        cx_object <- list(data        = FALSE, 
+                          config      = config, 
+                          events      = events, 
+                          afterRender = afterRender)
+    }
+    else if (graphType == "Network") {
+        ndata     <- NULL
+        edata     <- NULL
+        dataframe <- "rows"
+
+        if (is.null(data)) {
+            ndata <- config$nodeData
+            edata <- config$edgeData
+            config <- config[!(names(config) %in% c("nodeData", "edgeData"))]
+        }
+        else {
+            ndata <- data$nodeData
+            edata <- data$edgeData
+        }
+        
+        # CanvasXpress Object
+        cx_object <- list(data        = list(nodes = ndata, edges = edata),
+                          config      = config, 
+                          events      = events, 
+                          afterRender = afterRender)
+    }
+    else if (graphType == "Genome") {
+        stop("The Genome graphType is not yet implemented")
+    }
+    else if (graphType == "Boxplot" &&
+             ((length(intersect(names(data), precalc.names[1:5])) == 5) || 
+              (length(intersect(rownames(data), precalc.names[1:5])) == 5))) {
+        
+        if (inherits(data, "list")) {
+            data.names <- names(data)
+            iqr1       <- as.matrix(t(data[["iqr1"]]));   dimnames(iqr1)   <- NULL
+            iqr3       <- as.matrix(t(data[["iqr3"]]));   dimnames(iqr3)   <- NULL
+            median     <- as.matrix(t(data[["median"]])); dimnames(median) <- NULL
+            qtl1       <- as.matrix(t(data[["qtl1"]]));   dimnames(qtl1)   <- NULL
+            qtl3       <- as.matrix(t(data[["qtl3"]]));   dimnames(qtl3)   <- NULL
+            
+            if (!is.null(smpAnnot)) {
+                if (inherits(smpAnnot, "character")) {
+                    smps <- smpAnnot
+                }
+                else {
+                    smps <- names(smpAnnot)
+                }
+            } else {
+                smps <- make.names(1:length(data[["iqr1"]]))
+            }
+            
+            y <- list(smps   = as.list(smps),
+                      vars   = as.list("precalculated BoxPlot"),
+                      iqr1   = iqr1,
+                      iqr3   = iqr3,
+                      median = median,
+                      qtl1   = qtl1,
+                      qtl3   = qtl3)
+            if ("outliers" %in% data.names) {
+                out <- t(as.matrix(data[["outliers"]]))
                 out.new <- sapply(out, strsplit, ",")
                 out.new <- unname(sapply(out.new, as.numeric))
                 out.new <- sapply(out.new, as.list)
-
                 y$out <- list(out.new)
             }
-        } #boxplot with summarized data
+            for (other in setdiff(data.names, precalc.names)) {
+                y[[other]] <- data[other]
+            }
+        }
         else {
-            dy <- as.matrix(data)
-            dimnames(dy) <- NULL
-            y <- list(vars = vars, smps = smps, data = dy)
+            data.names <- rownames(data)
+            iqr1   <- as.matrix(data["iqr1",]);   dimnames(iqr1)   <- NULL
+            iqr3   <- as.matrix(data["iqr3",]);   dimnames(iqr3)   <- NULL
+            median <- as.matrix(data["median",]); dimnames(median) <- NULL
+            qtl1   <- as.matrix(data["qtl1",]);   dimnames(qtl1)   <- NULL
+            qtl3   <- as.matrix(data["qtl3",]);   dimnames(qtl3)   <- NULL
+            
+            y <- list(smps   = as.list(assignCanvasXpressColnames(data)),
+                      vars   = as.list("precalculated BoxPlot"),
+                      iqr1   = iqr1,
+                      iqr3   = iqr3,
+                      median = median,
+                      qtl1   = qtl1,
+                      qtl3   = qtl3)
+            if ("outliers" %in% data.names) {
+                if ("outliers" %in% data.names) {
+                    out <- t(as.matrix(data["outliers",]))
+                    out.new <- sapply(out, strsplit, ",")
+                    out.new <- unname(sapply(out.new, as.numeric))
+                    out.new <- sapply(out.new, as.list)
+                    y$out <- list(out.new)
+                }
+            }
+            for (other in setdiff(data.names, precalc.names)) {
+                y[[other]] <- data[other,]
+            }
         }
-        
-        x <- NULL
-        z <- NULL
+
         if (!is.null(smpAnnot)) {
-            vars2 = as.list(assignCanvasXpressRownames(smpAnnot))
-            smps2 = as.list(assignCanvasXpressColnames(smpAnnot))
-            if (!identical(vars2, smps)) {
-                smpAnnot <- t(smpAnnot)
-                vars2 = as.list(assignCanvasXpressRownames(smpAnnot))
-                smps2 = as.list(assignCanvasXpressColnames(smpAnnot))
+            if (!inherits(data, "list")) {
+                test <- as.list(assignCanvasXpressRownames(smpAnnot))
+                
+                if (!identical(test, y$smps)) {
+                    smpAnnot <- t(smpAnnot)
+                    test <- as.list(assignCanvasXpressRownames(smpAnnot))
+                }
+                
+                if (!identical(test, y$smps)) {
+                    stop("Row names in smpAnnot are different from column names in data")
+                }
             }
-            if (!identical(vars2, smps)) {
-                stop("Column names in smpAnnot are different from column names in data")
+            if (!inherits(smpAnnot, "character")) {
+                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
             }
-            x <- lapply(convertRowsToList(t(smpAnnot)), function (d) if (length(d) > 1) d else list(d))
-        }
-        if (!is.null(varAnnot)) {
-            vars3 = as.list(assignCanvasXpressRownames(varAnnot))
-            smps3 = as.list(assignCanvasXpressColnames(varAnnot))
-            if (!identical(vars3, vars)) {
-                stop("Row names in varAnnot are different from row names in data")
-            }
-            z <- lapply(convertRowsToList(t(varAnnot)), function (d) if (length(d) > 1) d else list(d))
         }
         
-        data <- list(y = y, x = x, z = z)
-        
-        if (!is.null(decorData)) {
-            data[["d"]] <- decorData
-        } 
-        
-        if (!is.null(newickData)) {
-            data[["t"]] <- newickData
-        }
+        # NOTE: z should always be null with a boxplot chart
+
+        # CanvasXpress Object
+        cx_object <- list(data        = list(y = y, x = x, z = z), 
+                          config      = config, 
+                          events      = events, 
+                          afterRender = afterRender)
     }
-    
-    # Config
-    config <- list(graphType = graphType, isR = TRUE, ...)
-    
-    # Events
-    # Nothing to do
-    
-    # After Render
-    # Nothing to do
-    
-    # CanvasXpress Object
-    cx = list(data = data, 
-              config = config, 
-              events = events, 
-              afterRender = afterRender)
-    
-    ## toJSON option
+    # standard graph
+    else {
+        y <- setup_y(data)
+        x <- setup_x(y$smps, smpAnnot)
+        z <- setup_z(y$vars, varAnnot)
+
+        # CanvasXpress Object
+        cx_object <- list(data        = list(y = y, x = x, z = z), 
+                          config      = config, 
+                          events      = events, 
+                          afterRender = afterRender)
+    } #standard graph
+
     options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe, 
-                                           pretty = pretty, 
-                                           digits = digits))
-    
-    # Create the widget
-    widget <- htmlwidgets::createWidget("canvasXpress", cx, 
-                              width = width, 
+                                           pretty    = pretty, 
+                                           digits    = digits))
+
+    htmlwidgets::createWidget("canvasXpress", 
+                              cx_object, 
+                              width  = width,
                               height = height)
-    widget
 }
+
 
 
 #' canvasXpressOutput
@@ -220,6 +266,8 @@ canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
                                    width, height, 
                                    package = "canvasXpress")
 }
+
+
 
 #' renderCanvasXpress
 #'

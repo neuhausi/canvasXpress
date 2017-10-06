@@ -1,0 +1,7 @@
+	Source	Target	Weight
+smp1	A	X	1
+smp2	A	Y	2
+smp3	A	Z	3
+smp4	B	X	4
+smp5	B	Y	5
+smp6	B	Z	6

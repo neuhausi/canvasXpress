@@ -1,0 +1,13 @@
+	Concentration	Variable1
+Sample1	0.0009	172
+Sample2	0.0018	177
+Sample3	0.0037	160
+Sample4	0.0073	166
+Sample5	0.0146	211
+Sample6	0.0293	248
+Sample7	0.0586	269
+Sample8	0.117	283
+Sample9	0.234	298
+Sample10	0.469	314
+Sample11	0.938	328
+Sample12	1.88	316
