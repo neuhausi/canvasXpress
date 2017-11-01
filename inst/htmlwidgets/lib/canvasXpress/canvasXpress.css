@@ -2152,6 +2152,14 @@ canvas.CanvasXpress:hover {
   margin: -1px;
 }
 
+canvas.CanvasXpressUpload {
+  border: 1px solid rgba(35, 82, 124, 0.2);
+  border-radius: 6px;
+  margin: -1px;
+  background-image: url(http://canvasxpress.org/images/uploadFile.jpg);
+  background-size: contain;
+}
+
 #full-screen-warning-container {
 	background-color: transparent !important;
 	opacity: 0.4 !important;
