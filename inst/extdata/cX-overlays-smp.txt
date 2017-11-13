@@ -1,0 +1,7 @@
+	Binary	Continuous	Discrete	Early	Late	OnTime	PhaseA	PhaseB	PhaseC	Temp
+Sample1	Yes	8	X	8	60	30	40	10	6	5
+Sample2	No	16	X	16	50	40	10	20	22	10
+Sample3	Yes	24	Y	24	40	20	20	30	18	15
+Sample4	No	32	Y	32	30	30	60	40	14	20
+Sample5	Yes	40	Z	40	20	40	20	50	25	25
+Sample6	No	48	Z	48	10	20	50	60	34	30
