@@ -75,15 +75,6 @@ test_that("Name mismatches", {
 
 
 # Shiny Functionality
-test_that("Shiny UI Object Creation", {
-    obj <- suppressWarnings(canvasXpressOutput("testID"))
-
-    expect_s3_class(obj, "shiny.tag.list")
-    expect_match(obj[[1]]$name,  "div")
-    expect_match(obj[[1]]$attribs$id,    "testID")
-    expect_match(obj[[1]]$attribs$class, "canvasXpress html-widget html-widget-output")
-    expect_match(obj[[1]]$attribs$style, "width:100%; height:400px;")
-})
 
 test_that("Shiny Render", {
     expect_s3_class(renderCanvasXpress(NULL), "shiny.render.function")
