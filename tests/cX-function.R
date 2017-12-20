@@ -1796,6 +1796,45 @@ cXnetwork4 <- function() {
   )
 }
 
+cXnetwork5 <- function() {
+  library(canvasXpress)
+  nodes=read.table(system.file("extdata", "cX-wpapoptosis-nodes.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table(system.file("extdata", "cX-wpapoptosis-edges.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    adjustBezier=FALSE,
+    calculateLayout=FALSE,
+    graphType="Network",
+    networkFreeze=TRUE,
+    networkNodesOnTop=FALSE,
+    preScaleNetwork=FALSE,
+    showAnimation=FALSE,
+    showNodeNameThreshold=20000,
+    title="Apoptosis"
+  )
+}
+
+cXnetwork6 <- function() {
+  library(canvasXpress)
+  nodes=read.table(system.file("extdata", "cX-wpapoptosis-nodes.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table(system.file("extdata", "cX-wpapoptosis-edges.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    adjustBezier=FALSE,
+    calculateLayout=FALSE,
+    colorNodeBy="Exp1",
+    graphType="Network",
+    networkFreeze=TRUE,
+    networkNodesOnTop=FALSE,
+    preScaleNetwork=FALSE,
+    showAnimation=FALSE,
+    showNodeNameThreshold=20000,
+    title="Apoptosis"
+  )
+}
+
 cXnonlinearfit1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-nonlinearfit-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)

@@ -1,0 +1,68 @@
+Evidence1	Evidence2	Evidence3	Evidence4	color	connectortype	database	elbows	endArrow	endX	endY	exactEnd	graphid	hideTooltip	id1	id2	linestyle	nodeName	point	startX	startY	type	width	zorder
+3	1	D	D	ff0000				arrow	0	-1		d2919		ff0	d44		interaction	ARRAY(0x25a52b0)	0	1	solid	1	12288
+1	1	C	D					square	-1	0		id632252e2		ec258	f13		interaction	ARRAY(0x25a4d70)	1	0	solid	1	12288
+2	5	C	A					square	0	1		id76e06696		d254c	fe5		interaction	ARRAY(0x252fdf0)	0	-1	solid	1	12288
+1	1	C	D	0000ff					-0.5	-1		b787a		dbe72	cb0		interaction	ARRAY(0x252fa00)	1	0.5	solid	1	12290
+1	3	C	E					arrow	0	-1		baf22		cb605	defd7		interaction	ARRAY(0x252f748)	0	1	solid	1	12292
+3	4	A	A	0000ff				square	0	1		cc7da		bdb	a5f		interaction	ARRAY(0x252f358)	0	-1	solid	1	12294
+3	3	B	D					arrow	0	-1		bc7e4		cec	e16		interaction	ARRAY(0x252f048)	0	1	solid	1	12296
+1	3	C	A	ff0000				arrow	-0.5	-1		b5cd8		f2e	cd5		interaction	ARRAY(0x25df630)	0	1	solid	1	12298
+1	3	B	D	ff0000				arrow	0	-1		f11ae		cb6	a6d06		interaction	ARRAY(0x25f2328)	0	1	solid	1	12300
+1	3	D	A	ff0000				arrow	-1	0		bb62f		eed	ac6	Broken	interaction	ARRAY(0x262b738)	1	0	dashed	1	12302
+3	3	E	B					arrow	-1	0		b8961		ffcf1	cec		interaction	ARRAY(0x25e18f0)	1	0	solid	1	12304
+2	3	A	A	0000ff				square	0	-1		a99ac		ecf	f44cf		interaction	ARRAY(0x261b800)	0	1	solid	1	12306
+2	3	E	E		Elbow		ARRAY(0x261b4e8)	arrow	0	1		e2a0c		a21	b98		interaction	ARRAY(0x25a5100)	-1	0	solid	1	12308
+1	3	A	D	ff0000				arrow	-0.5	-1		a882d		d44	a45		interaction	ARRAY(0x25f29b8)	0	1	solid	1	12310
+3	4	C	B	ff0000				arrow	-1	0		ab39f		d80	c90		interaction	ARRAY(0x25e6c30)	1	0	solid	1	12312
+3	1	B	C	ff0000				arrow	0	1		c59f1		a28	aa8		interaction	ARRAY(0x26ecc28)	0	-1	solid	1	12314
+1	4	D	D	ff0000				arrow	1	0		d0298		a45	dde		interaction	ARRAY(0x26ec8b0)	-1	0	solid	1	12316
+3	5	E	B	ff0000				arrow	0.5	1		c5997		a21	fac		interaction	ARRAY(0x26ec538)	0.5	-1	solid	1	12318
+1	4	A	A	ff0000				arrow	-1	0		d247b		f2e	cbb	Broken	interaction	ARRAY(0x261b788)	1	0	dashed	1	12320
+3	3	D	E	ff0000				arrow	0.5	-1		ead64		cbb	cd5		interaction	ARRAY(0x262bd80)	-0.5	1	solid	1	12322
+2	3	B	D					arrow	0	-1		e976f		d5d	bd8		interaction	ARRAY(0x261af18)	0	1	solid	1	12324
+1	5	D	D	ff0000				arrow	0	-1		d9f4f		c3d	a6d06		interaction	ARRAY(0x2628158)	0	1	solid	1	12326
+1	4	A	D	ff0000				arrow	-1	0		a9925		a5f	f78		interaction	ARRAY(0x25e6fc0)	1	0	solid	1	12328
+3	1	B	B	0000ff				square	-1	0		a147d		a904c	ba6		interaction	ARRAY(0x26ec2b0)	0.5	-1	solid	1	12330
+1	1	E	E	ff0000				square	0	-1		efd5f		c02	c2232		interaction	ARRAY(0x25e1398)	0	1	solid	1	12332
+3	2	C	B	ff0000				arrow	-0.5	-1		a89cc		b09	e0e2c		interaction	ARRAY(0x25bc120)	0	1	solid	1	12334
+1	5	D	B	0000ff					-1	-0.5		e0d80		dbe72	ffcf1		interaction	ARRAY(0x25bbda8)	1	-0.5	solid	1	12336
+3	1	B	D	0000ff	Elbow		ARRAY(0x25bbc10)	square	0	1		f03ff		a904c	d80		interaction	ARRAY(0x25bba18)	0	-1	solid	1	12338
+2	5	E	B	ff0000				arrow	-1	0		ca4dd		f44cf	eed		interaction	ARRAY(0x25bb4c0)	1	-0.5	solid	1	12340
+1	3	C	D	ff0000				arrow	0	-1		d88b2		d71	a6d06		interaction	ARRAY(0x25b8740)	0	1	solid	1	12342
+1	4	C	A					arrow	0	-1		e2fdd		d2c	f13		interaction	ARRAY(0x25b8458)	0	1	solid	1	12344
+1	5	E	D					arrow	-0.5	-1		a3dc6		d43	a9e		interaction	ARRAY(0x25b80f8)	0	1	solid	1	12346
+1	4	E	D					arrow	0	-1		b648d		f13	d5d		interaction	ARRAY(0x25b7d98)	0	1	solid	1	12348
+3	1	C	A	ff0000				arrow	0	-1		e9678		fac	a6d06		interaction	ARRAY(0x25b5fa0)	1	0	solid	1	12350
+2	5	C	D					arrow	0	-1		a7094		e0e2c	ffcf1		interaction	ARRAY(0x25b5cb8)	0	1	solid	1	12352
+1	5	D	E		Elbow		ARRAY(0x25b5a78)	arrow	-0.5	-1		aa6f4		d64	c5ac6		interaction	ARRAY(0x25b5898)	0	1	solid	1	12354
+3	5	A	A					arrow	0	1		c89e3		ff56d	d81		interaction	ARRAY(0x25b53d0)	0	-1	solid	1	12356
+1	2	C	E	ff0000				arrow	-1	0		fd3ee		a45	ba6		interaction	ARRAY(0x25b32c8)	1	0	solid	1	12358
+2	2	C	B					arrow	0	-1		e1ffe		defd7	c5ac6		interaction	ARRAY(0x25b2fe0)	0	1	solid	1	12360
+3	5	E	D					arrow	-1	0		b1289		cbf	ff56d		interaction	ARRAY(0x25b2c80)	1	0	solid	1	12362
+3	3	A	E	ff0000				arrow	0	-1		bbfa9		cc5	cd5		interaction	ARRAY(0x25b2890)	0	1	solid	1	12364
+1	3	D	D						0	0	true	caeeb	false	e23	d5f68		interaction	ARRAY(0x25b2518)	0	1	solid	1	12366
+3	2	B	A	ff0000				arrow	0	-1		c2e49		a9b	e0e2c		interaction	ARRAY(0x26166a8)	0	1	solid	1	12368
+1	4	A	E	ff0000				square	0	1		ff8a4		b98	f68		interaction	ARRAY(0x2616330)	-0.5	-1	solid	1	12370
+1	3	A	D	ff0000				arrow	-1	0		ba3b1		e0e2c	f44cf		interaction	ARRAY(0x2615fb8)	1	-0.5	solid	1	12372
+3	4	A	E					arrow	-1	-0.5		b1ee4		defd7	e38bb		interaction	ARRAY(0x2615cd0)	1	0	solid	1	12374
+2	5	D	A	ff0000				arrow	-1	0		d3e57		a45	c90		interaction	ARRAY(0x26158e0)	1	0	solid	1	12376
+1	1	E	D	ff0000	Elbow		ARRAY(0x2608cc0)	arrow	0	-1		d8616		aa8	d80		interaction	ARRAY(0x2608af8)	1	0	solid	1	12378
+2	4	A	C	ff0000				arrow	-1	0		cbc73		c5ac6	fff		interaction	ARRAY(0x2608630)	1	0.5	solid	1	12380
+1	2	C	E	ff0000				arrow	-0.5	-1		c8362		d0c	cd5		interaction	ARRAY(0x26082b8)	0	1	solid	1	12382
+1	3	A	B	ff0000				arrow	0	-1		e0190		a93	a6d06		interaction	ARRAY(0x2607f40)	0	1	solid	1	12384
+3	3	E	E	ff0000				arrow	0.5	-1		bcb77		ac5	e0e2c		interaction	ARRAY(0x2606eb0)	0	1	solid	1	12386
+2	3	C	B	ff0000	Elbow		ARRAY(0x2606ce8)	square	-1	0		f779e		a6b	a904c		interaction	ARRAY(0x2606af0)	1	0	solid	1	12388
+3	1	D	D					arrow	0	-1		f4747		e16	d43		interaction	ARRAY(0x25fb108)	0	1	solid	1	12390
+2	3	E	D						0	0	true	c5701	false	a85e8	cac70		interaction	ARRAY(0x2631888)	0	-1	solid	1	12392
+2	5	B	C	ff0000				arrow	-0.5	1		abe2d		cbf	fac		interaction	ARRAY(0x25acd40)	0	-1	solid	1	12394
+2	4	B	D	ff0000				arrow	0	-1		bb394		dde	a6d06		interaction	ARRAY(0x25b0290)	0	1	solid	1	12396
+3	5	D	E	ff0000				arrow	-1	0		a637e		d80	cd5		interaction	ARRAY(0x25aff18)	1	0	solid	1	12398
+3	1	E	B	0000ff	Elbow		ARRAY(0x25af4f8)	square	-1	0		c3757		f68	cbf		interaction	ARRAY(0x25afb88)	0.5	1	solid	1	12400
+2	4	B	D	0000ff				square	0	-1		fd9c7		d45	fff		interaction	ARRAY(0x262b8a0)	0	1	solid	1	12402
+2	5	B	D	ff0000				arrow	0	1		dcdb3		a21	cbf		interaction	ARRAY(0x25e0218)	0	-1	solid	1	12404
+2	1	C	B	0000ff				square	0	-1		e2a45		c2232	a6d06		interaction	ARRAY(0x25dfea0)	1	0	solid	1	12406
+1	4	A	B		Elbow		ARRAY(0x25dfcd8)	arrow	0	-1		b8b58		e0e2c	d64		interaction	ARRAY(0x25dfb28)	-0.5	1	solid	1	12408
+1	4	A	D	ff0000				arrow	-1	0		bc77c		a45	cd5		interaction	ARRAY(0x25d93e0)	1	0	solid	1	12410
+1	4	C	C						-1	0		bbf49		e38bb	fe2		interaction	ARRAY(0x2621788)	0	-1	solid	1	12414
+1	4	D	B	ff0000				arrow	-1	0		e06c6		f44cf	a45		interaction	ARRAY(0x2621440)	1	0.5	solid	1	12416
+2	4	A	C	0000ff	Elbow		ARRAY(0x261ed68)	square	-0.5	-1		b40e0		c5ac6	fff		interaction	ARRAY(0x2620ff0)	1	-0.5	solid	1	12420
