@@ -37,3 +37,18 @@ test_that("cXnetwork4", {
     expect_s3_class(result, "htmlwidget")
 })
 
+test_that("cXnetwork5", {
+    result <- cXnetwork5()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXnetwork6", {
+    result <- cXnetwork6()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
