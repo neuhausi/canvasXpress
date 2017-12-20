@@ -32,7 +32,6 @@ test_that("cXnetwork4", {
     result <- cXnetwork4()
     if (interactive()) { print(result) }
 
-    warning('not laid out exactly the same, almost a mirror')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
@@ -49,6 +48,7 @@ test_that("cXnetwork6", {
     result <- cXnetwork6()
     if (interactive()) { print(result) }
     
+    warning('coloring off from web example, addtioal blue backgrounds')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })

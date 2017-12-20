@@ -94,6 +94,7 @@ test_that("cXheatmap12", {
     result <- cXheatmap12()
     if (interactive()) { print(result) }
     
+    fail('middle section too small')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
