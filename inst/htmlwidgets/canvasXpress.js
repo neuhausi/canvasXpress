@@ -1,45 +1,31 @@
 HTMLWidgets.widget({
-  name : "canvasXpress",
-  type : "output",
+    name : "canvasXpress",
+    type : "output",
+    
+    factory: function(el, width, height) {
+        var c = document.createElement('canvas');
+        c.id = el.id + '-cx';
+        c.width = width;
+        c.height = height;
 
-  initialize : function(el, width, height) {
-
-    // Create a sized canvas element for the CanvasXpress instance
-    var c = document.createElement('canvas');
-
-    c.id = el.id + '-cx';
-    c.width = width;
-    c.height = height;
-
-    // Append it to the element
-    el.appendChild(c);
-
-    // Return the id where the canvas will be initialized
-    return {
-      id : c.id
-    };
-  },
-
-  renderValue : function(el, x, instance) {
-
-    var cx = CanvasXpress && instance ? CanvasXpress.getObject(instance.id) : false;
-
-    // Remove the CanvasXpress object if it exists
-    if (cx) {
-      cx.destroy(instance.id);
+        el.appendChild(c);
+        
+        return {
+            id: c.id,
+            renderValue: function(x) {
+                cx = CanvasXpress.getObject(c.id);
+                if (cx) {
+                    cx.destroy(c.id);
+                }
+                x.renderTo = c.id;
+                cx = new CanvasXpress(x);
+            },
+            resize: function(width, height) {
+                cx = CanvasXpress.getObject(c.id);
+                if (cx) {
+                    cx.setDimensions(width, height);
+                }
+            }
+        };
     }
-
-    x.renderTo = instance.id;
-    cx = new CanvasXpress(x);
-  },
-
-  resize : function(el, width, height, instance) {
-
-    var cx = CanvasXpress && instance ? CanvasXpress.getObject(instance.id) : false;
-
-    if (cx) {
-      cx.setDimensions(width, height);
-    }
-  }
-  
 });
