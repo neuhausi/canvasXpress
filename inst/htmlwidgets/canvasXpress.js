@@ -13,12 +13,13 @@ HTMLWidgets.widget({
         return {
             id: c.id,
             renderValue: function(x) {
-                cx = CanvasXpress.getObject(c.id);
-                if (cx) {
-                    cx.destroy(c.id);
+                if (x.length === 0) {
+                    CanvasXpress.destroy(c.id);
                 }
-                x.renderTo = c.id;
-                cx = new CanvasXpress(x);
+                else {
+                    x.renderTo = c.id;
+                    new CanvasXpress(x);
+                }
             },
             resize: function(width, height) {
                 cx = CanvasXpress.getObject(c.id);

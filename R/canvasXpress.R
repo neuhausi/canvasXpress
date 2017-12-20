@@ -51,7 +51,12 @@ canvasXpress <- function(data = NULL,
                          digits = 4,
                          width  = 600, 
                          height = 400,
+                         destroy = FALSE,
                          ... ) {
+    
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
     
     config <- list(graphType = graphType, isR = TRUE, ...)
     assertDataCorrectness(data, graphType, config)
