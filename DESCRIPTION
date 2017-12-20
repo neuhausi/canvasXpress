@@ -19,10 +19,9 @@ URL:
 BugReports: 
     https://github.com/neuhausi/canvasXpress/issues
 Depends:
-    R (>= 3.3.3)
+    R (>= 3.3.2)
 Imports:
-    htmlwidgets (>= 0.8),
-    magrittr (>= 1.5)
+    htmlwidgets (>= 0.8)
 RoxygenNote: 6.0.1
 Suggests:
     shiny (>= 0.13.2),
@@ -32,5 +31,6 @@ Suggests:
     testthat,
     limma,
     grDevices,
-    covr
+    covr,
+    magrittr
 VignetteBuilder: knitr
