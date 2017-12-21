@@ -33,6 +33,7 @@
 #' @param digits display digits - default = 4
 #' @param width plot width (valid CSS units) - default = 600px
 #' @param height plot height (valid CSS units) - default = 400px
+#' @param destroy used to indicate removal of a plot - default = FALSE
 #' @param ... additional parameters passed to canvasXpress
 #'
 #' @return htmlwidgets object
@@ -51,7 +52,12 @@ canvasXpress <- function(data = NULL,
                          digits = 4,
                          width  = 600, 
                          height = 400,
+                         destroy = FALSE,
                          ... ) {
+    
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
     
     config <- list(graphType = graphType, isR = TRUE, ...)
     assertDataCorrectness(data, graphType, config)
@@ -282,6 +288,13 @@ canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
 #'
 #' @seealso \link[canvasXpress]{canvasXpressOutput}
 #' @seealso \link[canvasXpress]{cxShinyExample}
+#' 
+#' @section Destroy:
+#' When there exists a need to visually remove a plot from a Shiny 
+#' application when it is not being immediately replaced with a new plot use
+#' the destroy option as in:  
+#' 
+#' \code{renderCanvasXpress({canvasXpress(destroy = TRUE)})}
 #' 
 #' @export
 renderCanvasXpress <- function(expr, env = parent.frame(), quoted = FALSE) {

@@ -6,7 +6,8 @@
 \usage{
 canvasXpress(data = NULL, smpAnnot = NULL, varAnnot = NULL,
   graphType = "Scatter2D", events = NULL, afterRender = NULL,
-  pretty = FALSE, digits = 4, width = 600, height = 400, ...)
+  pretty = FALSE, digits = 4, width = 600, height = 400,
+  destroy = FALSE, ...)
 }
 \arguments{
 \item{data}{data.frame-, matrix-, or list- classed data object}
@@ -28,6 +29,8 @@ canvasXpress(data = NULL, smpAnnot = NULL, varAnnot = NULL,
 \item{width}{plot width (valid CSS units) - default = 600px}
 
 \item{height}{plot height (valid CSS units) - default = 400px}
+
+\item{destroy}{used to indicate removal of a plot - default = FALSE}
 
 \item{...}{additional parameters passed to canvasXpress}
 }

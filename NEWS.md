@@ -6,6 +6,16 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.18.1
+* Updated CanvasXpress JavaScript and CSS libraries to v18.1
+* Added destroy functionality for shiny applications the require removal of canvasXpress charts
+
+## v1.17.9
+* Updated CanvasXpress JavaScript and CSS libraries to v17.9
+
+## v1.17.5
+* Updated CanvasXpress JavaScript and CSS libraries to v17.5
+
 ## v1.17.4 - _Major Release_
 * Updated CanvasXpress JavaScript and CSS libraries to v17.4
 * Functionality improved and streamlined to cover the full canvasXpress library functionality in a backwards-compatible way. (Genome plots will be supported at a future date)

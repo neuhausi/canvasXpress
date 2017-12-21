@@ -1,10 +1,10 @@
 color	eventless	exp1	exp2	exp3	exp4	exp5	height	hideLabel	id	imagePath	label	shape	size	width	x	y
 	true						400	true	Cell	https://canvasxpress.org/images/cell.png		image		525	250	250
-		1	2	4	HASH(0x2efd988)	HASH(0x2efd910)	40		Gene1	https://canvasxpress.org/images/prot.png		image		40	155	160
-rgb(255,0,0)		2	4	1	HASH(0x2efd850)	HASH(0x2efd790)			Gene2			sphere	1		155	340
-rgb(255,0,0)		1	5	1	HASH(0x2efd658)	HASH(0x2efc880)			Gene3			sphere	1		355	160
-rgb(255,0,0)		4	2	1	HASH(0x2efc658)	HASH(0x2efc688)			Gene4		Receptor Gene4	sphere	1		355	340
-rgb(255,0,0)		1	3	2	HASH(0x2efc478)	HASH(0x2efc3e8)	20		Gene5			sphere		20	255	100
+		1	2	4	HASH(0x26e0168)	HASH(0x26e00f0)	40		Gene1	https://canvasxpress.org/images/prot.png		image		40	155	160
+rgb(255,0,0)		2	4	1	HASH(0x26dd628)	HASH(0x26dd568)			Gene2			sphere	1		155	340
+rgb(255,0,0)		1	5	1	HASH(0x26dd430)	HASH(0x26dd370)			Gene3			sphere	1		355	160
+rgb(255,0,0)		4	2	1	HASH(0x26dd148)	HASH(0x26dd178)			Gene4		Receptor Gene4	sphere	1		355	340
+rgb(255,0,0)		1	3	2	HASH(0x26dcf68)	HASH(0x26dced8)	20		Gene5			sphere		20	255	100
 							40	true	Met	https://canvasxpress.org/images/met.png		image		40	255	400
-		3	3	4	HASH(0x2efc298)	HASH(0x2efc0d0)	40		Gene7	https://canvasxpress.org/images/prot7.png		image		40	50	250
+		3	3	4	HASH(0x26dcd88)	HASH(0x26dcbc0)	40		Gene7	https://canvasxpress.org/images/prot7.png		image		40	50	250
 							40	true	DNA	https://canvasxpress.org/images/dna1.png		image		40	450	250

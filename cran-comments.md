@@ -1,17 +1,18 @@
 ## Comments from Maintainer
 
-Major version update - now supports the full canvasXpress functionality.  Includes a testthat test suite of ~100 charts.  Backwards-compatible with v.0.17.2.  Note that the version was updated to 1 from 0 - the second and third parts of the version number still follow the canvasXpress JS library version so that it is clear to users which version of the JS library is being used.
+Updated internal JS libraries to 18.1 and updated htmlwidgets javascript functionality to allow destruction of the widget properly in shiny applications.
+
+There is a CRAN check NOTE on 2 fedora linux builds regarding patch level and support for 3.3.2, this was not fixed as I do not have access to fedora to perform proper testing across patch levels.
 
 ---  
 
 ## Test environments
 
-* ubuntu 16.04, R 3.3.3
-* ubuntu 16.04, R 3.4.1
-* ubuntu 16.04, R 3.4.2
+* ubuntu 16.04, R 3.3.2
+* ubuntu 16.04, R 3.4.3
 
 * ubuntu 14.04.5 (on travis-ci), R 3.3.3
-* ubuntu 14.04.5 (on travis-ci), R 3.4.1
+* ubuntu 14.04.5 (on travis-ci), R 3.4.2
 
 * win-builder (devel and release)
 

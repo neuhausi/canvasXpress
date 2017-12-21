@@ -69,3 +69,12 @@ test_that("cXlayout8", {
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+
+test_that("cXlayout9", {
+    result <- cXlayout9()
+    if (interactive()) { print(result) }
+    
+    message('middle section too small at default height - working as designed')
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
