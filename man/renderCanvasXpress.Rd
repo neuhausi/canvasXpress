@@ -20,6 +20,15 @@ Render function that enables the use of the widget in applications
 Render function for canvasXpressOutput in Shiny applications and 
 interactive Rmd documents
 }
+\section{Destroy}{
+
+When there exists a need to visually remove a plot from a Shiny 
+application when it is not being immediately replaced with a new plot use
+the destroy option as in:  
+
+\code{renderCanvasXpress({canvasXpress(destroy = TRUE)})}
+}
+
 \seealso{
 \link[canvasXpress]{canvasXpressOutput}
 
