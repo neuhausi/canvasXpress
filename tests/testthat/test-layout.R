@@ -74,7 +74,7 @@ test_that("cXlayout9", {
     result <- cXlayout9()
     if (interactive()) { print(result) }
     
-    warning("grouping results in different layout order")
+    message('middle section too small at default height - working as designed')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })

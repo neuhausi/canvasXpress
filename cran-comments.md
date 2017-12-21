@@ -1,14 +1,15 @@
 ## Comments from Maintainer
 
-Updated internal JS libraries and also fixed magrittr warning from CRAN check results.  Reduced the minimum R version 
-to 3.3.2 as well after testing.
+Updated internal JS libraries to 18.1 and updated htmlwidgets javascript functionality to allow destruction of the widget properly in shiny applications.
+
+There is a CRAN check NOTE on 2 fedora linux builds regarding patch level and support for 3.3.2, this was not fixed as I do not have access to fedora to perform proper testing across patch levels.
 
 ---  
 
 ## Test environments
 
 * ubuntu 16.04, R 3.3.2
-* ubuntu 16.04, R 3.4.2
+* ubuntu 16.04, R 3.4.3
 
 * ubuntu 14.04.5 (on travis-ci), R 3.3.3
 * ubuntu 14.04.5 (on travis-ci), R 3.4.2
