@@ -13,10 +13,9 @@ HTMLWidgets.widget({
         return {
             id: c.id,
             renderValue: function(x) {
-                if (x.length === 0) {
-                    CanvasXpress.destroy(c.id);
-                }
-                else {
+                CanvasXpress.destroy(c.id);
+
+                if (x.length != 0) {
                     x.renderTo = c.id;
                     new CanvasXpress(x);
                 }
