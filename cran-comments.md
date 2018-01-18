@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-Updated internal JS libraries to 18.1 and updated htmlwidgets javascript functionality to allow destruction of the widget properly in shiny applications.
+Bugfix for updated htmlwidgets javascript functionality to allow destruction of the widget properly in shiny applications on recreation.
 
 There is a CRAN check NOTE on 2 fedora linux builds regarding patch level and support for 3.3.2, this was not fixed as I do not have access to fedora to perform proper testing across patch levels.
 
