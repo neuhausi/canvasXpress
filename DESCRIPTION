@@ -19,7 +19,7 @@ URL:
 BugReports: 
     https://github.com/neuhausi/canvasXpress/issues
 Depends:
-    R (>= 3.3.2)
+    R (>= 3.3.0)
 Imports:
     htmlwidgets (>= 0.8)
 RoxygenNote: 6.0.1
