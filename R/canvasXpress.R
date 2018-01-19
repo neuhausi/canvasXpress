@@ -244,10 +244,11 @@ canvasXpress <- function(data = NULL,
                                            pretty    = pretty, 
                                            digits    = digits))
 
-    htmlwidgets::createWidget("canvasXpress", 
+    htmlwidgets::createWidget(name = "canvasXpress", 
                               cx_object, 
                               width  = width,
-                              height = height)
+                              height = height,
+                              package = "canvasXpress")
 }
 
 
@@ -269,8 +270,7 @@ canvasXpress <- function(data = NULL,
 #' @export
 canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
     htmlwidgets::shinyWidgetOutput(outputId, "canvasXpress", 
-                                   width, height, 
-                                   package = "canvasXpress")
+                                   width, height,  package = "canvasXpress")
 }
 
 
