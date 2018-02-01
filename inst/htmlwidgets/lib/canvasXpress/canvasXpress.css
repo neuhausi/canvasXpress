@@ -459,222 +459,6 @@ div.CanvasXpressCanvasResizerloading2 {
 	background-repeat: no-repeat;
 }
 
-div.CanvasXpressCanvasResizerHandleBottomLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAU0lEQVR42qXRwQ2AQAgEwN2a6AlqgmbRhxoPuai5TXjwmACBKFHVRJOI4L1nRXthAgfMikQEs5jZhVtIDosgM1uYB8THiVieuHbjid39FT3gnz9u9HM/CccnGSYAAAAASUVORK5CYII=);
-}
-
-div.CanvasXpressCanvasResizerHandleBottomRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAU0lEQVR42qXRsQ3AMAgEwP9lYSbYiZlwihTGwkosv0Th4gQGYomIJJq4O+c3V/QUNrBgzsjMsEtEFNxCsgyCzGxhvhA/O+K6490fv7Cq9ls9veMAMlROCZGGzoIAAAAASUVORK5CYII=);
-}
-
-div.CanvasXpressCanvasResizerHandleLeftBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAV0lEQVR42s3RYQrAIAgFYN9l9Ux6J8/kMlisSVCwHxMkkA+JJ6hWtMZzgCPEzPHWZoaBEqhqWSkiHWIFstw9EU0IAEXEeP+Alh+/I2hdUIIewXaYn9zuAvvFYzW/ZOHtAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerHandleLeftTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAV0lEQVR42s3RXQqAQAgEYOeyeia9k2eadjda+jEo6CFBBPkeZIRci62xX+AVUlWedURgog5aS4EGRAfuLlVl5oAHBEBIzvkHdHv4FkEFzWyN4HGYn/xuAfvFYzWpquzKAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerHandleRightBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAWUlEQVR42s3RYQqAMAgFYN+ZvJOeSS/7mkWj2oKCfiTIQD5kPCFjsTWOA7xCZsarzkx0VCAihpXuvkIUaC2qKrMqeEIAhGR//4BuP75HUHCS0xbB4zA/ud0Ck8ZRNRk7N7UAAAAASUVORK5CYII=);
-}
-
-div.CanvasXpressCanvasResizerHandleRightTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAVklEQVR42s3RUQqAQAgEUOdM3knPpJedtoVd2jIo6CNBBHkfMkKuxdY4LvAKmRnPOjMx0Q5aS4E6xACqKlW5uywIgJCc8w/o9vARQUSUoEfwOMxPfrcBk8ZRNaDq7hAAAAAASUVORK5CYII=);
-}
-
-div.CanvasXpressCanvasResizerHandleTopLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAVElEQVR42qXRsQ1AIQgE0LuZ2AlmgmXxF79Ag4nGSygsXkAglqhqoklEsL65InfvHMxswqzoK4gIdqm4heQ0CDKzhflDHHbEc8e3P1a8OUe/1ds7DvRzPwlJyXXrAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerHandleTopRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAVUlEQVR42qXRSwrAMAgE0JnL6pn0Tp7JIrSlCQZSMjsXD3/EFBFJNHF3fmvOyMw6B1UdMHdQJSIKvriF5DAIMrOFeUNsdsRxx7MdH1wjL97RX/XvHy8yVE4JLqbgIQAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerScrollerBodyHorBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAARklEQVR42mP8DwSMX7///M/49u1HKPHy5ev/jPfvv/3PePP28/+M9+7d/8949erD/4xnz92DEsePXv/PuGjR4v+MLi4u/wEZbzCqfaYTKwAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerScrollerBodyHorTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAARklEQVR42mN0cXH5z7ho0eL/jMePXv/PePbcPShx9erD/4z37t3/z3jz9vP/jPfvv/3P+PLl6/+Mb99+hBJfv//8z/gfCAAuWzCqPkxO/wAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerScrollerBodyVerLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAABCAYAAADuHp8EAAAAOklEQVR42mN0cXH5HxcXz6CqbMLAxsnOAAIc7MwMnJz/GH7/5WBgY2Fj4OL6x8ACpMFyXBwMXBxsDAAj8wf+5VVXpgAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerScrollerBodyVerRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAABCAYAAADuHp8EAAAAO0lEQVR42h3JyQ3AIAwF0Qko/dcQ6kkHiDbsj0XEkneZw1xzMwUycYwRmCVi987CPaH+/S+8U9tLKQ8Lv0IezTG+gbcAAAAASUVORK5CYII=);
-}
-
-div.CanvasXpressCanvasResizerScrollerEmptyHorBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAMElEQVR42mM8e/bsf8a37z9DiXcfvv5n/PTpO5T4+v3nf8afP38jE79//0MmQAYAAESVNX6ON3xFAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerEmptyHorTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAMElEQVR42mM8e/bsf8bfv/8hEz9//kYmvn7/+Z/x06fvUOLdh6//Gd++/wwlQAYAAFqENX5ExDBoAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerEmptyVerLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAABCAYAAADuHp8EAAAAKklEQVR42mM8e/bsfz09QwYY+PfvL5z9598/hr+//8HZ//9D2A/u3WIAADLoFWh45fZAAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerEmptyVerRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAABCAYAAADuHp8EAAAAKklEQVR42mM8e/bsfwUlNQYQYGRkYmBhYgKzmVkRbBBgYmKGsy9dOs8AANnKBmh7luHhAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerHandleHorBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAAkElEQVR42mP8DwQMeADj1+8/8St4+/YjfgUgK969+8QgJMTHgI0GK2idsYKhOiOCARsNVjBr1iyGtJQ0hllzMGmECWlAHbMwaaCCv0AFq4BGhjGg0EAFYBOuXn34/8iRHQw2Nh4M6PT6Q8cYGM+eu4ffmwQVHD96HasCRrbvDP9/cTIwLlq0GL8JLi4ueBUAACw+d12DO2z2AAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerHandleHorTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAAk0lEQVR42mN0cXH5z4AHMC5atBi/guNHr2NVwMj2neH/L04GxrPn7uE3gaCCq1cf/j9yZAeDjY0HAzq9/tAxBsb////+b52xiqE6I4wBhU6LYJg1ZxZIwX+gghVggdZZmDRYwaxZsxjSUtLAOtBphAkZQB1YaLCCd+8+MQgJ8TFgoxnfvv2I35tfv//ErwBkBT4FALK3d11kI1SXAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerScrollerHandleVerLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAICAYAAADJEc7MAAAAbUlEQVR42mN0cXH5HxcXz6CqbMLAxsnOAAIc7MwMWloyQBYTAzJ49+4TAwcXBwMXBxsDIzaNZ07vZnj9jw/MFmX6BGZnhnlBDMWnEW7jP6iNTMPDRjVNbQZWZgGEjRpyiOAk1sbtJ0/CbcJlIwDXwE7p+yOXGQAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerScrollerHandleVerRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAICAYAAADJEc7MAAAAbElEQVR42mP8DwTffvxi+PHtB4OQEB8DKvjHcO3aE4YfP/+Ceb++/2S4ffcMw6JFCxkYkTWCwPRV2xhEmT4xvP4HMQTENjF1xa8RbuM/qIVMI8BGILh24xHcxt9/PzDcun6VsI0w2tPcHMNGALPzwmGJ+LtGAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerPrevBottomActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAeUlEQVR42pXRWwqAIBCFYV2TBCIiRZdFd6EIEaFFFWcgaBKxfBn5/fBBpVLqFIUlgcZ5y4Khq3+gadmTw751Ah2T0Lp6BprG0kTHPkE3SNDuA0VnDbsRHY1QCJGiMZohdDSG3jCLnpChGI/kCbSuBDpmFj3xd1T64Aupm1Jfai7cCgAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAeElEQVR42mM8e/bsfwYCgBGkSEFJjUqKFJU1MCRcne0Ydu89hFCkqqqFosDR0QZM799/BLsimAIMRRpaOmCOnY0ViomHjhxDKNLR0QNzrKwsUBQdO3YCUxG6QpyKkBWiKNLTM8QIAgsLU4YTJ07jV4QRmEQpYiAAAH4kTX4n4yO7AAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerPrevLeftActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAYUlEQVR42mM0Njb+z0AGYARpPHHiNFzg37+/cPaff/8Y/v7+B2f//w9hu7k4oGq0sDDFa8uuPQewa8SneffeQ7hthDnVysoCRdP+/UfwOxXZjzDNIE0E/Uh24JCskZx4BABQ7XFipauC5AAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWElEQVR42mM8e/bsfz09QwYY+PfvL5z9598/hr+//8HZ//9D2A/u3WJgpIpGCwtTBnxg154DuG3EpXn33kOEnWplZYGiaf/+I8T7EaYZpIl2gUOyRgYyAABzYpOgKAMdHgAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevRightActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAYUlEQVR42mM0Njb+z0AGYARp3LXnAITDyMTAwsQEZjOzItggwMTEDGdbWJiianRzccBry4kTp7FrBNno6myHVxNOjSDnOTraoGg6duwEfqci+xGmGaSJoB/JDhySNZITjwDXli9it/p1XAAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWElEQVR42mM8e/bsfwUlNQYQYGRkYmBhYgKzmVkRbBBgYmKGsy9dOs/ASBWNbi4ODPjAiROncdvo6myHVxNepzo62qBoOnbsBPF+hGkGaaJd4JCskYEMAADnZ0KgajkKvgAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevTopActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAeUlEQVR42qXRWwqAIBAFUF2TBCIiSY9F96AQEaFFFVdIFBGJ/JnxzvmaoYyxmzQeBfL+qgLOu58IQ+QROeczIAQPFTn6Ar2gilJQIGNdCJUUGUKOLKDjsHGgtYw9cvwLlMIMrbspVjANiiBHDWjZzuoy57H/gFoHfgCpm1Jf/3SboQAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerPrevTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAdklEQVR42mM8e/bsfwYCgBGkSE/PkIaKLCxMGU6cOI1QpKOjh6LAysoCTB87dgK7IpgCnIqQFWAo0tDSAXPsbKxQFB06cgyhSFVVCy7h6GgDZ+/ffwS7ImSFKIoUlTUwgsDV2Y5h995DCEUKSmqEA5MoRQwEAAAggk1+fi4MdAAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerNextBottomActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAeUlEQVR42pXRWwqAIBRF0euYJBCRKHoMugdGiAgNqjhCopZE50fZLPyRcc5P+hgDmpatCMa++YHmdaehqwlnPnSPtDbUtspH3OOhP1AOA9qNpVrJ5AU0DN0jax1JKRKEhqG/ohsUUQwS5NxBQlSEMx96QKX9Q18ffAGZqlJfjSU4qAAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerNextBottom {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAl0lEQVR42o3R7QbDMBQG4JOLKhFVqnbVM6UqQsWIqGrt4wa6TacqwjYO+0izbnn/vByP8+McIqW8w5+Q/nz9iY77NhCdLiOiVZbAelN46LBrgAzDhChNYxzmeemgrqt9NIeIxskgSmLmbChKjt3UGogxFhFj1EGcC2yt1Xf0BIvoE7yQtTdElEYgROWdQKntGy0lHIU8+AGE22uj/bvWSgAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerNextLeftActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWklEQVR42mM0Njb+z0AGYARpPHHiNFzg37+/cPaff/8Y/v7+B2f//w9hu7k40ECjlZUFmN6//wjxGmGaYACkmaBGCwtTrIGxe+8h3BpxaYKBXXsOUClwyIlHAK2wcWK2kGpxAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerNextLeft {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWklEQVR42mM8e/bsfwYyACNIo56eIVzg37+/cPaff/8Y/v7+B2f//w9hP7h3iwYarawswPT+/UeI1wjTBAMgzQQ1WliYYg2M3XsP4daISxMM7NpzgIaBQ0gjAL5Fk6CV32pMAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerNextRightActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWklEQVR42mM0Njb+z0AGYARp3LXnAITDyMTAwsQEZjOzItggwMTEDGdbWJjSQKOjow2YPnbsBPEaYZpgAKSZoEZXZzusgXHixGncGt1cHPCGJEwz5YFDTjwCACt4L2IrUokCAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerNextRight {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAAWklEQVR42mM8e/bsfwYyACNIo4KSGoTDyMTAwsQEZjOzItggwMTEDGdfunSeBhodHW3A9LFjJ4jXCNMEAyDNBDW6OtthDYwTJ07j1ujm4oA3JGGaaRM4hDQCAOLvQqCYTghDAAAAAElFTkSuQmCC);
-}
-
-div.CanvasXpressCanvasResizerNextTopActive {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAeUlEQVR42pXRWwqAIBAF0HFNEoiEJD0W3YNCRIQWVVwh0Uqi++PM5XyNjHN+0EcYkPd7EQhR/URY3nBEznmSUoQScxr0D3SHRZTCiIx1pGqZIXQI+oDW1ZLWdQTYr6B/oBRkaFoM9a0ivPegD2ict+Ixh675gb4++ASZqlJf9xCRjAAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressCanvasResizerNextTop {
-	box-sizing: content-box;
-	background-image:
-		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAlUlEQVR42mM8e/bsfwYCgPH37394FV26dJ5ERRYWpgwnTpzGrujnz99gRVZWFmDBY8dOoCi6cuUSpiJ0hTgVISsEK/r6/SdYkZ2NFYqiQ0eOgekb164wMH769B2syNHRBq5g//4jcPbt29cwFSErgCt69+ErWJGrsx3D7r2HMILg/t0bDIxv33/GG5gP7t0iUhExEQwAhNtro/juysQAAAAASUVORK5CYII=);
-}
-
 div.CanvasXpressMotion {
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
@@ -1116,12 +900,48 @@ div.CanvasXpressConfiguratorExample {
 
 span.CanvasXpressConfiguratorExample {
 	cursor: default;
-	font: normal 12px arial, tahoma, sans-serif;
+	font: bold 14px arial, tahoma, sans-serif;
 	line-height: 16px;
 	-moz-user-select: none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+div.CanvasXpressConfiguratorExampleContent {
+  overflow : 'auto'
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,{
+  width: 3px;
+  height: 3px;
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track{
+  background-color: #F5F5F5;
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover{
+  background-color: #BEBEBE;
+  border-radius: 6px;
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  background-color: #FFFFFF;
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb{
+  background-color: #337ab7;
+  border-radius: 6px;
+  border: none;
 }
 
 div.CanvasXpressConfiguratorColor {
@@ -1942,7 +1762,7 @@ input.CanvasXpressListItemScrollSearch {
 	outline-style: none;
 	outline-width: 0px;
 	padding-left: 5px;
-	width: 97%;
+	width: 93%;
 }
 
 a.CanvasXpressListItemA {
