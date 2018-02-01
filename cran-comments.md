@@ -1,8 +1,8 @@
 ## Comments from Maintainer
 
-Bugfix for updated htmlwidgets javascript functionality to allow destruction of the widget properly in shiny applications on recreation.
+Updated CanvasXpress JS libraries to 18.3
 
-Fixed CRAN check NOTE on 2 fedora linux builds regarding patch level.
+There are two NOTEs on fedora linux builds that cannot be resolved at the package level -- this package suggests limma from BioConductor (limma) that is not available on those builds for CRAN checks.
 
 ---  
 

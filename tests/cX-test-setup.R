@@ -28,7 +28,8 @@ if (interactive()) {
                filename   = ifelse(is.na(filename), NA, gsub('\\.txt".*$', '', filename))) %>%
         rowwise() %>%
         mutate(new = gsub('"http://www.canvasxpress.org.*txt"', 
-                          paste0('system.file("extdata", "', filename, '.txt", package = "canvasXpress")'), orig))
+                          paste0('system.file("extdata", "', filename, '.txt", package = "canvasXpress")'), orig)) %>%
+        mutate(new = gsub('\\$', '$', new, fixed = T))
     
     writeLines(pkgFile$new, "tests/cX-function.R")
     
