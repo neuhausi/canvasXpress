@@ -16,7 +16,6 @@ HTMLWidgets.widget({
                 if (CanvasXpress.getObject(c.id)) {
                     CanvasXpress.destroy(c.id);                
                 }
-
                 if (x.length != 0) {
                     x.renderTo = c.id;
                     new CanvasXpress(x);
