@@ -355,10 +355,10 @@ cXbar9 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    bar3DInverseWeight=1.2,
     graphType="Bar",
     is3DPlot=TRUE,
     scatterType="bar",
+    widthFactor=1.2,
     x3DRatio=0.5
   )
 }
@@ -1419,7 +1419,7 @@ cXkaplanmeier2 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     showDecorations=TRUE,
-    showDecorationsKaplanMeierConfidence=TRUE,
+    showKaplanMeierConfidence=TRUE,
     showLegend=FALSE,
     showTransition=TRUE,
     title="Kaplan-Meier Plot",
@@ -1786,12 +1786,13 @@ cXnetwork4 <- function() {
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    coordinateNetworkConvexHullCommunityColor=TRUE,
     edgeWidth=2,
     graphType="Network",
-    isNetworkCommunities=TRUE,
     nodeFontColor="rgb(29,34,43)",
     nodeSize=30,
     showAnimation=TRUE,
+    showNetworkCommunities=TRUE,
     title="Zachary's famous Karate Club"
   )
 }
@@ -2639,7 +2640,7 @@ cXstacked1 <- function() {
     graphOrientation="vertical",
     graphType="Stacked",
     groupingFactors=list("Factor1"),
-    sampleSeparationFactor=1,
+    sampleSpaceFactor=1,
     showTransition=TRUE,
     title="Random Data",
     treemapBy=list("Factor2", "Factor3")
@@ -2658,7 +2659,7 @@ cXstacked2 <- function() {
     graphOrientation="horizontal",
     graphType="Stacked",
     legendBackgroundColor=FALSE,
-    sampleSeparationFactor=1,
+    sampleSpaceFactor=1,
     showShadow=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -2700,7 +2701,7 @@ cXstacked4 <- function() {
     graphOrientation="horizontal",
     graphType="Stacked",
     legendBackgroundColor=FALSE,
-    sampleSeparationFactor=1.5,
+    sampleSpaceFactor=1.5,
     showShadow=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -2788,7 +2789,7 @@ cXstackedpercent1 <- function() {
     graphOrientation="horizontal",
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
-    sampleSeparationFactor=1,
+    sampleSpaceFactor=1,
     showShadow=TRUE,
     showTransition=TRUE,
     smpLabelScaleFontFactor=0.8,
@@ -2831,7 +2832,7 @@ cXstackedpercent3 <- function() {
     graphOrientation="horizontal",
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
-    sampleSeparationFactor=1.5,
+    sampleSpaceFactor=1.5,
     showShadow=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
