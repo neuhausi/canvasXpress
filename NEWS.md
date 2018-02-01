@@ -11,9 +11,6 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 ## v1.18.2
 * Bugfix for destruction of htmlwidget
 
-## v1.18.2
-* Bugfix for destruction of htmlwidget
-
 ## v1.18.1
 * Updated CanvasXpress JavaScript and CSS libraries to v18.1
 * Added destroy functionality for shiny applications the require removal of canvasXpress charts
