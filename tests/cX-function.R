@@ -796,6 +796,46 @@ cXcircular2 <- function() {
   )
 }
 
+cXcircular3 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-circular-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-circular-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-circular-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorScheme="basic",
+    colorSmpDendrogramBy="Species",
+    graphType="Circular",
+    ringsType=list("heatmap"),
+    samplesClustered=TRUE,
+    smpDendrogramPosition="inside",
+    smpOverlays=list("Species"),
+    title="Iris flower data set (Dendrogram Inside)"
+  )
+}
+
+cXcircular4 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-circular-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-circular-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-circular-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorScheme="basic",
+    colorSmpDendrogramBy="Species",
+    graphType="Circular",
+    ringsType=list("heatmap"),
+    samplesClustered=TRUE,
+    smpDendrogramPosition="outside",
+    smpOverlays=list("Species"),
+    title="Iris flower data set (Dendrogram Outside)"
+  )
+}
+
 cXcontour1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-volcano-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
