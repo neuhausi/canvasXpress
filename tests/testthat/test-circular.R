@@ -17,3 +17,19 @@ test_that("cXcircular2", {
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+
+test_that("cXcircular3", {
+    result <- cXcircular3()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXcircular4", {
+    result <- cXcircular4()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})

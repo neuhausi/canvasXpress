@@ -4,5 +4,5 @@ rgb(51,12,255)		arrow	Gene4	Gene3	square	dashedCurved	3
 rgb(51,12,255)		arrow	Gene5	Met		line	3
 rgb(51,12,255)		round	Gene3	DNA	square	bezier	3
 rgb(51,12,255)		square	Gene7	Gene1	arrow	dashedBezier	3
-rgb(51,12,255)	ARRAY(0x2f3e5d0)	square	Gene5	Gene7		dotted	3
-rgb(51,12,255)	ARRAY(0x2f70e98)	square	Gene5	DNA		bezier	3
+rgb(51,12,255)	ARRAY(0x165a3c8)	square	Gene5	Gene7		dotted	3
+rgb(51,12,255)	ARRAY(0x169e098)	square	Gene5	DNA		bezier	3
