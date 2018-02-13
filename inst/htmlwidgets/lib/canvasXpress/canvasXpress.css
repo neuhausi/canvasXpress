@@ -459,9 +459,42 @@ div.CanvasXpressCanvasResizerloading2 {
 	background-repeat: no-repeat;
 }
 
+/**********/
+/* Motion */
+/**********/
+
 div.CanvasXpressMotion {
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
+}
+
+div.CanvasXpressMotionContainer {
+  box-sizing: content-box;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
+  background-repeat: repeat-x;
+}
+
+div.CanvasXpressMotionCurrent {
+  box-sizing: content-box;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
+  background-repeat: no-repeat;
+  float: left;
+  height: 14px;
+  position: relative;
+  width: 14px;
+  z-index: 10002;
+}
+
+div.CanvasXpressMotionRange {
+  box-sizing: content-box;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  float: left;
+  height: 14px;
+  left: 0px;
+  top : -1px;
+  position: relative;
+  z-index: 10001;
 }
 
 /**********/

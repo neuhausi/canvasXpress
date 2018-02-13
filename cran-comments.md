@@ -1,8 +1,8 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 18.3
+Updated CanvasXpress JS libraries to 18.5, code refinement for htmwidget factory
 
-There are two NOTEs on fedora linux builds that cannot be resolved at the package level -- this package suggests limma from BioConductor (limma) that is not available on those builds for CRAN checks.
+There are two NOTEs on the CRAN Checks for fedora linux builds that cannot be resolved at the package level -- this package suggests limma from BioConductor (limma) that is not available on those builds.
 
 ---  
 
