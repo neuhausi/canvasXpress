@@ -2,8 +2,6 @@
 
 Updated CanvasXpress JS libraries to 18.5, code refinement for htmwidget factory
 
-There is one NOTE on the CRAN R CMD checks due to the fact that this is the 7th update in 6 months.  Since the package tries to closely track the JS releases this was unavoidable to bring the new JS features to users.
-
 There are two NOTEs on the CRAN Checks for fedora linux builds that cannot be resolved at the package level -- this package suggests limma from BioConductor (limma) that is not available on those builds.
 
 ---  
