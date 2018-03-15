@@ -758,11 +758,10 @@ cXcircular1 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorScheme="basic",
     connections=list(list("rgb(255,0,0)", "s1", "s15"), list("rgb(0,255,0)", "s25", "s120"), list("rgb(255,0,0)", "s34", "s2"), list("rgb(255,0,0)", "s47", "s69"), list("rgb(255,0,0)", "s15", "s74"), list("rgb(0,120,0)", "s57", "s87"), list("rgb(255,34,0)", "s54", "s118"), list("rgb(255,0,100)", "s78", "s18"), list("rgb(255,134,0)", "s90", "s48"), list("rgb(120,0,0)", "s120", "s68"), list("rgb(255,0,0)", "s131", "s92"), list("rgb(0,255,0)", "s148", "s119"), list("rgb(0,0,255)", "s10", "s14"), list("rgb(255,0,0)", "s56", "s6"), list("rgb(255,0,0)", "s98", "s90"), list("rgb(255,0,0)", "s113", "s20")),
     graphType="Circular",
-    ringsType=list("dot", "heatmap", "bar"),
-    ringsWeight=list(50, 25, 25),
+    ringGraphType=list("dot", "heatmap", "bar"),
+    ringGraphWeight=list(50, 25, 25),
     segregateSamplesBy=list("Species"),
     segregateVariablesBy=list("Ring"),
     showTransition=TRUE,
@@ -782,11 +781,10 @@ cXcircular2 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorScheme="basic",
     connections=list(list("rgb(0,0,255)", "setosa", 42, "versicolor", 35, 1, 2), list("rgb(0,255,0)", "virginica", 26, "versicolor", 15, 4, 8), list("rgb(120,0,255)", "setosa", 36, "virginica", 5, 6, 9), list("rgb(0,40,255)", "versicolor", 9, "versicolor", 18, 2, 5), list("rgb(80,0,55)", "versicolor", 14, "setosa", 9, 3, 4), list("rgb(0,55,140)", "setosa", 12, "setosa", 41, 5, 2), list("rgb(255,0,0)", "virginica", 25, "setosa", 3, 2, 6)),
     graphType="Circular",
     rAxis="Number",
-    ringsWeight=list(25, 25, 25, 25),
+    ringGraphWeight=list(25, 25, 25, 25),
     segregateSamplesBy=list("Species"),
     segregateVariablesBy=list("Ring"),
     showTransition=TRUE,
@@ -805,14 +803,14 @@ cXcircular3 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorScheme="basic",
     colorSmpDendrogramBy="Species",
+    connections=list(list("rgb(120,0,255)", "s71", "s107"), list("rgb(120,0,255)", "s73", "s107"), list("rgb(120,0,255)", "s84", "s107")),
     graphType="Circular",
-    ringsType=list("heatmap"),
+    ringGraphType=list("heatmap"),
     samplesClustered=TRUE,
-    smpDendrogramPosition="inside",
+    smpDendrogramPosition="outside",
     smpOverlays=list("Species"),
-    title="Iris flower data set (Dendrogram Inside)"
+    title="Iris flower data set (Dendrogram Outside)"
   )
 }
 
@@ -825,14 +823,83 @@ cXcircular4 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorScheme="basic",
     colorSmpDendrogramBy="Species",
+    connections=list(list("rgb(120,0,255)", "s71", "s107"), list("rgb(120,0,255)", "s73", "s107"), list("rgb(120,0,255)", "s84", "s107")),
     graphType="Circular",
-    ringsType=list("heatmap"),
+    ringGraphType=list("heatmap"),
+    ringsOrder=list("labels", "overlays", "dendrogram", "labels", "data"),
     samplesClustered=TRUE,
-    smpDendrogramPosition="outside",
+    smpDendrogramPosition="inside",
     smpOverlays=list("Species"),
-    title="Iris flower data set (Dendrogram Outside)"
+    title="Iris flower data set (Dendrogram Inside)"
+  )
+}
+
+cXcircular5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-ideogram-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-ideogram-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-ideogram-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    arcSegmentsSeparation=3,
+    colorScheme="Tableau",
+    colors=list("#332288", "#6699CC", "#88CCEE", "#44AA99", "#117733", "#999933", "#DDCC77", "#661100", "#CC6677", "#AA4466", "#882255", "#AA4499"),
+    connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
+    graphType="Circular",
+    showIdeogram=TRUE,
+    title="Default Settings"
+  )
+}
+
+cXcircular6 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-ideogram-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-ideogram-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-ideogram-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    arcSegmentsSeparation=3,
+    circularAnchors2Align="inside",
+    circularAnchorsAlign="outside",
+    circularCenterProportion=0.5,
+    circularLabelsAlign="inside",
+    colorScheme="Tableau",
+    colors=list("#332288", "#6699CC", "#88CCEE", "#44AA99", "#117733", "#999933", "#DDCC77", "#661100", "#CC6677", "#AA4466", "#882255", "#AA4499"),
+    connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
+    graphType="Circular",
+    ringGraphType=list("heatmap", "stacked"),
+    ringsOrder=list("chromosomes", "Annt1", "Lev:1", "anchors", "labels", "ideogram", "anchors2", "Lev:4"),
+    segregateSamplesBy=list("Factor4"),
+    showIdeogram=TRUE,
+    title="Custom Plotting Order"
+  )
+}
+
+cXcircular7 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-ideogram-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-ideogram-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-ideogram-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    arcSegmentsRadius=list(1, 1.05, 1.1, 1.15),
+    arcSegmentsSeparation=3,
+    colorScheme="Tableau",
+    colors=list("#332288", "#6699CC", "#88CCEE", "#44AA99", "#117733", "#999933", "#DDCC77", "#661100", "#CC6677", "#AA4466", "#882255", "#AA4499"),
+    connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
+    graphType="Circular",
+    ringGraphType=list("heatmap", "area", "stacked", "dot", "bar"),
+    ringsOrder=list("scale", "ideogram", "labels", "anchors", "Annt2", "Annt1", "Lev:1", "Lev:2", "Lev:3", "Lev:4"),
+    segregateSamplesBy=list("Factor4"),
+    showIdeogram=TRUE,
+    title="Custom radi for Chromosomes and Custom Plotting Order"
   )
 }
 
@@ -2060,7 +2127,7 @@ cXradar1 <- function() {
     circularType="radar",
     colorScheme="Bootstrap",
     graphType="Circular",
-    ringsType=list("line"),
+    ringGraphType=list("line"),
     showTransition=TRUE,
     title="Radar - Line",
     transitionStep=50,
@@ -2083,7 +2150,7 @@ cXradar2 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     legendPosition="top",
-    ringsType=list("area"),
+    ringGraphType=list("area"),
     showTransition=TRUE,
     title="Radar - Area",
     transitionStep=50,
@@ -2105,7 +2172,7 @@ cXradar3 <- function() {
     circularType="radar",
     colorScheme="Bootstrap",
     graphType="Circular",
-    ringsType=list("bar"),
+    ringGraphType=list("bar"),
     showTransition=TRUE,
     title="Radar - Bar",
     transitionStep=50,
@@ -2128,7 +2195,7 @@ cXradar4 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     legendPosition="top",
-    ringsType=list("dot"),
+    ringGraphType=list("dot"),
     showTransition=TRUE,
     title="Radar - Scatter",
     transitionStep=50,
@@ -2151,7 +2218,7 @@ cXradar5 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     legendPosition="top",
-    ringsType=list("stacked"),
+    ringGraphType=list("stacked"),
     showTransition=TRUE,
     title="Radar - Stacked",
     transitionStep=50,
@@ -2173,7 +2240,7 @@ cXradar6 <- function() {
     circularType="radar",
     colorScheme="Bootstrap",
     graphType="Circular",
-    ringsType=list("line"),
+    ringGraphType=list("line"),
     showTransition=TRUE,
     title="Half Radar",
     transitionStep=50,
@@ -2196,7 +2263,7 @@ cXradar7 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     legendPosition="top",
-    ringsType=list("line"),
+    ringGraphType=list("line"),
     showTransition=TRUE,
     title="Rotated Half Radar",
     transitionStep=50,
@@ -2218,7 +2285,7 @@ cXradar8 <- function() {
     circularType="radar",
     colorScheme="Bootstrap",
     graphType="Circular",
-    ringsType=list("line"),
+    ringGraphType=list("line"),
     showTransition=TRUE,
     smpOverlays=list("Factor3", "-", "Factor1", "Factor2"),
     title="Radar with Overlays",
@@ -2309,6 +2376,20 @@ cXscatter2d1 <- function() {
 
 cXscatter2d2 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-loess2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter2D",
+    showLoessConfidence=TRUE,
+    showLoessFit=TRUE,
+    title="Loess Fit",
+    xAxis=list("E"),
+    yAxis=list("NOx")
+  )
+}
+
+cXscatter2d3 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scentst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scentst-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -2333,7 +2414,7 @@ cXscatter2d2 <- function() {
   )
 }
 
-cXscatter2d3 <- function() {
+cXscatter2d4 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scentst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scentst-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2359,7 +2440,7 @@ cXscatter2d3 <- function() {
   )
 }
 
-cXscatter2d4 <- function() {
+cXscatter2d5 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-ageheightt-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-ageheightt-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2375,7 +2456,7 @@ cXscatter2d4 <- function() {
   )
 }
 
-cXscatter2d5 <- function() {
+cXscatter2d6 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-breastcancert-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-breastcancert-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2403,7 +2484,7 @@ cXscatter2d5 <- function() {
   )
 }
 
-cXscatter2d6 <- function() {
+cXscatter2d7 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-nonlinearfit-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -2421,7 +2502,7 @@ cXscatter2d6 <- function() {
   )
 }
 
-cXscatter2d7 <- function() {
+cXscatter2d8 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2453,7 +2534,7 @@ cXscatter2d7 <- function() {
   )
 }
 
-cXscatter2d8 <- function() {
+cXscatter2d9 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR2-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2482,7 +2563,7 @@ cXscatter2d8 <- function() {
   )
 }
 
-cXscatter2d9 <- function() {
+cXscatter2d10 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR3-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR3-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2514,7 +2595,7 @@ cXscatter2d9 <- function() {
   )
 }
 
-cXscatter2d10 <- function() {
+cXscatter2d11 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR4-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -2576,6 +2657,24 @@ cXscatter3d2 <- function() {
 
 cXscatter3d3 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-loess2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter3D",
+    showLoessConfidence=TRUE,
+    showLoessFit=TRUE,
+    title="Loess Fit",
+    xAxis=list("E"),
+    xAxisExact=TRUE,
+    yAxis=list("NOx"),
+    yAxisExact=TRUE,
+    zAxis=list("C"),
+    zAxisExact=TRUE
+  )
+}
+
+cXscatter3d4 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatter3d-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
@@ -2586,7 +2685,7 @@ cXscatter3d3 <- function() {
   )
 }
 
-cXscatter3d4 <- function() {
+cXscatter3d5 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatter3d-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -2599,7 +2698,7 @@ cXscatter3d4 <- function() {
   )
 }
 
-cXscatter3d5 <- function() {
+cXscatter3d6 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-generic2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-generic2-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
