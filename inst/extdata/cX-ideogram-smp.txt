@@ -1,0 +1,11 @@
+	Factor1	Factor2	Factor3	Factor4
+S1	Lev:2	Lev:1	Lev:4	Lev:1
+S2	Lev:1	Lev:2	Lev:1	Lev:4
+S3	Lev:1	Lev:2	Lev:2	Lev:2
+S4	Lev:1	Lev:1	Lev:1	Lev:4
+S5	Lev:2	Lev:1	Lev:4	Lev:5
+S6	Lev:1	Lev:3	Lev:4	Lev:2
+S7	Lev:1	Lev:3	Lev:1	Lev:2
+S8	Lev:1	Lev:1	Lev:4	Lev:1
+S9	Lev:2	Lev:1	Lev:2	Lev:4
+S10	Lev:1	Lev:2	Lev:2	Lev:3
