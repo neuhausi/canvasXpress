@@ -43,5 +43,13 @@ test_that("cXscatter3d5", {
 })
 
 test_that("cXscatter3d6", {
+    result <- cXscatter3d6()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXscatter3d7", {
     warning("scatter3d - plot function missing")
 })

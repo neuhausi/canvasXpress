@@ -10,6 +10,7 @@ There are two NOTEs on the CRAN Checks for fedora linux builds that cannot be re
 
 * ubuntu 16.04, R 3.3.2
 * ubuntu 16.04, R 3.4.3
+* ubuntu 16.04, R 3.4.4
 
 * ubuntu 14.04.5 (on travis-ci), R 3.3.3
 * ubuntu 14.04.5 (on travis-ci), R 3.4.2
