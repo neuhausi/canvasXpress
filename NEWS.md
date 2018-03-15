@@ -6,11 +6,14 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.18.8
+* Updated CanvasXpress JavaScript and CSS libraries to v18.8
+
 ## v1.18.5
-* Updated CanvasXpress JavasScript and CSS libraries to v18.5
+* Updated CanvasXpress JavaScript and CSS libraries to v18.5
 
 ## v1.18.3
-* Updated CanvasXpress JavasScript and CSS libraries to v18.3
+* Updated CanvasXpress JavaScript and CSS libraries to v18.3
 
 ## v1.18.2
 * Bugfix for destruction of htmlwidget

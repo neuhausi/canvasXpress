@@ -1,5 +1,5 @@
 	Ring
-Number	-1
+Number	
 Sepal.Length	1
 Sepal.Width	2
 Petal.Length	2
