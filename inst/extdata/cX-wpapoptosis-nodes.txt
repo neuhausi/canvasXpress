@@ -37,6 +37,7 @@ Exp1	Exp2	Exp3	FC1	FC2	FC3	Factor1	Factor2	Factor3	color	database	eventless	font
 7	8	8	1	-4	4	E	B	B	rgba(0,0,0,0)	Entrez Gene : 4790		10		e75		defd7	20	false			e75		org.pathvisio.model.BackpageHead	NFKB1	rgb(0,0,0)	0.5	117.3	540		datanode	rgb(0,0,0)	defd7			rectangle	GeneProduct	Middle	NFKB1 | nuclear factor of kappa light polypepti...	60	117.3	540	32780
 5	9	7	4	1	1	A	E	E	rgba(0,0,0,0)	Entrez Gene : 355		10		d44			20				d44		org.pathvisio.model.BackpageHead	FAS	rgb(0,0,0)	0.5	720	126.7		datanode	rgb(0,0,0)				rectangle	GeneProduct	Middle	FAS | Fas (TNF receptor superfamily member 6)	66	720	126.7	32782
 									rgba(245,245,245,0.5)						ARRAY(0x30f5420)		45		true	false	dbe72										rgb(0,0,0)				rectangle	Group			65	88.3	293.3	32784
+
 10	11	5	1	6	-1	C	C	A	rgba(0,0,0,0)	Entrez Gene : 329		10		a68		dbe72	20	false			a68		org.pathvisio.model.BackpageHead	BIRC2	rgb(0,0,0)	0.5	88.3	283.3		datanode	rgb(0,0,0)	dbe72			rectangle	GeneProduct	Middle	BIRC2 | baculoviral IAP repeat-containing 2	60	88.3	283.3	32784
 1	8	11	7	-4	3	C	C	D	rgba(0,0,0,0)	Entrez Gene : 56616		10		a6b			20				a6b		org.pathvisio.model.BackpageHead	DIABLO	rgb(0,0,0)	0.5	665.3	451.3		datanode	rgb(0,0,0)				rectangle	GeneProduct	Middle	DIABLO | diablo homolog (Drosophila)	53	665.3	451.3	32786
 9	5	9	-4	0	5	D	A	E	rgba(0,0,0,0)	Entrez Gene : 207		10		d5d			20				d5d		org.pathvisio.model.BackpageHead	AKT1	rgb(0,0,0)	0.5	1250.9	326.7		datanode	rgb(0,0,0)				rectangle	GeneProduct	Middle	AKT1 | v-akt murine thymoma viral oncogene homo...	40	1250.9	326.7	32788
