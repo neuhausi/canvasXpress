@@ -52,3 +52,4 @@ test_that("cXnetwork6", {
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+
