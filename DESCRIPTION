@@ -9,9 +9,9 @@ Description: Enables creation of visualizations using the CanvasXpress framework
 Type: Package
 License: GPL-3
 Encoding: UTF-8
-Author: 
-    Isaac Neuhaus [aut, cre],
-    Connie Brett [ctb]
+Authors@R: c(
+    person("Isaac", "Neuhaus", email = "imnphd@gmail.com", role = c("aut", "cre")),
+    person("Connie", "Brett", email = "connie@aggregate-genius.com", role = "ctb"))
 Maintainer: 
     Connie Brett <connie@aggregate-genius.com>
 URL: 
