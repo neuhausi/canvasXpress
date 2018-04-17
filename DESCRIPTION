@@ -10,10 +10,8 @@ Type: Package
 License: GPL-3
 Encoding: UTF-8
 Authors@R: c(
-    person("Isaac", "Neuhaus", email = "imnphd@gmail.com", role = c("aut", "cre")),
-    person("Connie", "Brett", email = "connie@aggregate-genius.com", role = "ctb"))
-Maintainer: 
-    Connie Brett <connie@aggregate-genius.com>
+    person("Isaac", "Neuhaus", email = "imnphd@gmail.com", role = c("aut")),
+    person("Connie", "Brett", email = "connie@aggregate-genius.com", role = c("aut", "cre")))
 URL: 
     https://github.com/neuhausi/canvasXpress.git
 BugReports: 

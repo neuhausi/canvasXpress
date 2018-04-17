@@ -28,3 +28,12 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Isaac Neuhaus \email{imnphd@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Connie Brett \email{connie@aggregate-genius.com} [contributor]
+}
+
+}
