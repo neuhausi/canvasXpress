@@ -29,11 +29,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Isaac Neuhaus \email{imnphd@gmail.com}
+\strong{Maintainer}: Connie Brett \email{connie@aggregate-genius.com}
 
-Other contributors:
+Authors:
 \itemize{
-  \item Connie Brett \email{connie@aggregate-genius.com} [contributor]
+  \item Isaac Neuhaus \email{imnphd@gmail.com}
 }
 
 }
