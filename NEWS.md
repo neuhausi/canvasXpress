@@ -5,6 +5,11 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="http://canvasxpress.org"> main website</a>.
 
 ---
+## v1.19.0
+* Updated CanvasXpress JavaScript and CSS libraries to v19.0
+
+## v1.18.8
+* Updated CanvasXpress JavaScript and CSS libraries to v18.8
 
 ## v1.18.8
 * Updated CanvasXpress JavaScript and CSS libraries to v18.8

@@ -82,3 +82,11 @@ test_that("cXscatter2d10", {
     expect_s3_class(result, "htmlwidget")
 })
 
+test_that("cXscatter2d11", {
+    result <- cXscatter2d11()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
