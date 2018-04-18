@@ -65,6 +65,15 @@ input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
 
+.unselectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
 div.cxc {
 	left: 0px;
 	top: 0px;
@@ -78,7 +87,7 @@ div.CanvasXpressCode {
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	cursor: move;
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
@@ -115,7 +124,7 @@ pre.CanvasXpressCode {
 }
 
 div.CanvasXpressCodeContainer {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	clear: both;
 	max-height: 500px;
@@ -124,14 +133,14 @@ div.CanvasXpressCodeContainer {
 }
 
 div.CanvasXpressCodeContent {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	margin: 2px 3px;
 	padding: 2px 3px;
 }
 
 pre.CanvasXpressCodeContent {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border: none;
 	margin: 0px;
 	padding: 10px;
@@ -150,7 +159,7 @@ pre.CanvasXpressCodeContent {
 div.CanvasXpressBin {
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	cursor: move;
 	color: rgb(34, 34, 34);
@@ -178,7 +187,7 @@ img.CanvasXpressBin {
 }
 
 div.CanvasXpressBinContainer {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	clear: both;
 	-moz-user-select: none;
@@ -188,7 +197,7 @@ div.CanvasXpressBinContainer {
 }
 
 div.CanvasXpressBinNameContainer {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	clear: both;
 	max-height: 180px;
@@ -200,7 +209,7 @@ div.CanvasXpressBinNameContainer {
 }
 
 input.CanvasXpressBin {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	color: rgb(34, 34, 34);
 	cursor: default;
@@ -261,6 +270,27 @@ img.CanvasXpressDataExplorer {
 	cursor: pointer;
 	margin: 3px;
 	padding: 3px;
+	-webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s; /* Safari */
+}
+
+img.CanvasXpressDataExplorer:hover {
+  border: 1px solid rgb(51, 122, 183);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 3px;
+  padding: 3px;
+  -webkit-transform: scale(1.8, 1.8);
+  -ms-transform: scale(1.8, 1.8);
+  transform: scale(1.8, 1.8);
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s; /* Safari */
+  box-shadow: 10px 10px 5px #888888;
+  z-index: 2;
+  position: relative; 
 }
 
 div.CanvasXpressDataExplorerActive {
@@ -367,7 +397,8 @@ span.CanvasXpressDataExplorer {
 	margin-left: -4px;
 }
 
-br::selection,hr.CanvasXpressDataExplorer::selection,img.CanvasXpressDataExplorerActive::selection,img.CanvasXpressDataExplorer::selection,div.CanvasXpressDataExplorerActive::selection,div.CanvasXpressDataExplorer::selection,img.CanvasXpressDataExplorerMask::selection,span.CanvasXpressDataExplorerNumeric::selection,span.CanvasXpressDataExplorerString::selection,span.CanvasXpressDataExplorerUnique::selection,span.CanvasXpressDataExplorer::selection {
+br::selection,hr.CanvasXpressDataExplorer::selection,img.CanvasXpressDataExplorerActive::selection,img.CanvasXpressDataExplorer::selection,div.CanvasXpressDataExplorerActive::selection,div.CanvasXpressDataExplorer::selection,img.CanvasXpressDataExplorerMask::selection,span.CanvasXpressDataExplorerNumeric::selection,span.CanvasXpressDataExplorerString::selection,span.CanvasXpressDataExplorerUnique::selection,span.CanvasXpressDataExplorer::selection
+	{
 	background: rgba(0, 0, 0, 0);
 	color: rgb(0, 0, 0);
 }
@@ -378,15 +409,15 @@ br::selection,hr.CanvasXpressDataExplorer::selection,img.CanvasXpressDataExplore
 div.CanvasXpressDrag {
 	opacity: 0.75;
 	box-sizing: content-box;
-	filter: alpha(opacity =       75);
-	background-color: rgb(245, 245, 245);
+	filter: alpha(opacity =           75);
+	background-color: rgba(245, 245, 245, 0.95);
 	position: absolute;
 }
 
 div.CanvasXpressTooltip {
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
 	cursor: move;
 	color: rgb(34, 34, 34);
@@ -415,7 +446,7 @@ img.CanvasXpressTooltip {
 span.CanvasXpressTooltip {
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	cursor: move;
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
@@ -462,39 +493,41 @@ div.CanvasXpressCanvasResizerloading2 {
 /**********/
 /* Motion */
 /**********/
-
 div.CanvasXpressMotion {
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
 }
 
 div.CanvasXpressMotionContainer {
-  box-sizing: content-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
-  background-repeat: repeat-x;
+	box-sizing: content-box;
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
+	background-repeat: repeat-x;
 }
 
 div.CanvasXpressMotionCurrent {
-  box-sizing: content-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-  background-repeat: no-repeat;
-  float: left;
-  height: 14px;
-  position: relative;
-  width: 14px;
-  z-index: 10002;
+	box-sizing: content-box;
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
+	background-repeat: no-repeat;
+	float: left;
+	height: 14px;
+	position: relative;
+	width: 14px;
+	z-index: 10002;
 }
 
 div.CanvasXpressMotionRange {
-  box-sizing: content-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
-  background-repeat: repeat-x;
-  float: left;
-  height: 14px;
-  left: 0px;
-  top : -1px;
-  position: relative;
-  z-index: 10001;
+	box-sizing: content-box;
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
+	background-repeat: repeat-x;
+	float: left;
+	height: 14px;
+	left: 0px;
+	top: -1px;
+	position: relative;
+	z-index: 10001;
 }
 
 /**********/
@@ -504,7 +537,7 @@ div.CanvasXpressMarker {
 	box-sizing: content-box;
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	color: rgb(34, 34, 34);
 	cursor: move;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -527,7 +560,7 @@ div.CanvasXpressDataTable {
 	box-sizing: content-box;
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	clear: both;
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
@@ -543,7 +576,7 @@ div.CanvasXpressDataTableToolbar {
 	box-sizing: content-box;
 	border: 0px;
 	border-radius: 5px 5px 0px 0px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	color: rgb(34, 34, 34);
 	cursor: move;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -574,7 +607,6 @@ img.CanvasXpressDataTableToolbarImage {
 
 div.CanvasXpressDataTableContainer {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
 	border-radius: 0px 0px 5px 5px;
 	color: rgb(34, 34, 34);
 	display: block;
@@ -592,10 +624,10 @@ div.CanvasXpressDataTableContainer {
 
 div.CanvasXpressDataTableVertical {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	overflow-x: hidden;
-  overflow-y: auto;
-  position: absolute;
+	overflow-y: auto;
+	position: absolute;
 	right: 4px;
 	top: 0px;
 	width: 24px;
@@ -608,13 +640,13 @@ div.CanvasXpressDataTableVertical {
 
 div.CanvasXpressDataTableHorizontal {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	bottom: 8px;
 	height: 24px;
 	left: 24px;
 	overflow-x: auto;
-  overflow-y: hidden;
-  position: absolute;
+	overflow-y: hidden;
+	position: absolute;
 	-ms-user-select: none;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -624,7 +656,7 @@ div.CanvasXpressDataTableHorizontal {
 
 div.CanvasXpressDataTableResizer {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	background-image:
 		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAR0lEQVR42pXPQQoAIAhEUb25nrwyKIpMndkJz8VnAtbGGMGqSqWHhW3pw4lFhBnBYYOHvw0/7DZE+GnI8NVQwbuhimcDgu3uM5KV++8QfCcAAAAASUVORK5CYII=);
 	background-repeat: no-repeat;
@@ -632,6 +664,7 @@ div.CanvasXpressDataTableResizer {
 	bottom: 4px;
 	height: 15px;
 	position: absolute;
+	opacity: 0.95;
 	right: 0px;
 	width: 15px;
 	-ms-user-select: none;
@@ -649,7 +682,8 @@ table.CanvasXpressDataTable {
 	left: 1px;
 	line-height: 20px;
 	position: absolute;
-	table-layout: fixed;
+  opacity: 0.95;
+  table-layout: fixed;
 	top: 1px;
 	-ms-user-select: none;
 	-moz-user-select: none;
@@ -680,7 +714,8 @@ th.CanvasXpressTableCellHead {
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 20px;
-	padding: 2px;
+  opacity: 0.95;
+  padding: 2px;
 	text-align: left;
 	vertical-align: middle;
 	-ms-user-select: none;
@@ -698,7 +733,8 @@ th.CanvasXpressTableCellHeadActive {
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 20px;
-	padding: 2px;
+  opacity: 0.95;
+  padding: 2px;
 	text-align: left;
 	vertical-align: middle;
 	-ms-user-select: none;
@@ -717,6 +753,7 @@ a.CanvasXpressTableCellHead {
 	display: none;
 	height: 20px;
 	position: absolute;
+	opacity: 0.95;
 	right: 0px;
 	top: 0px;
 	white-space: normal;
@@ -737,7 +774,8 @@ a.CanvasXpressTableCellHeadActive {
 	display: block;
 	height: 20px;
 	position: absolute;
-	right: 0px;
+  opacity: 0.95;
+  right: 0px;
 	top: 0px;
 	white-space: normal;
 	width: 14px;
@@ -749,14 +787,13 @@ a.CanvasXpressTableCellHeadActive {
 }
 
 td.CanvasXpressTableCell {
-	background-color: #ffffff;
-	border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	color: rgb(34, 34, 34);
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 20px;
 	padding: 2px;
-	vertical-align: middle;
+  vertical-align: middle;
 	-ms-user-select: none;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -772,7 +809,8 @@ td.CanvasXpressTableCellActive {
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 20px;
 	padding: 2px;
-	vertical-align: middle;
+  opacity: 0.95;
+  vertical-align: middle;
 	-ms-user-select: none;
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -787,7 +825,7 @@ div.CanvasXpressTableCell {
 	margin: 2px 2px 1px 5px;
 	overflow: hidden;
 	position: relative;
-	text-overflow: ellipsis;
+  text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
@@ -800,7 +838,7 @@ div.CanvasXpressTableCellSortAsc {
 	line-height: 20px;
 	margin: 2px 2px 1px 5px;
 	overflow: hidden;
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 div.CanvasXpressTableCellSortDesc {
@@ -820,13 +858,14 @@ div.CanvasXpressTableCellSortDesc {
 /****************/
 div.CanvasXpressConfigurator {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border-radius: 5px;
 	border: 1px solid rgb(51, 122, 183);
 	box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
 	color: rgb(34, 34, 34);
 	cursor: default;
 	font: normal 12px arial, tahoma, sans-serif;
+	opacity: 0.95;
 	line-height: 16px;
 	-ms-user-select: none;
 	-moz-user-select: none;
@@ -846,7 +885,7 @@ span.CanvasXpressConfigurator {
 }
 
 textarea.CanvasXpressConfigurator {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border-radius: 5px;
 	border: 1px solid rgb(51, 122, 183);
 	box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -867,7 +906,7 @@ img.CanvasXpressConfigurator {
 }
 
 select.CanvasXpressConfigurator {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	color: rgb(34, 34, 34);
 	cursor: default;
@@ -877,7 +916,7 @@ select.CanvasXpressConfigurator {
 }
 
 input.CanvasXpressConfigurator {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	color: rgb(34, 34, 34);
 	cursor: default;
@@ -899,7 +938,7 @@ div.CanvasXpressConfiguratorOptions {
 
 div.CanvasXpressConfiguratorFilter {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border-radius: 5px;
 	border: 1px solid rgb(51, 122, 183);
 	box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -922,7 +961,7 @@ input.CanvasXpressConfiguratorFilter {
 
 div.CanvasXpressConfiguratorExample {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border-radius: 5px;
 	border: 1px solid rgb(51, 122, 183);
 	box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -942,39 +981,40 @@ span.CanvasXpressConfiguratorExample {
 }
 
 div.CanvasXpressConfiguratorExampleContent {
-  overflow : 'auto'
+	overflow: 'auto'
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,{
-  width: 3px;
-  height: 3px;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button {
+	width: 3px;
+	height: 3px;
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track{
-  background-color: #F5F5F5;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track {
+	background-color: #F5F5F5;
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover{
-  background-color: #BEBEBE;
-  border-radius: 6px;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover
+	{
+	background-color: #BEBEBE;
+	border-radius: 6px;
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar{
-  width: 6px;
-  height: 6px;
-  background-color: #FFFFFF;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background-color: #FFFFFF;
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar{
-  width: 6px;
-  height: 6px;
-  background-color: #F5F5F5;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background-color: #F5F5F5;
 }
 
-div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb{
-  background-color: #337ab7;
-  border-radius: 6px;
-  border: none;
+div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb {
+	background-color: #337ab7;
+	border-radius: 6px;
+	border: none;
 }
 
 div.CanvasXpressConfiguratorColor {
@@ -1091,7 +1131,6 @@ div.CanvasXpressWrapper {
 /***************/
 /* Data Filter */
 /***************/
-
 div.CanvasXpressDataFilter {
 	box-sizing: content-box;
 	color: rgb(34, 34, 34);
@@ -1108,7 +1147,8 @@ div.CanvasXpressDataFilter {
 
 div.CanvasXpressDataFilterToolbar {
 	box-sizing: content-box;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mP88OHDf0aSiGfPntGaAAAL8XAJa+SuYgAAAABJRU5ErkJggg==);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mP88OHDf0aSiGfPntGaAAAL8XAJa+SuYgAAAABJRU5ErkJggg==);
 	background-repeat: repeat-x;
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 4px;
@@ -1121,6 +1161,7 @@ div.CanvasXpressDataFilterToolbar {
 	margin: 0px;
 	padding: 2px;
 	position: absolute;
+	opacity: 0.95;
 	top: 0px;
 }
 
@@ -1140,7 +1181,8 @@ img.CanvasXpressDataFilterToolbarImage {
 }
 
 span.CanvasXpressDataFilterText {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
 	background-repeat: no-repeat;
 	background-position: -3px;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -1151,7 +1193,8 @@ span.CanvasXpressDataFilterText {
 }
 
 span.CanvasXpressDataFilterTextActive {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
 	background-repeat: no-repeat;
 	background-position: -3px;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -1257,14 +1300,14 @@ input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.C
 }
 
 label.CanvasXpressCheckboxLabel {
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAA0CAYAAABRnrIZAAACXElEQVR42uWUT2iSYRzHv+8Sm3O2aYSMBJU8jOqyRhc1ELGCBZuH/mCYB7WiY4XQNTpKdAtmuoMJwuogDUYHUSMlIoajSx2EKXMLOvhvW0OU94n3ffPd1uvr+3Zc+x1e3ufh+Tzv+zy/D18KfyqXy5FSqYR6vY6/S6vVwmKxwOFwUMyYfSQSCWI2m2Gz2SiIVD6fJ+VyGV6vl6KYLygUCtjtdlFgP9jpdEDFYjESCAQkgV4x66lwOExCoZBsiFn/X0LRaJQEg8F/u71MJkOYgdPplASz2SyhaZozIh6PE4PBMBBkNq9Wq/D5fBS/KJ1Ok0qlglqtJgB0Oh2MRiNcLteee0wdUmGffd4mp9UU/OfVFH/lg5q7Vm+Tq0vbmDMrEb6kofjmDoJuv2+Q73Uab66ocOakqj/09FOLTGqHcGtylPq4/osEsrt4cE6Jh9MaflMB9PhDkyxVupg1KbC5Q2Njh2Dx8jD0YyPiEFPzq03y/GuXfX9hVeKaRXPg10WFXdnYIvPfuoi4tIKzHglhrVar6HkKhQIEwk5NX5S6BxRXvoAX1u2+Lgn0KpV6C7a5fv892dDCQoSD7vjuyoZex19xkMfjkQ0lk0kOmnV7ZUPvUgkOmpm5KRtaXl4EK+zUBadsaLWYBS/s2LhJEmg1KxAIqzo+IQrstn/gSAv7snQMTMLOTXBhIylsa2gYvYR9cpZm5ySFfVQEegmr7rbZOYGwsfUTYBLWNtrAGtGhl7A39E1+I4Gwkc0R9EvYxs89qK+w+c449iesqX2w2eLC6k+BSdj7OmGjD4GwvwHoyQhLMetK1QAAAABJRU5ErkJggg==);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAA0CAYAAABRnrIZAAACXElEQVR42uWUT2iSYRzHv+8Sm3O2aYSMBJU8jOqyRhc1ELGCBZuH/mCYB7WiY4XQNTpKdAtmuoMJwuogDUYHUSMlIoajSx2EKXMLOvhvW0OU94n3ffPd1uvr+3Zc+x1e3ufh+Tzv+zy/D18KfyqXy5FSqYR6vY6/S6vVwmKxwOFwUMyYfSQSCWI2m2Gz2SiIVD6fJ+VyGV6vl6KYLygUCtjtdlFgP9jpdEDFYjESCAQkgV4x66lwOExCoZBsiFn/X0LRaJQEg8F/u71MJkOYgdPplASz2SyhaZozIh6PE4PBMBBkNq9Wq/D5fBS/KJ1Ok0qlglqtJgB0Oh2MRiNcLteee0wdUmGffd4mp9UU/OfVFH/lg5q7Vm+Tq0vbmDMrEb6kofjmDoJuv2+Q73Uab66ocOakqj/09FOLTGqHcGtylPq4/osEsrt4cE6Jh9MaflMB9PhDkyxVupg1KbC5Q2Njh2Dx8jD0YyPiEFPzq03y/GuXfX9hVeKaRXPg10WFXdnYIvPfuoi4tIKzHglhrVar6HkKhQIEwk5NX5S6BxRXvoAX1u2+Lgn0KpV6C7a5fv892dDCQoSD7vjuyoZex19xkMfjkQ0lk0kOmnV7ZUPvUgkOmpm5KRtaXl4EK+zUBadsaLWYBS/s2LhJEmg1KxAIqzo+IQrstn/gSAv7snQMTMLOTXBhIylsa2gYvYR9cpZm5ySFfVQEegmr7rbZOYGwsfUTYBLWNtrAGtGhl7A39E1+I4Gwkc0R9EvYxs89qK+w+c449iesqX2w2eLC6k+BSdj7OmGjD4GwvwHoyQhLMetK1QAAAABJRU5ErkJggg==);
 	background-repeat: no-repeat;
 	white-space: nowrap;
 }
 
 div.CanvasXpressDataFilterContainerMaskNoOverflow {
 	box-sizing: content-box;
-	background-color: #ffffff;
 	border: 1px solid #d0d0d0;
 	margin: 5px;
 	overflow: hidden;
@@ -1272,7 +1315,6 @@ div.CanvasXpressDataFilterContainerMaskNoOverflow {
 
 div.CanvasXpressDataFilterContainerMask {
 	box-sizing: content-box;
-	background-color: #ffffff;
 	border: 1px solid #d0d0d0;
 	margin: 5px;
 	overflow-x: hidden;
@@ -1281,7 +1323,6 @@ div.CanvasXpressDataFilterContainerMask {
 
 div.CanvasXpressDataFilterContainerItem {
 	box-sizing: content-box;
-	background-color: #ffffff;
 	color: #4181ba;
 	height: 15px;
 	padding: 1px 0px 0px 1px;
@@ -1313,7 +1354,8 @@ div.CanvasXpressDataFilterContainerHoverable:hover {
 
 div.CanvasXpressDataFilterContainerNumeric {
 	box-sizing: content-box;
-	background-image:	url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
 	background-repeat: repeat-x;
 	clear: both;
 	height: 14px;
@@ -1322,7 +1364,8 @@ div.CanvasXpressDataFilterContainerNumeric {
 
 div.CanvasXpressDataFilterContainerMin {
 	box-sizing: content-box;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
 	background-repeat: no-repeat;
 	float: left;
 	height: 14px;
@@ -1333,7 +1376,8 @@ div.CanvasXpressDataFilterContainerMin {
 
 div.CanvasXpressDataFilterContainerMax {
 	box-sizing: content-box;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
 	background-repeat: no-repeat;
 	float: left;
 	height: 14px;
@@ -1344,7 +1388,8 @@ div.CanvasXpressDataFilterContainerMax {
 
 div.CanvasXpressDataFilterContainerRange {
 	box-sizing: content-box;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
 	background-repeat: repeat-x;
 	float: left;
 	height: 14px;
@@ -1354,7 +1399,7 @@ div.CanvasXpressDataFilterContainerRange {
 }
 
 input.CanvasXpressDataFilterContainerMinValue {
-	border: 1px solid rgb(245, 245, 245);
+	border: 1px solid rgba(245, 245, 245, 0.95);
 	color: rgb(51, 122, 183);
 	float: left;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -1365,7 +1410,7 @@ input.CanvasXpressDataFilterContainerMinValue {
 }
 
 input.CanvasXpressDataFilterContainerMaxValue {
-	border: 1px solid rgb(245, 245, 245);
+	border: 1px solid rgba(245, 245, 245, 0.95);
 	color: rgb(51, 122, 183);
 	float: right;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -1401,7 +1446,7 @@ div.CanvasXpressDataFilterContainerScaleLogLinear {
 }
 
 select.CanvasXpressDataFilterContainerString {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	font: normal 12px arial, tahoma, sans-serif;
 	margin-left: 3px;
 	margin-bottom: 3px;
@@ -1420,6 +1465,7 @@ div.CanvasXpressDataFilterHead {
 	height: 22px;
 	margin-top: 2px;
 	overflow: hidden;
+	opacity: 0.95;
 	padding: 2px;
 	text-align: left;
 	vertical-align: middle;
@@ -1431,8 +1477,9 @@ div.CanvasXpressDataFilterHead {
 
 div.CanvasXpressDataFilterHeadActive {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mN89fnvf0aSiBvPf9GaAABVL3D5nF6uqAAAAABJRU5ErkJggg==);
+	background-color: rgba(245, 245, 245, 0.95);
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mN89fnvf0aSiBvPf9GaAABVL3D5nF6uqAAAAABJRU5ErkJggg==);
 	background-repeat: repeat-x;
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 4px 4px 0px 0px;
@@ -1442,6 +1489,7 @@ div.CanvasXpressDataFilterHeadActive {
 	height: 22px;
 	margin-top: 2px;
 	overflow: hidden;
+	opacity: 0.95;
 	padding: 2px;
 	text-align: left;
 	vertical-align: middle;
@@ -1453,7 +1501,7 @@ div.CanvasXpressDataFilterHeadActive {
 
 div.CanvasXpressDataFilterContent {
 	box-sizing: content-box;
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 0px 0px 4px 4px;
 	border-top: 0px;
@@ -1464,50 +1512,58 @@ div.CanvasXpressDataFilterContent {
 	padding: 2px;
 }
 
-div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-button,div.CanvasXpressDataTableVertical::-webkit-scrollbar-button,div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button {
-  width: 3px;
-  height: 3px;
+div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-button,div.CanvasXpressDataTableVertical::-webkit-scrollbar-button,div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button
+	{
+	width: 3px;
+	height: 3px;
 }
 
-div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track {
-  background-color: #FFFFFF;
+div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track
+	{
+	background-color: #FFFFFF;
 }
 
-div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,div.CanvasXpressDataTableVertical::-webkit-scrollbar-track {
-  background-color: #F5F5F5;
+div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,div.CanvasXpressDataTableVertical::-webkit-scrollbar-track
+	{
+	background-color: #F5F5F5;
 }
 
-div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track:hover,div.CanvasXpressDataTableVertical::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover {
-  background-color: #BEBEBE;
-  border-radius: 6px;
+div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track:hover,div.CanvasXpressDataTableVertical::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover
+	{
+	background-color: #BEBEBE;
+	border-radius: 6px;
 }
 
-div.CanvasXpressDataFilterContent::-webkit-scrollbar,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  background-color: #FFFFFF;
+div.CanvasXpressDataFilterContent::-webkit-scrollbar,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar
+	{
+	width: 6px;
+	height: 6px;
+	background-color: #FFFFFF;
 }
 
-div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,div.CanvasXpressDataTableVertical::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  background-color: #F5F5F5;
+div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,div.CanvasXpressDataTableVertical::-webkit-scrollbar
+	{
+	width: 6px;
+	height: 6px;
+	background-color: #F5F5F5;
 }
 
-div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-thumb,div.CanvasXpressDataTableVertical::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb {
-  background-color: #337ab7;
-  border-radius: 6px;
-  border: none;
+div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-thumb,div.CanvasXpressDataTableVertical::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb
+	{
+	background-color: #337ab7;
+	border-radius: 6px;
+	border: none;
 }
 
-div.CanvasXpressDataFilter::selection,div.CanvasXpressDataFilterToolbar::selection {
-  background: rgba(0, 0, 0, 0);
-  color: rgb(34, 34, 34);
+div.CanvasXpressDataFilter::selection,div.CanvasXpressDataFilterToolbar::selection
+	{
+	background: rgba(0, 0, 0, 0);
+	color: rgb(34, 34, 34);
 }
 
 div.CanvasXpressDataFilterContainerItem::selection {
-  background: rgba(0, 0, 0, 0);
-  color: #4181ba;
+	background: rgba(0, 0, 0, 0);
+	color: #4181ba;
 }
 
 /********/
@@ -1515,7 +1571,7 @@ div.CanvasXpressDataFilterContainerItem::selection {
 /********/
 div.CanvasXpressLink {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	background-image:
 		url(data:image/gif;base64,R0lGODlh+gABAIcAAOLj4/Dw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAP8ALAAAAAD6AAEAAAgfAAMIHEiwoMGBAAQcXMiwocOHECNKnEixosWLGCMGBAA7);
 	background-repeat: repeat-y;
@@ -1527,6 +1583,7 @@ div.CanvasXpressLink {
 	font: normal 12px arial, tahoma, sans-serif;
 	line-height: 100%;
 	margin: 0px;
+	opacity: 0.95;
 	padding: 0px;
 	position: absolute;
 	-moz-box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -1541,8 +1598,7 @@ input.CanvasXpressTabMenuConfigurator {
 	display: none;
 }
 
-input:not   (:checked   ).CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator
-	{
+input:not(:checked).CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator {
 	display: none;
 }
 
@@ -1615,7 +1671,7 @@ input:checked.CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigu
 
 div.CanvasXpressMenu {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	background-image:
 		url(data:image/gif;base64,R0lGODlh+gABAIcAAOLj4/Dw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAP8ALAAAAAD6AAEAAAgfAAMIHEiwoMGBAAQcXMiwocOHECNKnEixosWLGCMGBAA7);
 	background-repeat: repeat-y;
@@ -1629,6 +1685,7 @@ div.CanvasXpressMenu {
 	margin: 0px;
 	padding: 0px;
 	position: absolute;
+	opacity: 0.95;
 	-moz-box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
 }
 
@@ -1963,7 +2020,7 @@ img.CanvasXpressToolbarHelp {
 
 div.CanvasXpressToolbarHelp {
 	box-sizing: content-box;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	border-radius: 5px;
 	border: 1px solid rgb(51, 122, 183);
 	box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -2002,7 +2059,7 @@ div.CanvasXpressForm {
 	box-sizing: content-box;
 	border: 1px solid rgb(51, 122, 183);
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	color: rgb(34, 34, 34);
 	cursor: move;
 	font: normal 12px arial, tahoma, sans-serif;
@@ -2034,7 +2091,7 @@ input.CanvasXpressFormButton {
 }
 
 input.CanvasXpressFormButtonActive {
-	background-color: rgb(245, 245, 245);
+	background-color: rgba(245, 245, 245, 0.95);
 	background-image:
 		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mN89fnvf0aSiBvPf9GaAABVL3D5nF6uqAAAAABJRU5ErkJggg==);
 	background-repeat: repeat-x;
@@ -2046,6 +2103,7 @@ input.CanvasXpressFormButtonActive {
 	height: 22px;
 	margin-top: 2px;
 	overflow: hidden;
+	opacity: 0.95;
 	padding: 2px;
 	vertical-align: middle;
 	-moz-user-select: none;
@@ -2056,7 +2114,7 @@ input.CanvasXpressFormButtonActive {
 }
 
 input.CanvasXpressFormText {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	color: rgb(34, 34, 34);
 	cursor: default;
@@ -2066,7 +2124,7 @@ input.CanvasXpressFormText {
 }
 
 form.CanvasXpressFormForm {
-	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.95);
 	border: 1px solid rgb(51, 122, 183);
 	color: rgb(34, 34, 34);
 	cursor: default;
@@ -2104,8 +2162,8 @@ canvas.CanvasXpressUpload {
 }
 
 canvas.CanvasXpress::selection {
-  background: rgba(0, 0, 0, 0);
-  color: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0);
+	color: rgb(0, 0, 0);
 }
 
 /*

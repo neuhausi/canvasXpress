@@ -40,6 +40,7 @@ test_that("cXnetwork5", {
     result <- cXnetwork5()
     if (interactive()) { print(result) }
     
+    warning('some lines missing, cross-domain download issue')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
@@ -48,7 +49,8 @@ test_that("cXnetwork6", {
     result <- cXnetwork6()
     if (interactive()) { print(result) }
     
-    warning('coloring off from web example, addtioal blue backgrounds')
+    warning('coloring off from web example, cross-domain download issue')
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+

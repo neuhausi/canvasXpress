@@ -1,8 +1,6 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 18.8
-
-There are two NOTEs on the CRAN Checks for fedora linux builds that cannot be resolved at the package level -- this package suggests limma from BioConductor (limma) that is not available on those builds.
+Updated CanvasXpress JS libraries to 19.0
 
 ---  
 
