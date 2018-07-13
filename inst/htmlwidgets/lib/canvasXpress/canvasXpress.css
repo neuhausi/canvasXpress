@@ -2305,8 +2305,9 @@ canvas.CanvasXpressUpload {
 	border: 1px solid rgba(35, 82, 124, 0.2);
 	border-radius: 6px;
 	margin: -1px;
-	background-image: url(http://canvasxpress.org/images/uploadFile.jpg);
+  background-image: url(https://canvasxpress.org/images/upload.png);
 	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 canvas.CanvasXpress::selection {
