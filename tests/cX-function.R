@@ -303,6 +303,7 @@ cXbar6 <- function() {
     decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
     graphOrientation="vertical",
     graphType="Bar",
+    showFunctionNamesAfterRender=FALSE,
     showShadow=TRUE,
     smpTitle="Cell Lines",
     smpTitleFontStyle="bold",
@@ -451,196 +452,567 @@ cXbarline3 <- function() {
 
 cXboxplot1 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
-    axisTitleFontStyle="italic",
-    citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
-    citationFontStyle="italic",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
-    fontStyle="italic",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
-    legendBox=FALSE,
-    showShadow=TRUE,
-    showTransition=TRUE,
-    smpLabelFontStyle="italic",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
     smpLabelRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    afterRender=list(list("groupSamples", list("Species")))
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot2 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
-    axisTitleFontStyle="italic",
-    citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
-    citationFontStyle="italic",
-    colorScheme="White",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
-    fontStyle="italic",
-    graphOrientation="vertical",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="horizontal",
     graphType="Boxplot",
-    legendBox=FALSE,
-    showShadow=TRUE,
-    smpLabelFontStyle="italic",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
     smpLabelRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    afterRender=list(list("groupSamples", list("Species")))
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot3 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
-    axisTitleFontStyle="italic",
-    citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
-    citationFontStyle="italic",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
-    fontStyle="italic",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
-    legendBox=FALSE,
-    showShadow=TRUE,
-    showViolinBoxplot=TRUE,
-    smpLabelFontStyle="italic",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
     smpLabelRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    afterRender=list(list("groupSamples", list("Species")))
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot4 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
-    axisTitleFontStyle="italic",
-    citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
-    citationFontStyle="italic",
-    colorScheme="White",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
-    fontStyle="italic",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotNotched=TRUE,
+    boxplotOutliersRatio=3,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
-    legendBox=FALSE,
-    showShadow=TRUE,
-    showViolinBoxplot=TRUE,
-    smpLabelFontStyle="italic",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
     smpLabelRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    afterRender=list(list("groupSamples", list("Species")))
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot5 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-boxplot-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-boxplot-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTitleFontStyle="italic",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotMean=TRUE,
+    boxplotMeanColor="rgb(255,215,0)",
+    boxplotMeanColorBorder="red",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
+    graphOrientation="vertical",
     graphType="Boxplot",
-    jitter=TRUE,
-    legendInside=TRUE,
-    legendPosition="right",
-    showBoxplotOriginalData=TRUE,
-    showTransition=TRUE,
-    subtitle="Boxplot Graph",
-    title="Random Data",
-    xAxisTickFormat="%.0f M",
-    afterRender=list(list("groupSamples", list("Factor1")))
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot6 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-boxplot1-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-boxplot1-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorBy="Factor1",
-    connectBy="Subject",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotMedianColor="red",
+    boxplotMedianWidth=5,
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
-    jitter=FALSE,
-    showBoxplotOriginalData=TRUE,
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
     showLegend=FALSE,
-    subtitle="Boxplot Graph",
-    title="Random Data",
-    afterRender=list(list("groupSamples", list("Factor1")))
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot7 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-scents-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-scents-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTitleFontStyle="italic",
-    citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotHingeFunction="fivenum",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
-    jitter=TRUE,
-    legendBox=FALSE,
-    plotByVariable=TRUE,
-    showBoxplotOriginalData=TRUE,
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showLegend=FALSE,
     smpLabelRotate=90,
-    smpTitle="Smoking Status",
-    smpTitleFontStyle="italic",
-    title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
-    afterRender=list(list("groupSamples", list("Smoker")))
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
 cXboxplot8 <- function() {
   library(canvasXpress)
-  y=read.table(system.file("extdata", "cX-cancersurvival-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table(system.file("extdata", "cX-cancersurvival-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table(system.file("extdata", "cX-cancersurvival-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
-    axisTitleFontStyle="italic",
-    citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="vertical",
     graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=TRUE,
+    showBoxplotOriginalData=TRUE,
     showLegend=FALSE,
-    showShadow=TRUE,
-    showTransition=TRUE,
-    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
-    xAxisTitle="Survival time (days)",
-    afterRender=list(list("groupSamples", list("Organ")))
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot9 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binAlignment="center",
+    binned=TRUE,
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot10 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot11 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot12 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot13 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotConnect=TRUE,
+    colorBy="supp",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot14 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotConnect=TRUE,
+    colorBy="supp",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot15 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="supp",
+    colorScheme="GGPlot",
+    connectBy="order",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose", "order"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
@@ -1176,6 +1548,205 @@ cXdotplot4 <- function() {
     xAxisTickFormat="$%sK",
     xAxisTitle="Annual Salary",
     afterRender=list(list("sortSamplesByVariable", list("Men")))
+  )
+}
+
+cXdotplot5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorScheme="Economist",
+    errorBarsColor="red",
+    errorBarsType="standardDeviation",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXdotplot6 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorBy="dose",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendScaleFontFactor=1.8,
+    showErrorBars=FALSE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXdotplot7 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorBy="dose",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendScaleFontFactor=1.8,
+    showErrorBars=FALSE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXdotplot8 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorBy="dose",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendScaleFontFactor=1.8,
+    showErrorBars=FALSE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXdotplot9 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorBy="dose",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showErrorBars=FALSE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 
@@ -3287,6 +3858,638 @@ cXvenn3 <- function() {
     vennLegend=list(A="List 1", D="List 4", C="List 3", B="List 2"),
     graphType="Venn",
     vennGroups=2
+  )
+}
+
+cXviolin1 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=FALSE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    violinScale="area",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin2 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="horizontal",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=FALSE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin3 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=FALSE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    violinScale="count",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin4 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=FALSE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    violinScale="width",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=FALSE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    violinTrim=FALSE,
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin6 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=TRUE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin7 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotMean=TRUE,
+    boxplotMeanColor="rgb(255,215,0)",
+    boxplotMeanColorBorder="red",
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=TRUE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin8 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotMedianColor="red",
+    boxplotMedianWidth=5,
+    boxplotNotched=TRUE,
+    boxplotWishkersType="single",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    showBoxplotIfViolin=TRUE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin9 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=TRUE,
+    showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin10 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binAlignment="center",
+    binned=TRUE,
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin11 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="Economist",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotIfViolin=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin12 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotIfViolin=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin13 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotIfViolin=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin14 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotConnect=TRUE,
+    colorBy="supp",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin15 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    boxplotConnect=TRUE,
+    colorBy="supp",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin16 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="supp",
+    colorScheme="GGPlot",
+    connectBy="order",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose", "order"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
   )
 }
 

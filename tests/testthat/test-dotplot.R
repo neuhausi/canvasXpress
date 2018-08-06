@@ -34,3 +34,42 @@ test_that("cXdotplot4", {
     expect_s3_class(result, "htmlwidget")
 })
 
+test_that("cXdotplot5", {
+    result <- cXdotplot5()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXdotplot6", {
+    result <- cXdotplot6()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXdotplot7", {
+    result <- cXdotplot7()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXdotplot8", {
+    result <- cXdotplot8()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXdotplot9", {
+    result <- cXdotplot9()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})

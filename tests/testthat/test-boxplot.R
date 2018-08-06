@@ -65,3 +65,63 @@ test_that("cXboxplot8", {
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+
+test_that("cXboxplot9", {
+    result <- cXboxplot9()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot10", {
+    result <- cXboxplot10()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot11", {
+    result <- cXboxplot11()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot12", {
+    result <- cXboxplot12()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot13", {
+    result <- cXboxplot13()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot14", {
+    result <- cXboxplot14()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+test_that("cXboxplot15", {
+    result <- cXboxplot15()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
+
+
+
+
