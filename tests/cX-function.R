@@ -794,14 +794,16 @@ cXboxplot10 <- function() {
     backgroundType="window",
     backgroundWindow="#E5E5E5",
     colorBy="dose",
-    colorScheme="Economist",
+    colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
+    jitter=TRUE,
     legendScaleFontFactor=1.8,
+    shapeBy="supp",
+    showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     smpLabelRotate=90,
     smpLabelScaleFontFactor=1.8,
@@ -832,7 +834,7 @@ cXboxplot11 <- function() {
     backgroundType="window",
     backgroundWindow="#E5E5E5",
     colorBy="dose",
-    colorScheme="GGPlot",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -873,7 +875,7 @@ cXboxplot12 <- function() {
     colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Boxplot",
-    groupingFactors=list("dose", "supp"),
+    groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
     legendBox=FALSE,
@@ -894,6 +896,44 @@ cXboxplot12 <- function() {
 }
 
 cXboxplot13 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot14 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -933,7 +973,7 @@ cXboxplot13 <- function() {
   )
 }
 
-cXboxplot14 <- function() {
+cXboxplot15 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -974,7 +1014,7 @@ cXboxplot14 <- function() {
   )
 }
 
-cXboxplot15 <- function() {
+cXboxplot16 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1326,6 +1366,133 @@ cXcorrelation2 <- function() {
   )
 }
 
+cXdensity1 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
+cXdensity2 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE
+  )
+}
+
+cXdensity3 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE
+  )
+}
+
+cXdensity4 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram="sex",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
+cXdensity5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram="sex",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE
+  )
+}
+
+cXdensity6 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram="sex",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE
+  )
+}
+
+cXdensity7 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-density-var.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram="sex",
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=20,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE
+  )
+}
+
+cXdensity8 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-density-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-density-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=20,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    xAxisHistogramHeight=150,
+    xAxisHistogramShow=TRUE,
+    yAxisHistogramHeight=150,
+    yAxisHistogramShow=TRUE
+  )
+}
+
 cXdonnut1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-sunburst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1605,7 +1772,9 @@ cXdotplot6 <- function() {
     backgroundWindow="#E5E5E5",
     binned=TRUE,
     colorBy="dose",
-    colorScheme="Blues",
+    colorScheme="GGPlot",
+    errorBarsColor="red",
+    errorBarsType="standardDeviation",
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("dose"),
@@ -1613,7 +1782,7 @@ cXdotplot6 <- function() {
     guidesColor="white",
     jitter=FALSE,
     legendScaleFontFactor=1.8,
-    showErrorBars=FALSE,
+    shapeBy="supp",
     showLegend=TRUE,
     smpLabelRotate=90,
     smpLabelScaleFontFactor=1.8,
@@ -1648,7 +1817,7 @@ cXdotplot7 <- function() {
     colorScheme="Blues",
     graphOrientation="vertical",
     graphType="Dotplot",
-    groupingFactors=list("supp"),
+    groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
     jitter=FALSE,
@@ -1688,7 +1857,7 @@ cXdotplot8 <- function() {
     colorScheme="Blues",
     graphOrientation="vertical",
     graphType="Dotplot",
-    groupingFactors=list("dose", "supp"),
+    groupingFactors=list("supp"),
     guides="solid",
     guidesColor="white",
     jitter=FALSE,
@@ -1710,6 +1879,46 @@ cXdotplot8 <- function() {
 }
 
 cXdotplot9 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    binned=TRUE,
+    colorBy="dose",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    jitter=FALSE,
+    legendScaleFontFactor=1.8,
+    showErrorBars=FALSE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXdotplot10 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4259,15 +4468,17 @@ cXviolin11 <- function() {
     backgroundType="window",
     backgroundWindow="#E5E5E5",
     colorBy="dose",
-    colorScheme="Economist",
+    colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
+    jitter=TRUE,
     legendScaleFontFactor=1.8,
+    shapeBy="supp",
     showBoxplotIfViolin=TRUE,
+    showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
@@ -4299,7 +4510,7 @@ cXviolin12 <- function() {
     backgroundType="window",
     backgroundWindow="#E5E5E5",
     colorBy="dose",
-    colorScheme="GGPlot",
+    colorScheme="Economist",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -4342,7 +4553,7 @@ cXviolin13 <- function() {
     colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Boxplot",
-    groupingFactors=list("dose", "supp"),
+    groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
     legendBox=FALSE,
@@ -4365,6 +4576,46 @@ cXviolin13 <- function() {
 }
 
 cXviolin14 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showBoxplotIfViolin=TRUE,
+    showLegend=TRUE,
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXviolin15 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4406,7 +4657,7 @@ cXviolin14 <- function() {
   )
 }
 
-cXviolin15 <- function() {
+cXviolin16 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4449,7 +4700,7 @@ cXviolin15 <- function() {
   )
 }
 
-cXviolin16 <- function() {
+cXviolin17 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)

@@ -122,6 +122,12 @@ test_that("cXboxplot15", {
     expect_s3_class(result, "htmlwidget")
 })
 
-
+test_that("cXboxplot16", {
+    result <- cXboxplot16()
+    if (interactive()) { print(result) }
+    
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
 
 

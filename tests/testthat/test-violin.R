@@ -129,3 +129,11 @@ test_that("cXviolin16", {
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
+
+test_that("cXviolin17", {
+    result <- cXviolin17()
+    
+    if (interactive()) { print(result) }
+    expect_s3_class(result, "canvasXpress")
+    expect_s3_class(result, "htmlwidget")
+})
