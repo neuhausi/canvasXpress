@@ -41,7 +41,6 @@ test_that("precalculated boxplot - dataframe data", {
     
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
-    fail('Does not display in 20.3')
 })
 
 test_that("precalculated boxplot - list data", {
@@ -90,6 +89,5 @@ test_that("precalculated boxplot - list data", {
     
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
-    fail('Does not display in 20.3')
 })
 
