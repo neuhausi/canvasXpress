@@ -8,5 +8,6 @@ test_that("cXtagcloud1", {
     
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
+    warning('Clicking legend gives countdown spinner, doesn\'t happen on the web')
 })
 
