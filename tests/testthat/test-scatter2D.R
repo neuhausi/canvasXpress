@@ -59,6 +59,8 @@ test_that("cXscatter2d7", {
 })
 
 test_that("cXscatter2d8", {
+    skip('Missing from latest test suite')
+    
     result <- cXscatter2d8()
     if (interactive()) { print(result) }
     
