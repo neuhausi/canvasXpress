@@ -742,7 +742,7 @@ div.CanvasXpressTooltipArrowLeft:after, div.CanvasXpressTooltipArrowLeft:before 
 }
 
 div.CanvasXpressTooltipArrowLeft:after {
-  border-color: rgba(245, 245, 245, 0);;
+  border-color: rgba(245, 245, 245, 0);
   border-right-color: rgb(245, 245, 245);
   border-width: 8px;
   margin-top: -8px;

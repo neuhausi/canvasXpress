@@ -67,9 +67,19 @@ canvasXpress <- function(data = NULL,
     z             <- NULL
     dataframe     <- "columns"
     precalc.names <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
-    
-    
-    if (graphType == "Venn") {
+        
+	# Implement data in URL
+	if (is.character(data)) {
+		if (httr::http_error(data)) {
+			stop("Not a valid URL!")
+		}
+		# CanvasXpress Object
+		cx_object <- list(data        = data,
+				          config      = config, 
+				          events      = events, 
+				          afterRender = afterRender)
+	}
+	else if (graphType == "Venn") {
         vdata <- NULL
         if (is.null(data)) {
             if (inherits(config$vennData, "list")) {
