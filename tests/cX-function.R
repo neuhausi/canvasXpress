@@ -2289,6 +2289,7 @@ cXkaplanmeier1 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
     showTransition=TRUE,
@@ -2305,8 +2306,8 @@ cXkaplanmeier2 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    showConfidenceIntervals=TRUE,
     showDecorations=TRUE,
-    showKaplanMeierConfidence=TRUE,
     showLegend=FALSE,
     showTransition=TRUE,
     title="Kaplan-Meier Plot",
@@ -2325,11 +2326,7 @@ cXlayout1 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
-    showTransition=TRUE,
-    transitionStep=50,
-    transitionTime=1500,
-    afterRender=list(list("addRegressionLine"))
+    scatterPlotMatrix=TRUE
   )
 }
 
@@ -2343,9 +2340,9 @@ cXlayout2 <- function() {
     broadcast=TRUE,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=FALSE,
+    layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    showTransition=TRUE
+    afterRender=list(list("addRegressionLine", list("Species")))
   )
 }
 
@@ -2359,14 +2356,45 @@ cXlayout3 <- function() {
     broadcast=TRUE,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=FALSE,
+    layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    scatterPlotMatrixType="first",
     afterRender=list(list("addRegressionLine"))
   )
 }
 
 cXlayout4 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-irist-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-irist-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=FALSE,
+    scatterPlotMatrix=TRUE
+  )
+}
+
+cXlayout5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-irist-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-irist-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=FALSE,
+    scatterPlotMatrix=TRUE,
+    scatterPlotMatrixType="first",
+    afterRender=list(list("addRegressionLine", list("Species")))
+  )
+}
+
+cXlayout6 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2392,7 +2420,7 @@ cXlayout4 <- function() {
   )
 }
 
-cXlayout5 <- function() {
+cXlayout7 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-cars-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-cars-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2411,7 +2439,7 @@ cXlayout5 <- function() {
   )
 }
 
-cXlayout6 <- function() {
+cXlayout8 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-generic-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-generic-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2427,7 +2455,7 @@ cXlayout6 <- function() {
   )
 }
 
-cXlayout7 <- function() {
+cXlayout9 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-generic-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-generic-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2443,7 +2471,7 @@ cXlayout7 <- function() {
   )
 }
 
-cXlayout8 <- function() {
+cXlayout10 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scents-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-scents-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2459,7 +2487,7 @@ cXlayout8 <- function() {
   )
 }
 
-cXlayout9 <- function() {
+cXlayout11 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-overlays-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-overlays-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2578,6 +2606,7 @@ cXmap2 <- function() {
 }
 
 cXmap3 <- function() {
+  library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="variable",
@@ -2590,6 +2619,7 @@ cXmap3 <- function() {
 }
 
 cXmap4 <- function() {
+  library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="Order",
@@ -2601,6 +2631,7 @@ cXmap4 <- function() {
 }
 
 cXmap5 <- function() {
+  library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="Order",
@@ -2720,6 +2751,45 @@ cXnetwork6 <- function() {
     showAnimation=FALSE,
     showNodeNameThreshold=20000,
     title="Apoptosis"
+  )
+}
+
+cXnetwork7 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), "2"=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
+    colorNodeBy="Exp1",
+    graphType="Network"
+  )
+}
+
+cXnetwork8 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), '2'=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
+    decorations=list("Exp2", "Exp3"),
+    decorationsHeight=18,
+    decorationsPosition="right",
+    decorationsType="pie",
+    graphType="Network"
+  )
+}
+
+cXnetwork9 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://canvasxpress.org/debug/WP3624_95209.gpml",
+    graphType="Network"
+  )
+}
+
+cXnetwork10 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://canvasxpress.org/debug/example.xgmml",
+    graphType="Network"
   )
 }
 
@@ -3160,7 +3230,7 @@ cXscatter2d2 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showLoessConfidence=TRUE,
+    showConfidenceIntervals=TRUE,
     showLoessFit=TRUE,
     title="Loess Fit",
     xAxis=list("E"),
@@ -3196,6 +3266,37 @@ cXscatter2d3 <- function() {
 
 cXscatter2d4 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    asSampleFactors=list("cyl"),
+    colorBy="cyl",
+    graphType="Scatter2D",
+    stringVariableFactors=list("cyl"),
+    xAxis=list("wt"),
+    yAxis=list("mpg"),
+    afterRender=list(list("addRegressionLine", list("cyl")))
+  )
+}
+
+cXscatter2d5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    asSampleFactors=list("cyl"),
+    colorBy="cyl",
+    graphType="Scatter2D",
+    showRegressionFullRange=TRUE,
+    stringVariableFactors=list("cyl"),
+    xAxis=list("wt"),
+    yAxis=list("mpg"),
+    afterRender=list(list("addRegressionLine", list("cyl")))
+  )
+}
+
+cXscatter2d6 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scentst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scentst-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3220,7 +3321,7 @@ cXscatter2d4 <- function() {
   )
 }
 
-cXscatter2d5 <- function() {
+cXscatter2d7 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-ageheightt-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-ageheightt-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3236,7 +3337,7 @@ cXscatter2d5 <- function() {
   )
 }
 
-cXscatter2d6 <- function() {
+cXscatter2d8 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-breastcancert-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-breastcancert-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3260,11 +3361,11 @@ cXscatter2d6 <- function() {
     xAxisTickColor="rgb(255,255,255)",
     yAxis=list("Temperature"),
     yAxisTickColor="rgb(255,255,255)",
-    afterRender=list(list("addRegressionLine", list('red')))
+    afterRender=list(list("addRegressionLine", list(FALSE, 'red')))
   )
 }
 
-cXscatter2d7 <- function() {
+cXscatter2d9 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-nonlinearfit-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3282,7 +3383,7 @@ cXscatter2d7 <- function() {
   )
 }
 
-cXscatter2d8 <- function() {
+cXscatter2d10 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3301,6 +3402,7 @@ cXscatter2d8 <- function() {
     legendInside=TRUE,
     legendPosition="bottomRight",
     plotBox=FALSE,
+    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLoessFit=TRUE,
     showTransition=TRUE,
@@ -3314,7 +3416,7 @@ cXscatter2d8 <- function() {
   )
 }
 
-cXscatter2d9 <- function() {
+cXscatter2d11 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR2-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3343,7 +3445,7 @@ cXscatter2d9 <- function() {
   )
 }
 
-cXscatter2d10 <- function() {
+cXscatter2d12 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR3-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR3-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3375,7 +3477,7 @@ cXscatter2d10 <- function() {
   )
 }
 
-cXscatter2d11 <- function() {
+cXscatter2d13 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR4-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3441,7 +3543,7 @@ cXscatter3d3 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter3D",
-    showLoessConfidence=TRUE,
+    showConfidenceIntervals=TRUE,
     showLoessFit=TRUE,
     title="Loess Fit",
     xAxis=list("E"),

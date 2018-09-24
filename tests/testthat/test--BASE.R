@@ -42,7 +42,7 @@ test_that("Missing Data", {
 
 test_that("Incorrect Data Types", {
     expect_error(canvasXpress(data = "Test"),  
-                 regexp = "data must be a data.frame, matrix, or named list")
+                 regexp = "Could not resolve host: Test")
     expect_error(canvasXpress(data = c(1, 2, 3)),
                  regexp = "data must be a data.frame, matrix, or named list")
 })
