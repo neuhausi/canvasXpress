@@ -2768,7 +2768,7 @@ cXnetwork8 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), '2'=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
+    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), "2"=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
     decorations=list("Exp2", "Exp3"),
     decorationsHeight=18,
     decorationsPosition="right",
