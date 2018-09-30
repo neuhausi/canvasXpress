@@ -1,7 +1,7 @@
 if (interactive()) {
     library(dplyr)
     
-    webFile <- readLines(con = "https://canvasxpress.org/data/cX-function.R")
+    webFile <- readLines(con = "http://canvasxpress.org/data/cX-function.R")
     
     #grab url download links
     dataUrls <- data.frame(line = webFile, stringsAsFactors = F) %>%

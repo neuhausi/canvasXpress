@@ -25,11 +25,14 @@ test_that("segregation layout change - Variables", {
                            smpAnnot  = x,
                            varAnnot  = z,
                            graphType = "Bar",
+                           legendPosition = "top",
+                           legendColumns = 4,
                            segregateVariablesBy = list("Annt1"),
                            layoutTopology = "4X1"
     )
     
     if (interactive()) { print(result) }
+    fail('Legend Position at the top is incorrect')
     
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
