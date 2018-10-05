@@ -6,6 +6,7 @@ test_that("cXvenn1", {
     result <- cXvenn1()
     if (interactive()) { print(result) }
     
+    warning("labels B and D should be switched around")
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
@@ -14,6 +15,7 @@ test_that("cXvenn2", {
     result <- cXvenn2()
     if (interactive()) { print(result) }
     
+    warning("wrong label for second category")
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
@@ -22,6 +24,7 @@ test_that("cXvenn3", {
     result <- cXvenn3()
     if (interactive()) { print(result) }
     
+    warning("wrong label for second category")
     expect_s3_class(result, "canvasXpress")
     expect_s3_class(result, "htmlwidget")
 })
