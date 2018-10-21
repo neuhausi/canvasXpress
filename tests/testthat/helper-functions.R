@@ -1,6 +1,13 @@
 # helper functions for tests 
 
-ifelse(interactive(), source("tests/cX-ui-functions.R"), source("../cX-ui-functions.R"))
+if (interactive()) {
+    library(testthat)
+    library(canvasXpress)
+    
+    source("tests/cX-ui-functions.R")
+} else {
+    source("../cX-ui-functions.R")
+}
 
 check_ui_test <- function(result){
     if (interactive()) { print(result) }
