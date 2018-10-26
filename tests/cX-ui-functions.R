@@ -2793,6 +2793,14 @@ cXnetwork10 <- function() {
   )
 }
 
+cXnetwork11 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://canvasxpress.org/debug/Apoptosis.xml",
+    graphType="Network"
+  )
+}
+
 cXnonlinearfit1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-nonlinearfit-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
