@@ -21,12 +21,9 @@ test_that("precalculated boxplot - dataframe data", {
                            showLegend            = FALSE,
                            title                 = "US Arrests by Type",
                            titleScaleFontFactor  = 0.5)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
-    
+
+    check_ui_test(result)
+
     result <- canvasXpress(data                  = precalc.data,
                            smpAnnot              = precalc.data["type", ],
                            graphType             = "Boxplot",
@@ -36,11 +33,8 @@ test_that("precalculated boxplot - dataframe data", {
                            showLegend            = FALSE,
                            title                 = "US Arrests by Type",
                            titleScaleFontFactor  = 0.5)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+
+    check_ui_test(result)
 })
 
 test_that("precalculated boxplot - list data", {
@@ -53,12 +47,9 @@ test_that("precalculated boxplot - list data", {
                            showLegend            = FALSE,
                            title                 = "US Arrests by Type",
                            titleScaleFontFactor  = 0.5)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
-    
+
+    check_ui_test(result)
+
     # with smpAnnot data
     result <- canvasXpress(data                  = precalc.data.l,
                            smpAnnot              = precalc.data["type",],
@@ -69,12 +60,9 @@ test_that("precalculated boxplot - list data", {
                            showLegend            = FALSE,
                            title                 = "US Arrests by Type",
                            titleScaleFontFactor  = 0.5)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
-    
+
+    check_ui_test(result)
+
     # without smpAnnot
     result <- canvasXpress(data                  =  precalc.data.l,
                            graphType             = "Boxplot",
@@ -84,10 +72,7 @@ test_that("precalculated boxplot - list data", {
                            showLegend            = FALSE,
                            title                 = "US Arrests by Type",
                            titleScaleFontFactor  = 0.5)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+
+    check_ui_test(result)
 })
 

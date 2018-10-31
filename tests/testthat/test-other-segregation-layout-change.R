@@ -13,11 +13,7 @@ test_that("segregation layout change - Samples", {
                            segregateSamplesBy = list("Factor1"),
                            layoutTopology = "1X3"
     )
-                        
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+    check_ui_test(result)
 })
 
 test_that("segregation layout change - Variables", {
@@ -30,10 +26,7 @@ test_that("segregation layout change - Variables", {
                            segregateVariablesBy = list("Annt1"),
                            layoutTopology = "4X1"
     )
-    
-    if (interactive()) { print(result) }
+
+    check_ui_test(result)
     fail('Legend Position at the top is incorrect')
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
 })

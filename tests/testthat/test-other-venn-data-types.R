@@ -10,10 +10,7 @@ test_that("vennData as list parameter", {
                            vennLegend = vlegend,
                            graphType  = "Venn",
                            vennGroups = 4)
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+    check_ui_test(result)
 })
 
 test_that("vennData as data", {
@@ -21,10 +18,7 @@ test_that("vennData as data", {
                            vennLegend = vlegend,
                            graphType  = "Venn",
                            vennGroups = 4)
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+    check_ui_test(result)
 })
 
 test_that("vennData as data list", {
@@ -32,10 +26,7 @@ test_that("vennData as data list", {
                            vennLegend = vlegend,
                            graphType  = "Venn",
                            vennGroups = 4)
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+    check_ui_test(result)
 })
 
 test_that("vennData required", {

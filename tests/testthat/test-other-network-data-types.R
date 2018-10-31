@@ -9,11 +9,8 @@ test_that("network as data list items", {
                            edgeWidth   = 2,
                            graphType   = "Network",
                            nodeSize    = 30)
-    
-    if (interactive()) { print(result) }
-    
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+
+    check_ui_test(result)
 })
 
 test_that("network data requires both nodes and edges", {
@@ -29,11 +26,11 @@ test_that("network data requires both nodes and edges", {
 })
 
 test_that("network data types", {
-    expect_error(canvasXpress(nodeData    = 2, 
+    expect_error(canvasXpress(nodeData    = 2,
                               edgeData    = e,
                               graphType   = "Network"),
                  regexp = "nodeData must be a data.frame or matrix")
-    expect_error(canvasXpress(nodeData    = n, 
+    expect_error(canvasXpress(nodeData    = n,
                               edgeData    = 2,
                               graphType   = "Network"),
                  regexp = "edgeData must be a data.frame or matrix")
