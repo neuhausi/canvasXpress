@@ -28,5 +28,4 @@ test_that("segregation layout change - Variables", {
     )
 
     check_ui_test(result)
-    fail('Legend Position at the top is incorrect')
 })

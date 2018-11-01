@@ -3,12 +3,12 @@ context("canvasXpress Web Charts - Donnut")
 
 test_that("cXdonut1", {
     check_ui_test(cXdonnut1())
-  
-  warning("tooltip text is not equal to text of donnut-slice (e.g. Jan has tooltip Dec)")
+
+    fail("tooltip text is not equal to text of donnut-slice (e.g. Jan has tooltip Dec)")
 })
 
 test_that("cXdonut2", {
     check_ui_test(cXdonnut2())
-  
-    warning("tooltip text is not equal to text of donnut-slice (e.g. Jan has tooltip Dec)")
+
+    fail("tooltip text is not equal to text of donnut-slice (e.g. Jan has tooltip Dec)")
 })

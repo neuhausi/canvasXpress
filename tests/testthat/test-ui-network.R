@@ -4,7 +4,8 @@ context("canvasXpress Web Charts - Network")
 test_that("cXnetwork1", {
     check_ui_test(cXnetwork1())
 
-    warning("legend on the wrong side")
+    # warning("legend on the wrong side")
+    # this is ok per Isaac 10/2018
 })
 
 test_that("cXnetwork2", {
@@ -30,8 +31,7 @@ test_that("cXnetwork5", {
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
-    warning('coloring off from web example, cross-domain download issue')
-    warning('legend looks different (continuous vs discrete)')
+    warning('coloring off from web example, legend is continuous')
 })
 
 test_that("cXnetwork7", {
@@ -45,7 +45,7 @@ test_that("cXnetwork8", {
 test_that("cXnetwork9", {
     check_ui_test(cXnetwork9())
 
-    warning("plot starts with a warning popup")
+    fail("plot starts with a warning popup")
 })
 
 test_that("cXnetwork10", {

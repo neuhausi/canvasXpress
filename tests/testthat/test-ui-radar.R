@@ -12,7 +12,7 @@ test_that("cXradar2", {
 test_that("cXradar3", {
     check_ui_test(cXradar3())
 
-    warning('tooltip text is not equal to slice (e.g. Sample 2, Variable 4 has tooltip Sample 6, Variable 3)')
+    fail('tooltip text is not equal to slice (e.g. Sample 2, Variable 4 has tooltip Sample 6, Variable 3)')
 })
 
 test_that("cXradar4", {
@@ -22,7 +22,7 @@ test_that("cXradar4", {
 test_that("cXradar5", {
     check_ui_test(cXradar5())
 
-    warning('tooltip text is not equal to slice (e.g. Sample 2, Variable 4 has tooltip Sample 6, Variable 3)')
+    fail('tooltip text is not equal to slice (e.g. Sample 2, Variable 4 has tooltip Sample 6, Variable 3)')
 })
 
 test_that("cXradar6", {

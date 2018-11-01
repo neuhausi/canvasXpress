@@ -26,5 +26,5 @@ test_that("cXscatter3d6", {
 })
 
 test_that("cXscatter3d7", {
-    warning("scatter3d - plot function missing")
+    message("scatter3d - plot function missing")
 })
