@@ -50,8 +50,6 @@ test_that("cXnetwork9", {
 
 test_that("cXnetwork10", {
     check_ui_test(cXnetwork10())
-
-    fail('no plot showing')
 })
 
 test_that("cXnetwork11", {
