@@ -2758,7 +2758,7 @@ cXnetwork7 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), "2"=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
+    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     colorNodeBy="Exp1",
     graphType="Network"
   )
@@ -2768,7 +2768,7 @@ cXnetwork8 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("1"=list(Exp5=-3, Exp6=4, Exp7="H"), "2"=list(Exp5=-1, Exp6=15, Exp7="L"), "3"=list(Exp5=5, Exp6=40, Exp7="H"), "4"=list(Exp5=10, Exp6=24, Exp7="H"), "5"=list(Exp5=-8, Exp6=14, Exp7="M")), type="node")),
+    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     decorations=list("Exp2", "Exp3"),
     decorationsHeight=18,
     decorationsPosition="right",
