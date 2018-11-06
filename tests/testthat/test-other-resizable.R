@@ -55,6 +55,20 @@ test_that("scatterplot resizable height", {
 
 test_that("scatterplot not resizable", {
 
+    result <-  canvasXpress(
+        data                    = y,
+        asSampleFactors         = list("cyl"),
+        colorBy                 = "cyl",
+        graphType               = "Scatter2D",
+        stringVariableFactors   = list("cyl"),
+        title                   = "Scatterplot - resizable height",
+        resizable               = FALSE
+    )
+    check_ui_test(result)
+})
+
+test_that("bar chart not resizable", {
+
     y <- read.table(system.file("extdata", "cX-basic-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(
         data                    = y,

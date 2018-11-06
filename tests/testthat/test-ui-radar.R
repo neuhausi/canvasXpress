@@ -8,7 +8,7 @@ test_that("cXradar1", {
 test_that("cXradar2", {
     check_ui_test(cXradar2())
 
-    warning('radar has brown overlay on mouseover (if plot is not resized)')
+    warning('radar has brown overlay on mouseover (if plot is not resized) - RStudio Viewer')
 })
 
 test_that("cXradar3", {
