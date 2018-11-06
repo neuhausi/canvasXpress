@@ -3,6 +3,7 @@
 if (interactive()) {
     library(testthat)
     library(canvasXpress)
+    library(htmlwidgets)
 
     source("tests/cX-ui-functions.R")
 } else {

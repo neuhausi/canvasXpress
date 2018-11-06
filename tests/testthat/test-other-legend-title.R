@@ -5,6 +5,10 @@ barplot_x <- read.table(system.file("extdata", "cX-simple-smp.txt", package = "c
 boxplot_y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 boxplot_x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
+get_plot_title <- function(plot) {
+    paste(plot, "- No LegendTitle")
+}
+
 test_that("scatterplot LegendTitle", {
 
     y = read.table(system.file("extdata", "cX-scatterR3-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
@@ -14,7 +18,7 @@ test_that("scatterplot LegendTitle", {
                 varAnnot        = z,
                 colorBy         = "Group",
                 graphType       = "Scatter2D",
-                title           = "Scatterplot - LegendTitle",
+                title           = get_plot_title("Scatterplot"),
                 showLegendTitle = FALSE
     )
     check_ui_test(result)
@@ -28,7 +32,7 @@ test_that("barplot LegendTitle", {
         colorBy                 = "Drug Sensitivity",
         graphOrientation        = "vertical",
         graphType               = "Bar",
-        title                   = "Barplot - LegendTitle",
+        title                   = get_plot_title("Barplot"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -46,7 +50,7 @@ test_that("barplot (segregated) LegendTitle", {
         graphOrientation        = "vertical",
         graphType               = "Bar",
         segregateVariablesBy    = list("Plot"),
-        title                   = "Barplot (segregated) - LegendTitle",
+        title                   = get_plot_title("Barplot (segregated)"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -64,7 +68,7 @@ test_that("boxplot LegendTitle", {
         showLegend              = TRUE,
         smpTitle                = "dose",
         stringSampleFactors     = list("dose"),
-        title                   = "Boxplot - LegendTitle",
+        title                   = get_plot_title("Boxplot"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -86,7 +90,7 @@ test_that("boxplot (segregated) LegendTitle", {
         showLegend              = TRUE,
         smpTitle                = "dose",
         stringSampleFactors     = list("dose"),
-        title                   = "Boxplot (segregated) - LegendTitle",
+        title                   = get_plot_title("Boxplot (segregated)"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -102,7 +106,7 @@ test_that("Scatterplot matrix LegendTitle", {
         colorBy                 = "Species",
         graphType               = "Scatter2D",
         scatterPlotMatrix       = TRUE,
-        title                   = "Scatterplot matrix - LegendTitle",
+        title                   = get_plot_title("Scatterplot matrix"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -118,7 +122,7 @@ test_that("dotplot LegendTitle", {
         groupingFactors         = list("supp"),
         graphOrientation        = "vertical",
         graphType               = "Dotplot",
-        title                   = "Dotplot - LegendTitle",
+        title                   = get_plot_title("Dotplot"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)
@@ -133,7 +137,7 @@ test_that("heatmap LegendTitle", {
         shapeBy                 = "Shape",
         shapeByData             = "data2",
         graphType               = "Heatmap",
-        title                   = "Heatmap - LegendTitle",
+        title                   = get_plot_title("Heatmap"),
         showLegendTitle         = FALSE
     )
     check_ui_test(result)

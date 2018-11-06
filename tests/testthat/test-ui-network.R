@@ -36,10 +36,14 @@ test_that("cXnetwork6", {
 
 test_that("cXnetwork7", {
     check_ui_test(cXnetwork7())
+
+    warning('coloring off from web example')
 })
 
 test_that("cXnetwork8", {
     check_ui_test(cXnetwork8())
+
+    warning('coloring off from web example')
 })
 
 test_that("cXnetwork9", {

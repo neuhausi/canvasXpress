@@ -11,7 +11,7 @@ test_that("Scatter2D selectedDataPoints", {
         data                    = data,
         selectedDataPoints      = list("V1"),
         graphType               = "Scatter2D",
-        title                   = "Scatterplot - selectedDataPoints : V1")
+        title                   = "Scatter2D - selectedDataPoints : V1")
     check_ui_test(result)
 })
 
@@ -21,7 +21,7 @@ test_that("Scatter3D selectedDataPoints", {
         data                    = data,
         selectedDataPoints      = list("V3","V4"),
         graphType               = "Scatter3D",
-        title                   = "Scatterplot - selectedDataPoints : V3,V4")
+        title                   = "Scatter3D - selectedDataPoints : V3,V4")
     check_ui_test(result)
 })
 
@@ -31,7 +31,7 @@ test_that("ScatterBubble2D selectedDataPoints", {
         data                    = data,
         selectedDataPoints      = list("V5","V8", "V10"),
         graphType               = "ScatterBubble2D",
-        title                   = "Scatterplot - selectedDataPoints : V5,V8,V10")
+        title                   = "ScatterBubble2D - selectedDataPoints : V5,V8,V10")
     check_ui_test(result)
 })
 

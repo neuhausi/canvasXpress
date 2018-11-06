@@ -17,7 +17,6 @@ test_that("scatterplot webshotPrint", {
     htmlwidgets::saveWidget(result, file = temp.html)
     webshot::webshot(temp.html,
                      file    = result.png,
-                     # debug   = T,
                      vwidth  = result$width,
                      vheight = result$height)
     grid::grid.raster(png::readPNG(result.png))

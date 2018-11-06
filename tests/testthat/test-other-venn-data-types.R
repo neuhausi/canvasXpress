@@ -9,6 +9,7 @@ test_that("vennData as list parameter", {
     result <- canvasXpress(vennData   = list(vdata),
                            vennLegend = vlegend,
                            graphType  = "Venn",
+                           title      = "vennData as list",
                            vennGroups = 4)
     check_ui_test(result)
 })
@@ -17,14 +18,7 @@ test_that("vennData as data", {
     result <- canvasXpress(data       = vdata,
                            vennLegend = vlegend,
                            graphType  = "Venn",
-                           vennGroups = 4)
-    check_ui_test(result)
-})
-
-test_that("vennData as data list", {
-    result <- canvasXpress(data       = list(vdata),
-                           vennLegend = vlegend,
-                           graphType  = "Venn",
+                           title      = "vennData as data",
                            vennGroups = 4)
     check_ui_test(result)
 })

@@ -10,6 +10,7 @@ test_that("segregation layout change - Samples", {
                            smpAnnot  = x,
                            varAnnot  = z,
                            graphType = "Bar",
+                           title = "Layout 1X3",
                            segregateSamplesBy = list("Factor1"),
                            layoutTopology = "1X3"
     )
@@ -23,6 +24,7 @@ test_that("segregation layout change - Variables", {
                            graphType = "Bar",
                            legendPosition = "top",
                            legendColumns = 4,
+                           title = "Layout 4X1",
                            segregateVariablesBy = list("Annt1"),
                            layoutTopology = "4X1"
     )
