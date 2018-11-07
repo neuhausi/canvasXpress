@@ -15,8 +15,6 @@ test_that("scatterplot resizable", {
         resizable               = TRUE
     )
     check_ui_test(result)
-
-    warning("Increasing the canvas size by dragging the mouse over the edges doesn't work initially (does work after clicking Minimize/Maximize)")
 })
 
 test_that("scatterplot resizable width", {
@@ -32,8 +30,6 @@ test_that("scatterplot resizable width", {
         resizableY              = FALSE
     )
     check_ui_test(result)
-
-    warning("Increasing the canvas width by dragging the mouse over the edges doesn't work initially (does work after clicking Minimize/Maximize)")
 })
 
 test_that("scatterplot resizable height", {
@@ -49,8 +45,6 @@ test_that("scatterplot resizable height", {
         resizableX              = FALSE
     )
     check_ui_test(result)
-
-    warning("Increasing the canvas height by dragging the mouse over the edges doesn't work initially (does work after clicking Minimize/Maximize)")
 })
 
 test_that("scatterplot not resizable", {
@@ -61,7 +55,7 @@ test_that("scatterplot not resizable", {
         colorBy                 = "cyl",
         graphType               = "Scatter2D",
         stringVariableFactors   = list("cyl"),
-        title                   = "Scatterplot - resizable height",
+        title                   = "Scatterplot - not resizable",
         resizable               = FALSE
     )
     check_ui_test(result)
