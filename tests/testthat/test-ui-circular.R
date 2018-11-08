@@ -3,6 +3,8 @@ context("canvasXpress Web Charts - Circular")
 
 test_that("cXcircular1", {
     check_ui_test(cXcircular1())
+
+    fail('tooltip on outer ring is incorrect')
 })
 
 test_that("cXcircular2", {

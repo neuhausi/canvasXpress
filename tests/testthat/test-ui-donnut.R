@@ -8,5 +8,5 @@ test_that("cXdonut1", {
 test_that("cXdonut2", {
     check_ui_test(cXdonnut2())
 
-    warning('Seeing "Text" tooltips on the chart')
+    fail('Seeing "Text" tooltips on the chart, highlighting is off')
 })
