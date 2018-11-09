@@ -881,6 +881,13 @@ div.CanvasXpressMotion {
 	font: normal 12px arial, tahoma, sans-serif;
 }
 
+img.CanvasXpressMotion {
+  margin: 0px !important;
+  background: rgba(0,0,0,0) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px rgba(0,0,0,0) !important;
+}
+
 div.CanvasXpressMotionContainer {
 	box-sizing: content-box;
 	background-image:
