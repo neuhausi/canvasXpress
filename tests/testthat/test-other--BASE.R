@@ -12,11 +12,11 @@ data1.smp <- data.frame(a = c(30:32), b = c(40:42))
 
 test_that("Object Structure Tests", {
     testobj <- canvasXpress(data = data1.df)
-    
+
     expect_equal(testobj$width, 600)
     expect_equal(testobj$height, 400)
     expect_equivalent(class(testobj), c("canvasXpress", "htmlwidget"))
-    
+
     expect_true("data"      %in% names(testobj$x))
     expect_true("config"    %in% names(testobj$x))
     expect_true("isR"       %in% names(testobj$x$config))
@@ -36,13 +36,13 @@ test_that("Correct Data Types", {
 # Negative Tests
 
 test_that("Missing Data", {
-    expect_error(canvasXpress(data = NULL),  
+    expect_error(canvasXpress(data = NULL),
                  regexp =  "data cannot be NULL!")
 })
 
 test_that("Incorrect Data Types", {
-    expect_error(canvasXpress(data = "Test"),  
-                 regexp = "Could not resolve host: Test")
+    expect_error(canvasXpress(data = "Test"),
+                 regexp = "Could not resolve host: .*Test.*")
     expect_error(canvasXpress(data = c(1, 2, 3)),
                  regexp = "data must be a data.frame, matrix, or named list")
 })
@@ -65,7 +65,7 @@ test_that("Name mismatches", {
                  regexp = "Row names in smpAnnot are different from column names in data")
     expect_silent(canvasXpress(data = data1.df,
                                smpAnnot = data1.smp))
-    
+
     expect_error(canvasXpress(data = data1.df,
                               varAnnot = data1.smp),
                  regexp = "Row names in varAnnot are different from row names in data")
