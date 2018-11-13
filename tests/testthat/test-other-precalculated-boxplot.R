@@ -19,7 +19,7 @@ test_that("precalculated boxplot - dataframe data", {
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "US Arrests by Type",
+                           title                 = "Precalculated boxplot - data without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
@@ -31,7 +31,7 @@ test_that("precalculated boxplot - dataframe data", {
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "US Arrests by Type",
+                           title                 = "Precalculated boxplot - data with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
@@ -45,7 +45,7 @@ test_that("precalculated boxplot - list data", {
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "US Arrests by Type",
+                           title                 = "Precalculated boxplot - list data",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
@@ -58,7 +58,7 @@ test_that("precalculated boxplot - list data", {
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "US Arrests by Type",
+                           title                 = "Precalculated boxplot - list data with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
@@ -70,7 +70,7 @@ test_that("precalculated boxplot - list data", {
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "US Arrests by Type",
+                           title                 = "Precalculated boxplot - list data without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)

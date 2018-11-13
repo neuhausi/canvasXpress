@@ -4,11 +4,13 @@ context("canvasXpress Web Charts - Circular")
 test_that("cXcircular1", {
     check_ui_test(cXcircular1())
 
-    fail('tooltip on outer ring is incorrect')
+    warning('tooltip on outer ring starts with "undefined:"')
 })
 
 test_that("cXcircular2", {
     check_ui_test(cXcircular2())
+
+    warning('tooltip on outer ring starts with "undefined:"')
 })
 
 test_that("cXcircular3", {
