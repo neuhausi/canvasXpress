@@ -3,7 +3,7 @@ context("canvasXpress Charts - Venn")
 vdata   <- data.frame(AC = 456, A = 340, ABC = 552, ABCD = 148, BC = 915,
                       ACD = 298, BCD = 613, B = 562, CD = 143, ABD = 578,
                       C = 620, D = 592, AB = 639, BD = 354, AD = 257)
-vlegend <- list(A = "List 1", D = "List 4", C = "List 3", B = "List 2")
+vlegend <- list(A = "List 1", B = "List 2", C = "List 3", D = "List 4")
 
 test_that("vennData as list parameter", {
     result <- canvasXpress(vennData   = list(vdata),
