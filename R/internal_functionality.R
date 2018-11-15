@@ -16,8 +16,14 @@ assertDataCorrectness <- function(data, graphType, config) {
              paste(validGraphTypes, collapse = ", "), ">")
     }
     
-    # for backwards compatibility we accept both data and vennData
-    if (graphType == "Venn") {
+    # Implement data in URL
+	if (is.character(data)) {
+		if (httr::http_error(data)) {
+			stop("Not a valid URL!")
+		}
+	}
+	# for backwards compatibility we accept both data and vennData
+	else if (graphType == "Venn") {
         vdata <- data
         
         if (is.null(vdata)) {
@@ -72,12 +78,12 @@ assertDataCorrectness <- function(data, graphType, config) {
             stop("edgeData cannot be NULL!")
         }
         
-        if (!inherits(ndata, c("data.frame", "matrix"))) {
-            stop("nodeData must be a data.frame or matrix")
+        if (!inherits(ndata, c("data.frame", "matrix", "list"))) {
+            stop("nodeData must be a data.frame or matrix or named list")
         }
         
-        if (!inherits(edata, c("data.frame", "matrix"))) {
-            stop("edgeData must be a data.frame or matrix")
+        if (!inherits(edata, c("data.frame", "matrix", "list"))) {
+            stop("edgeData must be a data.frame or matrix or named list")
         }
     }
     else if (!(graphType %in% noDataNecessary)) {
