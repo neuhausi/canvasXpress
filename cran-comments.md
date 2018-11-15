@@ -1,19 +1,24 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 20.5
+Updated CanvasXpress JS libraries to 21.6
 
 ---  
 
 ## Test environments
 
 * ubuntu 16.04, R 3.3.3
-* ubuntu 16.04, R 3.4.3
+* ubuntu 16.04, R 3.4.4
 * ubuntu 16.04, R 3.5.1
 
 * ubuntu 14.04.5 (on travis-ci), R 3.4.4
-* ubuntu 14.04.5 (on travis-ci), R 3.5.0
+* ubuntu 14.04.5 (on travis-ci), R 3.5.1
 
-* win-builder (devel and release)
+* win-builder (oldrelease, release, devel)
+
+* r-hub
+* * Windows Server 2008 R2 SP1
+* * Ubuntu Linux 16.04 LTS
+* * Fedora Linux
 
 ---  
 
