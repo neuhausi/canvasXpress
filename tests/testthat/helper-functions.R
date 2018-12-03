@@ -1,14 +1,13 @@
 # helper functions for tests
+library(htmlwidgets)
+
 
 if (interactive()) {
     library(testthat)
     library(canvasXpress)
-    library(htmlwidgets)
 
     source("tests/cX-ui-functions.R")
 } else {
-    library(htmlwidgets)
-
     source("../cX-ui-functions.R")
 }
 
