@@ -909,6 +909,45 @@ cXboxplot13 <- function() {
     background="white",
     backgroundType="window",
     backgroundWindow="#E5E5E5",
+    boxplotType="range",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    guides="solid",
+    guidesColor="white",
+    legendBox=FALSE,
+    legendScaleFontFactor=1.8,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot14 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -933,7 +972,7 @@ cXboxplot13 <- function() {
   )
 }
 
-cXboxplot14 <- function() {
+cXboxplot15 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -973,7 +1012,7 @@ cXboxplot14 <- function() {
   )
 }
 
-cXboxplot15 <- function() {
+cXboxplot16 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1014,7 +1053,7 @@ cXboxplot15 <- function() {
   )
 }
 
-cXboxplot16 <- function() {
+cXboxplot17 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
