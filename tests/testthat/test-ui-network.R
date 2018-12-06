@@ -47,8 +47,6 @@ test_that("cXnetwork8", {
 
 test_that("cXnetwork9", {
     check_ui_test(cXnetwork9())
-
-    message("plot starts with a message popup - by design - author didn't define shapes for all items")
 })
 
 test_that("cXnetwork10", {
