@@ -13,6 +13,7 @@ result <- canvasXpress(data                    = y,
                            stringSampleFactors = list("dose"),
                            showBoxplotOriginalData = TRUE,
                            boxplotConnect          = TRUE,
+                           showLegend              = TRUE,
                            smpLabelRotate          = 90,
                            smpTitle                = "Supplement",
                            title                   = "Test Grouping",
@@ -20,6 +21,7 @@ result <- canvasXpress(data                    = y,
                            afterRender = list(list("pivotX", list("dose"))))
 
     check_ui_test(result)
+    fail('no legend')
 })
 
 test_that("differentiated groups in boxplot 2", {
