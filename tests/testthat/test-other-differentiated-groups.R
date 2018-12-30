@@ -3,21 +3,42 @@ context("canvasXpress Charts - Differentiated groups")
 y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
-test_that("differentiated groups in boxplot", {
+test_that("differentiated groups in boxplot 1", {
+result <- canvasXpress(data                    = y,
+                           smpAnnot                = x,
+                           graphOrientation        = "vertical",
+                           graphType               = "Boxplot",
+                           colorBy                 = "dose",
+                           groupingFactors         = list("dose", "supp"),
+                           stringSampleFactors = list("dose"),
+                           showBoxplotOriginalData = TRUE,
+                           boxplotConnect          = TRUE,
+                           smpLabelRotate          = 90,
+                           smpTitle                = "Supplement",
+                           title                   = "Test Grouping",
+                           xAxisTitle              = "len",
+                           afterRender = list(list("pivotX", list("dose"))))
+
+    check_ui_test(result)
+})
+
+test_that("differentiated groups in boxplot 2", {
     result <- canvasXpress(data                    = y,
                            smpAnnot                = x,
                            graphOrientation        = "vertical",
                            graphType               = "Boxplot",
                            colorBy                 = "supp",
-                           groupingFactors         = list("dose", "supp"),
+                           groupingFactors         = list("supp", "dose"),
+                           stringSampleFactors = list("dose"),
                            showBoxplotOriginalData = TRUE,
                            boxplotConnect          = TRUE,
+                           showLegend              = TRUE,
                            smpLabelRotate          = 90,
                            smpTitle                = "Dose",
-                           title                   = "Grouping by 3 doses and 2 supps, should look like 3 groups of boxplots",
-                           xAxisTitle              = "len")
+                           title                   = "Test Grouping",
+                           xAxisTitle              = "len",
+                           afterRender = list(list("pivotX", list("supp"))))
 
     check_ui_test(result)
-
-    fail("Boxplots grouping doesn't look good (looks like 2 groups of 3 boxplots)")
+    fail('no legend')
 })
