@@ -81,3 +81,36 @@ test_that("segregated Boxplot decorations with different values", {
         )
     check_ui_test(result)
 })
+
+test_that("segregated Boxplot decoration label position", {
+
+    y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    z <- data.frame(Gene = c("Gene1"), stringsAsFactors = FALSE)
+    rownames(z) <- rownames(y)
+
+    position_list <- list(left = "top", right = "bottom")
+    for (name in names(position_list)) {
+
+        pos <- position_list[[name]]
+        result <- canvasXpress(
+            data               = y,
+            smpAnnot           = x,
+            varAnnot           = z,
+            graphOrientation   = "horizontal",
+            graphType          = "Boxplot",
+            groupingFactors    = list("dose"),
+            segregateVariablesBy = list("Gene"),
+            legendBox          = FALSE,
+            smpLabelRotate     = 90,
+            smpTitle           = "dose",
+            title              = paste("Segregated Boxplot - decoration label position", pos),
+            layoutAdjust       = TRUE,
+            decorations        = list(line = list(list(align = name, color = "rgb(255,0,0)", label = "Decoration label", value = 20, width = 2, scope = "Gene1")))
+        )
+
+        check_ui_test(result)
+
+        warning(paste("Decoration label close to the", pos, "line"))
+    }
+})

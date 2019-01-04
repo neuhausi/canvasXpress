@@ -4,13 +4,13 @@ y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canv
 x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("differentiated groups in boxplot 1", {
-result <- canvasXpress(data                    = y,
+    result <- canvasXpress(data                    = y,
                            smpAnnot                = x,
                            graphOrientation        = "vertical",
                            graphType               = "Boxplot",
                            colorBy                 = "dose",
                            groupingFactors         = list("dose", "supp"),
-                           stringSampleFactors = list("dose"),
+                           stringSampleFactors     = list("dose"),
                            showBoxplotOriginalData = TRUE,
                            boxplotConnect          = TRUE,
                            showLegend              = TRUE,
@@ -18,7 +18,7 @@ result <- canvasXpress(data                    = y,
                            smpTitle                = "Supplement",
                            title                   = "Test Grouping",
                            xAxisTitle              = "len",
-                           afterRender = list(list("pivotX", list("dose"))))
+                           afterRender             = list(list("pivotX", list("dose"))))
 
     check_ui_test(result)
 })
@@ -30,7 +30,7 @@ test_that("differentiated groups in boxplot 2", {
                            graphType               = "Boxplot",
                            colorBy                 = "supp",
                            groupingFactors         = list("supp", "dose"),
-                           stringSampleFactors = list("dose"),
+                           stringSampleFactors     = list("dose"),
                            showBoxplotOriginalData = TRUE,
                            boxplotConnect          = TRUE,
                            showLegend              = TRUE,
@@ -38,7 +38,30 @@ test_that("differentiated groups in boxplot 2", {
                            smpTitle                = "Dose",
                            title                   = "Test Grouping",
                            xAxisTitle              = "len",
-                           afterRender = list(list("pivotX", list("supp"))))
+                           afterRender             = list(list("pivotX", list("supp"))))
+
+    check_ui_test(result)
+})
+
+test_that("differentiated groups in boxplot 3", {
+
+    x$Gene <- c(rep(c("Gene1", "Gene2"), 30))
+    result <- canvasXpress(data                    = y,
+                           smpAnnot                = x,
+                           graphOrientation        = "vertical",
+                           graphType               = "Boxplot",
+                           colorBy                 = "supp",
+                           groupingFactors         = list("supp", "dose"),
+                           stringSampleFactors     = list("dose"),
+                           segregateSamplesBy      = list("Gene"),
+                           showBoxplotOriginalData = TRUE,
+                           boxplotConnect          = TRUE,
+                           showLegend              = TRUE,
+                           smpLabelRotate          = 90,
+                           smpTitle                = "Dose",
+                           title                   = "Test Grouping with segregation",
+                           xAxisTitle              = "len",
+                           afterRender             = list(list("pivotX", list("supp"))))
 
     check_ui_test(result)
 })
