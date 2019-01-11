@@ -35,7 +35,6 @@ test_that("segregation smpTitle", {
                            showLegend              = TRUE,
                            legendPosition          = "bottom",
                            smpLabelRotate          = 90,
-                           smpTitle                = "dose",
                            title                   = "smpTitle and legend should be readable",
                            xAxisTitle              = "len",
                            smpTitle                = "smpTitle Custom title")

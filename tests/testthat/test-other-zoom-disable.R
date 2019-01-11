@@ -6,7 +6,7 @@ boxplot_x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package
 
 test_that("scatterplot zoomDisable", {
 
-    y <- read.table("http://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(
         data                    = y,
         asSampleFactors         = list("cyl"),

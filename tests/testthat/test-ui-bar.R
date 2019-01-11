@@ -36,3 +36,15 @@ test_that("cXbar8", {
 test_that("cXbar9", {
     check_ui_test(cXbar9())
 })
+
+test_that("cXbar10", {
+    check_ui_test(cXbar10())
+
+    warning("Durable overlay looks different in R than on the CX website, the colors overlap with 'Stage' which is confusing.")
+})
+
+test_that("cXbar11", {
+    check_ui_test(cXbar11())
+
+    warning("Durable overlay looks different in R than on the CX website, the colors overlap with 'Stage' which is confusing.")
+})

@@ -28,3 +28,7 @@ test_that("cXcircular6", {
 test_that("cXcircular7", {
     check_ui_test(cXcircular7())
 })
+
+test_that("cXcircular8", {
+    check_ui_test(cXcircular8())
+})
