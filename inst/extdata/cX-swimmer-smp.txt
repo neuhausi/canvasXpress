@@ -1,0 +1,16 @@
+	Durable	High Cap	Response	Stage	Status	Subject
+S1		Arrow	20	Stage4	Partial Response	S1
+S2		Arrow	10	Stage2	Partial Response	S2
+S3		Arrow	10	Stage2	Partial Response	S2
+S4	true	Arrow	-15	Stage1	Complete Response	S3
+S5		Arrow	-15	Stage1	Complete Response	S3
+S6		Arrow	-15	Stage1	Partial Response	S3
+S7		Arrow	-20	Stage4	Partial Response	S4
+S8		Arrow	-20	Stage4	Partial Response	S4
+S9	true	Arrow	-22	Stage3	Partial Response	S5
+S10		Arrow	-22	Stage3	Partial Response	S5
+S11	true		-25	Stage1	Complete Response	S6
+S12	true		-30	Stage3	Complete Response	S7
+S13		Arrow	-42	Stage2	Complete Response	S8
+S14	true		-45	Stage2	Complete Response	S9
+S15	true	Arrow	-50	Stage1	Complete Response	S10

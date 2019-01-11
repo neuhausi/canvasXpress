@@ -1,0 +1,5 @@
+	Panel
+Duration	1
+Discontinued	1
+Response	2
+Baseline	3

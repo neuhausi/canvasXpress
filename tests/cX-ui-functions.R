@@ -340,6 +340,7 @@ cXbar8 <- function() {
   y=read.table(system.file("extdata", "cX-lollipop-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    barLollipopFactor=3,
     barType="lollipop",
     graphType="Bar",
     showTransition=TRUE,
@@ -361,6 +362,55 @@ cXbar9 <- function() {
     scatterType="bar",
     widthFactor=1.2,
     x3DRatio=0.5
+  )
+}
+
+cXbar10 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-swimmer-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-swimmer-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    barType="swimmer",
+    colorBy="Stage",
+    graphOrientation="horizontal",
+    graphType="Bar",
+    smpOverlays=list("Durable"),
+    swimDurable="Durable",
+    swimEnd="end",
+    swimHigh="high",
+    swimHighCap="High Cap",
+    swimStart="start",
+    swimStatus="Status",
+    title="Tumor Response with Duration by Stage and Month",
+    xAxisTitle="Duration of Treatment in Months",
+    afterRender=list(list("groupSamples", list("Subject")))
+  )
+}
+
+cXbar11 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-swimmer-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-swimmer-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    barType="swimmer",
+    colorBy="Stage",
+    graphOrientation="vertical",
+    graphType="Bar",
+    smpOverlayProperties=list(Durable=list(position="bottom"), Response=list(position="bottom", thickness=100, type="Bar")),
+    smpOverlays=list("Durable", "Response"),
+    swimDurable="Durable",
+    swimEnd="end",
+    swimHigh="high",
+    swimHighCap="High Cap",
+    swimStart="start",
+    swimStatus="Status",
+    title="Tumor Response with Duration by Stage and Month",
+    xAxisTitle="Duration of Treatment in Months",
+    afterRender=list(list("groupSamples", list("Subject")))
   )
 }
 
@@ -1354,6 +1404,29 @@ cXcircular7 <- function() {
   )
 }
 
+cXcircular8 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-circularNoData-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-circularNoData-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    arcSegmentsSeparation=1,
+    circularLabelsAlign="inside",
+    colorScheme="ColorSpectrum",
+    connections=list(list("EA832040", "EA1011925A27"), list("EA832040", "EA832496"), list("EA832040", "EA832497"), list("EA832039", "EA1011925A19"), list("EA832039", "EA832486"), list("EA832039", "EA832492"), list("EA832044", "EA1011925A3"), list("EA832045", "EA1011925A5"), list("EA832048", "EA1011925A10"), list("EA832048", "EA832502"), list("EA832048", "EA832503"), list("EA832051", "EA1011925A9"), list("EA832051", "EA832507"), list("EA832051", "EA832509"), list("EA832050", "EA1011925A12"), list("EA1011925A18", "EA832483"), list("EA1011925A18", "EA832491"), list("EA1011925A19", "EA832039"), list("EA1011925A19", "EA832486"), list("EA1011925A19", "EA832492"), list("EA1011925A23", "EA832484"), list("EA1011925A23", "EA832501"), list("EA1011925A24", "EA832489"), list("EA1011925A25", "EA832498"), list("EA1011925A27", "EA832040"), list("EA1011925A27", "EA832496"), list("EA1011925A27", "EA832497"), list("EA1011925A30", "EA832487"), list("EA1011925A30", "EA832488"), list("EA1011925A1", "EA832521"), list("EA1011925A1", "EA832525"), list("EA1011925A2", "EA832510"), list("EA1011925A2", "EA832511"), list("EA1011925A3", "EA832044"), list("EA1011925A4", "EA832514"), list("EA1011925A4", "EA832515"), list("EA1011925A5", "EA832045"), list("EA1011925A6", "EA832519"), list("EA1011925A7", "EA832508"), list("EA1011925A7", "EA832513"), list("EA1011925A8", "EA836531"), list("EA1011925A8", "EA832504"), list("EA1011925A8", "EA832524"), list("EA1011925A9", "EA832051"), list("EA1011925A9", "EA832507"), list("EA1011925A9", "EA832509"), list("EA1011925A10", "EA832048"), list("EA1011925A10", "EA832502"), list("EA1011925A10", "EA832503"), list("EA1011925A11", "EA832523"), list("EA1011925A12", "EA832050"), list("EA1011925A13", "EA832506"), list("EA1011925A13", "EA832527"), list("EA1011925A14", "EA832520"), list("EA1011925A15", "EA832517"), list("EA1011925A15", "EA832518"), list("EA1011925A16", "EA836533"), list("EA1011925A16", "EA832475"), list("EA1011925A16", "EA832526"), list("EA832475", "EA836533"), list("EA832475", "EA1011925A16"), list("EA832475", "EA832526"), list("EA832476", "EA832480"), list("EA832479", "EA832490"), list("EA832480", "EA832476"), list("EA832481", "EA836505"), list("EA832481", "EA832493"), list("EA832482", "EA832499"), list("EA832483", "EA1011925A18"), list("EA832483", "EA832491"), list("EA832484", "EA1011925A23"), list("EA832484", "EA832501"), list("EA832486", "EA1011925A19"), list("EA832486", "EA832039"), list("EA832486", "EA832492"), list("EA832487", "EA1011925A30"), list("EA832487", "EA832488"), list("EA832488", "EA1011925A30"), list("EA832488", "EA832487"), list("EA832489", "EA1011925A24"), list("EA832490", "EA832479"), list("EA832491", "EA1011925A18"), list("EA832491", "EA832483"), list("EA832492", "EA1011925A19"), list("EA832492", "EA832039"), list("EA832492", "EA832486"), list("EA832493", "EA836505"), list("EA832493", "EA832481"), list("EA832494", "EA832495"), list("EA832495", "EA832494"), list("EA832496", "EA1011925A27"), list("EA832496", "EA832040"), list("EA832496", "EA832497"), list("EA832497", "EA1011925A27"), list("EA832497", "EA832040"), list("EA832497", "EA832496"), list("EA832498", "EA1011925A25"), list("EA832498", "EA832500"), list("EA832499", "EA832482"), list("EA832500", "EA832498"), list("EA832501", "EA1011925A23"), list("EA832501", "EA832484"), list("EA832502", "EA1011925A10"), list("EA832502", "EA832048"), list("EA832502", "EA832503"), list("EA832503", "EA1011925A10"), list("EA832503", "EA832048"), list("EA832503", "EA832502"), list("EA832504", "EA836531"), list("EA832504", "EA1011925A8"), list("EA832504", "EA832524"), list("EA832506", "EA1011925A13"), list("EA832506", "EA832527"), list("EA832507", "EA1011925A9"), list("EA832507", "EA832051"), list("EA832507", "EA832509"), list("EA832508", "EA1011925A7"), list("EA832508", "EA832513"), list("EA832509", "EA1011925A9"), list("EA832509", "EA832051"), list("EA832509", "EA832507"), list("EA832510", "EA1011925A2"), list("EA832510", "EA832511"), list("EA832511", "EA1011925A2"), list("EA832511", "EA832510"), list("EA832513", "EA1011925A7"), list("EA832513", "EA832508"), list("EA832514", "EA1011925A4"), list("EA832514", "EA832515"), list("EA832515", "EA1011925A4"), list("EA832515", "EA832514"), list("EA832517", "EA1011925A15"), list("EA832517", "EA832518"), list("EA832518", "EA1011925A15"), list("EA832518", "EA832517"), list("EA832519", "EA1011925A6"), list("EA832520", "EA1011925A14"), list("EA832521", "EA1011925A1"), list("EA832521", "EA832525"), list("EA832523", "EA1011925A11"), list("EA832524", "EA836531"), list("EA832524", "EA1011925A8"), list("EA832524", "EA832504"), list("EA832525", "EA1011925A1"), list("EA832525", "EA832521"), list("EA832526", "EA836533"), list("EA832526", "EA1011925A16"), list("EA832526", "EA832475"), list("EA832527", "EA1011925A13"), list("EA832527", "EA832506"), list("EA836488", "EA836513"), list("EA836488", "EA836514"), list("EA836494", "EA836528"), list("EA836494", "EA836529"), list("EA836492", "EA836493"), list("EA836496", "EA836535"), list("EA836496", "EA836536"), list("EA836493", "EA836492"), list("EA836533", "EA836534"), list("EA836533", "EA1011925A16"), list("EA836533", "EA832475"), list("EA836533", "EA832526"), list("EA836501", "EA836502"), list("EA836497", "EA836498"), list("EA836502", "EA836501"), list("EA836505", "EA832481"), list("EA836505", "EA832493"), list("EA836503", "EA836510"), list("EA836507", "EA836508"), list("EA836517", "EA836518"), list("EA836511", "EA836512"), list("EA836515", "EA836516"), list("EA836516", "EA836515"), list("EA836498", "EA836497"), list("EA836508", "EA836507"), list("EA836512", "EA836511"), list("EA836499", "EA836500"), list("EA836500", "EA836499"), list("EA836513", "EA836488"), list("EA836513", "EA836514"), list("EA836514", "EA836488"), list("EA836514", "EA836513"), list("EA836509", "EA836504"), list("EA836510", "EA836503"), list("EA836504", "EA836509"), list("EA836518", "EA836517"), list("EA836528", "EA836494"), list("EA836528", "EA836529"), list("EA836529", "EA836494"), list("EA836529", "EA836528"), list("EA836530", "EA836531"), list("EA836526", "EA836527"), list("EA836535", "EA836496"), list("EA836535", "EA836536"), list("EA836523", "EA836524"), list("EA836536", "EA836496"), list("EA836536", "EA836535"), list("EA836539", "EA836540"), list("EA836540", "EA836539"), list("EA836524", "EA836523"), list("EA836521", "EA836522"), list("EA836522", "EA836521"), list("EA836537", "EA836538"), list("EA836538", "EA836537"), list("EA836531", "EA836530"), list("EA836531", "EA1011925A8"), list("EA836531", "EA832504"), list("EA836531", "EA832524"), list("EA836534", "EA836533"), list("EA836527", "EA836526")),
+    graphType="Circular",
+    overlayLevelOrientation="perpendicular",
+    overlayScaleFontFactor=0.3,
+    ringsOrder=list("subject", "labels", "sample"),
+    segregateSamplesBy=list("subject"),
+    showLegend=FALSE,
+    smpLabelScaleFontFactor=0.3,
+    xAxis=list("var1"),
+    xAxisShow=FALSE
+  )
+}
+
 cXcontour1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-volcano-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2248,8 +2321,8 @@ cXheatmap12 <- function() {
     graphType="Heatmap",
     showTransition=TRUE,
     smpLabelScaleFontFactor=1.1,
-    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
-    smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
+    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Boolean=list(position="left"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
+    smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     varLabelRotate=45,
     varLabelScaleFontFactor=1.7,
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", thickness=50, type="StackedPercent"), Conc=list(position="top", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", thickness=30, type="Increase"), Even=list(position="bottom", thickness=50, type="Bar"), Female=list(position="top", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", thickness=50, type="StackedPercent"), Male=list(position="top", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", thickness=50, type="Dotplot"), Odd=list(position="bottom", thickness=50, type="BarLine"), Site=list(position="top", type="Default"), Ugly=list(color="black", position="bottom", thickness=50, type="Dotplot")),
@@ -2527,6 +2600,28 @@ cXlayout10 <- function() {
 }
 
 cXlayout11 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-layoutContinuous-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-layoutContinuous-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-layoutContinuous-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutAdjust=TRUE,
+    layoutConfig=list(list(graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1, barLollipopOpen=TRUE, barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutLabelShow=FALSE,
+    layoutTopology="3X1",
+    showLegend=FALSE,
+    title="Tumor Response and Duration by Subject Id",
+    xAxis2Show=FALSE,
+    afterRender=list(list("segregateVariables", list("Panel")))
+  )
+}
+
+cXlayout12 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-overlays-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-overlays-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3273,6 +3368,24 @@ cXscatter2d1 <- function() {
 
 cXscatter2d2 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-spider-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-spider-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Response",
+    graphType="Scatter2D",
+    legendInside=TRUE,
+    legendPosition="topRight",
+    spiderBy="Subject",
+    title="Tummor Response by Week",
+    xAxis=list("Weeks"),
+    yAxis=list("Change From Baseline %")
+  )
+}
+
+cXscatter2d3 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-loess2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
@@ -3285,7 +3398,7 @@ cXscatter2d2 <- function() {
   )
 }
 
-cXscatter2d3 <- function() {
+cXscatter2d4 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scentst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scentst-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3311,7 +3424,7 @@ cXscatter2d3 <- function() {
   )
 }
 
-cXscatter2d4 <- function() {
+cXscatter2d5 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3326,7 +3439,7 @@ cXscatter2d4 <- function() {
   )
 }
 
-cXscatter2d5 <- function() {
+cXscatter2d6 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3342,7 +3455,7 @@ cXscatter2d5 <- function() {
   )
 }
 
-cXscatter2d6 <- function() {
+cXscatter2d7 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scentst-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scentst-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3368,7 +3481,7 @@ cXscatter2d6 <- function() {
   )
 }
 
-cXscatter2d7 <- function() {
+cXscatter2d8 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-ageheightt-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-ageheightt-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3384,7 +3497,7 @@ cXscatter2d7 <- function() {
   )
 }
 
-cXscatter2d8 <- function() {
+cXscatter2d9 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-breastcancert-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-breastcancert-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3412,7 +3525,7 @@ cXscatter2d8 <- function() {
   )
 }
 
-cXscatter2d9 <- function() {
+cXscatter2d10 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-nonlinearfit-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3430,7 +3543,7 @@ cXscatter2d9 <- function() {
   )
 }
 
-cXscatter2d10 <- function() {
+cXscatter2d11 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3463,7 +3576,7 @@ cXscatter2d10 <- function() {
   )
 }
 
-cXscatter2d11 <- function() {
+cXscatter2d12 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR2-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR2-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3492,7 +3605,7 @@ cXscatter2d11 <- function() {
   )
 }
 
-cXscatter2d12 <- function() {
+cXscatter2d13 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR3-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-scatterR3-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3524,7 +3637,7 @@ cXscatter2d12 <- function() {
   )
 }
 
-cXscatter2d13 <- function() {
+cXscatter2d14 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scatterR4-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
