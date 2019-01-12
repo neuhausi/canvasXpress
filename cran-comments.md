@@ -18,7 +18,7 @@ Updated CanvasXpress JS libraries to 22.6
 * r-hub::check_for_cran()
 * * Windows Server 2008 R2 SP1 *<br/>NOTE: limma package suggested but not installed, excluded*
 * * Ubuntu Linux 16.04 LTS
-* * Fedora Linux *<br/>ERROR: httr can't be installed due to openssl not installed in subsystem*
+* * Fedora Linux 
 
 ---  
 
