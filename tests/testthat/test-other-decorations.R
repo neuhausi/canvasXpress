@@ -54,7 +54,63 @@ test_that("barplot annotations", {
         graphType               = "Bar",
         graphOrientation        = "vertical",
         title                   = "Barplot - annotations",
-        decorations             = list(marker=list(list(fontSize=12, sample="Sample1", text="p < 0.01 ***", type="annotation", variable="Variable1"), list(fontSize=12, sample="Sample2", text="p < 0.05 **", type="annotation", variable="Variable1")))
+        decorations             = list(marker = list(list(fontSize = 12, sample = "Sample1", text = "p < 0.01 ***", type = "annotation", variable = "Variable1"), list(fontSize = 12, sample = "Sample2", text = "p < 0.05 **", type = "annotation", variable = "Variable1")))
     )
     check_ui_test(result)
+})
+
+test_that("segregated Boxplot decorations with different values", {
+
+    y <- read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    result <- canvasXpress(
+        data               = y,
+        smpAnnot           = x,
+        graphOrientation   = "vertical",
+        graphType          = "Boxplot",
+        legendBox          = FALSE,
+        smpLabelRotate     = 90,
+        smpTitle           = "Species",
+        title              = "Segregated Boxplot - decorations with different values for each Species",
+        segregateSamplesBy = list("Species"),
+        groupingFactors    = list("Species"),
+        layoutAdjust       = TRUE,
+        decorations        = list(line = list(list(align = "left", color = "rgb(255,0,0)", label = "Cutoff", value = 2, width = 2, scope = "setosa"),
+                                              list(align = "left", color = "rgb(255,0,0)", label = "Cutoff", value = 4, width = 2, scope = "versicolor"),
+                                              list(align = "left", color = "rgb(255,0,0)", label = "Cutoff", value = 6, width = 2, scope = "virginica")))
+        )
+    check_ui_test(result)
+})
+
+test_that("segregated Boxplot decoration label position", {
+
+    y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    z <- data.frame(Gene = c("Gene1"), stringsAsFactors = FALSE)
+    rownames(z) <- rownames(y)
+
+    position_list <- list(left = "top", right = "bottom")
+    for (name in names(position_list)) {
+
+        pos <- position_list[[name]]
+        result <- canvasXpress(
+            data               = y,
+            smpAnnot           = x,
+            varAnnot           = z,
+            graphOrientation   = "horizontal",
+            graphType          = "Boxplot",
+            groupingFactors    = list("dose"),
+            segregateVariablesBy = list("Gene"),
+            legendBox          = FALSE,
+            smpLabelRotate     = 90,
+            smpTitle           = "dose",
+            title              = paste("Segregated Boxplot - decoration label position", pos),
+            layoutAdjust       = TRUE,
+            decorations        = list(line = list(list(align = name, color = "rgb(255,0,0)", label = "Decoration label", value = 20, width = 2, scope = "Gene1")))
+        )
+
+        check_ui_test(result)
+
+        warning(paste("Decoration label close to the", pos, "line"))
+    }
 })

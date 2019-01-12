@@ -323,6 +323,20 @@ img.CanvasXpressCode {
 	-ms-user-select: none;
 }
 
+img.CanvasXpressCode {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressCode:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
+}
+
 pre.CanvasXpressCode {
 	text-align: left;
 	padding: inherit;
@@ -482,6 +496,21 @@ img.CanvasXpressBin {
 	-ms-user-select: none;
 }
 
+img.CanvasXpressBin {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressBin:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
+}
+
+
 div.CanvasXpressBinContainer {
 	background-color: rgba(245, 245, 245, 0.95);
 	box-sizing: content-box;
@@ -608,7 +637,10 @@ img.CanvasXpressDataExplorer {
   -webkit-transition-duration: 0.3s; /* Safari */
 }
 
-img.CanvasXpressDataExplorer:hover {
+img.CanvasXpressDataExplorer:hover,
+img.CanvasXpressDataExplorer3:hover
+img.CanvasXpressDataExplorer4:hover
+{
   background: rgba(0,0,0,0) !important;
 	border: 1px solid rgb(51, 122, 183) !important;
   border-radius: 5px;
@@ -625,7 +657,9 @@ img.CanvasXpressDataExplorer:hover {
   position: relative; 
 }
 
-img.CanvasXpressDataExplorer2 {
+img.CanvasXpressDataExplorer2,
+img.CanvasXpressDataExplorer4
+{
   background: rgba(0,0,0,0) !important;
   box-shadow: 0 0 0px rgba(0,0,0,0) !important;
   border: 0px none !important;
@@ -643,10 +677,10 @@ img.CanvasXpressDataExplorer2 {
 img.CanvasXpressDataExplorer2:hover {
   background: rgba(0,0,0,0) !important;
   border: 0px none !important;
-  border-radius: 0px;
+  border-radius: 5px;
   cursor: pointer;
-  margin: 3px !important;
-  padding: 0px;
+  margin: 4px !important;
+  padding: 4px;
   -webkit-transform: scale(1.8, 1.8);
   -ms-transform: scale(1.8, 1.8);
   transform: scale(1.8, 1.8);
@@ -655,6 +689,21 @@ img.CanvasXpressDataExplorer2:hover {
   box-shadow: 10px 10px 5px #888888 !important;
   z-index: 2;
   position: relative; 
+}
+
+img.CanvasXpressDataExplorer3 {
+  background: rgba(0,0,0,0) !important;
+  box-shadow: 0 0 0px rgba(0,0,0,0) !important;
+  border: 1px solid rgb(51, 122, 183) !important;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 12px 3px 3px 3px !important;
+  padding: 3px;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s; /* Safari */
 }
 
 div.CanvasXpressDataExplorerActive {
@@ -823,6 +872,20 @@ img.CanvasXpressTooltip {
 	-webkit-user-select: none;
 	-o-user-select: none;
 	-ms-user-select: none;
+}
+
+img.CanvasXpressTooltip {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressTooltip:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
 }
 
 span.CanvasXpressTooltip {
@@ -1048,6 +1111,20 @@ img.CanvasXpressDataTableToolbarImage {
 	-ms-user-select: none;
 }
 
+img.CanvasXpressDataTableToolbarImage {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressDataTableToolbarImage:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
+}
+
 div.CanvasXpressDataTableContainer {
 	box-sizing: content-box;
 	border-radius: 0px 0px 5px 5px;
@@ -1269,6 +1346,7 @@ div.CanvasXpressTableCellSortAsc {
 	line-height: 20px;
 	margin: 2px 2px 1px 5px;
 	overflow: hidden;
+  position: relative;
   white-space: nowrap;
 }
 
@@ -1281,7 +1359,8 @@ div.CanvasXpressTableCellSortDesc {
 	line-height: 20px;
 	margin: 2px 2px 1px 5px;
 	overflow: hidden;
-	white-space: nowrap;
+  position: relative;
+  white-space: nowrap;
 }
 
 /****************/
@@ -1336,6 +1415,20 @@ img.CanvasXpressConfigurator {
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-o-user-select: none;
+}
+
+img.CanvasXpressConfigurator {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressConfigurator:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
 }
 
 select.CanvasXpressConfigurator {
@@ -1569,6 +1662,20 @@ img.CanvasXpressDataFilterToolbarImage {
 	cursor: pointer;
 	margin: 4px 4px 0px 0px !important;
   float: right;
+}
+
+img.CanvasXpressDataFilterToolbarImage {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressDataFilterToolbarImage:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
 }
 
 span.CanvasXpressDataFilterText {
@@ -2467,6 +2574,20 @@ img.CanvasXpressToolbarHelp {
 	-webkit-user-select: none;
 	-o-user-select: none;
 	-ms-user-select: none;
+}
+
+img.CanvasXpressToolbarHelp {
+  transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+}
+
+img.CanvasXpressToolbarHelp:hover {
+    margin: 0 7px;  
+  transform: scale(1.2);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255,255,255,0.7)));
 }
 
 div.CanvasXpressToolbarHelp {

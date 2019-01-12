@@ -1,7 +1,7 @@
 	Cold	Conc	Desc	Drug	Even	Female	Hot	Male	Nice	Odd	Site	Ugly
 Variable1	10	1	Good	A	20	50	10	10	8	5	X	10
-Variable2	20	2	So so	A	20	40	20	20	16	9	Y	5
-Variable3	30	3	So so	A	30	30	10	30	24	15	Z	20
-Variable4	40	1	So so	B	40	20	25	40	32	21	Y	10
+Variable2	20	2	So-so	A	20	40	20	20	16	9	Y	5
+Variable3	30	3	So-so	A	30	30	10	30	24	15	Z	20
+Variable4	40	1	So-so	B	40	20	25	40	32	21	Y	10
 Variable5	50	2	Excellent	B	6	10	10	30	40	25	Z	30
 Variable6	60	3	Ahh!	B	10	20	30	20	48	31	W	15
