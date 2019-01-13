@@ -13,18 +13,17 @@ test_that("scatterplot webshotPrint", {
                        graphType   = "Scatter2D",
                        title       = "Scatterplot - webshot print")
 
-
-    # export to PNG and print in viewer
-    htmlwidgets::saveWidget(result, file = temp.html)
-    expect_true(file.exists(temp.html))
-
-    webshot::webshot(temp.html,
-                     file    = result.png,
-                     vwidth  = result$width,
-                     vheight = result$height)
     if (interactive()) {
-        expect_true(file.exists(result.png))
-        grid::grid.raster(png::readPNG(result.png))
+        # export to PNG and print in viewer
+        htmlwidgets::saveWidget(result, file = temp.html)
+        expect_true(file.exists(temp.html))
+
+        webshot::webshot(temp.html,
+                         file    = result.png,
+                         vwidth  = result$width,
+                         vheight = result$height)
+            expect_true(file.exists(result.png))
+            grid::grid.raster(png::readPNG(result.png))
     }
     else {
         expect_true(TRUE)
