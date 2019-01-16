@@ -3,8 +3,6 @@ context("canvasXpress Web Charts - Network")
 
 test_that("cXnetwork1", {
     check_ui_test(cXnetwork1())
-
-    warning("legend on the wrong side, by-design due to space issues")
 })
 
 test_that("cXnetwork2", {
