@@ -11,8 +11,6 @@ test_that("scatter2D manualTransformations", {
 test_that("scatter3D manualTransformations", {
 
     check_ui_test(cXscatter3d1())
-
-    fail("Transform: Percentile by variable crashes/freezes the plot")
 })
 
 test_that("barplot manualTransformations", {
@@ -27,7 +25,7 @@ test_that("boxplot manualTransformations", {
 
 test_that("heatmap manualTransformations", {
 
-    check_ui_test(cXheatmap1())
+    check_ui_test(cXheatmap7())
 })
 
 test_that("line manualTransformations", {

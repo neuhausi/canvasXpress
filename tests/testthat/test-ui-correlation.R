@@ -8,3 +8,7 @@ test_that("cXcorrelation1", {
 test_that("cXcorrelation2", {
     check_ui_test(cXcorrelation2())
 })
+
+test_that("cXcorrelation3", {
+    check_ui_test(cXcorrelation3())
+})
