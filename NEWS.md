@@ -5,6 +5,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="http://canvasxpress.org"> main website</a>.
 
 ---
+## v1.22.9
+* Updated CanvasXpress Javascript and CSS libraries to v22.9
+
 ## v1.22.6
 * Updated CanvasXpress JavaScript and CSS libraries to v22.6
 * Tested updated and expanded to match new CX functionality

@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 22.6
+Updated CanvasXpress JS libraries to 22.9 due to important bug fixes
 
 ---  
 
