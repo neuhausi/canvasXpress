@@ -2,7 +2,6 @@ context("canvasXpress resizable")
 
 y <- read.table(system.file("extdata", "cX-mtcars-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
-
 test_that("scatterplot resizable", {
 
     result <-  canvasXpress(

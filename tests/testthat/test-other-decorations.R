@@ -82,6 +82,29 @@ test_that("segregated Boxplot decorations with different values", {
     check_ui_test(result)
 })
 
+test_that("segregated Boxplot decorations with same values", {
+
+    y <- read.table(system.file("extdata", "cX-iris-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[, 1:100]
+    x <- read.table(system.file("extdata", "cX-iris-smp.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[1:100, , drop = FALSE]
+    y[, 1:50] <- y[, 1:50] - 2
+
+    result <- canvasXpress(
+        data               = y,
+        smpAnnot           = x,
+        graphOrientation   = "vertical",
+        graphType          = "Boxplot",
+        legendBox          = FALSE,
+        smpLabelRotate     = 90,
+        smpTitle           = "Species",
+        title              = "Segregated Boxplot - decoration should be on exactly the same height",
+        segregateSamplesBy = list("Species"),
+        groupingFactors    = list("Species"),
+        layoutAdjust       = FALSE,
+        decorations        = list(line = list(list(align = "left", color = "rgb(255,0,0)", label = "Cutoff", value = 2, width = 2)))
+    )
+    check_ui_test(result)
+})
+
 test_that("segregated Boxplot decoration label position", {
 
     y <- read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)

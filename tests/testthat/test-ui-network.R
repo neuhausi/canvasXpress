@@ -4,7 +4,7 @@ context("canvasXpress Web Charts - Network")
 test_that("cXnetwork1", {
     check_ui_test(cXnetwork1())
 
-    warning("legend on the wrong side, by-design due to space issues")
+    warning('layout depends on space/etc, may be off from web example')
 })
 
 test_that("cXnetwork2", {
@@ -19,18 +19,18 @@ test_that("cXnetwork3", {
 
 test_that("cXnetwork4", {
     check_ui_test(cXnetwork4())
+
+    warning('layout depends on space/etc, may be off from web example')
 })
 
 test_that("cXnetwork5", {
     check_ui_test(cXnetwork5())
-
-    warning('some lines missing, cross-domain download issue')
 })
 
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
-    warning('coloring off from web example, legend is continuous')
+    warning('coloring off from web example')
 })
 
 test_that("cXnetwork7", {
@@ -41,12 +41,12 @@ test_that("cXnetwork7", {
 
 test_that("cXnetwork8", {
     check_ui_test(cXnetwork8())
-
-    warning('coloring off from web example')
 })
 
 test_that("cXnetwork9", {
     check_ui_test(cXnetwork9())
+
+    warning('coloring, shapes off from web example')
 })
 
 test_that("cXnetwork10", {
@@ -55,4 +55,6 @@ test_that("cXnetwork10", {
 
 test_that("cXnetwork11", {
     check_ui_test(cXnetwork11())
+
+    warning('coloring off from web example')
 })
