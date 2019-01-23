@@ -1469,6 +1469,25 @@ cXcorrelation2 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
+    correlationAxis="samples",
+    correlationType="circle",
+    gradient=TRUE,
+    graphType="Correlation",
+    showTransition=TRUE,
+    title="Correlation Plot",
+    yAxisTitle="Correlation Title"
+  )
+}
+
+cXcorrelation3 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-generic-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-generic-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-generic-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
     correlationAnchorLegend=TRUE,
     correlationAnchorLegendAlignWidth=20,
     correlationAxis="variables",
@@ -2611,7 +2630,7 @@ cXlayout11 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     layoutAdjust=TRUE,
-    layoutConfig=list(list(graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1, barLollipopOpen=TRUE, barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1, barLollipopOpen=TRUE, barType="lollipop", xAxisTitle="Baseline (mm)")),
     layoutLabelShow=FALSE,
     layoutTopology="3X1",
     showLegend=FALSE,
@@ -4103,9 +4122,7 @@ cXsunburst1 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     showTransition=TRUE,
-    title="Simple Sunburst",
-    transitionStep=50,
-    transitionTime=1500
+    title="Simple Sunburst"
   )
 }
 
@@ -4124,9 +4141,7 @@ cXsunburst2 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     showTransition=TRUE,
-    title="Simple Sunburst Colored by Category",
-    transitionStep=50,
-    transitionTime=1500
+    title="Simple Sunburst Colored by Category"
   )
 }
 
@@ -4144,9 +4159,7 @@ cXsunburst3 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     showTransition=TRUE,
-    title="Rotated Sunburst",
-    transitionStep=50,
-    transitionTime=1500
+    title="Rotated Sunburst"
   )
 }
 
@@ -4164,9 +4177,7 @@ cXsunburst4 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     showTransition=TRUE,
-    title="Rotated Half Sunburst",
-    transitionStep=50,
-    transitionTime=1500
+    title="Rotated Half Sunburst"
   )
 }
 
