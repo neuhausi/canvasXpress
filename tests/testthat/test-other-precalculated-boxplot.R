@@ -35,7 +35,6 @@ test_that("precalculated boxplot - dataframe data", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
-    fail('missing data causes error')
 })
 
 test_that("precalculated boxplot - list data", {
@@ -75,6 +74,5 @@ test_that("precalculated boxplot - list data", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
-    fail('missing data causes error')
 })
 
