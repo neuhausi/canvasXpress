@@ -1,21 +1,362 @@
-	cls	grp
-p1	A	A
-p2	A	B
-p3	A	A
-p4	A	B
-p5	A	A
-p6	A	B
-p7	A	A
-p8	A	B
-p9	A	A
-p10	A	B
-p11	B	A
-p12	B	B
-p13	B	A
-p14	B	B
-p15	B	A
-p16	B	B
-p17	B	A
-p18	B	B
-p19	B	A
-p20	B	B
+	Clasification	Clin1	Clin4	Drug	HPV	Region	Sex	Smoking	Stage
+Sub-1	PD	Y	>=1	Drug1	Pos	North America	M	Unknown	IV
+Sub-2	NE	Y	>=1	Drug2	Nor Reported	North America	F	No	III
+Sub-3	PD	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-4	SD	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-5	SD	Y		Drug3	Nor Reported	North America	M	Yes	IV
+Sub-6	PD	N	<1	Drug4	Pos	North America	M	Yes	IV
+Sub-7	SD	Y	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-8	NE	N		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-9	SD	N		Drug2	Nor Reported	North America	F	Yes	IV
+Sub-10	PD	Y	<1	Drug1	Nor Reported	North America	M	Yes	IV
+Sub-11	CR	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-12	PD	Y	>=1	Drug1	Pos	North America	M	No	IV
+Sub-13	SD	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-14	SD	N		Drug2	Pos	North America	M	Yes	IV
+Sub-15	NE	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-16	SD	N		Drug2	Neg	North America	M	Yes	IV
+Sub-17	PD	N	<1	Drug2	Neg	North America	M	Yes	IV
+Sub-18	PD	Y	<1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-19	SD	N	<1	Drug2	Neg	North America	M	Yes	IV
+Sub-20	PD	N	<1	Drug4	Pos	North America	M	No	IV
+Sub-21	PR	Y	>=1	Drug2	Neg	North America	M	Yes	IV
+Sub-22	PD	Y	>=1	Drug1	Neg	North America	M	Yes	IV
+Sub-23	PD	Y		Drug2	Pos	North America	M	Yes	IV
+Sub-24	PD	N	<1	Drug2	Neg	North America	M	Yes	IV
+Sub-25	NE	N		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-26	CR	N		Drug2	Nor Reported	North America	M	No	III
+Sub-27	PD	Y	<1	Drug2	Neg	North America	M	Yes	IV
+Sub-28	PD	N	<1	Drug4	Pos	North America	M	Yes	IV
+Sub-29	SD	Y	>=1	Drug1	Neg	North America	M	Yes	IV
+Sub-30	NE	N	<1	Drug4	Nor Reported	Other	M	No	IV
+Sub-31	NE	Y	>=1	Drug2	Nor Reported	Other	F	Yes	III
+Sub-32	SD	N	>=1	Drug2	Nor Reported	Other	F	Yes	IV
+Sub-33	PR	Y		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-34	PD	Y	<1	Drug2	Nor Reported	Europe	M	No	IV
+Sub-35	NE	Y	>=1	Drug3	Pos	Europe	M	Yes	IV
+Sub-36	PR	Y	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-37	NE	Y	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-38	NE	Y			Nor Reported	Europe	M	Yes	IV
+Sub-39	PD	N	>=1	Drug2	Nor Reported	Europe	M	No	IV
+Sub-40	PD	Y	>=1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-41	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-42	SD	N	<1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-43	CR	Y	<1	Drug1	Nor Reported	Europe	M	Yes	IV
+Sub-44	NE	N	<1	Drug2	Nor Reported	Europe	M	No	IV
+Sub-45	SD	Y	>=1	Drug2	Pos	Europe	M	Yes	IV
+Sub-46	PD	N	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-47	PD	N	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-48	PD	Y	<1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-49	SD	N	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-50	NE	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-51	NE	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-52	NE	N	<1	Drug3	Neg	Europe	F	No	IV
+Sub-53	CR	N		Drug2	Pos	Europe	M	Yes	IV
+Sub-54	PD	Y	>=1	Drug3	Nor Reported	Europe	F	No	IV
+Sub-55	PD	Y		Drug2	Neg	North America	M	Yes	IV
+Sub-56	SD	Y		Drug2	Nor Reported	North America	F	Yes	IV
+Sub-57	PD	Y		Drug2	Nor Reported	North America	F	No	IV
+Sub-58	PD	Y	<1	Drug2	Nor Reported	North America	F	No	IV
+Sub-59	CR	Y	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-60	PD	N		Drug4	Nor Reported	North America	M	Yes	IV
+Sub-61	PD	N		Drug2	Pos	North America	M	Yes	IV
+Sub-62	SD	Y		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-63	PD	N	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-64	NE	N	>=1	Drug2	Nor Reported	North America	F	No	IV
+Sub-65	SD	N	>=1	Drug2	Pos	North America	M	No	IV
+Sub-66	SD	N	<1	Drug4	Nor Reported	North America	M	Yes	IV
+Sub-67	NE	Y			Nor Reported	North America	M	No	IV
+Sub-68	PR	N		Drug2	Pos	North America	M	Yes	IV
+Sub-69	SD	Y	>=1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-70	NE	N		Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-71	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-72	CR	N	<1	Drug2	Pos	Europe	M	No	IV
+Sub-73	SD	N	>=1	Drug1	Nor Reported	Europe	M	Yes	IV
+Sub-74	PD	N	>=1	Drug1	Nor Reported	Europe	M	No	III
+Sub-75	NE	N		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-76	SD	N		Drug1	Pos	Europe	M	Yes	IV
+Sub-77	PD	Y	<1	Drug1	Pos	Europe	M	Yes	IV
+Sub-78	SD	Y	<1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-79	SD	N	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-80	NE	Y	<1	Drug2	Pos	Europe	F	No	IV
+Sub-81	SD	N	<1	Drug2	Pos	Europe	M	Yes	IV
+Sub-82	SD	Y	>=1	Drug1	Neg	Europe	F	Yes	IV
+Sub-83	SD	N		Drug2	Neg	Europe	M	Yes	IV
+Sub-84	SD	N	>=1	Drug1	Pos	Europe	M	Yes	IV
+Sub-85	SD	N	<1	Drug3	Neg	Europe	M	Yes	III
+Sub-86	PD	N	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-87	PD	Y	>=1	Drug2	Neg	Europe	M	No	IV
+Sub-88	NE	N	>=1	Drug1	Neg	Europe	M	Yes	IV
+Sub-89	NE	N		Drug2	Nor Reported	Europe	F	Yes	III
+Sub-90	SD	N	>=1	Drug1	Neg	Europe	M	Yes	IV
+Sub-91	PR	N	>=1	Drug2	Neg	Europe	M	No	IV
+Sub-92	PD	N		Drug2	Neg	Europe	M	Yes	IV
+Sub-93	NE	N		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-94	PD	N		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-95	NE	N	<1	Drug1	Pos	Europe	M	Yes	IV
+Sub-96	NE	Y			Pos	Europe	M	Yes	IV
+Sub-97	NE	Y	<1	Drug2	Pos	Europe	M	Yes	IV
+Sub-98	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-99	SD	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	III
+Sub-100	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-101	SD	Y	<1	Drug3	Pos	Europe	M	Yes	IV
+Sub-102	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-103	PD	Y	<1	Drug2	Pos	Europe	M	No	IV
+Sub-104	SD	Y	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-105	NE	Y	<1	Drug2	Nor Reported	North America	M	Unknown	III
+Sub-106	PD	Y	<1	Drug2	Pos	North America	M	No	IV
+Sub-107	NE	Y	<1		Nor Reported	North America	F	No	IV
+Sub-108	NE	Y	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-109	PD	N	<1	Drug2	Pos	North America	M	No	IV
+Sub-110	SD	Y	>=1	Drug2	Neg	North America	F	Yes	III
+Sub-111	PD	Y	<1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-112	NE	Y	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-113	NE	Y		Drug2	Nor Reported	North America	F	Yes	IV
+Sub-114	PD	Y	<1	Drug1	Nor Reported	North America	M	Yes	IV
+Sub-115	NE	N	>=1	Drug4	Nor Reported	North America	M	Yes	IV
+Sub-116	SD	Y		Drug2	Neg	North America	F	No	IV
+Sub-117	PD	Y	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-118	PD	Y		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-119	PD	Y	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-120	NE	N	<1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-121	PR	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-122	PD	N		Drug2	Nor Reported	North America	F	Yes	IV
+Sub-123	SD	Y		Drug3	Nor Reported	North America	M	Yes	IV
+Sub-124	PD	Y	>=1	Drug1	Pos	North America	M	Yes	IV
+Sub-125	PR	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-126	SD	N	>=1	Drug2	Pos	North America	M	No	IV
+Sub-127	CR	Y		Drug2	Nor Reported	North America	M	No	III
+Sub-128	NE	Y		Drug2	Nor Reported	North America	F	No	IV
+Sub-129	SD	N	>=1	Drug2	Neg	North America	M	Yes	IV
+Sub-130	PD	Y	>=1	Drug3	Nor Reported	North America	F	No	IV
+Sub-131	PR	N	>=1	Drug2	Pos	North America	M	Yes	III
+Sub-132	PD	Y	>=1	Drug3	Nor Reported	North America	M	Yes	III
+Sub-133	PD	Y	>=1	Drug3	Nor Reported	North America	F	Yes	IV
+Sub-134	PD	N	>=1	Drug4	Nor Reported	North America	M	Yes	III
+Sub-135	PR	Y		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-136	SD	Y	>=1	Drug2	Nor Reported	North America	M	Yes	III
+Sub-137	NE	Y		Drug3	Pos	North America	M	No	IV
+Sub-138	SD	N	>=1	Drug4	Nor Reported	North America	F	No	IV
+Sub-139	SD	N	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-140	NE	N	>=1		Neg	North America	M	Yes	III
+Sub-141	PD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-142	SD	N	>=1	Drug3	Neg	North America	M	Yes	IV
+Sub-143	PD	Y		Drug2	Neg	North America	M	Yes	IV
+Sub-144	NE	Y			Pos	North America	M	No	IV
+Sub-145	PD	N	>=1	Drug4	Nor Reported	North America	M	Yes	IV
+Sub-146	SD	N	<1	Drug4	Neg	North America	M	No	IV
+Sub-147	PD	N	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-148	SD	N	<1	Drug3	Neg	North America	M	No	IV
+Sub-149	NE	N			Nor Reported	North America	F	Yes	IV
+Sub-150	SD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-151	NE	N	<1	Drug4	Pos	North America	M	Yes	IV
+Sub-152	NE	N	<1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-153	PR	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-154	PD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-155	PR	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-156	SD	Y	>=1	Drug1	Nor Reported	Europe	M	Yes	IV
+Sub-157	PD	N		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-158	SD	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-159	SD	N		Drug2	Pos	Europe	M	Yes	IV
+Sub-160	PR	N	>=1	Drug2	Unknown	Europe	M	Yes	IV
+Sub-161	SD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-162	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	III
+Sub-163	PR	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-164	SD	Y	>=1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-165	SD	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-166	SD	Y	>=1	Drug3	Pos	Europe	M	No	IV
+Sub-167	SD	Y	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-168	NE	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-169	PD	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-170	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-171	PR	Y		Drug3	Neg	Europe	M	Yes	IV
+Sub-172	PD	Y	>=1	Drug2	Neg	Europe	M	Yes	III
+Sub-173	NE	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-174	PD	N	>=1	Drug2	Nor Reported	Europe	M	No	III
+Sub-175	SD	N	>=1	Drug1	Nor Reported	Europe	M	No	III
+Sub-176	PR	N	>=1	Drug2	Pos	Europe	M	No	IV
+Sub-177	NE	N	>=1	Drug1	Pos	Europe	M	Yes	IV
+Sub-178	PD	N		Drug3	Pos	Europe	M	No	IV
+Sub-179	PD	N	>=1	Drug1	Nor Reported	Europe	M	Yes	IV
+Sub-180	PD	N		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-181	PD	N		Drug2	Neg	Europe	F	Yes	III
+Sub-182	PD	N		Drug2	Pos	North America	M	No	IV
+Sub-183	SD	N	>=1	Drug2	Neg	North America	M	Yes	IV
+Sub-184	PR	N	>=1	Drug2	Neg	North America	M	No	IV
+Sub-185	PD	N	>=1	Drug2	Nor Reported	North America	M	Yes	IV
+Sub-186	SD	N	>=1	Drug1	Neg	North America	F	No	IV
+Sub-187	SD	N			Neg	North America	F	Yes	IV
+Sub-188	PD	Y	>=1	Drug1	Neg	North America	M	No	IV
+Sub-189	SD	Y		Drug1	Neg	North America	M	No	IV
+Sub-190	NE	Y	<1	Drug2	Neg	Europe	M	No	III
+Sub-191	SD	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-192	PD	Y	>=1	Drug1	Neg	Europe	M	Yes	IV
+Sub-193	NE	Y	>=1	Drug2	Neg	Europe	M	Yes	IV
+Sub-194	PD	N	<1	Drug3	Pos	Europe	M	Yes	IV
+Sub-195	SD	Y		Drug3	Neg	Europe	M	Yes	IV
+Sub-196	PD	Y	>=1	Drug2	Pos	Europe	M	Yes	IV
+Sub-197	SD	N	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-198	SD	Y	<1	Drug1	Pos	Europe	M	Yes	IV
+Sub-199	PD	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-200	NE	Y	>=1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-201	PD	Y	<1	Drug1	Neg	Europe	M	Yes	III
+Sub-202	NE	Y		Drug2	Neg	Europe	M	Yes	IV
+Sub-203	PD	Y		Drug2	Neg	Europe	F	Yes	IV
+Sub-204	PD	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-205	PR	Y	>=1	Drug2	Pos	Europe	M	Yes	IV
+Sub-206	NE	Y	>=1	Drug2	Neg	Europe	F	No	IV
+Sub-207	PR	Y	>=1	Drug2	Neg	Europe	M	Yes	IV
+Sub-208	PD	Y	<1	Drug1	Neg	Europe	M	Yes	IV
+Sub-209	PD	Y	>=1	Drug2	Neg	Europe	M	Yes	IV
+Sub-210	NE	Y	<1	Drug3	Neg	Europe	M	Yes	IV
+Sub-211	PR	Y	<1	Drug1	Neg	Europe	M	Yes	IV
+Sub-212	PD	Y		Drug2	Unknown	Europe	M	Yes	IV
+Sub-213	PD	N	<1	Drug1	Pos	Europe	M	No	IV
+Sub-214	PR	Y	>=1	Drug1	Pos	Europe	F	No	IV
+Sub-215	SD	Y	>=1	Drug1	Neg	Europe	M	Yes	IV
+Sub-216	NE	Y	<1	Drug3	Neg	Europe	M	Yes	IV
+Sub-217	SD	Y	<1	Drug2	Pos	Europe	M	Yes	IV
+Sub-218	PD	N		Drug2	Neg	Europe	F	Yes	IV
+Sub-219	SD	N	<1	Drug1	Neg	Europe	M	Yes	IV
+Sub-220	NE	Y	>=1	Drug1	Pos	Europe	M	No	IV
+Sub-221	SD	Y		Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-222	NE	N	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-223	SD	N	>=1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-224	PD	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-225	SD	Y	>=1	Drug1	Pos	Europe	M	Yes	IV
+Sub-226	NE	Y	>=1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-227	NE	N	>=1	Drug1	Nor Reported	Europe	F	No	IV
+Sub-228	SD	Y	>=1	Drug1	Nor Reported	Europe	M	Yes	IV
+Sub-229	PD	Y	<1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-230	NE	Y	<1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-231	PD	N		Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-232	NE	Y	>=1	Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-233	NE	N		Drug2	Pos	Europe	M	Unknown	IV
+Sub-234	PR	Y	<1	Drug2	Neg	Europe	M	Yes	III
+Sub-235	SD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-236	SD	Y		Drug2	Nor Reported	Europe	M	Unknown	III
+Sub-237	NE	Y	<1	Drug2	Nor Reported	Europe	M	Yes	III
+Sub-238	PD	Y	<1	Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-239	NE	Y	>=1		Nor Reported	Europe	F	Yes	IV
+Sub-240	NE	Y	<1		Nor Reported	Europe	M	Yes	IV
+Sub-241	PD	Y	<1	Drug3	Nor Reported	Europe	M	Yes	III
+Sub-242	SD	N	<1	Drug4	Nor Reported	Other	M	Yes	IV
+Sub-243	NE	Y	>=1	Drug3	Neg	Europe	M	Unknown	IV
+Sub-244	PD	Y	>=1	Drug2	Neg	Europe	M	Yes	IV
+Sub-245	SD	Y	>=1	Drug2	Pos	Europe	M	Yes	IV
+Sub-246	SD	Y	<1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-247	NE	Y	<1	Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-248	SD	Y		Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-249	NE	Y	>=1	Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-250	PD	Y	>=1	Drug2	Pos	Europe	F	Yes	IV
+Sub-251	NE	N	>=1	Drug3	Nor Reported	Europe	M	Unknown	IV
+Sub-252	NE	Y	<1	Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-253	SD	Y		Drug2	Nor Reported	Europe	M	Yes	IV
+Sub-254	SD	Y		Drug1	Nor Reported	Europe	M	Unknown	IV
+Sub-255	NE	Y		Drug2	Nor Reported	Europe	F	Yes	IV
+Sub-256	PR	Y	<1	Drug1	Unknown	Europe	M	Yes	IV
+Sub-257	NE	Y		Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-258	PD	N		Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-259	PD	N	>=1	Drug2	Nor Reported	Europe	M	Unknown	IV
+Sub-260	SD	N	>=1	Drug1	Neg	Europe	F	Yes	IV
+Sub-261	SD	N	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-262	NE	Y	>=1	Drug1	Pos	Europe	M	Yes	IV
+Sub-263	PR	N		Drug1	Neg	Europe	M	Yes	IV
+Sub-264	NE	N		Drug2	Neg	Europe	M	Yes	IV
+Sub-265	SD	N	>=1	Drug2	Pos	North America	M	No	IV
+Sub-266	PR	Y	<1	Drug2	Nor Reported	North America	M	No	IV
+Sub-267	PD	Y		Drug3	Neg	North America	F	No	IV
+Sub-268	PD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-269	PD	Y	>=1	Drug2	Nor Reported	North America	F	No	IV
+Sub-270	NE	Y	>=1	Drug1	Neg	Europe	M	Yes	IV
+Sub-271	PD	Y		Drug2	Pos	Europe	M	Yes	IV
+Sub-272	SD	Y	>=1	Drug2	Neg	Europe	M	Yes	IV
+Sub-273	NE	N		Drug1	Neg	Europe	M	No	IV
+Sub-274	PD	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-275	PD	Y	<1	Drug2	Pos	Europe	M	Yes	IV
+Sub-276	SD	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-277	NE	Y	<1	Drug2	Neg	Europe	M	Yes	IV
+Sub-278	PD	Y	<1	Drug2	Pos	Europe	M	Yes	IV
+Sub-279	NE	Y	>=1	Drug2	Pos	Europe	M	No	IV
+Sub-280	PD	Y	>=1	Drug2	Nor Reported	Europe	F	No	IV
+Sub-281	SD	Y	<1	Drug3	Nor Reported	Europe	M	Yes	IV
+Sub-282	SD	Y		Drug1	Unknown	Europe	M	Yes	IV
+Sub-283	NE	N		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-284	SD	N		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-285	SD	N	<1	Drug1	Neg	Other	M	Yes	IV
+Sub-286	SD	N		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-287	SD	N		Drug1	Nor Reported	Other	F	Yes	IV
+Sub-288	SD	N	>=1	Drug2	Neg	Other	M	Yes	IV
+Sub-289	PR	N	<1	Drug1	Neg	Other	M	Yes	III
+Sub-290	PD	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-291	PD	N	>=1	Drug2	Pos	Other	M	Yes	IV
+Sub-292	NE	Y	>=1	Drug3	Nor Reported	Other	M	No	IV
+Sub-293	PD	Y		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-294	PD	N	<1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-295	PD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-296	SD	N	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-297	PD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-298	PD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-299	SD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-300	PR	Y	<1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-301	PR	N	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-302	PR	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-303	PD	Y	<1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-304	PD	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-305	PD	Y		Drug2	Pos	North America	M	Yes	IV
+Sub-306	SD	Y	<1	Drug2	Neg	North America	M	No	IV
+Sub-307	PD	N	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-308	PD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-309	PD	N		Drug2	Neg	North America	M	No	IV
+Sub-310	NE	Y	>=1		Pos	North America	M	No	IV
+Sub-311	PD	Y	>=1	Drug3	Pos	North America	M	Yes	IV
+Sub-312	SD	N	>=1	Drug2	Pos	North America	M	No	IV
+Sub-313	PD	Y	<1	Drug1	Nor Reported	Other	M	Yes	IV
+Sub-314	PD	N	<1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-315	PD	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-316	PD	Y	<1	Drug2	Pos	Other	M	Yes	IV
+Sub-317	PD	Y		Drug2	Nor Reported	Other	M	Yes	IV
+Sub-318	SD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-319	PR	Y	<1	Drug2	Nor Reported	Other	F	Yes	IV
+Sub-320	PD	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-321	SD	Y	>=1	Drug3	Nor Reported	Other	M	Yes	IV
+Sub-322	PD	Y	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-323	PD	Y	<1	Drug2	Pos	Other	M	Yes	IV
+Sub-324	PD	Y	<1	Drug3	Nor Reported	Other	F	Yes	IV
+Sub-325	PD	N	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-326	PD	N	>=1	Drug1	Nor Reported	Other	M	Yes	IV
+Sub-327	PR	N	>=1	Drug2	Neg	Other	F	No	IV
+Sub-328	PD	N	>=1	Drug2	Nor Reported	Other	M	Yes	IV
+Sub-329	PR	N	<1	Drug2	Neg	Other	M	Yes	IV
+Sub-330	PD	N	>=1	Drug2	Nor Reported	Other	M	Yes	III
+Sub-331	NE	N	>=1	Drug2	Neg	North America	M	Yes	IV
+Sub-332	NE	Y	>=1		Pos	North America	M	No	IV
+Sub-333	PD	N	>=1	Drug3	Neg	North America	M	Yes	IV
+Sub-334	PD	Y		Drug2	Pos	North America	F	Yes	IV
+Sub-335	PD	Y	>=1	Drug3	Nor Reported	North America	M	No	IV
+Sub-336	PD	Y	<1	Drug2	Neg	North America	M	Yes	IV
+Sub-337	PD	N		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-338	SD	Y		Drug2	Neg	North America	M	Yes	IV
+Sub-339	PD	Y	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-340	NE	Y	>=1	Drug2	Neg	North America	F	Yes	III
+Sub-341	NE	Y		Drug2	Nor Reported	North America	M	Yes	
+Sub-342	SD	N		Drug1	Nor Reported	North America	F	Yes	IV
+Sub-343	PD	Y		Drug2	Neg	North America	M	Yes	IV
+Sub-344	NE	Y	>=1		Neg	North America	M	No	IV
+Sub-345	SD	Y		Drug2	Pos	North America	M	No	IV
+Sub-346	PD	Y		Drug1	Pos	North America	F	Yes	IV
+Sub-347	PD	Y		Drug2	Nor Reported	North America	M	Yes	IV
+Sub-348	SD	Y		Drug2	Neg	North America	M	Yes	III
+Sub-349	PR	N		Drug2	Neg	North America	F	Yes	IV
+Sub-350	PD	Y		Drug3	Neg	North America	M	No	III
+Sub-351	NE	Y		Drug2	Neg	North America	M	Yes	III
+Sub-352	PD	Y		Drug2	Pos	North America	M	No	IV
+Sub-353	PD	Y		Drug2	Pos	North America	M	Yes	IV
+Sub-354	SD	Y		Drug2	Pos	North America	M	No	IV
+Sub-355	NE	Y		Drug2	Neg	North America	M	Yes	III
+Sub-356	PD	Y		Drug2	Neg	North America	M	Yes	III
+Sub-357	PD	N	>=1	Drug2	Pos	North America	M	Yes	IV
+Sub-358	NE	N	<1		Pos	North America	M	Yes	IV
+Sub-359	PD	N	>=1	Drug2	Neg	North America	F	Yes	IV
+Sub-360	PD	Y	<1	Drug2	Pos	North America	M	Yes	IV
+Sub-361	PD	Y	<1	Drug3	Neg	North America	M	Yes	IV

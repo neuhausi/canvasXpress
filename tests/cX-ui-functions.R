@@ -252,7 +252,6 @@ cXbar4 <- function() {
     decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
     graphOrientation="vertical",
     graphType="Bar",
-    legendBox=FALSE,
     legendColumns=2,
     legendPosition="bottom",
     showTransition=TRUE,
@@ -276,7 +275,6 @@ cXbar5 <- function() {
     fontStyle="bold italic",
     graphOrientation="vertical",
     graphType="Bar",
-    legendBox=FALSE,
     legendFontStyle="italic",
     plotByVariable=TRUE,
     showShadow=TRUE,
@@ -303,6 +301,7 @@ cXbar6 <- function() {
     decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
     graphOrientation="vertical",
     graphType="Bar",
+    legendBox=TRUE,
     showFunctionNamesAfterRender=FALSE,
     showShadow=TRUE,
     smpTitle="Cell Lines",
@@ -429,7 +428,6 @@ cXbarline1 <- function() {
     graphOrientation="vertical",
     graphType="BarLine",
     legendBackgroundColor=FALSE,
-    legendBox=FALSE,
     legendColumns=2,
     legendPosition="bottom",
     lineThickness=2,
@@ -485,7 +483,6 @@ cXbarline3 <- function() {
     coordinateLineColor=TRUE,
     graphOrientation="horizontal",
     graphType="BarLine",
-    legendBox=FALSE,
     legendColumns=4,
     legendPosition="bottom",
     lineThickness=3,
@@ -890,7 +887,6 @@ cXboxplot11 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -928,7 +924,6 @@ cXboxplot12 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -967,7 +962,6 @@ cXboxplot13 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -1005,7 +999,6 @@ cXboxplot14 <- function() {
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -1036,17 +1029,14 @@ cXboxplot15 <- function() {
     background="white",
     backgroundType="window",
     backgroundWindow="#E5E5E5",
-    boxplotConnect=TRUE,
-    colorBy="supp",
+    colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
-    showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     smpLabelRotate=90,
     smpLabelScaleFontFactor=1.8,
@@ -1058,7 +1048,8 @@ cXboxplot15 <- function() {
     xAxis2Show=FALSE,
     xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
-    xAxisTitle="len"
+    xAxisTitle="len",
+    afterRender=list(list("pivotX", list("dose")))
   )
 }
 
@@ -1084,9 +1075,7 @@ cXboxplot16 <- function() {
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
-    segregateSamplesBy=list("supp"),
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -1117,6 +1106,46 @@ cXboxplot17 <- function() {
     background="white",
     backgroundType="window",
     backgroundWindow="#E5E5E5",
+    boxplotConnect=TRUE,
+    colorBy="supp",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose", "supp"),
+    guides="solid",
+    guidesColor="white",
+    legendScaleFontFactor=1.8,
+    segregateSamplesBy=list("supp"),
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    smpLabelRotate=90,
+    smpLabelScaleFontFactor=1.8,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    smpTitleScaleFontFactor=1.8,
+    stringSampleFactors=list("dose"),
+    title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis2Show=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisTickColor="white",
+    xAxisTitle="len"
+  )
+}
+
+cXboxplot18 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-toothgrowth-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-toothgrowth-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTickScaleFontFactor=1.8,
+    axisTitleFontStyle="bold",
+    axisTitleScaleFontFactor=1.8,
+    background="white",
+    backgroundType="window",
+    backgroundWindow="#E5E5E5",
     colorBy="supp",
     colorScheme="GGPlot",
     connectBy="order",
@@ -1126,7 +1155,6 @@ cXboxplot17 <- function() {
     guides="solid",
     guidesColor="white",
     jitter=FALSE,
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     segregateSamplesBy=list("supp"),
     showBoxplotOriginalData=TRUE,
@@ -1681,7 +1709,6 @@ cXdotline1 <- function() {
     graphOrientation="vertical",
     graphType="DotLine",
     legendBackgroundColor=FALSE,
-    legendBox=FALSE,
     legendColumns=2,
     legendPosition="bottom",
     lineThickness=2,
@@ -1734,7 +1761,6 @@ cXdotline3 <- function() {
     coordinateLineColor=TRUE,
     graphOrientation="horizontal",
     graphType="DotLine",
-    legendBox=FALSE,
     legendColumns=2,
     legendPosition="bottom",
     lineThickness=3,
@@ -1792,7 +1818,6 @@ cXdotplot2 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     jitter=TRUE,
-    legendBox=FALSE,
     marginBottom=30,
     showShadow=TRUE,
     smpLabelFontStyle="italic",
@@ -2415,21 +2440,34 @@ cXhistogram3 <- function() {
 cXkaplanmeier1 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table(system.file("extdata", "cX-kaplanmeier-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
     graphType="Scatter2D",
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
     showTransition=TRUE,
     title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list('Time','Censored-1','Data 1 Population','rgb(0,0,255)')), list("addKaplanMeierCurve", list('Time','Censored-2','Data 2 Population','rgb(255,0,0)')))
+    afterRender=list(list("addKaplanMeierCurve", list('Time','Censor')))
   )
 }
 
 cXkaplanmeier2 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter2D",
+    showConfidenceIntervals=TRUE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    showTransition=TRUE,
+    title="Kaplan-Meier Plot",
+    afterRender=list(list("addKaplanMeierCurve", list('Time','Censor')))
+  )
+}
+
+cXkaplanmeier3 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-kaplanmeier-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2437,12 +2475,43 @@ cXkaplanmeier2 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    showConfidenceIntervals=TRUE,
+    kaplanMeierBy="Drug",
+    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    showTransition=TRUE,
-    title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list('Time','Censored-1','Data 1 Population','rgb(0,0,255)')), list("addKaplanMeierCurve", list('Time','Censored-2','Data 2 Population','rgb(255,0,0)')))
+    afterRender=list(list("addKaplanMeierCurve", list('Survival','Survival-Censor')))
+  )
+}
+
+cXkaplanmeier4 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-kaplanmeier-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    invertCensored=TRUE,
+    showConfidenceIntervals=FALSE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("addKaplanMeierCurve", list('Survival2','Survival2-Censor')))
+  )
+}
+
+cXkaplanmeier5 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-kaplanmeier-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    invertCensored=TRUE,
+    showConfidenceIntervals=FALSE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("createDOE"))
   )
 }
 
@@ -2539,7 +2608,6 @@ cXlayout6 <- function() {
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Boxplot",
-    legendBox=FALSE,
     showShadow=TRUE,
     showTransition=TRUE,
     smpLabelFontStyle="italic",
@@ -2620,6 +2688,22 @@ cXlayout10 <- function() {
 
 cXlayout11 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-kaplanmeier-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-kaplanmeier-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    invertCensored=TRUE,
+    showConfidenceIntervals=FALSE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("createDOE"))
+  )
+}
+
+cXlayout12 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-layoutContinuous-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-layoutContinuous-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-layoutContinuous-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2640,7 +2724,7 @@ cXlayout11 <- function() {
   )
 }
 
-cXlayout12 <- function() {
+cXlayout13 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-overlays-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-overlays-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3394,6 +3478,7 @@ cXscatter2d2 <- function() {
     varAnnot=z,
     colorBy="Response",
     graphType="Scatter2D",
+    legendBox=TRUE,
     legendInside=TRUE,
     legendPosition="topRight",
     spiderBy="Subject",
@@ -3426,6 +3511,7 @@ cXscatter2d4 <- function() {
     varAnnot=z,
     citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
     graphType="Scatter2D",
+    legendBox=TRUE,
     setMaxX=100,
     setMaxY=150,
     setMinX=0,
@@ -3451,6 +3537,7 @@ cXscatter2d5 <- function() {
     asSampleFactors=list("cyl"),
     colorBy="cyl",
     graphType="Scatter2D",
+    legendBox=TRUE,
     stringVariableFactors=list("cyl"),
     xAxis=list("wt"),
     yAxis=list("mpg"),
@@ -3466,6 +3553,7 @@ cXscatter2d6 <- function() {
     asSampleFactors=list("cyl"),
     colorBy="cyl",
     graphType="Scatter2D",
+    legendBox=TRUE,
     showRegressionFullRange=TRUE,
     stringVariableFactors=list("cyl"),
     xAxis=list("wt"),
@@ -3484,6 +3572,7 @@ cXscatter2d7 <- function() {
     citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
     colorScheme="White",
     graphType="Scatter2D",
+    legendBox=TRUE,
     setMaxX=100,
     setMaxY=150,
     setMinX=0,
@@ -3508,6 +3597,7 @@ cXscatter2d8 <- function() {
     data=y,
     smpAnnot=x,
     citation="Moore, David S., and George P. McCabe (1989)",
+    citationScaleFontFactor=0.75,
     graphType="Scatter2D",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
@@ -3531,6 +3621,7 @@ cXscatter2d9 <- function() {
     decorationsBoxColor="rgb(0,0,0)",
     decorationsPosition="bottomRight",
     graphType="Scatter2D",
+    legendBackgroundColor="rgba(0,0,0,0)",
     legendInside=TRUE,
     plotBox=FALSE,
     showDecorations=TRUE,
@@ -3577,6 +3668,7 @@ cXscatter2d11 <- function() {
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, y=0.5), list(color="rgba(0,104,139,0.5)", width=2, y=-0.5))),
     graphType="Scatter2D",
     legendBackgroundColor="rgb(238,238,238)",
+    legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
     legendInside=TRUE,
     legendPosition="bottomRight",
@@ -3610,6 +3702,7 @@ cXscatter2d12 <- function() {
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, x=0.5), list(color="rgba(0,104,139,0.5)", width=2, x=-0.5))),
     graphType="Scatter2D",
     legendBackgroundColor="rgb(238,238,238)",
+    legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
     plotBox=FALSE,
     showDecorations=TRUE,
@@ -3639,6 +3732,7 @@ cXscatter2d13 <- function() {
     decorations=list(line=list(list(color="rgba(64,64,64,0.5)", width=2, x=0), list(color="rgba(64,64,64,0.5)", width=2, y=0), list(color="rgba(255,215,0,0.5)", width=2, x=-5, x2=5, y=-5, y2=5))),
     graphType="Scatter2D",
     legendBackgroundColor="rgb(238,238,238)",
+    legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
     legendInside=TRUE,
     legendPosition="bottomRight",
@@ -3666,8 +3760,7 @@ cXscatter2d14 <- function() {
     backgroundWindow="rgb(238,238,238)",
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)"),
     graphType="Scatter2D",
-    legendBackgroundColor="rgb(238,238,238)",
-    legendBoxColor="rgb(0,0,0)",
+    legendBackgroundColor="rgba(0,0,0,0)",
     legendInside=TRUE,
     legendPosition="topRight",
     plotBox=FALSE,
@@ -4094,7 +4187,6 @@ cXstackedpercentline2 <- function() {
     coordinateLineColor=TRUE,
     graphOrientation="horizontal",
     graphType="StackedPercentLine",
-    legendBox=FALSE,
     lineThickness=3,
     lineType="spline",
     showShadow=TRUE,
@@ -4789,7 +4881,6 @@ cXviolin12 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
@@ -4829,7 +4920,6 @@ cXviolin13 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
@@ -4869,7 +4959,6 @@ cXviolin14 <- function() {
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
@@ -4910,7 +4999,6 @@ cXviolin15 <- function() {
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
@@ -4952,7 +5040,6 @@ cXviolin16 <- function() {
     groupingFactors=list("dose", "supp"),
     guides="solid",
     guidesColor="white",
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     segregateSamplesBy=list("supp"),
     showBoxplotIfViolin=TRUE,
@@ -4996,7 +5083,6 @@ cXviolin17 <- function() {
     guides="solid",
     guidesColor="white",
     jitter=FALSE,
-    legendBox=FALSE,
     legendScaleFontFactor=1.8,
     segregateSamplesBy=list("supp"),
     showBoxplotIfViolin=TRUE,

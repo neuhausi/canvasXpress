@@ -25,12 +25,14 @@ test_that("cXnetwork4", {
 
 test_that("cXnetwork5", {
     check_ui_test(cXnetwork5())
+
+    warning('some lines missing, cross-domain download issue')
 })
 
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
-    warning('coloring off from web example')
+    warning('coloring and legend off from web example, some lines are missing')
 })
 
 test_that("cXnetwork7", {
@@ -41,12 +43,12 @@ test_that("cXnetwork7", {
 
 test_that("cXnetwork8", {
     check_ui_test(cXnetwork8())
+
+    warning('coloring off from web example')
 })
 
 test_that("cXnetwork9", {
     check_ui_test(cXnetwork9())
-
-    warning('coloring, shapes off from web example')
 })
 
 test_that("cXnetwork10", {
@@ -55,6 +57,4 @@ test_that("cXnetwork10", {
 
 test_that("cXnetwork11", {
     check_ui_test(cXnetwork11())
-
-    warning('coloring off from web example')
 })
