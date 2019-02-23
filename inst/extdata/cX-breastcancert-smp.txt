@@ -1,3 +1,0 @@
-	Description
-Mortality	Mortality index for neoplasms of the female breast
-Temperature	Mean annual temperature (in degrees F)
