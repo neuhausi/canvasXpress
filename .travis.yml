@@ -4,6 +4,7 @@ language: R
 r:
   - oldrel
   - release
+  - devel
 sudo: false
 cache: packages
 bioc_packages: limma

@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 22.9 due to important bug fixes
+Updated CanvasXpress JS libraries to 23.3 to incorporate bug fixes
 
 ---  
 
@@ -12,10 +12,11 @@ Updated CanvasXpress JS libraries to 22.9 due to important bug fixes
 
 * ubuntu 14.04.5 (on travis-ci), R 3.4.4
 * ubuntu 14.04.5 (on travis-ci), R 3.5.2
+* ubuntu 14.04.5 (on travis-ci), R devel - 2019-02-22 r76149
 
 * win-builder (oldrelease, release, devel)
 
-* r-hub::check_for_cran()
+* rhub::check_for_cran()
 * * Windows Server 2008 R2 SP1 *<br/>NOTE: limma package suggested but not installed, excluded*
 * * Ubuntu Linux 16.04 LTS
 * * Fedora Linux 
