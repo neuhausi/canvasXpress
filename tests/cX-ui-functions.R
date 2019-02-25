@@ -1535,6 +1535,25 @@ cXcorrelation3 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
+    correlationAxis="samples",
+    correlationType="circle",
+    gradient=TRUE,
+    graphType="Correlation",
+    showTransition=TRUE,
+    title="Correlation Plot",
+    yAxisTitle="Correlation Title"
+  )
+}
+
+cXcorrelation3 <- function() {
+  library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-generic-dat.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-generic-smp.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-generic-var.txt", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
     correlationAnchorLegend=TRUE,
     correlationAnchorLegendAlignWidth=20,
     correlationAxis="variables",
