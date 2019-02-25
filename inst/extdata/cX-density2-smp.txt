@@ -1,3 +1,0 @@
-	sexf	sexm
-Weight-Fem	F	M
-Weight-Mas	F	M

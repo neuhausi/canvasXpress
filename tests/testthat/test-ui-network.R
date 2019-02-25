@@ -30,7 +30,7 @@ test_that("cXnetwork5", {
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
-    warning('coloring off from web example')
+    warning('coloring and legend off from web example, some lines are missing')
 })
 
 test_that("cXnetwork7", {

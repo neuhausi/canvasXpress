@@ -1,8 +1,0 @@
-color	elbows	endArrow	id1	id2	startArrow	type	width
-rgb(51,12,255)		arrow	Gene1	Gene2	square	curved	3
-rgb(51,12,255)		arrow	Gene4	Gene3	square	dashedCurved	3
-rgb(51,12,255)		arrow	Gene5	Met		line	3
-rgb(51,12,255)		round	Gene3	DNA	square	bezier	3
-rgb(51,12,255)		square	Gene7	Gene1	arrow	dashedBezier	3
-rgb(51,12,255)	[[235,100],[50,100],[50,230]]	square	Gene5	Gene7		dotted	3
-rgb(51,12,255)	[[275,100,325,100,325,165],[325,165,325,270,425,270]]	square	Gene5	DNA		bezier	3

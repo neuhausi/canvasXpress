@@ -45,10 +45,16 @@ test_that("cXlayout10", {
 
 test_that("cXlayout11", {
     check_ui_test(cXlayout11())
+
+    warning("grouping results in different layout order")
 })
 
 test_that("cXlayout12", {
     check_ui_test(cXlayout12())
+})
+
+test_that("cXlayout13", {
+    check_ui_test(cXlayout13())
 
     warning('middle section too small at default height - working as designed')
 })
