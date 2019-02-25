@@ -16,10 +16,10 @@ Updated CanvasXpress JS libraries to 23.3 to incorporate bug fixes
 
 * win-builder (oldrelease, release, devel)
 
-* rhub::check_for_cran()
-* * Windows Server 2008 R2 SP1 *<br/>NOTE: limma package suggested but not installed, excluded*
+* rhub::check_on_ubuntu(show_status = F)
 * * Ubuntu Linux 16.04 LTS
-* * Fedora Linux 
+* rhub::check_on_windows(check_args = c("_R_CHECK_FORCE_SUGGESTS_"="FALSE"), show_status = F)
+* * Windows Server 2008 R2 SP1
 
 ---  
 
