@@ -17,7 +17,7 @@ canvasXpressOutput(outputId, width = "100\%", height = "400px")
 Output function that enables the use of the widget in applications
 }
 \description{
-Output creation function for canvasXpressOutput in Shiny applications and 
+Output creation function for canvasXpressOutput in Shiny applications and
 interactive Rmd documents
 }
 \seealso{
