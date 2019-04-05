@@ -306,10 +306,7 @@ canvasXpress <- function(data = NULL,
                 if (is.null(x)) {
                     x <- list()
                 }
-                print(x)
-                print(x.add)
                 x <- append(x, x.add)
-                message(x)
             }
         }
 
