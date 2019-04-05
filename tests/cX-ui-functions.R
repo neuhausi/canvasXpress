@@ -2672,6 +2672,23 @@ cXlayout9 <- function() {
 
 cXlayout10 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-generic-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(system.file("extdata", "cX-generic-smp.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-generic-var.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutType="rows",
+    showTransition=TRUE,
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
+  )
+}
+
+cXlayout11 <- function() {
+  library(canvasXpress)
   y=read.table(system.file("extdata", "cX-scents-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-scents-smp.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -2686,7 +2703,7 @@ cXlayout10 <- function() {
   )
 }
 
-cXlayout11 <- function() {
+cXlayout12 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-kaplanmeier3-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(system.file("extdata", "cX-kaplanmeier3-var.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2702,7 +2719,7 @@ cXlayout11 <- function() {
   )
 }
 
-cXlayout12 <- function() {
+cXlayout13 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-layoutContinuous-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-layoutContinuous-smp.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2724,7 +2741,7 @@ cXlayout12 <- function() {
   )
 }
 
-cXlayout13 <- function() {
+cXlayout14 <- function() {
   library(canvasXpress)
   y=read.table(system.file("extdata", "cX-overlays-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(system.file("extdata", "cX-overlays-smp.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4406,7 +4423,7 @@ cXtreemap3 <- function() {
 cXvenn1 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+    vennData=data.frame(AD=257, ABCD=148, AC=456, ACD=298, ABC=552, A=340, BD=354, B=562, AB=639, BC=915, D=592, C=620, CD=143, ABD=578, BCD=613),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     showTransition=TRUE,
@@ -4417,7 +4434,7 @@ cXvenn1 <- function() {
 cXvenn2 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+    vennData=data.frame(AC=456, ABCD=148, AD=257, A=340, ACD=298, ABC=552, B=562, BD=354, ABD=578, BCD=613, CD=143, BC=915, C=620, AB=639, D=592),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     showTransition=TRUE,
@@ -4428,7 +4445,7 @@ cXvenn2 <- function() {
 cXvenn3 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+    vennData=data.frame(ABC=552, ACD=298, A=340, ABCD=148, AD=257, AC=456, BC=915, C=620, AB=639, D=592, BCD=613, ABD=578, CD=143, BD=354, B=562),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     vennGroups=2

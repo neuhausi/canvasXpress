@@ -238,8 +238,6 @@ canvasXpress <- function(data = NULL,
                           events      = events,
                           afterRender = afterRender)
     }
-
-# -- START NEW
     else if (graphType == "Bar" &&
              ((length(intersect(names(data), precalc.bar[1:2])) == 2) ||
               (length(intersect(rownames(data), precalc.bar[1:2])) == 2))) {
@@ -318,9 +316,6 @@ canvasXpress <- function(data = NULL,
                           events      = events,
                           afterRender = afterRender)
     }
-# -- END NEW
-
-
     # standard graph
     else {
         y <- setup_y(data)
