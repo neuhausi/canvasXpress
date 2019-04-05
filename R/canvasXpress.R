@@ -239,7 +239,6 @@ canvasXpress <- function(data = NULL,
                           afterRender = afterRender)
     }
 
-
 # -- START NEW
     else if (graphType == "Bar" &&
              ((length(intersect(names(data), precalc.bar[1:2])) == 2) ||
@@ -266,7 +265,10 @@ canvasXpress <- function(data = NULL,
                       mean   = mean,
                       stdev  = stdev)
             for (other in setdiff(data.names, precalc.bar)) {
-                y[[other]] <- data[other]
+                if (is.null(x)) {
+                    x <- list()
+                }
+                x[[other]] <- data[other]
             }
         }
         else {
@@ -278,8 +280,11 @@ canvasXpress <- function(data = NULL,
                       vars   = as.list("precalculated BarChart"),
                       mean   = mean,
                       stdev  = stdev)
-            for (other in setdiff(data.names, precalc.bar)) {
-                y[[other]] <- data[other,]
+
+            othervals <- setdiff(data.names, precalc.bar)
+            if (length(othervals) > 0) {
+                x <- list()
+                x <- convertRowsToList(data[which(rownames(data) %in% othervals), ])
             }
         }
 
@@ -297,7 +302,14 @@ canvasXpress <- function(data = NULL,
                 }
             }
             if (!inherits(smpAnnot, "character")) {
-                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
+                x.add <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
+                if (is.null(x)) {
+                    x <- list()
+                }
+                print(x)
+                print(x.add)
+                x <- append(x, x.add)
+                message(x)
             }
         }
 
@@ -308,8 +320,6 @@ canvasXpress <- function(data = NULL,
                           config      = config,
                           events      = events,
                           afterRender = afterRender)
-        # message(cx_object)
-        # print(cx_object)
     }
 # -- END NEW
 
