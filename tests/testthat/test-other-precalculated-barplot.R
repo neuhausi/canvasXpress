@@ -1,76 +1,75 @@
-context("canvasXpress Charts - Precalculated Boxplot")
+context("canvasXpress Charts - Precalculated Barplot")
 
-precalc.data <- data.frame(iqr1   = c(45,   7.3, 8, NA),     qtl1     = c(109, 14.9, 4, NA),
-                           median = c(159, 20.1, 7.25, NA),  qtl3     = c(249, 26.2, 11.3, NA),
-                           iqr3   = c(337, 40.6, 17.4, NA),  outliers = c("", "44.5, 46", "", ""),
-                           type   = c("A", "B", "C", "D"),
-                           stringsAsFactors = F)
+precalc.data <- data.frame(mean = c(50, 250, 100, NA),
+                           stdev = c(10, 20, 15, NA),
+                           level = c("Lev1", "Lev2", "Lev3", "NA"),
+                           stringsAsFactors = F,
+                           row.names = c("Group1", "Group2", "Group3", "Missing"))
 
 precalc.data.l <- as.list(precalc.data)
 
-precalc.data <- as.data.frame(t(precalc.data))
-colnames(precalc.data) <- c("Assault", "Rape", "Murder", "Missing")
+precalc.data   <- as.data.frame(t(precalc.data))
 
 
-test_that("precalculated boxplot - dataframe data", {
+test_that("precalculated barplot - dataframe data", {
     result <- canvasXpress(data                  = precalc.data,
-                           graphType             = "Boxplot",
+                           graphType             = "Bar",
                            graphOrientation      = "vertical",
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "Precalculated boxplot - data without smpAnnot",
+                           title                 = "Precalculated barplot - data without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
 
     result <- canvasXpress(data                  = precalc.data,
-                           smpAnnot              = precalc.data["type", ],
-                           graphType             = "Boxplot",
+                           smpAnnot              = precalc.data["level", ],
+                           graphType             = "Bar",
                            graphOrientation      = "vertical",
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "Precalculated boxplot - data with smpAnnot",
+                           title                 = "Precalculated barplot - data with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
 })
 
-test_that("precalculated boxplot - list data", {
+test_that("precalculated barplot - list data", {
     result <- canvasXpress(data                  =  precalc.data.l,
                            smpAnnot              =  colnames(precalc.data),
-                           graphType             = "Boxplot",
+                           graphType             = "Bar",
                            graphOrientation      = "vertical",
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "Precalculated boxplot - list data",
+                           title                 = "Precalculated barplot - list data",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
 
     # with smpAnnot data
     result <- canvasXpress(data                  = precalc.data.l,
-                           smpAnnot              = precalc.data["type",],
-                           graphType             = "Boxplot",
+                           smpAnnot              = precalc.data["level",],
+                           graphType             = "Bar",
                            graphOrientation      = "vertical",
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "Precalculated boxplot - list data with smpAnnot",
+                           title                 = "Precalculated barplot - list data with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
 
     # without smpAnnot
     result <- canvasXpress(data                  =  precalc.data.l,
-                           graphType             = "Boxplot",
+                           graphType             = "Bar",
                            graphOrientation      = "vertical",
                            smpLabelFontStyle     = "italic",
                            smpLabelRotate        = 90,
                            showLegend            = FALSE,
-                           title                 = "Precalculated boxplot - list data without smpAnnot",
+                           title                 = "Precalculated barplot - list data without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)

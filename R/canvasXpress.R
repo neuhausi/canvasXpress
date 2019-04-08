@@ -329,9 +329,9 @@ canvasXpress <- function(data = NULL,
                           afterRender = afterRender)
     } #standard graph
 
-    options(htmlwidgets.TOJSON_ARGS = list(dataframe = dataframe,
+    attr(cx_object, 'TOJSON_ARGS') <- list(dataframe = dataframe,
                                            pretty    = pretty,
-                                           digits    = digits))
+                                           digits    = digits)
 
     htmlwidgets::createWidget(name = "canvasXpress",
                               cx_object,
