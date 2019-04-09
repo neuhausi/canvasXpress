@@ -47,7 +47,7 @@ test_that("cXheatmap11", {
 
 test_that("cXheatmap12", {
     check_ui_test(cXheatmap12())
-    
+
     message('middle section too small at default height - working as designed')
 })
 
