@@ -4,12 +4,12 @@ precalc.data <- data.frame(iqr1   = c(45,   7.3, 8, NA),     qtl1     = c(109, 1
                            median = c(159, 20.1, 7.25, NA),  qtl3     = c(249, 26.2, 11.3, NA),
                            iqr3   = c(337, 40.6, 17.4, NA),  outliers = c("", "44.5, 46", "", ""),
                            type   = c("A", "B", "C", "D"),
-                           stringsAsFactors = F)
+                           stringsAsFactors = F,
+                           row.names = c("Assault", "Rape", "Murder", "Missing"))
 
 precalc.data.l <- as.list(precalc.data)
 
-precalc.data <- as.data.frame(t(precalc.data))
-colnames(precalc.data) <- c("Assault", "Rape", "Murder", "Missing")
+precalc.data   <- as.data.frame(t(precalc.data))
 
 
 test_that("precalculated boxplot - dataframe data", {

@@ -44,13 +44,13 @@ test_that("cXlayout10", {
 test_that("cXlayout11", {
     check_ui_test(cXlayout11())
 
-    warning("grouping results in different layout order")
+    fail("Plot is not generated correctly, createDOE error in console")
 })
 
 test_that("cXlayout12", {
     check_ui_test(cXlayout12())
 
-    warning("grouping results in different layout order")
+    fail("plot is not generated")
 })
 
 test_that("cXlayout13", {

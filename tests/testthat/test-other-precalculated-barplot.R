@@ -1,10 +1,10 @@
 context("canvasXpress Charts - Precalculated Barplot")
 
-precalc.data <- data.frame(mean = c(50, 250, 100, NA),
-                           stdev = c(10, 20, 15, NA),
-                           level = c("Lev1", "Lev2", "Lev3", "NA"),
+precalc.data <- data.frame(mean = c(5, 50, 250, 100, NA),
+                           stdev = c(20, 10, 20, 15, NA),
+                           level = c("Lev1", "Lev2", "Lev3", "Lev4", "NA"),
                            stringsAsFactors = F,
-                           row.names = c("Group1", "Group2", "Group3", "Missing"))
+                           row.names = c("Group1", "Group2", "Group3", "Group4", "Missing"))
 
 precalc.data.l <- as.list(precalc.data)
 
@@ -34,6 +34,8 @@ test_that("precalculated barplot - dataframe data", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
+
+    fail("The bars are almost not visible, scaling is off")
 })
 
 test_that("precalculated barplot - list data", {
@@ -73,5 +75,7 @@ test_that("precalculated barplot - list data", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
+
+    fail("The error bar of the first group is not totally visible")
 })
 
