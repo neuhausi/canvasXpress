@@ -159,7 +159,7 @@ canvasXpress <- function(data = NULL,
                     smps <- smpAnnot
                 }
                 else {
-                    smps <- names(smpAnnot)
+                    smps <- rownames(smpAnnot)
                 }
             } else {
                 smps <- make.names(1:length(data[["iqr1"]]))
@@ -178,9 +178,6 @@ canvasXpress <- function(data = NULL,
                 out.new <- unname(sapply(out.new, as.numeric))
                 out.new <- sapply(out.new, as.list)
                 y$out <- list(out.new)
-            }
-            for (other in setdiff(data.names, precalc.box)) {
-                y[[other]] <- data[other]
             }
         }
         else {
@@ -206,9 +203,6 @@ canvasXpress <- function(data = NULL,
                     out.new <- sapply(out.new, as.list)
                     y$out <- list(out.new)
                 }
-            }
-            for (other in setdiff(data.names, precalc.box)) {
-                y[[other]] <- data[other,]
             }
         }
 
@@ -252,7 +246,7 @@ canvasXpress <- function(data = NULL,
                     smps <- smpAnnot
                 }
                 else {
-                    smps <- names(smpAnnot)
+                    smps <- rownames(smpAnnot)
                 }
             } else {
                 smps <- make.names(1:length(data[["mean"]]))
@@ -262,12 +256,6 @@ canvasXpress <- function(data = NULL,
                       vars   = as.list("precalculated BarChart"),
                       mean   = mean,
                       stdev  = stdev)
-            for (other in setdiff(data.names, precalc.bar)) {
-                if (is.null(x)) {
-                    x <- list()
-                }
-                x[[other]] <- data[other]
-            }
         }
         else {
             data.names <- rownames(data)
@@ -278,12 +266,6 @@ canvasXpress <- function(data = NULL,
                       vars   = as.list("precalculated BarChart"),
                       mean   = mean,
                       stdev  = stdev)
-
-            othervals <- setdiff(data.names, precalc.bar)
-            if (length(othervals) > 0) {
-                x <- list()
-                x <- convertRowsToList(data[which(rownames(data) %in% othervals), ])
-            }
         }
 
         if (!is.null(smpAnnot)) {
@@ -300,11 +282,7 @@ canvasXpress <- function(data = NULL,
                 }
             }
             if (!inherits(smpAnnot, "character")) {
-                x.add <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
-                if (is.null(x)) {
-                    x <- list()
-                }
-                x <- append(x, x.add)
+                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
             }
         }
 
