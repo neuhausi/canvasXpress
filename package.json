@@ -1,6 +1,6 @@
 {
   "name": "canvasxpress",
-  "version": "23.6.0",
+  "version": "23.7.0",
   "description": "Analytics JavaScript Library for Reproducible Research",
   "main": "inst/htmlwidgets/lib/canvasXpress/canvasXpress.min.js",
   "scripts": {
