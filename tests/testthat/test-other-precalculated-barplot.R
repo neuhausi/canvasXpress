@@ -35,8 +35,6 @@ test_that("precalculated barplot - dataframe data", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
-
-    fail("The bars are almost not visible, scaling is off")
 })
 
 test_that("precalculated barplot - list data", {

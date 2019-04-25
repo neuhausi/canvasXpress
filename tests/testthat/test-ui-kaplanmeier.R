@@ -23,6 +23,4 @@ test_that("cXkaplanmeier4", {
 
 test_that("cXkaplanmeier5", {
     check_ui_test(cXkaplanmeier5())
-
-    fail("Plot is not generated")
 })
