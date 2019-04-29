@@ -23,4 +23,7 @@ test_that("cXkaplanmeier4", {
 
 test_that("cXkaplanmeier5", {
     check_ui_test(cXkaplanmeier5())
+
+    warning("Colors for drug are different, two pieces are green, but one should be orange")
+    warning("The subcharts are in a different layout order compared to web example")
 })
