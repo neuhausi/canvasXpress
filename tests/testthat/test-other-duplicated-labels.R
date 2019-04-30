@@ -26,8 +26,6 @@ test_that("segregated barplot duplicated labels", {
         xAxis2Show                = FALSE
     )
     check_ui_test(result)
-
-    fail("Too many bars for each Gene (twice as much)")
 })
 
 test_that("barplot duplicated labels", {
@@ -78,8 +76,6 @@ test_that("segregated boxplot duplicated labels", {
                            titleScaleFontFactor  = 0.5)
 
     check_ui_test(result)
-
-    fail("Too many boxes for each Country (twice as much)")
 })
 
 test_that("boxplot duplicated labels", {
