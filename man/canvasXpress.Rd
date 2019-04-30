@@ -22,7 +22,7 @@ canvasXpress(data = NULL, smpAnnot = NULL, varAnnot = NULL,
 
 \item{afterRender}{event triggered after rendering}
 
-\item{pretty}{print tagged code (json/html) nicely - default = FALSE}
+\item{pretty}{print tagged code (JSON/HTML) nicely - default = FALSE}
 
 \item{digits}{display digits - default = 4}
 

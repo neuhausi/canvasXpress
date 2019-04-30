@@ -14,7 +14,7 @@ vignette: >
 
 ## Data from an R perspective
 
-The canvasXpress javaScript functionality in the browser generally expects data to be in a wide format and utilizes both column- and row-names to cross-reference and access the various slices of data needed to make the charts.  The package will warn you if that data you provide doesn't match up, and it is likely that one of your structures is simply the wrong format or is missing the row or column names.
+The canvasXpress JavaScript functionality in the browser generally expects data to be in a wide format and utilizes both column- and row-names to cross-reference and access the various slices of data needed to make the charts.  The package will warn you if that data you provide doesn't match up, and it is likely that one of your structures is simply the wrong format or is missing the row or column names.
 
 
 ### Variables

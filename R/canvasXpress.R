@@ -29,7 +29,7 @@
 #' @param graphType type of graph to be plotted - default = "Scatter2D"
 #' @param events user-defined events (e.g. mousemove, mouseout, click and dblclick)
 #' @param afterRender event triggered after rendering
-#' @param pretty print tagged code (json/html) nicely - default = FALSE
+#' @param pretty print tagged code (JSON/HTML) nicely - default = FALSE
 #' @param digits display digits - default = 4
 #' @param width plot width (valid CSS units) - default = 600px
 #' @param height plot height (valid CSS units) - default = 400px
