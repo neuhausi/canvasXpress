@@ -10,6 +10,7 @@ test_that("cXkaplanmeier1", {
 test_that("cXkaplanmeier2", {
     check_ui_test(cXkaplanmeier2())
 
+
     warning("The line cannot be selected like in the web example, until the plot is resized")
 })
 
