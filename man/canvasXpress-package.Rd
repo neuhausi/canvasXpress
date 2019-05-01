@@ -10,12 +10,12 @@ A package to assist in creating visualizations in CanvasXpress in R.
 }
 \details{
 CanvasXpress is a standalone JavaScript library for reproducible research
-with complete tracking of data and end-user modifications stored in a single 
+with complete tracking of data and end-user modifications stored in a single
 PNG image that can be played back for an extensive set of visualizations.
 }
 \section{More Information}{
 
-\url{http://canvasxpress.org}  
+\url{http://canvasxpress.org}
 
 \code{browseVignettes(package = "canvasXpress")}
 }

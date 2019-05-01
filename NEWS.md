@@ -5,11 +5,20 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="http://canvasxpress.org"> main website</a>.
 
 ---
+## v1.23.9
+* Updated CanvasXpress JavaScript and CSS libraries to v23.9
+* Bugfixes for changes in precalculated SD in bar charts
+
+## v1.23.6
+* Updated CanvasXpress JavaScript and CSS libraries to v23.6
+* Resolved issue with DT 0.5 compatibility
+* Support for precalculated SD in bar charts added to R package
+
 ## v1.23.3
-* Updated CanvasXpress Javascript and CSS libraries to v23.3
+* Updated CanvasXpress JavaScript and CSS libraries to v23.3
 
 ## v1.22.9
-* Updated CanvasXpress Javascript and CSS libraries to v22.9
+* Updated CanvasXpress JavaScript and CSS libraries to v22.9
 
 ## v1.22.6
 * Updated CanvasXpress JavaScript and CSS libraries to v22.6
