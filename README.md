@@ -24,7 +24,7 @@ as well as the zooming, panning and drag-and-drop capabilities are features that
 class.
 
 ***canvasXpress*** can be now simply used within R at the console to generate conventional plots, in R-Studio
-or seamlessly embeded in [Shiny](http://shiny.rstudio.com) web applications. An full-fledged example of the ***canvasXpress*** library including the mouse events, zooming, and broadcasting capabilities is included in this package in the [shiny](shiny/example3) directory. This ***canvasXpress*** R library was created with the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package.
+or seamlessly embedded in [Shiny](http://shiny.rstudio.com) web applications. An full-fledged example of the ***canvasXpress*** library including the mouse events, zooming, and broadcasting capabilities is included in this package in the [shiny](shiny/example3) directory. This ***canvasXpress*** R library was created with the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package.
 
 ### Installation
 
@@ -169,4 +169,4 @@ cxShinyExample(example = "example1")
 ```
 
 There is also a wealth of additional information including full API documentation 
-and extensive R and Javascript examples at [http://www.canvasxpress.org](http://www.canvasxpress.org).
+and extensive R and JavaScript examples at [http://www.canvasxpress.org](http://www.canvasxpress.org).
