@@ -1,0 +1,27 @@
+{
+  "name": "canvasxpress",
+  "description": "Analytics JavaScript Library for Reproducible Research",
+  "main": "inst/htmlwidgets/lib/canvasXpress/canvasXpress.min.js",
+  "authors": [
+    "Isaac M. Neuhaus"
+  ],
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "bioinformatics",
+    "genomics",
+    "data",
+    "visualization",
+    "graph",
+    "reproducible",
+    "research",
+    "analytics"
+  ],
+  "homepage": "https://github.com/neuhausi/canvasxpress",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}  
