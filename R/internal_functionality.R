@@ -17,7 +17,7 @@ assertDataCorrectness <- function(data, graphType, config) {
     }
 
     # Implement data in URL
-	if (is.character(data)) {
+	if (is.character(data) && graphType != "Network") {
 		if (httr::http_error(data)) {
 			stop("Not a valid URL!")
 		}
@@ -52,38 +52,49 @@ assertDataCorrectness <- function(data, graphType, config) {
         }
     }
     else if (graphType == "Network") {
-        ndata <- NULL
-        edata <- NULL
-        if (!is.null(data)) {
-            if (!("nodeData" %in% names(data)) & !("edgeData" %in% names(data))) {
-                stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
+        # Implement data in URL or file
+        if (is.character(data)) {
+            if (file.exists(data)) {
+                data <- paste(readLines(data), collapse = '\n')
             }
-            ndata <- data$nodeData
-            edata <- data$edgeData
+            else if (httr::http_error(data)) {
+                stop("Not a valid URL!")
+            }
         }
         else {
-            if (!("nodeData" %in% names(config)) |
-                !("edgeData" %in% names(config))) {
-                stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
+            ndata <- NULL
+            edata <- NULL
+            if (!is.null(data)) {
+                if (!("nodeData" %in% names(data)) & !("edgeData" %in% names(data))) {
+                    stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
+                }
+                ndata <- data$nodeData
+                edata <- data$edgeData
             }
-            ndata <- config$nodeData
-            edata <- config$edgeData
-        }
+            else {
+                if (!("nodeData" %in% names(config)) |
+                    !("edgeData" %in% names(config))) {
+                    stop("Network diagrams must specify both <nodeData> and <edgeData> as parameters or named data list items")
+                }
+                ndata <- config$nodeData
+                edata <- config$edgeData
+            }
 
-        if (is.null(ndata)) {
-            stop("nodeData cannot be NULL!")
-        }
+            if (is.null(ndata)) {
+                stop("nodeData cannot be NULL!")
+            }
 
-        if (is.null(edata)) {
-            stop("edgeData cannot be NULL!")
-        }
+            if (is.null(edata)) {
+                stop("edgeData cannot be NULL!")
+            }
 
-        if (!inherits(ndata, c("data.frame", "matrix", "list"))) {
-            stop("nodeData must be a data.frame or matrix or named list")
-        }
+            if (!inherits(ndata, c("data.frame", "matrix", "list"))) {
+                stop("nodeData must be a data.frame or matrix or named list")
+            }
 
-        if (!inherits(edata, c("data.frame", "matrix", "list"))) {
-            stop("edgeData must be a data.frame or matrix or named list")
+            if (!inherits(edata, c("data.frame", "matrix", "list"))) {
+                stop("edgeData must be a data.frame or matrix or named list")
+            }
         }
     }
     else if (!(graphType %in% noDataNecessary)) {
