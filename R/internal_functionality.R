@@ -58,7 +58,7 @@ assertDataCorrectness <- function(data, graphType, config) {
                 data <- paste(readLines(data), collapse = '\n')
             }
             else if (httr::http_error(data)) {
-                stop("Not a valid URL!")
+                stop(data, " Is not a valid file location or URL!")
             }
         }
         else {

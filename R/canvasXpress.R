@@ -119,23 +119,33 @@ canvasXpress <- function(data = NULL,
                           afterRender = afterRender)
     }
     else if (graphType == "Network") {
-        # Implement data in URL
         if (is.character(data)) {
             if (file.exists(data)) {
                 data <- paste(readLines(data), collapse = '\n')
             }
             else if (httr::http_error(data)) {
-                stop("Not a valid URL!")
+                stop(data, " Is not a valid file location or URL!")
             }
 
             #optionally read appendNetworkData for config
-            if (!is.null(config$appendNetworkData) && is.character(config$appendNetworkData)) {
-                if (file.exists(config$appendNetworkData)) {
-                    config$appendNetworkData <- list(paste(readLines(config$appendNetworkData), collapse = '\n'))
+            nd <- config$appendNetworkData
+            if (!is.null(nd) && (is.list(nd) || is.character(nd))) {
+                nd <- as.list(nd)
+                nd.new <- list()
+                for (x in nd) {
+                    if (is.character(x)) {
+                        if (file.exists(x)) {
+                            nd.new <- append(nd.new, paste(readLines(x), collapse = '\n'))
+                        }
+                        else if (httr::http_error(x)) {
+                            stop("Not a valid URL!")
+                        }
+                    }
+                    else {
+                        nd.new <- append(nd.new, x)
+                    }
                 }
-                else if (httr::http_error(config$appendNetworkData)) {
-                    stop("Not a valid URL!")
-                }
+                config$appendNetworkData <- nd.new
             }
 
             # CanvasXpress Object
