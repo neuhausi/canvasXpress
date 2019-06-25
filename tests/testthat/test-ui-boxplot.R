@@ -43,18 +43,26 @@ test_that("cXboxplot10", {
 
 test_that("cXboxplot11", {
     check_ui_test(cXboxplot11())
+
+    fail("when clicking on a legend item, the corresponding plot data is not disabled")
 })
 
 test_that("cXboxplot12", {
     check_ui_test(cXboxplot12())
+
+    fail("when clicking on a legend item, the corresponding plot data is not disabled")
 })
 
 test_that("cXboxplot13", {
     check_ui_test(cXboxplot13())
+
+    fail("when clicking on a legend item, the corresponding plot data is not disabled")
 })
 
 test_that("cXboxplot14", {
     check_ui_test(cXboxplot14())
+
+    fail("when clicking on a legend item, the corresponding plot data is not disabled")
 })
 
 test_that("cXboxplot15", {

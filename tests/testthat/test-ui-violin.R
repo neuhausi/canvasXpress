@@ -47,14 +47,20 @@ test_that("cXviolin11", {
 
 test_that("cXviolin12", {
     check_ui_test(cXviolin12())
+
+    fail("when clicking on a legend item, the corresponding data is not disabled/hidden")
 })
 
 test_that("cXviolin13", {
     check_ui_test(cXviolin13())
+
+    fail("when clicking on a legend item, the corresponding data is not disabled/hidden")
 })
 
 test_that("cXviolin14", {
     check_ui_test(cXviolin14())
+
+    fail("when clicking on a legend item, the corresponding data is not disabled/hidden")
 })
 
 test_that("cXviolin15", {
