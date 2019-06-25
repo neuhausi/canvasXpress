@@ -33,6 +33,7 @@ test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
     warning('coloring and legend off from web example, some lines are missing')
+    warning('legend is integer in R, continuous on web')
 })
 
 test_that("cXnetwork7", {
