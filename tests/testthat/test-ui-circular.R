@@ -11,10 +11,14 @@ test_that("cXcircular2", {
 
 test_that("cXcircular3", {
     check_ui_test(cXcircular3())
+
+    warning("sample tooltips incorrect, e.g. s108 gives s2")
 })
 
 test_that("cXcircular4", {
     check_ui_test(cXcircular4())
+
+    warning("sample tooltips incorrect, e.g. s108 gives s2")
 })
 
 test_that("cXcircular5", {
