@@ -70,7 +70,7 @@ canvasXpress <- function(data = NULL,
     precalc.bar   <- c("mean", "stdev")
 
 	# Implement data in URL
-	if (is.character(data)) {
+	if (is.character(data) && (graphType != "Network")) {
 		if (httr::http_error(data)) {
 			stop("Not a valid URL!")
 		}
@@ -119,25 +119,63 @@ canvasXpress <- function(data = NULL,
                           afterRender = afterRender)
     }
     else if (graphType == "Network") {
-        ndata     <- NULL
-        edata     <- NULL
-        dataframe <- "rows"
+        if (is.character(data)) {
+            if (file.exists(data)) {
+                data <- paste(readLines(data), collapse = '\n')
+            }
+            else if (httr::http_error(data)) {
+                stop(data, " Is not a valid file location or URL!")
+            }
 
-        if (is.null(data)) {
-            ndata <- config$nodeData
-            edata <- config$edgeData
-            config <- config[!(names(config) %in% c("nodeData", "edgeData"))]
+            #optionally read appendNetworkData for config
+            nd <- config$appendNetworkData
+            if (!is.null(nd) && (is.list(nd) || is.character(nd))) {
+                nd <- as.list(nd)
+                nd.new <- list()
+                for (x in nd) {
+                    if (is.character(x)) {
+                        if (file.exists(x)) {
+                            nd.new <- append(nd.new, paste(readLines(x), collapse = '\n'))
+                        }
+                        else if (httr::http_error(x)) {
+                            stop("Not a valid URL!")
+                        }
+                    }
+                    else {
+                        nd.new <- append(nd.new, x)
+                    }
+                }
+                config$appendNetworkData <- nd.new
+            }
+
+            # CanvasXpress Object
+            cx_object <- list(data        = data,
+                              config      = config,
+                              events      = events,
+                              afterRender = afterRender)
+
         }
         else {
-            ndata <- data$nodeData
-            edata <- data$edgeData
-        }
+            ndata     <- NULL
+            edata     <- NULL
+            dataframe <- "rows"
 
-        # CanvasXpress Object
-        cx_object <- list(data        = list(nodes = ndata, edges = edata),
-                          config      = config,
-                          events      = events,
-                          afterRender = afterRender)
+            if (is.null(data)) {
+                ndata <- config$nodeData
+                edata <- config$edgeData
+                config <- config[!(names(config) %in% c("nodeData", "edgeData"))]
+            }
+            else {
+                ndata <- data$nodeData
+                edata <- data$edgeData
+            }
+
+            # CanvasXpress Object
+            cx_object <- list(data        = list(nodes = ndata, edges = edata),
+                              config      = config,
+                              events      = events,
+                              afterRender = afterRender)
+        }
     }
     else if (graphType == "Genome") {
         stop("The Genome graphType is not yet implemented")
