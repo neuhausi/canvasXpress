@@ -7,6 +7,8 @@ test_that("cXdotplot1", {
 
 test_that("cXdotplot2", {
     check_ui_test(cXdotplot2())
+
+    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, it's showing the second number in scientific format")
 })
 
 test_that("cXdotplot3", {
@@ -15,6 +17,8 @@ test_that("cXdotplot3", {
 
 test_that("cXdotplot4", {
     check_ui_test(cXdotplot4())
+
+    fail("plot is not generated, it gives countdown spinner ")
 })
 
 test_that("cXdotplot5", {
