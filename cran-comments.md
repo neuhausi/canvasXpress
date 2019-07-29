@@ -1,7 +1,6 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 24.5 to incorporate bug fixes and network chart enhancements
-Updated R package handling of network chart inputs to match enhancements in CX JS libraries
+Updated CanvasXpress JS libraries to 24.8 to incorporate bug fixes
 
 There is one NOTE on the package checks from CRAN for OSX because the suggested Bioconductor limma package is unavailable on that CRAN build.  This is environmental, not a package issue, so cannot be fixed.
 
@@ -14,14 +13,13 @@ RStudio Server Pro (ubuntu 18.04.2)
 
 * R 3.4.4  
 * R 3.5.3  
-* R 3.6.0
+* R 3.6.1
 
 Travis-CI (ubuntu 16.04.6)
 
 * R 3.5.3
 * R 3.6.0
-* R devel (2019-06-26 r76742)
-
+* R devel (2019-07-29 r76903)
 
 WinBuilder
 
