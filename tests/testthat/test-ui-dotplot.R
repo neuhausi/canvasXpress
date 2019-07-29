@@ -17,8 +17,6 @@ test_that("cXdotplot3", {
 
 test_that("cXdotplot4", {
     check_ui_test(cXdotplot4())
-
-    fail("plot is not generated, it gives countdown spinner ")
 })
 
 test_that("cXdotplot5", {
