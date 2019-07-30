@@ -3011,8 +3011,8 @@ cXnetwork6 <- function() {
 cXnetwork7 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     colorNodeBy="Exp1",
     graphType="Network"
   )
@@ -3021,8 +3021,8 @@ cXnetwork7 <- function() {
 cXnetwork8 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("https://canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     decorations=list("Exp2", "Exp3"),
     decorationsHeight=18,
     decorationsPosition="right",
@@ -3034,7 +3034,7 @@ cXnetwork8 <- function() {
 cXnetwork9 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://canvasxpress.org/debug/WP3624_95209.gpml",
+    data="https://www.canvasxpress.org/debug/WP3624_95209.gpml",
     graphType="Network"
   )
 }
@@ -3042,7 +3042,7 @@ cXnetwork9 <- function() {
 cXnetwork10 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://canvasxpress.org/debug/example.xgmml",
+    data="https://www.canvasxpress.org/debug/example.xgmml",
     graphType="Network"
   )
 }
@@ -3050,7 +3050,7 @@ cXnetwork10 <- function() {
 cXnetwork11 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://canvasxpress.org/debug/Apoptosis.xml",
+    data="https://www.canvasxpress.org/debug/Apoptosis.xml",
     graphType="Network"
   )
 }
@@ -4423,7 +4423,7 @@ cXtreemap3 <- function() {
 cXvenn1 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(AD=257, ACD=298, AB=639, AC=456, C=620, BC=915, BCD=613, CD=143, ABD=578, BD=354, D=592, A=340, B=562, ABCD=148, ABC=552),
+    vennData=data.frame(C=620, BD=354, ABCD=148, ACD=298, BCD=613, D=592, AC=456, BC=915, ABC=552, ABD=578, CD=143, AB=639, A=340, B=562, AD=257),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     showTransition=TRUE,
@@ -4434,7 +4434,7 @@ cXvenn1 <- function() {
 cXvenn2 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(ACD=298, AD=257, AB=639, C=620, AC=456, BC=915, BCD=613, A=340, CD=143, ABD=578, D=592, BD=354, ABCD=148, B=562, ABC=552),
+    vennData=data.frame(BC=915, ABC=552, AC=456, D=592, BCD=613, ACD=298, ABCD=148, BD=354, C=620, AD=257, B=562, A=340, CD=143, AB=639, ABD=578),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     showTransition=TRUE,
@@ -4445,7 +4445,7 @@ cXvenn2 <- function() {
 cXvenn3 <- function() {
   library(canvasXpress)
   canvasXpress(
-    vennData=data.frame(AB=639, AC=456, C=620, AD=257, ACD=298, B=562, ABCD=148, ABC=552, BC=915, BCD=613, ABD=578, D=592, CD=143, BD=354, A=340),
+    vennData=data.frame(BC=915, ABC=552, D=592, AC=456, BCD=613, ACD=298, C=620, ABCD=148, BD=354, B=562, AD=257, A=340, ABD=578, AB=639, CD=143),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
     vennGroups=2
