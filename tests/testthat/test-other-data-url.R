@@ -12,7 +12,7 @@ test_that("Barplot URL data", {
         smpLabelInterval = 2,
         smpLabelRotate   = 45,
         smpTitle         = "Sample Title",
-        title            = "Random data set",
+        title            = "Barplot: loading data from URL",
         xAxis2Show       = FALSE
     )
 

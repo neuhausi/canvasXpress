@@ -140,9 +140,12 @@ canvasXpress <- function(data = NULL,
                         else if (httr::http_error(x)) {
                             stop("Not a valid URL!")
                         }
+                        else {
+                            nd.new <- append(nd.new, x)
+                        }
                     }
                     else {
-                        nd.new <- append(nd.new, x)
+                        nd.new <- append(nd.new, list(x))
                     }
                 }
                 config$appendNetworkData <- nd.new

@@ -22,7 +22,7 @@ test_that("segregation boxplot tooltips", {
         showLegend              = TRUE,
         smpLabelRotate          = 90,
         stringSampleFactors     = list("dose", "order"),
-        title                   = "Problem - hover over X axis Dose 4 and 5"
+        title                   = "Boxplot Overlay Tooltips"
     )
 
     check_ui_test(result)

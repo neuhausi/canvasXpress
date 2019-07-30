@@ -25,28 +25,23 @@ test_that("cXnetwork4", {
 
 test_that("cXnetwork5", {
     check_ui_test(cXnetwork5())
-
-    warning('some lines are missing compared to web example')
 })
 
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
 
-    warning('coloring and legend off from web example, some lines are missing')
-    warning('legend is integer in R, continuous on web')
+    warning('legend position and appearance may depend on browser')
 })
 
 test_that("cXnetwork7", {
     check_ui_test(cXnetwork7())
 
-    warning('coloring off from web example')
     warning('legend position and appearance may depend on browser')
 })
 
 test_that("cXnetwork8", {
     check_ui_test(cXnetwork8())
 
-    warning('coloring off from web example')
     warning('legend position and appearance may depend on browser')
 })
 
