@@ -5,6 +5,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="http://canvasxpress.org"> main website</a>.
 
 ---
+## v1.24.8
+* Updated CanvasXpress JavaScript and CSS libraries to v24.8
+
 ## v1.24.5
 * Updated CanvasXpress JavaScript and CSS libraries to v24.5
 * Extended R package handling of network chart inputs to match CX JS updates

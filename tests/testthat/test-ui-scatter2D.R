@@ -7,6 +7,7 @@ test_that("cXscatter2d1", {
 
 test_that("cXscatter2d2", {
     check_ui_test(cXscatter2d2())
+    warning("variable name does not match web example, V rather than var")
 })
 
 test_that("cXscatter2d3", {
