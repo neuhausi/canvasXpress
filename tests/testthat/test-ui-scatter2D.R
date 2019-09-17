@@ -16,14 +16,20 @@ test_that("cXscatter2d3", {
 
 test_that("cXscatter2d4", {
     check_ui_test(cXscatter2d4())
+
+    warning("trial legend not visible if plot is not resized")
 })
 
 test_that("cXscatter2d5", {
     check_ui_test(cXscatter2d5())
+
+    warning("color of the area does not match the color of the dots like in the web example")
 })
 
 test_that("cXscatter2d6", {
     check_ui_test(cXscatter2d6())
+
+    warning("color of the area does not match the color of the dots like in the web example")
 })
 
 test_that("cXscatter2d7", {

@@ -4,6 +4,6 @@ context("canvasXpress Web Charts - TagCloud")
 test_that("cXtagcloud1", {
     check_ui_test(cXtagcloud1())
 
-    warning('Clicking legend or resizing gives countdown spinner - RStudio Viewer')
+    warning('layout depends on space/etc, may be off from web example')
 })
 
