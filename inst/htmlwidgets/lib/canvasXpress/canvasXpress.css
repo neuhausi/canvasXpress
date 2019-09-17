@@ -2081,7 +2081,7 @@ div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 select.CanvasXpressConfigurator::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
-select.CanvasXpressRemote::-webkit-scrollbar-button,
+select.CanvasXpressSlider::-webkit-scrollbar-button,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-button
 	{
 	width: 3px;
@@ -2094,7 +2094,7 @@ div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track,
-select.CanvasXpressRemote::-webkit-scrollbar-track
+select.CanvasXpressSlider::-webkit-scrollbar-track
 	{
 	background-color: #FFFFFF;
 }
@@ -2118,7 +2118,7 @@ div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
-select.CanvasXpressRemote::-webkit-scrollbar-track:hover,
+select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover
 	{
 	background-color: #BEBEBE;
@@ -2131,7 +2131,7 @@ div.CanvasXpressDataFilterContent::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar,
 select.CanvasXpressConfigurator::-webkit-scrollbar,
-select.CanvasXpressRemote::-webkit-scrollbar
+select.CanvasXpressSlider::-webkit-scrollbar
 	{
 	width: 6px;
 	height: 6px;
@@ -2159,7 +2159,7 @@ div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
 select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
-select.CanvasXpressRemote::-webkit-scrollbar-thumb,
+select.CanvasXpressSlider::-webkit-scrollbar-thumb,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-thumb
 	{
 	background-color: #337AB7;
@@ -2760,6 +2760,39 @@ form.CanvasXpressFormForm {
 	padding-left: 3px;
 }
 
+/*
+ * Slider
+ */
+div.CanvasXpressSlider {
+	background : rgba(0,0,0,0);
+	border: 1px solid rgba(35, 82, 124, 0.2);
+	border-radius: 50%;
+	height: 36px;
+	position : absolute;
+	margin-left: 3px;
+	margin-right: 3px;
+	width : 36px;
+}
+div.CanvasXpressSlider:hover {
+	background : rgba(0,0,0,0.4);	
+}
+input.CanvasXpressSlider, select.CanvasXpressSlider {
+  padding : 2px 3px 2px 2px;
+  cursor : default;
+  color : rgb(34,34,34);
+  border-left : none;
+  border-right : none;
+  border-top : none;
+  border-bottom : 1px solid rgb(51,122,183);
+  background: rgba(0,0,0,0);
+  width : 100%;
+  max-Width : 100%;
+  line-height : 22px;
+  margin: 0;
+}
+input.CanvasXpressSlider:focus, select.CanvasXpressSlider:focus {
+  outline: 0;
+}
 /*
  * CanvasXpress
  */
