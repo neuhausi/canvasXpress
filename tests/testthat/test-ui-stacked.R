@@ -3,6 +3,8 @@ context("canvasXpress Web Charts - Stacked")
 
 test_that("cXstacked1", {
     check_ui_test(cXstacked1())
+
+    warning('sample location depend on space/etc, may be off from web example')
 })
 
 test_that("cXstacked2", {

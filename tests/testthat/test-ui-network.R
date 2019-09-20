@@ -33,8 +33,6 @@ test_that("cXnetwork6", {
 
 test_that("cXnetwork7", {
     check_ui_test(cXnetwork7())
-
-    warning('legend position and appearance may depend on browser')
 })
 
 test_that("cXnetwork8", {
