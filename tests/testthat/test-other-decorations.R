@@ -135,5 +135,6 @@ test_that("segregated Boxplot decoration label position", {
         check_ui_test(result)
 
         warning(paste("Decoration label close to the", pos, "line"))
+        warning(paste("Xaxis orign is visible on top overlapped by segregate variable"))
     }
 })
