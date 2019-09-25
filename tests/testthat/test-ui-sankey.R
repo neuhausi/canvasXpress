@@ -3,6 +3,7 @@ context("canvasXpress Web Charts - Sankey")
 
 test_that("cXsankey1", {
     check_ui_test(cXsankey1())
+    warning("Hovering over an arrow doesn't select the arrow like in the web example until plot is resized")
 })
 
 test_that("cXsankey2", {

@@ -3,6 +3,7 @@ context("canvasXpress Web Charts - StackedPercent")
 
 test_that("cXstackedpercent1", {
     check_ui_test(cXstackedpercent1())
+    warning("Hovering over the bar doesn't select the bar like in the web example until plot is resized")
 })
 
 test_that("cXstackedpercent2", {
