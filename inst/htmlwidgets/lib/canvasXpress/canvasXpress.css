@@ -285,13 +285,13 @@ div.cxc {
 }
 
 .json-key {
-  color: #606;
+  color: #d73027;
 }
 .json-value {
-  color: navy;
+  color: #4575b4;
 }
 .json-string {
-  color: #080;
+  color: #a85302;
 }
 
 div.CanvasXpressCode {
@@ -2776,6 +2776,55 @@ div.CanvasXpressSlider {
 div.CanvasXpressSlider:hover {
 	background : rgba(0,0,0,0.4);	
 }
+@media screen and (max-width: 480px) {
+  div.CanvasXpressSlider {
+    width : 20px;
+    height : 20px;
+  }
+}
+div.CanvasXpressSliderLeft {
+  left : -50px;
+}
+div.CanvasXpressSliderLeft img {
+  margin : 5px 5px 3px 3px;	
+}
+@media screen and (max-width: 480px) {
+  div.CanvasXpressSliderLeft {
+    left : -25px;
+  }
+  div.CanvasXpressSliderLeft img {
+    margin : -4px 0px 0px -2px;
+  }
+}
+div.CanvasXpressSliderRight {
+  right : -50px;
+}
+div.CanvasXpressSliderRight img {
+  margin : 5px 3px 3px 8px;	
+}
+@media screen and (max-width: 480px) {
+  div.CanvasXpressSliderRight {
+    right : -25px;
+  }
+  div.CanvasXpressSliderRight img {
+    margin : -4px -2px 0px 2px;
+  }
+}
+div.CanvasXpressSliderDotsContainer {
+  top: 25%;	
+}
+div.CanvasXpressSliderDots {
+  width : 10px;
+  height : 10px;	
+}
+@media screen and (max-width: 480px) {
+  div.CanvasXpressSliderDots {
+    width : 5px;
+    height : 5px;
+    margin-left : 1px;
+    margin-right : 1px;
+  }
+}
 input.CanvasXpressSlider, select.CanvasXpressSlider {
   padding : 2px 3px 2px 2px;
   cursor : default;
@@ -2793,6 +2842,23 @@ input.CanvasXpressSlider, select.CanvasXpressSlider {
 input.CanvasXpressSlider:focus, select.CanvasXpressSlider:focus {
   outline: 0;
 }
+
+
+@media (max-width: 480px) {
+  img {
+    height : 16px;
+    width : 16px;
+  }
+}
+
+/*
+ * Parent Node
+ */
+div.CanvasXpress-ParentNode {
+   margin: auto;
+   display: table;
+}
+
 /*
  * CanvasXpress
  */
