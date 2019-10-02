@@ -3,8 +3,7 @@ context("canvasXpress Web Charts - Stacked")
 
 test_that("cXstacked1", {
     check_ui_test(cXstacked1())
-    warning("Hovering over the bar doesn't select the bar like in the web example until plot is resized")
-    warning('sample location depend on space/etc, may be off from web example')
+    message('Sample locations depend on space/etc, may be off from web example')
 })
 
 test_that("cXstacked2", {

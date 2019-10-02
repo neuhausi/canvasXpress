@@ -9,11 +9,9 @@ test_that("cXnetwork2", {
     check_ui_test(cXnetwork2())
 })
 
-
 test_that("cXnetwork3", {
     check_ui_test(cXnetwork3())
 })
-
 
 test_that("cXnetwork4", {
     check_ui_test(cXnetwork4())
