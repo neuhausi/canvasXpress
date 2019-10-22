@@ -145,7 +145,7 @@ canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = 
 
 ```r
 canvasXpress(vennData   = data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, 
-                            B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+                                     B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
              graphType  = "Venn",
              vennLegend = list(A="List 1", D="List 4", C="List 3", B="List 2"),
              vennGroups = 4)
