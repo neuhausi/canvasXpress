@@ -2888,11 +2888,11 @@ cXmap1 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
-    colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(30, 0), zoom=1.5),
-    leafletId="world",
-    topoJSON=list(world50m="http://www.canvasxpress.org/json/world-50m.json")
+    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
+    leafletId="countries",
+    leafletLayer=TRUE,
+    topoJSON="https://www.canvasxpress.org/json/world.geo.json"
   )
 }
 
@@ -2903,23 +2903,28 @@ cXmap2 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(30, 0), zoom=1.5),
-    leafletId="world",
-    topoJSON=list(world50m="http://www.canvasxpress.org/json/world-50m.json")
+    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
+    leafletId="countries",
+    leafletLayer=FALSE,
+    topoJSON="https://www.canvasxpress.org/json/world.geo.json"
   )
 }
 
 cXmap3 <- function() {
   library(canvasXpress)
+  y=read.table(system.file("extdata", "cX-map-dat.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(system.file("extdata", "cX-map-var.txt.gz", package = "canvasXpress"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=FALSE,
-    colorBy="variable",
+    data=y,
+    varAnnot=z,
+    colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(38, -100), zoom=3),
-    leafletId="states",
-    showLegend=FALSE,
-    topoJSON=list(states="http://www.canvasxpress.org/json/usa-states.json")
+    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
+    leafletId="countries",
+    leafletLayer=TRUE,
+    topoJSON="https://www.canvasxpress.org/json/world.geo.json"
   )
 }
 
@@ -2927,11 +2932,13 @@ cXmap4 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="Order",
+    colorBy="variable",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
-    leafletId="counties",
-    topoJSON=list(counties="http://www.canvasxpress.org/json/usa-counties.json")
+    leafletConfig=list(attributionControl=FALSE, center=list(38, -100), zoom=3),
+    leafletId="states",
+    leafletLayer=TRUE,
+    showLegend=FALSE,
+    topoJSON="https://www.canvasxpress.org/json/usa-states.json"
   )
 }
 
@@ -2942,8 +2949,56 @@ cXmap5 <- function() {
     colorBy="Order",
     graphType="Map",
     leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
+    leafletId="counties",
+    leafletLayer=TRUE,
+    topoJSON="https://www.canvasxpress.org/json/usa-counties.json"
+  )
+}
+
+cXmap6 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    colorBy="Order",
+    graphType="Map",
+    leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
     leafletId="districts",
-    topoJSON=list(districts="http://www.canvasxpress.org/json/usa-districts.json")
+    leafletLayer=TRUE,
+    topoJSON="https://www.canvasxpress.org/json/usa-districts.json"
+  )
+}
+
+cXmap7 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    colorBy="TYPE_1",
+    graphType="Map",
+    leafletId="colombia",
+    legendPosition="bottomRight",
+    topoJSON="https://www.canvasxpress.org/json/colombia.geo.json"
+  )
+}
+
+cXmap8 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    colorBy="variable",
+    graphType="Map",
+    leafletId="italy",
+    topoJSON="https://www.canvasxpress.org/json/italy.geo.json"
+  )
+}
+
+cXmap9 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    colorBy="variable",
+    graphType="Map",
+    leafletId="italy",
+    topoJSON="https://www.canvasxpress.org/json/spain.geo.json"
   )
 }
 
@@ -3089,8 +3144,8 @@ cXnetwork8 <- function() {
 cXnetwork9 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="http://www.canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("http://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     colorNodeBy="Exp1",
     graphType="Network"
   )
@@ -3099,8 +3154,8 @@ cXnetwork9 <- function() {
 cXnetwork10 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="http://www.canvasxpress.org/debug/hsa05222.xml",
-    appendNetworkData=list("http://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/debug/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/debug/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     decorations=list("Exp2", "Exp3"),
     decorationsHeight=18,
     decorationsPosition="right",
@@ -3112,7 +3167,7 @@ cXnetwork10 <- function() {
 cXnetwork11 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="http://www.canvasxpress.org/debug/WP3624_95209.gpml",
+    data="https://www.canvasxpress.org/debug/WP3624_95209.gpml",
     graphType="Network"
   )
 }
@@ -3120,7 +3175,7 @@ cXnetwork11 <- function() {
 cXnetwork12 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="http://www.canvasxpress.org/debug/example.xgmml",
+    data="https://www.canvasxpress.org/debug/example.xgmml",
     graphType="Network"
   )
 }
@@ -3128,7 +3183,7 @@ cXnetwork12 <- function() {
 cXnetwork13 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="http://www.canvasxpress.org/debug/Apoptosis.xml",
+    data="https://www.canvasxpress.org/debug/Apoptosis.xml",
     graphType="Network"
   )
 }

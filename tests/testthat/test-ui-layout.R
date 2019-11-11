@@ -23,12 +23,10 @@ test_that("cXlayout5", {
 
 test_that("cXlayout6", {
     check_ui_test(cXlayout6())
-    fail('Faded legend items cause re-segregation issues')
 })
 
 test_that("cXlayout7", {
     check_ui_test(cXlayout7())
-    fail('Faded legend items cause re-segregation issues')
 })
 
 test_that("cXlayout8", {
@@ -47,7 +45,6 @@ test_that("cXlayout11", {
     check_ui_test(cXlayout11())
 
     warning("The subcharts are in a different layout order compared to web example")
-    fail('Re-segregation crashes the plot')
 })
 
 test_that("cXlayout12", {
@@ -56,7 +53,6 @@ test_that("cXlayout12", {
     warning('Fewer pie charts displayed than expected, does not match web example')
     warning("Colors for drug are different, two pieces are green, but one should be orange")
     warning("The subcharts are in a different layout order compared to web example")
-    fail('Re-segregation crashes the plot')
 })
 
 test_that("cXlayout13", {
