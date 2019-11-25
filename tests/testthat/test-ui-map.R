@@ -31,6 +31,8 @@ test_that("cXmap7", {
 
 test_that("cXmap8", {
     check_ui_test(cXmap8())
+
+    fail("plot is not generated")
 })
 
 test_that("cXmap9", {

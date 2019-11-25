@@ -31,6 +31,7 @@ test_that("scatterplot legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions top and bottom are not working")
 })
 
 test_that("barplot legendposition", {
@@ -47,6 +48,7 @@ test_that("barplot legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions left and right are not working")
 })
 
 test_that("barplot (segregated) legendposition", {
@@ -67,6 +69,7 @@ test_that("barplot (segregated) legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions left and right are not working")
 })
 
 test_that("boxplot legendposition", {
@@ -89,6 +92,7 @@ test_that("boxplot legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions top and bottom are not working")
 })
 
 test_that("boxplot (segregated) legendposition", {
@@ -115,6 +119,7 @@ test_that("boxplot (segregated) legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions top and bottom are not working")
 })
 
 test_that("Scatterplot matrix legendposition", {
@@ -176,4 +181,5 @@ test_that("heatmap legendposition", {
         )
         check_ui_test(result)
     }
+    warning("Legend positions top and bottom are not working")
 })
