@@ -3,9 +3,9 @@ context("canvasXpress data-url")
 
 test_that("Barplot URL data", {
     result <- canvasXpress(
-        data             = "http://www.canvasxpress.org/data/cX-generic-dat.txt",
-        smpAnnot         = "http://www.canvasxpress.org/data/cX-generic-smp.txt",
-        varAnnot         = "http://www.canvasxpress.org/data/cX-generic-var.txt",
+        data             = "https://www.canvasxpress.org/data/cX-generic-dat.txt",
+        smpAnnot         = "https://www.canvasxpress.org/data/cX-generic-smp.txt",
+        varAnnot         = "https://www.canvasxpress.org/data/cX-generic-var.txt",
         graphType        = "Bar",
         graphOrientation = "vertical",
         plotByVariable   = TRUE,

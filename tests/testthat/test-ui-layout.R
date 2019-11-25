@@ -64,4 +64,5 @@ test_that("cXlayout14", {
     check_ui_test(cXlayout14())
 
     message('Middle section very small at default height - working as designed')
+    warning('Hover effect may not be visible if plot is not resized')
 })

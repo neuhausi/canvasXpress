@@ -43,7 +43,6 @@ test_that("cXviolin10", {
 
 test_that("cXviolin11", {
     check_ui_test(cXviolin11())
-    warning("Clicking on legend doesn't fade violins")
 })
 
 test_that("cXviolin12", {
@@ -60,15 +59,12 @@ test_that("cXviolin14", {
 
 test_that("cXviolin15", {
     check_ui_test(cXviolin15())
-    warning("Clicking on legend doesn't fade violins")
 })
 
 test_that("cXviolin16", {
     check_ui_test(cXviolin16())
-    warning("Clicking on legend doesn't fade violins")
 })
 
 test_that("cXviolin17", {
     check_ui_test(cXviolin17())
-    warning("Clicking on legend doesn't fade violins")
 })

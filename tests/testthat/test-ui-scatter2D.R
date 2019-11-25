@@ -7,6 +7,7 @@ test_that("cXscatter2d1", {
 
 test_that("cXscatter2d2", {
     check_ui_test(cXscatter2d2())
+
     warning("Names are different, web example uses var, not V")
 })
 
@@ -50,14 +51,20 @@ test_that("cXscatter2d10", {
 
 test_that("cXscatter2d11", {
     check_ui_test(cXscatter2d11())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatter2d12", {
     check_ui_test(cXscatter2d12())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatter2d13", {
     check_ui_test(cXscatter2d13())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatter2d14", {
