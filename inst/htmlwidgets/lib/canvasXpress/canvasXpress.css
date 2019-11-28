@@ -293,6 +293,15 @@ div.cxc {
 .json-string {
   color: #a85302;
 }
+.json-number {
+  color: #4575b4;
+}
+.json-boolean {
+  color: #666600;
+}
+.json-null {
+  color: #4575b4;
+}
 
 div.CanvasXpressCode {
 	border: 1px solid rgb(51, 122, 183);
