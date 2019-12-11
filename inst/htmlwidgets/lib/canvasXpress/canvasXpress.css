@@ -347,17 +347,18 @@ img.CanvasXpressCode:hover {
 }
 
 pre.CanvasXpressCode {
-	text-align: left;
-	padding: inherit;
-	margin: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	color: inherit;
-	word-break: inherit;
-	word-wrap: inherit;
-	background-color: inherit;
-	border: none;
-	border-radius: inherit;
+  text-align: left;
+  padding: inherit;
+  margin: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  word-break: inherit;
+  word-wrap: inherit;
+  background-color: inherit;
+  border: none;
+  border-radius: inherit;
+  counter-reset: line;
 }
 
 div.CanvasXpressCodeContainer {
@@ -377,18 +378,38 @@ div.CanvasXpressCodeContent {
 }
 
 pre.CanvasXpressCodeContent {
-	background-color: rgba(245, 245, 245, 0.95);
-	border: none;
-	margin: 0px;
-	padding: 10px;
-	white-space: pre;
-	font-size: inherit;
-	line-height: inherit;
-	color: inherit;
-	word-break: inherit;
-	word-wrap: inherit;
-	border-radius: inherit;
+  background-color: rgba(245, 245, 245, 0.95);
+  border: none;
+  margin: 0px;
+  padding: 10px;
+  white-space: pre;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  border-radius: inherit;
 }
+
+pre.CanvasXpressCodeContent:before {
+  counter-reset: listing;
+}
+
+pre.CanvasXpressCodeContent code {
+  counter-increment: listing;
+  white-space: inherit;
+}
+
+pre.CanvasXpressCodeContent code::before {
+  content: counter(listing) " ";
+  display: inline-block;
+  width: 3em; /* Fixed width */
+  border-right: 1px solid #ddd;
+  padding-left: auto;
+  margin-left: auto;
+  text-align: right;
+  color: #888;
+  -webkit-user-select: none;
+}
+
 /*
  * Carousel
  */
