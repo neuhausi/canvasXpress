@@ -18,8 +18,8 @@ RStudio Server Pro (ubuntu 18.04.2)
 Travis-CI (ubuntu 16.04.6)
 
 * R 3.5.3
-* R 3.6.0
-* R devel (2019-07-29 r76903)
+* R 3.6.1
+* R devel (2019-11-23 r77455)
 
 WinBuilder
 
@@ -56,7 +56,7 @@ devtools::check()
 
 ```
 pdb <- available.packages()
-tools::package_dependencies(packages = c('canvasXpress'),
+tools::package_dependencies(packages = c('periscope'),
                             db = pdb, reverse = TRUE)
                             
 $canvasXpress  

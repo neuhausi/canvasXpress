@@ -4,10 +4,20 @@
 \alias{canvasXpress}
 \title{canvasXpress}
 \usage{
-canvasXpress(data = NULL, smpAnnot = NULL, varAnnot = NULL,
-  graphType = "Scatter2D", events = NULL, afterRender = NULL,
-  pretty = FALSE, digits = 4, width = 600, height = 400,
-  destroy = FALSE, ...)
+canvasXpress(
+  data = NULL,
+  smpAnnot = NULL,
+  varAnnot = NULL,
+  graphType = "Scatter2D",
+  events = NULL,
+  afterRender = NULL,
+  pretty = FALSE,
+  digits = 4,
+  width = 600,
+  height = 400,
+  destroy = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{data.frame-, matrix-, or list- classed data object}

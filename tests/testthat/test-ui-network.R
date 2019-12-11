@@ -43,8 +43,6 @@ test_that("cXnetwork10", {
 
 test_that("cXnetwork11", {
     check_ui_test(cXnetwork11())
-
-    warning("plot is not readable")
 })
 
 test_that("cXnetwork12", {

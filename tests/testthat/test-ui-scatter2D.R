@@ -23,14 +23,10 @@ test_that("cXscatter2d4", {
 
 test_that("cXscatter2d5", {
     check_ui_test(cXscatter2d5())
-
-    warning("Colors of the areas do not match the color of the dots")
 })
 
 test_that("cXscatter2d6", {
     check_ui_test(cXscatter2d6())
-
-    warning("Colors of the areas do not match the color of the dots")
 })
 
 test_that("cXscatter2d7", {
