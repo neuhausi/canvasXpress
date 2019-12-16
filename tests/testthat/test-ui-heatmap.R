@@ -7,6 +7,8 @@ test_that("cXheatmap1", {
 
 test_that("cXheatmap2", {
     check_ui_test(cXheatmap2())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXheatmap3", {
@@ -31,10 +33,14 @@ test_that("cXheatmap7", {
 
 test_that("cXheatmap8", {
     check_ui_test(cXheatmap8())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXheatmap9", {
     check_ui_test(cXheatmap9())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXheatmap10", {

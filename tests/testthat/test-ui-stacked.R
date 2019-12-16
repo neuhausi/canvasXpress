@@ -3,7 +3,9 @@ context("canvasXpress Web Charts - Stacked")
 
 test_that("cXstacked1", {
     check_ui_test(cXstacked1())
+
     message('Sample locations depend on space/etc, may be off from web example')
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXstacked2", {

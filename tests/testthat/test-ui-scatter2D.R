@@ -3,6 +3,8 @@ context("canvasXpress Web Charts - Scatter2D")
 
 test_that("cXscatter2d1", {
     check_ui_test(cXscatter2d1())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatter2d2", {
@@ -18,6 +20,7 @@ test_that("cXscatter2d3", {
 test_that("cXscatter2d4", {
     check_ui_test(cXscatter2d4())
 
+    warning('Hover effect may not be visible if plot is not resized')
     warning("Trial legend may not be visible if plot is not resized")
 })
 

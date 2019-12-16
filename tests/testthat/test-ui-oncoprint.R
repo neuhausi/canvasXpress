@@ -9,6 +9,8 @@ test_that("cXoncoprint1", {
 
 test_that("cXoncoprint2", {
     check_ui_test(cXoncoprint2())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXoncoprint3", {

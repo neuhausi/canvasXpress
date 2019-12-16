@@ -3,6 +3,8 @@ context("canvasXpress Web Charts - Radar")
 
 test_that("cXradar1", {
     check_ui_test(cXradar1())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXradar2", {
@@ -32,10 +34,14 @@ test_that("cXradar5", {
 
 test_that("cXradar6", {
     check_ui_test(cXradar6())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXradar7", {
     check_ui_test(cXradar7())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXradar8", {
