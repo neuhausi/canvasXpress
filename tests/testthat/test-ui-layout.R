@@ -57,7 +57,7 @@ test_that("cXlayout12", {
 
 test_that("cXlayout13", {
     check_ui_test(cXlayout13())
-    warning("Bottom plot labels differ from web example")
+    warning("Plot labels differ from web example")
 })
 
 test_that("cXlayout14", {

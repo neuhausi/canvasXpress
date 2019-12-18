@@ -42,6 +42,8 @@ test_that("cXscatter2d8", {
 
 test_that("cXscatter2d9", {
     check_ui_test(cXscatter2d9())
+
+    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatter2d10", {
