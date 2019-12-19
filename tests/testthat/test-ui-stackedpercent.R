@@ -3,8 +3,6 @@ context("canvasXpress Web Charts - StackedPercent")
 
 test_that("cXstackedpercent1", {
     check_ui_test(cXstackedpercent1())
-
-    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXstackedpercent2", {

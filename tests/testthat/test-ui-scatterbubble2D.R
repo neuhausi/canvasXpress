@@ -3,8 +3,6 @@ context("canvasXpress Web Charts - ScatterBubble2D")
 
 test_that("cXscatterbubble2d1", {
     check_ui_test(cXscatterbubble2d1())
-
-    warning('Hover effect may not be visible if plot is not resized')
 })
 
 test_that("cXscatterbubble2d2", {

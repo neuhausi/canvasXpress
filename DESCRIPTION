@@ -1,5 +1,5 @@
 Package: canvasXpress
-Version: 1.26.5.9000
+Version: 1.26.5.9001
 Title: Visualization Package for CanvasXpress in R
 Description: Enables creation of visualizations using the CanvasXpress framework
     in R. CanvasXpress is a standalone JavaScript library for reproducible research
@@ -18,7 +18,7 @@ URL:
 BugReports: 
     https://github.com/neuhausi/canvasXpress/issues
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.4)
 Imports:
     htmlwidgets (>= 0.8),
     httr
