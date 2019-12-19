@@ -43,7 +43,7 @@ This discrepancy in indexing means that when sending data indexes to canvasXpres
 
 The JSON format for the data is essentially a list of lists.  From a data perspective the y list (compartment) is where the numerical data resides with three sub-lists - the names of the variables, the names of the samples, and the actual data.  The x list contains the sample annotation data, and the z list contains the variable annotation data.  
 
-When utilizing the canvasXpress functions from R the following mappings are made, which coveres the most common charts.  There are additional named lists and properties that are mapped for specific chart types and covered with those chart examples below.
+When utilizing the canvasXpress functions from R the following mappings are made, which covers the most common charts.  There are additional named lists and properties that are mapped for specific chart types and covered with those chart examples below.
 
 > data -> y  
 > &nbsp;&nbsp;&nbsp;&nbsp;*y.vars = row names*  
