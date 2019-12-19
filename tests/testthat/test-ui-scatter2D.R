@@ -7,7 +7,8 @@ test_that("cXscatter2d1", {
 
 test_that("cXscatter2d2", {
     check_ui_test(cXscatter2d2())
-    warning("variable name does not match web example, V rather than var")
+
+    warning("Names are different, web example uses var, not V")
 })
 
 test_that("cXscatter2d3", {
@@ -16,6 +17,8 @@ test_that("cXscatter2d3", {
 
 test_that("cXscatter2d4", {
     check_ui_test(cXscatter2d4())
+
+    message("Trial legend may not be visible if plot is not resized due to space allotted - working as designed")
 })
 
 test_that("cXscatter2d5", {

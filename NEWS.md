@@ -5,6 +5,10 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="http://canvasxpress.org"> main website</a>.
 
 ---
+## v1.25.6
+* Updated CanvasXpress JavaScript and CSS libraries to v25.6
+* Extended R package handling of gantt charts and network charts to match CX JS updates
+
 ## v1.24.8
 * Updated CanvasXpress JavaScript and CSS libraries to v24.8
 
@@ -104,17 +108,17 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 * Updated CanvasXpress JavaScript and CSS libraries to v14.3
 
 ## v0.14.0
-* Updated CanvasXpress JavasScript and CSS libraries to v14.0
+* Updated CanvasXpress JavaScript and CSS libraries to v14.0
 * Updated TravisCI parameters
 
 
 ## v0.13.8
-* Updated CanvasXpress JavasScript and CSS libraries to v13.8
+* Updated CanvasXpress JavaScript and CSS libraries to v13.8
 * Added the CDNJ tag to the README file
 
 
 ## v0.13.7
-* Updated CanvasXpress JavasScript and CSS libraries to v13.7
+* Updated CanvasXpress JavaScript and CSS libraries to v13.7
 * Package Version Updated - will generally follow the JS library version for 
 clarity
 

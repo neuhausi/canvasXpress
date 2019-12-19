@@ -22,8 +22,8 @@ test_that("scatterplot webshotPrint", {
                          file    = result.png,
                          vwidth  = result$width,
                          vheight = result$height)
-            expect_true(file.exists(result.png))
-            grid::grid.raster(png::readPNG(result.png))
+        expect_true(file.exists(result.png))
+        grid::grid.raster(png::readPNG(result.png))
     }
     else {
         expect_true(TRUE)
