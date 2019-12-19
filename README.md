@@ -50,16 +50,19 @@ y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-               
+
 canvasXpress(data      = y,
              varAnnot  = z,
+             graphType ="Scatter3D",
              colorBy   = "Species",
              ellipseBy = "Species",
-             graphType = "Scatter3D",
-             title     = "Iris Data Set",
              xAxis     = list("Sepal.Length"),
              yAxis     = list("Petal.Width"),
-             zAxis     = list("Petal.Length"))
+             zAxis     = list("Petal.Length"),
+             theme     = "CanvasXpress",
+             title     = "Iris Data Set",
+             axisTickScaleFontFactor  = 0.5,
+             axisTitleScaleFontFactor = 0.5)
 ```
 ![Scatter3D](vignettes/images/R-Scatter3D.png)
 
@@ -70,34 +73,39 @@ y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-                   
+
 canvasXpress(data              = y,
              varAnnot          = z,
              graphType         = "Scatter2D",
-             scatterPlotMatrix = TRUE,
              colorBy           = "Species",
-             showTransition    = TRUE)
+             layoutAdjust      = TRUE,
+             scatterPlotMatrix = TRUE,
+             theme             = "CanvasXpress")
 ```
 ![Scatter2DMatrix](vignettes/images/R-Scatter2DMatrix.png)
 
 #### Boxplot
 
 ```r
-y <- read.table("http://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("http://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x <- read.table("http://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep= "\t", 
+x <- read.table("http://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-                
-canvasXpress(data              = y,
-             smpAnnot          = x,
-             graphType         = "Boxplot",
-             graphOrientation  = "vertical",
-             title             = "Iris flower data set",
-             smpTitle          = "Species",
-             smpLabelFontStyle = "italic",
-             smpLabelRotate    = 90,
-             xAxis2Show        = FALSE,
-             afterRender       = list(list("groupSamples", list("Species"))))
+
+canvasXpress(data                  = y,
+             smpAnnot              = x,
+             graphType             = "Boxplot",
+             groupingFactors       = list("dose", "supp"),
+             stringSampleFactors   = list("dose"),
+             graphOrientation      = "vertical",
+             colorBy               = "dose",
+             title                 = "The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+             smpTitle              = "dose",
+             xAxisTitle            = "len",
+             smpLabelRotate        = 90,
+             xAxisMinorTicks       = FALSE,
+             xAxis2Show            = FALSE,
+             legendScaleFontFactor = 1.8)
 ```
 ![Boxplot](vignettes/images/R-Boxplot.png)
 
@@ -117,17 +125,19 @@ x  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-sm
 z  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
-canvasXpress(data          = list(y = y, data2 = y2, data3 = y3, data4 = y4),
-             smpAnnot      = x,
-             varAnnot      = z,
-             graphType     = "Heatmap",
-             guides        = TRUE,
-             outlineBy     = "Outline",
-             outlineByData = "data2",
-             shapeBy       = "Shape",
-             shapeByData   = "data3",
-             sizeBy        = "Size",
-             sizeByData    = "data4")
+canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = y4),
+             smpAnnot             = x,
+             varAnnot             = z,
+             graphType            = "Heatmap",
+             guides               = TRUE,
+             outlineBy            = "Outline",
+             outlineByData        = "data2",
+             shapeBy              = "Shape",
+             shapeByData          = "data3",
+             sizeBy               = "Size",
+             sizeByData           = "data4",
+             showHeatmapIndicator = FALSE,
+             afterRender          = list(list("clusterSamples")))
 ```
 ![Heatmap](vignettes/images/R-Heatmap.png)
 
@@ -135,7 +145,7 @@ canvasXpress(data          = list(y = y, data2 = y2, data3 = y3, data4 = y4),
 
 ```r
 canvasXpress(vennData   = data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, ACD=298, BCD=613, 
-                            B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
+                                     B=562, CD=143, ABD=578, C=620, D=592, AB=639, BD=354, AD=257),
              graphType  = "Venn",
              vennLegend = list(A="List 1", D="List 4", C="List 3", B="List 2"),
              vennGroups = 4)

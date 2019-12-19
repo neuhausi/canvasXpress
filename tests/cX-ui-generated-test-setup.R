@@ -31,7 +31,8 @@ if (interactive()) {
         rowwise() %>%
         mutate(new = gsub('"http://www.canvasxpress.org.*txt"',
                           paste0('system.file("extdata", "', filename, '.txt.gz", package = "canvasXpress")'), orig)) %>%
-        mutate(new = gsub('\\$', '$', new, fixed = T))
+        mutate(new = gsub('\\$', '$', new, fixed = T)) %>%
+        mutate(new = gsub('http://www.canvasxpress.org', 'https://www.canvasxpress.org', new, fixed = T))
 
     writeLines(pkgFile$new, "tests/cX-ui-functions.R")
 

@@ -31,3 +31,15 @@ test_that("segregation layout change - Variables", {
 
     check_ui_test(result)
 })
+
+test_that("segregation updated layout change", {
+    result <- canvasXpress(data      = y,
+                           smpAnnot  = x,
+                           varAnnot  = z,
+                           graphType = "Bar",
+                           title = "Change Segregation Data property to 'Variable' and check that layout is updated",
+                           segregateSamplesBy = list("Factor1"),
+                           layoutTopology = "1X3"
+    )
+    check_ui_test(result)
+})
