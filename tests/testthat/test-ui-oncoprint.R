@@ -12,3 +12,7 @@ test_that("cXoncoprint2", {
 test_that("cXoncoprint3", {
     check_ui_test(cXoncoprint3())
 })
+
+test_that("cXoncoprint4", {
+    check_ui_test(cXoncoprint4())
+})

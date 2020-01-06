@@ -37,13 +37,16 @@ z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE
                
 canvasXpress(data      = y,
              varAnnot  = z,
+             graphType ="Scatter3D",
              colorBy   = "Species",
              ellipseBy = "Species",
-             graphType = "Scatter3D",
-             title     = "Iris Data Set",
              xAxis     = list("Sepal.Length"),
              yAxis     = list("Petal.Width"),
-             zAxis     = list("Petal.Length"))
+             zAxis     = list("Petal.Length"),
+             theme     = "CanvasXpress",
+             title     = "Iris Data Set",
+             axisTickScaleFontFactor  = 0.5,
+             axisTitleScaleFontFactor = 0.5)
 ```
 ![Scatter3D](images/R-Scatter3D.png)
 
@@ -58,9 +61,10 @@ z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE
 canvasXpress(data              = y,
              varAnnot          = z,
              graphType         = "Scatter2D",
-             scatterPlotMatrix = TRUE,
              colorBy           = "Species",
-             showTransition    = TRUE)
+             layoutAdjust      = TRUE,
+             scatterPlotMatrix = TRUE,
+             theme             = "CanvasXpress")
 ```
 ![Scatter2DMatrix](images/R-Scatter2DMatrix.png)
 
@@ -72,16 +76,20 @@ y <- read.table("http://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE,
 x <- read.table("http://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
                 
-canvasXpress(data              = y,
-             smpAnnot          = x,
-             graphType         = "Boxplot",
-             graphOrientation  = "vertical",
-             title             = "Iris flower data set",
-             smpTitle          = "Species",
-             smpLabelFontStyle = "italic",
-             smpLabelRotate    = 90,
-             xAxis2Show        = FALSE,
-             afterRender       = list(list("groupSamples", list("Species"))))
+canvasXpress(data                  = y,
+             smpAnnot              = x,
+             graphType             = "Boxplot",
+             groupingFactors       = list("dose", "supp"),
+             stringSampleFactors   = list("dose"),
+             graphOrientation      = "vertical",
+             colorBy               = "dose",
+             title                 = "The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+             smpTitle              = "dose",
+             xAxisTitle            = "len",
+             smpLabelRotate        = 90,
+             xAxisMinorTicks       = FALSE,
+             xAxis2Show            = FALSE,
+             legendScaleFontFactor = 1.8)
 ```
 ![Boxplot](images/R-Boxplot.png)
 
@@ -107,17 +115,19 @@ z  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-va
                  header=TRUE, sep= "\t", quote="", row.names=1, fill=TRUE, 
                  check.names=FALSE, stringsAsFactors=FALSE)
 
-canvasXpress(data          = list(y = y, data2 = y2, data3 = y3, data4 = y4),
-             smpAnnot      = x,
-             varAnnot      = z,
-             graphType     = "Heatmap",
-             guides        = TRUE,
-             outlineBy     = "Outline",
-             outlineByData = "data2",
-             shapeBy       = "Shape",
-             shapeByData   = "data3",
-             sizeBy        = "Size",
-             sizeByData    = "data4")
+canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = y4),
+             smpAnnot             = x,
+             varAnnot             = z,
+             graphType            = "Heatmap",
+             guides               = TRUE,
+             outlineBy            = "Outline",
+             outlineByData        = "data2",
+             shapeBy              = "Shape",
+             shapeByData          = "data3",
+             sizeBy               = "Size",
+             sizeByData           = "data4",
+             showHeatmapIndicator = FALSE,
+             afterRender          = list(list("clusterSamples")))
 ```
 ![Heatmap](images/R-Heatmap.png)
 

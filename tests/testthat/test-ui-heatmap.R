@@ -48,7 +48,7 @@ test_that("cXheatmap11", {
 test_that("cXheatmap12", {
     check_ui_test(cXheatmap12())
 
-    message('middle section too small at default height - working as designed')
-    warning("Boolean overlay looks different in R than on the CX website, missing the following parm: smpOverlayProperties=list('Boolean' = list('type'='Boolean'))")
+    message('Middle section very small at default height - working as designed')
+    warning("Boolean overlay looks different in R than on the CX website, test is missing the following parm: smpOverlayProperties=list('Boolean' = list('type'='Boolean'))")
 })
 

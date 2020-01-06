@@ -7,8 +7,6 @@ test_that("cXdotplot1", {
 
 test_that("cXdotplot2", {
     check_ui_test(cXdotplot2())
-
-    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, it's showing the second number in scientific format")
 })
 
 test_that("cXdotplot3", {

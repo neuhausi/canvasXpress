@@ -31,4 +31,5 @@ test_that("cXdensity7", {
 
 test_that("cXdensity8", {
     check_ui_test(cXdensity8())
+    warning("Names are different, web example uses var, not V")
 })

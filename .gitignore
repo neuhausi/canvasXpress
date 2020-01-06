@@ -5,3 +5,4 @@
 **/.DS_Store
 vignettes/*.html
 **/Rplots.pdf
+tests/*.html

@@ -43,7 +43,7 @@ This discrepancy in indexing means that when sending data indexes to canvasXpres
 
 The JSON format for the data is essentially a list of lists.  From a data perspective the y list (compartment) is where the numerical data resides with three sub-lists - the names of the variables, the names of the samples, and the actual data.  The x list contains the sample annotation data, and the z list contains the variable annotation data.  
 
-When utilizing the canvasXpress functions from R the following mappings are made, which coveres the most common charts.  There are additional named lists and properties that are mapped for specific chart types and covered with those chart examples below.
+When utilizing the canvasXpress functions from R the following mappings are made, which covers the most common charts.  There are additional named lists and properties that are mapped for specific chart types and covered with those chart examples below.
 
 > data -> y  
 > &nbsp;&nbsp;&nbsp;&nbsp;*y.vars = row names*  
@@ -93,7 +93,8 @@ canvasXpress(data                    = cxdata,
              legendPosition          = "right",
              legendOrder             = list("Category" = list("low", "med", "high")),
              title                   = "Murder vs Assault Rates",
-             titleScaleFontFactor    = 0.5)
+             xAxisMinorTicks         = FALSE,
+             yAxisMinorTicks         = FALSE)
 ```
 ![Scatter2D](images/R-Scatter2D.png)
 
@@ -109,9 +110,9 @@ canvasXpress(data                  = cxdata,
              graphOrientation      = "vertical",
              legendInside          = TRUE,
              legendPosition        = "topRight",
+             legendBackgroundColor = 'white',
              smpLabelRotate        = 20,
              title                 = "US Arrests by State and Type",
-             titleScaleFontFactor  = 0.5,
              xAxisTitle            = "Total Arrests",
              xAxis2Title           = "Total Arrests")
 ```
@@ -132,12 +133,13 @@ canvasXpress(data                    = cxdata,
              showSampleNames         = FALSE,
              title                   = "Clustered Arrests",
              subtitle                = "(by State and Type)",
-             titleScaleFontFactor    = 0.5,
-             subtitleScaleFontFactor = 0.25,
+             titleScaleFontFactor    = 0.6,
+             subtitleScaleFontFactor = 0.4,
              xAxisShow               = FALSE,
              xAxis2Title             = "Total Arrests",
              legendPosition          = "bottom",
              legendColumns           = 3,
+             sampleSpaceFactor       = 0.5,
 #canvasXpress clustering options  
              samplesClustered        = TRUE,
              linkage                 = "single",
@@ -162,13 +164,13 @@ canvasXpress(data                  = cxdata,
              smpAnnot              = cxdata.smpAnnot,
              graphType             = "Boxplot",
              colorScheme           = "Pastel",
+             colorBy               = "Type",
              graphOrientation      = "vertical",
              groupingFactors       = list("Type"),
              smpLabelFontStyle     = "italic",
              smpLabelRotate        = 90,
              showLegend            = FALSE,
-             title                 = "US Arrests by Type",
-             titleScaleFontFactor  = 0.5)
+             title                 = "US Arrests by Type")
 ```
 ![BoxPlot1](images/R-BoxPlot1.png)
 

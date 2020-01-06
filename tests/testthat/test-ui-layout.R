@@ -43,25 +43,22 @@ test_that("cXlayout10", {
 
 test_that("cXlayout11", {
     check_ui_test(cXlayout11())
-
-    warning("The subcharts are in a different layout order compared to web example")
 })
 
 test_that("cXlayout12", {
     check_ui_test(cXlayout12())
 
-    warning('fewer pie charts displayed than expected, does not match web example')
+    warning('Fewer pie charts displayed than expected, does not match web example')
     warning("Colors for drug are different, two pieces are green, but one should be orange")
-    warning("The subcharts are in a different layout order compared to web example")
 })
 
 test_that("cXlayout13", {
     check_ui_test(cXlayout13())
-    warning("Warning: bottom plot labels differ from web example")
+    warning("Plot labels differ from web example")
 })
 
 test_that("cXlayout14", {
     check_ui_test(cXlayout14())
 
-    warning('middle section too small at default height - working as designed')
+    message('Middle section very small at default height - working as designed')
 })

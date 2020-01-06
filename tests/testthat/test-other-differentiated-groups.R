@@ -64,4 +64,5 @@ test_that("differentiated groups in boxplot 3", {
                            afterRender             = list(list("pivotX", list("supp"))))
 
     check_ui_test(result)
+    warning('Data points are not appearing on the chart (as of 25.9) unless it is resized manually or refreshed')
 })
