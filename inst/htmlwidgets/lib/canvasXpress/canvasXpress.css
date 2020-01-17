@@ -1106,10 +1106,6 @@ div.CanvasXpressToolbar {
 
 }
 
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage:first-child {
-	margin-left: 13px !important;
-}
-
 div.CanvasXpressToolbar img.CanvasXpressToolbarImage {
   transition: all 0.3s;
 	-moz-transition: all 0.3s;
