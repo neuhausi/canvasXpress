@@ -6,7 +6,6 @@ library(dplyr)
 library(htmlwidgets)
 library(canvasXpress)
 source("./customCanvasXpress.R")
-exData <- readRDS("./exData-sm2.rds")
 
 shinyUI(fluidPage(
   titlePanel("IPF Fibroblast data"),
@@ -34,18 +33,18 @@ shinyUI(fluidPage(
                fluidRow(
                  column(6,
                         p("Profile Plot")
-                 ),   
+                 ),
                  column(6,
                         p("Gene Plot")
-                 )    
+                 )
                ),
                fluidRow(
                  column(6,
                         canvasXpressOutput("profilePlot")
-                 ),   
+                 ),
                  column(6,
                         canvasXpressOutput("genePlot")
-                 )    
+                 )
                ),
                fluidRow(
                  column(6,
@@ -62,7 +61,7 @@ shinyUI(fluidPage(
                  column(6,
                         canvasXpressOutput("comparePlot")
                  )
-               )   
+               )
       )
     )
   )

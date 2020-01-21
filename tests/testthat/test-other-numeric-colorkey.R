@@ -1,7 +1,7 @@
 context("canvasXpress numeric colorkey")
 
-y = read.table(system.file("extdata", "cX-heatmapR-dat.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-z = read.table(system.file("extdata", "cX-heatmapR-var.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+y = read.table(get_data( "cX-heatmapR-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+z = read.table(get_data( "cX-heatmapR-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 color.list <- setNames(as.list(c("red","green","blue","grey")), unique(as.character(z$Sens)))
 sens_list <- setNames(list(color.list), "Sens")

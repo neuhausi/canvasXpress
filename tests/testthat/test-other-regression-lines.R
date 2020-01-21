@@ -1,7 +1,7 @@
 context("canvasXpress regressionLines")
 
-y = read.table(system.file("extdata", "cX-ageheightt-dat.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x = read.table(system.file("extdata", "cX-ageheightt-smp.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+y = read.table(get_data("cX-ageheightt-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+x = read.table(get_data("cX-ageheightt-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot overall regressionLine", {
 
@@ -17,7 +17,7 @@ test_that("scatterplot overall regressionLine", {
 
 test_that("scatterplot per-sample regressionLine", {
 
-    y = read.table(system.file("extdata", "cX-mtcars-dat.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y = read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(
         data                    = y,
         asSampleFactors         = list("cyl"),
@@ -31,11 +31,13 @@ test_that("scatterplot per-sample regressionLine", {
         afterRender             = list(list("addRegressionLine", list("cyl")))
     )
     check_ui_test(result)
+
+    warning("regression lines and regression info (in legend) are missing")
 })
 
 
-data_y = read.table(system.file("extdata", "cX-irist-dat.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-data_z = read.table(system.file("extdata", "cX-irist-var.txt.gz", package = "canvasXpress"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+data_y = read.table(get_data("cX-irist-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+data_z = read.table(get_data("cX-irist-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot per variable regressionLine", {
 

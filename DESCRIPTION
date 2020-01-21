@@ -20,6 +20,7 @@ BugReports:
 Depends:
     R (>= 3.4)
 Imports:
+    canvasXpress.data (>= 1.26.5),
     htmlwidgets (>= 0.8),
     httr
 RoxygenNote: 7.0.2

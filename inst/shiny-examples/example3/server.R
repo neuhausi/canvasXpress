@@ -5,11 +5,11 @@ library(magrittr)
 library(dplyr)
 library(htmlwidgets)
 library(canvasXpress)
+library(canvasXpress.data)
 source("./customCanvasXpress.R")
-exData <- readRDS("./exData-sm2.rds")
 
 shinyServer(function(input, output, session) {
-  
+
   ds1 <- reactive({
     exData$contrasts[[input$contrast]]
   })
@@ -17,7 +17,7 @@ shinyServer(function(input, output, session) {
   ds2 <- reactive({
     exData$contrasts[[input$compare]]
   })
-  
+
   output$profilePlot <- renderCanvasXpress({
      events = JS("{",
                  "'click': function(o, e, t){var g = $('#genes');g.val(o.y.vars[0]);g.trigger('change')},",
@@ -26,7 +26,7 @@ shinyServer(function(input, output, session) {
      pp <- ds1()
      profilePlot(pp, title = paste(input$contrast, sep=""), alpha = 0.5, events = events)
   })
-  
+
   output$genePlot <- renderCanvasXpress({
     sel = input$genes
     if(!is.null(sel)) {
@@ -38,7 +38,7 @@ shinyServer(function(input, output, session) {
       genePlot(dat, des, title = "Expression Plot")
     }
   })
-  
+
   output$volcanoPlot <- renderCanvasXpress({
     events = JS("{",
                 "'click': function(o, e, t){var g = $('#genes');g.val(o.y.vars[0]);g.trigger('change')},",
@@ -64,10 +64,10 @@ shinyServer(function(input, output, session) {
     colnames(cp)[2] = paste(input$compare, sep="")
     comparePlot(cp, title = paste("Compare/Contrast", paste(input$contrast, sep=""), "vs", paste(input$compare, sep=""), sep= " "), alpha = 0.5, events = events)
   })
-  
+
   output$selectGenes <- renderUI({
     d <- ds1()
     selectInput("genes", "Select Gene(s)", rownames(d), selectize = FALSE, multiple = TRUE, selected = rownames(d)[1])
   })
-    
+
 })
