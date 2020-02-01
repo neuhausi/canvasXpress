@@ -26,4 +26,6 @@
 
 * **Layout Charts** - the order of layout varies and may differ between browsers and platforms.
 
+* **3D Scatterplots** -  In those charts that have overlapping sets of datapoints, there are differences in the stacking of these sets of points. This is a platform and browser-specific issue. 
+
 
