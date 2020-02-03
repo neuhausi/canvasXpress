@@ -8,6 +8,9 @@
   * smps
   * vars
 
+* **RStudio Viewer** - the following are items that are issues only in the viewer inside of RStudio that are not an issue if the chart is opened in the browser outside of the viewer window
+  * **network diagrams** -  zooming may cause items/attributes to move or disappear
+  
 ---
 
 ### Platform-Specific
