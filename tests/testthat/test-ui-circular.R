@@ -3,8 +3,6 @@ context("canvasXpress Web Charts - Circular")
 
 test_that("cXcircular1", {
     check_ui_test(cXcircular1())
-
-    warning("Hover effect results in a hyphen being displayed at the center if the plot is not resized.")
 })
 
 test_that("cXcircular2", {

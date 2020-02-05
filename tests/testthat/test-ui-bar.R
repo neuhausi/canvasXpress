@@ -25,8 +25,6 @@ test_that("cXbar5", {
 
 test_that("cXbar6", {
     check_ui_test(cXbar6())
-
-    warning("smpTitle not readable because of the legend at the bottom")
 })
 
 test_that("cXbar7", {

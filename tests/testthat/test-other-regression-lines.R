@@ -31,8 +31,6 @@ test_that("scatterplot per-sample regressionLine", {
         afterRender             = list(list("addRegressionLine", list("cyl")))
     )
     check_ui_test(result)
-
-    warning("regression lines and regression info (in legend) are missing")
 })
 
 

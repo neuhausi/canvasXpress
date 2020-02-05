@@ -8,6 +8,9 @@
   * smps
   * vars
 
+* **RStudio Viewer** - the following are items that are issues only in the viewer inside of RStudio that are not an issue if the chart is opened in the browser outside of the viewer window
+  * **network diagrams** -  zooming may cause items/attributes to move or disappear
+  
 ---
 
 ### Platform-Specific
@@ -32,4 +35,4 @@
 
 * **Layout Charts** - the order of layout varies and may differ between browsers and platforms.
 
-* **3d Scatterplots** - the superimposition/order of the points on the canvas differs by browser and platform.  This affects both the placement of points as well as the 3d overlays such as the ellipse in scatter3d2.
+* **3d Scatterplots** - the superimposition/order of the points on the canvas differs by browser and platform.  This affects both the stacking of points as well as the 3d overlays such as the ellipse in scatter3d2.

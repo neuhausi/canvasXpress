@@ -29,6 +29,8 @@ test_that("scatterplot resizable width", {
         resizableY              = FALSE
     )
     check_ui_test(result)
+
+    warning("the plot is shifted to top-left, when clicking on Minimize/Maximize menu button")
 })
 
 test_that("scatterplot resizable height", {
@@ -44,6 +46,8 @@ test_that("scatterplot resizable height", {
         resizableX              = FALSE
     )
     check_ui_test(result)
+
+    warning("the plot is shifted to top-left, when clicking on Minimize/Maximize menu button")
 })
 
 test_that("scatterplot not resizable", {
@@ -58,6 +62,8 @@ test_that("scatterplot not resizable", {
         resizable               = FALSE
     )
     check_ui_test(result)
+
+    warning("the plot is shifted to top-left, when clicking on Minimize/Maximize menu button")
 })
 
 test_that("bar chart not resizable", {
@@ -71,5 +77,7 @@ test_that("bar chart not resizable", {
         resizable               = FALSE
     )
     check_ui_test(result)
+
+    warning("the plot is shifted to top-left, when clicking on Minimize/Maximize menu button")
 })
 

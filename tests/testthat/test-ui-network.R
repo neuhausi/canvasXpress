@@ -15,14 +15,20 @@ test_that("cXnetwork3", {
 
 test_that("cXnetwork4", {
     check_ui_test(cXnetwork4())
+
+    warning("Dragging plot component outside the canvas might throw JS console errors")
 })
 
 test_that("cXnetwork5", {
     check_ui_test(cXnetwork5())
+
+    warning("Dragging plot component outside the canvas might throw JS console errors")
 })
 
 test_that("cXnetwork6", {
     check_ui_test(cXnetwork6())
+
+    warning("Plot flips when zooming out")
 })
 
 test_that("cXnetwork7", {
