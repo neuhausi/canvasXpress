@@ -4487,6 +4487,28 @@ cXsunburst4 <- function() {
   )
 }
 
+cXtcga1 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcga-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-exprtcga-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotWhiskersType="single",
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dataset"),
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    segregateVariablesBy=list("variable"),
+    showSampleNames=FALSE,
+    useOpenShapes=TRUE
+  )
+}
+
 cXtagcloud1 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-cars-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)

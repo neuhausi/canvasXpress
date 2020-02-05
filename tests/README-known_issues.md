@@ -4,7 +4,7 @@
 
 ### General Limitations
 
-* **Reserved Words** - the following are reserved words for canvasXpress and should not be used as column names in the datasets or JS console errors of varying types will be encountered  
+* **Reserved Words** - the following are reserved words for canvasXpress and should not be used as column names in the datasets or JS console errors of varying types will be encountered.  
   * smps
   * vars
 
@@ -12,18 +12,24 @@
 
 ### Platform-Specific
 
-* **Ubuntu Browsers** - selection of areas of points on a chart via either click-drag or the lasso functionality is not supported
+* **Ubuntu** - selection of areas of points on a chart via either click-drag or the lasso functionality is not supported by the browsers we've tested on this platform.
+
+---
+
+### Browser-Specific
+
+* **FireFox** - it is possible to drag components off of the canvas for some charts and this may result in JS console errors in the browser.  Other browsers prevent this.
 
 ---
 
 ### Idiosyncracies
 
-* **Hover Effect** - the effect of hovering the mouse over a line/bar/etc may not be visible unless a plot is resized.  This is very browser and chart-specific.  To see if it is resolved by resizing simply grab an edge of the chart and pull a small amount to resize the chart and then re-test if the hover effect is now working.  In general this is not a problem if transitions are used, it seems to be linked directly to charts that have the animated transitions
+* **Hover Effect** - the effect of hovering the mouse over a line/bar/etc may not be visible unless a plot is resized.  This is very browser and chart-specific.  To see if it is resolved by resizing simply grab an edge of the chart and pull a small amount to resize the chart and then re-test if the hover effect is now working.  In general this is not a problem if transitions are used, it seems to be linked directly to charts that have the animated transitions.
 
-* **Treemaps** - the sample locations in a treemap are area-based and the layout of the treemap depends on the size and dimensions of the chart, this means that the treemap may differ in layout between platforms and browsers
+* **Treemaps** - the sample locations in a treemap are area-based and the layout of the treemap depends on the size and dimensions of the chart, this means that the treemap may differ in layout between platforms and browsers.
 
-* **Tag Cloud** - the layout is dynamic and also depends on the size and dimensions of the chart, this means that the tag cloud may differ in layout between platforms and browsers
+* **Tag Clouds** - the layout is dynamic and also depends on the size and dimensions of the chart, this means that the tag cloud may differ in layout between platforms and browsers.
 
 * **Layout Charts** - the order of layout varies and may differ between browsers and platforms.
 
-
+* **3d Scatterplots** - the superimposition/order of the points on the canvas differs by browser and platform.  This affects both the placement of points as well as the 3d overlays such as the ellipse in scatter3d2.
