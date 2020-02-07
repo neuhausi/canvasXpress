@@ -6,3 +6,4 @@
 vignettes/*.html
 **/Rplots.pdf
 tests/*.html
+/.project
