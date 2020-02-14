@@ -1,61 +1,44 @@
-
 shinyUI(fluidPage(
-				titlePanel("Identification of gene expression profiles in cervical cancer [GSE9750]"),
-				mainPanel(
-						tabsetPanel(
-								tabPanel("ProjectQC",
-										fluidRow(
-												column(12,
-														h4("Explore samples in project"),
-														p("Choose a factor to update the visualizations")
-												)
-										),
-										fluidRow(
-												column(12,
-														selectInput("factor", "Select Factor", colnames(GSE9750$x), selectize=FALSE)
-												)
-										),
-										fluidRow(
-												column(6,
-														p("Distribution of samples by selected factor")
-												),   
-												column(6,
-														p("Principal Component Analysis. (Colored by selected factor")
-												)    
-										),
-										fluidRow(
-												column(6,
-														canvasXpressOutput("plot")
-												),   
-												column(6,
-														canvasXpressOutput("plot2")
-												)    
-										),
-										fluidRow(
-												column(6,
-														uiOutput("selectLevel")
-												),
-												column(6,
-														uiOutput("selectGenes")
-												)
-										),
-										fluidRow(
-												column(6,
-														p("Volcano plot for genes")
-												),
-												column(6,
-														p("Graph for gene")
-												)
-										),
-										fluidRow(
-												column(6,
-														canvasXpressOutput("plot3")
-												),
-												column(6,
-														canvasXpressOutput("plot4")
-												)
-										)   
-								)
-						)
-				)
-		))
+    title = "Shiny Example 2",
+    fluidRow(
+        style = "background-color:#f2f2f2;",
+        column(width = 12,
+               align = "center",
+               tags$h3(tags$strong("Identification of Gene Expression Profiles"),
+                       tags$br(),
+                       tags$em("in cervical cancer [GSE9750]")),
+               tags$br())),
+    fluidRow(
+        style = "background-color:#f2f2f2;",
+        column(width = 4,
+               offset = 4,
+               selectizeInput(
+                   inputId  = "factorSel",
+                   label    = "Primary Plot Factor:",
+                   choices  = colnames(g_GSE9750$x),
+                   selected = colnames(g_GSE9750$x)[2],
+                   multiple = FALSE))
+    ),
+    fluidRow(
+        column(width = 6,
+               canvasXpressOutput("distribution_plot")),
+        column(width = 6,
+               canvasXpressOutput("pca_plot"))
+    ),
+    fluidRow(
+        column(width = 6,
+               selectizeInput(inputId  = "levelSel",
+                              label    = HTML("Level:&nbsp;"),
+                              width    = "100%",
+                              choices  = NULL,
+                              multiple = FALSE),
+               htmlOutput("volcano_plot")),
+        column(width = 6,
+               selectizeInput(inputId  = "genesSel",
+                              label    = HTML("Gene(s):&nbsp;"),
+                              width    = "100%",
+                              choices  = NULL,
+                              multiple = TRUE),
+               htmlOutput("genes_plot"))
+    )
+))

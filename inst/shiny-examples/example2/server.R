@@ -1,54 +1,161 @@
-
 shinyServer(function(input, output, session) {
-    
-      output$plot <- renderCanvasXpress({
-            tbl <- as.data.frame(table(GSE9750$x[,input$factor]))
-            df <- data.frame(as.vector(tbl[,2]), row.names = as.vector(tbl[,1]))
-            colnames(df) <- c("Freq")
-            canvasXpress(df, graphType="Pie", width=500, height=300)
-          })
-      
-      output$plot2 <- renderCanvasXpress({
-            pc <- prcomp(GSE9750$y)$rotation
-            canvasXpress(pc, varAnnot=GSE9750$x, graphType="Scatter3D", width=500, height=300, colorBy=input$factor)
-          })
-      
-      output$selectLevel <- renderUI({
-          
-          levs = unique(GSE9750$x[,colnames(GSE9750$x)==input$factor])
-            selectInput("level", "Select Level", levs[levs!=""])
-          })
-      
-      output$selectGenes <- renderUI({
-            selectInput("genes", "Select Gene(s)", rownames(GSE9750$y), selectize=FALSE, multiple=TRUE, selected=rownames(GSE9750$y)[1])
-          })
-      
-      output$plot3 <- renderCanvasXpress({
-            events = JS("{'click': function(o, e, t){",
-                "var g = $('#genes');",
-                "g.val(o.y.vars[0]);",
-                "g.trigger('change');",
-                "}",
-                "}")
-            design = model.matrix(as.formula(paste("~ ", input$factor)), GSE9750$x)
-            levels = make.names(colnames(design))            
-            reflev = make.names(paste(input$factor, input$level, sep=""))            
-            allevs = levels[levels!="X.Intercept."]
-            olevls = allevs[allevs!=reflev]
-            fit = lmFit(GSE9750$y, design)
-            fit = eBayes(fit)
-            tab = topTable(fit, number=length(dimnames(GSE9750$y)[[1]]))
-            fc = tab[colnames(tab)==reflev];
-            lod = mapply("*", lapply(tab[colnames(tab)=="adj.P.Val"],log2), -1)
-            data = as.matrix(data.frame(FC=fc, LOD=lod))
-            canvasXpress(data, graphType="Scatter2D", events=events, width=500, height=300)
-          })
-      
-      output$plot4 <- renderCanvasXpress({
-            genes = rownames(GSE9750$y)
-            data = as.matrix(GSE9750$y[genes[genes %in% input$genes],,drop=F])
-            canvasXpress(data, smpAnnot=GSE9750$x, graphType="Boxplot",
-                         groupingFactors = list(input$factor))
-          })
-      
+
+    levels_choices <- reactive({
+        levels <- NULL
+        if (!is.null(input$factorSel) && (input$factorSel != "")) {
+            levels <- unique(g_GSE9750$x[, colnames(g_GSE9750$x) == input$factorSel])
+            levels <- levels[!is.na(levels)]
+        }
+        levels
     })
+
+    plot_volcano <- reactive({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "") &&
+            !is.null(input$levelSel)  && (input$levelSel != "")) {
+
+            design_matrix   <- model.matrix(as.formula(glue("~ {input$factorSel}")), g_GSE9750$x)
+            reference_level <- make.names(glue("{input$factorSel}{input$levelSel}"))
+
+            try({
+                eBayes_model     <- eBayes(lmFit(g_GSE9750$y, design_matrix))
+                top_ranked_genes <- suppressMessages(topTable(eBayes_model, number = nrow(g_GSE9750$y)))
+                fold_change      <- top_ranked_genes[colnames(top_ranked_genes) == reference_level]
+                adj_pval         <- mapply("*", lapply(top_ranked_genes[colnames(top_ranked_genes) == "adj.P.Val"], log2),-1)
+
+                data <- as.matrix(data.frame(fold_change, adj_pval))
+                rownames(data) <- names(g_geneChoices[g_geneChoices %in% rownames(data)])
+                cxplot <- canvasXpress(
+                    data         = data,
+                    graphType    = "Scatter2D",
+                    title        = glue("Volcano Plot: {input$levelSel}"),
+                    width        = "100%",
+                    transparency = 0.8,
+                    xAxisTitle   = input$levelSel)
+            })
+
+            if (is.null(cxplot)) {
+                cxplot <- canvasXpress(destroy = TRUE)
+            }
+        }
+
+        cxplot
+    })
+
+    plot_gene <- reactive({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "") &&
+            !is.null(input$genesSel)  && (input$genesSel != "")) {
+            data  <- as.matrix(g_GSE9750$y[input$genesSel, , drop = F])
+
+            cxplot <- canvasXpress(
+                data            = data,
+                smpAnnot        = g_GSE9750$x,
+                graphType       = "Boxplot",
+                groupingFactors = list(input$factorSel),
+                title           = glue("{input$factorSel}: {glue_collapse(names(g_geneChoices[g_geneChoices %in% input$genesSel]), sep = ', ')}"),
+                width           = "100%")
+        }
+
+        if (is.null(cxplot)) {
+            cxplot <- canvasXpress(destroy = TRUE)
+        }
+
+        cxplot
+    })
+
+    #set in server.R for performance reasons
+    updateSelectizeInput(session, "genesSel",
+                         choices  = g_geneChoices,
+                         selected = g_geneChoices[1:2],
+                         server   = TRUE)
+
+
+    output$distribution_plot <- renderCanvasXpress({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "")) {
+            freq_table <- as.data.frame(table(Factor = g_GSE9750$x[, input$factorSel], exclude = NULL), stringsAsFactors = FALSE)
+            data <- data.frame(Freq = as.vector(freq_table[, "Freq"]), row.names = as.vector(freq_table[, "Factor"]))
+
+            cxplot <- canvasXpress(
+                data      = data,
+                graphType = "Pie",
+                title     = glue("Distribution: {input$factorSel}"))
+        }
+
+        cxplot
+    })
+
+    output$pca_plot <- renderCanvasXpress({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "")) {
+            cxplot <- canvasXpress(data      = prcomp(g_GSE9750$y)$rotation,
+                                   varAnnot  = g_GSE9750$x,
+                                   graphType = "Scatter3D",
+                                   colorBy   = input$factorSel,
+                                   title     = glue("PCA for {input$factorSel}"),
+                                   axisTickScaleFontFactor  = 0.5,
+                                   axisTitleScaleFontFactor = 0.7,
+                                   transparency             = 0.8)
+        }
+
+        cxplot
+    })
+
+    output$volcano_plot <- renderUI({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "") &&
+            !is.null(input$levelSel)  && (input$levelSel != "")) {
+            cxplot <- plot_volcano()
+        }
+
+        if (!is.null(cxplot)) {
+            tags$div(width = "100%",
+                     align = "center",
+                     style = "height: 400px;",
+                     cxplot)
+        } else {
+            tags$div(width = "100%",
+                     align = "center",
+                     style = "height: 400px;",
+                     HTML(rep("<br/>", 5)),
+                     tags$p(style = "color:grey;",
+                            "Select level to create this plot"))
+        }
+    })
+
+    output$genes_plot <- renderUI({
+        cxplot <- NULL
+
+        if (!is.null(input$factorSel) && (input$factorSel != "") &&
+            !is.null(input$genesSel)  && (input$genesSel != "")) {
+            cxplot <- plot_gene()
+        }
+
+        if (!is.null(cxplot)) {
+            tags$div(width = "100%",
+                     align = "center",
+                     style = "height: 400px;",
+                     cxplot)
+        } else {
+            tags$div(width = "100%",
+                     align = "center",
+                     style = "height: 400px;",
+                     HTML(rep("<br/>", 5)),
+                     tags$p(style = "color:grey;",
+                            "Select at least one gene to create this plot"))
+        }
+    })
+
+    observeEvent(levels_choices(), {
+        updateSelectizeInput(session, "levelSel",
+                             choices  = levels_choices(),
+                             selected = levels_choices()[1],
+                             server   = TRUE)
+    })
+})
