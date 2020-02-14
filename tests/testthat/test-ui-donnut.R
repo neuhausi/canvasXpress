@@ -7,4 +7,6 @@ test_that("cXdonut1", {
 
 test_that("cXdonut2", {
     check_ui_test(cXdonnut2())
+
+    fail("Legend click results in label placement issues")
 })
