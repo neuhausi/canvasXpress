@@ -1,7 +1,7 @@
 HTMLWidgets.widget({
     name : "canvasXpress",
     type : "output",
-    
+
     factory: function(el, width, height) {
         var c = document.createElement('canvas');
         c.id = el.id + '-cx';
@@ -9,7 +9,7 @@ HTMLWidgets.widget({
         c.height = height;
 
         el.appendChild(c);
-        
+
         return {
             id: c.id,
             renderValue: function(x) {
@@ -24,6 +24,12 @@ HTMLWidgets.widget({
                 cx = CanvasXpress.getObject(c.id);
                 if (cx) {
                     cx.setDimensions(width, height);
+                }
+                else {
+                    cx = CanvasXpress.getObject(c.id + '-1');
+                    if (cx) {
+                        cx.setDimensions(width, height);
+                    }
                 }
             }
         };
