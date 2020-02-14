@@ -24,7 +24,12 @@ HTMLWidgets.widget({
                 cx = CanvasXpress.getObject(c.id);
                 if (cx) {
                     cx.setDimensions(width, height);
-                }
+                } else {
+                  cx = CanvasXpress.getObject(c.id + '-1');
+                  if (cx) {
+                      cx.setDimensions(width, height);
+                  }
+              }
             }
         };
     }
