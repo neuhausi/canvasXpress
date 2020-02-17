@@ -49,6 +49,7 @@ shinyServer(function(input, output, session) {
         if (!is.null(input$factorSel) && (input$factorSel != "") &&
             !is.null(input$genesSel)  && (input$genesSel != "")) {
             data  <- as.matrix(g_GSE9750$y[input$genesSel, , drop = F])
+            rownames(data) <- names(g_geneChoices[g_geneChoices %in% input$genesSel])
 
             cxplot <- canvasXpress(
                 data            = data,
@@ -65,13 +66,6 @@ shinyServer(function(input, output, session) {
 
         cxplot
     })
-
-    #set in server.R for performance reasons
-    updateSelectizeInput(session, "genesSel",
-                         choices  = g_geneChoices,
-                         selected = g_geneChoices[1:2],
-                         server   = TRUE)
-
 
     output$distribution_plot <- renderCanvasXpress({
         cxplot <- NULL
