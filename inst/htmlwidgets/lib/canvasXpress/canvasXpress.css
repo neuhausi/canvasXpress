@@ -2872,13 +2872,14 @@ input.CanvasXpressSlider:focus, select.CanvasXpressSlider:focus {
   outline: 0;
 }
 
-
+/*
 @media (max-width: 480px) {
   img {
     height : 16px;
     width : 16px;
   }
 }
+*/
 
 /*
  * Parent Node
