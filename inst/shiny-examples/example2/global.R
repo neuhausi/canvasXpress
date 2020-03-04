@@ -22,9 +22,8 @@ g_GSE9750$x[is.na(g_GSE9750$x)] <- "<NA>"
 
 # gene choices used throughout the program
 g_geneChoices <- setNames(rownames(g_GSE9750$y),
-                          gsub(' /// ', ';', g_GSE9750$z[rownames(g_GSE9750$y), "Symbol"]))
-# use the ID if not available
-names(g_geneChoices)[names(g_geneChoices) == ""] <- g_geneChoices[names(g_geneChoices) == ""]
+                          glue("{gsub(' /// ', ';', g_GSE9750$z[rownames(g_GSE9750$y), 'Symbol'])} ({rownames(g_GSE9750$y)})"))
+
 # custom sorting
 g_geneChoices <- g_geneChoices[sort(names(g_geneChoices))]
 g_geneChoices <- g_geneChoices[c(which(grepl('^A', names(g_geneChoices)))[1]:length(g_geneChoices),
