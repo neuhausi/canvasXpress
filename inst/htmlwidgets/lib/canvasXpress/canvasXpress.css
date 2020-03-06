@@ -2390,6 +2390,10 @@ input.CanvasXpressListItem {
     white-space: nowrap;
 }
 
+input[type=file] {
+    display: block;
+}
+
 div.CanvasXpressListItem {
     box-sizing: content-box;
     border: 1px solid rgb(51, 122, 183);
