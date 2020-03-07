@@ -16,7 +16,7 @@ shinyUI(fluidPage(
                    inputId  = "factorSel",
                    label    = "Primary Plot Factor:",
                    choices  = colnames(g_GSE9750$x),
-                   selected = colnames(g_GSE9750$x)[2],
+                   selected = colnames(g_GSE9750$x)[3],
                    multiple = FALSE))
     ),
     fluidRow(

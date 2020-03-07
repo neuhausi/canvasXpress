@@ -15,10 +15,10 @@ shinyServer(function(input, output, session) {
         if (!is.null(input$factorSel) && (input$factorSel != "") &&
             !is.null(input$levelSel)  && (input$levelSel != "")) {
 
-            design_matrix   <- model.matrix(as.formula(glue("~ {input$factorSel}")), g_GSE9750$x)
-            reference_level <- make.names(glue("{input$factorSel}{input$levelSel}"))
-
             try({
+                design_matrix   <- model.matrix(as.formula(glue("~ {input$factorSel}")), g_GSE9750$x)
+                reference_level <- make.names(glue("{input$factorSel}{input$levelSel}"))
+
                 eBayes_model     <- eBayes(lmFit(g_GSE9750$y, design_matrix))
                 top_ranked_genes <- suppressMessages(topTable(eBayes_model, number = nrow(g_GSE9750$y)))
                 fold_change      <- top_ranked_genes[colnames(top_ranked_genes) == reference_level]

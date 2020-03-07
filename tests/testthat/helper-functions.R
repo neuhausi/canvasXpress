@@ -1,5 +1,5 @@
 # helper functions for tests
-library(canvasXpress.data)
+# library(canvasXpress.data)
 library(htmlwidgets)
 
 if (interactive()) {
@@ -9,6 +9,11 @@ if (interactive()) {
     source("tests/cX-ui-functions.R")
 } else {
     source("../cX-ui-functions.R")
+}
+
+#NOTE: temporary until canvasXpress.data is on CRAN
+get_data <- function(file_name) {
+    system.file("extdata", file_name, package = "canvasXpress")
 }
 
 check_ui_test <- function(result){
