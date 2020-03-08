@@ -1,10 +1,12 @@
 ## Comments from Maintainer
 
-Updated CanvasXpress JS libraries to 25.6 to incorporate bug fixes
+Updated links to the assets referenced on the canvasxpress.org website to match the website rewrite.  Assets (datasets, urls, etc) had changed causing the package to ERROR on the CRAN status checks so this was urgently fixed.
 
-There is one NOTE on the package as we have just crept past the 5MB mark.  We will work to split the testing data off into its own package for the next release but we would really appreciate a short-term exception to the 5MB limit while we do that and test it.  
+Updated CanvasXpress JS libraries to 27.4 to incorporate bug fixes and new functionality.  Shiny examples were updated and bugs fixed and a small sample of a dataset was substituted into example2 while we wait for the full canvasXpress.data package to get posted to CRAN.
 
-There is one NOTE on the package checks from CRAN for OSX because the suggested Bioconductor limma package is unavailable on that CRAN build.  This is environmental, not a package issue, so cannot be fixed.
+However, we still exceed the 5MB limit on certain platforms (RHub builder gives this note) however it is urgent we post this update to resolve CRAN errors and cannot wait for the data package to be posted on CRAN as was initially intentioned.  We kindly ask for an exception to the 5MB limit while we are getting the canvasXpress.data package accepted to CRAN.
+
+There will be a NOTE on the package checks from CRAN for OSX because the suggested Bioconductor limma package is unavailable on that CRAN build.  This is environmental, not a package issue, so cannot be fixed.
 
 ---  
 
@@ -21,7 +23,7 @@ Travis-CI (ubuntu 16.04.6)
 
 * R 3.5.3
 * R 3.6.1
-* R devel (2019-12-18 r77599)
+* R devel (2020-03-06 r77913)
 
 WinBuilder
 
