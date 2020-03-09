@@ -39,6 +39,8 @@ test_that("cXdotplot9", {
 
 test_that("cXdotplot10", {
     check_ui_test(cXdotplot10())
+
+    warning('Data points appearing on the chart are too small, unless it is resized manually or refreshed')
 })
 
 test_that("cXdotplot11", {
