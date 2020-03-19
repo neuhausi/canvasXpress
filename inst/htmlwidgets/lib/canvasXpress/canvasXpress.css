@@ -326,14 +326,17 @@ div.cxc {
 .json-string {
     color: #a85302;
 }
+
 .json-number {
-  color: #4575b4;
+    color: #4575b4;
 }
+
 .json-boolean {
-  color: #666600;
+    color: #666600;
 }
+
 .json-null {
-  color: #4575b4;
+    color: #4575b4;
 }
 
 .json-number {
