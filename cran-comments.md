@@ -60,7 +60,7 @@ devtools::check()
 
 ```
 pdb <- available.packages()
-tools::package_dependencies(packages = c('periscope'),
+tools::package_dependencies(packages = c('canvasXpress'),
                             db = pdb, reverse = TRUE)
                             
 $canvasXpress  

@@ -15,8 +15,6 @@ test_that("cXradar3", {
 
 test_that("cXradar4", {
     check_ui_test(cXradar4())
-
-    warning('Hover over any point - highlights middle circle point')
 })
 
 test_that("cXradar5", {

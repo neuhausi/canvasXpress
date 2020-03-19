@@ -89,7 +89,6 @@ test_that("boxplot legendposition", {
         )
         check_ui_test(result)
     }
-    warning("Legend positions top and bottom are not working")
 })
 
 test_that("boxplot (segregated) legendposition", {
@@ -116,7 +115,6 @@ test_that("boxplot (segregated) legendposition", {
         )
         check_ui_test(result)
     }
-    warning("Legend positions top and bottom are not working")
 })
 
 test_that("Scatterplot matrix legendposition", {
