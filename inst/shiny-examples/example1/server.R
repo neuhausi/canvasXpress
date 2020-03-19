@@ -1,18 +1,42 @@
 library(shiny)
-library(htmlwidgets)
 library(canvasXpress)
+library(dplyr)
+library(glue)
+
 
 shinyServer(function(input, output, session) {
-      
-      # Combine the selected variables into a new data frame
-      selectedData <- reactive({
-            iris[, c(input$xAxis, input$yAxis)]
-          })
-      
-      output$plot <- renderCanvasXpress({
-            smpAnnot <- as.matrix(iris[,5])
-            colnames(smpAnnot) <- "Species"
-            canvasXpress(selectedData(), graphType="Scatter2D", width=500, height=500, title="Iris Data")
-          })
-      
+
+    selectedData <- reactive({
+        dat <- NULL
+        if (!is.null(input$axisXSel) && (input$axisXSel != "") &&
+                !is.null(input$axisYSel) && (input$axisYSel != "")) {
+            dat <- iris %>% select(input$axisXSel, input$axisYSel)
+        }
+
+        dat
     })
+
+    output$plot <- renderCanvasXpress({
+        dat <- selectedData()
+        cxplot <- NULL
+
+        if (!is.null(dat)) {
+            cxplot <- canvasXpress(
+                data               = dat,
+                varAnnot           = iris,
+                graphType          = "Scatter2D",
+                title              = glue("{input$axisYSel} vs {input$axisXSel}"),
+                zoomDisable        = TRUE,
+                xAxisMinorTicks    = FALSE,
+                yAxisMinorTicks    = FALSE,
+                transparency       = 0.8,
+                selectedDataPoints = input$rowIndexCx,
+                colorBy            = input$colorBySel,
+                shapeBy            = input$shapeBySel
+            )
+        }
+
+        cxplot
+    })
+
+})

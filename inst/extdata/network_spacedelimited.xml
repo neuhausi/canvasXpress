@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pathway SYSTEM "https://www.kegg.jp/kegg/xml/KGML_v0.7.2_.dtd">
-<pathway name="path:hsa05222" org="hsa" number="05222" title="Small cell lung cancer" image="http://canvasxpress.org/debug/hsa05222.png" link="https://www.kegg.jp/kegg-bin/show_pathway?hsa05222">
+<pathway name="path:hsa05222" org="hsa" number="05222" title="Small cell lung cancer" image="http://canvasxpress.org/assets/images/hsa05222.png" link="https://www.kegg.jp/kegg-bin/show_pathway?hsa05222">
     <entry id="1" name="path:hsa04115" type="map" link="https://www.kegg.jp/dbget-bin/www_bget?hsa04115">
         <graphics name="p53 signaling pathway" fgcolor="#000000" bgcolor="#FFFFFF" type="roundrectangle" x="626" y="176" width="102" height="34" />
     </entry>

@@ -339,6 +339,18 @@ div.cxc {
     color: #4575b4;
 }
 
+.json-number {
+    color: #4575b4;
+}
+
+.json-boolean {
+    color: #666600;
+}
+
+.json-null {
+    color: #4575b4;
+}
+
 div.CanvasXpressCode {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
@@ -2361,9 +2373,8 @@ ul.CanvasXpressList {
     cursor: default;
     list-style: none;
     margin: 0px;
-    overflow: auto;
+    overflow: hidden;
     padding: 2px;
-    height: calc(100% - 100px);
 }
 
 li.CanvasXpressListItemSep {
@@ -2967,19 +2978,6 @@ canvas.CanvasXpress::selection {
     color: rgb(0, 0, 0);
 }
 
-div.CanvasXpressPlay {
-  background-color: rgba(0, 0, 0, 0.4);
-  background-image: url(/assets/images/play.png);
-  background-position-x: 50%;
-  background-position-y: center;
-  background-size: 25%;
-  background-repeat: no-repeat;
-  position: absolute;
-}
-
-div.CanvasXpressPlay:hover {
-  background-color: rgba(0, 0, 0, 0);
-}
 
 /*
  * full-screen-warning-container
