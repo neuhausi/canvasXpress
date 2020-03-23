@@ -42,7 +42,7 @@ RHub
 ```
 devtools::check()  
 
-0 errors ✔ | 0 warnings ✔ | 1 note x
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 ```
 
 ---  
