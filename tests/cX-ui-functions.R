@@ -2075,6 +2075,166 @@ cXdotplot11 <- function() {
   )
 }
 
+cXfacet1 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutCollapse=FALSE,
+    layoutType="rows",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
+  )
+}
+
+cXfacet2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutCollapse=TRUE,
+    layoutType="rows",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
+  )
+}
+
+cXfacet3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutCollapse=FALSE,
+    layoutType="cols",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("segregateVariables", list("Annt2")))
+  )
+}
+
+cXfacet4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Bar",
+    layoutCollapse=FALSE,
+    layoutType="wrap",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
+  )
+}
+
+cXfacet5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-scentst-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-scentst-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    layoutCollapse=FALSE,
+    layoutType="cols",
+    legendBox=TRUE,
+    shapeBy="Age",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    title="Floral scent data set",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
+    yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
+    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+  )
+}
+
+cXfacet6 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-scentst-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-scentst-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    layoutCollapse=FALSE,
+    layoutType="rows",
+    legendBox=TRUE,
+    shapeBy="Age",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    title="Floral scent data set",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
+    yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
+    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+  )
+}
+
+cXfacet7 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-scentst-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-scentst-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    layoutCollapse=FALSE,
+    layoutType="wrap",
+    legendBox=TRUE,
+    shapeBy="Age",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    title="Floral scent data set",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
+    yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
+    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+  )
+}
+
+cXfacet8 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-scentst-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-scentst-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    layoutCollapse=TRUE,
+    layoutType="cols",
+    legendBox=TRUE,
+    shapeBy="Age",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    title="Floral scent data set",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
+    yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
+    afterRender=list(list("segregateVariables", list("Opinion")))
+  )
+}
+
 cXgantt1 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-gantt-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3574,6 +3734,142 @@ cXradar8 <- function() {
     title="Radar with Overlays",
     transitionStep=50,
     transitionTime=1500
+  )
+}
+
+cXsplom1 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix=TRUE,
+    scatterPlotMatrixType="both",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix=TRUE,
+    scatterPlotMatrixType="upper",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix=TRUE,
+    scatterPlotMatrixType="lower",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix="Species",
+    scatterPlotMatrixType="correlation",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix="Species",
+    scatterPlotMatrixType="correlationHistogram",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom6 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix="Species",
+    scatterPlotMatrixType="correlationDensity",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom7 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix="Species",
+    scatterPlotMatrixType="all",
+    theme="CanvasXpress"
+  )
+}
+
+cXsplom8 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-irist-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    broadcast=TRUE,
+    colorBy="Species",
+    graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    scatterPlotMatrix=TRUE,
+    scatterPlotMatrixType="first",
+    theme="CanvasXpress"
   )
 }
 

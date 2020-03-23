@@ -16,11 +16,8 @@ if (interactive()) {
 
     writeLines(pkgFile$new, "tests/cX-ui-functions.R")
 
-    #NOTE: temporary message change until canvasXpress.data is on CRAN
-    message("Package must be rebuilt and reloaded in order to realize changes to the tests/cX-ui-functions.R.")
-
-    # message("Package must be rebuilt and reloaded in order to realize changes to the tests/cX-ui-functions.R.",
-    #         "If new or changed datasets are required you must also update the canvasxpress.data package similarly.")
+    message("Package must be rebuilt and reloaded in order to realize changes to the tests/cX-ui-functions.R.",
+            "If new or changed datasets are required you must also update the canvasxpress.data package similarly.")
 } else {
     message("Setup not run - only can be run interactively")
 }
