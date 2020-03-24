@@ -5,7 +5,7 @@ output:
         self_contained: no
 ---
 
-<a href="http://www.canvasxpress.org"><img src="vignettes/images/hexagon.png" align="left" width="175"></a>
+<a href="https://canvasxpress.org"><img src="vignettes/images/hexagon.png" align="left" width="175"></a>
 
 <!-- Badge Location -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
@@ -16,8 +16,8 @@ output:
 <!-- End Badges -->
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
-at Bristol-Myers Squibb. It supports a large number of [visualizations ](http://www.canvasxpress.org/examples.html) to display scientific and non-scientific
-data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](http://www.canvasxpress.org/docs/interface.html) to explore complex data sets, a sophisticated and unique mechanism to keep track of all user customization for [Reproducible Research ](http://www.canvasxpress.org/docs/audit.html) purposes, as well as an 'out of the box'
+at Bristol-Myers Squibb. It supports a large number of [visualizations ](https://canvasxpress.org/examples.html) to display scientific and non-scientific
+data. ***canvasXpress*** also includes a simple and unobtrusive [user interface](https://canvasxpress.org/docs/interface.html) to explore complex data sets, a sophisticated and unique mechanism to keep track of all user customization for [Reproducible Research ](https://canvasxpress.org/docs/audit.html) purposes, as well as an 'out of the box'
 broadcasting capability to synchronize selected data points in all ***canvasXpress*** plots in a page. Data can
 be easily sorted, grouped, transposed, transformed or clustered dynamically. The fully customizable mouse events
 as well as the zooming, panning and drag-and-drop capabilities are features that make this library unique in its
@@ -41,14 +41,14 @@ devtools::install_github('neuhausi/canvasXpress')
 These are included to get you started on basic charting - there are many more
 examples (including complex and compound visualizations) with R code available 
 in the Examples section of the main website at 
-[http://canvasxpress.org](http://canvasxpress.org)
+[https://canvasxpress.org](https://canvasxpress.org)
 
 #### Scatter 3D Plot
 
 ```r
-y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+z <- read.table("https://canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data      = y,
@@ -69,9 +69,9 @@ canvasXpress(data      = y,
 #### Scatter 2D Matrix Plot
 
 ```r
-y <- read.table("http://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z <- read.table("http://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+z <- read.table("https://canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data              = y,
@@ -87,9 +87,9 @@ canvasXpress(data              = y,
 #### Boxplot
 
 ```r
-y <- read.table("http://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x <- read.table("http://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
+x <- read.table("https://canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data                  = y,
@@ -112,17 +112,17 @@ canvasXpress(data                  = y,
 #### Heatmap (Multi-dimensional)
 
 ```r
-y  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", 
+y  <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y2 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", 
+y2 <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y3 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", 
+y3 <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y4 <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", 
+y4 <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep= "\t", 
+x  <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep= "\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z  <- read.table("http://www.canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
+z  <- read.table("https://canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = y4),
@@ -179,4 +179,4 @@ cxShinyExample(example = "example1")
 ```
 
 There is also a wealth of additional information including full API documentation 
-and extensive R and JavaScript examples at [http://www.canvasxpress.org](http://www.canvasxpress.org).
+and extensive R and JavaScript examples at [https://canvasxpress.org](https://canvasxpress.org).

@@ -179,4 +179,4 @@ canvasXpress(data                  = cxdata,
 
 Additional information and many examples with R code for the ***canvasXpress*** 
 library can be found at
-[http://canvasxpress.org](http://canvasxpress.org).
+[https://canvasxpress.org](https://canvasxpress.org).
