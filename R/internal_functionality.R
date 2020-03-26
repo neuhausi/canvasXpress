@@ -19,7 +19,7 @@ assertDataCorrectness <- function(data, graphType, config) {
     # Implement data in URL
 	if (is.character(data) && graphType != "Network") {
 		if (httr::http_error(data)) {
-			stop("Not a valid URL!")
+			warning("Unable to validate URL")
 		}
 	}
 	# for backwards compatibility we accept both data and vennData
