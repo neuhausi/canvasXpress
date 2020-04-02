@@ -36,3 +36,7 @@ test_that("cXmap8", {
 test_that("cXmap9", {
     check_ui_test(cXmap9())
 })
+
+test_that("cXmap10", {
+    check_ui_test(cXmap10())
+})

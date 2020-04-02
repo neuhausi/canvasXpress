@@ -157,4 +157,4 @@ cxShinyExample(example = "example1")
 ```
 
 There is also a wealth of additional information including full API documentation 
-and extensive R and JavaScript examples at [http://canvasxpress.org](http://canvasxpress.org).
+and extensive R and JavaScript examples at [https://www.canvasxpress.org](http://canvasxpress.org).

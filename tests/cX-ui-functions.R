@@ -3076,6 +3076,7 @@ cXmap1 <- function() {
     leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
     leafletId="countries",
     leafletLayer=TRUE,
+    leafletLayerTile="default",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3089,9 +3090,10 @@ cXmap2 <- function() {
     varAnnot=z,
     colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
+    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1),
     leafletId="countriesOrder",
     leafletLayer=FALSE,
+    legendPosition="top",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3108,6 +3110,8 @@ cXmap3 <- function() {
     leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
     leafletId="countriesOrderL",
     leafletLayer=TRUE,
+    leafletLayerTile="labels",
+    legendPosition="bottom",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3116,12 +3120,9 @@ cXmap4 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="variable",
     graphType="Map",
     leafletConfig=list(attributionControl=FALSE, center=list(38, -100), zoom=3),
     leafletId="states",
-    leafletLayer=TRUE,
-    showLegend=FALSE,
     topoJSON="https://www.canvasxpress.org/data/usa-states.json"
   )
 }
@@ -3135,6 +3136,8 @@ cXmap5 <- function() {
     leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
     leafletId="counties",
     leafletLayer=TRUE,
+    leafletLayerTile="open",
+    legendPosition="bottom",
     topoJSON="https://www.canvasxpress.org/data/usa-counties.json"
   )
 }
@@ -3148,6 +3151,7 @@ cXmap6 <- function() {
     leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
     leafletId="districts",
     leafletLayer=TRUE,
+    legendPosition="bottom",
     topoJSON="https://www.canvasxpress.org/data/usa-districts.json"
   )
 }
@@ -3168,7 +3172,6 @@ cXmap8 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="variable",
     graphType="Map",
     leafletId="italy",
     topoJSON="https://www.canvasxpress.org/data/italy.geo.json"
@@ -3179,10 +3182,30 @@ cXmap9 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="variable",
+    background="black",
     graphType="Map",
-    leafletId="italy",
+    leafletId="spain",
+    mapColor="black",
+    mapOutlineColor="white",
     topoJSON="https://www.canvasxpress.org/data/spain.geo.json"
+  )
+}
+
+cXmap10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-codiv-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-codiv-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Cases",
+    graphType="Map",
+    leafletId="countries",
+    leafletLayer=FALSE,
+    legendPosition="top",
+    motionBy="Date",
+    title="Geographic Distribution for COVID-19",
+    topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
 
@@ -3467,11 +3490,11 @@ cXoncoprint3 <- function() {
 
 cXoncoprint4 <- function() {
   library(canvasXpress)
-  y=read.table(get_data("cX-LungCancinoma-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table(get_data("cX-LungCancinoma-dat2.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table(get_data("cX-LungCancinoma-dat3.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table(get_data("cX-LungCancinoma-dat4.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table(get_data("cX-LungCancinoma-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     varAnnot=z,
@@ -4367,10 +4390,10 @@ cXscatter3d6 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorBy="Annt2",
+    colorBy="Annt1",
     graphType="Scatter3D",
-    shapeBy="Annt3",
-    sizeBy="Sample4",
+    shapeBy="Annt2",
+    sizeBy="Annt3",
     theme="CanvasXpress",
     xAxis=list("Sample1"),
     yAxis=list("Sample2"),
