@@ -14,5 +14,9 @@ test_that("cXoncoprint3", {
 })
 
 test_that("cXoncoprint4", {
-    check_ui_test(cXoncoprint4())
+    if (interactive()) {
+        check_ui_test(cXoncoprint4())
+    } else {
+        message("Non-interactive oncoprint-4 test skipped")
+    }
 })
