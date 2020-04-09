@@ -8,7 +8,7 @@
 #'
 #'
 #' @section More Information:
-#' \url{http://canvasxpress.org}
+#' \url{https://www.canvasxpress.org}
 #'
 #' \code{browseVignettes(package = "canvasXpress")}
 #'

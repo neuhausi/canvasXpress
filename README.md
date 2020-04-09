@@ -41,7 +41,7 @@ devtools::install_github('neuhausi/canvasXpress')
 These are included to get you started on basic charting - there are many more
 examples (including complex and compound visualizations) with R code available 
 in the Examples section of the main website at 
-[http://canvasxpress.org](http://canvasxpress.org)
+[https://www.canvasxpress.org](https://www.canvasxpress.org)
 
 #### Scatter 3D Plot
 
