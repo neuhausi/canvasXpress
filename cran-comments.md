@@ -1,13 +1,10 @@
 ## Comments from Maintainer
 
-Updated links to the assets referenced on the canvasxpress.org website to match the website rewrite.  Assets (datasets, urls, etc) had changed causing the package to ERROR on the CRAN status checks so this was urgently fixed.
+This is a release to resolve the ERRORS on CRAN:
 
-Updated CanvasXpress JS libraries to 27.6 to incorporate bug fixes and new functionality.  Shiny examples were updated and bugs fixed and a small sample of a dataset was substituted into example2 while we wait for the full canvasXpress.data package to get posted to CRAN.
+We are disabling a specific small subset of automated tests that rely on internet resources - they seem to not be able to resolve resources located on the web at  https://www.canvasxpress.org.  The https://www.canvasxpress.org url is valid, the certificate matches, and the site is up and accessible, but we are seeing enough of a slowdown in the internet in general that this causes these tests to fail and is now causing ERRORs on the CRAN status checks.  These specific tests (~10) will still run when tests are run interactively.
 
-However, we still exceed the 5MB limit on certain platforms (RHub builder gives this note) however it is urgent we post this update to resolve CRAN errors and cannot wait for the data package to be posted on CRAN as was initially intentioned.  We kindly ask for an exception to the 5MB limit while we are getting the canvasXpress.data package accepted to CRAN.
-
-There will be a NOTE on the package checks from CRAN for OSX because the suggested Bioconductor limma package is unavailable on that CRAN build.  This is environmental, not a package issue, so cannot be fixed.
-
+We still exceed the 5MB limit on certain platforms (RHub builder gives this note) however it is urgent we post this update to resolve CRAN errors.  We kindly ask for an exception to the 5MB limit while we are getting the next full release ready for CRAN.
 ---  
 
 ## Test environments
@@ -23,7 +20,7 @@ Travis-CI (ubuntu 16.04.6)
 
 * R 3.5.3
 * R 3.6.1
-* R devel (2020-03-13 r77948)
+* R devel (2020-04-09 r78184)
 
 WinBuilder
 
@@ -48,7 +45,7 @@ RHub
 ```
 devtools::check()  
 
-0 errors ✔ | 0 warnings ✔ | 1 note x
+0 errors ✓ | 0 warnings ✓ | 1 note x
 ```
 
 ---  
@@ -60,9 +57,10 @@ devtools::check()
 
 ```
 pdb <- available.packages()
-tools::package_dependencies(packages = c('periscope'),
+tools::package_dependencies(packages = c('canvasxpress'),
                             db = pdb, reverse = TRUE)
                             
 $canvasXpress  
-character(0)  
+NULL 
 ```
+
