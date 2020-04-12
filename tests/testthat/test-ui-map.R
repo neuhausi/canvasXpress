@@ -44,4 +44,3 @@ if (interactive()) {
 } else {
     message("Non-interactive ui-map tests skipped")
 }
-
