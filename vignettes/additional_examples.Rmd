@@ -60,7 +60,7 @@ When utilizing the canvasXpress functions from R the following mappings are made
 Examples here use data manipulated with the tidyverse related packages (dplyr, tibble, etc).  This is just one way to manipulate data into the correct format to plot in CanvasXpress.
 
 
-A variety of commonly-used canvasXpress options are used below to provide examples of how to position, resize and configure various aspects of the charts from the call to the CanvasXpress function in R.  This includes items such as the Axis Titles, Legends, Colors, etc.  All of these optional parameters are documented on the main CanvasXpress site at https://www.canvasXpress.org.
+A variety of commonly-used canvasXpress options are used below to provide examples of how to position, resize and configure various aspects of the charts from the call to the CanvasXpress function in R.  This includes items such as the Axis Titles, Legends, Colors, etc.  All of these optional parameters are documented on the main CanvasXpress site at https://www.canvasxpress.org.
 
 ```r
 library(canvasXpress)
@@ -179,4 +179,4 @@ canvasXpress(data                  = cxdata,
 
 Additional information and many examples with R code for the ***canvasXpress*** 
 library can be found at
-[https://canvasxpress.org](https://canvasxpress.org).
+[https://www.canvasxpress.org](https://www.canvasxpress.org).

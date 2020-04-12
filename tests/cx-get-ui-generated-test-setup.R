@@ -1,7 +1,7 @@
 if (interactive()) {
     library(dplyr)
 
-    webFile <- readLines(con = "https://canvasxpress.org/data/cX-function.R")
+    webFile <- readLines(con = "https://www.canvasxpress.org/data/cX-function.R")
 
     # save a localized version
     pkgFile <- data.frame(orig = webFile, stringsAsFactors = F) %>%

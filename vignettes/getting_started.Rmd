@@ -13,7 +13,7 @@ vignette: >
 ---
 ## Overview
 
-<a href="https://canvasxpress.org"><img src="images/hexagon.png" align="left" width="175"></a>
+<a href="https://www.canvasxpress.org"><img src="images/hexagon.png" align="left" width="175"></a>
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations](https://canvasxpress.org/examples.html) to display scientific and non-scientific
@@ -157,4 +157,4 @@ cxShinyExample(example = "example1")
 ```
 
 There is also a wealth of additional information including full API documentation 
-and extensive R and JavaScript examples at [https://www.canvasxpress.org](http://canvasxpress.org).
+and extensive R and JavaScript examples at [https://www.canvasxpress.org](https://www.canvasxpress.org).

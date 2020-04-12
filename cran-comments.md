@@ -17,7 +17,7 @@ Travis-CI (ubuntu 16.04.6)
 
 * R 3.5.3
 * R 3.6.1
-* R devel (2020-03-13 r77948)
+* R devel (2020-04-09 r78184)
 
 WinBuilder
 
@@ -58,5 +58,6 @@ tools::package_dependencies(packages = c('canvasXpress'),
                             db = pdb, reverse = TRUE)
                             
 $canvasXpress  
-character(0)  
+NULL 
 ```
+

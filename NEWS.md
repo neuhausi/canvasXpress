@@ -2,9 +2,12 @@
 
 This file details changes to the canvasXpress R package only - for detailed 
 information on changes to the stand-alone JavaScript CanvasXpress library see the 
-<a href="https://canvasxpress.org"> main website</a>.
+<a href="https://www.canvasxpress.org"> main website</a>.
 
 ---
+## v1.27.6-1
+* For tests relying on internet resources they will only run interactively
+
 ## v1.27.6
 * Updated CanvasXpress JavaScript and CSS libraries to v27.6
 * Updated tests and documentation references to match website rewrite and url changes
