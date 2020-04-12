@@ -18,7 +18,7 @@ test_that("cXscatter2d3", {
 test_that("cXscatter2d4", {
     check_ui_test(cXscatter2d4())
 
-    message("Trial legend may not be visible if plot is not resized due to space allotted - working as designed")
+    message("Some legends boxes may not be visible if plot is not resized due to space allotted - working as designed")
 })
 
 test_that("cXscatter2d5", {
@@ -32,7 +32,7 @@ test_that("cXscatter2d6", {
 test_that("cXscatter2d7", {
     check_ui_test(cXscatter2d7())
 
-    message("Trial legend may not be visible if plot is not resized due to space allotted - working as designed")
+    message("Some legends boxes may not be visible if plot is not resized due to space allotted - working as designed")
 })
 
 test_that("cXscatter2d8", {
