@@ -1602,6 +1602,7 @@ cXdensity8 <- function() {
     graphType="Scatter2D",
     hideHistogram=FALSE,
     histogramBins=20,
+    histogramStat="count",
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
@@ -2071,6 +2072,7 @@ cXdotplot11 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("dataset"),
+    histogramBins=150,
     jitter=FALSE
   )
 }
@@ -4024,6 +4026,7 @@ cXscatter2d4 <- function() {
     varAnnot=z,
     citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
     graphType="Scatter2D",
+    histogramStat="count",
     legendBox=TRUE,
     setMaxX=100,
     setMaxY=150,
@@ -4088,6 +4091,7 @@ cXscatter2d7 <- function() {
     citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
     colorScheme="White",
     graphType="Scatter2D",
+    histogramStat="count",
     legendBox=TRUE,
     setMaxX=100,
     setMaxY=150,
@@ -4813,18 +4817,234 @@ cXtcga1 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
+    binned=TRUE,
     boxplotWhiskersType="single",
     colorBy="dataset",
     colorScheme="JCO",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dataset"),
+    histogramBins=150,
     layoutTopology="1X3",
     legendColumns=3,
     legendPosition="top",
+    legendScaleFontFactor=1.5,
     segregateVariablesBy=list("variable"),
-    showSampleNames=FALSE,
+    showBoxplotOriginalData=TRUE,
+    smpLabelRotate=90,
     useOpenShapes=TRUE
+  )
+}
+
+cXtcga2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcga-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-exprtcga-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotWhiskersType="single",
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dataset"),
+    histogramBins=150,
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    segregateVariablesBy=list("variable"),
+    smpLabelRotate=90,
+    useOpenShapes=TRUE
+  )
+}
+
+cXtcga3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcga-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-exprtcga-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotWhiskersType="single",
+    colorBy="variable",
+    colorScheme="JCO",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dataset"),
+    histogramBins=150,
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    smpLabelRotate=90,
+    useOpenShapes=TRUE
+  )
+}
+
+cXtcga4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcga-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-exprtcga-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotWhiskersType="single",
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dataset"),
+    histogramBins=150,
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    segregateVariablesBy=list("variable"),
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    useOpenShapes=TRUE
+  )
+}
+
+cXtcga5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcga-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-exprtcga-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotWhiskersType="single",
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("dataset"),
+    histogramBins=150,
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    segregateVariablesBy=list("variable"),
+    showViolinBoxplot=TRUE,
+    smpLabelRotate=90,
+    useOpenShapes=TRUE
+  )
+}
+
+cXtcga6 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcgat-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-exprtcgat-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    colorScheme="JCO",
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=15,
+    histogramStagger=TRUE,
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    showFilledHistogramDensity=FALSE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=FALSE,
+    xAxisRugShow=FALSE,
+    xAxisTitle="Expression",
+    yAxisTitle="Density"
+  )
+}
+
+cXtcga7 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcgat-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-exprtcgat-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=15,
+    histogramStagger=TRUE,
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    segregateVariablesBy=list("dataset"),
+    showFilledHistogramDensity=FALSE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=FALSE,
+    xAxisRugShow=FALSE,
+    xAxisTitle="Expression",
+    yAxisTitle="Density"
+  )
+}
+
+cXtcga8 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcgat-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-exprtcgat-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    asHistogram=TRUE,
+    colorBy="dataset",
+    colorKey=list(dataset=list(BRCA="#0073c2", LUSC="#efc000", OV="#868686")),
+    colorScheme="JCO",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=15,
+    histogramStagger=TRUE,
+    layoutTopology="1X3",
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=1.5,
+    segregateSamplesBy=list("sample"),
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    xAxisRugShow=TRUE,
+    xAxisTitle="Expression",
+    yAxisTitle="Density"
+  )
+}
+
+cXtcga9 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcgat-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-exprtcgat-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphType="Scatter2D",
+    layoutTopology="1X3",
+    xAxisTitle="",
+    yAxisTitle="",
+    afterRender=list(list("addQQPlot"))
+  )
+}
+
+cXtcga10 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-exprtcgat-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-exprtcgat-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="dataset",
+    colorScheme="JCO",
+    graphType="Scatter2D",
+    layoutTopology="1X3",
+    xAxisTitle="Expression",
+    yAxisTitle="F(Expression)",
+    afterRender=list(list("addCDFPlot"))
   )
 }
 
