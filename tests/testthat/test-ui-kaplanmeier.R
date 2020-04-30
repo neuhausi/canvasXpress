@@ -20,6 +20,6 @@ test_that("cXkaplanmeier4", {
 test_that("cXkaplanmeier5", {
     check_ui_test(cXkaplanmeier5())
 
-    warning("Fewer pie charts displayed than expected, does not match web example")
+    message('Fewer pie charts are displayed at a time than exist, the ones chosen to display differ between the web and R - working as expected')
     warning("Colors for drug are different, two pieces are green, but one should be orange")
 })
