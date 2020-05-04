@@ -57,7 +57,7 @@ test_that("boxplot ColorScheme", {
                            groupingFactors          = list("dose"),
                            smpTitleScaleFontFactor  = 1.8,
                            stringSampleFactors      = list("dose"),
-                           title                    = "Boxplot - ColorScheme: Set1"
+                           title                    = "Boxplot - ColorScheme: Set2"
     )
     check_ui_test(result)
 })
