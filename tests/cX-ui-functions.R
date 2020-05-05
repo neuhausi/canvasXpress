@@ -1,20 +1,18 @@
 cXarea1 <- function() {
   library(canvasXpress)
-  y=read.table(get_data("cX-area3-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(get_data("cX-area4-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    areaType="stacked",
-    colorScheme="ColorSpectrum",
-    colorSpectrum=list("blue", "cyan", "yellow", "red"),
+    colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Area",
-    lineType="spline",
+    lineType="rect",
     objectBorderColor=FALSE,
-    objectColorTransparency=0.3,
     showLegend=FALSE,
-    showSampleNames=FALSE,
+    showSampleNames=TRUE,
     showTransition=FALSE,
-    title="Steam Plot"
+    smpLabelRotate=90,
+    smpTitle="time"
   )
 }
 
@@ -28,7 +26,7 @@ cXarea2 <- function() {
     legendPosition="right",
     lineType="spline",
     objectBorderColor=FALSE,
-    objectColorTransparency=0.3,
+    objectColorTransparency=0.7,
     showTransition=FALSE,
     smpLabelInterval=20,
     smpLabelRotate=45,
@@ -42,6 +40,27 @@ cXarea2 <- function() {
 }
 
 cXarea3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-area-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    colorScheme="Blues",
+    graphOrientation="vertical",
+    graphType="Area",
+    legendPosition="right",
+    lineType="spline",
+    smpLabelInterval=20,
+    smpLabelRotate=45,
+    smpTitle="Year",
+    subtitle="gcookbook - uspopage",
+    title="Age distribution of population in the United State",
+    xAxis2Show=FALSE,
+    xAxisTitle="Number of People (1000's)"
+  )
+}
+
+cXarea4 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-area-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -63,48 +82,23 @@ cXarea3 <- function() {
   )
 }
 
-cXarea4 <- function() {
+cXarea5 <- function() {
   library(canvasXpress)
-  y=read.table(get_data("cX-area-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table(get_data("cX-area3-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
-    colorScheme="Blues",
+    colorScheme="ColorSpectrum",
+    colorSpectrum=list("blue", "cyan", "yellow", "red"),
     graphOrientation="vertical",
     graphType="Area",
-    legendPosition="right",
     lineType="spline",
-    smpLabelInterval=20,
-    smpLabelRotate=45,
-    smpTitle="Year",
-    subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
-    xAxis2Show=FALSE,
-    xAxisTitle="Number of People (1000's)"
-  )
-}
-
-cXarea5 <- function() {
-  library(canvasXpress)
-  y=read.table(get_data("cX-area-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    graphOrientation="vertical",
-    graphType="Area",
-    legendPosition="right",
-    lineType="spline",
-    smpLabelInterval=20,
-    smpLabelRotate=45,
-    smpTitle="Year",
-    subtitle="gcookbook - uspopage",
-    theme="CanvasXpress",
-    title="Age distribution of population in the United State",
-    transformAxis="samples",
-    transformType="zscore",
-    transformedData=TRUE,
-    transparency=0.5,
-    xAxis2Show=FALSE,
-    xAxisTitle="Normalized Scores of Number of People"
+    objectBorderColor=FALSE,
+    objectColorTransparency=0.3,
+    showLegend=FALSE,
+    showSampleNames=FALSE,
+    showTransition=FALSE,
+    title="Steam Plot"
   )
 }
 
