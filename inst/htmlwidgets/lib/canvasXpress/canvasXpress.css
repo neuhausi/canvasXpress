@@ -1297,6 +1297,10 @@ div.CanvasXpressDataTableVertical {
     -o-user-select: none;
 }
 
+img.CanvasXpressDataTableVertical {
+  max-height: unset !important;
+}
+
 div.CanvasXpressDataTableHorizontal {
     box-sizing: content-box;
     background-color: rgba(255, 255, 255, 0.95);
@@ -1311,6 +1315,10 @@ div.CanvasXpressDataTableHorizontal {
     -khtml-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
+}
+
+img.CanvasXpressDataTableHorizontal {
+  max-width: unset !important;
 }
 
 div.CanvasXpressDataTableResizer {
