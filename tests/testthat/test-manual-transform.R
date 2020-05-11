@@ -32,8 +32,3 @@ test_that("line manualTransformations", {
 
     check_ui_test(cXline2())
 })
-
-test_that("area manualTransformations", {
-
-    check_ui_test(cXarea1())
-})
