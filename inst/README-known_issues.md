@@ -43,3 +43,5 @@
 * **Network Chart Minimum Size** - network charts have a minimum dimension which may cause some overhang into neighboring html spaces.  To workaround this one solution is to add a table around the chart.
 
 * **Numbers in Scientific Notation** - Some tooltips have numbers represented in the scientific notation. This is not specific to any chart and occurs mainly due to JavaScript converting large numbers to scientific notation. 
+
+* **Faceted Plots** - the legend for facets will not be shown if it can be identified by the faceting of the chart.
