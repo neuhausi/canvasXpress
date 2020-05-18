@@ -33,3 +33,19 @@ test_that("cXdensity8", {
     check_ui_test(cXdensity8())
     warning("Names are different, web example uses var, not V")
 })
+
+test_that("cXdensity9", {
+    check_ui_test(cXdensity9())
+})
+
+test_that("cXdensity10", {
+    check_ui_test(cXdensity10())
+})
+
+test_that("cXdensity11", {
+    check_ui_test(cXdensity11())
+})
+
+test_that("cXdensity12", {
+    check_ui_test(cXdensity12())
+})
