@@ -34,7 +34,6 @@ HTMLWidgets.widget({
             },
             getImage: function() {
                 cx = CanvasXpress.getObject(c.id);
-                console.log(cx);
                 if (cx && cx.meta && cx.meta.base64) {
                     return cx.meta.base64;
                 } else {
