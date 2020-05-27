@@ -31,6 +31,15 @@ HTMLWidgets.widget({
                         cx.setDimensions(width, height);
                     }
                 }
+            },
+            getImage: function() {
+                cx = CanvasXpress.getObject(c.id);
+                console.log(cx);
+                if (cx && cx.meta && cx.meta.base64) {
+                    return cx.meta.base64;
+                } else {
+                    return false;
+                }
             }
         };
     }
