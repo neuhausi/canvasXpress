@@ -2242,7 +2242,7 @@ cXfacet5 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -2263,7 +2263,7 @@ cXfacet6 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -2284,7 +2284,7 @@ cXfacet7 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion", "Sex")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -2749,7 +2749,7 @@ cXkaplanmeier1 <- function() {
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list('Time','Censor')))
+    afterRender=list(list("addKaplanMeierCurve", list(list('Time','Censor'))))
   )
 }
 
@@ -2764,7 +2764,7 @@ cXkaplanmeier2 <- function() {
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list('Time','Censor')))
+    afterRender=list(list("addKaplanMeierCurve", list(list('Time','Censor'))))
   )
 }
 
@@ -2780,7 +2780,7 @@ cXkaplanmeier3 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    afterRender=list(list("addKaplanMeierCurve", list('Survival','Survival-Censor')))
+    afterRender=list(list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))))
   )
 }
 
@@ -2796,7 +2796,7 @@ cXkaplanmeier4 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("addKaplanMeierCurve", list('Survival2','Survival2-Censor')))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("addKaplanMeierCurve", list(list('Survival2','Survival2-Censor'))))
   )
 }
 
@@ -2812,7 +2812,7 @@ cXkaplanmeier5 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
   )
 }
 
@@ -3025,7 +3025,7 @@ cXlayout12 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list('Survival','Survival-Censor')), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
   )
 }
 
@@ -4228,7 +4228,7 @@ cXscatter2d9 <- function() {
     xAxisTickColor="rgb(255,255,255)",
     yAxis=list("Temperature"),
     yAxisTickColor="rgb(255,255,255)",
-    afterRender=list(list("addRegressionLine", list(FALSE, 'red')))
+    afterRender=list(list("addRegressionLine", list(list(FALSE, 'red'))))
   )
 }
 
