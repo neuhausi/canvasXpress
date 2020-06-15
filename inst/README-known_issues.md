@@ -45,3 +45,5 @@
 * **Numbers in Scientific Notation** - Some tooltips have numbers represented in the scientific notation. This is not specific to any chart and occurs mainly due to JavaScript converting large numbers to scientific notation. 
 
 * **Faceted Plots** - the legend for facets will not be shown if it can be identified by the faceting of the chart.
+
+* **Viewing Metadata** - when viewing metadata the segregation of plots will be lost both in the metadata view of the chart (top left) as well as on the original chart when returning from viewing the metadata. 
