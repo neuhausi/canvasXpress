@@ -1411,10 +1411,67 @@ cXcontour1 <- function() {
     data=y,
     graphType="Heatmap",
     heatmapCellBox=FALSE,
+    showContourLevel=TRUE,
     showSampleNames=FALSE,
     showVariableNames=FALSE,
     subtitle="datasets - volcano",
     title="Topographic Information on Auckland's Maunga Whau Volcano",
+    afterRender=list(list("createContour"))
+  )
+}
+
+cXcontour2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-contour-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    contourType="color",
+    graphType="Heatmap",
+    heatmapCellBox=FALSE,
+    showSampleNames=FALSE,
+    showVariableNames=FALSE,
+    title="Basic Contour Plot",
+    afterRender=list(list("createContour"))
+  )
+}
+
+cXcontour3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-contour2-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="ScatterBubble2D",
+    showContourLevel=TRUE,
+    title="Basic Contour Plot",
+    afterRender=list(list("createContour"))
+  )
+}
+
+cXcontour4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-contour3-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    contourType="color",
+    graphType="ScatterBubble2D",
+    title="Custom Contour Plot",
+    afterRender=list(list("createContour"))
+  )
+}
+
+cXcontour5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-contour4-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    contourLevelStep=2,
+    contourType="color",
+    graphType="Heatmap",
+    heatmapCellBox=FALSE,
+    lineType="spline",
+    showContourLevel=FALSE,
+    showSampleNames=FALSE,
+    showVariableNames=FALSE,
     afterRender=list(list("createContour"))
   )
 }
