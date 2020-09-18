@@ -73,7 +73,7 @@ test_that("stackedbar custom colors", {
         graphType        = "Stacked",
         colorBy          = "Category",
         title            = "Custom colors - should be gray/white/blue/red",
-        colors           = list("gray", "white", "blue", "#FFD703")
+        colors           = list("gray", "white", "blue", "red")
     )
     check_ui_test(result)
 })

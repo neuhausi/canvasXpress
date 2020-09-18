@@ -1874,7 +1874,6 @@ cXdotplot1 <- function() {
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Dotplot",
-    legendColumns=2,
     lineType="spline",
     smpLabelRotate=45,
     smpOverlays=list("Factor1", "Factor2", "Factor3"),
