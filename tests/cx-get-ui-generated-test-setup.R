@@ -3,7 +3,10 @@ if (interactive()) {
 
     webFile <- readLines(con = "https://www.canvasxpress.org/data/cX-function.R")
 
-    # save a localized version
+    # save a raw version in the package - historical and this way it is versioned properly
+    writeLines(webFile, "inst/ui-examples/cX-function.R")
+
+    # save a localized version for testing
     pkgFile <- data.frame(orig = webFile, stringsAsFactors = F) %>%
         mutate(isfileline   = grepl('read.table\\("http.*canvasxpress.org', orig),
                #exclude specific larger files from url conversion - must match #canvasxpress.data file filter
