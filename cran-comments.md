@@ -1,6 +1,10 @@
 ## Comments from Maintainer
 
-
+* Update to underlying JavaScript Libraries  
+* Moved data to canvasXpress.data package to reduce package size < 5Mb and resolve NOTEs
+* Minor update to test organization to support automated testing  
+* Tests updated  
+* Documentation updated  
 
 ---  
 
@@ -9,26 +13,24 @@
 
 RStudio Server Pro (ubuntu 18.04.2)  
 
-* R 3.4.4  
 * R 3.5.3  
-* R 3.6.1
+* R 3.6.3
+* R 4.0.1
 
 Travis-CI (ubuntu 16.04.6)
 
-* R 3.5.3
-* R 3.6.1
-* R devel (2020-04-09 r78184)
+* R 3.6.3
+* R 4.0.2
+* R devel (2020-09-27 r79266)
 
 WinBuilder
 
 * devtools::check_win_devel()  
 * devtools::check_win_release()  
-* devtools::check_win_oldrelease()  
-
 
 RHub
 
-* devtools::check_rhub(platforms = c('fedora-clang-devel', 'ubuntu-gcc-release'), interactive = F)   
+* devtools::check_rhub(platforms = c('fedora-clang-devel', 'ubuntu-gcc-release'))   
   * Fedora Linux, R-devel, clang, gfortran  
   * Ubuntu Linux 16.04 LTS, R-release, GCC  
 * rhub::check_on_windows(check_args = c('_R_CHECK_FORCE_SUGGESTS_'='FALSE'), show_status = F)  
