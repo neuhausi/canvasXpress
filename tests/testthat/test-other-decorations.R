@@ -138,3 +138,132 @@ test_that("segregated Boxplot decoration label position", {
         warning("X-axis origin is visible on top overlapped by segregate variable")
     }
 })
+
+test_that("precalculated barplot - annotations", {
+    precalc.data <- data.frame(mean  = c(5, 50, 250, 100, 150),
+                               stdev = c(20, 10, 20, 15, 15),
+                               stringsAsFactors = F)
+    precalc.data1   <- as.data.frame(t(precalc.data))
+    precalc.data2   <- as.data.frame(t(precalc.data))
+
+    colnames(precalc.data1) <- c("Group1", "Group2", "Group3", "Group4", "Group5")
+    colnames(precalc.data2) <- c("Group1", "Group2", "Group3", "Group1", "Group2")
+
+    smp.data <- matrix(data     = c("Lev1", "Lev1", "Lev1", "Lev2", "Lev2"),
+                       ncol     = 1,
+                       dimnames = list(colnames(precalc.data2), "level"))
+
+    # without smpAnnot data
+    result <- canvasXpress(data                  = precalc.data1,
+                           graphType             = "Bar",
+                           graphOrientation      = "vertical",
+                           smpLabelFontStyle     = "italic",
+                           smpLabelRotate        = 90,
+                           showLegend            = FALSE,
+                           decorations           = list(marker = list(list(fontSize = 10,
+                                                                           text     = "Group3",
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group3",
+                                                                           y        = 0.05),
+                                                                      list(fontSize = 10,
+                                                                           text     = "Group4",
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group4",
+                                                                           y        = 0.53))),
+                           title                 = "Annotations for Precalculated Barplot without smpAnnot",
+                           titleScaleFontFactor  = 0.5)
+
+    check_ui_test(result)
+
+    # with smpAnnot data
+    result <- canvasXpress(data                  = precalc.data2,
+                           smpAnnot              = smp.data,
+                           segregateSamplesBy    = list("level"),
+                           graphType             = "Bar",
+                           graphOrientation      = "vertical",
+                           smpLabelFontStyle     = "italic",
+                           smpLabelRotate        = 90,
+                           showLegend            = FALSE,
+                           decorations           = list(marker = list(list(fontSize = 10,
+                                                                           text     = "Group3",
+                                                                           scope    = "Lev1",
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group3",
+                                                                           y        = 0.05),
+                                                                      list(fontSize = 10,
+                                                                           text     = "Group1",
+                                                                           scope    = "Lev2",
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group1",
+                                                                           y        = 0.53))),
+                           title                 = "Annotations for Precalculated Barplot with smpAnnot",
+                           titleScaleFontFactor  = 0.5)
+
+    check_ui_test(result)
+})
+
+test_that("segregated and overlayed precalculated barplot - annotations", {
+    precalc.data <- data.frame(mean  = c(100, 200, 150, 100, 50, 80, 250, 100, 150),
+                               stdev = c(10, 20, 15, 15, 20, 10, 20, 15, 15),
+                               stringsAsFactors = F)
+    precalc.data           <- as.data.frame(t(precalc.data))
+    colnames(precalc.data) <- c("Group1", "Group2", "Group1", "Group2", "Group2", "Group3", "Group4", "Group3", "Group4")
+
+    smp.data <- matrix(data     = c("Lev1", "Lev1", "Lev1", "Lev1", "Lev2", "Lev2", "Lev2", "Lev2", "Lev2",
+                                    "Proj1", "Proj1", "Proj2", "Proj2", "Proj1", "Proj1", "Proj1", "Proj2", "Proj2"),
+                       ncol     = 2,
+                       dimnames = list(colnames(precalc.data), c("level", "Project")))
+
+    result <- canvasXpress(data                  = precalc.data,
+                           smpAnnot              = smp.data,
+                           segregateSamplesBy    = list("level"),
+                           smpOverlays           = list("Project"),
+                           graphType             = "Bar",
+                           graphOrientation      = "vertical",
+                           smpLabelFontStyle     = "italic",
+                           smpLabelRotate        = 90,
+                           showLegend            = FALSE,
+                           decorations           = list(marker = list(list(fontSize = 10,
+                                                                           text     = "(Lev1,Proj1)",
+                                                                           scope    = list("Lev1", "Proj1"),
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group1",
+                                                                           y        = 0.65),
+                                                                      list(fontSize = 10,
+                                                                           text     = "(Lev1,Proj2)",
+                                                                           scope    = list("Lev1", "Proj2"),
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group1",
+                                                                           y        = 0.44),
+                                                                      list(fontSize = 10,
+                                                                           text     = "(Lev2,Proj1)",
+                                                                           scope    = list("Lev2", "Proj1"),
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group2",
+                                                                           y        = 0.82),
+                                                                      list(fontSize = 10,
+                                                                           text     = "(Lev2,Proj1)",
+                                                                           scope    = list("Lev2", "Proj1"),
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group4",
+                                                                           y        = 0.05),
+                                                                      list(fontSize = 10,
+                                                                           text     = "(Lev2,Proj2)",
+                                                                           scope    = list("Lev2", "Proj2"),
+                                                                           type     = "annotation",
+                                                                           variable = "precalculated BarChart",
+                                                                           sample   = "Group4",
+                                                                           y        = 0.44))),
+                           title                 = "Annotations for segregated and overlayed precalculated barplot",
+                           titleScaleFontFactor  = 0.5)
+
+    check_ui_test(result)
+})

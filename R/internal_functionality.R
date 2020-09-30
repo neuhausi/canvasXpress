@@ -19,7 +19,7 @@ assertDataCorrectness <- function(data, graphType, config) {
     # Implement data in URL
 	if (is.character(data) && graphType != "Network") {
 		if (httr::http_error(data)) {
-			stop("Not a valid URL!")
+			message("Unable to validate URL")
 		}
 	}
 	# for backwards compatibility we accept both data and vennData
@@ -58,7 +58,7 @@ assertDataCorrectness <- function(data, graphType, config) {
                 data <- paste(readLines(data), collapse = '\n')
             }
             else if (httr::http_error(data)) {
-                stop(data, " Is not a valid file location or URL!")
+                message(data, " may not a valid file location or URL - unable to verify.")
             }
         }
         else {

@@ -72,7 +72,7 @@ canvasXpress <- function(data = NULL,
 	# Implement data in URL
 	if (is.character(data) && (graphType != "Network")) {
 		if (httr::http_error(data)) {
-			stop("Not a valid URL!")
+		    message("Unable to validate URL")
 		}
 		# CanvasXpress Object
 		cx_object <- list(data        = data,
@@ -124,7 +124,7 @@ canvasXpress <- function(data = NULL,
                 data <- paste(readLines(data), collapse = '\n')
             }
             else if (httr::http_error(data)) {
-                stop(data, " Is not a valid file location or URL!")
+                message(data, " may not a valid file location or URL - unable to verify.")
             }
 
             #optionally read appendNetworkData for config
@@ -137,10 +137,10 @@ canvasXpress <- function(data = NULL,
                         if (file.exists(x)) {
                             nd.new <- append(nd.new, paste(readLines(x), collapse = '\n'))
                         }
-                        else if (httr::http_error(x)) {
-                            stop("Not a valid URL!")
-                        }
                         else {
+                            if (httr::http_error(x)) {
+                                message("Unable to validate URL")
+                            }
                             nd.new <- append(nd.new, x)
                         }
                     }

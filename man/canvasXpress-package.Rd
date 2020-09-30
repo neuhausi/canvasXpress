@@ -23,7 +23,7 @@ PNG image that can be played back for an extensive set of visualizations.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/neuhausi/canvasXpress.git}
+  \item \url{https://github.com/neuhausi/canvasXpress}
   \item Report bugs at \url{https://github.com/neuhausi/canvasXpress/issues}
 }
 
