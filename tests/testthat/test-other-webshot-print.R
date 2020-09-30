@@ -31,4 +31,4 @@ test_that("scatterplot webshotPrint", {
 })
 
 # cleanup temp files
-file.remove(c(temp.html, result.png))
+suppressWarnings({file.remove(c(temp.html, result.png))})

@@ -22,5 +22,4 @@ test_that("violinplot with grouping and segregation", {
     )
 
     check_ui_test(result)
-    warning("Clicking on legend doesn't fade violins")
 })

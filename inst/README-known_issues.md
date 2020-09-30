@@ -36,5 +36,14 @@
 * **Layout Charts** - the order of layout varies and may differ between browsers and platforms.
 
 * **3d Scatterplots** - the superimposition/order of the points on the canvas differs by browser and platform.  This affects both the stacking of points as well as the 3d overlays such as the ellipse in scatter3d2.
+* **3d Scatterplot Transpose** - 3d plots when transposed will have only a few points - this is working as designed.
 
 * **Plots Restricted From Resizing** - plots that are restricted from resizing (have resizableX/resizableY set to FALSE) will be restricted when maximizing the plot using the expand button in the menu bar as well.  For example if a plot is restricted from width resizing when you press the maximize button the plot will expand the height but the width will remain fixed.  If both parameters are false the plot will not resize but may move to the top left corner. This is expected behavior.
+
+* **Network Chart Minimum Size** - network charts have a minimum dimension which may cause some overhang into neighboring html spaces.  To workaround this one solution is to add a table around the chart.
+
+* **Numbers in Scientific Notation** - Some tooltips have numbers represented in the scientific notation. This is not specific to any chart and occurs mainly due to JavaScript converting large numbers to scientific notation. 
+
+* **Faceted Plots** - the legend for facets will not be shown if it can be identified by the faceting of the chart.
+
+* **Viewing Metadata** - when viewing metadata the segregation of plots will be lost both in the metadata view of the chart (top left) as well as on the original chart when returning from viewing the metadata. 

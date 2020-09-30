@@ -36,6 +36,10 @@ shinyServer(function(input, output, session) {
             )
         }
 
+        if (is.null(cxplot)) {
+            cxplot <- canvasXpress(destroy = TRUE)
+        }
+
         cxplot
     })
 

@@ -48,8 +48,11 @@ test_that("cXlayout11", {
 test_that("cXlayout12", {
     check_ui_test(cXlayout12())
 
-    warning('Fewer pie charts displayed than expected, does not match web example')
+    message('Fewer pie charts are displayed at a time than exist, the ones chosen to display differ between the web and R - working as expected')
     warning("Colors for drug are different, two pieces are green, but one should be orange")
+
+    warning('Generated test function has incorrect afterRender list')
+    # afterRender=list("addKaplanMeierCurve", list('Survival','Survival-Censor'))
 })
 
 test_that("cXlayout13", {

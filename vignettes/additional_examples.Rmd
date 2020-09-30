@@ -1,5 +1,5 @@
 ---
-title: "Additional Examples for canvasXpress in R "
+title: "Additional Examples for canvasXpress in R"
 author: "Connie Brett"
 date: "`r Sys.Date()`"
 output: 

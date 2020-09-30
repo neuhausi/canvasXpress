@@ -15,6 +15,9 @@ test_that("cXheatmap3", {
 
 test_that("cXheatmap4", {
     check_ui_test(cXheatmap4())
+
+    warning("The values for Dose are different from web. In the R version, there are NaN values while the web has zeroes. ",
+            "This is due to the differences in the underlying data")
 })
 
 test_that("cXheatmap5", {
@@ -39,6 +42,8 @@ test_that("cXheatmap9", {
 
 test_that("cXheatmap10", {
     check_ui_test(cXheatmap10())
+
+    message('Plot points all fade on selecting shapeBy and sizeBy legend items - working as designed.')
 })
 
 test_that("cXheatmap11", {

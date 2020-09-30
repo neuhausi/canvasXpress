@@ -1,10 +1,11 @@
 ## Comments from Maintainer
 
-This is a release to resolve the ERRORS on CRAN:
+* Update to underlying JavaScript Libraries  
+* Moved data to canvasXpress.data package to reduce package size < 5Mb and resolve NOTEs
+* Minor update to test organization to support automated testing  
+* Tests updated  
+* Documentation updated  
 
-We are disabling a specific small subset of automated tests that rely on internet resources - they seem to not be able to resolve resources located on the web at  https://www.canvasxpress.org.  The https://www.canvasxpress.org url is valid, the certificate matches, and the site is up and accessible, but we are seeing enough of a slowdown in the internet in general that this causes these tests to fail and is now causing ERRORs on the CRAN status checks.  These specific tests (~10) will still run when tests are run interactively.
-
-We still exceed the 5MB limit on certain platforms (RHub builder gives this note) however it is urgent we post this update to resolve CRAN errors.  We kindly ask for an exception to the 5MB limit while we are getting the next full release ready for CRAN.
 ---  
 
 ## Test environments
@@ -12,26 +13,24 @@ We still exceed the 5MB limit on certain platforms (RHub builder gives this note
 
 RStudio Server Pro (ubuntu 18.04.2)  
 
-* R 3.4.4  
 * R 3.5.3  
-* R 3.6.1
+* R 3.6.3
+* R 4.0.1
 
 Travis-CI (ubuntu 16.04.6)
 
-* R 3.5.3
-* R 3.6.1
-* R devel (2020-04-09 r78184)
+* R 3.6.3
+* R 4.0.2
+* R devel (2020-09-27 r79266)
 
 WinBuilder
 
 * devtools::check_win_devel()  
 * devtools::check_win_release()  
-* devtools::check_win_oldrelease()  
-
 
 RHub
 
-* devtools::check_rhub(platforms = c('fedora-clang-devel', 'ubuntu-gcc-release'), interactive = F)   
+* devtools::check_rhub(platforms = c('fedora-clang-devel', 'ubuntu-gcc-release'))   
   * Fedora Linux, R-devel, clang, gfortran  
   * Ubuntu Linux 16.04 LTS, R-release, GCC  
 * rhub::check_on_windows(check_args = c('_R_CHECK_FORCE_SUGGESTS_'='FALSE'), show_status = F)  
@@ -45,7 +44,7 @@ RHub
 ```
 devtools::check()  
 
-0 errors ✓ | 0 warnings ✓ | 1 note x
+0 errors ✓ | 0 warnings ✓ | 0 notes ✓
 ```
 
 ---  
@@ -57,7 +56,7 @@ devtools::check()
 
 ```
 pdb <- available.packages()
-tools::package_dependencies(packages = c('canvasxpress'),
+tools::package_dependencies(packages = c('canvasXpress'),
                             db = pdb, reverse = TRUE)
                             
 $canvasXpress  
