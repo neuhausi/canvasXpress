@@ -3892,6 +3892,97 @@ cXradar8 <- function() {
   )
 }
 
+cXridgeline1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=20,
+    ridgeBy="Species",
+    ridgelineScale=2,
+    setMaxX=9,
+    setMinX=3.5,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
+cXridgeline2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=20,
+    ridgeBy="Species",
+    ridgelineScale=1.5,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    xAxisRugShow=TRUE
+  )
+}
+
+cXridgeline3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=20,
+    ridgeBy="Species",
+    ridgelineScale=2.5,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDataPoints=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
+cXridgeline4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=20,
+    ridgeBy="Species",
+    ridgelineScale=1,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramQuantiles=TRUE
+  )
+}
+
+cXridgeline5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-lincoln-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-lincoln-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="data",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramBins=20,
+    ridgeBy="Month",
+    ridgelineScale=2.5,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
 cXsplom1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
