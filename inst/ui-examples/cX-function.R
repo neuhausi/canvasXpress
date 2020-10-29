@@ -1180,7 +1180,7 @@ cXchord1 <- function() {
     colors=list("#000000", "#FFDD89", "#957244", "#F26223"),
     graphType="Circular",
     higlightGreyOut=TRUE,
-    rAxisTickFormat=list("%sK", "val / 1000"),
+    rAxisTickFormat=list("%sK", " / 1000"),
     showTransition=FALSE,
     title="Simple Chord Graph",
     transitionStep=50,
@@ -1198,7 +1198,7 @@ cXchord2 <- function() {
     circularType="chord",
     graphType="Circular",
     higlightGreyOut=TRUE,
-    rAxisTickFormat=list("%sK", "val / 1000"),
+    rAxisTickFormat=list("%sK", " / 1000"),
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Rotated Chord Graph",
@@ -1217,7 +1217,7 @@ cXchord3 <- function() {
     circularType="chord",
     graphType="Circular",
     higlightGreyOut=TRUE,
-    rAxisTickFormat=list("%sK", "val / 1000"),
+    rAxisTickFormat=list("%sK", " / 1000"),
     showLegend=FALSE,
     showTransition=FALSE,
     theme="CanvasXpress",
@@ -3381,11 +3381,16 @@ cXnetwork3 <- function() {
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    background="rgb(245,245,245)",
     colorNodeBy="group",
-    colorSpectrum=list("purple", "blue", "cyan", "green", "yellow", "orange", "red"),
     graphType="Network",
     networkLayoutType="circular",
+    nodeScaleFontFactor=1.8,
     showAnimation=TRUE,
+    showLegend=FALSE,
+    showNodeNameSizeThreshold=25,
+    showNodeNameThreshold=100,
+    sizeNodeBy="nodeEdges",
     title="Les Miserable",
     useBarnesHutSimulation=TRUE
   )
@@ -5293,22 +5298,21 @@ cXtree1 <- function() {
     smpAnnot=x,
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=FALSE,
+    showTransition=TRUE,
     title="Collapsible Tree"
   )
 }
 
 cXtree2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-tree2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-tree2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    colorBy="Annot1",
     graphType="Tree",
-    hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=FALSE,
+    hierarchy=list("Level1", "Level2"),
+    showTransition=TRUE,
     title="Collapsible Tree"
   )
 }
@@ -5320,10 +5324,10 @@ cXtree3 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    colorBy="Annot2",
+    colorBy="Annot1",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=FALSE,
+    showTransition=TRUE,
     title="Collapsible Tree"
   )
 }
@@ -5338,7 +5342,22 @@ cXtree4 <- function() {
     colorBy="Annot2",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=FALSE,
+    showTransition=TRUE,
+    title="Collapsible Tree"
+  )
+}
+
+cXtree5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Annot2",
+    graphType="Tree",
+    hierarchy=list("Level1", "Level2", "Level3"),
+    showTransition=TRUE,
     title="Collapsible Tree",
     treeCircular=TRUE
   )
@@ -5355,7 +5374,7 @@ cXtreemap1 <- function() {
     decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.15, y=0.1))),
     graphType="Treemap",
     showDecorations=FALSE,
-    showTransition=FALSE,
+    showTransition=TRUE,
     theme="CanvasXpress",
     title="Population colored by Gross National Income 2014",
     afterRender=list(list("groupSamples", list("continent")))
@@ -5390,7 +5409,7 @@ cXtreemap3 <- function() {
     graphType="Stacked",
     legendInside=TRUE,
     legendPosition="top",
-    showTransition=FALSE,
+    showTransition=TRUE,
     smpLabelRotate=45,
     subtitle="2014 Census",
     theme="CanvasXpress",
