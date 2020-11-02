@@ -602,6 +602,25 @@ div.CanvasXpressBinContainer {
     -o-user-select: none;
 }
 
+div.CanvasXpressBinContainerTab {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: rgb(51, 122, 183);   
+    border-radius: 5px 5px 0px 0px;
+    box-sizing: content-box;
+    clear: none;
+    height: 16px;
+    margin-top: 3px;
+    margin-left: 3px;
+    overflow-y: auto;
+    padding: 5px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
 div.CanvasXpressBinNameContainer {
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid rgb(51, 122, 183);
