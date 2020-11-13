@@ -6,6 +6,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.30.3
+* TBD
+
 ## v1.29.6  
 * Updated CanvasXpress JavaScript and CSS libraries to v29.6  
 * Package data moved to canvasXpress.data to reduce package size  

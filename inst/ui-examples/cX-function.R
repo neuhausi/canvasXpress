@@ -198,12 +198,189 @@ cXbar1 <- function() {
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
     theme="CanvasXpress",
-    title="Bar Graph Title"
+    title="Bar Graph Title",
+    xAxisTitle="Value"
   )
 }
 
 cXbar2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(marker=list(list(fontSize=12, sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=12, sample="S2", text="p < 0.05 **", type="annotation", variable="V1"))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    theme="CanvasXpress",
+    title="Simple Bar graph with annotations",
+    xAxisTitle="Value"
+  )
+}
+
+cXbar3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphOrientation="vertical",
+    graphType="Bar",
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    theme="CanvasXpress",
+    title="Bar Graph Title",
+    xAxisTitle="Value"
+  )
+}
+
+cXbar4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphOrientation="vertical",
+    graphType="Bar",
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    theme="CanvasXpress",
+    title="Bar graph with two series",
+    xAxisTitle="Value"
+  )
+}
+
+cXbar5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisTitleFontStyle="italic",
+    colorScheme="CanvasXpress",
+    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Species"),
+    legendColumns=2,
+    legendPosition="bottom",
+    showTransition=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Species",
+    title="Iris flower data set",
+    xAxis2Show=FALSE
+  )
+}
+
+cXbar6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    fontStyle="bold italic",
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendFontStyle="italic",
+    plotByVariable=TRUE,
+    smpLabelFontStyle="italic",
+    smpLabelInterval=2,
+    smpLabelRotate=45,
+    smpTitle="Sample Title",
+    theme="CanvasXpress",
+    title="Random data set",
+    xAxis2Show=FALSE
+  )
+}
+
+cXbar7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisTitleFontStyle="italic",
+    colorBy="Drug Sensitivity",
+    colorScheme="CanvasXpress",
+    decorationScaleFontFactor=1.3,
+    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendBox=TRUE,
+    showFunctionNamesAfterRender=FALSE,
+    smpTitle="Cell Lines",
+    smpTitleFontStyle="bold",
+    title="Random data set",
+    xAxis2Show=FALSE
+  )
+}
+
+cXbar8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisTitleFontStyle="italic",
+    colorBy="IC50",
+    decorationScaleFontFactor=1.3,
+    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    smpOverlays=list("Drug Sensitivity"),
+    smpTitle="Cell Lines",
+    smpTitleFontStyle="bold",
+    theme="CanvasXpress",
+    title="Random data set",
+    xAxis2Show=FALSE
+  )
+}
+
+cXbar9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    barLollipopFactor=3,
+    barType="lollipop",
+    colorScheme="CanvasXpress",
+    graphType="Bar",
+    showTransition=FALSE,
+    widthFactor=0.1
+  )
+}
+
+cXbar10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorScheme="CanvasXpress",
+    graphType="Bar",
+    is3DPlot=TRUE,
+    scatterType="bar",
+    widthFactor=1.2,
+    x3DRatio=0.5
+  )
+}
+
+cXbar11 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -228,144 +405,7 @@ cXbar2 <- function() {
   )
 }
 
-cXbar3 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    colorScheme="CanvasXpress",
-    decorations=list(marker=list(list(fontSize=12, sample="Sample1", text="p < 0.01 ***", type="annotation", variable="Variable1"), list(fontSize=12, sample="Sample2", text="p < 0.05 **", type="annotation", variable="Variable1"))),
-    graphOrientation="vertical",
-    graphType="Bar",
-    title="Simple Bar graph with annotations"
-  )
-}
-
-cXbar4 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorScheme="CanvasXpress",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
-    graphOrientation="vertical",
-    graphType="Bar",
-    groupingFactors=list("Species"),
-    legendColumns=2,
-    legendPosition="bottom",
-    showTransition=FALSE,
-    smpLabelRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
-    xAxis2Show=FALSE
-  )
-}
-
-cXbar5 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    varAnnot=z,
-    fontStyle="bold italic",
-    graphOrientation="vertical",
-    graphType="Bar",
-    legendFontStyle="italic",
-    plotByVariable=TRUE,
-    smpLabelFontStyle="italic",
-    smpLabelInterval=2,
-    smpLabelRotate=45,
-    smpTitle="Sample Title",
-    theme="CanvasXpress",
-    title="Random data set",
-    xAxis2Show=FALSE
-  )
-}
-
-cXbar6 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorBy="Drug Sensitivity",
-    colorScheme="CanvasXpress",
-    decorationScaleFontFactor=1.3,
-    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
-    graphOrientation="vertical",
-    graphType="Bar",
-    legendBox=TRUE,
-    showFunctionNamesAfterRender=FALSE,
-    smpTitle="Cell Lines",
-    smpTitleFontStyle="bold",
-    title="Random data set",
-    xAxis2Show=FALSE
-  )
-}
-
-cXbar7 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorBy="IC50",
-    decorationScaleFontFactor=1.3,
-    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
-    graphOrientation="vertical",
-    graphType="Bar",
-    smpOverlays=list("Drug Sensitivity"),
-    smpTitle="Cell Lines",
-    smpTitleFontStyle="bold",
-    theme="CanavasXpress",
-    title="Random data set",
-    xAxis2Show=FALSE
-  )
-}
-
-cXbar8 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    barLollipopFactor=3,
-    barType="lollipop",
-    colorScheme="CanvasXpress",
-    graphType="Bar",
-    showTransition=FALSE,
-    widthFactor=0.1
-  )
-}
-
-cXbar9 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    varAnnot=z,
-    colorScheme="CanvasXpress",
-    graphType="Bar",
-    is3DPlot=TRUE,
-    scatterType="bar",
-    widthFactor=1.2,
-    x3DRatio=0.5
-  )
-}
-
-cXbar10 <- function() {
+cXbar12 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -392,7 +432,7 @@ cXbar10 <- function() {
   )
 }
 
-cXbar11 <- function() {
+cXbar13 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -441,8 +481,8 @@ cXbarline1 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Bar-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4"),
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4"),
     xAxis2TickFormat="%.0f T",
     xAxisTickFormat="%.0f M"
   )
@@ -467,8 +507,8 @@ cXbarline2 <- function() {
     smpTitleFontStyle="italic",
     subtitle="Random Data",
     title="Bar-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -492,8 +532,8 @@ cXbarline3 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Bar-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -1807,8 +1847,8 @@ cXdotline1 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Dot-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4"),
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4"),
     xAxisTickColor="rgb(0,0,0)"
   )
 }
@@ -1832,8 +1872,8 @@ cXdotline2 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Dot-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -1858,8 +1898,8 @@ cXdotline3 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Dot-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -2631,8 +2671,8 @@ cXheatmap8 <- function() {
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=60,
     heatmapSmpSeparateBy="Treatment",
-    highlightSmp=list("Sample1", "Sample2", "Sample3", "Sample4", "Sample5"),
-    highlightVar=list("Probe18", "Probe19", "Probe20"),
+    highlightSmp=list("S1", "S2", "S3", "S4", "S5"),
+    highlightVar=list("V18", "V19", "V20"),
     samplesClustered=TRUE,
     showTransition=FALSE,
     smpOverlays=list("Treatment", "Site"),
@@ -3071,6 +3111,20 @@ cXlayout11 <- function() {
 
 cXlayout12 <- function() {
   library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-body2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-body2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("createDOE"))
+  )
+}
+
+cXlayout13 <- function() {
+  library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -3085,7 +3139,7 @@ cXlayout12 <- function() {
   )
 }
 
-cXlayout13 <- function() {
+cXlayout14 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-layoutContinuous-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-layoutContinuous-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3108,7 +3162,7 @@ cXlayout13 <- function() {
   )
 }
 
-cXlayout14 <- function() {
+cXlayout15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-overlays-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-overlays-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3694,7 +3748,7 @@ cXpie1 <- function() {
     showPieGrid=TRUE,
     showPieSampleLabel=TRUE,
     showTransition=FALSE,
-    xAxis=list("Sample1", "Sample2", "Sample3", "Sample4", "Sample5", "Sample6")
+    xAxis=list("S1", "S2", "S3", "S4", "S5", "S6")
   )
 }
 
@@ -4398,7 +4452,7 @@ cXscatter2d10 <- function() {
     xAxis=list("Concentration"),
     xAxisTransform="log10",
     xAxisTransformTicks=FALSE,
-    yAxis=list("Variable1"),
+    yAxis=list("V1"),
     yAxisExact=TRUE
   )
 }
@@ -4521,7 +4575,7 @@ cXscatter2d14 <- function() {
     title="Waterfall plot",
     xAxis=list("Row"),
     xAxisTickColor="rgb(255,255,255)",
-    yAxis=list("Sample1", "Sample2"),
+    yAxis=list("S1", "S2"),
     yAxisTickColor="rgb(255,255,255)"
   )
 }
@@ -4591,9 +4645,9 @@ cXscatter3d4 <- function() {
     data=y,
     graphType="Scatter3D",
     theme="CanvasXpress",
-    xAxis=list("Sample1"),
-    yAxis=list("Sample2"),
-    zAxis=list("Sample3")
+    xAxis=list("S1"),
+    yAxis=list("S2"),
+    zAxis=list("S3")
   )
 }
 
@@ -4605,9 +4659,9 @@ cXscatter3d5 <- function() {
     graphType="Scatter3D",
     scatterType="bar",
     theme="CanvasXpress",
-    xAxis=list("Sample1"),
-    yAxis=list("Sample2"),
-    zAxis=list("Sample3")
+    xAxis=list("S1"),
+    yAxis=list("S2"),
+    zAxis=list("S3")
   )
 }
 
@@ -4625,9 +4679,9 @@ cXscatter3d6 <- function() {
     shapeBy="Annt2",
     sizeBy="Annt3",
     theme="CanvasXpress",
-    xAxis=list("Sample1"),
-    yAxis=list("Sample2"),
-    zAxis=list("Sample3")
+    xAxis=list("S1"),
+    yAxis=list("S2"),
+    zAxis=list("S3")
   )
 }
 
@@ -4660,9 +4714,9 @@ cXscatterbubble2d2 <- function() {
     varAnnot=z,
     graphType="ScatterBubble2D",
     theme="CanvasXpress",
-    xAxis=list("Sample1", "Sample4"),
-    yAxis=list("Sample2", "Sample5"),
-    zAxis=list("Sample3", "Sample6")
+    xAxis=list("S1", "S4"),
+    yAxis=list("S2", "S5"),
+    zAxis=list("S3", "S6")
   )
 }
 
@@ -4802,8 +4856,8 @@ cXstackedline1 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Stacked-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -4828,8 +4882,8 @@ cXstackedline2 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Stacked-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -4933,8 +4987,8 @@ cXstackedpercentline1 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Stacked-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -4957,8 +5011,8 @@ cXstackedpercentline2 <- function() {
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Stacked-Line Graphs",
-    xAxis=list("Variable1", "Variable2"),
-    xAxis2=list("Variable3", "Variable4")
+    xAxis=list("V1", "V2"),
+    xAxis2=list("V3", "V4")
   )
 }
 
@@ -5058,6 +5112,7 @@ cXtcga1 <- function() {
     segregateVariablesBy=list("variable"),
     showBoxplotOriginalData=TRUE,
     smpLabelRotate=90,
+    toolbarType="over",
     useOpenShapes=TRUE
   )
 }
@@ -5081,6 +5136,7 @@ cXtcga2 <- function() {
     legendScaleFontFactor=1.5,
     segregateVariablesBy=list("variable"),
     smpLabelRotate=90,
+    toolbarType="over",
     useOpenShapes=TRUE
   )
 }
@@ -5103,6 +5159,7 @@ cXtcga3 <- function() {
     legendPosition="top",
     legendScaleFontFactor=1.5,
     smpLabelRotate=90,
+    toolbarType="over",
     useOpenShapes=TRUE
   )
 }
@@ -5128,6 +5185,7 @@ cXtcga4 <- function() {
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
+    toolbarType="over",
     useOpenShapes=TRUE
   )
 }
@@ -5153,6 +5211,7 @@ cXtcga5 <- function() {
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
+    toolbarType="over",
     useOpenShapes=TRUE
   )
 }
@@ -5177,6 +5236,7 @@ cXtcga6 <- function() {
     showFilledHistogramDensity=FALSE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
+    toolbarType="over",
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
@@ -5205,6 +5265,7 @@ cXtcga7 <- function() {
     showFilledHistogramDensity=FALSE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
+    toolbarType="over",
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
@@ -5234,6 +5295,7 @@ cXtcga8 <- function() {
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
+    toolbarType="over",
     xAxisRugShow=TRUE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
