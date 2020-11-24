@@ -4588,7 +4588,7 @@ cXscatter2d15 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
-    backgroundImage="/assets/images/visium.png",
+    backgroundImage="https://www.canvasxpress.org/assets/images/visium.png",
     backgroundType="windowImage",
     colorBy="signal",
     graphType="Scatter2D",
