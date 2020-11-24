@@ -3345,6 +3345,7 @@ cXmap7 <- function() {
   canvasXpress(
     data=FALSE,
     colorBy="TYPE_1",
+    decorations=list(marker=list(list(color="red", label="Cartagena", lat=10.3932, lng=-75.4832, shape="teardrop", size=4), list(color="blue", label="San Andres", lat=12.5769, lng=-81.7051, shape="teardrop", size=6))),
     graphType="Map",
     leafletId="colombia",
     legendPosition="bottomRight",
@@ -4577,6 +4578,31 @@ cXscatter2d14 <- function() {
     xAxisTickColor="rgb(255,255,255)",
     yAxis=list("S1", "S2"),
     yAxisTickColor="rgb(255,255,255)"
+  )
+}
+
+cXscatter2d15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-visium-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-visium-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundImage="https://www.canvasxpress.org/assets/images/visium.png",
+    backgroundType="windowImage",
+    colorBy="signal",
+    graphType="Scatter2D",
+    plotBox=FALSE,
+    scatterType="visium",
+    title="Visium Spatial Transcriptomics",
+    xAxis=list("imagecol"),
+    xAxisMajorTicks=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisShow=FALSE,
+    yAxis=list("imagerow"),
+    yAxisMajorTicks=FALSE,
+    yAxisMinorTicks=FALSE,
+    yAxisShow=FALSE
   )
 }
 
