@@ -1650,6 +1650,8 @@ div.CanvasXpressConfiguratorExample {
     box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 span.CanvasXpressConfiguratorExample {
@@ -1663,7 +1665,7 @@ span.CanvasXpressConfiguratorExample {
 }
 
 div.CanvasXpressConfiguratorExampleContent {
-    overflow: 'auto'
+    overflow: hidden;
 }
 
 div.CanvasXpressConfiguratorColor {
@@ -2175,6 +2177,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 select.CanvasXpressConfigurator::-webkit-scrollbar-button,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
 select.CanvasXpressSlider::-webkit-scrollbar-button,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
@@ -2196,6 +2199,7 @@ select.CanvasXpressSlider::-webkit-scrollbar-track {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track {
     background-color: #F5F5F5;
@@ -2211,6 +2215,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
 select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
@@ -2234,6 +2239,7 @@ select.CanvasXpressSlider::-webkit-scrollbar {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar,
 div.CanvasXpressDataExplorer::-webkit-scrollbar,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar {
     width: 6px;
@@ -2251,6 +2257,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
 select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
 select.CanvasXpressSlider::-webkit-scrollbar-thumb,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-thumb {

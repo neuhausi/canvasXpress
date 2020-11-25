@@ -50,7 +50,7 @@ canvasXpress <- function(data = NULL,
                          #htmlwidgets options
                          pretty = FALSE,
                          digits = 4,
-                         width  = 400,
+                         width  = 600,
                          height = 400,
                          destroy = FALSE,
                          ... ) {
