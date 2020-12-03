@@ -21,8 +21,8 @@ test_that("barplot annotations color", {
         graphType               = "Bar",
         graphOrientation        = "vertical",
         title                   = "Barplot - Annotations (Sample1: Blue, Sample2: Green)",
-        decorations             = list(marker = list(list(fontSize = 15, sample = "Sample1", color = "blue", text = "Blue Text", type = "annotation", variable = "Variable1"),
-                                                     list(fontSize = 15, sample = "Sample2", color = "green", text = "Green Text", type = "annotation", variable = "Variable1")))
+        decorations             = list(marker = list(list(fontSize = 15, sample = "S1", color = "blue", text = "Blue Text", type = "annotation", variable = "V1"),
+                                                     list(fontSize = 15, sample = "S2", color = "green", text = "Green Text", type = "annotation", variable = "V2")))
     )
     check_ui_test(result)
 })
