@@ -1,5 +1,6 @@
 context("canvasXpress toolbarType")
 
+
 test_that("Scatterplot toolbarType under", {
 
     y = read.table(get_data("cX-spider-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
@@ -16,8 +17,8 @@ test_that("Scatterplot toolbarType under", {
                             title          = "ScatterPlot  - toolbarType: under",
                             xAxis          = list("Weeks"),
                             yAxis          = list("Change From Baseline %"),
-                            toolbarType    =  "under"
-    )
+                            toolbarType    = "under")
+
     check_ui_test(result)
 })
 
@@ -36,8 +37,8 @@ test_that("Scatterplot toolbarType over", {
                             yAxis                   = list("mpg"),
                             title                   =  "ScatterPlot - toolbarType: over",
                             afterRender             = list(list("addRegressionLine", list("cyl"))),
-                            toolbarType             =  "over"
-    )
+                            toolbarType             = "over")
+
     check_ui_test(result)
 })
 
@@ -52,8 +53,8 @@ test_that("Scatterplot toolbarType fixed", {
                            title                   = "ScatterPlot - toolbarType: fixed",
                            xAxis                   = list("E"),
                            yAxis                   = list("NOx"),
-                           toolbarType             = "fixed"
-    )
+                           toolbarType             = "fixed")
+
     check_ui_test(result)
 })
 
@@ -68,8 +69,8 @@ test_that("Barplot segregated toolbarType under", {
                            graphType          = "Bar",
                            title              = "Segregated BarPlot - toolbarType: under",
                            segregateSamplesBy = list("Factor2"),
-                           toolbarType        = "under"
-    )
+                           toolbarType        = "under")
+
     check_ui_test(result)
 })
 
@@ -88,8 +89,7 @@ test_that("Barplot segregated toolbarType over", {
                            theme                     = "CanavasXpress",
                            title                     = "Segregated BarPlot - toolbarType: over",
                            segregateSamplesBy        = list("Drug Sensitivity"),
-                           toolbarType               = "over"
-    )
+                           toolbarType               = "over")
 
     check_ui_test(result)
 })
@@ -112,8 +112,7 @@ test_that("Barplot segregated toolbarType fixed", {
                             title              = "Segregated BarPlot - toolbarType: fixed",
                             segregateSamplesBy = list("Species"),
                             afterRender        = list(list("groupSamples", list("Species"))),
-                            toolbarType        =  "fixed"
-    )
+                            toolbarType        = "fixed")
 
     check_ui_test(result)
 })

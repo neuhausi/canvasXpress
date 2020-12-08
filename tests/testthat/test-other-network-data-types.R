@@ -1,5 +1,6 @@
 context("canvasXpress Charts - Network")
 
+
 n <- read.table(get_data( "cX-lesmiserable-nodes.txt.gz"), header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 e <- read.table(get_data( "cX-lesmiserable-edges.txt.gz"), header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 

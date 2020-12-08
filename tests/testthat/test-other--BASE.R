@@ -1,6 +1,8 @@
 context("canvasXpress BASE")
 
-data1.df  <- data.frame(a = c(1:3), b = c("A", "B", "C"),
+# Data preparation
+data1.df  <- data.frame(a         = c(1:3),
+                        b         = c("A", "B", "C"),
                         row.names = c("row1", "row2", "row3"))
 data1.m   <- matrix(1:20, nrow = 5)
 data1.l   <- list(y = data1.df, data2 = data1.df)
@@ -60,19 +62,18 @@ test_that("Incorrect GraphType", {
 })
 
 test_that("Name mismatches", {
-    expect_error(canvasXpress(data = data1.df,
+    expect_error(canvasXpress(data     = data1.df,
                               smpAnnot = data1.var),
                  regexp = "Row names in smpAnnot are different from column names in data")
-    expect_silent(canvasXpress(data = data1.df,
+    expect_silent(canvasXpress(data     = data1.df,
                                smpAnnot = data1.smp))
 
-    expect_error(canvasXpress(data = data1.df,
+    expect_error(canvasXpress(data     = data1.df,
                               varAnnot = data1.smp),
                  regexp = "Row names in varAnnot are different from row names in data")
-    expect_silent(canvasXpress(data = data1.df,
+    expect_silent(canvasXpress(data     = data1.df,
                                varAnnot = data1.var))
 })
-
 
 # Shiny Functionality
 
@@ -86,4 +87,3 @@ test_that("Shiny Examples", {
     expect_message(cxShinyExample(NULL),
                  regexp = "Valid examples are: 'example1', 'example2', 'example3'")
 })
-

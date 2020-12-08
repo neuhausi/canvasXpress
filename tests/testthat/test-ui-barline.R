@@ -1,5 +1,6 @@
 context("canvasXpress Web Charts - BarLine")
 
+
 #--------------------------------------------------------------------
 # NOTES:
 # In barline plots, the grouping and then a subsequent ungrouping by a variable
