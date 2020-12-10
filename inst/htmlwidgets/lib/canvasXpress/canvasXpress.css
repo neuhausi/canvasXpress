@@ -2965,7 +2965,6 @@ div.CanvasXpress-ParentNode {
     padding: 0;
 }
 
-
 /*
  * CanvasXpress
  */
@@ -2977,7 +2976,24 @@ canvas.CanvasXpress {
     -o-user-select: none;
     user-select: none;
     -ms-user-select: none;
-    transition: all 1s linear;
+    transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+canvas.CanvasXpressFullScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
+    transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
 }
 
 canvas.CanvasXpress:hover {
