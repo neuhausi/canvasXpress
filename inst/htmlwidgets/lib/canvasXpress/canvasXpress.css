@@ -1726,7 +1726,6 @@ div.CanvasXpressContainer {
     box-sizing: content-box;
     position: relative;
     float: left;
-    transition: all 1s linear;
 }
 
 div.CanvasXpressContainerNT {
@@ -2965,7 +2964,6 @@ div.CanvasXpress-ParentNode {
     padding: 0;
 }
 
-
 /*
  * CanvasXpress
  */
@@ -2977,11 +2975,9 @@ canvas.CanvasXpress {
     -o-user-select: none;
     user-select: none;
     -ms-user-select: none;
-    transition: all 1s linear;
 }
 
 canvas.CanvasXpress:hover {
-    /*border: 1px solid #23527c;*/
     border: 1px solid rgba(35, 82, 124, 0.2);
     border-radius: 6px;
     margin: -1px;
