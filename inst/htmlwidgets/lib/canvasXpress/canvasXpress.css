@@ -1726,7 +1726,6 @@ div.CanvasXpressContainer {
     box-sizing: content-box;
     position: relative;
     float: left;
-    transition: all 1s linear;
 }
 
 div.CanvasXpressContainerNT {
@@ -2976,28 +2975,9 @@ canvas.CanvasXpress {
     -o-user-select: none;
     user-select: none;
     -ms-user-select: none;
-    transition: all 1s ease-out;
-    -webkit-transition: all 1s ease-out;
-}
-
-canvas.CanvasXpressFullScreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    -ms-user-select: none;
-    transition: all 1s ease-out;
-    -webkit-transition: all 1s ease-out;
 }
 
 canvas.CanvasXpress:hover {
-    /*border: 1px solid #23527c;*/
     border: 1px solid rgba(35, 82, 124, 0.2);
     border-radius: 6px;
     margin: -1px;
