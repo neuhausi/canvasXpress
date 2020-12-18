@@ -52,8 +52,8 @@ test_that("barplot annotations", {
                            graphType               = "Bar",
                            graphOrientation        = "vertical",
                            title                   = "Barplot - annotations",
-                           decorations             = list(marker = list(list(fontSize = 12, sample = "Sample1", text = "p < 0.01 ***", type = "annotation", variable = "Variable1"),
-                                                                        list(fontSize = 12, sample = "Sample2", text = "p < 0.05 **", type = "annotation", variable = "Variable1"))))
+                           decorations             = list(marker = list(list(fontSize = 12, sample = "S1", text = "p < 0.01 ***", type = "annotation", variable = "V1"),
+                                                                        list(fontSize = 12, sample = "S2", text = "p < 0.05 **", type = "annotation", variable = "V1"))))
 
     check_ui_test(result)
 })
