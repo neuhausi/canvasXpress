@@ -6,3 +6,5 @@
 vignettes/*.html
 tests/*.html
 working-*
+doc
+Meta
