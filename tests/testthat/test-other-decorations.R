@@ -128,9 +128,6 @@ test_that("segregated Boxplot decoration label position", {
                                decorations        = list(line = list(list(align = name, color = "rgb(255,0,0)", label = "Decoration label", value = 20, width = 2, scope = "Gene1"))))
 
         check_ui_test(result)
-
-        warning(paste("Decoration label is very close to the", pos, "line"))
-        warning("X-axis origin is visible on top overlapped by segregate variable")
     }
 })
 
