@@ -6,7 +6,7 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
-## v1.30.3
+## v1.30.X
 * TBD
 
 ## v1.29.6  
