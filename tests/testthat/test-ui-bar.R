@@ -15,12 +15,12 @@ test_that("cXbar3", {
 
 test_that("cXbar4", {
     check_ui_test(cXbar4())
-
-    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, sometimes the second number is in scientific format")
 })
 
 test_that("cXbar5", {
     check_ui_test(cXbar5())
+
+    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, sometimes the second number is in scientific format")
 })
 
 test_that("cXbar6", {
