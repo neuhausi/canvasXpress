@@ -26,7 +26,7 @@ Imports:
 RoxygenNote: 7.1.1
 Suggests:
     shiny (>= 1.1.0),
-    canvasXpress.data (>= 1.31.0),
+    canvasXpress.data,
     knitr,
     rmarkdown,
     testthat,
