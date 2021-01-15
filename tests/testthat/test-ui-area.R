@@ -3,8 +3,6 @@ context("canvasXpress Web Charts - Area")
 
 test_that("cXarea1", {
     check_ui_test(cXarea1())
-
-    warning("Names are different, web example uses smp/var, not S/V")
 })
 
 test_that("cXarea2", {
@@ -21,6 +19,8 @@ test_that("cXarea4", {
 
 test_that("cXarea5", {
     check_ui_test(cXarea5())
+
+    warning("Names are different, web example uses smp/var, not S/V")
 })
 
 test_that("cXarea6", {
