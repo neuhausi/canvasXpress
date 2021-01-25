@@ -63,7 +63,6 @@ profilePlot <- function(df, title, subtitle) {
         graphType               = "Scatter2D",
         colorBy                 = "Group",
         colors                  = colors,
-        theme                   = "CanvasXpress",
         legendInside            = TRUE,
         legendPosition          = "bottomRight",
         showDecorations         = TRUE,
@@ -79,7 +78,7 @@ profilePlot <- function(df, title, subtitle) {
         subtitleScaleFontFactor = 0.5,
         showAnimation           = FALSE,
         width                   = "100%",
-        events                  = JS("{'select': function(o, e, t){if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);} }}")
+        events                  = JS("{'select': function(o, e, t){if (o != null && o.y != null && o.y.vars != null) { if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);}}; }}")
     )
 }
 
@@ -133,7 +132,6 @@ volcanoPlot <- function(df, title, subtitle) {
         varAnnot                = va,
         decorations             = d,
         graphType               = "Scatter2D",
-        theme                   = "CanvasXpress",
         colorBy                 = "Group",
         colors                  = colors,
         legendPosition          = "right",
@@ -149,7 +147,7 @@ volcanoPlot <- function(df, title, subtitle) {
         subtitleScaleFontFactor = 0.5,
         showAnimation           = FALSE,
         width                   = "100%",
-        events                  = JS("{'select': function(o, e, t){if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);} }}")
+        events                  = JS("{'select': function(o, e, t){if (o != null && o.y != null && o.y.vars != null) { if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);}}; }}")
     )
 }
 
@@ -217,7 +215,6 @@ comparePlot <- function(df, title, subtitle) {
         graphType               = "Scatter2D",
         colorBy                 = "Group",
         colors                  = colors,
-        theme                   = "CanvasXpress",
         legendInside            = TRUE,
         legendPosition          = "bottomRight",
         scatterAxesEqual        = TRUE,
@@ -232,7 +229,7 @@ comparePlot <- function(df, title, subtitle) {
         subtitleScaleFontFactor = 0.5,
         showAnimation           = FALSE,
         width                   = "100%",
-        events                  = JS("{'select': function(o, e, t){if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);} }}")
+        events                  = JS("{'select': function(o, e, t){if (o != null && o.y != null && o.y.vars != null) { if (o.y.vars.length != 0) { var g = $('#genes'); g[0].selectize.clear(); g[0].selectize.addItems(o.y.vars);}}; }}")
     )
 }
 
@@ -273,7 +270,6 @@ genePlot <- function(df, block, title, subtitle) {
             groupingFactors         = c("Group"),
             segregateVariablesBy    = list("Gene"),
             colorBy                 = "Group",
-            theme                   = "CanvasXpress",
             transparency            = 0.7,
             title                   = "Top Fold Change Genes",
             subtitle                = subtitle,
