@@ -6,6 +6,8 @@ test_that("cXtree1", {
 })
 
 test_that("cXtree2", {
+    skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for these tests')
+
     check_ui_test(cXtree2())
 })
 

@@ -3396,6 +3396,66 @@ cXmap10 <- function() {
   )
 }
 
+cXmeter1 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="gauge"
+  )
+}
+
+cXmeter2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="speedometer"
+  )
+}
+
+cXmeter3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="digital"
+  )
+}
+
+cXmeter4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="state"
+  )
+}
+
+cXmeter5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="horizontal"
+  )
+}
+
+cXmeter6 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-meter-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterType="vertical"
+  )
+}
+
 cXnetwork1 <- function() {
   library(canvasXpress)
   nodes=read.table(get_data("cX-lesmiserable-nodes.txt.gz"), header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -5254,7 +5314,7 @@ cXtcga6 <- function() {
     hideHistogram=FALSE,
     histogramBins=15,
     histogramData=TRUE,
-    histogramStagger=TRUE,
+    histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
     legendPosition="top",
@@ -5282,7 +5342,7 @@ cXtcga7 <- function() {
     hideHistogram=FALSE,
     histogramBins=15,
     histogramData=TRUE,
-    histogramStagger=TRUE,
+    histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
     legendPosition="top",
@@ -5312,7 +5372,7 @@ cXtcga8 <- function() {
     hideHistogram=TRUE,
     histogramBins=15,
     histogramData=TRUE,
-    histogramStagger=TRUE,
+    histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
     legendPosition="top",
