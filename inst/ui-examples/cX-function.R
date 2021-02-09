@@ -3257,10 +3257,7 @@ cXmap1 <- function() {
     data=y,
     varAnnot=z,
     graphType="Map",
-    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
-    leafletId="countries",
-    leafletLayer=TRUE,
-    leafletLayerTile="default",
+    mapId="countries",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3274,10 +3271,9 @@ cXmap2 <- function() {
     varAnnot=z,
     colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1),
-    leafletId="countriesOrder",
-    leafletLayer=FALSE,
     legendPosition="top",
+    mapConfig=list(center=list(30, 0), zoom=1),
+    mapId="countriesOrder",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3291,11 +3287,9 @@ cXmap3 <- function() {
     varAnnot=z,
     colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=TRUE, center=list(30, 0), zoom=1.5),
-    leafletId="countriesOrderL",
-    leafletLayer=TRUE,
-    leafletLayerTile="labels",
     legendPosition="bottom",
+    mapConfig=list(center=list(30, 0), zoom=1.5),
+    mapId="countriesOrderL",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }
@@ -3304,10 +3298,12 @@ cXmap4 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
+    colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(38, -100), zoom=3),
-    leafletId="states",
-    topoJSON="https://www.canvasxpress.org/data/usa-states.json"
+    hiddenMapFeatures=list(1, 11, 51, 52),
+    mapConfig=list(zoom=3.5),
+    mapId="states",
+    topoJSON="http://www.canvasxpress.org/data/usa-states.json"
   )
 }
 
@@ -3317,11 +3313,9 @@ cXmap5 <- function() {
     data=FALSE,
     colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
-    leafletId="counties",
-    leafletLayer=TRUE,
-    leafletLayerTile="open",
     legendPosition="bottom",
+    mapConfig=list(center=list(38, -95), zoom=4),
+    mapId="counties",
     topoJSON="https://www.canvasxpress.org/data/usa-counties.json"
   )
 }
@@ -3332,10 +3326,9 @@ cXmap6 <- function() {
     data=FALSE,
     colorBy="Order",
     graphType="Map",
-    leafletConfig=list(attributionControl=FALSE, center=list(38, -95), zoom=4),
-    leafletId="districts",
-    leafletLayer=TRUE,
     legendPosition="bottom",
+    mapConfig=list(center=list(38, -95), zoom=4),
+    mapId="districts",
     topoJSON="https://www.canvasxpress.org/data/usa-districts.json"
   )
 }
@@ -3347,8 +3340,8 @@ cXmap7 <- function() {
     colorBy="TYPE_1",
     decorations=list(marker=list(list(color="red", label="Cartagena", lat=10.3932, lng=-75.4832, shape="teardrop", size=4), list(color="blue", label="San Andres", lat=12.5769, lng=-81.7051, shape="teardrop", size=6))),
     graphType="Map",
-    leafletId="colombia",
     legendPosition="bottomRight",
+    mapId="colombia",
     topoJSON="https://www.canvasxpress.org/data/colombia.geo.json"
   )
 }
@@ -3358,7 +3351,7 @@ cXmap8 <- function() {
   canvasXpress(
     data=FALSE,
     graphType="Map",
-    leafletId="italy",
+    mapId="italy",
     topoJSON="https://www.canvasxpress.org/data/italy.geo.json"
   )
 }
@@ -3369,8 +3362,8 @@ cXmap9 <- function() {
     data=FALSE,
     background="black",
     graphType="Map",
-    leafletId="spain",
     mapColor="black",
+    mapId="spain",
     mapOutlineColor="white",
     topoJSON="https://www.canvasxpress.org/data/spain.geo.json"
   )
@@ -3385,9 +3378,8 @@ cXmap10 <- function() {
     varAnnot=z,
     colorBy="Cases",
     graphType="Map",
-    leafletId="countries",
-    leafletLayer=FALSE,
     legendPosition="top",
+    mapId="countries",
     motionBy="Date",
     sizeBy="Deaths",
     sizeByContinuous=TRUE,
