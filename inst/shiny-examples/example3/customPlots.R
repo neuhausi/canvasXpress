@@ -22,16 +22,11 @@ profilePlot <- function(df, title, subtitle) {
     ## Need a NLP column for sizing
     df$negLog10P = round(-log10(df[["P.Value"]]))
 
-    ## Classify the subsets
-    DEup = df[["P.Value"]] <= 0.01 & df[["logFC"]] > 0
-    DEdn = df[["P.Value"]] <= 0.01 & df[["logFC"]] < 0
-    DEnot = !DEup & !DEdn
-
     ## Create Group factor column in df
     df$Group = NA
-    df$Group[DEup] = "Increased"
-    df$Group[DEdn] = "Decreased"
-    df$Group[DEnot] = "No Change"
+    df$Group <- ifelse(df[["P.Value"]] <= 0.01,
+                       ifelse(df[["logFC"]] >= 0, "Increased", "Decreased"),
+                       "No Change")
     rnk = rank(df$Group, ties.method = "first")
     rnk = rnk * -1
 
@@ -92,16 +87,11 @@ volcanoPlot <- function(df, title, subtitle) {
     ## Log Score
     df$NegativeLogP = -log10(df[, "P.Value"])
 
-    ## Classify the subsets
-    DEup = df[["P.Value"]] <= 0.01 & df[["logFC"]] > 0
-    DEdn = df[["P.Value"]] <= 0.01 & df[["logFC"]] < 0
-    DEnot = !DEup & !DEdn
-
     ## Create Group factor column in df
     df$Group = NA
-    df$Group[DEup] = "Increased"
-    df$Group[DEdn] = "Decreased"
-    df$Group[DEnot] = "No Change"
+    df$Group <- ifelse(df[["P.Value"]] <= 0.01,
+                       ifelse(df[["logFC"]] >= 0, "Increased", "Decreased"),
+                       "No Change")
     rnk = rank(df$Group, ties.method = "first")
     rnk = rnk * -1
 
@@ -164,22 +154,11 @@ comparePlot <- function(df, title, subtitle) {
     xlabel = colnames(df)[1]
     ylabel = colnames(df)[2]
 
-    #Let's plot the subsets
-    xindx = df[["xp"]] <= 0.01
-    yindx = df[["yp"]] <= 0.01
-
-    #boolean indexes to parse groups
-    bothindx = xindx & yindx
-    neitherindx = !xindx & !yindx
-    xindx = xindx & !bothindx #unique to X
-    yindx = yindx & !bothindx #unique to y
-
     #create group factor column in df
     df$group = NA
-    df$group[bothindx] = "Common"
-    df$group[xindx] = "X Unique"
-    df$group[yindx] = "Y Unique"
-    df$group[neitherindx] = "Not Significant"
+    df$group <- ifelse(df[["xp"]] <= 0.01,
+                              ifelse(df[["yp"]] <= 0.01, "Common", "X Unique"),
+                              ifelse(df[["yp"]] <= 0.01, "Y Unique", "Not Significant"))
     df$group <- df$group %>% factor(levels = c("Common", "X Unique", "Y Unique", "Not Significant"))
     df$order <- with.seed(1954, sample.int(nrow(df))) + nrow(df) * (df$group == "Common") + -nrow(df) * (df$group == "Not Significant")
 
