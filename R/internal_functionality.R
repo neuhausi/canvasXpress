@@ -1,12 +1,12 @@
 assertDataCorrectness <- function(data, graphType, config) {
 
     validGraphTypes <- c("Area", "AreaLine", "Bar", "BarLine", "Boxplot",
-                         "Circular", "Correlation", "Dotplot", "DotLine",
+                         "Circular", "Correlation", "Dotplot", "DotLine", "Fish", "Gantt",
                          "Genome", "Heatmap", "Line", "Map", "Meter", "Network", "Pie",
                          "ParallelCoordinates", "Sankey", "Scatter2D",
                          "Scatter3D", "ScatterBubble2D", "Stacked",
                          "StackedPercent", "StackedLine", "StackedPercentLine",
-                         "Tree", "Treemap", "TagCloud", "Venn", "Gantt")
+                         "Tree", "Treemap", "TagCloud", "Venn")
     noDataNecessary  <- c("Map")
 
     if (is.null(graphType)) stop("graphType cannot be NULL!")
