@@ -41,6 +41,10 @@ if (interactive()) {
     test_that("cXmap10", {
         check_ui_test(cXmap10())
     })
+
+    test_that("cXmap11", {
+        check_ui_test(cXmap10())
+    })
 } else {
     message("Non-interactive ui-map tests skipped")
 }

@@ -2405,6 +2405,72 @@ cXfacet8 <- function() {
   )
 }
 
+cXfish1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fishAxis=list(0, 150),
+    fishParents=list(0, 1, 1, 3),
+    fishShape="spline",
+    fishTimepoints=list(0, 30, 75, 150),
+    graphType="Fish"
+  )
+}
+
+cXfish2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fish2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fishParents=list(0, 1, 1, 3),
+    fishShape="spline",
+    fishTimepoints=list(0, 30, 200, 423),
+    graphType="Fish"
+  )
+}
+
+cXfish3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fish3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fishColors=list("#1B9E77", "#D95F02", "#7570B3", "#E7298A"),
+    fishParents=list(0, 1, 2, 1),
+    fishShape="polygon",
+    fishTimepoints=list(0, 120),
+    graphType="Fish"
+  )
+}
+
+cXfish4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fish4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fishAxis=list(0, 34, 69, 187, 334, 505, 530, 650, 750),
+    fishColors=list("#888888", "#EF0000", "#8FFF40", "#FF6000", "#50FFAF", "#FFCF00", "#0070FF"),
+    fishParents=list(0, 1, 1, 1, 3, 4, 0),
+    fishSeparateIndependentClones=FALSE,
+    fishShape="spline",
+    fishTimepoints=list(0, 34, 69, 187, 334, 505, 530),
+    graphType="Fish"
+  )
+}
+
+cXfish5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fishAxis=list(0, 150),
+    fishParents=list(0, 1, 1, 3),
+    fishShape="spline",
+    fishTimepoints=list(0, 30, 75, 150),
+    graphType="Fish"
+  )
+}
+
 cXgantt1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-gantt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3303,7 +3369,7 @@ cXmap4 <- function() {
     hiddenMapFeatures=list(1, 11, 51, 52),
     mapConfig=list(zoom=3.5),
     mapId="states",
-    topoJSON="http://www.canvasxpress.org/data/usa-states.json"
+    topoJSON="https://www.canvasxpress.org/data/usa-states.json"
   )
 }
 
@@ -3385,6 +3451,19 @@ cXmap10 <- function() {
     sizeByContinuous=TRUE,
     title="Geographic Distribution for COVID-19",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
+  )
+}
+
+cXmap11 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    colorBy="Order",
+    graphType="Map",
+    mapConfig=list(zoom=3.2),
+    mapConfigFeatures=list("1"=list(scale=list(0.5, 0.8), translate=list(-100, -30)), "11"=list(scale=list(1.5, 1.5), translate=list(85, -5))),
+    mapId="USA",
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
   )
 }
 
