@@ -3,22 +3,23 @@ skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for t
 
 
 test_that("cXfish1", {
-    check_ui_test(cXmeter1())
+    check_ui_test(cXfish1())
 })
 
 test_that("cXfish2", {
-    check_ui_test(cXmeter2())
+    check_ui_test(cXfish2())
 })
 
 test_that("cXfish3", {
-    check_ui_test(cXmeter3())
+    check_ui_test(cXfish3())
 })
 
 test_that("cXfish4", {
-    check_ui_test(cXmeter4())
+    fail('Dataset has duplicated rownames')
+    # check_ui_test(cXfish4())
 })
 
 test_that("cXfish5", {
-    check_ui_test(cXmeter5())
+    check_ui_test(cXfish5())
 })
 

@@ -2,7 +2,7 @@ assertDataCorrectness <- function(data, graphType, config) {
 
     validGraphTypes <- c("Area", "AreaLine", "Bar", "BarLine", "Boxplot",
                          "Circular", "Correlation", "Dotplot", "DotLine",
-                         "Genome", "Heatmap", "Line", "Map", "Meter", "Network",
+                         "Fish", "Genome", "Heatmap", "Line", "Map", "Meter", "Network",
                          "Pie", "ParallelCoordinates", "Sankey", "Scatter2D",
                          "Scatter3D", "ScatterBubble2D", "Stacked",
                          "StackedPercent", "StackedLine", "StackedPercentLine",
