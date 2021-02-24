@@ -1209,6 +1209,21 @@ cXbubble3 <- function() {
   )
 }
 
+cXbubble4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    circularType="bubble",
+    colorBy="Continent",
+    graphType="Circular",
+    hierarchy=list("Continent", "Country"),
+    title="Annual CO2 Emmisions in 2018"
+  )
+}
+
 cXchord1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2410,11 +2425,17 @@ cXfish1 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    backgroundType="window",
+    backgroundWindow="#ffe4c4",
+    colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 150),
     fishParents=list(0, 1, 1, 3),
     fishShape="spline",
     fishTimepoints=list(0, 30, 75, 150),
-    graphType="Fish"
+    graphType="Fish",
+    legendColumns=4,
+    legendPosition="bottom",
+    title="Sample1"
   )
 }
 
@@ -2423,10 +2444,18 @@ cXfish2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    backgroundType="windowSolidGradient",
+    colorSpectrum=list("bisque", "darkgoldenrod1", "darkorange3"),
+    colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
+    fishAxis=list(0, 423),
+    fishCloneLabels=list("DNMT3A,FLT3", "NPM1", "MET", "ETV6,WNK1-WAC,\nMYO18B"),
     fishParents=list(0, 1, 1, 3),
     fishShape="spline",
     fishTimepoints=list(0, 30, 200, 423),
-    graphType="Fish"
+    gradientOrientation="horizontal",
+    graphType="Fish",
+    varLabelFontColor="green",
+    varLabelRotate=30
   )
 }
 
@@ -2435,11 +2464,17 @@ cXfish3 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    fishColors=list("#1B9E77", "#D95F02", "#7570B3", "#E7298A"),
+    backgroundType="windowSolidGradient",
+    colorSpectrum=list("#ffe4c4", "#ffb90f", "#cd6600"),
+    colors=list("#1B9E77", "#D95F02", "#7570B3", "#E7298A"),
+    fishAxis=list(0, 120),
+    fishAxisLabels=list("Primary", "Post-AI"),
     fishParents=list(0, 1, 2, 1),
     fishShape="polygon",
     fishTimepoints=list(0, 120),
-    graphType="Fish"
+    gradientOrientation="horizontal",
+    graphType="Fish",
+    title="BRC32"
   )
 }
 
@@ -2448,12 +2483,15 @@ cXfish4 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    backgroundType="windowSolidGradient",
+    colorSpectrum=list("#ffe4c4", "#ffb90f", "#cd6600"),
+    colors=list("#888888", "#EF0000", "#8FFF40", "#FF6000", "#50FFAF", "#FFCF00", "#0070FF"),
     fishAxis=list(0, 34, 69, 187, 334, 505, 530, 650, 750),
-    fishColors=list("#888888", "#EF0000", "#8FFF40", "#FF6000", "#50FFAF", "#FFCF00", "#0070FF"),
     fishParents=list(0, 1, 1, 1, 3, 4, 0),
-    fishSeparateIndependentClones=FALSE,
+    fishSeparateIndependentClones=TRUE,
     fishShape="spline",
     fishTimepoints=list(0, 34, 69, 187, 334, 505, 530),
+    gradientOrientation="horizontal",
     graphType="Fish"
   )
 }
@@ -2463,11 +2501,17 @@ cXfish5 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    backgroundType="window",
+    backgroundWindow="#ffe4c4",
+    colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 150),
+    fishCloneLabels=list("TP53,MET", "NF1", "", "8q+,6p-"),
     fishParents=list(0, 1, 1, 3),
     fishShape="spline",
     fishTimepoints=list(0, 30, 75, 150),
-    graphType="Fish"
+    graphType="Fish",
+    legendColumns=4,
+    legendPosition="bottom"
   )
 }
 
@@ -3317,13 +3361,16 @@ cXline3 <- function() {
 
 cXmap1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-map-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-map-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-OlympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-OlympicMedalsT-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
+    colorBy="Total",
     graphType="Map",
+    legendPosition="bottom",
     mapId="countries",
+    title="Total number of Olympic Medals",
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
   )
 }

@@ -15,8 +15,7 @@ test_that("cXfish3", {
 })
 
 test_that("cXfish4", {
-    fail('Dataset has duplicated rownames')
-    # check_ui_test(cXfish4())
+    check_ui_test(cXfish4())
 })
 
 test_that("cXfish5", {
