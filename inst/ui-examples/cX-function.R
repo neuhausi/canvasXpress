@@ -3400,8 +3400,9 @@ cXmap3 <- function() {
     data=y,
     varAnnot=z,
     colorBy="id",
+    decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
-    mapConfig=list(center=list(20, -65), zoom=2),
+    mapConfig=list(center=list(34.7, -96.1), zoom=3.2),
     mapId="colorCountries",
     showLegend=FALSE,
     topoJSON="https://www.canvasxpress.org/data/world.geo.json"
@@ -3428,6 +3429,26 @@ cXmap4 <- function() {
 
 cXmap5 <- function() {
   library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-election2000-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-election2000-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Winner",
+    decorations=list(pie=list(list(colors=list("blue", "red", "yellow", "green"), size=2.5, smps=list("Democrat", "Republican", "Libertarian", "Other")))),
+    graphType="Map",
+    legendOrder=list(Winner=list("Republican", "Democrat")),
+    mapId="albersStatesPie",
+    mapProjection="albers",
+    sizeBy="Total",
+    theme="wallStreetJournal",
+    title="2000 Presidential Elections",
+    topoJSON="https://www.canvasxpress.org/data/usa-albers-states.json"
+  )
+}
+
+cXmap6 <- function() {
+  library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="Order",
@@ -3439,7 +3460,7 @@ cXmap5 <- function() {
   )
 }
 
-cXmap6 <- function() {
+cXmap7 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
@@ -3453,12 +3474,33 @@ cXmap6 <- function() {
   )
 }
 
-cXmap7 <- function() {
+cXmap8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-australia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-australia-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="STATE_NAME",
+    graphType="Map",
+    legendColumns=3,
+    legendPosition="top",
+    mapConfig=list(zoom=3),
+    mapId="australia",
+    markerBy="Category",
+    motionBy="Year",
+    theme="wallStreetJournal",
+    title="Cyclones in Australia 1940-2020",
+    topoJSON="https://www.canvasxpress.org/data/australia.geo.json"
+  )
+}
+
+cXmap9 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="TYPE_1",
-    decorations=list(marker=list(list(color="red", label="Cartagena", lat=10.3932, lng=-75.4832, shape="teardrop", size=4), list(color="blue", label="San Andres", lat=12.5769, lng=-81.7051, shape="teardrop", size=6))),
+    decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
     legendPosition="bottomRight",
     mapId="colombia",
@@ -3466,7 +3508,7 @@ cXmap7 <- function() {
   )
 }
 
-cXmap8 <- function() {
+cXmap10 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
@@ -3478,7 +3520,7 @@ cXmap8 <- function() {
   )
 }
 
-cXmap9 <- function() {
+cXmap11 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
@@ -3491,7 +3533,7 @@ cXmap9 <- function() {
   )
 }
 
-cXmap10 <- function() {
+cXmap12 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-codiv-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-codiv-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3510,7 +3552,7 @@ cXmap10 <- function() {
   )
 }
 
-cXmap11 <- function() {
+cXmap13 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
