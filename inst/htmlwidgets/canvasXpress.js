@@ -16,14 +16,12 @@ HTMLWidgets.widget({
                 try{
                     for (var i = 0; i < CanvasXpress.instances.length; i++) {
                         if (CanvasXpress.instances[i].target.match(c.id)) {
-                            console.log('---DESTROYING-->', c.id);
                             CanvasXpress.destroy(CanvasXpress.instances[i].target);
                         }
                     }
                 }
-                catch(err) {console.log('---ERROR-->', err);}
+                catch(err) {console.log(err);}
                 if (!(x instanceof Array)) {
-                    console.log('---Creating a new Instance-->');
                     x.renderTo = c.id;
                     new CanvasXpress(x);
                 }
