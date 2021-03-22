@@ -3571,15 +3571,17 @@ cXmap14 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="Order",
+    colorBy="name",
+    decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
     mapConfig=list(center=list(-90, 30)),
     mapGraticuleShow=TRUE,
     mapGraticuleType="solid",
-    mapId="countries",
+    mapId="worldCountries",
     mapProjection="orthographic",
     showLegend=FALSE,
-    topoJSON="https://www.canvasxpress.org/data/world.json"
+    title="Ortographic Projection",
+    topoJSON="http://www.canvasxpress.org/data/worldLow.json"
   )
 }
 
@@ -4842,6 +4844,7 @@ cXscatter2d15 <- function() {
     plotBox=FALSE,
     scatterType="visium",
     title="Visium Spatial Transcriptomics",
+    visiumFlip=FALSE,
     xAxis=list("imagecol"),
     xAxisMajorTicks=FALSE,
     xAxisMinorTicks=FALSE,
