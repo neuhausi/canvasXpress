@@ -47,8 +47,6 @@ if (interactive()) {
     })
 
     test_that("cXmap12", {
-        skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for these tests')
-
         check_ui_test(cXmap12())
     })
 

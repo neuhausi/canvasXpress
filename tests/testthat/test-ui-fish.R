@@ -1,5 +1,4 @@
 context("canvasXpress Web Charts - Fish")
-skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for these tests')
 
 
 test_that("cXfish1", {

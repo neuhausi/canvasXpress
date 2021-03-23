@@ -1,1 +1,1 @@
-rm(t_data_latest)
+rm(t_cxdata_dev)

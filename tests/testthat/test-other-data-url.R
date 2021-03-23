@@ -1,4 +1,5 @@
 context("canvasXpress data-url")
+skip_if_offline(host = "www.canvasxpress.org")
 
 
 if (interactive()) {

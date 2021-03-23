@@ -27,14 +27,10 @@ if (interactive()) {
     })
 
     test_that("cXnetwork7", {
-        skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for these tests')
-
         check_ui_test(cXnetwork7())
     })
 
     test_that("cXnetwork8", {
-        skip_if_not(t_data_latest, 'canvasXpress.data is not of sufficient version for these tests')
-
         check_ui_test(cXnetwork8())
     })
 

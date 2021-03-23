@@ -3,27 +3,37 @@ require(htmlwidgets)
 require(canvasXpress)
 require(canvasXpress.data)
 
-t_data_latest <- FALSE
+
+t_cxdata_dev <- FALSE
 
 try({
-    if (package_version(packageVersion('canvasXpress.data')) > '1.30.5') {
-        t_data_latest <- TRUE
+    if (package_version(packageVersion('canvasXpress.data')) > '1.32.7') {
+        t_cxdata_dev <- TRUE
     }
+
+    tryCatch({
+        if (interactive()) {
+            source("tests/cX-ui-functions.R")
+        } else {
+            source("../cX-ui-functions.R")
+        }
+    },
+    finally = source("../cX-ui-functions.R"))
 })
 
 
-if (interactive()) {
-    source("tests/cX-ui-functions.R")
-} else {
-    source("../cX-ui-functions.R")
-}
-
-
 check_ui_test <- function(result){
+    skip_on_cran()
+
     if (interactive()) {
         print(result)
     }
 
-    expect_s3_class(result, "canvasXpress")
-    expect_s3_class(result, "htmlwidget")
+    tryCatch({
+        expect_s3_class(result, "canvasXpress")
+        expect_s3_class(result, "htmlwidget")
+    },
+    error = function(e) {
+        warning('check_ui_test() errored with: ', e)
+    })
 }
