@@ -4,7 +4,10 @@
 .Ruserdata
 **/.DS_Store
 vignettes/*.html
-tests/*.html
+vignettes/*.R
 working-*
 doc
 Meta
+revdep/*
+!revdep/run_job.R
+

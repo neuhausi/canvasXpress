@@ -8,3 +8,4 @@
 ^working-.*$
 ^doc$
 ^Meta$
+^revdep$
