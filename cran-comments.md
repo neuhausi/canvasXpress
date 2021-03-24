@@ -1,7 +1,7 @@
 ## Comments from Maintainer
 
 * Update to underlying JavaScript Libraries  
-* Moved data to canvasXpress.data package to reduce package size < 5Mb and resolve NOTEs
+* Added safety code to tests to skip if there is an issue accessing internet resources
 * Minor update to test organization to support automated testing  
 * Tests updated  
 * Documentation updated  
@@ -51,15 +51,17 @@ devtools::check()
 
 ## Reverse dependencies
 
-
-**NONE**
+* MAFDash
 
 ```
 pdb <- available.packages()
 tools::package_dependencies(packages = c('canvasXpress'),
                             db = pdb, reverse = TRUE)
                             
-$canvasXpress  
-NULL 
+$canvasXpress
+[1] "MAFDash"
 ```
 
+```
+revdepcheck::revdep_details(".", "MAFDash")
+```

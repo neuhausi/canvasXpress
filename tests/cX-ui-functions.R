@@ -3581,7 +3581,7 @@ cXmap14 <- function() {
     mapProjection="orthographic",
     showLegend=FALSE,
     title="Ortographic Projection",
-    topoJSON="http://www.canvasxpress.org/data/worldLow.json"
+    topoJSON="https://www.canvasxpress.org/data/worldLow.json"
   )
 }
 
