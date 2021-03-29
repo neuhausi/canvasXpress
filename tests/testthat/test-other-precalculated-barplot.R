@@ -1,5 +1,6 @@
 context("canvasXpress Charts - Precalculated Barplot")
 
+
 precalc.data <- data.frame(mean = c(5, 50, 250, 100, NA),
                            stdev = c(20, 10, 20, 15, NA),
                            stringsAsFactors = F,
@@ -75,4 +76,3 @@ test_that("precalculated barplot - list data", {
 
     check_ui_test(result)
 })
-

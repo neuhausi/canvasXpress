@@ -1,5 +1,6 @@
 context("canvasXpress webshotPrint")
 
+
 temp.html  <- tempfile('test', fileext = '.html')
 result.png <- tempfile('test', fileext = '.png')
 
@@ -8,10 +9,10 @@ test_that("scatterplot webshotPrint", {
     y <- read.table(get_data("cX-ageheightt-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     x <- read.table(get_data("cX-ageheightt-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
-    result <- canvasXpress(data    = y,
-                       smpAnnot    = x,
-                       graphType   = "Scatter2D",
-                       title       = "Scatterplot - webshot print")
+    result <- canvasXpress(data        = y,
+                           smpAnnot    = x,
+                           graphType   = "Scatter2D",
+                           title       = "Scatterplot - webshot print")
 
     if (interactive()) {
         # export to PNG and print in viewer

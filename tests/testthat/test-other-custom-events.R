@@ -18,16 +18,14 @@ test_that("Barplot customEvents", {
                                             t.showInfoSpan(e, o.display);
                                         };
                                     };}}")
-    result <-  canvasXpress(
-        data                    = y,
-        smpAnnot                = x,
-        varAnnot                = z,
-        graphType               = "Bar",
-        scatterType             = "bar",
-        is3DPlot                = TRUE,
-        title                   = "Barplot - customEvents",
-        events                  = events
-    )
+    result <-  canvasXpress(data                    = y,
+                            smpAnnot                = x,
+                            varAnnot                = z,
+                            graphType               = "Bar",
+                            scatterType             = "bar",
+                            is3DPlot                = TRUE,
+                            title                   = "Barplot - customEvents",
+                            events                  = events)
 
     check_ui_test(result)
 })

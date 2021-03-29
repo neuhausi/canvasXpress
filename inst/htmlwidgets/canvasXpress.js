@@ -20,7 +20,7 @@ HTMLWidgets.widget({
                         }
                     }
                 }
-                catch(err) {/*do nothing*/}
+                catch(err) {console.log(err);}
                 if (!(x instanceof Array)) {
                     x.renderTo = c.id;
                     new CanvasXpress(x);

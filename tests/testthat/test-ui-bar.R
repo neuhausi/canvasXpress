@@ -15,12 +15,12 @@ test_that("cXbar3", {
 
 test_that("cXbar4", {
     check_ui_test(cXbar4())
-
-    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, sometimes the second number is in scientific format")
 })
 
 test_that("cXbar5", {
     check_ui_test(cXbar5())
+
+    warning("Inconsistent Tooltip: for Setosa/Sepal.Length dots, sometimes the second number is in scientific format")
 })
 
 test_that("cXbar6", {
@@ -41,12 +41,20 @@ test_that("cXbar9", {
 
 test_that("cXbar10", {
     check_ui_test(cXbar10())
-
-    warning("Durable overlay looks different in R than on the CX website, test is missing the following parm: smpOverlayProperties=list('Durable' = list('type'='Boolean'))")
 })
 
 test_that("cXbar11", {
     check_ui_test(cXbar11())
+})
 
-    warning("Durable overlay looks different in R than on the CX website, test is missing the following parm: smpOverlayProperties=list('Durable' = list('type'='Boolean'))")
+test_that("cXbar12", {
+    check_ui_test(cXbar12())
+
+    warning("Durable overlay looks different in R than on the CX website, test is missing the following parm: smpOverlayProperties=list('Durable' = list(type='Boolean'))")
+})
+
+test_that("cXbar13", {
+    check_ui_test(cXbar13())
+
+    warning("Durable overlay looks different in R than on the CX website, test is missing the following in smpOverlayProperties: 'Durable' = list(type='Boolean')")
 })

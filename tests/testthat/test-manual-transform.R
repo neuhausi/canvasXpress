@@ -1,5 +1,4 @@
 # This is a reminder test to check the Data transformations (log2, log10, etc) in the plot. For each type of plot, these actions have to be performed manually!
-
 context("canvasXpress manualTransformations")
 
 

@@ -62,6 +62,7 @@ shinyServer(function(input, output, session) {
                 graphType       = "Boxplot",
                 groupingFactors = list(input$factorSel),
                 title           = glue("{input$factorSel}: {glue_collapse(names(g_geneChoices[g_geneChoices %in% input$genesSel]), sep = ', ')}"),
+                zoomDisable     = TRUE,
                 width           = "100%")
         }
 

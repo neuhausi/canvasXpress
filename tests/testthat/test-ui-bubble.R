@@ -12,3 +12,7 @@ test_that("cXbubble2", {
 test_that("cXbubble3", {
     check_ui_test(cXbubble3())
 })
+
+test_that("cXbubble4", {
+    check_ui_test(cXbubble4())
+})

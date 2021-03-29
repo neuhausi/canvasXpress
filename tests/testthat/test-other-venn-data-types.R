@@ -1,5 +1,6 @@
 context("canvasXpress Charts - Venn")
 
+
 vdata   <- data.frame(AC = 456, A = 340, ABC = 552, ABCD = 148, BC = 915,
                       ACD = 298, BCD = 613, B = 562, CD = 143, ABD = 578,
                       C = 620, D = 592, AB = 639, BD = 354, AD = 257)
@@ -11,6 +12,7 @@ test_that("vennData as list parameter", {
                            graphType  = "Venn",
                            title      = "vennData as list",
                            vennGroups = 4)
+
     check_ui_test(result)
 })
 
@@ -20,6 +22,7 @@ test_that("vennData as data", {
                            graphType  = "Venn",
                            title      = "vennData as data",
                            vennGroups = 4)
+
     check_ui_test(result)
 })
 

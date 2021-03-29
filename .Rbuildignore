@@ -6,3 +6,6 @@
 ^cran-comments.md$
 ^winbuilder_results$
 ^working-.*$
+^doc$
+^Meta$
+^revdep$

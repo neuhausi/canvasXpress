@@ -17,3 +17,6 @@ test_that("cXtree4", {
     check_ui_test(cXtree4())
 })
 
+test_that("cXtree5", {
+    check_ui_test(cXtree5())
+})
