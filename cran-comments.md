@@ -1,10 +1,9 @@
 ## Comments from Maintainer
 
-* Update to underlying JavaScript Libraries  
-* Moved data to canvasXpress.data package to reduce package size < 5Mb and resolve NOTEs
-* Minor update to test organization to support automated testing  
-* Tests updated  
-* Documentation updated  
+* Update to underlying JavaScript Libraries
+* Added a shiny example
+* Fixed failing tests and increased robustness for non-interactive platforms like CRAN
+* Added safety checking for url-dependent tests if canvasxpress.org is unreachable
 
 ---  
 
@@ -13,15 +12,14 @@
 
 RStudio Server Pro (ubuntu 18.04.2)  
 
-* R 3.5.3  
 * R 3.6.3
-* R 4.0.1
+* R 4.0.4
 
 Travis-CI (ubuntu 16.04.6)
 
 * R 3.6.3
 * R 4.0.2
-* R devel (2020-09-27 r79266)
+* R devel (2021-03-23 r80105)
 
 WinBuilder
 
@@ -30,11 +28,7 @@ WinBuilder
 
 RHub
 
-* devtools::check_rhub(platforms = c('fedora-clang-devel', 'ubuntu-gcc-release'))   
-  * Fedora Linux, R-devel, clang, gfortran  
-  * Ubuntu Linux 16.04 LTS, R-release, GCC  
-* rhub::check_on_windows(check_args = c('_R_CHECK_FORCE_SUGGESTS_'='FALSE'), show_status = F)  
-  * Windows Server 2008 R2 SP1, R-release, 32/64 bit
+* devtools::check_rhub(interactive = F)
 
 ---  
 
@@ -51,15 +45,22 @@ devtools::check()
 
 ## Reverse dependencies
 
-
-**NONE**
+* MAFDash
 
 ```
 pdb <- available.packages()
 tools::package_dependencies(packages = c('canvasXpress'),
                             db = pdb, reverse = TRUE)
                             
-$canvasXpress  
-NULL 
+$canvasXpress
+[1] "MAFDash"
 ```
 
+```
+## revdepcheck results
+
+We checked 3 reverse dependencies (0 from CRAN + 3 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
+```

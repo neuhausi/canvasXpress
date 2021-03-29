@@ -13,49 +13,37 @@ HTMLWidgets.widget({
         return {
             id: c.id,
             renderValue: function(x) {
-                try {
-                    try { CanvasXpress.destroy(c.id); }
-                    catch(err) { /*do nothing*/ }
-                    if (!(x instanceof Array)) {
-                        x.renderTo = c.id;
-                        new CanvasXpress(x);
-                    }
-                }
-                catch(err) {
-                    console.log("Exception creating CanvasXpress object: ", err.message);
-                    console.log(err.stack);
-                }
-            },
-            resize: function(width, height) {
-                try {
-                    cx = CanvasXpress.getObject(c.id);
-                    if (cx) {
-                        cx.setDimensions(width, height);
-                    }
-                    else {
-                        cx = CanvasXpress.getObject(c.id + '-1');
-                        if (cx) {
-                            cx.setDimensions(width, height);
+                try{
+                    for (var i = 0; i < CanvasXpress.instances.length; i++) {
+                        if (CanvasXpress.instances[i].target.match(c.id)) {
+                            CanvasXpress.destroy(CanvasXpress.instances[i].target);
                         }
                     }
                 }
-                catch (err) {
-                    console.log("Exception resizing CanvasXpress object: ", err.message);
-                    console.log(err.stack);
+                catch(err) {console.log(err);}
+                if (!(x instanceof Array)) {
+                    x.renderTo = c.id;
+                    new CanvasXpress(x);
+                }
+            },
+            resize: function(width, height) {
+                cx = CanvasXpress.getObject(c.id);
+                if (cx) {
+                    cx.setDimensions(width, height);
+                }
+                else {
+                    cx = CanvasXpress.getObject(c.id + '-1');
+                    if (cx) {
+                        cx.setDimensions(width, height);
+                    }
                 }
             },
             getImage: function() {
-                try {
-                    cx = CanvasXpress.getObject(c.id);
-                    if (cx && cx.meta && cx.meta.base64) {
-                        return cx.meta.base64;
-                    } else {
-                        return false;
-                    }
-                }
-                catch (err) {
-                    console.log("Exception getting CanvasXpress image: ", err.message);
-                    console.log(err.stack);
+                cx = CanvasXpress.getObject(c.id);
+                if (cx && cx.meta && cx.meta.base64) {
+                    return cx.meta.base64;
+                } else {
+                    return false;
                 }
             }
         };

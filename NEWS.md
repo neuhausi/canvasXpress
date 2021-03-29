@@ -6,6 +6,15 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.32.9
+* Updated CanvasXpress JS and CSS libraries to v32.9
+* Added support for new chart types: Meter, Fish
+* Updated htmlwidget handling of canvasXpress objects
+* Added back updated shiny example3
+* Updated testthat paradigm to use setup/teardown files
+* Fixed failing tests and increased robustness for non-interactive platforms like CRAN
+* Added safety checking for url-dependent tests if canvasxpress.org is unreachable
+
 ## v1.29.6  
 * Updated CanvasXpress JavaScript and CSS libraries to v29.6  
 * Package data moved to canvasXpress.data to reduce package size  

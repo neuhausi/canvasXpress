@@ -1,9 +1,50 @@
 @charset "UTF-8";
 
 /*
+ * Loading
+ */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid rgb(51, 122, 183);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(51, 122, 183) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}  
+
+/*
  * Loading Image
  */
 
+ /*
 .sk-fading-circle {
     margin: 50px auto;
     width: 80px;
@@ -216,6 +257,7 @@
         transform: translateY(-250px);
     }
 }
+*/
 
 table.shorts {
     margin: 2px 3px;
@@ -596,6 +638,24 @@ div.CanvasXpressBinContainer {
     box-sizing: content-box;
     clear: both;
     text-align: left;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+div.CanvasXpressBinContainerTab {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: rgb(51, 122, 183);   
+    border-radius: 5px;
+    box-sizing: content-box;
+    clear: none;
+    height: 16px;
+    margin: 3px;
+    overflow-y: auto;
+    padding: 5px;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -1631,6 +1691,8 @@ div.CanvasXpressConfiguratorExample {
     box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 span.CanvasXpressConfiguratorExample {
@@ -1644,7 +1706,7 @@ span.CanvasXpressConfiguratorExample {
 }
 
 div.CanvasXpressConfiguratorExampleContent {
-    overflow: 'auto'
+    overflow: hidden;
 }
 
 div.CanvasXpressConfiguratorColor {
@@ -1705,7 +1767,6 @@ div.CanvasXpressContainer {
     box-sizing: content-box;
     position: relative;
     float: left;
-    transition: all 1s linear;
 }
 
 div.CanvasXpressContainerNT {
@@ -1998,7 +2059,7 @@ div.CanvasXpressDataFilterContainerNumeric {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
     background-repeat: repeat-x;
     clear: both;
-    height: 14px;
+    height: 18px;
     margin: 2px;
 }
 
@@ -2156,6 +2217,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 select.CanvasXpressConfigurator::-webkit-scrollbar-button,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
 select.CanvasXpressSlider::-webkit-scrollbar-button,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
@@ -2177,6 +2239,7 @@ select.CanvasXpressSlider::-webkit-scrollbar-track {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track {
     background-color: #F5F5F5;
@@ -2192,6 +2255,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
 select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
@@ -2215,6 +2279,7 @@ select.CanvasXpressSlider::-webkit-scrollbar {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar,
 div.CanvasXpressDataExplorer::-webkit-scrollbar,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar {
     width: 6px;
@@ -2232,6 +2297,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
 select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
+div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
 select.CanvasXpressSlider::-webkit-scrollbar-thumb,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-thumb {
@@ -2939,7 +3005,6 @@ div.CanvasXpress-ParentNode {
     padding: 0;
 }
 
-
 /*
  * CanvasXpress
  */
@@ -2951,11 +3016,9 @@ canvas.CanvasXpress {
     -o-user-select: none;
     user-select: none;
     -ms-user-select: none;
-    transition: all 1s linear;
 }
 
 canvas.CanvasXpress:hover {
-    /*border: 1px solid #23527c;*/
     border: 1px solid rgba(35, 82, 124, 0.2);
     border-radius: 6px;
     margin: -1px;

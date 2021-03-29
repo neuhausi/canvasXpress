@@ -1,5 +1,6 @@
 context("canvasXpress duplicated labels")
 
+
 data     <- read.table(get_data("cX-simple-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 smp_data <- read.table(get_data("cX-simple-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 sample_names <- c("S1", "S2", "S4", "S4", "S5", "S1", "S4", "S4")
@@ -13,18 +14,16 @@ test_that("segregated barplot duplicated labels", {
     smp_data           <- as.matrix(smp_data)
     rownames(smp_data) <- colnames(data) <- sample_names
 
-    result <- canvasXpress(
-        data                      = data,
-        smpAnnot                  = smp_data,
-        colorBy                   = "IC50",
-        graphOrientation          = "vertical",
-        graphType                 = "Bar",
-        smpOverlays               = list("Drug Sensitivity"),
-        segregateSamplesBy        = list("Gene"),
-        smpTitle                  = "Cell Lines",
-        title                     = "Duplicated labels should appear correct for each Gene",
-        xAxis2Show                = FALSE
-    )
+    result <- canvasXpress(data                      = data,
+                           smpAnnot                  = smp_data,
+                           colorBy                   = "IC50",
+                           graphOrientation          = "vertical",
+                           graphType                 = "Bar",
+                           smpOverlays               = list("Drug Sensitivity"),
+                           segregateSamplesBy        = list("Gene"),
+                           smpTitle                  = "Cell Lines",
+                           title                     = "Duplicated labels should appear correct for each Gene",
+                           xAxis2Show                = FALSE)
     check_ui_test(result)
 })
 
@@ -33,17 +32,15 @@ test_that("barplot duplicated labels", {
     smp_data           <- as.matrix(smp_data)
     rownames(smp_data) <- colnames(data) <- sample_names
 
-    result <- canvasXpress(
-        data                      = data,
-        smpAnnot                  = smp_data,
-        colorBy                   = "IC50",
-        graphOrientation          = "vertical",
-        graphType                 = "Bar",
-        smpOverlays               = list("Drug Sensitivity"),
-        smpTitle                  = "Cell Lines",
-        title                     = "Duplicated labels should appear correct",
-        xAxis2Show                = FALSE
-    )
+    result <- canvasXpress(data                      = data,
+                           smpAnnot                  = smp_data,
+                           colorBy                   = "IC50",
+                           graphOrientation          = "vertical",
+                           graphType                 = "Bar",
+                           smpOverlays               = list("Drug Sensitivity"),
+                           smpTitle                  = "Cell Lines",
+                           title                     = "Duplicated labels should appear correct",
+                           xAxis2Show                = FALSE)
     check_ui_test(result)
 })
 

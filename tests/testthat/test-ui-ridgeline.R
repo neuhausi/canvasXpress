@@ -1,4 +1,4 @@
-context("canvasXpress Web Charts - Ridgeline")
+context("canvasXpress Web Charts - RidgeLine")
 
 
 test_that("cXridgeline1", {

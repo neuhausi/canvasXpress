@@ -1,5 +1,6 @@
 context("canvasXpress null data")
 
+
 get_plot_title <- function(plot) {
     paste(plot, "- Null Data should be dropped (not turn 0)")
 }
@@ -20,15 +21,14 @@ test_that("scatter2D null data", {
     y[(0.4*nrow(y)):(0.6*nrow(y)), ]  <- NA
     z <- z[rownames(y), ]
 
-    result <- canvasXpress(
-        data            = y,
-        varAnnot        = z,
-        colorBy         = "Group",
-        graphType       = "Scatter2D",
-        title           = get_plot_title("Scatter2D"),
-        setMinX         = 0,
-        setMinY         = 0
-    )
+    result <- canvasXpress(data            = y,
+                           varAnnot        = z,
+                           colorBy         = "Group",
+                           graphType       = "Scatter2D",
+                           title           = get_plot_title("Scatter2D"),
+                           setMinX         = 0,
+                           setMinY         = 0)
+
     check_ui_test(result)
 })
 
@@ -42,18 +42,17 @@ test_that("Scatter3D null data", {
     y[(0.4*nrow(y)):(0.6*nrow(y)), 3] <- NA
     y[(0.6*nrow(y)):(0.8*nrow(y)), ]  <- NA
 
-    result <- canvasXpress(
-        data            = y,
-        varAnnot        = z,
-        graphType       = "Scatter3D",
-        title           = get_plot_title("Scatter3D"),
-        xAxis           = list("Sepal.Length"),
-        yAxis           = list("Sepal.Width"),
-        zAxis           = list("Petal.Length"),
-        setMinX         = 0,
-        setMinY         = 0,
-        setMinZ         = 0
-    )
+    result <- canvasXpress(data            = y,
+                           varAnnot        = z,
+                           graphType       = "Scatter3D",
+                           title           = get_plot_title("Scatter3D"),
+                           xAxis           = list("Sepal.Length"),
+                           yAxis           = list("Sepal.Width"),
+                           zAxis           = list("Petal.Length"),
+                           setMinX         = 0,
+                           setMinY         = 0,
+                           setMinZ         = 0)
+
     check_ui_test(result)
 })
 
@@ -63,14 +62,13 @@ test_that("barplot null data", {
     x <- read.table(get_data("cX-simple-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     y <- set_NA_data(y)
 
-    result <-  canvasXpress(
-        data                    = y,
-        smpAnnot                = x,
-        colorBy                 = "Drug Sensitivity",
-        graphOrientation        = "vertical",
-        graphType               = "Bar",
-        title                   = get_plot_title("Barplot")
-    )
+    result <-  canvasXpress(data                    = y,
+                            smpAnnot                = x,
+                            colorBy                 = "Drug Sensitivity",
+                            graphOrientation        = "vertical",
+                            graphType               = "Bar",
+                            title                   = get_plot_title("Barplot"))
+
     check_ui_test(result)
 })
 

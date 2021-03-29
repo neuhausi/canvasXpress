@@ -1,35 +1,34 @@
 context("canvasXpress regressionLines")
 
+
 y = read.table(get_data("cX-ageheightt-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 x = read.table(get_data("cX-ageheightt-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot overall regressionLine", {
 
-    result <-  canvasXpress(
-        data                    = y,
-        smpAnnot                = x,
-        graphType               = "Scatter2D",
-        title                   = "Scatterplot - regressionLine",
-        afterRender             = list(list("addRegressionLine"))
-    )
+    result <-  canvasXpress(data                    = y,
+                            smpAnnot                = x,
+                            graphType               = "Scatter2D",
+                            title                   = "Scatterplot - regressionLine",
+                            afterRender             = list(list("addRegressionLine")))
+
     check_ui_test(result)
 })
 
 test_that("scatterplot per-sample regressionLine", {
 
     y = read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    result <-  canvasXpress(
-        data                    = y,
-        asSampleFactors         = list("cyl"),
-        colorBy                 = "cyl",
-        graphType               = "Scatter2D",
-        title                   = "Scatterplot - per sample regressionLine",
-        showRegressionFullRange = TRUE,
-        stringVariableFactors   = list("cyl"),
-        xAxis                   = list("wt"),
-        yAxis                   = list("mpg"),
-        afterRender             = list(list("addRegressionLine", list("cyl")))
-    )
+    result <-  canvasXpress(data                    = y,
+                            asSampleFactors         = list("cyl"),
+                            colorBy                 = "cyl",
+                            graphType               = "Scatter2D",
+                            title                   = "Scatterplot - per sample regressionLine",
+                            showRegressionFullRange = TRUE,
+                            stringVariableFactors   = list("cyl"),
+                            xAxis                   = list("wt"),
+                            yAxis                   = list("mpg"),
+                            afterRender             = list(list("addRegressionLine", list("cyl"))))
+
     check_ui_test(result)
 })
 
@@ -39,31 +38,28 @@ data_z = read.table(get_data("cX-irist-var.txt.gz"), header = TRUE, sep = "\t", 
 
 test_that("scatterplot per variable regressionLine", {
 
-    result <-  canvasXpress(
-        data                    = data_y,
-        varAnnot                = data_z,
-        colorBy                 = "Species",
-        graphType               = "Scatter2D",
-        title                   = "Scatterplot - per variable regressionLine",
-        showRegressionFullRange = TRUE,
-        scatterPlotMatrix       = TRUE,
-        afterRender             = list(list("addRegressionLine"))
-    )
+    result <-  canvasXpress(data                    = data_y,
+                            varAnnot                = data_z,
+                            colorBy                 = "Species",
+                            graphType               = "Scatter2D",
+                            title                   = "Scatterplot - per variable regressionLine",
+                            showRegressionFullRange = TRUE,
+                            scatterPlotMatrix       = TRUE,
+                            afterRender             = list(list("addRegressionLine")))
+
     check_ui_test(result)
 })
 
 test_that("scatterplot per variable and sample regressionLine", {
 
-    result <-  canvasXpress(
-        data                    = data_y,
-        varAnnot                = data_z,
-        colorBy                 = "Species",
-        graphType               = "Scatter2D",
-        title                   = "Scatterplot - per variable and sample regressionLine",
-        showRegressionFullRange = TRUE,
-        scatterPlotMatrix       = TRUE,
-        afterRender             = list(list("addRegressionLine", list("Species")))
-    )
+    result <-  canvasXpress(data                    = data_y,
+                            varAnnot                = data_z,
+                            colorBy                 = "Species",
+                            graphType               = "Scatter2D",
+                            title                   = "Scatterplot - per variable and sample regressionLine",
+                            showRegressionFullRange = TRUE,
+                            scatterPlotMatrix       = TRUE,
+                            afterRender             = list(list("addRegressionLine", list("Species"))))
+
     check_ui_test(result)
 })
-
