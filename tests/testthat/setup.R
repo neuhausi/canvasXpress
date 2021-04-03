@@ -7,7 +7,7 @@ require(canvasXpress.data)
 t_cxdata_dev <- FALSE
 
 try({
-    if (package_version(packageVersion('canvasXpress.data')) > '1.32.7') {
+    if (package_version(packageVersion('canvasXpress.data')) > '1.32.9') {
         t_cxdata_dev <- TRUE
     }
 
@@ -17,8 +17,7 @@ try({
         } else {
             source("../cX-ui-functions.R")
         }
-    },
-    finally = source("../cX-ui-functions.R"))
+    })
 })
 
 

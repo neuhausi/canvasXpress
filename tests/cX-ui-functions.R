@@ -281,6 +281,28 @@ cXbar5 <- function() {
 
 cXbar6 <- function() {
   library(canvasXpress)
+  y=read.table(get_data("cX-iris-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-iris-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisTitleFontStyle="italic",
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Species"),
+    legendColumns=2,
+    legendPosition="bottom",
+    showTransition=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Species",
+    theme="blackAndWhite",
+    title="Iris flower data set",
+    xAxis2Show=FALSE
+  )
+}
+
+cXbar7 <- function() {
+  library(canvasXpress)
   y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -303,7 +325,7 @@ cXbar6 <- function() {
   )
 }
 
-cXbar7 <- function() {
+cXbar8 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-simple-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-simple-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -326,7 +348,7 @@ cXbar7 <- function() {
   )
 }
 
-cXbar8 <- function() {
+cXbar9 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-simple-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-simple-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -348,7 +370,7 @@ cXbar8 <- function() {
   )
 }
 
-cXbar9 <- function() {
+cXbar10 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-lollipop-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -362,7 +384,7 @@ cXbar9 <- function() {
   )
 }
 
-cXbar10 <- function() {
+cXbar11 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -380,7 +402,7 @@ cXbar10 <- function() {
   )
 }
 
-cXbar11 <- function() {
+cXbar12 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-stacked1-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-stacked1-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -405,7 +427,7 @@ cXbar11 <- function() {
   )
 }
 
-cXbar12 <- function() {
+cXbar13 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-swimmer-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-swimmer-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -432,7 +454,7 @@ cXbar12 <- function() {
   )
 }
 
-cXbar13 <- function() {
+cXbar14 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-swimmer-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-swimmer-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1580,6 +1602,87 @@ cXcorrelation3 <- function() {
     graphType="Correlation",
     title="Correlation Plot",
     yAxisTitle="Correlation Title"
+  )
+}
+
+cXdashboard1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-titanic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-titanic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Pclass"),
+    stackBy="Survived",
+    summaryType="count",
+    theme="lastAirBenderFire",
+    afterRender=list(list("createHistogram"), list("createDOE"))
+  )
+}
+
+cXdashboard2 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-mpg-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-mpg-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("model"),
+    histogramType="stacked",
+    theme="gameOfThronesStannis",
+    afterRender=list(list("createHistogram"), list("createDOE"))
+  )
+}
+
+cXdashboard3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-scents-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-scents-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    showTransition=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Smoking Status",
+    theme="lastAirBenderWater",
+    afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
+  )
+}
+
+cXdashboard4 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-body2-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-body2-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    showTransition=FALSE,
+    theme="CanvasXpress",
+    afterRender=list(list("createDOE"))
+  )
+}
+
+cXdashboard5 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-kaplanmeier3-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-kaplanmeier3-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    invertCensored=TRUE,
+    showConfidenceIntervals=FALSE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="gameOfThronesTargaryen",
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
   )
 }
 
@@ -3342,6 +3445,27 @@ cXline2 <- function() {
 }
 
 cXline3 <- function() {
+  library(canvasXpress)
+  y=read.table(get_data("cX-generic-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table(get_data("cX-generic-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table(get_data("cX-generic-var.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphOrientation="vertical",
+    graphType="Line",
+    legendPosition="right",
+    lineDecoration="pattern",
+    smpLabelRotate=90,
+    smpTitle="Collection of Samples",
+    smpTitleFontStyle="italic",
+    theme="blackAndWhite",
+    title="Random Data"
+  )
+}
+
+cXline4 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-line-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table(get_data("cX-line-smp.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)

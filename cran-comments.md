@@ -46,14 +46,13 @@ devtools::check()
 ## Reverse dependencies
 
 * MAFDash
+* pericope
+* canvasXpress.data
 
 ```
-pdb <- available.packages()
-tools::package_dependencies(packages = c('canvasXpress'),
-                            db = pdb, reverse = TRUE)
-                            
-$canvasXpress
-[1] "MAFDash"
+> revdepcheck::cran_revdeps('canvasXpress', bioc = T)
+[1] "canvasXpress"      "canvasXpress.data" "MAFDash"           "periscope"   
+
 ```
 
 ```
