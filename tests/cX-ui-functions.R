@@ -4980,6 +4980,23 @@ cXscatter2d15 <- function() {
   )
 }
 
+cXscatter2d16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-gwas-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    chromosomeLengths=list(1500, 1191, 1040, 945, 877, 825, 784, 750, 721, 696, 674, 655, 638, 622, 608, 595, 583, 572, 562, 553, 544, 535),
+    decorations=list(line=list(list(color="rgb(255,0,0)", width=1, y=7), list(color="rgb(0,0,255)", width=1, y=5)), marker=list(list(align="left", offsetX=5, offsetY=0, rotate=-45, sample=list("Manhattan", "-log10(p)"), text="rs4064", type="text", variable="rs4064"))),
+    graphType="Scatter2D",
+    highlightVar=list("rs13895", "rs11846"),
+    manhattanMarkerChromosomeNumber="Chr",
+    manhattanMarkerLogPValue="-log10(p)",
+    manhattanMarkerPosition="Pos",
+    scatterType="manhattan",
+    title="Manhattan Plot"
+  )
+}
+
 cXscatter3d1 <- function() {
   library(canvasXpress)
   y=read.table(get_data("cX-irist-dat.txt.gz"), header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
