@@ -12,7 +12,7 @@ r_packages:
   - canvasXpress.data
 if: |
   branch IN (master, cran) AND \
-  fork = false
+  repo = cb4ds/canvasXpress
 after_success:
   - Rscript -e 'library(covr); codecov(quiet = FALSE)'
 latex: false
