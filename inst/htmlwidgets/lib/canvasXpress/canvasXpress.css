@@ -2041,6 +2041,13 @@ div.CanvasXpressDataFilterContainerMaskNoOverflow {
     overflow: hidden;
 }
 
+div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
+    box-sizing: content-box;
+    border: none;
+    margin: 5px;
+    overflow: hidden;
+}
+
 div.CanvasXpressDataFilterContainerMask {
     box-sizing: content-box;
     border: 1px solid #d0d0d0;
@@ -2071,6 +2078,13 @@ div.CanvasXpressDataFilterContainerItemSelected {
 div.CanvasXpressDataFilterContainerHoverable {
     box-sizing: content-box;
     border: 1px solid rgb(51, 122, 183);
+    margin: 2px;
+    margin-bottom: 4px;
+}
+
+div.CanvasXpressDataFilterContainerHoverableOut {
+    box-sizing: content-box;
+    border: none;
     margin: 2px;
     margin-bottom: 4px;
 }
