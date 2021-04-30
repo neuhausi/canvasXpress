@@ -1,25 +1,42 @@
 require(testthat)
 require(htmlwidgets)
 require(canvasXpress)
-require(canvasXpress.data)
 
-
-t_cxdata_dev <- FALSE
 
 try({
-    if (package_version(packageVersion('canvasXpress.data')) > '1.32.9') {
-        t_cxdata_dev <- TRUE
-    }
+    testFile <- readLines(system.file("ui-examples/cX-function.R", package = "canvasXpress", mustWork = TRUE))
 
-    tryCatch({
-        if (interactive()) {
-            source("tests/cX-ui-functions.R")
-        } else {
-            source("../cX-ui-functions.R")
-        }
-    })
+    # --- Manual Test Fixes
+
+    #general - escape sequence incorrect
+    testFile <- gsub('\\$', '$', testFile, fixed = T)
+
+    #map1
+    testFile <- gsub("https://www.canvasxpress.org/data/cX-olympicMedals",
+                     "https://www.canvasxpress.org/data/cX-OlympicMedals", testFile)
+
+    #layout12, kaplanmeier3-5
+    testFile <- gsub("list\\(list\\('Survival2*','Survival2*-Censor'\\)\\)",
+                     "list\\('Survival','Survival-Censor'\\)", testFile)
+
+    #kaplanmeier1-2
+    testFile <- gsub("list\\(list\\('Time','Censor'\\)\\)",
+                     "list\\('Time','Censor'\\)", testFile)
+
+    #scatter2d9
+    testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
+                     ", list\\(FALSE, \'red\'\\)", testFile)
+
+    temp <- tempfile(fileext = ".R")
+
+    writeLines(testFile, temp)
+    source(temp)
 })
 
+
+
+
+### Supporting Functions
 
 check_ui_test <- function(result){
     skip_on_cran()

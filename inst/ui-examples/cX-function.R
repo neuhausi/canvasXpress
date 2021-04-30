@@ -482,6 +482,30 @@ cXbar14 <- function() {
   )
 }
 
+cXbar15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Result",
+    colorScheme="Greens",
+    graphType="Bar",
+    groupingFactors=list("Award"),
+    legendColumns=2,
+    legendPosition="top",
+    legendScaleFontFactor=2,
+    maxSmpStringLen=50,
+    showLegendTitle=FALSE,
+    smpLabelScaleFontFactor=2,
+    stackBy="Result",
+    summaryType="count",
+    title="The Awards of Audrey Hepburn",
+    xAxisShow=FALSE
+  )
+}
+
 cXbarline1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2359,6 +2383,107 @@ cXdotplot11 <- function() {
     groupingFactors=list("dataset"),
     histogramBins=150,
     jitter=FALSE
+  )
+}
+
+cXdotplot12 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-lotr-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-lotr-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    backgroundImage="/assets/images/lotr-background.png",
+    backgroundType="image",
+    colorBy="Character",
+    colors=list("rgb(45,24,18)", "rgb(95,50,31)", "rgb(22,25,16)", "rgb(56,54,25)", "rgb(165,113,76)", "rgb(116,50,36)", "rgb(170,99,47)", "rgb(195,152,60)", "rgb(0,0,0)"),
+    dotplotOutlineThreshold=1,
+    dotplotType="movement",
+    fontName="Bilbo",
+    fonts=list("Bilbo"),
+    graphOrientation="horizontal",
+    graphType="Dotplot",
+    groupingFactors=list("Character"),
+    images=list("/assets/images/Frodo.png", "/assets/images/Gandalf.png", "/assets/images/Merry.png", "/assets/images/Pippin.png", "/assets/images/Sam.png", "/assets/images/Aragorn.png", "/assets/images/Boromir.png", "/assets/images/Gimli.png", "/assets/images/Legolas.png"),
+    layoutAdjust=TRUE,
+    layoutBoxShow=FALSE,
+    layoutTopology="1X3",
+    marginBottom=80,
+    marginLeft=60,
+    marginRight=60,
+    marginTop=180,
+    maxFontSize=40,
+    objectColorTransparency=0.85,
+    segregateSamplesBy=list("Film"),
+    showLegend=FALSE,
+    sizeBy="Words",
+    sizeByContinuous=TRUE,
+    sizeByShowLegend=FALSE,
+    sizes=list(5, 10, 15, 25, 35, 40, 50, 60, 70, 90, 120),
+    smpLabelImage=TRUE,
+    smpLabelImageRound=TRUE,
+    smpLabelScaleFontFactor=0.9,
+    title="Words per Chapter by Character",
+    xAxis2Show=FALSE,
+    xAxisMajorTicks=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
+cXdotplot13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-audrey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-audrey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    backgroundImage="/assets/images/Audrey.jpg",
+    backgroundType="image",
+    colorBy="Type",
+    colorScheme="Greens",
+    graphOrientation="vertical",
+    graphType="Dotplot",
+    groupingFactors=list("Year"),
+    isGraphTime=TRUE,
+    jitter=FALSE,
+    legendColumns=3,
+    legendPosition="top",
+    legendScaleFontFactor=2,
+    marginLeft=150,
+    marginRight=150,
+    showLegendTitle=FALSE,
+    smpLabelInterval=8,
+    smpLabelRotate=90,
+    timeFormat="year",
+    title="The Life and Films of Audrey Hepburn",
+    xAxis2Show=FALSE,
+    xAxisMajorTicks=FALSE,
+    xAxisMinorTicks=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
+cXdotplot14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Result",
+    colorScheme="Greens",
+    graphType="Dotplot",
+    groupingFactors=list("Award"),
+    jitter=FALSE,
+    legendColumns=2,
+    legendPosition="top",
+    legendScaleFontFactor=2,
+    maxSmpStringLen=50,
+    showLegendTitle=FALSE,
+    smpLabelScaleFontFactor=2,
+    title="The Awards of Audrey Hepburn",
+    xAxisShow=FALSE
   )
 }
 
@@ -4986,11 +5111,11 @@ cXscatter2d16 <- function() {
   canvasXpress(
     data=y,
     chromosomeLengths=list(1500, 1191, 1040, 945, 877, 825, 784, 750, 721, 696, 674, 655, 638, 622, 608, 595, 583, 572, 562, 553, 544, 535),
-    decorations=list(line=list(list(color="rgb(255,0,0)", width=1, y=7), list(color="rgb(0,0,255)", width=1, y=5)), marker=list(list(align="left", offsetX=5, offsetY=0, rotate=-45, sample=list("Manhattan", "-log10(p)"), text="rs4064", type="text", variable="rs4064"))),
+    decorations=list(line=list(list(color="rgb(255,0,0)", width=1, y=7), list(color="rgb(0,0,255)", width=1, y=5)), marker=list(list(align="left", offsetX=5, offsetY=0, rotate=-45, sample=list("Chr", "Pos", "-log10(pValue)"), text="rs4064", type="text", variable="rs4064"))),
     graphType="Scatter2D",
     highlightVar=list("rs13895", "rs11846"),
     manhattanMarkerChromosomeNumber="Chr",
-    manhattanMarkerLogPValue="-log10(p)",
+    manhattanMarkerLogPValue="-log10(pValue)",
     manhattanMarkerPosition="Pos",
     scatterType="manhattan",
     title="Manhattan Plot"
@@ -5187,6 +5312,7 @@ cXstacked2 <- function() {
     graphType="Stacked",
     legendBackgroundColor=FALSE,
     sampleSpaceFactor=1,
+    showDataValues=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -5229,6 +5355,7 @@ cXstacked4 <- function() {
     graphType="Stacked",
     legendBackgroundColor=FALSE,
     sampleSpaceFactor=1.5,
+    showDataValues=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -5249,6 +5376,7 @@ cXstacked5 <- function() {
     legendColumns=3,
     legendPosition="bottom",
     marginRight=20,
+    showDataValues=TRUE,
     title="Diverging Stacked Graph",
     xAxisTickFormat="%s%%"
   )
@@ -5267,6 +5395,7 @@ cXstackedline1 <- function() {
     graphType="StackedLine",
     lineThickness=3,
     lineType="spline",
+    showDataValues=TRUE,
     showTransition=FALSE,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -5317,6 +5446,7 @@ cXstackedpercent1 <- function() {
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
     sampleSpaceFactor=1,
+    showDataValues=TRUE,
     showTransition=FALSE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -5339,6 +5469,7 @@ cXstackedpercent2 <- function() {
     graphOrientation="vertical",
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
+    showDataValues=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -5380,6 +5511,7 @@ cXstackedpercent4 <- function() {
     legendColumns=3,
     legendPosition="bottom",
     marginRight=20,
+    showDataValues=TRUE,
     title="Diverging Stacked Percent Graph",
     xAxisTickFormat="%s%%"
   )
@@ -5398,6 +5530,7 @@ cXstackedpercentline1 <- function() {
     graphType="StackedPercentLine",
     lineThickness=3,
     lineType="spline",
+    showDataValues=TRUE,
     showTransition=FALSE,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
