@@ -27,6 +27,8 @@ try({
     testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
                      ", list\\(FALSE, \'red\'\\)", testFile)
 
+    # --- End Test Fixes
+
     temp <- tempfile(fileext = ".R")
 
     writeLines(testFile, temp)
@@ -40,6 +42,7 @@ try({
 
 check_ui_test <- function(result){
     skip_on_cran()
+    skip_on_ci()
 
     if (interactive()) {
         print(result)

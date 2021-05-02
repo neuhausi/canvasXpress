@@ -9,5 +9,5 @@ working-*
 doc
 Meta
 revdep/*
+cran-setup.R
 !revdep/run_job.R
-

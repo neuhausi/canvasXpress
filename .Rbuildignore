@@ -9,3 +9,5 @@
 ^doc$
 ^Meta$
 ^revdep$
+
+cran-setup.R
