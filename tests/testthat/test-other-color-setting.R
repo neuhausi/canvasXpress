@@ -2,8 +2,8 @@ context("canvasXpress color setting")
 
 
 test_that("barplot line color", {
-    y = read.table(get_data("cX-simple-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x = read.table(get_data("cX-simple-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y = read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x = read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data             = y,
                            smpAnnot         = x,
                            decorations      = list(line = list(list(color = "green", value = 50, width = 2))),
@@ -15,7 +15,7 @@ test_that("barplot line color", {
 })
 
 test_that("barplot annotations color", {
-    y <- read.table(get_data( "cX-basic2-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data                    = y,
                            graphType               = "Bar",
                            graphOrientation        = "vertical",
@@ -26,8 +26,8 @@ test_that("barplot annotations color", {
 })
 
 test_that("scatter2d ColorScheme", {
-    y = read.table(get_data("cX-spider-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z = read.table(get_data("cX-spider-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y = read.table("https://www.canvasxpress.org/data/cX-spider-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    z = read.table("https://www.canvasxpress.org/data/cX-spider-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data           = y,
                            varAnnot       = z,
                            graphType      = "Scatter2D",
@@ -44,8 +44,8 @@ test_that("scatter2d ColorScheme", {
 })
 
 test_that("boxplot ColorScheme", {
-    y = read.table(get_data("cX-toothgrowth-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x = read.table(get_data("cX-toothgrowth-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y = read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x = read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data                     = y,
                            smpAnnot                 = x,
                            axisTitleScaleFontFactor = 1.8,
@@ -61,7 +61,7 @@ test_that("boxplot ColorScheme", {
 })
 
 test_that("stackedbar custom colors", {
-    y <- read.table(get_data("cX-generic-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     z <- data.frame(Category = c("A", "B", "C", "D"), stringsAsFactors = F)
     rownames(z) <- rownames(y)
     result <- canvasXpress(data             = y,

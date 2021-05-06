@@ -7,13 +7,13 @@ inside_legend_only_positions <- c("topRight", "bottomRight", "bottomLeft", "topL
 segregated_legend_positions  <- c("right", "bottom", "left", "top")
 test_legend_positions        <- setdiff(all_legend_positions, default_legend_position)
 
-barplot_y <- read.table(get_data("cX-basic-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_y <- read.table(get_data("cX-toothgrowth-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_x <- read.table(get_data("cX-toothgrowth-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot legendposition", {
 
-    y <- read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {
         result <-  canvasXpress(data                    = y,
@@ -106,8 +106,8 @@ test_that("boxplot (segregated) legendposition", {
 
 test_that("Scatterplot matrix legendposition", {
 
-    y <- read.table(get_data("cX-irist-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z <- read.table(get_data("cX-irist-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     legend_inside            <- FALSE
     for (legend_pos in segregated_legend_positions) {
         result <-  canvasXpress(data                    = y,
@@ -124,8 +124,8 @@ test_that("Scatterplot matrix legendposition", {
 
 test_that("dotplot legendposition", {
 
-    y <- read.table(get_data("cX-iris-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table(get_data("cX-iris-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     legend_inside            <- TRUE
     for (legend_pos in test_legend_positions) {
@@ -144,8 +144,8 @@ test_that("dotplot legendposition", {
 
 test_that("heatmap legendposition", {
 
-    y  <- read.table(get_data("cX-multidimensionalheatmap-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    y2 <- read.table(get_data("cX-multidimensionalheatmap-dat3.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y2 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {

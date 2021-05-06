@@ -1,10 +1,11 @@
 require(testthat)
 require(htmlwidgets)
 require(canvasXpress)
-
+require(canvasXpress.data)
+require(readr)
 
 try({
-    testFile <- readLines(system.file("ui-examples/cX-function.R", package = "canvasXpress", mustWork = TRUE))
+    testFile <- read_lines(system.file("ui-examples/cX-function.R.gz", package = "canvasXpress", mustWork = TRUE))
 
     # --- Manual Test Fixes
 

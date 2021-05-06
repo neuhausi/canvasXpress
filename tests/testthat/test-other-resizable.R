@@ -1,6 +1,6 @@
 context("canvasXpress resizable")
 
-y <- read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot resizable", {
 
@@ -64,7 +64,7 @@ test_that("scatterplot not resizable", {
 
 test_that("bar chart not resizable", {
 
-    y <- read.table(get_data("cX-basic-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(data                    = y,
                             graphOrientation        = "vertical",
                             graphType               = "Bar",

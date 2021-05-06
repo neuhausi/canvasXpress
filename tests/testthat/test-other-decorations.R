@@ -1,8 +1,8 @@
 context("canvasXpress decorations")
 
 
-data_y <- read.table(get_data( "cX-scatterR2-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-data_z <- read.table(get_data( "cX-scatterR2-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+data_y <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+data_z <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot referenceLines", {
 
@@ -47,7 +47,7 @@ test_that("scatterplot notePoint", {
 
 test_that("barplot annotations", {
 
-    y <- read.table(get_data( "cX-basic2-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data                    = y,
                            graphType               = "Bar",
                            graphOrientation        = "vertical",
@@ -60,8 +60,8 @@ test_that("barplot annotations", {
 
 test_that("segregated Boxplot decorations with different values", {
 
-    y <- read.table(get_data( "cX-iris-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table(get_data( "cX-iris-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <- canvasXpress(data               = y,
                            smpAnnot           = x,
                            graphOrientation   = "vertical",
@@ -82,8 +82,8 @@ test_that("segregated Boxplot decorations with different values", {
 
 test_that("segregated Boxplot decorations with same values", {
 
-    y <- read.table(get_data( "cX-iris-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[, 1:100]
-    x <- read.table(get_data( "cX-iris-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[1:100, , drop = FALSE]
+    y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[, 1:100]
+    x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[1:100, , drop = FALSE]
     y[, 1:50] <- y[, 1:50] - 2
 
     result <- canvasXpress(data               = y,
@@ -104,8 +104,8 @@ test_that("segregated Boxplot decorations with same values", {
 
 test_that("segregated Boxplot decoration label position", {
 
-    y <- read.table(get_data( "cX-toothgrowth-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table(get_data( "cX-toothgrowth-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     z <- data.frame(Gene = c("Gene1"), stringsAsFactors = FALSE)
     rownames(z) <- rownames(y)
 
