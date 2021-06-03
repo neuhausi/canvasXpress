@@ -3676,6 +3676,19 @@ cXlayout17 <- function() {
   )
 }
 
+cXlayout18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    segregateVariablesBy=list("dataset"),
+    afterRender=list(list("addRegressionLine", list("dataset")))
+  )
+}
+
 cXline1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4762,6 +4775,21 @@ cXridgeline6 <- function() {
     hideHistogram=TRUE,
     ridgeBy="dataset",
     ridgelineScale=2.5,
+    showFilledHistogramDensity=TRUE,
+    showHistogramDensity=TRUE
+  )
+}
+
+cXridgeline7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    ridgeBy="dataset",
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE
   )

@@ -22,5 +22,9 @@ test_that("cXridgeline5", {
 })
 
 test_that("cXridgeline6", {
-    check_ui_test(cXridgeline5())
+    check_ui_test(cXridgeline6())
+})
+
+test_that("cXridgeline7", {
+    check_ui_test(cXridgeline7())
 })
