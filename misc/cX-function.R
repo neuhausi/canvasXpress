@@ -2943,7 +2943,7 @@ cXheatmap1 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorSpectrum=list("blue", "white", "red"),
+    colorSpectrum=list("navy", "white", "firebrick3"),
     graphType="Heatmap",
     title="Simple Heatmap"
   )
@@ -2958,7 +2958,7 @@ cXheatmap2 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorSpectrum=list("blue", "white", "red"),
+    colorSpectrum=list("navy", "white", "firebrick3"),
     graphType="Heatmap",
     heatmapCellBoxColor="rgb(255,255,255)",
     samplesClustered=TRUE,
@@ -3190,6 +3190,59 @@ cXheatmap12 <- function() {
     varLabelScaleFontFactor=1.7,
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", thickness=50, type="StackedPercent"), Conc=list(position="top", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", thickness=30, type="Increase"), Even=list(position="bottom", thickness=50, type="Bar"), Female=list(position="top", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", thickness=50, type="StackedPercent"), Male=list(position="top", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", thickness=50, type="Dotplot"), Odd=list(position="bottom", thickness=50, type="BarLine"), Site=list(position="top", type="Default"), Ugly=list(color="black", position="bottom", thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot")
+  )
+}
+
+cXheatmap13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-pheatmap-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-pheatmap-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-pheatmap-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Heatmap",
+    heatmapIndicatorPosition="right",
+    heatmapSmpSeparateBy1="CellType",
+    heatmapVarSeparateBy1="GeneClass",
+    overlayFontStyle="bold",
+    overlayScaleFontFactor=2,
+    samplesClustered=TRUE,
+    showLevelOverlays=FALSE,
+    showSmpOverlaysLegend=TRUE,
+    showVarOverlaysLegend=TRUE,
+    smpDendrogramPosition="right",
+    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", showLegend=TRUE, thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
+    smpOverlays=list("Drug", "-", "Dose", "CellType", "-", "Time"),
+    smpTitleLabelPosition="right",
+    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=TRUE, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
+    varOverlays=list("ProteinA", "-", "GeneClass"),
+    varTitleLabelPosition="bottom",
+    variablesClustered=TRUE
+  )
+}
+
+cXheatmap14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=list(y=y, data2=y2),
+    smpAnnot=x,
+    varAnnot=z,
+    dendrogramHeight=50,
+    graphType="Heatmap",
+    guides=TRUE,
+    samplesClustered=TRUE,
+    showSmpDendrogram=FALSE,
+    showVarDendrogram=FALSE,
+    sizeBy="Size",
+    sizeByData="data2",
+    title="Bubble Heatmap Plot",
+    variablesClustered=TRUE
   )
 }
 
@@ -6162,9 +6215,9 @@ cXtcga9 <- function() {
     colorScheme="JCO",
     graphType="Scatter2D",
     layoutTopology="1X3",
+    scatterType="qq",
     xAxisTitle="",
-    yAxisTitle="",
-    afterRender=list(list("addQQPlot"))
+    yAxisTitle=""
   )
 }
 
@@ -6179,9 +6232,9 @@ cXtcga10 <- function() {
     colorScheme="JCO",
     graphType="Scatter2D",
     layoutTopology="1X3",
+    scatterType="cdf",
     xAxisTitle="Expression",
-    yAxisTitle="F(Expression)",
-    afterRender=list(list("addCDFPlot"))
+    yAxisTitle="F(Expression)"
   )
 }
 

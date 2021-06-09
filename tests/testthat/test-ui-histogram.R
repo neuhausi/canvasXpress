@@ -14,13 +14,13 @@ test_that("cXhistogram3", {
 })
 
 test_that("cXhistogram4", {
-    check_ui_test(cXhistogram3())
+    check_ui_test(cXhistogram4())
 })
 
 test_that("cXhistogram5", {
-    check_ui_test(cXhistogram3())
+    check_ui_test(cXhistogram5())
 })
 
 test_that("cXhistogram6", {
-    check_ui_test(cXhistogram3())
+    check_ui_test(cXhistogram6())
 })
