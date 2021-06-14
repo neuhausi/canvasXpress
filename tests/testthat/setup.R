@@ -17,8 +17,12 @@ try({
                      "https://www.canvasxpress.org/data/cX-OlympicMedals", testFile)
 
     #layout12, kaplanmeier3-5
-    testFile <- gsub("list\\(list\\('Survival2*','Survival2*-Censor'\\)\\)",
+    testFile <- gsub("list\\(list\\('Survival','Survival-Censor'\\)\\)",
                      "list\\('Survival','Survival-Censor'\\)", testFile)
+
+    #kaplanmeier4
+    testFile <- gsub("list\\(list\\('Survival2','Survival2-Censor'\\)\\)",
+                     "list\\('Survival2','Survival2-Censor'\\)", testFile)
 
     #kaplanmeier1-2
     testFile <- gsub("list\\(list\\('Time','Censor'\\)\\)",
