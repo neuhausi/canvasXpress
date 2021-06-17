@@ -212,7 +212,7 @@ cXbar2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    decorations=list(marker=list(list(fontSize=12, sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=12, sample="S2", text="p < 0.05 **", type="annotation", variable="V1"))),
+    decorations=list(marker=list(list(fontSize=12, sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=12, sample="S2", text="p < 0.05 **", type="annotation", variable="V1"), list(fontSize=12, sample="S2", sample2="S3", text="p < 0.01 ***", type="comparison", variable="V1", variable2="V1"))),
     graphOrientation="vertical",
     graphType="Bar",
     showLegend=FALSE,
@@ -3236,6 +3236,7 @@ cXheatmap14 <- function() {
     dendrogramHeight=50,
     graphType="Heatmap",
     guides=TRUE,
+    heatmapIndicatorPosition="top",
     samplesClustered=TRUE,
     showSmpDendrogram=FALSE,
     showVarDendrogram=FALSE,
@@ -5424,6 +5425,7 @@ cXscatter2d16 <- function() {
     manhattanMarkerChromosomeNumber="Chr",
     manhattanMarkerLogPValue="-log10(pValue)",
     manhattanMarkerPosition="Pos",
+    scatterOutlineThreshold=5000,
     scatterType="manhattan",
     title="Manhattan Plot"
   )

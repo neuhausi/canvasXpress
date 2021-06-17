@@ -16,7 +16,7 @@ try({
     testFile <- gsub("https://www.canvasxpress.org/data/cX-olympicMedals",
                      "https://www.canvasxpress.org/data/cX-OlympicMedals", testFile)
 
-    #layout12, kaplanmeier3-5
+    #layout12, kaplanmeier3, kaplanmeier5
     testFile <- gsub("list\\(list\\('Survival','Survival-Censor'\\)\\)",
                      "list\\('Survival','Survival-Censor'\\)", testFile)
 
