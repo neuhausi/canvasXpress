@@ -56,3 +56,7 @@ test_that("cXdotplot13", {
 test_that("cXdotplot14", {
     check_ui_test(cXdotplot14())
 })
+
+test_that("cXdotplot15", {
+    check_ui_test(cXdotplot15())
+})
