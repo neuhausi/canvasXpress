@@ -67,3 +67,7 @@ test_that("cXbar14", {
 test_that("cXbar15", {
     check_ui_test(cXbar15())
 })
+
+test_that("cXbar16", {
+    check_ui_test(cXbar16())
+})
