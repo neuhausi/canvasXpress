@@ -1,15 +1,17 @@
 context("canvasXpress LegendPosition")
 
+try({
 
-default_legend_position      <- "right"
-all_legend_positions         <- c("topRight", "right", "bottomRight", "bottom", "bottomLeft", "left", "topLeft", "top")
-inside_legend_only_positions <- c("topRight", "bottomRight", "bottomLeft", "topLeft")
-segregated_legend_positions  <- c("right", "bottom", "left", "top")
-test_legend_positions        <- setdiff(all_legend_positions, default_legend_position)
+    default_legend_position      <- "right"
+    all_legend_positions         <- c("topRight", "right", "bottomRight", "bottom", "bottomLeft", "left", "topLeft", "top")
+    inside_legend_only_positions <- c("topRight", "bottomRight", "bottomLeft", "topLeft")
+    segregated_legend_positions  <- c("right", "bottom", "left", "top")
+    test_legend_positions        <- setdiff(all_legend_positions, default_legend_position)
 
-barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 test_that("scatterplot legendposition", {
 
@@ -29,6 +31,7 @@ test_that("scatterplot legendposition", {
 })
 
 test_that("barplot legendposition", {
+    skip_if_not(exists(c('barplot_y')))
 
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {
@@ -43,6 +46,7 @@ test_that("barplot legendposition", {
 })
 
 test_that("barplot (segregated) legendposition", {
+    skip_if_not(exists(c('barplot_y')))
 
     z <- data.frame(Plot = "Bar1", stringsAsFactors = F)
     rownames(z) <- rownames(barplot_y)
@@ -61,6 +65,7 @@ test_that("barplot (segregated) legendposition", {
 })
 
 test_that("boxplot legendposition", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     legend_inside            <- FALSE
     for (legend_pos in test_legend_positions) {
@@ -81,6 +86,7 @@ test_that("boxplot legendposition", {
 })
 
 test_that("boxplot (segregated) legendposition", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     z <- data.frame(Plot = "Box1", stringsAsFactors = F)
     rownames(z) <- rownames(boxplot_y)

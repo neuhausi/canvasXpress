@@ -1,11 +1,13 @@
 context("canvasXpress duplicated labels")
 
-
-data     <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-smp_data <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-sample_names <- c("S1", "S2", "S4", "S4", "S5", "S1", "S4", "S4")
+try({
+    data     <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    smp_data <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    sample_names <- c("S1", "S2", "S4", "S4", "S5", "S1", "S4", "S4")
+})
 
 test_that("segregated barplot duplicated labels", {
+    skip_if_not(exists(c('data', 'smp_data')))
 
     data               <- cbind(data, data)
     smp_data           <- rbind(smp_data, smp_data)
@@ -28,6 +30,7 @@ test_that("segregated barplot duplicated labels", {
 })
 
 test_that("barplot duplicated labels", {
+    skip_if_not(exists(c('data', 'smp_data')))
 
     smp_data           <- as.matrix(smp_data)
     rownames(smp_data) <- colnames(data) <- sample_names

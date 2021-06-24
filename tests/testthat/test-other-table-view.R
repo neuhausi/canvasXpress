@@ -1,10 +1,11 @@
 context("canvasXpress table view")
 
-
-barplot_y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-barplot_x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    barplot_x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 get_plot_title <- function(plot) {
     paste(plot, "- Table view")
@@ -25,6 +26,7 @@ test_that("scatterplot tableView", {
 })
 
 test_that("barplot tableView", {
+    skip_if_not(exists(c('barplot_x', 'barplot_y')))
 
     result <-  canvasXpress(data                    = barplot_y,
                             smpAnnot                = barplot_x,
@@ -38,6 +40,7 @@ test_that("barplot tableView", {
 })
 
 test_that("boxplot tableView", {
+    skip_if_not(exists(c('boxplot_y', 'boxplot_x')))
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,
@@ -55,6 +58,7 @@ test_that("boxplot tableView", {
 })
 
 test_that("dotplot tableView", {
+    skip_if_not(exists(c('boxplot_y', 'boxplot_x')))
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,

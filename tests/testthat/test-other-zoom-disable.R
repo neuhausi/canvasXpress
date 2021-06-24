@@ -1,9 +1,10 @@
 context("canvasXpress zoomDisable")
 
-
-barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 test_that("scatterplot zoomDisable", {
 
@@ -20,6 +21,7 @@ test_that("scatterplot zoomDisable", {
 })
 
 test_that("barplot zoomDisable", {
+    skip_if_not(exists(c('barplot_y')))
 
     result <-  canvasXpress(data                    = barplot_y,
                             graphOrientation        = "vertical",
@@ -31,6 +33,7 @@ test_that("barplot zoomDisable", {
 })
 
 test_that("barplot (segregated) zoomDisable", {
+    skip_if_not(exists(c('barplot_y')))
 
     z <- data.frame(Plot = "Bar1", stringsAsFactors = F)
     rownames(z) <- rownames(barplot_y)
@@ -46,6 +49,7 @@ test_that("barplot (segregated) zoomDisable", {
 })
 
 test_that("boxplot zoomDisable", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,
@@ -63,6 +67,7 @@ test_that("boxplot zoomDisable", {
 })
 
 test_that("boxplot (segregated) zoomDisable", {
+    skip_if_not(exists(c('boxplot_y', 'boxplot_x')))
 
     z <- data.frame(Plot = "Box1", stringsAsFactors = F)
     rownames(z) <- rownames(boxplot_y)

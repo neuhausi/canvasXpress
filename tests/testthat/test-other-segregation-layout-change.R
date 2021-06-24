@@ -1,11 +1,14 @@
 context("canvasXpress Charts - Layout")
 
-
-y <- read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x <- read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-z <- read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    y <- read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    z <- read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 test_that("segregation layout change - Samples", {
+    skip_if_not(exists(c('x', 'y', 'z')))
+
     result <- canvasXpress(data               = y,
                            smpAnnot           = x,
                            varAnnot           = z,
@@ -18,6 +21,8 @@ test_that("segregation layout change - Samples", {
 })
 
 test_that("segregation layout change - Variables", {
+    skip_if_not(exists(c('x', 'y', 'z')))
+
     result <- canvasXpress(data                 = y,
                            smpAnnot             = x,
                            varAnnot             = z,
@@ -32,6 +37,8 @@ test_that("segregation layout change - Variables", {
 })
 
 test_that("segregation updated layout change", {
+    skip_if_not(exists(c('x', 'y', 'z')))
+
     result <- canvasXpress(data               = y,
                            smpAnnot           = x,
                            varAnnot           = z,

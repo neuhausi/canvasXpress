@@ -1,10 +1,13 @@
 context("canvasXpress Charts - Differentiated groups")
 
-
-y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 test_that("differentiated groups in boxplot 1", {
+    skip_if_not(exists(c('x', 'y')))
+
     result <- canvasXpress(data                    = y,
                            smpAnnot                = x,
                            graphOrientation        = "vertical",
@@ -25,6 +28,8 @@ test_that("differentiated groups in boxplot 1", {
 })
 
 test_that("differentiated groups in boxplot 2", {
+    skip_if_not(exists(c('x', 'y')))
+
     result <- canvasXpress(data                    = y,
                            smpAnnot                = x,
                            graphOrientation        = "vertical",
@@ -45,6 +50,7 @@ test_that("differentiated groups in boxplot 2", {
 })
 
 test_that("differentiated groups in boxplot 3", {
+    skip_if_not(exists(c('x', 'y')))
 
     x$Gene <- c(rep(c("Gene1", "Gene2"), 30))
     result <- canvasXpress(data                    = y,

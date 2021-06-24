@@ -1,10 +1,11 @@
 context("canvasXpress legendTitle")
 
-
-barplot_y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-barplot_x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    barplot_x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 get_plot_title <- function(plot) {
     paste(plot, "- No LegendTitle")
@@ -25,6 +26,7 @@ test_that("scatterplot LegendTitle", {
 })
 
 test_that("barplot LegendTitle", {
+    skip_if_not(exists(c('barplot_x', 'barplot_y')))
 
     result <-  canvasXpress(data                    = barplot_y,
                             smpAnnot                = barplot_x,
@@ -38,6 +40,7 @@ test_that("barplot LegendTitle", {
 })
 
 test_that("barplot (segregated) LegendTitle", {
+    skip_if_not(exists(c('barplot_x', 'barplot_y')))
 
     z <- data.frame(Plot = "Bar1", stringsAsFactors = F)
     rownames(z) <- rownames(barplot_y)
@@ -55,6 +58,7 @@ test_that("barplot (segregated) LegendTitle", {
 })
 
 test_that("boxplot LegendTitle", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,
@@ -72,6 +76,7 @@ test_that("boxplot LegendTitle", {
 })
 
 test_that("boxplot (segregated) LegendTitle", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     z <- data.frame(Plot = "Box1", stringsAsFactors = F)
     rownames(z) <- rownames(boxplot_y)
@@ -108,6 +113,7 @@ test_that("Scatterplot matrix LegendTitle", {
 })
 
 test_that("dotplot LegendTitle", {
+    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,

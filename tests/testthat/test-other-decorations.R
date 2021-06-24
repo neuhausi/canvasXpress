@@ -1,10 +1,12 @@
 context("canvasXpress decorations")
 
-
-data_y <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-data_z <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+try({
+    data_y <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    data_z <- read.table("https://www.canvasxpress.org/data/cX-scatterR2-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+})
 
 test_that("scatterplot referenceLines", {
+    skip_if_not(exists(c('data_y', 'data_z')))
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
@@ -26,6 +28,7 @@ test_that("scatterplot referenceLines", {
 })
 
 test_that("scatterplot notePoint", {
+    skip_if_not(exists(c('data_y', 'data_z')))
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
