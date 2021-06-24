@@ -1,10 +1,9 @@
 context("canvasXpress regressionLines")
 
 
-y = read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x = read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-
 test_that("scatterplot overall regressionLine", {
+    y = read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    x = read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     result <-  canvasXpress(data                    = y,
                             smpAnnot                = x,
@@ -17,8 +16,8 @@ test_that("scatterplot overall regressionLine", {
 
 test_that("scatterplot per-sample regressionLine", {
 
-    y = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    result <-  canvasXpress(data                    = y,
+    y2 = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    result <-  canvasXpress(data                    = y2,
                             asSampleFactors         = list("cyl"),
                             colorBy                 = "cyl",
                             graphType               = "Scatter2D",
@@ -32,11 +31,9 @@ test_that("scatterplot per-sample regressionLine", {
     check_ui_test(result)
 })
 
-
-data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-
 test_that("scatterplot per variable regressionLine", {
+    data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
@@ -51,6 +48,8 @@ test_that("scatterplot per variable regressionLine", {
 })
 
 test_that("scatterplot per variable and sample regressionLine", {
+    data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
