@@ -1,4 +1,5 @@
 context("canvasXpress null data")
+skip_if_offline(host = "www.canvasxpress.org")
 
 
 get_plot_title <- function(plot) {
@@ -11,9 +12,14 @@ set_NA_data <- function(y) {
 }
 
 test_that("scatter2D null data", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-scatterR3-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z <- read.table("https://www.canvasxpress.org/data/cX-scatterR3-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-scatterR3-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z <- read.table("https://www.canvasxpress.org/data/cX-scatterR3-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     y <- y[y$`logFC-X` > 1 & y$`logFC-Y` > 1, ]
     # Set some rows with X values NA, then rows with Y values NA, then both NA, followed by normal values
     y[1:(0.2*nrow(y)), 1]             <- NA
@@ -33,9 +39,14 @@ test_that("scatter2D null data", {
 })
 
 test_that("Scatter3D null data", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[, 1:3]
+        z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)[, 1:3]
-    z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     # Set some rows with X values NA, then rows with Y values NA, then both NA, followed by normal values
     y[1:(0.2*nrow(y)), 1]             <- NA
     y[(0.2*nrow(y)):(0.4*nrow(y)), 2] <- NA
@@ -57,10 +68,14 @@ test_that("Scatter3D null data", {
 })
 
 test_that("barplot null data", {
-
-    y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    y <- set_NA_data(y)
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y <- set_NA_data(y)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             smpAnnot                = x,
@@ -73,10 +88,15 @@ test_that("barplot null data", {
 })
 
 test_that("boxplot null data", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y <- set_NA_data(y)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    y <- set_NA_data(y)
     x$Gene <- c(rep(c("Gene1", "Gene2"), 30))
 
     result <- canvasXpress(data                    = y,
@@ -100,9 +120,14 @@ test_that("boxplot null data", {
 })
 
 test_that("boxplot null smpdata", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     # make some supp values NA
     x[c(1, 3, 5, 8, 10), "supp"] <- NA
 

@@ -7,15 +7,16 @@ try({
     inside_legend_only_positions <- c("topRight", "bottomRight", "bottomLeft", "topLeft")
     segregated_legend_positions  <- c("right", "bottom", "left", "top")
     test_legend_positions        <- setdiff(all_legend_positions, default_legend_position)
-
-    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 })
 
 test_that("scatterplot legendposition", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {
         result <-  canvasXpress(data                    = y,
@@ -31,7 +32,12 @@ test_that("scatterplot legendposition", {
 })
 
 test_that("barplot legendposition", {
-    skip_if_not(exists(c('barplot_y')))
+    tryCatch({
+        barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {
@@ -46,7 +52,12 @@ test_that("barplot legendposition", {
 })
 
 test_that("barplot (segregated) legendposition", {
-    skip_if_not(exists(c('barplot_y')))
+    tryCatch({
+        barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     z <- data.frame(Plot = "Bar1", stringsAsFactors = F)
     rownames(z) <- rownames(barplot_y)
@@ -65,7 +76,13 @@ test_that("barplot (segregated) legendposition", {
 })
 
 test_that("boxplot legendposition", {
-    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
+    tryCatch({
+        boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     legend_inside            <- FALSE
     for (legend_pos in test_legend_positions) {
@@ -86,7 +103,13 @@ test_that("boxplot legendposition", {
 })
 
 test_that("boxplot (segregated) legendposition", {
-    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
+    tryCatch({
+        boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     z <- data.frame(Plot = "Box1", stringsAsFactors = F)
     rownames(z) <- rownames(boxplot_y)
@@ -111,9 +134,14 @@ test_that("boxplot (segregated) legendposition", {
 })
 
 test_that("Scatterplot matrix legendposition", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     legend_inside            <- FALSE
     for (legend_pos in segregated_legend_positions) {
         result <-  canvasXpress(data                    = y,
@@ -129,9 +157,13 @@ test_that("Scatterplot matrix legendposition", {
 })
 
 test_that("dotplot legendposition", {
-
-    y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     legend_inside            <- TRUE
     for (legend_pos in test_legend_positions) {
@@ -149,9 +181,13 @@ test_that("dotplot legendposition", {
 })
 
 test_that("heatmap legendposition", {
-
-    y  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    y2 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    tryCatch({
+        y  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y2 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     legend_inside <- FALSE
     for (legend_pos in test_legend_positions) {

@@ -1,14 +1,14 @@
 context("canvasXpress zoomDisable")
 
-try({
-    barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-})
 
 test_that("scatterplot zoomDisable", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(data                    = y,
                             asSampleFactors         = list("cyl"),
                             colorBy                 = "cyl",
@@ -21,7 +21,12 @@ test_that("scatterplot zoomDisable", {
 })
 
 test_that("barplot zoomDisable", {
-    skip_if_not(exists(c('barplot_y')))
+    tryCatch({
+        barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = barplot_y,
                             graphOrientation        = "vertical",
@@ -33,7 +38,12 @@ test_that("barplot zoomDisable", {
 })
 
 test_that("barplot (segregated) zoomDisable", {
-    skip_if_not(exists(c('barplot_y')))
+    tryCatch({
+        barplot_y <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     z <- data.frame(Plot = "Bar1", stringsAsFactors = F)
     rownames(z) <- rownames(barplot_y)
@@ -49,7 +59,13 @@ test_that("barplot (segregated) zoomDisable", {
 })
 
 test_that("boxplot zoomDisable", {
-    skip_if_not(exists(c('boxplot_x', 'boxplot_y')))
+    tryCatch({
+        boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = boxplot_y,
                             smpAnnot                = boxplot_x,
@@ -67,7 +83,13 @@ test_that("boxplot zoomDisable", {
 })
 
 test_that("boxplot (segregated) zoomDisable", {
-    skip_if_not(exists(c('boxplot_y', 'boxplot_x')))
+    tryCatch({
+        boxplot_x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        boxplot_y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     z <- data.frame(Plot = "Box1", stringsAsFactors = F)
     rownames(z) <- rownames(boxplot_y)
@@ -89,9 +111,13 @@ test_that("boxplot (segregated) zoomDisable", {
 })
 
 test_that("Scatterplot matrix zoomDisable", {
-
-    y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             varAnnot                = z,
@@ -105,9 +131,13 @@ test_that("Scatterplot matrix zoomDisable", {
 })
 
 test_that("dotplot zoomDisable", {
-
-    y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x <- read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     legend_inside            <- TRUE
     result <-  canvasXpress(data                    = y,
@@ -122,10 +152,15 @@ test_that("dotplot zoomDisable", {
 })
 
 test_that("heatmap zoomDisable", {
+    tryCatch({
+        y = read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x = read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z = read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y = read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x = read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    z = read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     result <-  canvasXpress(data                    = y,
                             smpAnnot                = x,
                             varAnnot                = z,
