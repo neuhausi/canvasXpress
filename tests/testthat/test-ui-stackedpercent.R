@@ -16,3 +16,7 @@ test_that("cXstackedpercent3", {
 test_that("cXstackedpercent4", {
     check_ui_test(cXstackedpercent4())
 })
+
+test_that("cXstackedpercent5", {
+    check_ui_test(cXstackedpercent5())
+})
