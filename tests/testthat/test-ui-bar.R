@@ -58,3 +58,16 @@ test_that("cXbar13", {
 
     warning("Durable overlay looks different in R than on the CX website, test is missing the following in smpOverlayProperties: 'Durable' = list(type='Boolean')")
 })
+
+
+test_that("cXbar14", {
+    check_ui_test(cXbar14())
+})
+
+test_that("cXbar15", {
+    check_ui_test(cXbar15())
+})
+
+test_that("cXbar16", {
+    check_ui_test(cXbar16())
+})

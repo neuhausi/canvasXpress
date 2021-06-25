@@ -69,3 +69,15 @@ test_that("cXlayout14", {
 test_that("cXlayout15", {
     check_ui_test(cXlayout15())
 })
+
+test_that("cXlayout16", {
+    check_ui_test(cXlayout16())
+})
+
+test_that("cXlayout17", {
+    check_ui_test(cXlayout17())
+})
+
+test_that("cXlayout18", {
+    check_ui_test(cXlayout18())
+})

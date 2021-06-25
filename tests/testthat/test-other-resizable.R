@@ -1,8 +1,13 @@
 context("canvasXpress resizable")
 
-y <- read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
 test_that("scatterplot resizable", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             asSampleFactors         = list("cyl"),
@@ -16,6 +21,12 @@ test_that("scatterplot resizable", {
 })
 
 test_that("scatterplot resizable width", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             asSampleFactors         = list("cyl"),
@@ -32,6 +43,12 @@ test_that("scatterplot resizable width", {
 })
 
 test_that("scatterplot resizable height", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             asSampleFactors         = list("cyl"),
@@ -48,6 +65,12 @@ test_that("scatterplot resizable height", {
 })
 
 test_that("scatterplot not resizable", {
+    tryCatch({
+        y <- read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             asSampleFactors         = list("cyl"),
@@ -63,9 +86,14 @@ test_that("scatterplot not resizable", {
 })
 
 test_that("bar chart not resizable", {
+    tryCatch({
+        y2 <- read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y <- read.table(get_data("cX-basic-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    result <-  canvasXpress(data                    = y,
+    result <-  canvasXpress(data                    = y2,
                             graphOrientation        = "vertical",
                             graphType               = "Bar",
                             title                   = "Barplot - not resizable",

@@ -1,12 +1,16 @@
 context("canvasXpress boxplot grouping")
 
 
-y <- read.table(get_data("cX-toothgrowth-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x <- read.table(get_data("cX-toothgrowth-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-
-x$prop2 <- c( rep(c("A", "B"), 30) )
-
 test_that("boxplot - grouping", {
+    tryCatch({
+        x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x$prop2 <- c( rep(c("A", "B"), 30) )
+        y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
+
     result <- canvasXpress(data                    = y,
                            smpAnnot                = x,
                            graphType               = "Boxplot",

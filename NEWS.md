@@ -6,6 +6,11 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.35.0
+* Updated CanvasXpress JS and CSS libraries to v35.0
+* robustified tests for online datasets
+* Added support for Gantt charts
+
 ## v1.32.9
 * Updated CanvasXpress JS and CSS libraries to v32.9
 * Added support for new chart types: Meter, Fish

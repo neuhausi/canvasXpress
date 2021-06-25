@@ -1,10 +1,14 @@
 context("canvasXpress regressionLines")
 
 
-y = read.table(get_data("cX-ageheightt-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-x = read.table(get_data("cX-ageheightt-smp.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-
 test_that("scatterplot overall regressionLine", {
+    tryCatch({
+        y = read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x = read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = y,
                             smpAnnot                = x,
@@ -16,9 +20,14 @@ test_that("scatterplot overall regressionLine", {
 })
 
 test_that("scatterplot per-sample regressionLine", {
+    tryCatch({
+        y2 = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
-    y = read.table(get_data("cX-mtcars-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    result <-  canvasXpress(data                    = y,
+    result <-  canvasXpress(data                    = y2,
                             asSampleFactors         = list("cyl"),
                             colorBy                 = "cyl",
                             graphType               = "Scatter2D",
@@ -32,11 +41,14 @@ test_that("scatterplot per-sample regressionLine", {
     check_ui_test(result)
 })
 
-
-data_y = read.table(get_data("cX-irist-dat.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-data_z = read.table(get_data("cX-irist-var.txt.gz"), header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-
 test_that("scatterplot per variable regressionLine", {
+    tryCatch({
+        data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
@@ -51,6 +63,13 @@ test_that("scatterplot per variable regressionLine", {
 })
 
 test_that("scatterplot per variable and sample regressionLine", {
+    tryCatch({
+        data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
 
     result <-  canvasXpress(data                    = data_y,
                             varAnnot                = data_z,
