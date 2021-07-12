@@ -48,7 +48,8 @@ test_that("segregated scatterplot referenceLines", {
                            xAxis                = list("Weeks"),
                            yAxis                = list("Change From Baseline %"),
                            decorations          = list(line = list(list(color = "red",   width = 2, x = 0, y = 0.8, x2 = 50, y2 = -0.8, scope = "Complete Response", label = "line1"),
-                                                                   list(color = "blue",  width = 1, y = 0, scope = "Progressive Disease", label = "line2"),
+                                                                   list(color = "blue",  width = 1, y = 0, scope = "Progressive Disease", label = "line2a"),
+                                                                   list(color = "blue",  width = 1, x = 0, scope = "Progressive Disease", label = "line2b"),
                                                                    list(color = "green", width = 3, x = 0, y = -0.8, x2 = 50, y2 = 0.8, scope = "Partial Response", label = "line3"))))
     check_ui_test(result)
 })
