@@ -2135,7 +2135,7 @@ cXdotplot2 <- function() {
     axisTitleFontStyle="italic",
     citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
     citationFontStyle="italic",
-    decorations=list(marker=list(list(group="setosa", sample="s38", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
+    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Dotplot",
