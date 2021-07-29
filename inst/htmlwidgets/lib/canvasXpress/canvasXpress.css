@@ -1274,7 +1274,6 @@ div.CanvasXpressDataTable {
     background-color: rgba(255, 255, 255, 0.95);
     clear: both;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
     overflow: hidden;
     position: absolute;
     -moz-user-select: none;
@@ -1290,7 +1289,6 @@ div.CanvasXpressDataTableToolbar {
     background-color: rgba(255, 255, 255, 0.95);
     color: rgb(34, 34, 34);
     cursor: move;
-    font: normal 12px arial, tahoma, sans-serif;
     height: 32px;
     left: 0px;
     line-height: 100%;
@@ -1338,7 +1336,6 @@ div.CanvasXpressDataTableContainer {
     border-radius: 0px 0px 5px 5px;
     color: rgb(34, 34, 34);
     display: block;
-    font: normal 12px arial, tahoma, sans-serif;
     left: 0px;
     line-height: 100%;
     position: absolute;
@@ -1413,9 +1410,7 @@ table.CanvasXpressDataTable {
     border: 0px;
     border-spacing: 1px;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
     left: 1px;
-    line-height: 20px;
     position: absolute;
     opacity: 0.95;
     table-layout: fixed;
@@ -1445,8 +1440,7 @@ th.CanvasXpressTableCellHead {
     background: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
     border: 1px solid #ccc;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 20px;
+    font-style: bold;
     opacity: 0.95;
     padding: 2px;
     text-align: left;
@@ -1462,8 +1456,7 @@ th.CanvasXpressTableCellHeadActive {
     background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
     border: 1px solid #ccc;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 20px;
+    font-style: bold;
     opacity: 0.95;
     padding: 2px;
     text-align: left;
@@ -1513,8 +1506,6 @@ td.CanvasXpressTableCell {
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 20px;
     padding: 2px;
     vertical-align: middle;
     -ms-user-select: none;
@@ -1529,8 +1520,6 @@ td.CanvasXpressTableCellActive {
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 20px;
     padding: 2px;
     opacity: 0.95;
     vertical-align: middle;
@@ -1543,7 +1532,6 @@ td.CanvasXpressTableCellActive {
 
 div.CanvasXpressTableCell {
     box-sizing: content-box;
-    font: normal 12px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     line-height: 20px;
     margin: 2px 2px 1px 5px;
@@ -1556,9 +1544,7 @@ div.CanvasXpressTableCell {
 div.CanvasXpressTableCellSortAsc {
     box-sizing: content-box;
     background: url(data:image/gif;base64,R0lGODlhDQAFAIcAAGGQzUD/QOPu+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAEALAAAAAANAAUAAAgbAAMIDABgoEGDABIeRJhQ4cKGEA8KmEiRosGAADs=) no-repeat right 7px;
-    font: normal 12px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
-    line-height: 20px;
     margin: 2px 2px 1px 5px;
     overflow: hidden;
     position: relative;
@@ -1568,15 +1554,12 @@ div.CanvasXpressTableCellSortAsc {
 div.CanvasXpressTableCellSortDesc {
     box-sizing: content-box;
     background: url(data:image/gif;base64,R0lGODlhDQAFAIcAAGGQzUD/QOPu+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAEALAAAAAANAAUAAAgeAAUAGEgQgIAACBEKLHgwYcKFBh1KFNhQosOKEgMCADs=) no-repeat right 7px;
-    font: normal 12px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
-    line-height: 20px;
     margin: 2px 2px 1px 5px;
     overflow: hidden;
     position: relative;
     white-space: nowrap;
 }
-
 
 /*
  * Configurator
