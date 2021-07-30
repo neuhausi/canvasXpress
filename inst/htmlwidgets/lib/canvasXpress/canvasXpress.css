@@ -1339,7 +1339,7 @@ div.CanvasXpressDataTableContainer {
     left: 0px;
     line-height: 100%;
     position: absolute;
-    top: 32px;
+    top: 35px;
     -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -1353,7 +1353,7 @@ div.CanvasXpressDataTableVertical {
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
-    right: 4px;
+    right: 6px;
     top: 0px;
     width: 32px;
     -ms-user-select: none;
@@ -1370,7 +1370,7 @@ img.CanvasXpressDataTableVertical {
 div.CanvasXpressDataTableHorizontal {
     box-sizing: content-box;
     background-color: rgba(255, 255, 255, 0.95);
-    bottom: 8px;
+    bottom: 12px;
     height: 32px;
     left: 32px;
     overflow-x: auto;
@@ -1821,13 +1821,8 @@ div.CanvasXpressWrapper {
     line-height: 100%;
 }
 
-
 /***************/
-
-
 /* Data Filter */
-
-
 /***************/
 
 div.CanvasXpressDataFilter {
@@ -2245,8 +2240,8 @@ div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
 select.CanvasXpressSlider::-webkit-scrollbar-button,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
-    width: 3px;
-    height: 3px;
+    width: 4px;
+    height: 4px;
 }
 
 
@@ -2284,7 +2279,7 @@ div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
 select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
     background-color: #BEBEBE;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 
@@ -2295,8 +2290,8 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar,
 select.CanvasXpressConfigurator::-webkit-scrollbar,
 select.CanvasXpressSlider::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     background-color: #FFFFFF;
 }
 
@@ -2306,8 +2301,8 @@ div.CanvasXpressDataExplorer::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     background-color: #F5F5F5;
 }
 
@@ -2326,7 +2321,7 @@ div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
 select.CanvasXpressSlider::-webkit-scrollbar-thumb,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-thumb {
     background-color: #337AB7;
-    border-radius: 3px;
+    border-radius: 4px;
     border: none;
 }
 
