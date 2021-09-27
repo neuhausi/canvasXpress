@@ -2135,7 +2135,6 @@ cXdotplot2 <- function() {
     axisTitleFontStyle="italic",
     citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
     citationFontStyle="italic",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Dotplot",
@@ -4019,13 +4018,15 @@ cXmap8 <- function() {
 
 cXmap9 <- function() {
   library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-colombia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=FALSE,
-    colorBy="TYPE_1",
+    data=y,
+    colorBy="Prop1",
     decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
     legendPosition="bottomRight",
     mapId="colombia",
+    mapPropertyId="ID_1",
     topoJSON="https://www.canvasxpress.org/data/colombia.geo.json"
   )
 }
