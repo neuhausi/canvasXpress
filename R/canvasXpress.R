@@ -181,7 +181,11 @@ canvasXpress <- function(data = NULL,
         }
     }
     else if (graphType == "Genome") {
-        stop("The Genome graphType is not yet implemented")
+        warning("The Genome graphType is not yet implemented fully, data is passed as-is")
+        cx_object <- list(data        = data,
+                          config      = config,
+                          events      = events,
+                          afterRender = afterRender)
     }
     else if (graphType == "Boxplot" &&
              ((length(intersect(names(data), precalc.box[1:5])) == 5) ||
