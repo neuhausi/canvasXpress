@@ -32,6 +32,10 @@ try({
     testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
                      ", list\\(FALSE, \'red\'\\)", testFile)
 
+    #dashboard6
+    testFile <- gsub(", list\\(\"updateDOEGraphSize\", list\\(list\\(\'2X2\',\\{\'layoutCurrent\':0,\'layout\':\'3X3\'\\})))",
+                     "", testFile)
+
     # --- End Test Fixes
 
     temp <- tempfile(fileext = ".R")
