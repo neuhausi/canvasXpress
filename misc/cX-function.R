@@ -340,7 +340,6 @@ cXbar8 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     legendBox=TRUE,
-    showFunctionNamesAfterRender=FALSE,
     smpTitle="Cell Lines",
     smpTitleFontStyle="bold",
     title="Random data set",
@@ -1764,6 +1763,21 @@ cXdashboard5 <- function() {
     showLegend=FALSE,
     theme="gameOfThronesTargaryen",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
+  )
+}
+
+cXdashboard6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Stay Home Sick",
+    graphType="Map",
+    legendPosition="top",
+    mapId="bc",
+    mapPropertyId="LOCAL_HLTH_AREA_CODE",
+    topoJSON="https://www.canvasxpress.org/data/bc.json",
+    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list(list('2X2',{'layoutCurrent':0,'layout':'3X3'}))))
   )
 }
 
