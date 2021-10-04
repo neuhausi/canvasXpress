@@ -9,6 +9,7 @@ data = as.data.frame(matrix(vals, nrow = 20, ncol = 20, byrow = TRUE, dimnames =
 test_that("Scatter2D selectedDataPoints", {
 
     result <-  canvasXpress(data                    = data,
+                            colorScheme             = "Set2",
                             selectedDataPoints      = list("V1"),
                             graphType               = "Scatter2D",
                             title                   = "Scatter2D - selectedDataPoints : V1")
@@ -19,6 +20,7 @@ test_that("Scatter2D selectedDataPoints", {
 test_that("Scatter3D selectedDataPoints", {
 
     result <-  canvasXpress(data                    = data,
+                            colorScheme             = "Set2",
                             selectedDataPoints      = list("V3", "V4"),
                             graphType               = "Scatter3D",
                             title                   = "Scatter3D - selectedDataPoints : V3,V4")
@@ -29,6 +31,7 @@ test_that("Scatter3D selectedDataPoints", {
 test_that("ScatterBubble2D selectedDataPoints", {
 
     result <-  canvasXpress(data                    = data,
+                            colorScheme             = "Set2",
                             selectedDataPoints      = list("V5", "V8", "V10"),
                             graphType               = "ScatterBubble2D",
                             title                   = "ScatterBubble2D - selectedDataPoints : V5,V8,V10")
