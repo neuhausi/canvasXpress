@@ -2,5 +2,6 @@
 
 export(canvasXpress)
 export(canvasXpressOutput)
+export(cxHtmlPage)
 export(cxShinyExample)
 export(renderCanvasXpress)

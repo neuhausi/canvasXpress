@@ -2,7 +2,7 @@
 % Please edit documentation in R/canvasXpress.R
 \name{canvasXpress}
 \alias{canvasXpress}
-\title{canvasXpress}
+\title{canvasXpress HTML widget creation}
 \usage{
 canvasXpress(
   data = NULL,
