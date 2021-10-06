@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functionality.R
 \name{renderCanvasXpress}
 \alias{renderCanvasXpress}
-\title{renderCanvasXpress shiny widget render function}
+\title{Shiny Render function}
 \usage{
 renderCanvasXpress(expr, env = parent.frame(), quoted = FALSE)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_functionality.R
 \name{canvasXpressOutput}
 \alias{canvasXpressOutput}
-\title{canvasXpressOutput - shiny widget UI creation function}
+\title{Shiny UI function}
 \usage{
 canvasXpressOutput(outputId, width = "100\%", height = "400px")
 }

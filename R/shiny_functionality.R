@@ -1,4 +1,4 @@
-#' canvasXpressOutput - shiny widget UI creation function
+#' Shiny UI function
 #'
 #' Output creation function for canvasXpressOutput in Shiny applications and
 #' interactive Rmd documents
@@ -19,7 +19,7 @@ canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
 }
 
 
-#' renderCanvasXpress shiny widget render function
+#' Shiny Render function
 #'
 #' Render function for canvasXpressOutput in Shiny applications and
 #' interactive Rmd documents
