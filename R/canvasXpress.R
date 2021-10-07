@@ -362,3 +362,64 @@ canvasXpress <- function(data = NULL,
                               height = height,
                               package = "canvasXpress")
 }
+
+
+#' HTML Widget Creation using JSON input
+#'
+#' Custom HTML widget creation function based on widget YAML and JavaScript for
+#' use in any html-compatible context using raw JSON input.  Validation of data
+#' and configuration is deferred completely to the canvasXpress JavaScript library.
+#'
+#' For the formatting of the JSON input object see
+#'
+#' **Note:** this function is intended for use by advanced users who are experimenting
+#' with or need to utilize the json-formatted input to canvasXpress and are comfortable
+#' debugging chart issues in a browser (JavaScript) context instead of in R.
+#'
+#' @param json JSON string or object
+#' @param pretty print tagged code (JSON/HTML) nicely - default = FALSE
+#' @param digits display digits - default = 4
+#' @param width plot width (valid CSS units) - default = 600px
+#' @param height plot height (valid CSS units) - default = 400px
+#' @param destroy used to indicate removal of a plot - default = FALSE
+#'
+#' @section More Information:
+#' \url{https://www.canvasxpress.org}
+#'
+#' @examples
+#'
+#' my_json <- '{ "data": {"y": { "vars": ["Performance"],
+#'                               "smps": ["January"],
+#'                               "data": [[85]] }},
+#'               "config": { "graphType": "Meter",
+#'                           "meterType": "gauge" }}'
+#'
+#' canvasXpress.json(my_json)
+#'
+#' @return htmlwidgets object
+#'
+#' @export
+canvasXpress.json <- function(json,
+                              #htmlwidgets options
+                              pretty = FALSE,
+                              digits = 4,
+                              width  = 600,
+                              height = 400,
+                              destroy = FALSE) {
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
+
+    if (any(is.null(json),
+            is.na(json),
+            !(class(json) %in% c("character", "json")),
+            length(json) < 1)) {
+        stop("json must be supplied and be a character or json object")
+    }
+
+    htmlwidgets::createWidget(name    = "canvasXpress",
+                              x       = jsonlite::minify(json),
+                              width   = width,
+                              height  = height,
+                              package = "canvasXpress")
+}
