@@ -181,7 +181,6 @@ canvasXpress <- function(data = NULL,
         }
     }
     else if (graphType == "Genome") {
-        warning("The Genome graphType is not yet implemented fully, data is passed as-is")
         cx_object <- list(data        = data,
                           config      = config,
                           events      = events,
