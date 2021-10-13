@@ -1222,6 +1222,47 @@ div.CanvasXpressToolbar img.CanvasXpressToolbarImage, div.CanvasXpressToolbar sv
     -ms-user-select: none;
 }
 
+/*
+ * Data Table DOE
+ */
+
+table.CanvasXpressDataTableDOE {
+    border-spacing: 0 !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+th.CanvasXpressDataTableDOE {
+    padding: 0 !important;
+    font-size: 12px !important;
+    font-weight: bolder !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    max-height: 18px !important;
+    border: none !important;
+}
+
+td.CanvasXpressDataTableDOE {
+    padding: 0 !important;
+    font-size: 12px !important;
+    padding-left: 5px !important;
+    padding-right: 18px !important;
+    height: 18px  !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    max-height: 18px !important;
+    border: none !important;
+}
+
+tr.CanvasXpressDataTableDOE {
+    font-size: 12px !important;
+}
 
 /*
  * Data Table
@@ -2432,6 +2473,7 @@ li.CanvasXpressListItem {
     padding: 0px;
     width: 100%;
     white-space: nowrap;
+    text-align: left;
 }
 
 li.CanvasXpressListItemActive {
@@ -2450,6 +2492,7 @@ li.CanvasXpressListItemActive {
     padding: 0px;
     width: 100%;
     white-space: nowrap;
+    text-align: left;
 }
 
 li.CanvasXpressListItemScrollTop {

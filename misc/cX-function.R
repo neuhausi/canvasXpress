@@ -2947,6 +2947,45 @@ cXgantt6 <- function() {
   )
 }
 
+cXgenome1 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomesimple.json")
+  canvasXpress(
+    data=genome.r$data,
+    background="rgb(245,245,245)",
+    graphType="Genome",
+    setMax=30,
+    setMin=0
+  )
+}
+
+cXgenome2 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
+  canvasXpress(
+    data=genome.r$data,
+    background="rgb(245,245,245)",
+    graphType="Genome",
+    setMax=30,
+    setMin=0
+  )
+}
+
+cXgenome3 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
+  canvasXpress(
+    data=genome.r$data,
+    background="rgb(245,245,245)",
+    dataPointSize=5,
+    featureStaggered=TRUE,
+    graphType="Genome"
+  )
+}
+
 cXheatmap1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4128,6 +4167,10 @@ cXmeter1 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="gauge"
   )
 }
@@ -4138,6 +4181,10 @@ cXmeter2 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=200,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 200),
     meterType="speedometer"
   )
 }
@@ -4148,6 +4195,10 @@ cXmeter3 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="digital"
   )
 }
@@ -4168,6 +4219,8 @@ cXmeter5 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterMax=100,
+    meterMin=0,
     meterType="horizontal"
   )
 }
@@ -4178,7 +4231,41 @@ cXmeter6 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="vertical"
+  )
+}
+
+cXmeter7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Meter",
+    meterType="number",
+    meterVar="Revenue"
+  )
+}
+
+cXmeter8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Meter",
+    meterType="digital",
+    meterVar="Revenue"
   )
 }
 
