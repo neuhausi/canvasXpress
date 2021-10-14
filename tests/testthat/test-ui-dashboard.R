@@ -23,5 +23,4 @@ test_that("cXdashboard5", {
 
 test_that("cXdashboard6", {
     check_ui_test(cXdashboard6())
-    warning('afterRender is incorrect, dashboard layout will vary slightly from the web due to removal in setup.R')
 })

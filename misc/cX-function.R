@@ -1777,7 +1777,7 @@ cXdashboard6 <- function() {
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
     topoJSON="https://www.canvasxpress.org/data/bc.json",
-    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list(list('2X2',{'layoutCurrent':0,'layout':'3X3'}))))
+    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list("2X2"),list("layoutCurrent" = 0,"layout" = "3X3")))
   )
 }
 
@@ -2952,7 +2952,7 @@ cXgenome1 <- function() {
   library(jsonlite)
   genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomesimple.json")
   canvasXpress(
-    data=genome.r$data,
+    data=genome,
     background="rgb(245,245,245)",
     graphType="Genome",
     setMax=30,
@@ -2965,7 +2965,7 @@ cXgenome2 <- function() {
   library(jsonlite)
   genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
   canvasXpress(
-    data=genome.r$data,
+    data=genome,
     background="rgb(245,245,245)",
     graphType="Genome",
     setMax=30,
@@ -2978,7 +2978,7 @@ cXgenome3 <- function() {
   library(jsonlite)
   genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
   canvasXpress(
-    data=genome.r$data,
+    data=genome,
     background="rgb(245,245,245)",
     dataPointSize=5,
     featureStaggered=TRUE,
