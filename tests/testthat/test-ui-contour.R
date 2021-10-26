@@ -20,3 +20,7 @@ test_that("cXcontour4", {
 test_that("cXcontour5", {
     check_ui_test(cXcontour5())
 })
+
+test_that("cXcontour6", {
+    check_ui_test(cXcontour6())
+})

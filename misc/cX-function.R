@@ -1632,6 +1632,19 @@ cXcontour5 <- function() {
   )
 }
 
+cXcontour6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    contourLevelStep=2,
+    contourType="overlay",
+    graphType="Scatter2D",
+    showContourLevel=FALSE,
+    afterRender=list(list("createContour"))
+  )
+}
+
 cXcorrelation1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -5530,6 +5543,24 @@ cXscatter2d16 <- function() {
     scatterOutlineThreshold=5000,
     scatterType="manhattan",
     title="Manhattan Plot"
+  )
+}
+
+cXscatter2d17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fcyt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataPointSize=5,
+    graphType="Scatter2D",
+    scatterOutlineThreshold=1,
+    showScatterDensity=TRUE,
+    xAxis=list("FL1-A"),
+    xAxisTitle="FL1-A",
+    xAxisTransform="log10",
+    yAxis=list("FL2-A"),
+    yAxisTitle="FL2-A",
+    yAxisTransform="log10"
   )
 }
 
