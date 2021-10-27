@@ -2963,7 +2963,7 @@ cXgantt6 <- function() {
 cXgenome1 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomesimple.json")
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomesimple.json", simplifyVector = F)
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -2976,7 +2976,7 @@ cXgenome1 <- function() {
 cXgenome2 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeintermediate.json", simplifyVector = F)
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -2989,7 +2989,7 @@ cXgenome2 <- function() {
 cXgenome3 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
+  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeadvanced.json", simplifyVector = F)
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
