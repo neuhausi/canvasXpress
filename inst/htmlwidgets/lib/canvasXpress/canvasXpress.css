@@ -383,6 +383,10 @@ div.cxc {
     color: #4575b4;
 }
 
+.json-comment {
+    color: #397300
+}
+
 div.CanvasXpressCode {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
