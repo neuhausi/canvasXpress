@@ -33,7 +33,7 @@ cXarea2 <- function() {
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     theme="CanvasXpress",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
@@ -54,7 +54,7 @@ cXarea3 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
@@ -76,7 +76,7 @@ cXarea4 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Normalized Percentage of People"
   )
@@ -137,7 +137,7 @@ cXarealine1 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -161,7 +161,7 @@ cXarealine2 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -184,7 +184,7 @@ cXarealine3 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -2963,7 +2963,7 @@ cXgantt6 <- function() {
 cXgenome1 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomesimple.json", simplifyVector = F)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomesimple.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -2976,7 +2976,7 @@ cXgenome1 <- function() {
 cXgenome2 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeintermediate.json", simplifyVector = F)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -2989,7 +2989,7 @@ cXgenome2 <- function() {
 cXgenome3 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- fromJSON("https://www.canvasxpress.org/data/cX-genomeadvanced.json", simplifyVector = F)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -5196,9 +5196,9 @@ cXscatter2d2 <- function() {
     legendBox=TRUE,
     legendInside=TRUE,
     legendPosition="topRight",
-    spiderBy="Subject",
+    lineBy="Subject",
     theme="CanvasXpress",
-    title="Tummor Response by Week",
+    title="Tumor Response by Week",
     xAxis=list("Weeks"),
     yAxis=list("Change From Baseline %")
   )
