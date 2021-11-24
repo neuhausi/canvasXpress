@@ -185,6 +185,7 @@ canvasXpress <- function(data = NULL,
                           config      = config,
                           events      = events,
                           afterRender = afterRender)
+        digits <- 16
     }
     else if (graphType == "Boxplot" &&
              ((length(intersect(names(data), precalc.box[1:5])) == 5) ||
