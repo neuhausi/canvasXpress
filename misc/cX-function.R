@@ -1596,6 +1596,7 @@ cXcontour3 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    contourFilled=TRUE,
     graphType="ScatterBubble2D",
     showContourLevel=TRUE,
     title="Basic Contour Plot",
@@ -1608,6 +1609,7 @@ cXcontour4 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    contourFilled=TRUE,
     contourType="color",
     graphType="ScatterBubble2D",
     title="Custom Contour Plot",
