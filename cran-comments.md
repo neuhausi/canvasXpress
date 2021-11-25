@@ -1,7 +1,9 @@
 ## Comments from Maintainer
 
 * Update to underlying JavaScript Libraries
-* Robustified tests dependent on external resources
+* Added methods to support HTML export of charts, JSON pass through
+
+* There is a NOTE on solaris that the library is over the size limit.  We can't reproduce this on our end, it is likely due to the block size difference and we have compressed/compacted this library as much as possible but are close to the 5Mb limit on other platforms.
 
 ---  
 
