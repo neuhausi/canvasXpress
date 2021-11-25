@@ -11,7 +11,7 @@ output:
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
 [![CRAN_Downloads_Badge](https://cranlogs.r-pkg.org/badges/grand-total/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
 [![CDNJ version](https://img.shields.io/cdnjs/v/canvasXpress.svg)](https://cdnjs.com/libraries/canvasXpress)
-[![Travis-CI Build Status](https://travis-ci.com/cb4ds/canvasXpress.svg?branch=master)](https://travis-ci.com/cb4ds/canvasXpress)
+<!-- Travis-CI Build Status - removed due to issues with credits/account -->
 [![Coverage Status](https://img.shields.io/codecov/c/github/cb4ds/canvasXpress/master.svg)](https://codecov.io/github/cb4ds/canvasXpress?branch=master)
 <!-- End Badges -->
 

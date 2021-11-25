@@ -149,7 +149,7 @@ canvasXpress(data                    = cxdata,
 ![ClusteredBar1](images/R-ClusteredBar1.png)
 
 
-### BoxPlot
+### Boxplot
 
 ```r
 reshape <- data %>% gather(key = "Type", value = "Rate", 
