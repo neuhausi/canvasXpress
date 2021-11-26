@@ -11,6 +11,10 @@ test_that("scatterplot cxHtmlPage", {
         skip('Unable to read data files')
     })
 
+    if (is.null(rmarkdown::find_pandoc()$dir)) {
+        skip('Pandoc not installed')
+    }
+
     result <- canvasXpress(data        = y,
                            smpAnnot    = x,
                            graphType   = "Scatter2D",
