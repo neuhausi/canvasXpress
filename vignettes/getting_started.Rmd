@@ -71,9 +71,9 @@ canvasXpress(data              = y,
 ### Boxplot
 
 ```r
-y <- read.table("https://canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x <- read.table("https://canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep= "\t", 
+x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
                 
 canvasXpress(data                  = y,

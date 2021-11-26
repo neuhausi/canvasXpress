@@ -33,7 +33,7 @@ cXarea2 <- function() {
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     theme="CanvasXpress",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
@@ -54,7 +54,7 @@ cXarea3 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
@@ -76,7 +76,7 @@ cXarea4 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis2Show=FALSE,
     xAxisTitle="Normalized Percentage of People"
   )
@@ -137,7 +137,7 @@ cXarealine1 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -161,7 +161,7 @@ cXarealine2 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -184,7 +184,7 @@ cXarealine3 <- function() {
     smpLabelRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United State",
+    title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -340,7 +340,6 @@ cXbar8 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     legendBox=TRUE,
-    showFunctionNamesAfterRender=FALSE,
     smpTitle="Cell Lines",
     smpTitleFontStyle="bold",
     title="Random data set",
@@ -397,12 +396,12 @@ cXbar11 <- function() {
     smpAnnot=x,
     axisAlgorithm="rPretty",
     colorBy="GNI",
-    decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.15, y=0.1))),
+    decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.2, y=0.1))),
     graphOrientation="vertical",
     graphType="Stacked",
     groupingFactors=list("continent"),
     legendInside=TRUE,
-    legendPosition="top",
+    legendPosition="right",
     showTransition=FALSE,
     smpLabelRotate=45,
     subtitle="2014 Census",
@@ -1597,6 +1596,7 @@ cXcontour3 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    contourFilled=TRUE,
     graphType="ScatterBubble2D",
     showContourLevel=TRUE,
     title="Basic Contour Plot",
@@ -1609,6 +1609,7 @@ cXcontour4 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    contourFilled=TRUE,
     contourType="color",
     graphType="ScatterBubble2D",
     title="Custom Contour Plot",
@@ -1629,6 +1630,19 @@ cXcontour5 <- function() {
     showContourLevel=FALSE,
     showSampleNames=FALSE,
     showVariableNames=FALSE,
+    afterRender=list(list("createContour"))
+  )
+}
+
+cXcontour6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    contourLevelStep=2,
+    contourType="overlay",
+    graphType="Scatter2D",
+    showContourLevel=FALSE,
     afterRender=list(list("createContour"))
   )
 }
@@ -1764,6 +1778,21 @@ cXdashboard5 <- function() {
     showLegend=FALSE,
     theme="gameOfThronesTargaryen",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
+  )
+}
+
+cXdashboard6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Stay Home Sick",
+    graphType="Map",
+    legendPosition="top",
+    mapId="bc",
+    mapPropertyId="LOCAL_HLTH_AREA_CODE",
+    topoJSON="https://www.canvasxpress.org/data/bc.json",
+    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list("2X2"),list("layoutCurrent" = 0,"layout" = "3X3")))
   )
 }
 
@@ -2135,7 +2164,6 @@ cXdotplot2 <- function() {
     axisTitleFontStyle="italic",
     citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
     citationFontStyle="italic",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Dotplot",
@@ -2931,6 +2959,45 @@ cXgantt6 <- function() {
     groupingFactors=list("Clinical Trial"),
     patternBy="Indication",
     theme="CanvasXpress"
+  )
+}
+
+cXgenome1 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomesimple.json")
+  canvasXpress(
+    data=genome,
+    background="rgb(245,245,245)",
+    graphType="Genome",
+    setMax=30,
+    setMin=0
+  )
+}
+
+cXgenome2 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
+  canvasXpress(
+    data=genome,
+    background="rgb(245,245,245)",
+    graphType="Genome",
+    setMax=30,
+    setMin=0
+  )
+}
+
+cXgenome3 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
+  canvasXpress(
+    data=genome,
+    background="rgb(245,245,245)",
+    dataPointSize=5,
+    featureStaggered=TRUE,
+    graphType="Genome"
   )
 }
 
@@ -4019,13 +4086,15 @@ cXmap8 <- function() {
 
 cXmap9 <- function() {
   library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-colombia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=FALSE,
-    colorBy="TYPE_1",
+    data=y,
+    colorBy="Prop1",
     decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
     legendPosition="bottomRight",
     mapId="colombia",
+    mapPropertyId="ID_1",
     topoJSON="https://www.canvasxpress.org/data/colombia.geo.json"
   )
 }
@@ -4113,6 +4182,10 @@ cXmeter1 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="gauge"
   )
 }
@@ -4123,6 +4196,10 @@ cXmeter2 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=200,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 200),
     meterType="speedometer"
   )
 }
@@ -4133,6 +4210,10 @@ cXmeter3 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="digital"
   )
 }
@@ -4153,6 +4234,8 @@ cXmeter5 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterMax=100,
+    meterMin=0,
     meterType="horizontal"
   )
 }
@@ -4163,7 +4246,41 @@ cXmeter6 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
+    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
+    meterMax=100,
+    meterMin=0,
+    meterSegments=list(25, 50, 75, 100),
     meterType="vertical"
+  )
+}
+
+cXmeter7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Meter",
+    meterType="number",
+    meterVar="Revenue"
+  )
+}
+
+cXmeter8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Meter",
+    meterType="digital",
+    meterVar="Revenue"
   )
 }
 
@@ -5081,9 +5198,9 @@ cXscatter2d2 <- function() {
     legendBox=TRUE,
     legendInside=TRUE,
     legendPosition="topRight",
-    spiderBy="Subject",
+    lineBy="Subject",
     theme="CanvasXpress",
-    title="Tummor Response by Week",
+    title="Tumor Response by Week",
     xAxis=list("Weeks"),
     yAxis=list("Change From Baseline %")
   )
@@ -5428,6 +5545,24 @@ cXscatter2d16 <- function() {
     scatterOutlineThreshold=5000,
     scatterType="manhattan",
     title="Manhattan Plot"
+  )
+}
+
+cXscatter2d17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fcyt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataPointSize=5,
+    graphType="Scatter2D",
+    scatterOutlineThreshold=1,
+    showScatterDensity=TRUE,
+    xAxis=list("FL1-A"),
+    xAxisTitle="FL1-A",
+    xAxisTransform="log10",
+    yAxis=list("FL2-A"),
+    yAxisTitle="FL2-A",
+    yAxisTransform="log10"
   )
 }
 
@@ -6370,11 +6505,11 @@ cXtreemap3 <- function() {
     smpAnnot=x,
     axisAlgorithm="rPretty",
     colorBy="GNI",
-    decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.15, y=0.1))),
+    decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.2, y=0.1))),
     graphOrientation="vertical",
     graphType="Stacked",
     legendInside=TRUE,
-    legendPosition="top",
+    legendPosition="right",
     showTransition=TRUE,
     smpLabelRotate=45,
     subtitle="2014 Census",

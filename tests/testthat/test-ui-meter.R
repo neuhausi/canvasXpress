@@ -24,3 +24,11 @@ test_that("cXmeter5", {
 test_that("cXmeter6", {
     check_ui_test(cXmeter6())
 })
+
+test_that("cXmeter7", {
+    check_ui_test(cXmeter7())
+})
+
+test_that("cXmeter8", {
+    check_ui_test(cXmeter8())
+})

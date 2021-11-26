@@ -20,3 +20,7 @@ test_that("cXdashboard4", {
 test_that("cXdashboard5", {
     check_ui_test(cXdashboard5())
 })
+
+test_that("cXdashboard6", {
+    check_ui_test(cXdashboard6())
+})

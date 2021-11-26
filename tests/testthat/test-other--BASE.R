@@ -87,3 +87,8 @@ test_that("Shiny Examples", {
     expect_message(cxShinyExample(NULL),
                  regexp = "Valid examples are: 'example1', 'example2', 'example3'")
 })
+
+test_that("Shiny Input", {
+    expect_equal(as.character(canvasXpressOutput("test_id")),
+                 '<div id=\"test_id\" style=\"width:100%; height:400px; \" class=\"canvasXpress html-widget html-widget-output\"></div>')
+})

@@ -17,7 +17,7 @@
 "_PACKAGE"
 
 
-#' canvasXpress
+#' HTML Widget Creation
 #'
 #' Custom HTML widget creation function based on widget YAML and JavaScript for
 #' use in any html-compatible context
@@ -181,7 +181,11 @@ canvasXpress <- function(data = NULL,
         }
     }
     else if (graphType == "Genome") {
-        stop("The Genome graphType is not yet implemented")
+        cx_object <- list(data        = data,
+                          config      = config,
+                          events      = events,
+                          afterRender = afterRender)
+        digits <- 16
     }
     else if (graphType == "Boxplot" &&
              ((length(intersect(names(data), precalc.box[1:5])) == 5) ||
@@ -360,54 +364,62 @@ canvasXpress <- function(data = NULL,
 }
 
 
-
-#' canvasXpressOutput
+#' HTML Widget Creation using JSON input
 #'
-#' Output creation function for canvasXpressOutput in Shiny applications and
-#' interactive Rmd documents
+#' Custom HTML widget creation function based on widget YAML and JavaScript for
+#' use in any html-compatible context using raw JSON input.  Validation of data
+#' and configuration is deferred completely to the canvasXpress JavaScript library.
 #'
-#' @param outputId shiny unique ID
-#' @param width width of the element - default = 100\%
-#' @param height height of the element - default = 400px
+#' For the formatting of the JSON input object see
 #'
-#' @return Output function that enables the use of the widget in applications
+#' **Note:** this function is intended for use by advanced users who are experimenting
+#' with or need to utilize the json-formatted input to canvasXpress and are comfortable
+#' debugging chart issues in a browser (JavaScript) context instead of in R.
 #'
-#' @seealso \link[canvasXpress]{renderCanvasXpress}
-#' @seealso \link[canvasXpress]{cxShinyExample}
+#' @param json JSON string or object
+#' @param pretty print tagged code (JSON/HTML) nicely - default = FALSE
+#' @param digits display digits - default = 4
+#' @param width plot width (valid CSS units) - default = 600px
+#' @param height plot height (valid CSS units) - default = 400px
+#' @param destroy used to indicate removal of a plot - default = FALSE
 #'
-#' @export
-canvasXpressOutput <- function(outputId, width = "100%", height = "400px") {
-    htmlwidgets::shinyWidgetOutput(outputId, "canvasXpress",
-                                   width, height,  package = "canvasXpress")
-}
-
-
-
-#' renderCanvasXpress
+#' @section More Information:
+#' \url{https://www.canvasxpress.org}
 #'
-#' Render function for canvasXpressOutput in Shiny applications and
-#' interactive Rmd documents
+#' @examples
 #'
-#' @param expr expression used to render the canvasXpressOutput
-#' @param env environment to use - default = parent.frame()
-#' @param quoted whether the expression is quoted - default = FALSE
+#' my_json <- '{ "data": {"y": { "vars": ["Performance"],
+#'                               "smps": ["January"],
+#'                               "data": [[85]] }},
+#'               "config": { "graphType": "Meter",
+#'                           "meterType": "gauge" }}'
 #'
-#' @return Render function that enables the use of the widget in applications
+#' canvasXpress.json(my_json)
 #'
-#' @seealso \link[canvasXpress]{canvasXpressOutput}
-#' @seealso \link[canvasXpress]{cxShinyExample}
-#'
-#' @section Destroy:
-#' When there exists a need to visually remove a plot from a Shiny
-#' application when it is not being immediately replaced with a new plot use
-#' the destroy option as in:
-#'
-#' \code{renderCanvasXpress({canvasXpress(destroy = TRUE)})}
+#' @return htmlwidgets object
 #'
 #' @export
-renderCanvasXpress <- function(expr, env = parent.frame(), quoted = FALSE) {
-    if (!quoted) {
-        expr <- substitute(expr)
-    } # force quoted
-    htmlwidgets::shinyRenderWidget(expr, canvasXpressOutput, env, quoted = TRUE)
+canvasXpress.json <- function(json,
+                              #htmlwidgets options
+                              pretty = FALSE,
+                              digits = 4,
+                              width  = 600,
+                              height = 400,
+                              destroy = FALSE) {
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
+
+    if (any(is.null(json),
+            is.na(json),
+            !(class(json) %in% c("character", "json")),
+            length(json) < 1)) {
+        stop("json must be supplied and be a character or json object")
+    }
+
+    htmlwidgets::createWidget(name    = "canvasXpress",
+                              x       = jsonlite::minify(json),
+                              width   = width,
+                              height  = height,
+                              package = "canvasXpress")
 }

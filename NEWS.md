@@ -6,6 +6,12 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.37.0
+* Updated CanvasXpress JS and CSS libraries to v37.0
+* Added support for Genome Charts
+* Added a method to pass straight JSON through to the CX charts JS from R
+* Added HTML page export capability for easier cross-platform live chart sharing
+
 ## v1.35.0
 * Updated CanvasXpress JS and CSS libraries to v35.0
 * robustified tests for online datasets
@@ -37,7 +43,7 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ## v1.25.6
 * Updated CanvasXpress JavaScript and CSS libraries to v25.6
-* Extended R package handling of gantt charts and network charts to match CX JS updates
+* Extended R package handling of Gantt charts and network charts to match CX JS updates
 
 ## v1.24.8
 * Updated CanvasXpress JavaScript and CSS libraries to v24.8

@@ -8,8 +8,7 @@ HTMLWidgets.widget({
         c.width = width;
         c.height = height;
 
-        // Check if we are running in the viewer
-        // Overwrite the width and height
+        // Check if we are running in the viewer; override the width and height
         if (/\bviewer_pane=1\b/.test(window.location)) {
           c.width = document.childNodes[1].clientWidth - 36;
           c.height = document.childNodes[1].clientHeight - 36;
@@ -19,6 +18,7 @@ HTMLWidgets.widget({
 
         return {
             id: c.id,
+
             renderValue: function(x) {
                 try{
                     for (var i = 0; i < CanvasXpress.instances.length; i++) {
@@ -33,10 +33,9 @@ HTMLWidgets.widget({
                     new CanvasXpress(x);
                 }
             },
+
             resize: function(width, height) {
-                
-                // Check if we are running in the viewer
-                // Overwrite the width and height
+                // Check if we are running in the viewer; override the width and height
                 if (/\bviewer_pane=1\b/.test(window.location)) {
                     width = document.childNodes[1].clientWidth - 36;
                     height = document.childNodes[1].clientHeight - 36;
@@ -53,6 +52,7 @@ HTMLWidgets.widget({
                 }
                 return cx;
             },
+
             getImage: function() {
                 cx = CanvasXpress.getObject(c.id);
                 if (cx && cx.meta && cx.meta.base64) {
