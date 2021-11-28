@@ -1,7 +1,9 @@
 ## Comments from Maintainer
 
 * Update to underlying JavaScript Libraries
-* Robustified tests dependent on external resources
+* Added methods to support HTML export of charts, JSON pass through
+
+* There is a NOTE on solaris that the library is over the size limit.  We can't reproduce this on our end, it is likely due to the block size difference and we have compressed/compacted this library as much as possible but are close to the 5Mb limit on other platforms.
 
 ---  
 
@@ -12,13 +14,7 @@ RStudio Server Pro (ubuntu 18.04.2)
 
 * R 3.6.3
 * R 4.0.5
-* R 4.1.0
-
-Travis-CI (ubuntu 16.04.6)
-
-* R 3.6.3
-* R 4.0.2
-* R devel (2021-06-20 r80534)
+* R 4.1.2
 
 WinBuilder
 
@@ -28,8 +24,7 @@ WinBuilder
 RHub
 
 * devtools::check_rhub(interactive = F, 
-                       env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false",
-                                       `_R_CHECK_CRAN_INCOMING_USE_ASPELL_` = "true"))
+                       env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"))
 
 ---  
 

@@ -97,6 +97,9 @@ assertDataCorrectness <- function(data, graphType, config) {
             }
         }
     }
+    else if (graphType == "Genome") {
+        message("The Genome graphType is an advanced chart, data is passed as-is to the JS library")
+    }
     else if (!(graphType %in% noDataNecessary)) {
         if (is.null(data)) {
             stop("data cannot be NULL!")
