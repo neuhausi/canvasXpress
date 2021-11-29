@@ -5,6 +5,8 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 <a href="https://www.canvasxpress.org"> main website</a>.
 
 ---
+## v1.37.0-1
+* Patch update for CRAN platforms without pandoc installed - resolves failing tests and examples
 
 ## v1.37.0
 * Updated CanvasXpress JS and CSS libraries to v37.0
