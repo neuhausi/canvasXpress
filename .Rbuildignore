@@ -10,3 +10,4 @@
 ^Meta$
 ^revdep$
 ^misc$
+^\.circleci$
