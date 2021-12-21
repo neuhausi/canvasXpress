@@ -11,7 +11,7 @@ test_that("scatterplot cxHtmlPage", {
         skip('Unable to read data files')
     })
 
-    if (is.null(rmarkdown::find_pandoc()$dir)) {
+    if (is.null(rmarkdown:::find_pandoc()$dir)) {
         skip('Pandoc not installed')
     }
 
