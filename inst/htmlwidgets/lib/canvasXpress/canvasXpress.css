@@ -4,6 +4,10 @@
  * Loading
  */
 
+ *,:after,:before {
+    box-sizing: border-box
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;
