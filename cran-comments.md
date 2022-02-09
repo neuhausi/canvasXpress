@@ -1,10 +1,7 @@
 ## Comments from Maintainer
 
-* Submitting a fix for platforms where pandoc is not installed causing errors and test failures on certain CRAN platforms that did not show up on testing in RHub/WinBuilder.  Have added rhub checks here for Solaris and Mac-OS to our standard tests now to avoid this in the future.
-
-* There is a note because the days since last release is low due to the need to fix these errors to keep the package on CRAN.  If possible we'd like to get this fix in place now vs. waiting.
-
-* We are adding -1 to the version number instead of incrementing it because the version number reflects the JS library underneath this htmlwidget and we don't want to get off track for that.  
+* Updated the underlying JS library to 1.37.4
+* Minor test updates
 
 ---  
 
@@ -65,6 +62,7 @@ devtools::check()
 ```
 
 ```
+> revdepcheck:: revdep_report_cran()
 ## revdepcheck results
 
 We checked 4 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
