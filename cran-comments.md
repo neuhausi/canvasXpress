@@ -16,7 +16,6 @@ RStudio Server Pro (ubuntu 18.04.2)
 
 CircleCI
 
-* R 3.6.3
 * R 4.0.5
 * R 4.1.2
 
