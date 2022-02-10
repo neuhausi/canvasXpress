@@ -11,3 +11,4 @@
 ^revdep$
 ^misc$
 ^\.circleci$
+^CRAN-SUBMISSION$

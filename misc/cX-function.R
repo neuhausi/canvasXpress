@@ -1581,7 +1581,7 @@ cXcontour2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourType="color",
+    contourType="normal",
     graphType="Heatmap",
     heatmapCellBox=FALSE,
     showSampleNames=FALSE,
@@ -1610,7 +1610,7 @@ cXcontour4 <- function() {
   canvasXpress(
     data=y,
     contourFilled=TRUE,
-    contourType="color",
+    contourType="normal",
     graphType="ScatterBubble2D",
     title="Custom Contour Plot",
     afterRender=list(list("createContour"))
@@ -1622,8 +1622,7 @@ cXcontour5 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contour4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourLevelStep=2,
-    contourType="color",
+    contourType="normal",
     graphType="Heatmap",
     heatmapCellBox=FALSE,
     lineType="spline",
@@ -1639,9 +1638,9 @@ cXcontour6 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourLevelStep=2,
-    contourType="overlay",
+    contourType="normal",
     graphType="Scatter2D",
+    showContourDataPoints=TRUE,
     showContourLevel=FALSE,
     afterRender=list(list("createContour"))
   )
@@ -3326,7 +3325,6 @@ cXhistogram1 <- function() {
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
-    histogramBins=50,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
@@ -3348,7 +3346,7 @@ cXhistogram2 <- function() {
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
-    histogramBins=10,
+    histogramBins=20,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
@@ -5406,7 +5404,7 @@ cXscatter2d11 <- function() {
     showLoessFit=TRUE,
     showTransition=FALSE,
     sizeBy="FC",
-    sizes=list(4, 14, 16, 18),
+    sizes=list(4, 12, 14, 15, 16, 17, 18),
     theme="CanvasXpress",
     title="Profile plot",
     xAxis=list("AveExpr"),
@@ -5437,7 +5435,7 @@ cXscatter2d12 <- function() {
     showDecorations=TRUE,
     showTransition=FALSE,
     sizeBy="FC",
-    sizes=list(4, 14, 16, 18),
+    sizes=list(4, 12, 14, 15, 16, 17, 18),
     theme="CanvasXpress",
     title="Volcano plot",
     xAxis=list("logFC"),
@@ -6243,6 +6241,7 @@ cXtcga5 <- function() {
     graphType="Dotplot",
     groupingFactors=list("dataset"),
     histogramBins=150,
+    jitter=TRUE,
     layoutTopology="1X3",
     legendColumns=3,
     legendPosition="top",

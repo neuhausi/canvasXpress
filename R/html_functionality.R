@@ -11,6 +11,7 @@
 #' @return a character string containing a self-contained html page
 #'
 #' @examples
+#' \dontrun{
 #' my_chart <- canvasXpress(data      = data.frame(Sample1 = c(33, 48),
 #'                                                 Sample2 = c(44, 59),
 #'                                                 Sample3 = c(55, 6)),
@@ -26,6 +27,7 @@
 #'
 #' # save page for viewing/sharing
 #' writeLines(html_page, tempfile(fileext = ".html"))
+#' }
 #'
 #' @export
 cxHtmlPage <- function(chartObject, width = NULL, height = NULL) {
