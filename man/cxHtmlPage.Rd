@@ -22,6 +22,7 @@ the given canvasXpress object.  Width and height can be inferred from
 the canvasXpress object (default) or overridden for the page output.
 }
 \examples{
+\dontrun{
 my_chart <- canvasXpress(data      = data.frame(Sample1 = c(33, 48),
                                                 Sample2 = c(44, 59),
                                                 Sample3 = c(55, 6)),
@@ -37,5 +38,6 @@ html_page <- cxHtmlPage(my_chart, width = "100\%", height = "70vh")
 
 # save page for viewing/sharing
 writeLines(html_page, tempfile(fileext = ".html"))
+}
 
 }
