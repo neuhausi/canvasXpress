@@ -1,9 +1,7 @@
 ## Comments from Maintainer
 
-* Update to underlying JavaScript Libraries
-* Added methods to support HTML export of charts, JSON pass through
-
-* There is a NOTE on solaris that the library is over the size limit.  We can't reproduce this on our end, it is likely due to the block size difference and we have compressed/compacted this library as much as possible but are close to the 5Mb limit on other platforms.
+* Updated the underlying JS library to 1.37.4
+* Minor test updates
 
 ---  
 
@@ -16,6 +14,11 @@ RStudio Server Pro (ubuntu 18.04.2)
 * R 4.0.5
 * R 4.1.2
 
+CircleCI
+
+* R 4.0.5
+* R 4.1.2
+
 WinBuilder
 
 * devtools::check_win_devel()  
@@ -25,6 +28,11 @@ RHub
 
 * devtools::check_rhub(interactive = F, 
                        env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"))
+                                     
+* devtools::check_rhub(interactive = F, 
+                       env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"),
+                       platforms = c("solaris-x86-patched", 
+                                     "macos-highsierra-release-cran"))
 
 ---  
 
@@ -53,6 +61,7 @@ devtools::check()
 ```
 
 ```
+> revdepcheck:: revdep_report_cran()
 ## revdepcheck results
 
 We checked 4 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.

@@ -10,3 +10,5 @@
 ^Meta$
 ^revdep$
 ^misc$
+^\.circleci$
+^CRAN-SUBMISSION$
