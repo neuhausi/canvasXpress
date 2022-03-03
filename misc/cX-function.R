@@ -1709,6 +1709,7 @@ cXdashboard1 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Pclass"),
+    histogramBins=FALSE,
     stackBy="Survived",
     summaryType="count",
     theme="lastAirBenderFire",
@@ -1718,14 +1719,15 @@ cXdashboard1 <- function() {
 
 cXdashboard2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mpg-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mpg-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("model"),
+    histogramBins=FALSE,
     histogramType="stacked",
     theme="gameOfThronesStannis",
     afterRender=list(list("createHistogram"), list("createDOE"))
@@ -1741,6 +1743,7 @@ cXdashboard3 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Boxplot",
+    histogramBins=FALSE,
     showTransition=FALSE,
     smpLabelRotate=90,
     smpTitle="Smoking Status",
@@ -1757,6 +1760,7 @@ cXdashboard4 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=FALSE,
     showTransition=FALSE,
     theme="CanvasXpress",
     afterRender=list(list("createDOE"))
@@ -1776,7 +1780,7 @@ cXdashboard5 <- function() {
     showDecorations=TRUE,
     showLegend=FALSE,
     theme="gameOfThronesTargaryen",
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
 
@@ -1787,6 +1791,7 @@ cXdashboard6 <- function() {
     data=y,
     colorBy="Stay Home Sick",
     graphType="Map",
+    histogramBins=FALSE,
     legendPosition="top",
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
@@ -3313,6 +3318,91 @@ cXheatmap14 <- function() {
   )
 }
 
+cXhexplotbinplot1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    binplotBins=30,
+    binplotShape="hexagon",
+    graphType="Scatter2D",
+    scatterType="bin2d",
+    showScatterDensity=TRUE,
+    xAxis=list("carat"),
+    yAxis=list("price")
+  )
+}
+
+cXhexplotbinplot2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    binplotBins=list(100, 100),
+    binplotShape="hexagon",
+    graphType="Scatter2D",
+    scatterType="bin2d",
+    showScatterDensity=TRUE,
+    xAxis=list("carat"),
+    yAxis=list("price")
+  )
+}
+
+cXhexplotbinplot3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    binplotBinWidth=list(1, 1000),
+    binplotShape="hexagon",
+    graphType="Scatter2D",
+    scatterType="bin2d",
+    showScatterDensity=TRUE,
+    xAxis=list("carat"),
+    yAxis=list("price")
+  )
+}
+
+cXhexplotbinplot4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    binplotBins=30,
+    binplotShape="rectangle",
+    graphType="Scatter2D",
+    scatterType="bin2d",
+    showScatterDensity=TRUE,
+    xAxis=list("carat"),
+    yAxis=list("price")
+  )
+}
+
+cXhexplotbinplot5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    binplotBins=30,
+    binplotShape="oval",
+    graphType="Scatter2D",
+    scatterType="bin2d",
+    showScatterDensity=TRUE,
+    xAxis=list("carat"),
+    yAxis=list("price")
+  )
+}
+
 cXhistogram1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3325,6 +3415,7 @@ cXhistogram1 <- function() {
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
+    histogramBins=10,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
@@ -3384,6 +3475,7 @@ cXhistogram4 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=5,
     histogramType="dodged",
     segregateVariablesBy=list("dataset"),
     afterRender=list(list("createHistogram"))
@@ -3398,6 +3490,7 @@ cXhistogram5 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=5,
     histogramType="staggered",
     segregateVariablesBy=list("dataset"),
     afterRender=list(list("createHistogram"))
@@ -3412,8 +3505,27 @@ cXhistogram6 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=5,
     histogramType="stacked",
     segregateVariablesBy=list("dataset"),
+    afterRender=list(list("createHistogram"))
+  )
+}
+
+cXhistogram7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mtcars2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-mtcars2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    histogramAsDotplot=TRUE,
+    histogramBinWidth=3,
+    theme="CanvasXpress",
+    xAxis=list("mpg"),
+    xAxisTitle="mpg",
+    yAxisTitle="Frequency",
     afterRender=list(list("createHistogram"))
   )
 }
@@ -3429,7 +3541,9 @@ cXkaplanmeier1 <- function() {
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list(list('Time','Censor'))))
+    xAxisTitle="Weeks",
+    yAxisTitle="Probability of Survival",
+    afterRender=list(list("addKMPlot"))
   )
 }
 
@@ -3440,11 +3554,11 @@ cXkaplanmeier2 <- function() {
     data=y,
     graphType="Scatter2D",
     showConfidenceIntervals=TRUE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
-    afterRender=list(list("addKaplanMeierCurve", list(list('Time','Censor'))))
+    xAxisTitle="Weeks",
+    yAxisTitle="Probability of Survival",
+    afterRender=list(list("addKMPlot"))
   )
 }
 
@@ -3455,12 +3569,12 @@ cXkaplanmeier3 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    colorBy="Drug",
     graphType="Scatter2D",
-    kaplanMeierBy="Drug",
     showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
-    afterRender=list(list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))))
+    xAxisTitle="Weeks",
+    yAxisTitle="Probability of Survival",
+    afterRender=list(list("addKMPlot"))
   )
 }
 
@@ -3473,10 +3587,14 @@ cXkaplanmeier4 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("addKaplanMeierCurve", list(list('Survival2','Survival2-Censor'))))
+    legendInside=TRUE,
+    legendPosition="bottomLeft",
+    showConfidenceIntervals=TRUE,
+    xAxis=list("Survival", "Survival2"),
+    xAxisTitle="Weeks",
+    yAxis=list("Survival-Censor", "Survival2-Censor"),
+    yAxisTitle="Probability of Survival",
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"))
   )
 }
 
@@ -3487,12 +3605,13 @@ cXkaplanmeier5 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    colorBy="Sex",
     graphType="Scatter2D",
     invertCensored=TRUE,
     showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
+    xAxisTitle="Weeks",
+    yAxisTitle="Probability of Survival",
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
 
@@ -3719,7 +3838,7 @@ cXlayout13 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKaplanMeierCurve", list(list('Survival','Survival-Censor'))), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
 
@@ -3892,6 +4011,60 @@ cXline4 <- function() {
     showTransition=FALSE,
     theme="CanvasXpress",
     afterRender=list(list("groupSamples", list("Time")))
+  )
+}
+
+cXlinearfit1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    asSampleFactors=list("cyl"),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    stringVariableFactors=list("cyl"),
+    theme="CanvasXpress",
+    title="QQ-Plot",
+    xAxis=list("mpg"),
+    yAxis=list("mpg"),
+    afterRender=list(list("addQQPlot"))
+  )
+}
+
+cXlinearfit2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    asSampleFactors=list("cyl"),
+    colorBy="cyl",
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    stringVariableFactors=list("cyl"),
+    theme="CanvasXpress",
+    title="QQ-Plot colored by cyl",
+    xAxis=list("mpg"),
+    yAxis=list("mpg"),
+    afterRender=list(list("addQQPlot"))
+  )
+}
+
+cXlinearfit3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mpg-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-mpg-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    fitLineColor="rgb(0,0,255)",
+    graphType="Scatter2D",
+    quantiles=list(0.25, 0.5, 0.75),
+    showDecorations=TRUE,
+    showQuantileRegressionFit=TRUE,
+    theme="CanvasXpress",
+    title="Quantile Regression",
+    xAxis=list("displ"),
+    yAxis=list("hwy")
   )
 }
 

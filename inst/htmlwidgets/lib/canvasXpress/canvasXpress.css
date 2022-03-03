@@ -4,10 +4,6 @@
  * Loading
  */
 
- *,:after,:before {
-    box-sizing: border-box
-}
-
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -753,7 +749,7 @@ img.CanvasXpressDataExplorer, svg.CanvasXpressDataExplorer {
     border: 1px solid rgb(51, 122, 183) !important;
     border-radius: 5px;
     cursor: pointer;
-    margin: 3px !important;
+    margin: 2px 3px !important;
     padding: 2px;
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
@@ -771,7 +767,7 @@ svg.CanvasXpressDataExplorer3:hover svg.CanvasXpressDataExplorer4:hover {
     border: 1px solid rgb(51, 122, 183) !important;
     border-radius: 5px;
     cursor: pointer;
-    margin: 3px !important;
+    margin: 2px 3px !important;
     padding: 3px;
     -webkit-transform: scale(1.8, 1.8);
     -ms-transform: scale(1.8, 1.8);
@@ -793,7 +789,7 @@ svg.CanvasXpressDataExplorer4 {
     border: 0px none !important;
     border-radius: 0px;
     cursor: pointer;
-    margin: 3px !important;
+    margin: 2px 3px !important;
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
@@ -807,7 +803,7 @@ img.CanvasXpressDataExplorer2:hover, svg.CanvasXpressDataExplorer2:hover {
     border: 0px none !important;
     border-radius: 5px;
     cursor: pointer;
-    margin: 4px !important;
+    margin: 2px 4px !important;
     padding: 4px;
     -webkit-transform: scale(1.8, 1.8);
     -ms-transform: scale(1.8, 1.8);
@@ -827,7 +823,7 @@ img.CanvasXpressDataExplorer3, svg.CanvasXpressDataExplorer3 {
     border-radius: 5px;
     cursor: pointer;
     margin: 12px 3px 3px 3px !important;
-    padding: 3px;
+    padding: 2px 3px;
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
