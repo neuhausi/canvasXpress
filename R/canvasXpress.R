@@ -423,3 +423,58 @@ canvasXpress.json <- function(json,
                               height  = height,
                               package = "canvasXpress")
 }
+
+#' HTML Widget Creation using GGPLOT input
+#'
+#' **NOTE:** This is in-development as of 1.38.0.9001
+#'
+#' @param ggplot_obj ggplot object
+#' @param pretty print tagged code (JSON/HTML) nicely - default = FALSE
+#' @param digits display digits - default = 4
+#' @param width plot width (valid CSS units) - default = 600px
+#' @param height plot height (valid CSS units) - default = 400px
+#' @param destroy used to indicate removal of a plot - default = FALSE
+#'
+#' @section More Information:
+#' \url{https://www.canvasxpress.org}
+#'
+#' @examples
+#' \dontrun{
+#' if (requireNamespace("ggplot2", quietly = TRUE)) {
+#'   library(ggplot2)
+#'   my_plot <- ggplot(diamonds, aes(x=carat, y=price, color=cut)) + geom_point()
+#'   canvasXpress.ggplot(my_plot)
+#' }
+#' }
+#'
+#' @return htmlwidgets object
+#'
+#' @export
+canvasXpress.ggplot <- function(ggplot_obj,
+                                #htmlwidgets options
+                                pretty = FALSE,
+                                digits = 4,
+                                width  = 600,
+                                height = 400,
+                                destroy = FALSE) {
+    if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+                            msg = "The ggplot2 package is required to use this function."
+    }
+
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
+
+    if (any(is.null(ggplot_obj),
+            is.na(ggplot_obj),
+            !("ggplot" %in% class(ggplot_obj)))) {
+        stop("ggplot_obj must be supplied and be a ggplot object")
+    }
+
+    htmlwidgets::createWidget(name    = "canvasXpress",
+                              x       = ggplot_obj,
+                              width   = width,
+                              height  = height,
+                              package = "canvasXpress")
+
+}
