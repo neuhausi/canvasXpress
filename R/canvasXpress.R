@@ -471,8 +471,13 @@ canvasXpress.ggplot <- function(ggplot_obj,
         stop("ggplot_obj must be supplied and be a ggplot object")
     }
 
+    ggplot_list <- list(data   = ggplot_obj$data,
+                        layers = ggplot_obj$layers,
+                        theme  = ggplot_obj$theme,
+                        labels = ggplot_obj$labels)
+
     htmlwidgets::createWidget(name    = "canvasXpress",
-                              x       = ggplot_obj,
+                              x       = ggplot_list,
                               width   = width,
                               height  = height,
                               package = "canvasXpress")
