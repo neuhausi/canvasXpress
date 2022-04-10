@@ -200,6 +200,8 @@ gg_mapping <- function(o) {
           } else {
             r[[i]] = l
           }
+        } else {
+          r[[i]] = l
         }
       } else {
         if (i == 'colour') {
@@ -272,7 +274,7 @@ gg_proc_layer <- function (l) {
     }
   }
   prps = c('aes_params', 'geom_params', 'stat_params', 'position')
-  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super', 'compute_layer', 'orientation', 'contour', 'distribution')
+  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super', 'compute_layer', 'orientation', 'contour', 'distribution', 'length')
   skip2 = c("na.rm", "reverse", "vjust")
   skip_values = list(
     na.rm = FALSE,
