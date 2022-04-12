@@ -1,5 +1,12 @@
 assertDataCorrectness <- function(data, graphType, config) {
 
+    # skip all data validation in the following scenarios:
+    if (!is.null(data) && "ggplot" %in% class(data)) {
+        return()
+    }
+
+    # proceed with validation
+
     validGraphTypes <- c("Area", "AreaLine", "Bar", "BarLine", "Boxplot",
                          "Circular", "Correlation", "Dotplot", "DotLine",
                          "Fish", "Genome", "Heatmap", "Line", "Map", "Meter", "Network",

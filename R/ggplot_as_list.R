@@ -1,11 +1,58 @@
-## gg_facet
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
+ggplot.as.list <- function(o) {
+
+    if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+        stop("The ggplot2 package is required to use this functionality.")
+    } else if (!("ggplot") %in% class(o)) {
+        stop("Not a ggplot object")
+    }
+
+    target <- "canvas"
+
+    cx <- list(
+        renderTo = target,
+        data     = data_to_matrix(o$data),
+        aes      = gg_mapping(o),
+        scales   = gg_scales(o),
+        theme    = gg_theme(o),
+        labels   = gg_labels(o),
+        facet    = gg_facet(o),
+        layers   = as.vector(NULL),
+        geoms    = as.vector(NULL),
+        isGGPlot = TRUE,
+        isR      = TRUE)
+
+    layers <- sapply(o$layers, function(x) class(x$geom)[1])
+
+    proto_geom <- sapply( sapply( o$layers, "[[", "geom"), function(x) class(x)[[1]][1] )
+    proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
+
+    for (i in 1:length(layers)) {
+        l <- layers[i]
+        p <- gg_proc_layer(o$layers[[i]])
+        if ((l == "GeomTile") && (proto_stat[i] == "StatBin2d")) {
+            l = "GeomBin2d"
+        } else if ((l == "GeomPoint") && !is.null(p$position) && (p$position == "jitter")) {
+            l = "GeomJitter"
+        } else if ((l == "GeomBar") && (proto_stat[i] == "StatBin")) {
+            l = "GeomHistogram"
+        } else if ((l == "GeomPath") && (proto_stat[i] == "StatQqLine")) {
+            l = "GeomQqLine";
+        } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
+            l = "GeomQq";
+        }
+        q <- list()
+        q[[l]]    <- p
+        cx$geoms  <- append(cx$geoms, l)
+        cx$layers <- append(cx$layers, q)
+    }
+
+    jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
+}
+
+
+
+# -- internal helper functions -- #
+
 gg_facet <- function (o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -39,14 +86,6 @@ gg_facet <- function (o) {
   f
 }
 
-#' gg_theme
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_theme <- function(o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -74,14 +113,6 @@ gg_theme <- function(o) {
   t
 }
 
-#' gg_xscale
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_xscale <- function(o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -97,14 +128,6 @@ gg_xscale <- function(o) {
   r
 }
 
-#' gg_yscale
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_yscale <- function(o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -120,14 +143,6 @@ gg_yscale <- function(o) {
   r
 }
 
-#' gg_scales
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_scales <- function (o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -146,14 +161,6 @@ gg_scales <- function (o) {
   r
 }
 
-#' gg_labels
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_labels <- function (o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -172,14 +179,6 @@ gg_labels <- function (o) {
   r
 }
 
-#' gg_mapping
-#'
-#' @param ggplot object
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_mapping <- function(o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
@@ -189,7 +188,7 @@ gg_mapping <- function(o) {
   s = as.vector(NULL)
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
-      l = as_label(o$mapping[[i]])
+      l = rlang::as_label(o$mapping[[i]])
       f = regexpr("factor", l)[1]
       if (f > 0) {
         l = stringr::str_replace(stringr::str_replace(l, "factor\\(", ""), "\\)", "")
@@ -221,14 +220,6 @@ gg_mapping <- function(o) {
   r
 }
 
-#' gg_proc_layer
-#'
-#' @param layer
-#'
-#' @return list
-#' @export
-#'
-#' @examples
 gg_proc_layer <- function (l) {
   r = list()
   q = as.vector(NULL)
@@ -236,13 +227,13 @@ gg_proc_layer <- function (l) {
     atts = ls(l$mapping)
     if (length(atts) > 0) {
       for (a in atts) {
-        b = as_label(l$mapping[[a]])
+        b = rlang::as_label(l$mapping[[a]])
         f = regexpr("factor", b)[1]
         s = regexpr("after_", b)[1]
         t = regexpr("stage", b)[1]
         g = regexpr("cut_", b)[1]
         if (s > 0 || t > 0) {
-          next 
+          next
         }
         if (g > 0) {
           p =  strsplit(b, split = '\\(' )[[1]]
@@ -328,16 +319,6 @@ gg_proc_layer <- function (l) {
   r
 }
 
-#' data_to_matrix
-#'
-#' @param dataframe
-#'
-#' Convert a dataframe to a 2D matrix
-#' 
-#' @return matrix
-#' @export
-#'
-#' @examples
 data_to_matrix <- function(d) {
   d = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
   nd = tibble::add_column(d, Id = row.names(d), .before = 1)
@@ -345,69 +326,3 @@ data_to_matrix <- function(d) {
   nd[1,] = c("Id", colnames(d))
   as.matrix(nd)
 }
-
-#' ggplot.as.list
-#'
-#' @param ggplot object
-#'
-#' Convert a ggplot object to a list
-#' 
-#' @return list
-#' @export
-#'
-#' @examples
-
-ggplot.as.list <- function (o = ggplot2::last_plot(), target) {
-
-  if (!("ggplot") %in% class(o)) {
-    stop("Not a ggplot object")
-  }
-  if(missing(target)) {
-    target = "canvas"
-  }
-
-  ## Convert ggplot object to list
-
-  cx = list(
-    renderTo = target,
-    data = data_to_matrix(o$data),
-    aes = gg_mapping(o),
-    scales = gg_scales(o),  
-    theme = gg_theme(o),
-    labels = gg_labels(o),
-    facet = gg_facet(o),
-    layers = as.vector(NULL),
-    geoms = as.vector(NULL),
-    isGGPlot = TRUE,
-    isR = TRUE
-  )
-  
-  layers = sapply(o$layers, function(x) class(x$geom)[1])
-  
-  proto_geom = sapply( sapply( o$layers, "[[", "geom"), function(x) class(x)[[1]][1] )
-  
-  proto_stat = sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
-  
-  for (i in 1:length(layers)) {
-    l = layers[i]
-    p = gg_proc_layer(o$layers[[i]])
-    if (l == "GeomTile" && proto_stat[i] == "StatBin2d") {
-      l = "GeomBin2d"
-    } else if (l == "GeomPoint" && !is.null(p$position) && p$position == "jitter") {
-      l = "GeomJitter"
-    } else if (l == "GeomBar" && proto_stat[i] == "StatBin") {
-      l = "GeomHistogram"
-    } else if (l == "GeomPath" && proto_stat[i] == "StatQqLine") {
-      l = "GeomQqLine";
-    } else if (l == "GeomPoint" && proto_stat[i] == "StatQq") {
-      l = "GeomQq";
-    }
-    q = list()
-    q[[l]] = p
-    cx$geoms = append(cx$geoms, l)
-    cx$layers = append(cx$layers, q)
-  }
-  jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
-
-}
-
