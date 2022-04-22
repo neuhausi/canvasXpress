@@ -3,6 +3,7 @@ require(htmlwidgets)
 require(canvasXpress)
 require(canvasXpress.data)
 require(readr)
+require(ggplot2)
 
 try({
     testFile <- read_lines(system.file("ui-examples/cX-function.R.gz", package = "canvasXpress", mustWork = TRUE))
