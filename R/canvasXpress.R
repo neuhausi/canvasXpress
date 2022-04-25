@@ -61,7 +61,7 @@ canvasXpress <- function(data = NULL,
 
     config <- list(graphType = graphType, isR = TRUE, ...)
 
-    if (!is.null(data) && !("ggplot" %in% class(data))) {
+    if (is.null(data) || !("ggplot" %in% class(data))) {
         assertDataCorrectness(data, graphType, config)
     }
 
