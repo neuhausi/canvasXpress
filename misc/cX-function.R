@@ -220,7 +220,7 @@ cXbar2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    decorations=list(marker=list(list(fontSize=12, sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=12, sample="S2", text="p < 0.05 **", type="annotation", variable="V1"), list(fontSize=12, sample="S2", sample2="S3", text="p < 0.01 ***", type="comparison", variable="V1", variable2="V1"))),
+    decorations=list(marker=list(list(color="red", fontSize=14, position="top", sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=14, position="top", sample="S2", text="p < 0.05 **", type="annotation", variable="V1"), list(color="red", fontSize=14, fontStyle="bold", sample="S2", sample2="S3", text="p < 0.01 ***", type="comparison", variable="V1", variable2="V1"))),
     graphOrientation="vertical",
     graphType="Bar",
     showLegend=FALSE,
@@ -273,7 +273,7 @@ cXbar5 <- function() {
     smpAnnot=x,
     axisTitleFontStyle="italic",
     colorScheme="CanvasXpress",
-    decorations=list(marker=list(list(sample="setosa", text="Species with\nlowest petal\nwidth", variable="Petal.Width", x=0.4, y=0.85))),
+    decorations=list(marker=list(list(sample="setosa", text="Species with__nl__lowest petal__nl__width", variable="Petal.Width", x=0.4, y=0.85))),
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Species"),
@@ -2639,8 +2639,8 @@ cXdotplot14 <- function() {
 
 cXdotplot15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-timeline-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-timeline-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-timeliner-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-timeliner-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4814,6 +4814,7 @@ cXoncoprint1 <- function() {
     graphType="Heatmap",
     oncoprintCNA="data2",
     oncoprintMUT="data3",
+    overlaysThickness=100,
     showTransition=FALSE
   )
 }
@@ -4833,6 +4834,7 @@ cXoncoprint2 <- function() {
     graphType="Heatmap",
     oncoprintCNA="data2",
     oncoprintMUT="data3",
+    overlaysThickness=100,
     showTransition=FALSE,
     smpOverlayProperties=list(Annt2=list(position="right", type="Bar"), Annt3=list(type="Stacked"), Annt4=list(type="Stacked"), Annt5=list(type="Stacked")),
     smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5")
@@ -4854,6 +4856,7 @@ cXoncoprint3 <- function() {
     graphType="Heatmap",
     oncoprintCNA="data2",
     oncoprintMUT="data3",
+    overlaysThickness=100,
     patternBy="Pattern",
     patternByData="data4",
     smpOverlayProperties=list(Annt2=list(position="right", type="Bar"), Annt3=list(type="Stacked"), Annt4=list(type="Stacked"), Annt5=list(type="Stacked")),
@@ -4873,7 +4876,8 @@ cXoncoprint4 <- function() {
     varAnnot=z,
     graphType="Heatmap",
     oncoprintCNA="data3",
-    oncoprintMUT="data4"
+    oncoprintMUT="data4",
+    overlaysThickness=100
   )
 }
 
