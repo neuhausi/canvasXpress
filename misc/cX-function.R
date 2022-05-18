@@ -422,7 +422,7 @@ cXbar11 <- function() {
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
-    xAxisMinorTicks=FALSE
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -537,9 +537,9 @@ cXbar15 <- function() {
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -574,9 +574,9 @@ cXbar16 <- function() {
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -711,7 +711,7 @@ cXboxplot2 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -741,7 +741,7 @@ cXboxplot3 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -772,7 +772,7 @@ cXboxplot4 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -805,7 +805,7 @@ cXboxplot5 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -837,7 +837,7 @@ cXboxplot6 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -868,7 +868,7 @@ cXboxplot7 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -898,7 +898,7 @@ cXboxplot8 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -930,7 +930,7 @@ cXboxplot9 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -970,8 +970,8 @@ cXboxplot10 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1003,7 +1003,7 @@ cXboxplot11 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1040,8 +1040,8 @@ cXboxplot12 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1079,8 +1079,8 @@ cXboxplot13 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1117,8 +1117,8 @@ cXboxplot14 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1150,7 +1150,7 @@ cXboxplot15 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len",
     afterRender=list(list("pivotX", list("dose")))
   )
@@ -1190,8 +1190,8 @@ cXboxplot16 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1231,8 +1231,8 @@ cXboxplot17 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1273,8 +1273,8 @@ cXboxplot18 <- function() {
     stringSampleFactors=list("dose", "order"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2266,9 +2266,8 @@ cXdotplot4 <- function() {
     theme="CanvasXpress",
     title="Gender Earnings Disparity",
     xAxis2Title="Annual Salary",
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE,
     xAxisTickFormat="\$%sK",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="Annual Salary",
     afterRender=list(list("sortSamplesByVariable", list("Men")))
   )
@@ -2301,7 +2300,7 @@ cXdotplot5 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2340,7 +2339,7 @@ cXdotplot6 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2380,8 +2379,8 @@ cXdotplot7 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2421,8 +2420,8 @@ cXdotplot8 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2462,8 +2461,8 @@ cXdotplot9 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2504,8 +2503,8 @@ cXdotplot10 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2569,9 +2568,9 @@ cXdotplot12 <- function() {
     smpLabelScaleFontFactor=0.9,
     title="Words per Chapter by Character",
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -2605,9 +2604,9 @@ cXdotplot13 <- function() {
     timeFormat="year",
     title="The Life and Films of Audrey Hepburn",
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -2660,9 +2659,9 @@ cXdotplot15 <- function() {
     smpLabelRotate=90,
     timeFormat="isoDate",
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -4234,9 +4233,9 @@ cXlollipop2 <- function() {
     smpLabelScaleFontFactor=2,
     title="Occupations",
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -5843,13 +5842,13 @@ cXscatter2d15 <- function() {
     title="Visium Spatial Transcriptomics",
     visiumFlip=FALSE,
     xAxis=list("imagecol"),
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE,
     yAxis=list("imagerow"),
-    yAxisMajorTicks=FALSE,
-    yAxisMinorTicks=FALSE,
-    yAxisShow=FALSE
+    yAxisShow=FALSE,
+    yAxisTicksMajorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
   )
 }
 
@@ -6335,9 +6334,9 @@ cXstackedpercent5 <- function() {
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisMajorTicks=FALSE,
-    xAxisMinorTicks=FALSE,
-    xAxisShow=FALSE
+    xAxisShow=FALSE,
+    xAxisTicksMajorShow=FALSE,
+    xAxisTicksMinorShow=FALSE
   )
 }
 
@@ -6877,7 +6876,7 @@ cXtreemap3 <- function() {
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
-    xAxisMinorTicks=FALSE,
+    xAxisTicksMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
   )
 }
@@ -6945,8 +6944,8 @@ cXviolin1 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="area",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -6981,8 +6980,8 @@ cXviolin2 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7018,8 +7017,8 @@ cXviolin3 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="count",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7055,8 +7054,8 @@ cXviolin4 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="width",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7094,8 +7093,8 @@ cXviolin5 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinTrim=FALSE,
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7132,8 +7131,8 @@ cXviolin6 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7173,8 +7172,8 @@ cXviolin7 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7213,8 +7212,8 @@ cXviolin8 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7251,8 +7250,8 @@ cXviolin9 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7291,8 +7290,8 @@ cXviolin10 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7334,8 +7333,8 @@ cXviolin11 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7373,8 +7372,8 @@ cXviolin12 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7412,8 +7411,8 @@ cXviolin13 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7451,8 +7450,8 @@ cXviolin14 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7493,8 +7492,8 @@ cXviolin15 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinColor="gold",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7535,8 +7534,8 @@ cXviolin16 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7578,8 +7577,8 @@ cXviolin17 <- function() {
     stringSampleFactors=list("dose", "order"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisMinorTicks=FALSE,
     xAxisTickColor="white",
+    xAxisTicksMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
