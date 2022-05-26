@@ -5,7 +5,6 @@ HTMLWidgets.widget({
     factory: function(el, width, height) {
         var c = document.createElement('canvas');
         c.id = el.id + '-cx';
-        c.setAttribute('data-responsive', true);
 
         // default values
         c.width  = 600;
