@@ -416,6 +416,7 @@ cXbar11 <- function() {
     groupingFactors=list("continent"),
     legendInside=TRUE,
     legendPosition="right",
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     smpLabelRotate=45,
     subtitle="2014 Census",
@@ -500,6 +501,7 @@ cXbar14 <- function() {
     legendPosition="top",
     legendTextScaleFontFactor=2,
     maxSmpStringLen=50,
+    objectBorderColor="rgb(0,0,0)",
     showLegendTitle=FALSE,
     smpLabelScaleFontFactor=2,
     stackBy="Result",
@@ -1369,6 +1371,7 @@ cXchord1 <- function() {
     higlightGreyOut=TRUE,
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
     showTransition=FALSE,
     title="Simple Chord Graph",
@@ -1389,6 +1392,7 @@ cXchord2 <- function() {
     higlightGreyOut=TRUE,
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
     showTransition=FALSE,
     theme="CanvasXpress",
@@ -1410,6 +1414,7 @@ cXchord3 <- function() {
     higlightGreyOut=TRUE,
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
     showLegend=FALSE,
     showTransition=FALSE,
@@ -2073,6 +2078,7 @@ cXdonnut1 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     hierarchy=list("Month"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Simple Donnut",
     transitionStep=50,
@@ -2094,6 +2100,7 @@ cXdonnut2 <- function() {
     colorScheme="RdYlBu",
     graphType="Circular",
     hierarchy=list("Quarter", "Month"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Donnut with two levels",
     transitionStep=50,
@@ -2369,6 +2376,7 @@ cXdotplot7 <- function() {
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    objectBorderColor="rgba(0,0,0)",
     showErrorBars=FALSE,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -2410,6 +2418,7 @@ cXdotplot8 <- function() {
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    objectBorderColor="rgba(0,0,0)",
     showErrorBars=FALSE,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -2451,6 +2460,7 @@ cXdotplot9 <- function() {
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    objectBorderColor="rgba(0,0,0)",
     showErrorBars=FALSE,
     showLegend=TRUE,
     smpLabelRotate=90,
@@ -2492,6 +2502,7 @@ cXdotplot10 <- function() {
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    objectBorderColor="rgba(0,0,0)",
     segregateSamplesBy=list("supp"),
     showErrorBars=FALSE,
     showLegend=TRUE,
@@ -2598,6 +2609,7 @@ cXdotplot13 <- function() {
     legendTitleScaleFontFactor=2,
     marginLeft=150,
     marginRight=150,
+    objectBorderColor="rgba(0,0,0)",
     showLegendTitle=FALSE,
     smpLabelInterval=8,
     smpLabelRotate=90,
@@ -2629,6 +2641,7 @@ cXdotplot14 <- function() {
     legendTextScaleFontFactor=2,
     legendTitleScaleFontFactor=2,
     maxSmpStringLen=50,
+    objectBorderColor="rgba(0,0,0)",
     showLegendTitle=FALSE,
     smpLabelScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
@@ -3382,6 +3395,7 @@ cXheatmap14 <- function() {
     heatmapIndicatorPosition="top",
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     samplesClustered=TRUE,
     showSmpDendrogram=FALSE,
     showVarDendrogram=FALSE,
@@ -4626,8 +4640,7 @@ cXnetwork3 <- function() {
     showNodeNameSizeThreshold=25,
     showNodeNameThreshold=100,
     sizeNodeBy="nodeEdges",
-    title="Les Miserable",
-    useBarnesHutSimulation=TRUE
+    title="Les Miserable"
   )
 }
 
@@ -4761,6 +4774,16 @@ cXnetwork13 <- function() {
   canvasXpress(
     data="https://www.canvasxpress.org/data/Apoptosis.xml",
     graphType="Network"
+  )
+}
+
+cXnetwork14 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data="https://www.canvasxpress.org/data/networkData.txt",
+    colorNodeBy="name_mod1",
+    graphType="Network",
+    sizeEdgeBy="aa%1"
   )
 }
 
@@ -5147,6 +5170,7 @@ cXradar8 <- function() {
     graphType="Circular",
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     ringGraphType=list("line"),
     showTransition=FALSE,
     smpOverlays=list("Factor3", "-", "Factor1", "Factor2"),
@@ -5619,6 +5643,7 @@ cXscatter2d7 <- function() {
     histogramBins=5,
     histogramStat="count",
     legendBox=TRUE,
+    objectBorderColor="rgb(0,0,0)",
     setMaxX=100,
     setMaxY=150,
     setMinX=0,
@@ -6066,6 +6091,7 @@ cXstacked1 <- function() {
     groupingFactors=list("Factor1"),
     legendKeyBackgroundBorderColor="rgba(0,0,0,0)",
     legendKeyBackgroundColor="rgba(0,0,0,0)",
+    objectBorderColor="rgb(0,0,0)",
     sampleSpaceFactor=1,
     showTransition=FALSE,
     title="Random Data",
@@ -6403,6 +6429,7 @@ cXsunburst1 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Simple Sunburst"
   )
@@ -6422,6 +6449,7 @@ cXsunburst2 <- function() {
     colorScheme="RdYlBu",
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Simple Sunburst Colored by Category"
   )
@@ -6440,6 +6468,7 @@ cXsunburst3 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Rotated Sunburst"
   )
@@ -6458,6 +6487,7 @@ cXsunburst4 <- function() {
     colorScheme="Bootstrap",
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
+    objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
     title="Rotated Half Sunburst"
   )
@@ -6833,6 +6863,7 @@ cXtreemap1 <- function() {
     colorBy="GNI",
     decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.15, y=0.1))),
     graphType="Treemap",
+    objectBorderColor="rgb(0,0,0)",
     showDecorations=FALSE,
     showTransition=TRUE,
     theme="CanvasXpress",
@@ -6869,6 +6900,7 @@ cXtreemap3 <- function() {
     graphType="Stacked",
     legendInside=TRUE,
     legendPosition="right",
+    objectBorderColor="rgb(0,0,0)",
     showTransition=TRUE,
     smpLabelRotate=45,
     subtitle="2014 Census",
