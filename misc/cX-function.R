@@ -4332,6 +4332,7 @@ cXmap5 <- function() {
     colorBy="Winner",
     decorations=list(pie=list(list(colors=list("blue", "red", "yellow", "green"), size=2.5, smps=list("Democrat", "Republican", "Libertarian", "Other")))),
     graphType="Map",
+    legendColumns=4,
     legendOrder=list(Winner=list("Republican", "Democrat")),
     mapId="albersStatesPie",
     mapProjection="albers",
@@ -4799,7 +4800,7 @@ cXnonlinearfit1 <- function() {
     showDecorations=TRUE,
     theme="CanvasXpress",
     xAxisTransform="log10",
-    xAxisTransformTicks=FALSE,
+    xAxisTransformTicks=TRUE,
     yAxisExact=TRUE
   )
 }
