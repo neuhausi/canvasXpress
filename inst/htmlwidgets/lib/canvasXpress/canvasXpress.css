@@ -697,6 +697,442 @@ span.CanvasXpressBin::selection {
     margin: 0px !important;
 }
 
+/*
+ * CanvasXpressCustomizer
+ */
+
+div.CanvasXpressCustomizerLP {
+    left: 0;
+    top: 0;
+    border-right: 1px solid  rgb(51, 122, 183) !important;
+    background-color:rgba(255, 255, 255, 0.95);
+    float: left;
+    display: grid;
+}
+
+div.CanvasXpressCustomizerImages {
+    margin: auto;
+    display: grid;
+}
+
+div.CanvasXpressCustomizerRP {
+    top: 0;
+    border-right: 1px solid  rgb(51, 122, 183) !important;
+    background-color:rgba(255, 255, 255, 0.95);
+    float: left;
+}
+
+a.CanvasXpressCustomizer {
+    border-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    display: block;
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px;
+    outline-style: none;
+    outline-width: 0px;
+    position: relative;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+a.CanvasXpressCustomizerActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+    border-color: rgb(170, 204, 246);
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    display: block;
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px;
+    outline-style: none;
+    outline-width: 0px;
+    position: relative;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+img.CanvasXpressCustomizer, svg.CanvasXpressCustomizer {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    padding: 0px;
+    position: absolute;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+span.CanvasXpressCustomizer {
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+/*
+ * Customizer Header
+ */
+
+div.CanvasXpressCustomizerContainer {
+    margin: 0px;
+    display: grid;
+}
+
+div.CanvasXpressCustomizerHeader {
+    background-color: #dddddd;
+    border-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: auto;
+    outline-style: none;
+    outline-width: 0px;
+    text-decoration: none;
+    white-space: nowrap;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    display: flex;
+}
+
+img.CanvasXpressCustomizerHeader, svg.CanvasXpressCustomizerHeader {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    position: relative;
+    padding: 0px;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+span.CanvasXpressCustomizerHeader {
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+/*
+ * File Customizer
+ */
+
+a.CanvasXpressFileCustomizer {
+    border-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    display: block;
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px;
+    outline-style: none;
+    outline-width: 0px;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+a.CanvasXpressFileCustomizerActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+    border-color: rgb(170, 204, 246);
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    display: block;
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px;
+    outline-style: none;
+    outline-width: 0px;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+img.CanvasXpressFileCustomizer, svg.CanvasXpressFileCustomizer {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    padding: 0px;
+    position: relative;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+span.CanvasXpressFileCustomizer {
+    color: rgb(34, 34, 34);
+    cursor: pointer;
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+/*
+ * Data Customizer
+ */
+
+div.CanvasXpressDataCustomizerActive {
+    border: 1px dashed rgb(255, 0, 0);
+    border-radius: 4px;
+    box-sizing: content-box;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 3px;
+    padding: 3px;
+    white-space: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.CanvasXpressDataCustomizer {
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 4px;
+    box-sizing: content-box;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 3px;
+    padding: 3px;
+    white-space: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.CanvasXpressDataCustomizerPanel {
+    background-color:rgba(255, 255, 255, 0.95);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    cursor: default;
+    height: auto;
+    max-height: 1000px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+img.CanvasXpressDataCustomizerActive, svg.CanvasXpressDataCustomizerActive {
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    border: 1px dashed rgb(255, 0, 0) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 3px !important;
+    padding: 2px;
+}
+
+img.CanvasXpressDataCustomizer, svg.CanvasXpressDataCustomizer {
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgb(51, 122, 183) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px 3px !important;
+    padding: 2px;
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+}
+
+img.CanvasXpressDataCustomizer:hover,
+img.CanvasXpressDataCustomizer3:hover img.CanvasXpressDataCustomizer4:hover,
+svg.CanvasXpressDataCustomizer:hover,
+svg.CanvasXpressDataCustomizer3:hover svg.CanvasXpressDataCustomizer4:hover {
+    background: rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgb(51, 122, 183) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px 3px !important;
+    padding: 3px;
+    -webkit-transform: scale(1.8, 1.8);
+    -ms-transform: scale(1.8, 1.8);
+    transform: scale(1.8, 1.8);
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+    box-shadow: 10px 10px 5px #888888 !important;
+    z-index: 2;
+    position: relative;
+}
+
+img.CanvasXpressDataCustomizer2,
+img.CanvasXpressDataCustomizer4,
+svg.CanvasXpressDataCustomizer2,
+svg.CanvasXpressDataCustomizer4 {
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    border: 0px none !important;
+    border-radius: 0px;
+    cursor: pointer;
+    margin: 2px 3px !important;
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+}
+
+img.CanvasXpressDataCustomizer2:hover, svg.CanvasXpressDataCustomizer2:hover {
+    background: rgba(0, 0, 0, 0) !important;
+    border: 0px none !important;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px 4px !important;
+    padding: 4px;
+    -webkit-transform: scale(1.8, 1.8);
+    -ms-transform: scale(1.8, 1.8);
+    transform: scale(1.8, 1.8);
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+    box-shadow: 10px 10px 5px #888888 !important;
+    z-index: 2;
+    position: relative;
+}
+
+img.CanvasXpressDataCustomizer3, svg.CanvasXpressDataCustomizer3 {
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgb(51, 122, 183) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 12px 3px 3px 3px !important;
+    padding: 2px 3px;
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+}
+
+
+img.CanvasXpressDataCustomizerMask, svg.CanvasXpressDataCustomizerMask {
+    background: rgba(0, 0, 0, 0) !important;
+    border: 0px none !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px !important;
+    width: 100%;
+    height: 20px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+span.CanvasXpressDataCustomizerNumeric,
+span.CanvasXpressDataCustomizerString,
+span.CanvasXpressDataCustomizerUnique {
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    cursor: move;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 3px;
+    padding: 3px;
+    word-wrap: normal;
+    display: inline-block;
+    text-align: start;
+    max-width: 150px;
+    overflow: hidden;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+}
+
+span.CanvasXpressDataCustomizerString {
+    color: rgb(255, 0, 0);
+}
+
+span.CanvasXpressDataCustomizerUnique {
+    color: rgb(0, 0, 255);
+}
+
+span.CanvasXpressDataCustomizer {
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    cursor: pointer;
+    font: bold 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    line-height: 380%;
+    padding: 6px 29px;
+    margin-left: -4px;
+}
+
+img.CanvasXpressDataCustomizerActive::selection,
+img.CanvasXpressDataCustomizer::selection,
+svg.CanvasXpressDataCustomizerActive::selection,
+svg.CanvasXpressDataCustomizer::selection,
+div.CanvasXpressDataCustomizerActive::selection,
+div.CanvasXpressDataCustomizer::selection,
+img.CanvasXpressDataCustomizerMask::selection,
+svg.CanvasXpressDataCustomizerMask::selection,
+span.CanvasXpressDataCustomizerNumeric::selection,
+span.CanvasXpressDataCustomizerString::selection,
+span.CanvasXpressDataCustomizerUnique::selection,
+span.CanvasXpressDataCustomizer::selection {
+    background: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 0;
+}
 
 /*
  * CanvasXpressDataExplorer
@@ -2234,6 +2670,7 @@ div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
+div.CanvasXpressDataCustomizer::-webkit-scrollbar-button,
 select.CanvasXpressConfigurator::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
@@ -2257,6 +2694,7 @@ select.CanvasXpressSlider::-webkit-scrollbar-track {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track,
+div.CanvasXpressDataCustomizer::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar-track {
@@ -2272,6 +2710,7 @@ div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
+div.CanvasXpressDataCustomizer::-webkit-scrollbar-track:hover,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
@@ -2297,6 +2736,7 @@ select.CanvasXpressSlider::-webkit-scrollbar {
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar,
 div.CanvasXpressDataExplorer::-webkit-scrollbar,
+div.CanvasXpressDataCustomizer::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar,
 div.CanvasXpressBinNameContainer::-webkit-scrollbar {
@@ -2314,6 +2754,7 @@ div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
+div.CanvasXpressDataCustomizer::-webkit-scrollbar-thumb,
 select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
