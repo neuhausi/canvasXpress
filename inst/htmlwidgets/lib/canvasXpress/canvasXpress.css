@@ -701,7 +701,22 @@ span.CanvasXpressBin::selection {
  * CanvasXpressCustomizer
  */
 
-div.CanvasXpressCustomizerLP {
+ hr.CanvasXpressDataCustomizer {
+    border: 0;
+    background-color: rgb(51, 122, 183);
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+div.CanvasXpressCustomizerContainer {
+    background-color:rgba(255, 255, 255, 0.95);
+    float: left;
+    margin: 0px;
+}
+
+div.CanvasXpressCustomizerLeftPanel {
     left: 0;
     top: 0;
     border-right: 1px solid  rgb(51, 122, 183) !important;
@@ -710,20 +725,7 @@ div.CanvasXpressCustomizerLP {
     display: grid;
 }
 
-div.CanvasXpressCustomizerImages {
-    margin: auto;
-    display: grid;
-}
-
-div.CanvasXpressCustomizerRP {
-    top: 0;
-    border-right: 1px solid  rgb(51, 122, 183) !important;
-    background-color:rgba(255, 255, 255, 0.95);
-    float: left;
-}
-
-a.CanvasXpressCustomizer {
-    border-color: rgba(0, 0, 0, 0);
+a.CanvasXpressCustomizerLeft, a.CanvasXpressCustomizerLeftActive {
     border-style: solid;
     border-width: 1px;
     color: rgb(34, 34, 34);
@@ -740,26 +742,16 @@ a.CanvasXpressCustomizer {
     white-space: nowrap;
 }
 
-a.CanvasXpressCustomizerActive {
+a.CanvasXpressCustomizerLeft {
+    border-color: rgba(0, 0, 0, 0);
+}
+
+a.CanvasXpressCustomizerLeftActive {
     background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
     border-color: rgb(170, 204, 246);
-    border-style: solid;
-    border-width: 1px;
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none !important;
-    white-space: nowrap;
 }
 
-img.CanvasXpressCustomizer, svg.CanvasXpressCustomizer {
+img.CanvasXpressCustomizerLeft, svg.CanvasXpressCustomizerLeft {
     background-position: center;
     border: 0px none !important;
     color: rgb(34, 34, 34);
@@ -778,7 +770,7 @@ img.CanvasXpressCustomizer, svg.CanvasXpressCustomizer {
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
 }
 
-span.CanvasXpressCustomizer {
+span.CanvasXpressCustomizerLeft {
     color: rgb(34, 34, 34);
     cursor: pointer;
     font: normal 16px arial, tahoma, sans-serif;
@@ -788,20 +780,47 @@ span.CanvasXpressCustomizer {
     position: relative;
 }
 
-/*
- * Customizer Header
- */
-
-div.CanvasXpressCustomizerContainer {
-    margin: 0px;
-    display: grid;
+div.CanvasXpressCustomizerRightPanel {
+    top: 0;
+    border-right: 1px solid  rgb(51, 122, 183) !important;
+    background-color:rgba(255, 255, 255, 0.95);
+    float: left;
 }
 
-div.CanvasXpressCustomizerHeader {
+div.CanvasXpressCustomizerRightContainer {
+    background-color:rgba(255, 255, 255, 0.95);
+    border: 1px solid  rgb(51, 122, 183) !important;
+    border-radius: 4px;
+    margin: 3px;
+}
+
+div.CanvasXpressCustomizerRightContainerActive {
+    background-color:rgba(255, 255, 255, 0.95);
+    border: 1px dashed rgb(255, 0, 0) !important;
+    border-radius: 4px;
+    margin: 3px;
+}
+
+img.CanvasXpressCustomizerRightContainer, svg.CanvasXpressCustomizerRightContainer {
+    background-position: center;
+    border: 1px solid  rgb(51, 122, 183) !important;
+    border-radius: 4px;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    list-style: none;
+    margin: 10px 0px 0px 10px !important;
+    position: relative;
+    padding: 2px;
+    vertical-align: top;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+div.CanvasXpressCustomizerRight {
     background-color: #dddddd;
-    border-color: rgba(0, 0, 0, 0);
-    border-style: solid;
-    border-width: 1px;
+    border-top: 1px solid  rgb(51, 122, 183) !important;
+    border-bottom: 1px solid  rgb(51, 122, 183) !important;
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
     line-height: 24px;
@@ -816,7 +835,7 @@ div.CanvasXpressCustomizerHeader {
     display: flex;
 }
 
-img.CanvasXpressCustomizerHeader, svg.CanvasXpressCustomizerHeader {
+img.CanvasXpressCustomizerRight, svg.CanvasXpressCustomizerRight {
     background-position: center;
     border: 0px none !important;
     color: rgb(34, 34, 34);
@@ -834,13 +853,190 @@ img.CanvasXpressCustomizerHeader, svg.CanvasXpressCustomizerHeader {
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
 }
 
-span.CanvasXpressCustomizerHeader {
+span.CanvasXpressCustomizerRight {
     color: rgb(34, 34, 34);
     font: normal 16px arial, tahoma, sans-serif;
     line-height: 28px;
     list-style: none;
     white-space: nowrap;
     position: relative;
+    height: 28px;
+}
+
+ span.CanvasXpressCustomizerRightHelp {
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 22px;
+    list-style: none;
+    white-space: normal;
+    position: relative;
+}
+
+/*
+ * Meta Customizer
+ */
+
+
+
+/*
+ * Options Customizer
+ */
+
+div.CanvasXpressOptionsCustomizer {
+    top: 0;
+    background-color:rgba(255, 255, 255, 0.95);
+    float: left;
+}
+
+img.CanvasXpressOptionsCustomizer, svg.CanvasXpressOptionsCustomizer {
+    background-position: center;
+    border: 1px solid  rgb(51, 122, 183) !important;
+    border-radius: 4px;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    list-style: none;
+    margin: 10px 0px 0px 10px !important;
+    position: relative;
+    padding: 2px;
+    vertical-align: top;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+/*
+ * Axes Customizer
+ */
+
+ div.CanvasXpressAxesCustomizer {
+    background-color:rgba(255, 255, 255, 0.95);
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 4px;
+    box-sizing: content-box;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 3px;
+    white-space: normal;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+img.CanvasXpressAxesCustomizer, svg.CanvasXpressAxesCustomizer {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    list-style: none;
+    position: relative;
+    padding: 0px;
+    vertical-align: top;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+/*
+ * Search Customizer
+ */
+input.CanvasXpressSearchCustomizer {
+    margin: 9px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgb(51, 122, 183);
+    color: rgb(34, 34, 34);
+    cursor: default;
+    font: normal 16px arial, tahoma, sans-serif;
+    padding-left: 3px;
+    height: 40px;
+    border-radius: 4px;
+    float: left;
+    clear: left;
+}
+
+select.CanvasXpressSearchCustomizer {
+    margin: 9px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgb(51, 122, 183);
+    color: rgb(34, 34, 34);
+    cursor: default;
+    font: normal 16px arial, tahoma, sans-serif;
+    padding-left: 3px;
+    border-radius: 4px;
+    float: left;
+    clear: left;
+}
+
+span.CanvasXpressSearchCustomizer {
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    position: relative;
+    height: 28px;
+    margin-top: 5px;
+    float: left;
+    clear: left;
+}
+
+span.CanvasXpressSearchCustomizerSelect, span.CanvasXpressSearchCustomizerDescription, span.CanvasXpressSearchCustomizerCurrent {
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    position: relative;
+    height: 28px;
+    margin-top: 5px;
+    float: left;
+    clear: left;
+}
+
+span.CanvasXpressSearchCustomizerSelect {
+    color: rgb(34, 34, 34);
+}
+
+span.CanvasXpressSearchCustomizerDescription {
+    color: rgb(51, 122, 183);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+span.CanvasXpressSearchCustomizerCurrent {
+    color: rgb(51, 122, 183);
+}
+
+span.CanvasXpressSearchCustomizerSelect:before {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: "Select property (";
+}
+
+span.CanvasXpressSearchCustomizerSelect:after {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: ")";
+}
+
+span.CanvasXpressSearchCustomizerDescription:before {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: "Description [ ";
+}
+
+span.CanvasXpressSearchCustomizerDescription:after {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: " ]";
+}
+
+span.CanvasXpressSearchCustomizerCurrent:before {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: "Current Value [ ";
+}
+
+span.CanvasXpressSearchCustomizerCurrent:after {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: " ]";
 }
 
 /*
@@ -970,10 +1166,9 @@ img.CanvasXpressDataCustomizerActive, svg.CanvasXpressDataCustomizerActive {
 img.CanvasXpressDataCustomizer, svg.CanvasXpressDataCustomizer {
     background: rgba(0, 0, 0, 0) !important;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    border: 1px solid rgb(51, 122, 183) !important;
-    border-radius: 5px;
+    border: 0px !important;
     cursor: pointer;
-    margin: 2px 3px !important;
+    margin: 3px !important;
     padding: 2px;
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
@@ -2671,6 +2866,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-button,
+select.CanvasXpressSearchCustomizer::-webkit-scrollbar-button,
 select.CanvasXpressConfigurator::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
@@ -2686,6 +2882,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
 div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track,
+select.CanvasXpressSearchCustomizer::-webkit-scrollbar-track,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track,
 select.CanvasXpressSlider::-webkit-scrollbar-track {
     background-color: #FFFFFF;
@@ -2711,6 +2908,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-track:hover,
+select.CanvasXpressSearchCustomizer::-webkit-scrollbar-track:hover,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
@@ -2726,6 +2924,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
 div.CanvasXpressDataFilterContent::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar,
+select.CanvasXpressSearchCustomizer::-webkit-scrollbar,
 select.CanvasXpressConfigurator::-webkit-scrollbar,
 select.CanvasXpressSlider::-webkit-scrollbar {
     width: 8px;
@@ -2755,6 +2954,7 @@ div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-thumb,
+select.CanvasXpressSearchCustomizer::-webkit-scrollbar-thumb,
 select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
