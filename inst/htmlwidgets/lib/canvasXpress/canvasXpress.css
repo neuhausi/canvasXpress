@@ -863,13 +863,20 @@ span.CanvasXpressCustomizerRight {
     height: 28px;
 }
 
- span.CanvasXpressCustomizerRightHelp {
+span.CanvasXpressCustomizerRightHelp {
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
     line-height: 22px;
     list-style: none;
     white-space: normal;
     position: relative;
+}
+
+a.CanvasXpressCustomizerRight {
+    color: rgb(34, 34, 34);
+    text-decoration: none !important;
+    margin-right: 10px;
+    margin-left: 15px;
 }
 
 /*
