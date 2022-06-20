@@ -5723,7 +5723,7 @@ cXscatter2d10 <- function() {
     theme="CanvasXpress",
     xAxis=list("Concentration"),
     xAxisTransform="log10",
-    xAxisTransformTicks=FALSE,
+    xAxisTransformTicks=TRUE,
     yAxis=list("V1"),
     yAxisExact=TRUE
   )
