@@ -94,8 +94,8 @@ test_that("barplot annotations", {
                            graphType               = "Bar",
                            graphOrientation        = "vertical",
                            title                   = "Barplot - annotations",
-                           decorations             = list(marker = list(list(fontSize = 12, sample = "S1", text = "p < 0.01 ***", type = "annotation", variable = "V1"),
-                                                                        list(fontSize = 12, sample = "S2", text = "p < 0.05 **", type = "annotation", variable = "V1"))))
+                           decorations             = list(marker = list(list(fontSize = 12, sample = "S1", text = "p < 0.01 ***", type = "annotation", variable = "V1", position = "top"),
+                                                                        list(fontSize = 12, sample = "S2", text = "p < 0.05 **", type = "annotation", variable = "V1", position = "top"))))
 
     check_ui_test(result)
 })
@@ -212,13 +212,13 @@ test_that("precalculated barplot - annotations", {
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group3",
-                                                                           y        = 0.05),
+                                                                           position = "top"),
                                                                       list(fontSize = 10,
                                                                            text     = "Group4",
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group4",
-                                                                           y        = 0.53))),
+                                                                           position = "top"))),
                            title                 = "Annotations for Precalculated Barplot without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
@@ -239,14 +239,14 @@ test_that("precalculated barplot - annotations", {
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group3",
-                                                                           y        = 0.05),
+                                                                           position = "top"),
                                                                       list(fontSize = 10,
                                                                            text     = "Group1",
                                                                            scope    = "Lev2",
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group1",
-                                                                           y        = 0.53))),
+                                                                           position = "top"))),
                            title                 = "Annotations for Precalculated Barplot with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
@@ -279,28 +279,28 @@ test_that("segregated and overlayed precalculated barplot - annotations", {
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V1"),
-                                                                             y        = 0.65),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev2, V7)",
                                                                              scope    = list("Lev2"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V7"),
-                                                                             y        = 0.05),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev2, V6)",
                                                                              scope    = list("Lev2"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V6"),
-                                                                             y        = 0.7),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev1, V4)",
                                                                              scope    = list("Lev1"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V4"),
-                                                                             y        = 0.64))),
+                                                                             position = "top"))),
                              title                 = "Annotations for segregated and overlayed precalculated barplot",
                              titleScaleFontFactor  = 0.5)
 
