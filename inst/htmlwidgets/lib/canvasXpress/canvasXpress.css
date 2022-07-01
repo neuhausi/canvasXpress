@@ -433,10 +433,15 @@ pre.CanvasXpressCode {
 div.CanvasXpressCodeContainer {
     box-sizing: content-box;
     clear: both;
+    height: 500px;
+    width: 600px;
+    /*
     max-height: 500px;
     max-width: 600px;
+    */
     overflow: auto;
     padding: 10px;
+    resize: auto;
 }
 
 div.CanvasXpressCodeContent {
@@ -713,7 +718,7 @@ span.CanvasXpressBin::selection {
 div.CanvasXpressCustomizerContainer {
     background-color:rgba(255, 255, 255, 0.95);
     float: left;
-    margin: 0px;
+    margin: 0;
 }
 
 div.CanvasXpressCustomizerLeftPanel {
@@ -3117,7 +3122,7 @@ li.CanvasXpressListItemSep {
     list-style: none;
     margin: 0px;
     padding: 1px;
-    width: 100%;
+    /* width: 100%; */
     white-space: nowrap;
 }
 
