@@ -100,7 +100,7 @@ test_that("barplot annotations", {
     check_ui_test(result)
 })
 
-test_that("segregated Boxplot marker decorations", {
+test_that("segregated barplot and boxplot marker decorations", {
     tryCatch({
         data <- iris %>%
             mutate(Facet = paste0("facet_", seq(NROW(iris)) %% 2)) %>%
@@ -112,7 +112,13 @@ test_that("segregated Boxplot marker decorations", {
         for (species in unique(data$Species)) {
             for (facet in unique(data$Facet)) {
                 marker <- lapply(var_names, function(var_name) {
-                    list(text     = var_name,
+                    decoration_text <- paste0(var_name, ".", facet, ".", species) %>%
+                        gsub("Sepal.", "", .) %>%
+                        gsub("Length", "L", .) %>%
+                        gsub("Width", "W", .) %>%
+                        gsub("facet_", "", .)
+
+                    list(text     = decoration_text,
                          fontSize = 12,
                          type     = "annotation",
                          variable = list(var_name),
@@ -125,8 +131,23 @@ test_that("segregated Boxplot marker decorations", {
         }
     },
     error = function(e) {
-        skip('Unable to read data files')
+        skip('Unable to load data')
     })
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Bar",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Segregated Barplot - marker decoration above each bar",
+                           segregateSamplesBy = list("Facet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
 
     result <- canvasXpress(data               = t(select(data, all_of(var_names))),
                            smpAnnot           = t(data),
@@ -137,6 +158,74 @@ test_that("segregated Boxplot marker decorations", {
                            smpTitle           = "Species",
                            title              = "Segregated Boxplot - marker decoration above each box",
                            segregateSamplesBy = list("Facet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+})
+
+test_that("double-segregated barplot and boxplot marker decorations", {
+    tryCatch({
+        data <- iris %>%
+            mutate(Facet      = paste0("facet_", seq(NROW(iris)) %% 3),
+                   OtherFacet = "facet_A") %>%
+            arrange(Facet, OtherFacet, Species)
+
+        var_names    <- c("Sepal.Length", "Sepal.Width")
+        markers_list <- list()
+
+        for (species in unique(data$Species)) {
+            for (facet in unique(data$Facet)) {
+                for (other_facet in unique(data$OtherFacet)) {
+                    marker <- lapply(var_names, function(var_name) {
+                        decoration_text <- paste0(var_name, ".", facet, ".", other_facet, ".", species) %>%
+                            gsub("Sepal.", "", .) %>%
+                            gsub("Length", "L", .) %>%
+                            gsub("Width", "W", .) %>%
+                            gsub("facet_", "", .)
+
+                        list(text     = decoration_text,
+                             fontSize = 12,
+                             type     = "annotation",
+                             variable = list(var_name),
+                             sample   = list(species),
+                             scope    = list(facet, other_facet),
+                             position = "top")
+                    })
+                    markers_list <- c(markers_list, marker)
+                }
+            }
+        }
+    },
+    error = function(e) {
+        skip('Unable to load data')
+    })
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Bar",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Double-segregated Barplot - marker decoration above each bar",
+                           segregateSamplesBy = list("Facet", "OtherFacet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Boxplot",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Double-segregated Boxplot - marker decoration above each box",
+                           segregateSamplesBy = list("Facet", "OtherFacet"),
                            groupingFactors    = list("Species"),
                            layoutAdjust       = TRUE,
                            decorations        = list(marker = markers_list))
