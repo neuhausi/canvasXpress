@@ -100,6 +100,50 @@ test_that("barplot annotations", {
     check_ui_test(result)
 })
 
+test_that("segregated Boxplot marker decorations", {
+    tryCatch({
+        data <- iris %>%
+            mutate(Facet = paste0("facet_", seq(NROW(iris)) %% 2)) %>%
+            arrange(Facet, Species)
+
+        var_names    <- c("Sepal.Length", "Sepal.Width")
+        markers_list <- list()
+
+        for (species in unique(data$Species)) {
+            for (facet in unique(data$Facet)) {
+                marker <- lapply(var_names, function(var_name) {
+                    list(text     = var_name,
+                         fontSize = 12,
+                         type     = "annotation",
+                         variable = list(var_name),
+                         sample   = list(species),
+                         scope    = list(facet),
+                         position = "top")
+                })
+                markers_list <- c(markers_list, marker)
+            }
+        }
+    },
+    error = function(e) {
+        skip('Unable to read data files')
+    })
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Boxplot",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Segregated Boxplot - marker decoration above each box",
+                           segregateSamplesBy = list("Facet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+})
+
 test_that("segregated Boxplot decorations with different values", {
     tryCatch({
         y <- read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
