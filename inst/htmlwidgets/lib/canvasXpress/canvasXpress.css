@@ -857,6 +857,25 @@ img.CanvasXpressCustomizerRight, svg.CanvasXpressCustomizerRight {
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
 }
 
+img.CanvasXpressCustomizerRightB, svg.CanvasXpressCustomizerRightB {
+    background-position: center;
+    border: 1px solid rgb(51, 122, 183) !important;
+    border-radius: 4px;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    position: relative;
+    padding: 0px;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
 span.CanvasXpressCustomizerRight {
     color: rgb(34, 34, 34);
     font: normal 16px arial, tahoma, sans-serif;
@@ -986,7 +1005,7 @@ span.CanvasXpressSearchCustomizer {
     clear: left;
 }
 
-span.CanvasXpressSearchCustomizerSelect, span.CanvasXpressSearchCustomizerDescription, span.CanvasXpressSearchCustomizerCurrent {
+span.CanvasXpressSearchCustomizerSelect, span.CanvasXpressSearchCustomizerDescription, span.CanvasXpressSearchCustomizerCategory, span.CanvasXpressSearchCustomizerCurrent {
     font: normal 16px arial, tahoma, sans-serif;
     line-height: 28px;
     list-style: none;
@@ -1001,7 +1020,7 @@ span.CanvasXpressSearchCustomizerSelect {
     color: rgb(34, 34, 34);
 }
 
-span.CanvasXpressSearchCustomizerDescription {
+span.CanvasXpressSearchCustomizerDescription, span.CanvasXpressSearchCustomizerCategory {
     color: rgb(51, 122, 183);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1030,7 +1049,13 @@ span.CanvasXpressSearchCustomizerDescription:before {
     content: "Description [ ";
 }
 
-span.CanvasXpressSearchCustomizerDescription:after {
+span.CanvasXpressSearchCustomizerCategory:before {
+    color: rgb(34, 34, 34);
+    font-weight: bold;
+    content: "Category [ ";
+}
+
+span.CanvasXpressSearchCustomizerDescription:after, span.CanvasXpressSearchCustomizerCategory:after {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: " ]";
