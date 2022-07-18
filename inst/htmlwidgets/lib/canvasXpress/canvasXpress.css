@@ -901,10 +901,61 @@ a.CanvasXpressCustomizerRight {
 }
 
 /*
- * Meta Customizer
+ * Header
  */
 
+div.CanvasXpressCustomizerHeader {
+    background-color: #dddddd;
+    border-top: 1px solid  rgb(51, 122, 183) !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: auto;
+    outline-style: none;
+    outline-width: 0px;
+    text-decoration: none;
+    white-space: nowrap;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    display: flex;
+}
 
+span.CanvasXpressCustomizerHeader {
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+    height: 28px;
+}
+
+img.CanvasXpressCustomizerHeader, svg.CanvasXpressCustomizerHeader {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    position: relative;
+    padding: 0px;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+span.CanvasXpressCustomizerHeaderHelp {
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    list-style: none;
+    white-space: normal;
+    position: relative;
+}
 
 /*
  * Options Customizer
@@ -1286,7 +1337,6 @@ img.CanvasXpressDataCustomizer3, svg.CanvasXpressDataCustomizer3 {
     /* Safari */
 }
 
-
 img.CanvasXpressDataCustomizerMask, svg.CanvasXpressDataCustomizerMask {
     background: rgba(0, 0, 0, 0) !important;
     border: 0px none !important;
@@ -1336,6 +1386,58 @@ span.CanvasXpressDataCustomizerUnique {
     color: rgb(0, 0, 255);
 }
 
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListUnique {
+    border: none;
+    cursor: move;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: start;
+    overflow: hidden;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+}
+
+span.CanvasXpressDataCustomizerListNumeric {
+   color: rgb(34, 34, 34);
+}
+
+span.CanvasXpressDataCustomizerListString {
+    color: rgb(255, 0, 0);
+}
+
+span.CanvasXpressDataCustomizerListUnique {
+    color: rgb(0, 0, 255);
+}
+
+span.CanvasXpressDataCustomizerListNumeric:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "\00a0#\00a0\00a0\00a0";
+ }
+ 
+ span.CanvasXpressDataCustomizerListString:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "Abc\00a0\00a0";
+ }
+ 
+ span.CanvasXpressDataCustomizerListUnique:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "Unq\00a0\00a0";
+ }
+
 span.CanvasXpressDataCustomizer {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
@@ -1358,6 +1460,9 @@ svg.CanvasXpressDataCustomizerMask::selection,
 span.CanvasXpressDataCustomizerNumeric::selection,
 span.CanvasXpressDataCustomizerString::selection,
 span.CanvasXpressDataCustomizerUnique::selection,
+span.CanvasXpressDataCustomizerListNumeric::selection,
+span.CanvasXpressDataCustomizerListString::selection,
+span.CanvasXpressDataCustomizerListUnique::selection,
 span.CanvasXpressDataCustomizer::selection {
     background: rgba(0, 0, 0, 0);
     color: rgb(0, 0, 0);
