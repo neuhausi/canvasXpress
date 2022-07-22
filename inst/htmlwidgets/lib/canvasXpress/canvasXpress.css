@@ -1357,7 +1357,10 @@ img.CanvasXpressDataCustomizerMask, svg.CanvasXpressDataCustomizerMask {
 
 span.CanvasXpressDataCustomizerNumeric,
 span.CanvasXpressDataCustomizerString,
-span.CanvasXpressDataCustomizerUnique {
+span.CanvasXpressDataCustomizerUnique,
+span.CanvasXpressDataCustomizerNumericActive,
+span.CanvasXpressDataCustomizerStringActive,
+span.CanvasXpressDataCustomizerUniqueActive {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
     cursor: move;
@@ -1388,14 +1391,17 @@ span.CanvasXpressDataCustomizerUnique {
 
 span.CanvasXpressDataCustomizerListNumeric,
 span.CanvasXpressDataCustomizerListString,
-span.CanvasXpressDataCustomizerListUnique {
+span.CanvasXpressDataCustomizerListUnique,
+span.CanvasXpressDataCustomizerListNumericActive,
+span.CanvasXpressDataCustomizerListStringActive,
+span.CanvasXpressDataCustomizerListUniqueActive {
     border: none;
     cursor: move;
     font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     margin: 0;
     padding: 0;
-    width: 300px;
+    width: 350px;
     white-space: nowrap;
     display: inline-block;
     text-align: start;
@@ -1408,31 +1414,37 @@ span.CanvasXpressDataCustomizerListUnique {
     -ms-user-select: none;
 }
 
-span.CanvasXpressDataCustomizerListNumeric {
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListNumericActive {
    color: rgb(34, 34, 34);
 }
 
-span.CanvasXpressDataCustomizerListString {
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListStringActive {
     color: rgb(255, 0, 0);
 }
 
-span.CanvasXpressDataCustomizerListUnique {
+span.CanvasXpressDataCustomizerListUnique,
+span.CanvasXpressDataCustomizerListUniqueActive {
     color: rgb(0, 0, 255);
 }
 
-span.CanvasXpressDataCustomizerListNumeric:before {
+span.CanvasXpressDataCustomizerListNumeric:before,
+span.CanvasXpressDataCustomizerListNumericActive:before {
     font: normal 10px courier;
     color: rgb(34, 34, 34);
     content: "\00a0#\00a0\00a0\00a0";
  }
  
- span.CanvasXpressDataCustomizerListString:before {
+ span.CanvasXpressDataCustomizerListString:before,
+ span.CanvasXpressDataCustomizerListStringActive:before {
     font: normal 10px courier;
     color: rgb(34, 34, 34);
     content: "Abc\00a0\00a0";
  }
  
- span.CanvasXpressDataCustomizerListUnique:before {
+ span.CanvasXpressDataCustomizerListUnique:before,
+ span.CanvasXpressDataCustomizerListUniqueActive:before {
     font: normal 10px courier;
     color: rgb(34, 34, 34);
     content: "Unq\00a0\00a0";
@@ -1467,6 +1479,30 @@ span.CanvasXpressDataCustomizer::selection {
     background: rgba(0, 0, 0, 0);
     color: rgb(0, 0, 0);
     padding: 0;
+}
+
+span.CanvasXpressDataCustomizerListNumericActive,
+span.CanvasXpressDataCustomizerListStringActive,
+span.CanvasXpressDataCustomizerListUniqueActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+}
+
+span.CanvasXpressDataCustomizerNumericActive,
+span.CanvasXpressDataCustomizerStringActive,
+span.CanvasXpressDataCustomizerUniqueActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+}
+
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListUnique {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+span.CanvasXpressDataCustomizerNumeric,
+span.CanvasXpressDataCustomizerString,
+span.CanvasXpressDataCustomizerUnique {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 /*
