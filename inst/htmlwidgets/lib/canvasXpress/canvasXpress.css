@@ -1991,11 +1991,11 @@ div.CanvasXpressDataTableResizer {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAR0lEQVR42pXPQQoAIAhEUb25nrwyKIpMndkJz8VnAtbGGMGqSqWHhW3pw4lFhBnBYYOHvw0/7DZE+GnI8NVQwbuhimcDgu3uM5KV++8QfCcAAAAASUVORK5CYII=);
     background-repeat: no-repeat;
     cursor: se-resize;
-    bottom: 4px;
+    bottom: 8px;
     height: 15px;
     position: absolute;
     opacity: 0.95;
-    right: 0px;
+    right: 2px;
     width: 15px;
     -ms-user-select: none;
     -moz-user-select: none;
