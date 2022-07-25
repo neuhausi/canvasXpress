@@ -901,10 +901,61 @@ a.CanvasXpressCustomizerRight {
 }
 
 /*
- * Meta Customizer
+ * Header
  */
 
+div.CanvasXpressCustomizerHeader {
+    background-color: #dddddd;
+    border-top: 1px solid  rgb(51, 122, 183) !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    line-height: 24px;
+    list-style: none;
+    margin: auto;
+    outline-style: none;
+    outline-width: 0px;
+    text-decoration: none;
+    white-space: nowrap;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    display: flex;
+}
 
+span.CanvasXpressCustomizerHeader {
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+    height: 28px;
+}
+
+img.CanvasXpressCustomizerHeader, svg.CanvasXpressCustomizerHeader {
+    background-position: center;
+    border: 0px none !important;
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    margin: 0px !important;
+    position: relative;
+    padding: 0px;
+    vertical-align: top;
+    width: 24px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+}
+
+span.CanvasXpressCustomizerHeaderHelp {
+    color: rgb(34, 34, 34);
+    font: normal 12px arial, tahoma, sans-serif;
+    list-style: none;
+    white-space: normal;
+    position: relative;
+}
 
 /*
  * Options Customizer
@@ -1286,7 +1337,6 @@ img.CanvasXpressDataCustomizer3, svg.CanvasXpressDataCustomizer3 {
     /* Safari */
 }
 
-
 img.CanvasXpressDataCustomizerMask, svg.CanvasXpressDataCustomizerMask {
     background: rgba(0, 0, 0, 0) !important;
     border: 0px none !important;
@@ -1307,7 +1357,10 @@ img.CanvasXpressDataCustomizerMask, svg.CanvasXpressDataCustomizerMask {
 
 span.CanvasXpressDataCustomizerNumeric,
 span.CanvasXpressDataCustomizerString,
-span.CanvasXpressDataCustomizerUnique {
+span.CanvasXpressDataCustomizerUnique,
+span.CanvasXpressDataCustomizerNumericActive,
+span.CanvasXpressDataCustomizerStringActive,
+span.CanvasXpressDataCustomizerUniqueActive {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
     cursor: move;
@@ -1336,6 +1389,67 @@ span.CanvasXpressDataCustomizerUnique {
     color: rgb(0, 0, 255);
 }
 
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListUnique,
+span.CanvasXpressDataCustomizerListNumericActive,
+span.CanvasXpressDataCustomizerListStringActive,
+span.CanvasXpressDataCustomizerListUniqueActive {
+    border: none;
+    cursor: move;
+    font: normal 16px arial, tahoma, sans-serif;
+    color: rgb(34, 34, 34);
+    margin: 0;
+    padding: 0;
+    width: 350px;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: start;
+    overflow: hidden;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+}
+
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListNumericActive {
+   color: rgb(34, 34, 34);
+}
+
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListStringActive {
+    color: rgb(255, 0, 0);
+}
+
+span.CanvasXpressDataCustomizerListUnique,
+span.CanvasXpressDataCustomizerListUniqueActive {
+    color: rgb(0, 0, 255);
+}
+
+span.CanvasXpressDataCustomizerListNumeric:before,
+span.CanvasXpressDataCustomizerListNumericActive:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "\00a0#\00a0\00a0\00a0";
+ }
+ 
+ span.CanvasXpressDataCustomizerListString:before,
+ span.CanvasXpressDataCustomizerListStringActive:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "Abc\00a0\00a0";
+ }
+ 
+ span.CanvasXpressDataCustomizerListUnique:before,
+ span.CanvasXpressDataCustomizerListUniqueActive:before {
+    font: normal 10px courier;
+    color: rgb(34, 34, 34);
+    content: "Unq\00a0\00a0";
+ }
+
 span.CanvasXpressDataCustomizer {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
@@ -1358,10 +1472,37 @@ svg.CanvasXpressDataCustomizerMask::selection,
 span.CanvasXpressDataCustomizerNumeric::selection,
 span.CanvasXpressDataCustomizerString::selection,
 span.CanvasXpressDataCustomizerUnique::selection,
+span.CanvasXpressDataCustomizerListNumeric::selection,
+span.CanvasXpressDataCustomizerListString::selection,
+span.CanvasXpressDataCustomizerListUnique::selection,
 span.CanvasXpressDataCustomizer::selection {
     background: rgba(0, 0, 0, 0);
     color: rgb(0, 0, 0);
     padding: 0;
+}
+
+span.CanvasXpressDataCustomizerListNumericActive,
+span.CanvasXpressDataCustomizerListStringActive,
+span.CanvasXpressDataCustomizerListUniqueActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+}
+
+span.CanvasXpressDataCustomizerNumericActive,
+span.CanvasXpressDataCustomizerStringActive,
+span.CanvasXpressDataCustomizerUniqueActive {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
+}
+
+span.CanvasXpressDataCustomizerListNumeric,
+span.CanvasXpressDataCustomizerListString,
+span.CanvasXpressDataCustomizerListUnique {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+span.CanvasXpressDataCustomizerNumeric,
+span.CanvasXpressDataCustomizerString,
+span.CanvasXpressDataCustomizerUnique {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 /*
@@ -1850,11 +1991,11 @@ div.CanvasXpressDataTableResizer {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAR0lEQVR42pXPQQoAIAhEUb25nrwyKIpMndkJz8VnAtbGGMGqSqWHhW3pw4lFhBnBYYOHvw0/7DZE+GnI8NVQwbuhimcDgu3uM5KV++8QfCcAAAAASUVORK5CYII=);
     background-repeat: no-repeat;
     cursor: se-resize;
-    bottom: 4px;
+    bottom: 8px;
     height: 15px;
     position: absolute;
     opacity: 0.95;
-    right: 0px;
+    right: 2px;
     width: 15px;
     -ms-user-select: none;
     -moz-user-select: none;
