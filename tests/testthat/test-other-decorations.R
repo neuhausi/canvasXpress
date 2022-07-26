@@ -168,8 +168,8 @@ test_that("segregated barplot and boxplot marker decorations", {
 test_that("double-segregated barplot and boxplot marker decorations", {
     tryCatch({
         data <- iris %>%
-            mutate(Facet      = paste0("facet_", seq(NROW(iris)) %% 3),
-                   OtherFacet = "facet_A") %>%
+            mutate(Facet      = sample(c("facet_0", "facet_1", "NA"), size = NROW(iris), replace = TRUE),
+                   OtherFacet = sample(c("facet_A", "NA"), size = NROW(iris), replace = TRUE)) %>%
             arrange(Facet, OtherFacet, Species)
 
         var_names    <- c("Sepal.Length", "Sepal.Width")
