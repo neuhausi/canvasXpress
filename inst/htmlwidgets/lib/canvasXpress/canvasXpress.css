@@ -1432,21 +1432,21 @@ span.CanvasXpressDataCustomizerListUniqueActive {
 span.CanvasXpressDataCustomizerListNumeric:before,
 span.CanvasXpressDataCustomizerListNumericActive:before {
     font: normal 10px courier;
-    color: rgb(34, 34, 34);
+    color: rgb(51, 122, 183);
     content: "\00a0#\00a0\00a0\00a0";
  }
  
  span.CanvasXpressDataCustomizerListString:before,
  span.CanvasXpressDataCustomizerListStringActive:before {
     font: normal 10px courier;
-    color: rgb(34, 34, 34);
+    color: rgb(51, 122, 183);
     content: "Abc\00a0\00a0";
  }
  
  span.CanvasXpressDataCustomizerListUnique:before,
  span.CanvasXpressDataCustomizerListUniqueActive:before {
     font: normal 10px courier;
-    color: rgb(34, 34, 34);
+    color: rgb(51, 122, 183);
     content: "Unq\00a0\00a0";
  }
 
