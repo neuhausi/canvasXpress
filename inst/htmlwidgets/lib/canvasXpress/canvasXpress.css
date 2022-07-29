@@ -1199,6 +1199,33 @@ span.CanvasXpressFileCustomizer {
  * Data Customizer
  */
 
+div.CanvasXpressCustomizerPanel {
+    font: normal 16px arial, tahoma, sans-serif;
+    margin: 10px;
+    float: left;
+}
+
+span.CanvasXpressCustomizerPanel {
+    border-width: 1px 1px 0 1px;
+    border-color: rgb(51, 122, 183);
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+}
+
+span.CanvasXpressCustomizerPanelActive {
+    border-bottom-width: 3px;
+    border-left-color: rgb(51, 122, 183);
+    border-top-color: rgb(51, 122, 183);
+    border-right-color: rgb(51, 122, 183);
+    border-bottom-color: #dddddd;
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+}
+
 div.CanvasXpressDataCustomizerActive {
     border: 1px dashed rgb(255, 0, 0);
     border-radius: 4px;

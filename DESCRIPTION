@@ -7,8 +7,7 @@ Description: Enables creation of visualizations using the CanvasXpress framework
     PNG image that can be played back. See <https://www.canvasxpress.org> for more
     information.
 Type: Package
-License: 
-    https://canvasxpress.org/docs/license.html
+License: GPL-3
 Encoding: UTF-8
 Language: en-US
 Authors@R: c(
