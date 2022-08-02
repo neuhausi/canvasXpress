@@ -213,6 +213,7 @@ test_that("double-segregated barplot and boxplot marker decorations", {
                            segregateSamplesBy = list("Facet", "OtherFacet"),
                            groupingFactors    = list("Species"),
                            layoutAdjust       = TRUE,
+                           setMaxX            = 1.1 * max(data[var_names]),
                            decorations        = list(marker = markers_list))
 
     check_ui_test(result)
@@ -228,6 +229,7 @@ test_that("double-segregated barplot and boxplot marker decorations", {
                            segregateSamplesBy = list("Facet", "OtherFacet"),
                            groupingFactors    = list("Species"),
                            layoutAdjust       = TRUE,
+                           setMaxX            = 1.1 * max(data[var_names]),
                            decorations        = list(marker = markers_list))
 
     check_ui_test(result)
