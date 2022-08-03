@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-* Updated the underlying JS library to 1.37.4
+* Updated the underlying JS library to 1.39.3
 * Minor test updates
 
 ---  
@@ -28,7 +28,6 @@ RHub
 
 * devtools::check_rhub(interactive = F, 
                        env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"))
-                                     
 * devtools::check_rhub(interactive = F, 
                        env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"),
                        platforms = c("solaris-x86-patched", 
