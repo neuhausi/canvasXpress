@@ -3632,9 +3632,11 @@ select.CanvasXpressSlider:focus {
  */
 
 div.CanvasXpress-ParentNode {
+    /*
     margin: auto;
     display: table;
     padding: 0;
+    */
 }
 
 /*
