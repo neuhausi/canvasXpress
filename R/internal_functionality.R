@@ -187,15 +187,8 @@ assignCanvasXpressRownames <- function(x) {
 }
 
 
-convertRowsToList <- function(x) {
-    seq_row <- function(x) {
-        # From BBmisc
-        seq_len(nrow(x))
-    }
-
-    # From BBmisc
-    res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
-    stats::setNames(res, rownames(x))
+convertColumnsToList <- function(x) {
+    lapply(x, function(i) stats::setNames(i, NULL))
 }
 
 
@@ -243,7 +236,7 @@ setup_x <- function(y_smps, smpAnnot) {
             stop("Row names in smpAnnot are different from column names in data")
         }
 
-        x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
+        x <- lapply(convertColumnsToList(smpAnnot), function(d) if (length(d) > 1) d else list(d))
     }
 
     x
@@ -264,7 +257,7 @@ setup_z <- function(y_vars, varAnnot) {
             stop("Row names in varAnnot are different from row names in data")
         }
 
-        z <- lapply(convertRowsToList(t(varAnnot)), function(d) if (length(d) > 1) d else list(d))
+        z <- lapply(convertColumnsToList(varAnnot), function(d) if (length(d) > 1) d else list(d))
     }
 
     z
