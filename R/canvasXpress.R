@@ -272,7 +272,7 @@ canvasXpress <- function(data = NULL,
                 }
             }
             if (!inherits(smpAnnot, "character")) {
-                x <- lapply(convertColumnsToList(smpAnnot), function(d) if (length(d) > 1) d else list(d))
+                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
             }
         }
 
@@ -334,7 +334,7 @@ canvasXpress <- function(data = NULL,
                 }
             }
             if (!inherits(smpAnnot, "character")) {
-                x <- lapply(convertColumnsToList(smpAnnot), function(d) if (length(d) > 1) d else list(d))
+                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
             }
         }
 
