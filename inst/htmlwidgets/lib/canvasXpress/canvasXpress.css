@@ -38,7 +38,7 @@
   100% {
     transform: rotate(360deg);
   }
-}  
+}
 
 /*
  * Loading Image
@@ -626,7 +626,7 @@ div.CanvasXpressBinContainerTab {
     background-color: rgba(255, 255, 255, 0.95);
     border-width: 1px 1px 1px 1px;
     border-style: solid;
-    border-color: rgb(51, 122, 183);   
+    border-color: rgb(51, 122, 183);
     border-radius: 5px;
     box-sizing: content-box;
     clear: none;
@@ -1462,14 +1462,14 @@ span.CanvasXpressDataCustomizerListNumericActive:before {
     color: rgb(51, 122, 183);
     content: "\00a0#\00a0\00a0\00a0";
  }
- 
+
  span.CanvasXpressDataCustomizerListString:before,
  span.CanvasXpressDataCustomizerListStringActive:before {
     font: normal 10px courier;
     color: rgb(51, 122, 183);
     content: "Abc\00a0\00a0";
  }
- 
+
  span.CanvasXpressDataCustomizerListUnique:before,
  span.CanvasXpressDataCustomizerListUniqueActive:before {
     font: normal 10px courier;
@@ -1814,7 +1814,7 @@ div.CanvasXpressMarker {
 
 
 /*
- * Toolbar 
+ * Toolbar
  */
 
 
@@ -1844,7 +1844,7 @@ div.CanvasXpressToolbar img.CanvasXpressToolbarImage:hover+img.CanvasXpressToolb
     transform: scale(1.1);
     -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.7)));
     }
-*/    
+*/
 
 div.CanvasXpressToolbar img.CanvasXpressToolbarImage, div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
     background: rgba(0, 0, 0, 0) !important;
@@ -3637,6 +3637,199 @@ div.CanvasXpress-ParentNode {
     display: table;
     padding: 0;
     */
+}
+
+/*
+ * CanvasXpress Tabs
+ */
+
+div.CanvasXpressTabPanelCustomizer {
+    position: relative;
+    border-bottom: 1px solid #dddddd;
+    top: -10px;
+    overflow: hidden;
+}
+
+div.CanvasXpressTabPanelHeader {
+    display: block;
+    position: relative;
+    border-bottom: 2px solid rgb(51, 122, 183);
+}
+
+div.CanvasXpressTabPanel {
+    font: normal 16px arial, tahoma, sans-serif;
+    margin: 10px;
+    float: left;
+}
+
+input.CanvasXpressTabPanel {
+    border-width: 1px 1px 0 1px;
+    border-color: rgb(51, 122, 183);
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+    max-width: 100px;
+    outline: none;
+    text-align: center;
+}
+
+input.CanvasXpressTabPanelActive {
+    border-bottom-width: 2px;
+    border-left-color: rgb(51, 122, 183);
+    border-top-color: rgb(51, 122, 183);
+    border-right-color: rgb(51, 122, 183);
+    border-bottom-color: #ffffff;
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+    max-width: 100px;
+    outline: none;
+    text-align: center;
+}
+
+input[type="text"]:disabled.CanvasXpressTabPanel, input[type="text"]:disabled.CanvasXpressTabPanelActive {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-width: 2px;
+}
+
+div.CanvasXpressTabPanelRibbon {
+    float: left;
+    margin-right: 10px;
+}
+
+span.CanvasXpressTabPanelRibbon {
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    line-height: 28px;
+    list-style: none;
+    white-space: nowrap;
+    position: relative;
+    height: 28px;
+}
+
+div.CanvasXpressTabPanelRibbonContainer {
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+}
+
+svg.CanvasXpressTabPanelRibbon {
+    float: left;
+    border: 1px solid rgb(51, 122, 183);
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/*
+ * CanvasXpress Layouts
+ */
+
+div.CanvasXpressRow {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+div.CanvasXpressRow:before, div.CanvasXpressRow:after {
+    content: " ";
+    display: table;
+}
+div.CanvasXpressRow:after {
+    clear: both;
+}
+
+div.CanvasXpressRowColumnFull, div.CanvasXpressRowColumnTwoThird, div.CanvasXpressRowColumnThreeFourth, div.CanvasXpressRowColumnFourFifth, div.CanvasXpressRowColumnFiveSixth,
+div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressRowColumnFourth, div.CanvasXpressRowColumnFifth, div.CanvasXpressRowColumnSixth {
+    float: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div.CanvasXpressRowColumnFull {
+    width: 100%;
+}
+div.CanvasXpressRowColumnFullActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 100%;
+}
+div.CanvasXpressRowColumnTwoThird {
+    width: 66.7%;
+}
+div.CanvasXpressRowColumnTwoThirdActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 66.7%;
+}
+div.CanvasXpressRowColumnThreeFourth {
+    width: 75%;
+}
+div.CanvasXpressRowColumnThreeFourthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 75%;
+}
+div.CanvasXpressRowColumnFourFifth {
+    width: 80%;
+}
+div.CanvasXpressRowColumnFourFifthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 80%;
+}
+div.CanvasXpressRowColumnFiveSixth {
+    width: 83.4%;
+}
+div.CanvasXpressRowColumnFiveSixthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 83.4%;
+}
+div.CanvasXpressRowColumnHalf {
+    width: 50%;
+}
+div.CanvasXpressRowColumnHalfActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 50%;
+}
+div.CanvasXpressRowColumnThird {
+    width: 33.3%;
+}
+div.CanvasXpressRowColumnThirdActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 33.3%;
+}
+div.CanvasXpressRowColumnFourth {
+    width: 25%;
+}
+div.CanvasXpressRowColumnFourthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 25%;
+}
+div.CanvasXpressRowColumnFifth {
+    width: 20%;
+}
+div.CanvasXpressRowColumnFifthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 20%;
+}
+div.CanvasXpressRowColumnSixth {
+    width: 16.6%;
+}
+div.CanvasXpressRowColumnSixthActive {
+    border: 1px solid red;
+    padding: 5px;
+    width: 16.6%;
 }
 
 /*
