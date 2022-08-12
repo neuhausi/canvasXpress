@@ -188,7 +188,7 @@ assignCanvasXpressRownames <- function(x) {
 
 
 convertColumnsToList <- function(x) {
-    lapply(x, function(i) stats::setNames(i, NULL))
+    res <- lapply(x, function(i) stats::setNames(i, NULL))
     stats::setNames(res, colnames(x))
 }
 
