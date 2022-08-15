@@ -3640,58 +3640,23 @@ div.CanvasXpress-ParentNode {
 }
 
 /*
- * CanvasXpress Tabs
+ * CanvasXpress Tab Panel
  */
+
+ div.CanvasXpressTabPanel {
+    font: normal 16px arial, tahoma, sans-serif;
+    margin: 10px;
+    float: left;
+    width: 100%
+}
+
+/* Customizer */
 
 div.CanvasXpressTabPanelCustomizer {
     position: relative;
     border-bottom: 1px solid #dddddd;
     top: -10px;
     overflow: hidden;
-}
-
-div.CanvasXpressTabPanelHeader {
-    display: block;
-    position: relative;
-    border-bottom: 2px solid rgb(51, 122, 183);
-}
-
-div.CanvasXpressTabPanel {
-    font: normal 16px arial, tahoma, sans-serif;
-    margin: 10px;
-    float: left;
-}
-
-input.CanvasXpressTabPanel {
-    border-width: 1px 1px 0 1px;
-    border-color: rgb(51, 122, 183);
-    border-style: solid;
-    border-radius: 5px 5px 0 0;
-    padding: 8px;
-    font: normal 16px arial, tahoma, sans-serif;
-    max-width: 100px;
-    outline: none;
-    text-align: center;
-}
-
-input.CanvasXpressTabPanelActive {
-    border-bottom-width: 2px;
-    border-left-color: rgb(51, 122, 183);
-    border-top-color: rgb(51, 122, 183);
-    border-right-color: rgb(51, 122, 183);
-    border-bottom-color: #ffffff;
-    border-style: solid;
-    border-radius: 5px 5px 0 0;
-    padding: 8px;
-    font: normal 16px arial, tahoma, sans-serif;
-    max-width: 100px;
-    outline: none;
-    text-align: center;
-}
-
-input[type="text"]:disabled.CanvasXpressTabPanel, input[type="text"]:disabled.CanvasXpressTabPanelActive {
-    background-color: rgba(0, 0, 0, 0);
-    border-bottom-width: 2px;
 }
 
 div.CanvasXpressTabPanelRibbon {
@@ -3723,15 +3688,69 @@ svg.CanvasXpressTabPanelRibbon {
     border-radius: 5px;
 }
 
-/*
- * CanvasXpress Layouts
- */
+/* Header */
+
+div.CanvasXpressTabPanelHeader {
+    font: normal 16px arial, tahoma, sans-serif;
+    border-bottom: 2px solid rgb(51, 122, 183);
+    height: 38px;
+    width: 100%;
+    float: left;
+}
+
+div.CanvasXpressTabPanelHeaderTab {
+    font: normal 16px arial, tahoma, sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+input.CanvasXpressTabPanelHeader {
+    border-width: 1px 1px 0 1px;
+    border-color: rgb(51, 122, 183);
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+    max-width: 100px;
+    outline: none;
+    text-align: center;
+}
+
+input.CanvasXpressTabPanelHeaderActive {
+    border-bottom-width: 2px;
+    border-left-color: rgb(51, 122, 183);
+    border-top-color: rgb(51, 122, 183);
+    border-right-color: rgb(51, 122, 183);
+    border-bottom-color: #ffffff;
+    border-style: solid;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
+    font: normal 16px arial, tahoma, sans-serif;
+    max-width: 100px;
+    outline: none;
+    text-align: center;
+}
+
+/* Content */
+
+div.CanvasXpressTabPanelContent {
+    margin-top: 10px;
+    display: block;
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+/* Rows */
 
 div.CanvasXpressRow {
     clear: both;
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+    float: left;
+    width: 100%;
 }
 div.CanvasXpressRow:before, div.CanvasXpressRow:after {
     content: " ";
