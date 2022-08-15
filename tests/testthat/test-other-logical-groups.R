@@ -14,9 +14,19 @@ annot_data <- datx %>%
     mutate(NumericVar  = 1.5:6.5,
            CategoryVar = c("A", "B", "A", "B", "A", "B"))
 
-annot_data_list <- list(select(annot_data, PlatformType),
-                        select(annot_data, PlatformType, NumericVar),
-                        select(annot_data, PlatformType, CategoryVar))
+# logical metadata only
+annot_data1 <- select(annot_data, PlatformType)
+
+# logical + numeric metadata -- we have to convert the logical field to character ("TRUE" and "FALSE")
+# to prevent CX from converting it to numeric (0 and 1)
+annot_data2 <- annot_data %>%
+    mutate(PlatformType = as.character(PlatformType)) %>%
+    select(PlatformType, NumericVar)
+
+# logical + character metadata
+annot_data3 <- select(annot_data, PlatformType, CategoryVar)
+
+annot_data_list <- list(annot_data1, annot_data2, annot_data3)
 subtitle_list   <- list(NULL,
                         "with additional numeric metadata",
                         "with additional categorical metadata")
