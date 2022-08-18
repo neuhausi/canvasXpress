@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-* Updated the underlying JS library to 1.39.3
+* Updated the underlying JS library to 1.39.8
 * Minor test updates
 
 ---  
