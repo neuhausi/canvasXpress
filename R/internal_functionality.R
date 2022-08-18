@@ -1,5 +1,12 @@
 assertDataCorrectness <- function(data, graphType, config) {
 
+    # skip all data validation in the following scenarios:
+    if (!is.null(data) && "ggplot" %in% class(data)) {
+        return()
+    }
+
+    # proceed with validation
+
     validGraphTypes <- c("Area", "AreaLine", "Bar", "BarLine", "Boxplot",
                          "Circular", "Correlation", "Dotplot", "DotLine",
                          "Fish", "Genome", "Heatmap", "Line", "Map", "Meter", "Network",
@@ -179,18 +186,14 @@ assignCanvasXpressRownames <- function(x) {
     return(names)
 }
 
-
 convertRowsToList <- function(x) {
     seq_row <- function(x) {
-        # From BBmisc
         seq_len(nrow(x))
     }
 
-    # From BBmisc
     res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
     stats::setNames(res, rownames(x))
 }
-
 
 setup_y <- function(data) {
 

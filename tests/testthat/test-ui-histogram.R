@@ -24,3 +24,7 @@ test_that("cXhistogram5", {
 test_that("cXhistogram6", {
     check_ui_test(cXhistogram6())
 })
+
+test_that("cXhistogram7", {
+    check_ui_test(cXhistogram7())
+})

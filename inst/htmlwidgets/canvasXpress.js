@@ -5,13 +5,20 @@ HTMLWidgets.widget({
     factory: function(el, width, height) {
         var c = document.createElement('canvas');
         c.id = el.id + '-cx';
-        c.width = width;
-        c.height = height;
 
-        // Check if we are running in the viewer; override the width and height
-        if (/\bviewer_pane=1\b/.test(window.location)) {
-          c.width = document.childNodes[1].clientWidth - 36;
-          c.height = document.childNodes[1].clientHeight - 36;
+        // default values
+        c.width  = 600;
+        c.height = 400;
+
+        if (width && height && (width !== 0) && (height !== 0)) {
+            c.width  = width;
+            c.height = height;
+
+            // Check if we are running in the viewer; override the width and height
+            if (/\bviewer_pane=1\b/.test(window.location)) {
+                c.width = document.childNodes[1].clientWidth - 36;
+                c.height = document.childNodes[1].clientHeight - 36;
+            }
         }
 
         el.appendChild(c);
@@ -37,7 +44,7 @@ HTMLWidgets.widget({
             resize: function(width, height) {
                 // Check if we are running in the viewer; override the width and height
                 if (/\bviewer_pane=1\b/.test(window.location)) {
-                    width = document.childNodes[1].clientWidth - 36;
+                    width  = document.childNodes[1].clientWidth - 36;
                     height = document.childNodes[1].clientHeight - 36;
                 }
 

@@ -36,32 +36,26 @@ if (interactive()) {
 
     test_that("cXnetwork9", {
         check_ui_test(cXnetwork9())
-        warning("The sub-menu items that is displayed on a right-click within the canvas do not disappear even after the mouse pointer is moved away. ",
-                "This makes it difficult to select any item. This issue is specifc to R studio and cannot be reproduced on the web")
     })
 
     test_that("cXnetwork10", {
         check_ui_test(cXnetwork10())
-        warning("The sub-menu items that is displayed on a right-click within the canvas do not disappear even after the mouse pointer is moved away. ",
-                "This makes it difficult to select any item. This issue is specifc to R studio and cannot be reproduced on the web")
     })
 
     test_that("cXnetwork11", {
         check_ui_test(cXnetwork11())
-        warning("The sub-menu items that is displayed on a right-click within the canvas do not disappear even after the mouse pointer is moved away. ",
-                "This makes it difficult to select any item. This issue is specifc to R studio and cannot be reproduced on the web")
     })
 
     test_that("cXnetwork12", {
         check_ui_test(cXnetwork12())
-        warning("The sub-menu items that is displayed on a right-click within the canvas do not disappear even after the mouse pointer is moved away. ",
-                "This makes it difficult to select any item. This issue is specifc to R studio and cannot be reproduced on the web")
     })
 
     test_that("cXnetwork13", {
         check_ui_test(cXnetwork13())
-        warning("The sub-menu items that is displayed on a right-click within the canvas do not disappear even after the mouse pointer is moved away. ",
-                "This makes it difficult to select any item. This issue is specifc to R studio and cannot be reproduced on the web")
+    })
+
+    test_that("cXnetwork14", {
+        check_ui_test(cXnetwork14())
     })
 } else {
     message("Non-interactive ui-network tests skipped")

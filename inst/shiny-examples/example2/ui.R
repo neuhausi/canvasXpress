@@ -12,6 +12,7 @@ shinyUI(fluidPage(
         style = "background-color:#f2f2f2;",
         column(width = 4,
                offset = 4,
+               style = "z-index:11000",
                selectizeInput(
                    inputId  = "factorSel",
                    label    = "Primary Plot Factor:",
