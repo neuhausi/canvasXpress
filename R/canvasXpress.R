@@ -60,7 +60,10 @@ canvasXpress <- function(data = NULL,
     }
 
     config <- list(graphType = graphType, isR = TRUE, ...)
-    assertDataCorrectness(data, graphType, config)
+
+    if (is.null(data) || !("ggplot" %in% class(data))) {
+        assertDataCorrectness(data, graphType, config)
+    }
 
     x             <- NULL
     y             <- NULL
@@ -69,7 +72,7 @@ canvasXpress <- function(data = NULL,
     precalc.box   <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
     precalc.bar   <- c("mean", "stdev")
 
-    if (!is.null(data) && "ggplot" %in% class(data)) {
+    if (!is.null(data) && ("ggplot" %in% class(data))) {
         if (!(requireNamespace("ggplot2", quietly = TRUE))) {
             stop("The ggplot2 package is required to use this functionality.")
         }

@@ -44,6 +44,7 @@ test_that("cXheatmap10", {
     check_ui_test(cXheatmap10())
 
     message('Plot points all fade on selecting shapeBy and sizeBy legend items - working as designed.')
+    warning('Plot will not give valid R code to reproduce it in the on-chart menus, this is a known issue.')
 })
 
 test_that("cXheatmap11", {

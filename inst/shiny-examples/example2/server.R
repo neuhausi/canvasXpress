@@ -50,7 +50,7 @@ shinyServer(function(input, output, session) {
         cxplot <- NULL
 
         if (!is.null(input$factorSel) && (input$factorSel != "") &&
-            !is.null(input$genesSel)  && (input$genesSel != "")) {
+            !is.null(input$genesSel)  && (length(input$genesSel) > 0)) {
             data           <- as.matrix(g_GSE9750$y[input$genesSel, , drop = F])
             rownames(data) <- names(g_geneChoices[g_geneChoices %in% input$genesSel])
             smpannot       <- g_GSE9750$x[order(match(g_GSE9750$x[[input$factorSel]],levels_choices())),]
@@ -164,7 +164,7 @@ shinyServer(function(input, output, session) {
         cxplot <- NULL
 
         if (!is.null(input$factorSel) && (input$factorSel != "") &&
-            !is.null(input$genesSel)  && (input$genesSel != "")) {
+            !is.null(input$genesSel)  && (length(input$genesSel) > 0)) {
             cxplot <- plot_gene()
         }
 

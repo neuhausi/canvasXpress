@@ -23,6 +23,7 @@ test_that("segregation xAxis2Title", {
                            smpLabelRotate          = 90,
                            smpTitle                = "dose",
                            title                   = "xAxis2 title and legend should be readable",
+                           xAxis2Show              = TRUE,
                            xAxisTitle              = "len",
                            xAxis2Title             = "xAxis2 Custom title")
 
