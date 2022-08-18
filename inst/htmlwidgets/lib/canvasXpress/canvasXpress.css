@@ -3770,7 +3770,14 @@ div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressR
     box-sizing: border-box;
 }
 
+div.CanvasXpressRowColumnFull:hover, div.CanvasXpressRowColumnTwoThird:hover, div.CanvasXpressRowColumnThreeFourth:hover, div.CanvasXpressRowColumnFourFifth:hover, div.CanvasXpressRowColumnFiveSixth:hover,
+div.CanvasXpressRowColumnHalf:hover, div.CanvasXpressRowColumnThird:hover, div.CanvasXpressRowColumnFourth:hover, div.CanvasXpressRowColumnFifth:hover, div.CanvasXpressRowColumnSixth:hover {
+    border: 1px solid #dddddd;
+}
+
 div.CanvasXpressRowColumnFull {
+    border: 1px solid white;
+    padding: 5px;
     width: 100%;
 }
 div.CanvasXpressRowColumnFullActive {
@@ -3779,6 +3786,8 @@ div.CanvasXpressRowColumnFullActive {
     width: 100%;
 }
 div.CanvasXpressRowColumnTwoThird {
+    border: 1px solid white;
+    padding: 5px;
     width: 66.7%;
 }
 div.CanvasXpressRowColumnTwoThirdActive {
@@ -3787,6 +3796,8 @@ div.CanvasXpressRowColumnTwoThirdActive {
     width: 66.7%;
 }
 div.CanvasXpressRowColumnThreeFourth {
+    border: 1px solid white;
+    padding: 5px;
     width: 75%;
 }
 div.CanvasXpressRowColumnThreeFourthActive {
@@ -3795,6 +3806,8 @@ div.CanvasXpressRowColumnThreeFourthActive {
     width: 75%;
 }
 div.CanvasXpressRowColumnFourFifth {
+    border: 1px solid white;
+    padding: 5px;
     width: 80%;
 }
 div.CanvasXpressRowColumnFourFifthActive {
@@ -3803,6 +3816,8 @@ div.CanvasXpressRowColumnFourFifthActive {
     width: 80%;
 }
 div.CanvasXpressRowColumnFiveSixth {
+    border: 1px solid white;
+    padding: 5px;
     width: 83.4%;
 }
 div.CanvasXpressRowColumnFiveSixthActive {
@@ -3811,6 +3826,8 @@ div.CanvasXpressRowColumnFiveSixthActive {
     width: 83.4%;
 }
 div.CanvasXpressRowColumnHalf {
+    border: 1px solid white;
+    padding: 5px;
     width: 50%;
 }
 div.CanvasXpressRowColumnHalfActive {
@@ -3819,6 +3836,8 @@ div.CanvasXpressRowColumnHalfActive {
     width: 50%;
 }
 div.CanvasXpressRowColumnThird {
+    border: 1px solid white;
+    padding: 5px;
     width: 33.3%;
 }
 div.CanvasXpressRowColumnThirdActive {
@@ -3827,6 +3846,8 @@ div.CanvasXpressRowColumnThirdActive {
     width: 33.3%;
 }
 div.CanvasXpressRowColumnFourth {
+    border: 1px solid white;
+    padding: 5px;
     width: 25%;
 }
 div.CanvasXpressRowColumnFourthActive {
@@ -3835,6 +3856,8 @@ div.CanvasXpressRowColumnFourthActive {
     width: 25%;
 }
 div.CanvasXpressRowColumnFifth {
+    border: 1px solid white;
+    padding: 5px;
     width: 20%;
 }
 div.CanvasXpressRowColumnFifthActive {
@@ -3843,6 +3866,8 @@ div.CanvasXpressRowColumnFifthActive {
     width: 20%;
 }
 div.CanvasXpressRowColumnSixth {
+    border: 1px solid white;
+    padding: 5px;
     width: 16.6%;
 }
 div.CanvasXpressRowColumnSixthActive {
