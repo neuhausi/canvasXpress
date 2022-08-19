@@ -3659,6 +3659,26 @@ div.CanvasXpressTabPanelCustomizer {
     overflow: hidden;
 }
 
+div.CanvasXpressTabPanelRibbonSection {
+    width: fit-content;
+    position: relative;
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-top: 5px;
+    margin-top: 12px;
+    float: left;
+}
+
+span.CanvasXpressTabPanelRibbonSection {
+    margin-left: -3px;
+    background-color: white;
+    position: absolute;
+    float: left;
+    top: -14px;
+    padding: 3px;
+}
+
 div.CanvasXpressTabPanelRibbon {
     float: left;
     margin-right: 10px;
@@ -3772,106 +3792,106 @@ div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressR
 
 div.CanvasXpressRowColumnFull:hover, div.CanvasXpressRowColumnTwoThird:hover, div.CanvasXpressRowColumnThreeFourth:hover, div.CanvasXpressRowColumnFourFifth:hover, div.CanvasXpressRowColumnFiveSixth:hover,
 div.CanvasXpressRowColumnHalf:hover, div.CanvasXpressRowColumnThird:hover, div.CanvasXpressRowColumnFourth:hover, div.CanvasXpressRowColumnFifth:hover, div.CanvasXpressRowColumnSixth:hover {
-    border: 1px solid #dddddd;
+    border: 1px dashed #dddddd;
 }
 
 div.CanvasXpressRowColumnFull {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 100%;
 }
 div.CanvasXpressRowColumnFullActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 100%;
 }
 div.CanvasXpressRowColumnTwoThird {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 66.7%;
 }
 div.CanvasXpressRowColumnTwoThirdActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 66.7%;
 }
 div.CanvasXpressRowColumnThreeFourth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 75%;
 }
 div.CanvasXpressRowColumnThreeFourthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 75%;
 }
 div.CanvasXpressRowColumnFourFifth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 80%;
 }
 div.CanvasXpressRowColumnFourFifthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 80%;
 }
 div.CanvasXpressRowColumnFiveSixth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 83.4%;
 }
 div.CanvasXpressRowColumnFiveSixthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 83.4%;
 }
 div.CanvasXpressRowColumnHalf {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 50%;
 }
 div.CanvasXpressRowColumnHalfActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 50%;
 }
 div.CanvasXpressRowColumnThird {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 33.3%;
 }
 div.CanvasXpressRowColumnThirdActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 33.3%;
 }
 div.CanvasXpressRowColumnFourth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 25%;
 }
 div.CanvasXpressRowColumnFourthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 25%;
 }
 div.CanvasXpressRowColumnFifth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 20%;
 }
 div.CanvasXpressRowColumnFifthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 20%;
 }
 div.CanvasXpressRowColumnSixth {
-    border: 1px solid white;
+    border: 1px dashed white;
     padding: 5px;
     width: 16.6%;
 }
 div.CanvasXpressRowColumnSixthActive {
-    border: 1px solid red;
+    border: 1px dashed rgb(51, 122, 183);
     padding: 5px;
     width: 16.6%;
 }
