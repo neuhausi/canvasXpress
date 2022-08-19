@@ -94,8 +94,143 @@ test_that("barplot annotations", {
                            graphType               = "Bar",
                            graphOrientation        = "vertical",
                            title                   = "Barplot - annotations",
-                           decorations             = list(marker = list(list(fontSize = 12, sample = "S1", text = "p < 0.01 ***", type = "annotation", variable = "V1"),
-                                                                        list(fontSize = 12, sample = "S2", text = "p < 0.05 **", type = "annotation", variable = "V1"))))
+                           decorations             = list(marker = list(list(fontSize = 12, sample = "S1", text = "p < 0.01 ***", type = "annotation", variable = "V1", position = "top"),
+                                                                        list(fontSize = 12, sample = "S2", text = "p < 0.05 **", type = "annotation", variable = "V1", position = "top"))))
+
+    check_ui_test(result)
+})
+
+test_that("segregated barplot and boxplot marker decorations", {
+    tryCatch({
+        data <- iris %>%
+            mutate(Facet = paste0("facet_", seq(NROW(iris)) %% 2)) %>%
+            arrange(Facet, Species)
+
+        var_names    <- c("Sepal.Length", "Sepal.Width")
+        markers_list <- list()
+
+        for (species in unique(data$Species)) {
+            for (facet in unique(data$Facet)) {
+                marker <- lapply(var_names, function(var_name) {
+                    decoration_text <- paste0(var_name, ".", facet, ".", species) %>%
+                        gsub("Sepal.", "", .) %>%
+                        gsub("Length", "L", .) %>%
+                        gsub("Width", "W", .) %>%
+                        gsub("facet_", "", .)
+
+                    list(text     = decoration_text,
+                         fontSize = 12,
+                         type     = "annotation",
+                         variable = list(var_name),
+                         sample   = list(species),
+                         scope    = list(facet),
+                         position = "top")
+                })
+                markers_list <- c(markers_list, marker)
+            }
+        }
+    },
+    error = function(e) {
+        skip('Unable to load data')
+    })
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Bar",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Segregated Barplot - marker decoration above each bar",
+                           segregateSamplesBy = list("Facet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Boxplot",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Segregated Boxplot - marker decoration above each box",
+                           segregateSamplesBy = list("Facet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+})
+
+test_that("double-segregated barplot and boxplot marker decorations", {
+    tryCatch({
+        data <- iris %>%
+            mutate(Facet      = sample(c("facet_0", "facet_1", "NA"), size = NROW(iris), replace = TRUE),
+                   OtherFacet = sample(c("facet_A", "NA"), size = NROW(iris), replace = TRUE)) %>%
+            arrange(Facet, OtherFacet, Species)
+
+        var_names    <- c("Sepal.Length", "Sepal.Width")
+        markers_list <- list()
+
+        for (species in unique(data$Species)) {
+            for (facet in unique(data$Facet)) {
+                for (other_facet in unique(data$OtherFacet)) {
+                    marker <- lapply(var_names, function(var_name) {
+                        decoration_text <- paste0(var_name, ".", facet, ".", other_facet, ".", species) %>%
+                            gsub("Sepal.", "", .) %>%
+                            gsub("Length", "L", .) %>%
+                            gsub("Width", "W", .) %>%
+                            gsub("facet_", "", .)
+
+                        list(text     = decoration_text,
+                             fontSize = 12,
+                             type     = "annotation",
+                             variable = list(var_name),
+                             sample   = list(species),
+                             scope    = list(facet, other_facet),
+                             position = "top")
+                    })
+                    markers_list <- c(markers_list, marker)
+                }
+            }
+        }
+    },
+    error = function(e) {
+        skip('Unable to load data')
+    })
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Bar",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Double-segregated Barplot - marker decoration above each bar",
+                           segregateSamplesBy = list("Facet", "OtherFacet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           setMaxX            = 1.1 * max(data[var_names]),
+                           decorations        = list(marker = markers_list))
+
+    check_ui_test(result)
+
+    result <- canvasXpress(data               = t(select(data, all_of(var_names))),
+                           smpAnnot           = t(data),
+                           graphOrientation   = "vertical",
+                           graphType          = "Boxplot",
+                           legendBox          = FALSE,
+                           smpLabelRotate     = 90,
+                           smpTitle           = "Species",
+                           title              = "Double-segregated Boxplot - marker decoration above each box",
+                           segregateSamplesBy = list("Facet", "OtherFacet"),
+                           groupingFactors    = list("Species"),
+                           layoutAdjust       = TRUE,
+                           setMaxX            = 1.1 * max(data[var_names]),
+                           decorations        = list(marker = markers_list))
 
     check_ui_test(result)
 })
@@ -212,13 +347,13 @@ test_that("precalculated barplot - annotations", {
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group3",
-                                                                           y        = 0.05),
+                                                                           position = "top"),
                                                                       list(fontSize = 10,
                                                                            text     = "Group4",
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group4",
-                                                                           y        = 0.53))),
+                                                                           position = "top"))),
                            title                 = "Annotations for Precalculated Barplot without smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
@@ -239,14 +374,14 @@ test_that("precalculated barplot - annotations", {
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group3",
-                                                                           y        = 0.05),
+                                                                           position = "top"),
                                                                       list(fontSize = 10,
                                                                            text     = "Group1",
                                                                            scope    = "Lev2",
                                                                            type     = "annotation",
                                                                            variable = "precalculated BarChart",
                                                                            sample   = "Group1",
-                                                                           y        = 0.53))),
+                                                                           position = "top"))),
                            title                 = "Annotations for Precalculated Barplot with smpAnnot",
                            titleScaleFontFactor  = 0.5)
 
@@ -279,28 +414,28 @@ test_that("segregated and overlayed precalculated barplot - annotations", {
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V1"),
-                                                                             y        = 0.65),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev2, V7)",
                                                                              scope    = list("Lev2"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V7"),
-                                                                             y        = 0.05),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev2, V6)",
                                                                              scope    = list("Lev2"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V6"),
-                                                                             y        = 0.7),
+                                                                             position = "top"),
                                                                         list(fontSize = 10,
                                                                              text     = "(Lev1, V4)",
                                                                              scope    = list("Lev1"),
                                                                              type     = "annotation",
                                                                              variable = list("precalculated BarChart"),
                                                                              sample   = list("V4"),
-                                                                             y        = 0.64))),
+                                                                             position = "top"))),
                              title                 = "Annotations for segregated and overlayed precalculated barplot",
                              titleScaleFontFactor  = 0.5)
 

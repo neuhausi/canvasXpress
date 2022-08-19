@@ -44,7 +44,7 @@ test_that("Network XML Data - compact + tsv additional data", {
 
 test_that("Network XML Data - compact + url additional data", {
     result <- canvasXpress(data        = get_data("network_compact.xml"),
-                           appendNetworkData = "http://www.google.com",
+                           appendNetworkData = "https://www.google.com",
                            colorNodeBy = "Exp1",
                            edgeWidth   = 2,
                            graphType   = "Network",
@@ -56,7 +56,7 @@ test_that("Network XML Data - compact + url additional data", {
 test_that("Network XML Data - compact + mixed additional data", {
     result <- canvasXpress(data        = get_data("network_compact.xml"),
                            appendNetworkData = list(get_data("network_append.tsv"),
-                                                    "http://www.google.com"),
+                                                    "https://www.google.com"),
                            colorNodeBy = "Exp1",
                            edgeWidth   = 2,
                            graphType   = "Network",

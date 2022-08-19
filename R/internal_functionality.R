@@ -186,18 +186,14 @@ assignCanvasXpressRownames <- function(x) {
     return(names)
 }
 
-
 convertRowsToList <- function(x) {
     seq_row <- function(x) {
-        # From BBmisc
         seq_len(nrow(x))
     }
 
-    # From BBmisc
     res = lapply(seq_row(x), function(i) stats::setNames(x[i,], NULL))
     stats::setNames(res, rownames(x))
 }
-
 
 setup_y <- function(data) {
 
