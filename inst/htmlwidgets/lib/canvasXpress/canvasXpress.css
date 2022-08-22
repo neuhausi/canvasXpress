@@ -3697,6 +3697,7 @@ span.CanvasXpressTabPanelRibbon {
 div.CanvasXpressTabPanelRibbonContainer {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
+    background-color: #dddddd;
 }
 
 svg.CanvasXpressTabPanelRibbon {
@@ -3706,6 +3707,11 @@ svg.CanvasXpressTabPanelRibbon {
     margin-top: 5px;
     padding: 5px;
     border-radius: 5px;
+    background-color: #ffffff;
+}
+
+svg.CanvasXpressTabPanelRibbon:hover {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
 }
 
 /* Header */
@@ -5847,6 +5853,45 @@ Copyright (c) 2018 Christian Pucci
     }
 }
 
+.slideDown2 {
+    -webkit-animation-name: slideDown2;
+    animation-name: slideDown2;
+}
+
+@-webkit-keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
 .slideDownReturn {
     -webkit-animation-name: slideDownReturn;
     animation-name: slideDownReturn;
@@ -5875,6 +5920,88 @@ Copyright (c) 2018 Christian Pucci
         transform: translateY(100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideDownReturn2 {
+    -webkit-animation-name: slideDownReturn2;
+    animation-name: slideDownReturn2;
+}
+
+@-webkit-keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideDownReturn3 {
+    -webkit-animation-name: slideDownReturn3;
+    animation-name: slideDownReturn3;
+}
+
+@-webkit-keyframes slideDownReturn3 {
+    0% {
+        height: 0;
+        margin-top: 0px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 100px;
+        margin-top: 10px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideDownReturn3 {
+    0% {
+        height: 0;
+        margin-top: 0px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 100px;
+        margin-top: 10px;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateY(0%);
