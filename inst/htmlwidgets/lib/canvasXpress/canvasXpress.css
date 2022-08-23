@@ -3633,6 +3633,7 @@ select.CanvasXpressSlider:focus {
 
 div.CanvasXpress-ParentNode {
     /*
+    border: 1px solid 'rgba(0,0,0,0)'
     margin: auto;
     display: table;
     padding: 0;
@@ -3645,7 +3646,6 @@ div.CanvasXpress-ParentNode {
 
  div.CanvasXpressTabPanel {
     font: normal 16px arial, tahoma, sans-serif;
-    margin: 10px;
     float: left;
     width: 100%
 }
@@ -3657,6 +3657,26 @@ div.CanvasXpressTabPanelCustomizer {
     border-bottom: 1px solid #dddddd;
     top: -10px;
     overflow: hidden;
+}
+
+div.CanvasXpressTabPanelRibbonSection {
+    width: fit-content;
+    position: relative;
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-top: 5px;
+    margin-top: 12px;
+    float: left;
+}
+
+span.CanvasXpressTabPanelRibbonSection {
+    margin-left: -3px;
+    background-color: white;
+    position: absolute;
+    float: left;
+    top: -14px;
+    padding: 3px;
 }
 
 div.CanvasXpressTabPanelRibbon {
@@ -3677,6 +3697,7 @@ span.CanvasXpressTabPanelRibbon {
 div.CanvasXpressTabPanelRibbonContainer {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
+    background-color: #dddddd;
 }
 
 svg.CanvasXpressTabPanelRibbon {
@@ -3686,6 +3707,11 @@ svg.CanvasXpressTabPanelRibbon {
     margin-top: 5px;
     padding: 5px;
     border-radius: 5px;
+    background-color: #ffffff;
+}
+
+svg.CanvasXpressTabPanelRibbon:hover {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
 }
 
 /* Header */
@@ -3735,7 +3761,6 @@ input.CanvasXpressTabPanelHeaderActive {
 /* Content */
 
 div.CanvasXpressTabPanelContent {
-    margin-top: 10px;
     display: block;
     float: left;
     width: 100%;
@@ -3748,7 +3773,6 @@ div.CanvasXpressRow {
     clear: both;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
     float: left;
     width: 100%;
 }
@@ -3772,107 +3796,87 @@ div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressR
 
 div.CanvasXpressRowColumnFull:hover, div.CanvasXpressRowColumnTwoThird:hover, div.CanvasXpressRowColumnThreeFourth:hover, div.CanvasXpressRowColumnFourFifth:hover, div.CanvasXpressRowColumnFiveSixth:hover,
 div.CanvasXpressRowColumnHalf:hover, div.CanvasXpressRowColumnThird:hover, div.CanvasXpressRowColumnFourth:hover, div.CanvasXpressRowColumnFifth:hover, div.CanvasXpressRowColumnSixth:hover {
-    border: 1px solid #dddddd;
+    border: 1px dashed #dddddd;
 }
 
 div.CanvasXpressRowColumnFull {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 100%;
 }
 div.CanvasXpressRowColumnFullActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 100%;
 }
 div.CanvasXpressRowColumnTwoThird {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 66.7%;
 }
 div.CanvasXpressRowColumnTwoThirdActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 66.7%;
 }
 div.CanvasXpressRowColumnThreeFourth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 75%;
 }
 div.CanvasXpressRowColumnThreeFourthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 75%;
 }
 div.CanvasXpressRowColumnFourFifth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 80%;
 }
 div.CanvasXpressRowColumnFourFifthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 80%;
 }
 div.CanvasXpressRowColumnFiveSixth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 83.4%;
 }
 div.CanvasXpressRowColumnFiveSixthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 83.4%;
 }
 div.CanvasXpressRowColumnHalf {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 50%;
 }
 div.CanvasXpressRowColumnHalfActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 50%;
 }
 div.CanvasXpressRowColumnThird {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 33.3%;
 }
 div.CanvasXpressRowColumnThirdActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 33.3%;
 }
 div.CanvasXpressRowColumnFourth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 25%;
 }
 div.CanvasXpressRowColumnFourthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 25%;
 }
 div.CanvasXpressRowColumnFifth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 20%;
 }
 div.CanvasXpressRowColumnFifthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 20%;
 }
 div.CanvasXpressRowColumnSixth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 16.6%;
 }
 div.CanvasXpressRowColumnSixthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 16.6%;
 }
 
@@ -5827,6 +5831,45 @@ Copyright (c) 2018 Christian Pucci
     }
 }
 
+.slideDown2 {
+    -webkit-animation-name: slideDown2;
+    animation-name: slideDown2;
+}
+
+@-webkit-keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
 .slideDownReturn {
     -webkit-animation-name: slideDownReturn;
     animation-name: slideDownReturn;
@@ -5855,6 +5898,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateY(100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideDownReturn2 {
+    -webkit-animation-name: slideDownReturn2;
+    animation-name: slideDownReturn2;
+}
+
+@-webkit-keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateY(0%);
@@ -6102,6 +6184,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateY(-100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideUpReturn2 {
+    -webkit-animation-name: slideUpReturn2;
+    animation-name: slideUpReturn2;
+}
+
+@-webkit-keyframes slideUpReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideUpReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateY(0%);
