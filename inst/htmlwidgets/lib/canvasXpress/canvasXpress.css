@@ -2439,7 +2439,7 @@ div.CanvasXpressWrapper {
 div.CanvasXpressDataFilter {
     box-sizing: content-box;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     line-height: 100%;
     margin: 0px;
     padding: 0px;
@@ -2457,7 +2457,7 @@ div.CanvasXpressDataFilterToolbar {
     border-radius: 4px;
     color: rgb(34, 34, 34);
     cursor: move;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     height: 32px;
     left: 0px;
     line-height: 100%;
@@ -2469,7 +2469,7 @@ div.CanvasXpressDataFilterToolbar {
 }
 
 span.CanvasXpressDataFilterToolbarText {
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2489,8 +2489,8 @@ img.CanvasXpressDataFilterToolbarImage, svg.CanvasXpressDataFilterToolbarImage {
 span.CanvasXpressDataFilterText {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
     background-repeat: no-repeat;
-    background-position: -3px;
-    font: normal 12px arial, tahoma, sans-serif;
+    background-position: -0px;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2501,8 +2501,8 @@ span.CanvasXpressDataFilterText {
 span.CanvasXpressDataFilterTextActive {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
     background-repeat: no-repeat;
-    background-position: -3px;
-    font: normal 12px arial, tahoma, sans-serif;
+    background-position: -0px;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2555,52 +2555,64 @@ input[type=checkbox].CanvasXpressDataFilterContainerItemSelected {
 
 input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
     padding-left: 18px;
-    height: 13px;
+    height: 18px;
     display: inline-block;
     line-height: 24px;
     background-repeat: no-repeat;
     background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     vertical-align: middle;
-    margin: 2px;
+    margin: 1px;
     cursor: pointer;
 }
 
 input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheckboxLabel {
     padding-left: 18px;
-    height: 13px;
+    height: 18px;
     display: inline-block;
     line-height: 24px;
     background-repeat: no-repeat;
     background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     vertical-align: middle;
-    margin: 2px;
+    margin: 1px;
     cursor: pointer;
 }
 
 input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
     padding-left: 18px;
-    height: 13px;
+    height: 18px;
     display: inline-block;
     line-height: 24px;
     background-repeat: no-repeat;
     background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     vertical-align: middle;
-    margin: 2px;
+    margin: 1px;
     cursor: pointer;
 }
 
 input[type=checkbox].CanvasXpressCheckbox:checked+label.CanvasXpressCheckboxLabel {
     background-position: 0 -13px;
+    height: 13px;
 }
 
 input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.CanvasXpressCheckboxLabel {
     background-position: 0 -13px;
+    height: 13px;
+}
+
+input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
+    background-position: 0 0px;
+    height: 13px;
+}
+
+input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
+    background-position: 0 0px;
+    height: 13px;
 }
 
 label.CanvasXpressCheckboxLabel {
@@ -2634,7 +2646,7 @@ div.CanvasXpressDataFilterContainerMask {
 div.CanvasXpressDataFilterContainerItem {
     box-sizing: content-box;
     color: #4181ba;
-    height: 15px;
+    height: 18px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2644,7 +2656,7 @@ div.CanvasXpressDataFilterContainerItemSelected {
     box-sizing: content-box;
     background-color: #dfe8f6;
     color: #4181ba;
-    height: 15px;
+    height: 18px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2653,6 +2665,7 @@ div.CanvasXpressDataFilterContainerItemSelected {
 div.CanvasXpressDataFilterContainerHoverable {
     box-sizing: content-box;
     border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
     margin: 2px;
     margin-bottom: 4px;
 }
@@ -2660,6 +2673,7 @@ div.CanvasXpressDataFilterContainerHoverable {
 div.CanvasXpressDataFilterContainerHoverableOut {
     box-sizing: content-box;
     border: none;
+    border-radius: 5px;
     margin: 2px;
     margin-bottom: 4px;
 }
@@ -2667,6 +2681,7 @@ div.CanvasXpressDataFilterContainerHoverableOut {
 div.CanvasXpressDataFilterContainerHoverable:hover {
     box-sizing: content-box;
     background-color: #dfe8f6;
+    border-radius: 5px;
 }
 
 div.CanvasXpressDataFilterContainerNumeric {
@@ -2713,9 +2728,10 @@ div.CanvasXpressDataFilterContainerRange {
 
 input.CanvasXpressDataFilterContainerMinValue {
     border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
     color: rgb(51, 122, 183);
     float: left;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     margin-bottom: 2px;
     margin-left: 1px;
     line-height: 100%;
@@ -2724,9 +2740,10 @@ input.CanvasXpressDataFilterContainerMinValue {
 
 input.CanvasXpressDataFilterContainerMaxValue {
     border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
     color: rgb(51, 122, 183);
     float: right;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     margin-bottom: 2px;
     margin-right: 1px;
     line-height: 100%;
@@ -2757,7 +2774,7 @@ div.CanvasXpressDataFilterContainerScaleLogLinear {
 
 select.CanvasXpressDataFilterContainerString {
     background-color: rgba(255, 255, 255, 0.95);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     margin-left: 3px;
     margin-bottom: 3px;
@@ -2812,12 +2829,290 @@ div.CanvasXpressDataFilterContent {
     border-radius: 0px 0px 4px 4px;
     border-top: 0px;
     color: rgb(51, 122, 183);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 2px;
 }
 
+div.CanvasXpressDataFilterContainerTicks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    height: 18px;
+}
+
+span.CanvasXpressDataFilterContainerTicksLong {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 10px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+span.CanvasXpressDataFilterContainerTicks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 5px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+/**
+ * Toggle
+ */
+
+ div.CanvasXpressToggle {
+    border: none;
+    margin: 5px;
+    height: 18px;
+}
+
+label.CanvasXpressToggle {
+    cursor: pointer;
+}
+
+div.CanvasXpressToggleSwitch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 28px;
+    height: 18px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+div.CanvasXpressToggleSwitch:before, div.CanvasXpressToggleSwitch:after {
+    content: "";
+}
+
+div.CanvasXpressToggleSwitch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.25s;
+}
+
+label.CanvasXpressToggle:hover div.CanvasXpressToggleSwitch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+input.CanvasXpressToggle:checked + div.CanvasXpressToggleSwitch {
+    background: rgb(51, 122, 183);
+}
+
+input.CanvasXpressToggle:checked + div.CanvasXpressToggleSwitch:before {
+    left: 12px;
+}
+
+input.CanvasXpressToggle {
+    position: absolute;
+    visibility: hidden;
+}
+
+span.CanvasXpressToggle {
+    margin-left: 5px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+/**
+ * Range Slider
+ */
+
+div.CanvasXpressRangeSliderContainer {
+    border: none;
+    margin: auto;
+    height: 110px;
+}
+
+div.CanvasXpressRangeSliderContainerTop {
+    height: 18px;
+    margin: 5px;
+    position: relative;
+    display: flex;
+}
+
+span.CanvasXpressRangeSliderContainerTop {
+    border: none;
+}
+
+div.CanvasXpressRangeSliderContainerBottom {
+    height: 80px;
+    position: relative;
+}
+
+div.CanvasXpressRangeSliderInput {
+	position: relative;
+	z-index: 10001;
+	height: 22px;
+	margin: 8px 0;
+}
+
+input.CanvasXpressRangeSliderMin {
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+    color: rgb(51, 122, 183);
+    float: left;
+    font: normal 16px arial, tahoma, sans-serif;
+    margin-bottom: 2px;
+    margin-left: 1px;
+    line-height: 100%;
+    width: 60px;
+}
+
+input.CanvasXpressRangeSliderMax {
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+    color: rgb(51, 122, 183);
+    float: right;
+    font: normal 16px arial, tahoma, sans-serif;
+    margin-bottom: 2px;
+    margin-right: 1px;
+    line-height: 100%;
+    text-align: right;
+    width: 60px;
+}
+
+div.CanvasXpressRangeSlider {
+	position: relative;
+	z-index: 10001;
+	height: 8px;
+	margin: 0 15px;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderTrack {
+	position: absolute;
+	z-index: 10001;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #dddddd;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderRange {
+	position: absolute;
+	z-index: 10002;
+	left: 0%;
+	right: 0%;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: rgb(51, 122, 183);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft, div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbRight {
+	position: absolute;
+	z-index: 10003;
+	width: 18px;
+	height: 18px;
+	background-color: rgb(51, 122, 183);
+	border-radius: 50%;
+	box-shadow: 0 0 0 0 rgba(98,0,238,.1);
+	transition: box-shadow .3s ease-in-out;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft {
+	left: 0%;
+	transform: translate(-15px, -5px);
+}
+
+div.CanvasXpressRangeSlider >  div.CanvasXpressRangeSliderThumbRight {
+	right: 0%;
+	transform: translate(15px, -5px);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft:hover {
+	box-shadow: 0 0 0 10px  rgba(51, 122, 183, 0.1);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbRight:hover {
+	box-shadow: 0 0 0 10px  rgba(51, 122, 183, 0.1);
+}
+
+input[type=range] {
+	position: absolute;
+	pointer-events: none;
+	-webkit-appearance: none;
+	z-index: 10002;
+	height: 10px;
+	width: 100%;
+	opacity: 0;
+}
+input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 30px;
+	height: 30px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: red;
+	-webkit-appearance: none;
+}
+
+div.CanvasXpressRangeSliderTicks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+div.CanvasXpressRangeSliderTicksLog {
+    display: flex;
+    padding: 0px 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+span.CanvasXpressRangeSliderTicksLong {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    color: gray;
+    height: 10px;
+    line-height: 35px;
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+span.CanvasXpressRangeSliderTicks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 5px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+
+/**
+ * Input type number
+ */
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 /**
  * Scrollbars
