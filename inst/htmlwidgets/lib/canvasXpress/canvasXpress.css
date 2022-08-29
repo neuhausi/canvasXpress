@@ -2521,105 +2521,18 @@ div.CanvasXpressDataFilterContainer {
 }
 
 input[type=checkbox].CanvasXpressCheckbox {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
+    accent-color: rgb(51, 122, 183);
+    border-radius: 5px;
+    height: 14px;
+    width: 14px;
+    margin: 2px;
 
-input[type=checkbox].CanvasXpressDataFilterContainerItem {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 18px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
-    margin: 1px;
-    cursor: pointer;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 18px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
-    margin: 1px;
-    cursor: pointer;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 18px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
-    margin: 1px;
-    cursor: pointer;
-}
-
-input[type=checkbox].CanvasXpressCheckbox:checked+label.CanvasXpressCheckboxLabel {
-    background-position: 0 -13px;
-    height: 13px;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.CanvasXpressCheckboxLabel {
-    background-position: 0 -13px;
-    height: 13px;
-}
-
-input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
-    background-position: 0 0px;
-    height: 13px;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
-    background-position: 0 0px;
-    height: 13px;
 }
 
 label.CanvasXpressCheckboxLabel {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAA0CAYAAABRnrIZAAACXElEQVR42uWUT2iSYRzHv+8Sm3O2aYSMBJU8jOqyRhc1ELGCBZuH/mCYB7WiY4XQNTpKdAtmuoMJwuogDUYHUSMlIoajSx2EKXMLOvhvW0OU94n3ffPd1uvr+3Zc+x1e3ufh+Tzv+zy/D18KfyqXy5FSqYR6vY6/S6vVwmKxwOFwUMyYfSQSCWI2m2Gz2SiIVD6fJ+VyGV6vl6KYLygUCtjtdlFgP9jpdEDFYjESCAQkgV4x66lwOExCoZBsiFn/X0LRaJQEg8F/u71MJkOYgdPplASz2SyhaZozIh6PE4PBMBBkNq9Wq/D5fBS/KJ1Ok0qlglqtJgB0Oh2MRiNcLteee0wdUmGffd4mp9UU/OfVFH/lg5q7Vm+Tq0vbmDMrEb6kofjmDoJuv2+Q73Uab66ocOakqj/09FOLTGqHcGtylPq4/osEsrt4cE6Jh9MaflMB9PhDkyxVupg1KbC5Q2Njh2Dx8jD0YyPiEFPzq03y/GuXfX9hVeKaRXPg10WFXdnYIvPfuoi4tIKzHglhrVar6HkKhQIEwk5NX5S6BxRXvoAX1u2+Lgn0KpV6C7a5fv892dDCQoSD7vjuyoZex19xkMfjkQ0lk0kOmnV7ZUPvUgkOmpm5KRtaXl4EK+zUBadsaLWYBS/s2LhJEmg1KxAIqzo+IQrstn/gSAv7snQMTMLOTXBhIylsa2gYvYR9cpZm5ySFfVQEegmr7rbZOYGwsfUTYBLWNtrAGtGhl7A39E1+I4Gwkc0R9EvYxs89qK+w+c449iesqX2w2eLC6k+BSdj7OmGjD4GwvwHoyQhLMetK1QAAAABJRU5ErkJggg==);
-    background-repeat: no-repeat;
-    white-space: nowrap;
+    margin: 0 0 0 3px !important;
 }
+
 
 div.CanvasXpressDataFilterContainerMaskNoOverflow {
     box-sizing: content-box;
@@ -2682,94 +2595,6 @@ div.CanvasXpressDataFilterContainerHoverable:hover {
     box-sizing: content-box;
     background-color: #dfe8f6;
     border-radius: 5px;
-}
-
-div.CanvasXpressDataFilterContainerNumeric {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
-    background-repeat: repeat-x;
-    clear: both;
-    height: 18px;
-    margin: 2px;
-}
-
-div.CanvasXpressDataFilterContainerMin {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    float: left;
-    height: 14px;
-    position: relative;
-    width: 14px;
-    z-index: 10002;
-}
-
-div.CanvasXpressDataFilterContainerMax {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    float: left;
-    height: 14px;
-    position: relative;
-    width: 14px;
-    z-index: 10002;
-}
-
-div.CanvasXpressDataFilterContainerRange {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
-    background-repeat: repeat-x;
-    float: left;
-    height: 14px;
-    left: 0px;
-    position: relative;
-    z-index: 10001;
-}
-
-input.CanvasXpressDataFilterContainerMinValue {
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    border-radius: 5px;
-    color: rgb(51, 122, 183);
-    float: left;
-    font: normal 16px arial, tahoma, sans-serif;
-    margin-bottom: 2px;
-    margin-left: 1px;
-    line-height: 100%;
-    width: 40px;
-}
-
-input.CanvasXpressDataFilterContainerMaxValue {
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    border-radius: 5px;
-    color: rgb(51, 122, 183);
-    float: right;
-    font: normal 16px arial, tahoma, sans-serif;
-    margin-bottom: 2px;
-    margin-right: 1px;
-    line-height: 100%;
-    text-align: right;
-    width: 40px;
-}
-
-div.CanvasXpressDataFilterContainerScaleNone {
-    box-sizing: content-box;
-    background-image: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
-}
-
-div.CanvasXpressDataFilterContainerScaleLinearLog {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAAcElEQVR42mNkoDFgpIsFa9eu/R8cHEyqZf+JcSDdLWAC4n8kWgDS8xeXZRg+ALFBNC4+AR+AxAqBuB9KT0CxgBCNxwJsbDA9zC0gIQ6ItwCmGxufbAuQUtR/ZBMIBBFRAK8muliAI3ioYwE1AM0tAAB/xqIRdKGeOwAAAABJRU5ErkJggg==);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
-}
-
-div.CanvasXpressDataFilterContainerScaleLogLinear {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAAdElEQVR42mNkoDFgpJcF/0m1bO3atf+Dg4MJ6qG7BUxA/I9EC5iA7L+4LMPmAxC7EIgn4ODj9AFIDJkPkke3gBCN1QJsbBg9/C2AyVUCcQe1LEBOAO1AXIGWIMiygAGLBdh8RjIgpIkuFhCjjmwLKAY0twAAISOOEQIlMUAAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
 }
 
 select.CanvasXpressDataFilterContainerString {
@@ -3025,7 +2850,7 @@ div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft, div.CanvasXp
 	height: 18px;
 	background-color: rgb(51, 122, 183);
 	border-radius: 50%;
-	box-shadow: 0 0 0 0 rgba(98,0,238,.1);
+	box-shadow: 0 0 0 0 rgba(51, 122, 183, 0.1);
 	transition: box-shadow .3s ease-in-out;
 }
 
