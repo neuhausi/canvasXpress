@@ -433,15 +433,10 @@ pre.CanvasXpressCode {
 div.CanvasXpressCodeContainer {
     box-sizing: content-box;
     clear: both;
-    height: 500px;
     width: 600px;
-    /*
-    max-height: 500px;
-    max-width: 600px;
-    */
     overflow: auto;
     padding: 10px;
-    resize: auto;
+    resize: horizontal;
 }
 
 div.CanvasXpressCodeContent {
@@ -1928,7 +1923,7 @@ div.CanvasXpressDataTableToolbar {
     background-color: rgba(255, 255, 255, 0.95);
     color: rgb(34, 34, 34);
     cursor: move;
-    height: 32px;
+    height: 36px;
     left: 0px;
     line-height: 100%;
     position: absolute;
@@ -3907,8 +3902,10 @@ div.CanvasXpressRow:after {
 div.CanvasXpressRowColumnFull, div.CanvasXpressRowColumnTwoThird, div.CanvasXpressRowColumnThreeFourth, div.CanvasXpressRowColumnFourFifth, div.CanvasXpressRowColumnFiveSixth,
 div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressRowColumnFourth, div.CanvasXpressRowColumnFifth, div.CanvasXpressRowColumnSixth {
     float: left;
+    /*
     padding-left: 1rem;
     padding-right: 1rem;
+    */
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -5990,6 +5987,45 @@ Copyright (c) 2018 Christian Pucci
     }
 }
 
+.slideDown3 {
+    -webkit-animation-name: slideDown3;
+    animation-name: slideDown3;
+}
+
+@-webkit-keyframes slideDown3 {
+    0% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideDown3 {
+    0% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
 .slideDownReturn {
     -webkit-animation-name: slideDownReturn;
     animation-name: slideDownReturn;
@@ -6127,6 +6163,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateX(-100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+.slideLeftReturn2 {
+    -webkit-animation-name: slideLeftReturn2;
+    animation-name: slideLeftReturn2;
+}
+
+@-webkit-keyframes slideLeftReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideLeftReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateX(0%);
@@ -7271,5 +7346,57 @@ Copyright (c) 2018 Christian Pucci
         opacity: 0;
         -webkit-transform: scale(1, 1) translateY(-900%);
         transform: scale(1, 1) translateY(-900%);
+    }
+}
+
+
+.blink {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 0;
+        background-color: rgba(51, 122, 183, 1);
+    }
+    25% {
+        opacity: 0.25;
+        background-color: rgba(51, 122, 183, 0.75);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: rgba(51, 122, 183, 0.5);
+    }
+    75% {
+        opacity: 0.75;
+        background-color: rgba(51, 122, 183, 0.25);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgba(51, 122, 183, 0);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        background-color: rgba(51, 122, 183, 1);
+    }
+    25% {
+        opacity: 0.25;
+        background-color: rgba(51, 122, 183, 0.75);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: rgba(51, 122, 183, 0.5);
+    }
+    75% {
+        opacity: 0.75;
+        background-color: rgba(51, 122, 183, 0.25);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgba(51, 122, 183, 0);
     }
 }
