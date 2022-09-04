@@ -1922,7 +1922,6 @@ div.CanvasXpressDataTableToolbar {
     border-radius: 5px 5px 0px 0px;
     background-color: rgba(255, 255, 255, 0.95);
     color: rgb(34, 34, 34);
-    cursor: move;
     height: 36px;
     left: 0px;
     line-height: 100%;
@@ -2447,11 +2446,9 @@ div.CanvasXpressDataFilter {
 
 div.CanvasXpressDataFilterToolbar {
     box-sizing: content-box;
-    /*background: linear-gradient(rgb(240, 240, 240), rgb(230,230,230));*/
     border: 1px solid rgb(51, 122, 183);
     border-radius: 4px;
     color: rgb(34, 34, 34);
-    cursor: move;
     font: normal 16px arial, tahoma, sans-serif;
     height: 32px;
     left: 0px;
@@ -2525,9 +2522,12 @@ input[type=checkbox].CanvasXpressCheckbox {
 }
 
 label.CanvasXpressCheckboxLabel {
+    width: 220px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
     margin: 0 0 0 3px !important;
 }
-
 
 div.CanvasXpressDataFilterContainerMaskNoOverflow {
     box-sizing: content-box;
@@ -7348,7 +7348,6 @@ Copyright (c) 2018 Christian Pucci
         transform: scale(1, 1) translateY(-900%);
     }
 }
-
 
 .blink {
     -webkit-animation-name: blink;
