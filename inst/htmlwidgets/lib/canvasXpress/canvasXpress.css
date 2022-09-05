@@ -2447,7 +2447,6 @@ div.CanvasXpressDataFilter {
 
 div.CanvasXpressDataFilterToolbar {
     box-sizing: content-box;
-    /*background: linear-gradient(rgb(240, 240, 240), rgb(230,230,230));*/
     border: 1px solid rgb(51, 122, 183);
     border-radius: 4px;
     color: rgb(34, 34, 34);
