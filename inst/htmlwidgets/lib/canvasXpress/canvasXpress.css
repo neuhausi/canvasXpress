@@ -433,15 +433,10 @@ pre.CanvasXpressCode {
 div.CanvasXpressCodeContainer {
     box-sizing: content-box;
     clear: both;
-    height: 500px;
     width: 600px;
-    /*
-    max-height: 500px;
-    max-width: 600px;
-    */
     overflow: auto;
     padding: 10px;
-    resize: auto;
+    resize: horizontal;
 }
 
 div.CanvasXpressCodeContent {
@@ -1928,7 +1923,7 @@ div.CanvasXpressDataTableToolbar {
     background-color: rgba(255, 255, 255, 0.95);
     color: rgb(34, 34, 34);
     cursor: move;
-    height: 32px;
+    height: 36px;
     left: 0px;
     line-height: 100%;
     position: absolute;
@@ -2439,7 +2434,7 @@ div.CanvasXpressWrapper {
 div.CanvasXpressDataFilter {
     box-sizing: content-box;
     color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     line-height: 100%;
     margin: 0px;
     padding: 0px;
@@ -2457,7 +2452,7 @@ div.CanvasXpressDataFilterToolbar {
     border-radius: 4px;
     color: rgb(34, 34, 34);
     cursor: move;
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     height: 32px;
     left: 0px;
     line-height: 100%;
@@ -2469,7 +2464,7 @@ div.CanvasXpressDataFilterToolbar {
 }
 
 span.CanvasXpressDataFilterToolbarText {
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2489,8 +2484,8 @@ img.CanvasXpressDataFilterToolbarImage, svg.CanvasXpressDataFilterToolbarImage {
 span.CanvasXpressDataFilterText {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
     background-repeat: no-repeat;
-    background-position: -3px;
-    font: normal 12px arial, tahoma, sans-serif;
+    background-position: -0px;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2501,8 +2496,8 @@ span.CanvasXpressDataFilterText {
 span.CanvasXpressDataFilterTextActive {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
     background-repeat: no-repeat;
-    background-position: -3px;
-    font: normal 12px arial, tahoma, sans-serif;
+    background-position: -0px;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     left: 8px;
     line-height: 100%;
@@ -2521,93 +2516,18 @@ div.CanvasXpressDataFilterContainer {
 }
 
 input[type=checkbox].CanvasXpressCheckbox {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItem {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-}
-
-input[type=checkbox].CanvasXpressCheckbox+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 13px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
+    accent-color: rgb(51, 122, 183);
+    border-radius: 5px;
+    height: 14px;
+    width: 14px;
     margin: 2px;
-    cursor: pointer;
-}
 
-input[type=checkbox].CanvasXpressDataFilterContainerItem+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 13px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
-    margin: 2px;
-    cursor: pointer;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected+label.CanvasXpressCheckboxLabel {
-    padding-left: 18px;
-    height: 13px;
-    display: inline-block;
-    line-height: 24px;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    font: normal 12px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    vertical-align: middle;
-    margin: 2px;
-    cursor: pointer;
-}
-
-input[type=checkbox].CanvasXpressCheckbox:checked+label.CanvasXpressCheckboxLabel {
-    background-position: 0 -13px;
-}
-
-input[type=checkbox].CanvasXpressDataFilterContainerItemSelected:checked+label.CanvasXpressCheckboxLabel {
-    background-position: 0 -13px;
 }
 
 label.CanvasXpressCheckboxLabel {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAA0CAYAAABRnrIZAAACXElEQVR42uWUT2iSYRzHv+8Sm3O2aYSMBJU8jOqyRhc1ELGCBZuH/mCYB7WiY4XQNTpKdAtmuoMJwuogDUYHUSMlIoajSx2EKXMLOvhvW0OU94n3ffPd1uvr+3Zc+x1e3ufh+Tzv+zy/D18KfyqXy5FSqYR6vY6/S6vVwmKxwOFwUMyYfSQSCWI2m2Gz2SiIVD6fJ+VyGV6vl6KYLygUCtjtdlFgP9jpdEDFYjESCAQkgV4x66lwOExCoZBsiFn/X0LRaJQEg8F/u71MJkOYgdPplASz2SyhaZozIh6PE4PBMBBkNq9Wq/D5fBS/KJ1Ok0qlglqtJgB0Oh2MRiNcLteee0wdUmGffd4mp9UU/OfVFH/lg5q7Vm+Tq0vbmDMrEb6kofjmDoJuv2+Q73Uab66ocOakqj/09FOLTGqHcGtylPq4/osEsrt4cE6Jh9MaflMB9PhDkyxVupg1KbC5Q2Njh2Dx8jD0YyPiEFPzq03y/GuXfX9hVeKaRXPg10WFXdnYIvPfuoi4tIKzHglhrVar6HkKhQIEwk5NX5S6BxRXvoAX1u2+Lgn0KpV6C7a5fv892dDCQoSD7vjuyoZex19xkMfjkQ0lk0kOmnV7ZUPvUgkOmpm5KRtaXl4EK+zUBadsaLWYBS/s2LhJEmg1KxAIqzo+IQrstn/gSAv7snQMTMLOTXBhIylsa2gYvYR9cpZm5ySFfVQEegmr7rbZOYGwsfUTYBLWNtrAGtGhl7A39E1+I4Gwkc0R9EvYxs89qK+w+c449iesqX2w2eLC6k+BSdj7OmGjD4GwvwHoyQhLMetK1QAAAABJRU5ErkJggg==);
-    background-repeat: no-repeat;
-    white-space: nowrap;
+    margin: 0 0 0 3px !important;
 }
+
 
 div.CanvasXpressDataFilterContainerMaskNoOverflow {
     box-sizing: content-box;
@@ -2634,7 +2554,7 @@ div.CanvasXpressDataFilterContainerMask {
 div.CanvasXpressDataFilterContainerItem {
     box-sizing: content-box;
     color: #4181ba;
-    height: 15px;
+    height: 18px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2644,7 +2564,7 @@ div.CanvasXpressDataFilterContainerItemSelected {
     box-sizing: content-box;
     background-color: #dfe8f6;
     color: #4181ba;
-    height: 15px;
+    height: 18px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2653,6 +2573,7 @@ div.CanvasXpressDataFilterContainerItemSelected {
 div.CanvasXpressDataFilterContainerHoverable {
     box-sizing: content-box;
     border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
     margin: 2px;
     margin-bottom: 4px;
 }
@@ -2660,6 +2581,7 @@ div.CanvasXpressDataFilterContainerHoverable {
 div.CanvasXpressDataFilterContainerHoverableOut {
     box-sizing: content-box;
     border: none;
+    border-radius: 5px;
     margin: 2px;
     margin-bottom: 4px;
 }
@@ -2667,97 +2589,12 @@ div.CanvasXpressDataFilterContainerHoverableOut {
 div.CanvasXpressDataFilterContainerHoverable:hover {
     box-sizing: content-box;
     background-color: #dfe8f6;
-}
-
-div.CanvasXpressDataFilterContainerNumeric {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
-    background-repeat: repeat-x;
-    clear: both;
-    height: 18px;
-    margin: 2px;
-}
-
-div.CanvasXpressDataFilterContainerMin {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    float: left;
-    height: 14px;
-    position: relative;
-    width: 14px;
-    z-index: 10002;
-}
-
-div.CanvasXpressDataFilterContainerMax {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    float: left;
-    height: 14px;
-    position: relative;
-    width: 14px;
-    z-index: 10002;
-}
-
-div.CanvasXpressDataFilterContainerRange {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
-    background-repeat: repeat-x;
-    float: left;
-    height: 14px;
-    left: 0px;
-    position: relative;
-    z-index: 10001;
-}
-
-input.CanvasXpressDataFilterContainerMinValue {
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    color: rgb(51, 122, 183);
-    float: left;
-    font: normal 12px arial, tahoma, sans-serif;
-    margin-bottom: 2px;
-    margin-left: 1px;
-    line-height: 100%;
-    width: 40px;
-}
-
-input.CanvasXpressDataFilterContainerMaxValue {
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    color: rgb(51, 122, 183);
-    float: right;
-    font: normal 12px arial, tahoma, sans-serif;
-    margin-bottom: 2px;
-    margin-right: 1px;
-    line-height: 100%;
-    text-align: right;
-    width: 40px;
-}
-
-div.CanvasXpressDataFilterContainerScaleNone {
-    box-sizing: content-box;
-    background-image: url(data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
-}
-
-div.CanvasXpressDataFilterContainerScaleLinearLog {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAAcElEQVR42mNkoDFgpIsFa9eu/R8cHEyqZf+JcSDdLWAC4n8kWgDS8xeXZRg+ALFBNC4+AR+AxAqBuB9KT0CxgBCNxwJsbDA9zC0gIQ6ItwCmGxufbAuQUtR/ZBMIBBFRAK8muliAI3ioYwE1AM0tAAB/xqIRdKGeOwAAAABJRU5ErkJggg==);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
-}
-
-div.CanvasXpressDataFilterContainerScaleLogLinear {
-    box-sizing: content-box;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAQCAYAAAAMJL+VAAAAdElEQVR42mNkoDFgpJcF/0m1bO3atf+Dg4MJ6qG7BUxA/I9EC5iA7L+4LMPmAxC7EIgn4ODj9AFIDJkPkke3gBCN1QJsbBg9/C2AyVUCcQe1LEBOAO1AXIGWIMiygAGLBdh8RjIgpIkuFhCjjmwLKAY0twAAISOOEQIlMUAAAAAASUVORK5CYII=);
-    background-repeat: no-repeat;
-    background-position: 98% 50%;
+    border-radius: 5px;
 }
 
 select.CanvasXpressDataFilterContainerString {
     background-color: rgba(255, 255, 255, 0.95);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     color: rgb(34, 34, 34);
     margin-left: 3px;
     margin-bottom: 3px;
@@ -2812,12 +2649,290 @@ div.CanvasXpressDataFilterContent {
     border-radius: 0px 0px 4px 4px;
     border-top: 0px;
     color: rgb(51, 122, 183);
-    font: normal 12px arial, tahoma, sans-serif;
+    font: normal 16px arial, tahoma, sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 2px;
 }
 
+div.CanvasXpressDataFilterContainerTicks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    height: 18px;
+}
+
+span.CanvasXpressDataFilterContainerTicksLong {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 10px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+span.CanvasXpressDataFilterContainerTicks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 5px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+/**
+ * Toggle
+ */
+
+ div.CanvasXpressToggle {
+    border: none;
+    margin: 5px;
+    height: 18px;
+}
+
+label.CanvasXpressToggle {
+    cursor: pointer;
+}
+
+div.CanvasXpressToggleSwitch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 28px;
+    height: 18px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+div.CanvasXpressToggleSwitch:before, div.CanvasXpressToggleSwitch:after {
+    content: "";
+}
+
+div.CanvasXpressToggleSwitch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.25s;
+}
+
+label.CanvasXpressToggle:hover div.CanvasXpressToggleSwitch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+input.CanvasXpressToggle:checked + div.CanvasXpressToggleSwitch {
+    background: rgb(51, 122, 183);
+}
+
+input.CanvasXpressToggle:checked + div.CanvasXpressToggleSwitch:before {
+    left: 12px;
+}
+
+input.CanvasXpressToggle {
+    position: absolute;
+    visibility: hidden;
+}
+
+span.CanvasXpressToggle {
+    margin-left: 5px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+/**
+ * Range Slider
+ */
+
+div.CanvasXpressRangeSliderContainer {
+    border: none;
+    margin: auto;
+    height: 110px;
+}
+
+div.CanvasXpressRangeSliderContainerTop {
+    height: 18px;
+    margin: 5px;
+    position: relative;
+    display: flex;
+}
+
+span.CanvasXpressRangeSliderContainerTop {
+    border: none;
+}
+
+div.CanvasXpressRangeSliderContainerBottom {
+    height: 80px;
+    position: relative;
+}
+
+div.CanvasXpressRangeSliderInput {
+	position: relative;
+	z-index: 10001;
+	height: 22px;
+	margin: 8px 0;
+}
+
+input.CanvasXpressRangeSliderMin {
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+    color: rgb(51, 122, 183);
+    float: left;
+    font: normal 16px arial, tahoma, sans-serif;
+    margin-bottom: 2px;
+    margin-left: 1px;
+    line-height: 100%;
+    width: 60px;
+}
+
+input.CanvasXpressRangeSliderMax {
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+    color: rgb(51, 122, 183);
+    float: right;
+    font: normal 16px arial, tahoma, sans-serif;
+    margin-bottom: 2px;
+    margin-right: 1px;
+    line-height: 100%;
+    text-align: right;
+    width: 60px;
+}
+
+div.CanvasXpressRangeSlider {
+	position: relative;
+	z-index: 10001;
+	height: 8px;
+	margin: 0 15px;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderTrack {
+	position: absolute;
+	z-index: 10001;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #dddddd;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderRange {
+	position: absolute;
+	z-index: 10002;
+	left: 0%;
+	right: 0%;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: rgb(51, 122, 183);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft, div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbRight {
+	position: absolute;
+	z-index: 10003;
+	width: 18px;
+	height: 18px;
+	background-color: rgb(51, 122, 183);
+	border-radius: 50%;
+	box-shadow: 0 0 0 0 rgba(51, 122, 183, 0.1);
+	transition: box-shadow .3s ease-in-out;
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft {
+	left: 0%;
+	transform: translate(-15px, -5px);
+}
+
+div.CanvasXpressRangeSlider >  div.CanvasXpressRangeSliderThumbRight {
+	right: 0%;
+	transform: translate(15px, -5px);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbLeft:hover {
+	box-shadow: 0 0 0 10px  rgba(51, 122, 183, 0.1);
+}
+
+div.CanvasXpressRangeSlider > div.CanvasXpressRangeSliderThumbRight:hover {
+	box-shadow: 0 0 0 10px  rgba(51, 122, 183, 0.1);
+}
+
+input[type=range] {
+	position: absolute;
+	pointer-events: none;
+	-webkit-appearance: none;
+	z-index: 10002;
+	height: 10px;
+	width: 100%;
+	opacity: 0;
+}
+input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 30px;
+	height: 30px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: red;
+	-webkit-appearance: none;
+}
+
+div.CanvasXpressRangeSliderTicks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+div.CanvasXpressRangeSliderTicksLog {
+    display: flex;
+    padding: 0px 10px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+span.CanvasXpressRangeSliderTicksLong {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    color: gray;
+    height: 10px;
+    line-height: 35px;
+    margin-bottom: 10px;
+    font-size: small;
+}
+
+span.CanvasXpressRangeSliderTicks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 1px;
+    background: gray;
+    height: 5px;
+    line-height: 10px;
+    margin-bottom: 10px;
+}
+
+
+/**
+ * Input type number
+ */
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 /**
  * Scrollbars
@@ -3633,6 +3748,7 @@ select.CanvasXpressSlider:focus {
 
 div.CanvasXpress-ParentNode {
     /*
+    border: 1px solid 'rgba(0,0,0,0)'
     margin: auto;
     display: table;
     padding: 0;
@@ -3645,7 +3761,6 @@ div.CanvasXpress-ParentNode {
 
  div.CanvasXpressTabPanel {
     font: normal 16px arial, tahoma, sans-serif;
-    margin: 10px;
     float: left;
     width: 100%
 }
@@ -3657,6 +3772,26 @@ div.CanvasXpressTabPanelCustomizer {
     border-bottom: 1px solid #dddddd;
     top: -10px;
     overflow: hidden;
+}
+
+div.CanvasXpressTabPanelRibbonSection {
+    width: fit-content;
+    position: relative;
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-top: 5px;
+    margin-top: 12px;
+    float: left;
+}
+
+span.CanvasXpressTabPanelRibbonSection {
+    margin-left: -3px;
+    background-color: white;
+    position: absolute;
+    float: left;
+    top: -14px;
+    padding: 3px;
 }
 
 div.CanvasXpressTabPanelRibbon {
@@ -3677,6 +3812,7 @@ span.CanvasXpressTabPanelRibbon {
 div.CanvasXpressTabPanelRibbonContainer {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
+    background-color: #dddddd;
 }
 
 svg.CanvasXpressTabPanelRibbon {
@@ -3686,6 +3822,11 @@ svg.CanvasXpressTabPanelRibbon {
     margin-top: 5px;
     padding: 5px;
     border-radius: 5px;
+    background-color: #ffffff;
+}
+
+svg.CanvasXpressTabPanelRibbon:hover {
+    background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
 }
 
 /* Header */
@@ -3735,7 +3876,6 @@ input.CanvasXpressTabPanelHeaderActive {
 /* Content */
 
 div.CanvasXpressTabPanelContent {
-    margin-top: 10px;
     display: block;
     float: left;
     width: 100%;
@@ -3748,7 +3888,6 @@ div.CanvasXpressRow {
     clear: both;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
     float: left;
     width: 100%;
 }
@@ -3763,8 +3902,10 @@ div.CanvasXpressRow:after {
 div.CanvasXpressRowColumnFull, div.CanvasXpressRowColumnTwoThird, div.CanvasXpressRowColumnThreeFourth, div.CanvasXpressRowColumnFourFifth, div.CanvasXpressRowColumnFiveSixth,
 div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressRowColumnFourth, div.CanvasXpressRowColumnFifth, div.CanvasXpressRowColumnSixth {
     float: left;
+    /*
     padding-left: 1rem;
     padding-right: 1rem;
+    */
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -3772,107 +3913,87 @@ div.CanvasXpressRowColumnHalf, div.CanvasXpressRowColumnThird, div.CanvasXpressR
 
 div.CanvasXpressRowColumnFull:hover, div.CanvasXpressRowColumnTwoThird:hover, div.CanvasXpressRowColumnThreeFourth:hover, div.CanvasXpressRowColumnFourFifth:hover, div.CanvasXpressRowColumnFiveSixth:hover,
 div.CanvasXpressRowColumnHalf:hover, div.CanvasXpressRowColumnThird:hover, div.CanvasXpressRowColumnFourth:hover, div.CanvasXpressRowColumnFifth:hover, div.CanvasXpressRowColumnSixth:hover {
-    border: 1px solid #dddddd;
+    border: 1px dashed #dddddd;
 }
 
 div.CanvasXpressRowColumnFull {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 100%;
 }
 div.CanvasXpressRowColumnFullActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 100%;
 }
 div.CanvasXpressRowColumnTwoThird {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 66.7%;
 }
 div.CanvasXpressRowColumnTwoThirdActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 66.7%;
 }
 div.CanvasXpressRowColumnThreeFourth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 75%;
 }
 div.CanvasXpressRowColumnThreeFourthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 75%;
 }
 div.CanvasXpressRowColumnFourFifth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 80%;
 }
 div.CanvasXpressRowColumnFourFifthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 80%;
 }
 div.CanvasXpressRowColumnFiveSixth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 83.4%;
 }
 div.CanvasXpressRowColumnFiveSixthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 83.4%;
 }
 div.CanvasXpressRowColumnHalf {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 50%;
 }
 div.CanvasXpressRowColumnHalfActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 50%;
 }
 div.CanvasXpressRowColumnThird {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 33.3%;
 }
 div.CanvasXpressRowColumnThirdActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 33.3%;
 }
 div.CanvasXpressRowColumnFourth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 25%;
 }
 div.CanvasXpressRowColumnFourthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 25%;
 }
 div.CanvasXpressRowColumnFifth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 20%;
 }
 div.CanvasXpressRowColumnFifthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 20%;
 }
 div.CanvasXpressRowColumnSixth {
-    border: 1px solid white;
-    padding: 5px;
+    border: 1px dashed white;
     width: 16.6%;
 }
 div.CanvasXpressRowColumnSixthActive {
-    border: 1px solid red;
-    padding: 5px;
+    border: 1px dashed rgb(51, 122, 183);
     width: 16.6%;
 }
 
@@ -5827,6 +5948,84 @@ Copyright (c) 2018 Christian Pucci
     }
 }
 
+.slideDown2 {
+    -webkit-animation-name: slideDown2;
+    animation-name: slideDown2;
+}
+
+@-webkit-keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideDown2 {
+    0% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+.slideDown3 {
+    -webkit-animation-name: slideDown3;
+    animation-name: slideDown3;
+}
+
+@-webkit-keyframes slideDown3 {
+    0% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slideDown3 {
+    0% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+
 .slideDownReturn {
     -webkit-animation-name: slideDownReturn;
     animation-name: slideDownReturn;
@@ -5855,6 +6054,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateY(100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideDownReturn2 {
+    -webkit-animation-name: slideDownReturn2;
+    animation-name: slideDownReturn2;
+}
+
+@-webkit-keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideDownReturn2 {
+    0% {
+        height: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        height: 215px;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateY(0%);
@@ -5925,6 +6163,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateX(-100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+.slideLeftReturn2 {
+    -webkit-animation-name: slideLeftReturn2;
+    animation-name: slideLeftReturn2;
+}
+
+@-webkit-keyframes slideLeftReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideLeftReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateX(0%);
@@ -6102,6 +6379,45 @@ Copyright (c) 2018 Christian Pucci
         transform: translateY(-100%);
     }
     100% {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+.slideUpReturn2 {
+    -webkit-animation-name: slideUpReturn2;
+    animation-name: slideUpReturn2;
+}
+
+@-webkit-keyframes slideUpReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideUpReturn2 {
+    0% {
+        opacity: 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: translateY(0%);
@@ -7030,5 +7346,57 @@ Copyright (c) 2018 Christian Pucci
         opacity: 0;
         -webkit-transform: scale(1, 1) translateY(-900%);
         transform: scale(1, 1) translateY(-900%);
+    }
+}
+
+
+.blink {
+    -webkit-animation-name: blink;
+    animation-name: blink;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 0;
+        background-color: rgba(51, 122, 183, 1);
+    }
+    25% {
+        opacity: 0.25;
+        background-color: rgba(51, 122, 183, 0.75);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: rgba(51, 122, 183, 0.5);
+    }
+    75% {
+        opacity: 0.75;
+        background-color: rgba(51, 122, 183, 0.25);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgba(51, 122, 183, 0);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        background-color: rgba(51, 122, 183, 1);
+    }
+    25% {
+        opacity: 0.25;
+        background-color: rgba(51, 122, 183, 0.75);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: rgba(51, 122, 183, 0.5);
+    }
+    75% {
+        opacity: 0.75;
+        background-color: rgba(51, 122, 183, 0.25);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgba(51, 122, 183, 0);
     }
 }
