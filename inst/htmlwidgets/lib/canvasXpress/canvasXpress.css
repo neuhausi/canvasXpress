@@ -1528,6 +1528,75 @@ span.CanvasXpressDataCustomizerUnique {
 }
 
 /*
+ * Password
+ */
+
+ div.CanvasXpressPassword {
+    border: 1px solid rgb(51, 122, 183);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-sizing: content-box;
+    cursor: move;
+    color: rgb(34, 34, 34);
+    font: normal 16px arial, tahoma, sans-serif;
+    margin: 2px 3px;
+    overflow: hidden;
+    padding: 5px 6px;
+    width: 180px;
+    height: 200px;
+    white-space: nowrap;
+    position: relative;
+    text-align: left;
+}
+
+img.CanvasXpressPassword, svg.CanvasXpressPassword {
+    background: rgba(0, 0, 0, 0) !important;
+    border: 0px none !important;
+    box-shadow: 0 0 0px rgb(0 0 0 / 0%) !important;
+    box-sizing: border-box;
+    cursor: default;
+    float: right;
+    margin: 5px 8px 0px 0px !important;
+    cursor: default;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+}
+
+div.CanvasXpressPasswordContainer {
+    box-sizing: content-box;
+    border-radius: 0px 0px 5px 5px;
+    color: rgb(34, 34, 34);
+    display: block;
+    left: 0px;
+    line-height: 100%;
+    position: relative;
+    top: 35px;
+    margin-top: 5px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+span.CanvasXpressPassword {
+    margin-bottom: 5px;
+    margin-left: 5px;
+    float: left;
+}
+
+input.CanvasXpressPassword {
+    float: left;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #aaa
+}
+
+/*
  * CanvasXpressDrag
  */
 
