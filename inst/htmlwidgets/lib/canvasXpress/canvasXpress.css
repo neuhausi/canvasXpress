@@ -1593,7 +1593,8 @@ input.CanvasXpressPassword {
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #aaa
+    border: 1px solid #aaa;
+    width: 170px;
 }
 
 /*
