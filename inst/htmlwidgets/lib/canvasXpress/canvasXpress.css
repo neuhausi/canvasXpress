@@ -391,19 +391,21 @@ div.CanvasXpressCode {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
     box-sizing: content-box;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #eeeeee;
     cursor: move;
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
     margin: 2px 3px;
-    padding: 18px;
+    padding: 10px 20px 20px 10px;
     position: absolute;
     white-space: nowrap;
 }
 
 img.CanvasXpressCode, svg.CanvasXpressCode {
     background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
+    border-radius: 5px;
+    border: 1px solid rgb(51, 122, 183) !important;
+    padding: 5px;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
     cursor: default;
     float: right;
@@ -435,14 +437,33 @@ div.CanvasXpressCodeContainer {
     clear: both;
     width: 600px;
     overflow: auto;
-    padding: 10px;
     resize: horizontal;
+    background-color: #ffffff;
+    position: relative;
+    top: 10px;
 }
 
 div.CanvasXpressCodeContent {
     box-sizing: content-box;
     margin: 2px 3px;
     padding: 2px 3px;
+}
+
+div.CanvasXpressCodeError {
+    box-sizing: content-box;
+    height: 36px;
+    width: 300px;
+    float: left;
+    clear: none;
+    resize: none;
+    top: 5px;
+    left: 20px;
+    background-color: #eee;
+    overflow: hidden;
+    white-space: normal;
+    color: #ff0000;
+    position: relative;
+    cursor: pointer;
 }
 
 pre.CanvasXpressCodeContent {
@@ -452,7 +473,9 @@ pre.CanvasXpressCodeContent {
     font-size: inherit;
     line-height: inherit;
     color: inherit;
-    border-radius: inherit;
+    border: none !important;
+    outline: none !important;
+    cursor: text;
 }
 
 pre.CanvasXpressCodeContent:before {
