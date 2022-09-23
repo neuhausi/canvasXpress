@@ -471,7 +471,7 @@ pre.CanvasXpressCodeContent {
     padding: 0 !important;
     white-space: pre;
     font-size: inherit;
-    line-height: inherit;
+    line-height: 0 !important;
     color: inherit;
     border: none !important;
     outline: none !important;
@@ -484,6 +484,7 @@ pre.CanvasXpressCodeContent:before {
 
 pre.CanvasXpressCodeContent code {
     counter-increment: listing;
+    padding: 0 !important;
     white-space: inherit;
     line-height: 1.5;
 }
@@ -501,7 +502,6 @@ pre.CanvasXpressCodeContent code::before {
     background-color: #efefef;
     -webkit-user-select: none;
 }
-
 
 /*
  * Carousel
@@ -745,7 +745,7 @@ div.CanvasXpressCustomizerLeftPanel {
     display: grid;
 }
 
-a.CanvasXpressCustomizerLeft, a.CanvasXpressCustomizerLeftActive {
+a.CanvasXpressCustomizerLeft, a.CanvasXpressCustomizerLeftActive, a.CanvasXpressCustomizerLeftActive:hover {
     border-style: solid;
     border-width: 1px;
     color: rgb(34, 34, 34);
@@ -766,7 +766,7 @@ a.CanvasXpressCustomizerLeft {
     border-color: rgba(0, 0, 0, 0);
 }
 
-a.CanvasXpressCustomizerLeftActive {
+a.CanvasXpressCustomizerLeftActive, a.CanvasXpressCustomizerLeftActive:hover {
     background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
     border-color: rgb(170, 204, 246);
 }
@@ -1146,7 +1146,7 @@ span.CanvasXpressSearchCustomizerCurrent:after {
  * File Customizer
  */
 
-a.CanvasXpressFileCustomizer, div.CanvasXpressToolCustomizer {
+a.CanvasXpressFileCustomizer, div.CanvasXpressToolCustomizer, div.CanvasXpressFileCustomizer {
     border-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgb(170, 204, 246);
     border-style: solid;
@@ -1182,6 +1182,12 @@ a.CanvasXpressFileCustomizerActive, div.CanvasXpressToolCustomizerActive {
     position: relative;
     text-decoration: none;
     white-space: nowrap;
+}
+
+a.CanvasXpressFileCustomizer:hover, a.CanvasXpressFileCustomizerActive:hover {
+    border-color: rgb(170, 204, 246);
+    border-style: solid;
+    border-width: 1px;
 }
 
 img.CanvasXpressFileCustomizer, svg.CanvasXpressFileCustomizer {
@@ -3846,6 +3852,11 @@ div.CanvasXpress-ParentNode {
     display: table;
     padding: 0;
     */
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
 }
 
 /*
