@@ -391,19 +391,21 @@ div.CanvasXpressCode {
     border: 1px solid rgb(51, 122, 183);
     border-radius: 5px;
     box-sizing: content-box;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #eeeeee;
     cursor: move;
     color: rgb(34, 34, 34);
     font: normal 12px arial, tahoma, sans-serif;
     margin: 2px 3px;
-    padding: 18px;
+    padding: 10px 20px 20px 10px;
     position: absolute;
     white-space: nowrap;
 }
 
 img.CanvasXpressCode, svg.CanvasXpressCode {
     background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
+    border-radius: 5px;
+    border: 1px solid rgb(51, 122, 183) !important;
+    padding: 5px;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
     cursor: default;
     float: right;
@@ -435,8 +437,10 @@ div.CanvasXpressCodeContainer {
     clear: both;
     width: 600px;
     overflow: auto;
-    padding: 10px;
     resize: horizontal;
+    background-color: #ffffff;
+    position: relative;
+    top: 10px;
 }
 
 div.CanvasXpressCodeContent {
@@ -445,14 +449,33 @@ div.CanvasXpressCodeContent {
     padding: 2px 3px;
 }
 
+div.CanvasXpressCodeError {
+    box-sizing: content-box;
+    height: 36px;
+    width: 300px;
+    float: left;
+    clear: none;
+    resize: none;
+    top: 5px;
+    left: 20px;
+    background-color: #eee;
+    overflow: hidden;
+    white-space: normal;
+    color: #ff0000;
+    position: relative;
+    cursor: pointer;
+}
+
 pre.CanvasXpressCodeContent {
     margin: 0 !important;
     padding: 0 !important;
     white-space: pre;
     font-size: inherit;
-    line-height: inherit;
+    line-height: 0 !important;
     color: inherit;
-    border-radius: inherit;
+    border: none !important;
+    outline: none !important;
+    cursor: text;
 }
 
 pre.CanvasXpressCodeContent:before {
@@ -461,6 +484,7 @@ pre.CanvasXpressCodeContent:before {
 
 pre.CanvasXpressCodeContent code {
     counter-increment: listing;
+    padding: 0 !important;
     white-space: inherit;
     line-height: 1.5;
 }
@@ -478,7 +502,6 @@ pre.CanvasXpressCodeContent code::before {
     background-color: #efefef;
     -webkit-user-select: none;
 }
-
 
 /*
  * Carousel
@@ -722,7 +745,7 @@ div.CanvasXpressCustomizerLeftPanel {
     display: grid;
 }
 
-a.CanvasXpressCustomizerLeft, a.CanvasXpressCustomizerLeftActive {
+a.CanvasXpressCustomizerLeft, a.CanvasXpressCustomizerLeftActive, a.CanvasXpressCustomizerLeftActive:hover {
     border-style: solid;
     border-width: 1px;
     color: rgb(34, 34, 34);
@@ -743,7 +766,7 @@ a.CanvasXpressCustomizerLeft {
     border-color: rgba(0, 0, 0, 0);
 }
 
-a.CanvasXpressCustomizerLeftActive {
+a.CanvasXpressCustomizerLeftActive, a.CanvasXpressCustomizerLeftActive:hover {
     background: linear-gradient(rgb(243, 253, 255), rgb(217, 232, 251));
     border-color: rgb(170, 204, 246);
 }
@@ -1123,7 +1146,7 @@ span.CanvasXpressSearchCustomizerCurrent:after {
  * File Customizer
  */
 
-a.CanvasXpressFileCustomizer, div.CanvasXpressToolCustomizer {
+a.CanvasXpressFileCustomizer, div.CanvasXpressToolCustomizer, div.CanvasXpressFileCustomizer {
     border-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgb(170, 204, 246);
     border-style: solid;
@@ -1159,6 +1182,12 @@ a.CanvasXpressFileCustomizerActive, div.CanvasXpressToolCustomizerActive {
     position: relative;
     text-decoration: none;
     white-space: nowrap;
+}
+
+a.CanvasXpressFileCustomizer:hover, a.CanvasXpressFileCustomizerActive:hover {
+    border-color: rgb(170, 204, 246);
+    border-style: solid;
+    border-width: 1px;
 }
 
 img.CanvasXpressFileCustomizer, svg.CanvasXpressFileCustomizer {
@@ -3823,6 +3852,11 @@ div.CanvasXpress-ParentNode {
     display: table;
     padding: 0;
     */
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none;
 }
 
 /*
