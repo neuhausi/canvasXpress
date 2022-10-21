@@ -1846,7 +1846,7 @@ cXdashboard6 <- function() {
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
     topoJSON="https://www.canvasxpress.org/data/bc.json",
-    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list("2X2"),list("layoutCurrent" = 0,"layout" = "3X3")))
+    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list(list('2X2', 0))))
   )
 }
 
