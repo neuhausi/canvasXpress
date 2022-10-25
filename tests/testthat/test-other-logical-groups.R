@@ -4,7 +4,7 @@ vals  <- c(0.41,0.39,0.49,0.34,0.34,0.38)
 vars  <- c("QC_PercentDuplication")
 smps  <- c("1","2","3","4","5","6")
 data  <- as.data.frame(matrix(vals, nrow = 1, ncol = 6, byrow = TRUE, dimnames = list(vars, smps)))
-varx  <- c("PlatformType")
+varx  <- c("Imputed")
 valx  <- c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE)
 datx  <- as.data.frame(matrix(valx, nrow = 1, ncol = 6, byrow = TRUE, dimnames = list(varx, smps)))
 
@@ -14,22 +14,22 @@ annot_data <- datx %>%
     mutate(NumericVar  = 1.5:6.5,
            CategoryVar = c("A", "B", "A", "B", "A", "B"))
 
-# logical metadata only
-annot_data1 <- select(annot_data, PlatformType)
+# different scenarios of annotation data to send to CX
+annot_data_list <- list(
+    logical_only = select(annot_data, Imputed),
 
-# logical + numeric metadata -- we have to convert the logical field to character ("TRUE" and "FALSE")
-# to prevent CX from converting it to numeric (0 and 1)
-annot_data2 <- annot_data %>%
-    mutate(PlatformType = as.character(PlatformType)) %>%
-    select(PlatformType, NumericVar)
+    # logical + numeric metadata -- we have to convert the logical field to character ("TRUE" and "FALSE")
+    # to prevent CX from converting it to numeric (0 and 1)
+    logical_and_num = annot_data %>%
+        mutate(Imputed = as.character(Imputed)) %>%
+        select(Imputed, NumericVar),
 
-# logical + character metadata
-annot_data3 <- select(annot_data, PlatformType, CategoryVar)
+    logical_and_char = select(annot_data, Imputed, CategoryVar)
+)
 
-annot_data_list <- list(annot_data1, annot_data2, annot_data3)
-subtitle_list   <- list(NULL,
-                        "with additional numeric metadata",
-                        "with additional categorical metadata")
+subtitle_list <- list(logical_only     = NULL,
+                      logical_and_num  = "with additional numeric metadata",
+                      logical_and_char = "with additional categorical metadata")
 
 test_that("boxplot values are logical", {
     for (i in seq_along(annot_data_list)) {
@@ -38,8 +38,8 @@ test_that("boxplot values are logical", {
             smpAnnot         = annot_data_list[[i]],
             graphType        = "Boxplot",
             graphOrientation = "vertical",
-            groupingFactors  = list("PlatformType"),
-            colorBy          = "PlatformType",
+            groupingFactors  = list("Imputed"),
+            colorBy          = "Imputed",
             title            = "BoxPlot uses logical True and False",
             subtitle         = subtitle_list[[i]])
 
@@ -54,8 +54,8 @@ test_that("dotplot values are logical", {
             smpAnnot         = annot_data_list[[i]],
             graphType        = "Dotplot",
             graphOrientation = "vertical",
-            groupingFactors  = list("PlatformType"),
-            colorBy          = "PlatformType",
+            groupingFactors  = list("Imputed"),
+            colorBy          = "Imputed",
             title            = "DotPlot uses logical True and False",
             subtitle         = subtitle_list[[i]])
 
@@ -70,8 +70,8 @@ test_that("bar plot values are logical", {
             smpAnnot         = annot_data_list[[i]],
             graphType        = "Bar",
             graphOrientation = "vertical",
-            groupingFactors  = list("PlatformType"),
-            colorBy          = "PlatformType",
+            groupingFactors  = list("Imputed"),
+            colorBy          = "Imputed",
             title            = "Bar plot uses logical True and False",
             subtitle         = subtitle_list[[i]])
 
@@ -100,14 +100,12 @@ test_that("pre-calculated bar plot values are logical", {
             smpAnnot         = precalc_annot_list[[i]],
             graphType        = "Bar",
             graphOrientation = "vertical",
-            colorBy          = "PlatformType",
+            colorBy          = "Imputed",
             title            = "Pre-calculated bar plot uses logical True and False",
             subtitle         = subtitle_list[[i]])
 
         check_ui_test(result)
     }
-
-
 })
 
 test_that("histogram values are logical", {
@@ -128,6 +126,28 @@ test_that("histogram values are logical", {
             yAxisTitle     = "Frequency",
             citation       = "To view metadata, remove histogram before viewing table",
             afterRender    = list(list("createHistogram")))
+
+        check_ui_test(result)
+    }
+})
+
+test_that("scatter plot values are logical", {
+    scatter_data <- data %>%
+        t() %>%
+        as.data.frame() %>%
+        mutate(QC_Var2 = 1:6)
+
+    for (i in seq_along(annot_data_list)) {
+        result <- canvasXpress(
+            data             = scatter_data,
+            varAnnot         = annot_data_list[[i]],
+            graphType        = "Scatter2D",
+            shapeBy          = "Imputed",
+            title            = "Scatter plot uses logical True and False",
+            subtitle         = subtitle_list[[i]],
+            legendOrder      = list(Imputed = list("false", "true")),
+            shapeKey         = list(Imputed = list("true"  = "triangle",
+                                                   "false" = "circle")))
 
         check_ui_test(result)
     }
