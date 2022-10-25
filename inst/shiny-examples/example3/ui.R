@@ -16,11 +16,13 @@ fluidPage(
     ),
     fluidRow(
         column(width = 6,
+               style = "z-index:11000",
             selectizeInput(
                 "contrast",
                 "Select Contrast",
                 names(exData$contrasts))),
         column(width = 6,
+               style = "z-index:11000",
             uiOutput("selectGenes"))),
     fluidRow(
         column(width = 6,
@@ -30,6 +32,7 @@ fluidPage(
     br(), hr(),
     fluidRow(
         column(width = 6,
+               style = "z-index:11000",
             selectizeInput(
                 "compare",
                 "Select Comparison Contrast",
