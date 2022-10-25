@@ -362,7 +362,7 @@ canvasXpress <- function(data = NULL,
     attr(cx_object, 'TOJSON_ARGS') <- list(dataframe = dataframe,
                                            pretty    = pretty,
                                            digits    = digits)
-
+browser()
     htmlwidgets::createWidget(name = "canvasXpress",
                               cx_object,
                               width  = width,
