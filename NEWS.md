@@ -6,6 +6,9 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.40.6.1
+* Updated a test to avoid an error in debian due to changes in system messages for URL checking.
+
 ## v1.40.6
 * Updated CanvasXpress JS and CSS libraries to v40.6
 
