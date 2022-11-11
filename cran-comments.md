@@ -1,11 +1,6 @@
 ## Comments from Maintainer
 
-* Updated the underlying JS library to 1.40.6
-* Minor test updates
-
-There is one note we cannot get rid of on Fedora Linux as we have no control over availability of system 
-libraries: 'NOTE Skipping checking HTML validation: no command "tidy" found'
-
+* Updated tests to accomodate a change in the operating system errors in debian
 
 ---  
 
