@@ -1,10 +1,8 @@
 ## Comments from Maintainer
 
-* Updated the underlying JS library to 1.40.6
-* Minor test updates
+* Updated tests to accomodate a change in the operating system errors in debian
 
-There is one note we cannot get rid of on Fedora Linux as we have no control over availability of system 
-libraries: 'NOTE Skipping checking HTML validation: no command "tidy" found'
+There may be a NOTE as the version contains 4 components - this is necessary to maintain sync with the underlying version of the JS library which is 40.6, so is preferred over incrementing the next number as users are used to us following the JS library version that is embedded in the htmlwidget.
 
 
 ---  
