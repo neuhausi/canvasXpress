@@ -1749,6 +1749,17 @@ cXcorrelation3 <- function() {
   )
 }
 
+cXcorrelation4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mtcarst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Heatmap",
+    title="Heatmap - Correlation",
+    afterRender=list(list("createHeatmapCorrelation"), list("clusterVariables"), list("clusterSamples"))
+  )
+}
+
 cXdashboard1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-titanic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2197,7 +2208,9 @@ cXdotplot1 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     lineType="spline",
+    showSmpOverlaysLegend=TRUE,
     smpLabelRotate=45,
+    smpOverlayProperties=list(Factor4=list(color="blue", showLegend=TRUE, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=TRUE, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=TRUE, thickness=50, type="Bar")),
     smpOverlays=list("Factor1", "Factor2", "Factor3"),
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -3201,6 +3214,8 @@ cXheatmap6 <- function() {
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
     samplesClustered=TRUE,
+    smpOverlayProperties=list(V1=list(color="brown", position="right", thickness=120, type="Boxplot"), V11=list(color="green", position="right", thickness=120, type="Boxplot"), V35=list(color="purple", position="right", thickness=120, type="Boxplot")),
+    smpOverlays=list("V1", "V11", "V35"),
     title="R Heatmap",
     variablesClustered=TRUE
   )
@@ -3338,13 +3353,14 @@ cXheatmap12 <- function() {
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
-    showTransition=FALSE,
+    showSmpOverlaysLegend=FALSE,
+    showVarOverlaysLegend=FALSE,
     smpLabelScaleFontFactor=1.1,
-    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Boolean=list(position="left"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
+    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=TRUE, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=TRUE, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=TRUE, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     varLabelRotate=45,
     varLabelScaleFontFactor=1.7,
-    varOverlayProperties=list(Cold=list(color="blue", position="bottom", thickness=50, type="StackedPercent"), Conc=list(position="top", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", thickness=30, type="Increase"), Even=list(position="bottom", thickness=50, type="Bar"), Female=list(position="top", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", thickness=50, type="StackedPercent"), Male=list(position="top", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", thickness=50, type="Dotplot"), Odd=list(position="bottom", thickness=50, type="BarLine"), Site=list(position="top", type="Default"), Ugly=list(color="black", position="bottom", thickness=50, type="Dotplot")),
+    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=TRUE, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=TRUE, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=TRUE, thickness=50, type="Bar"), Female=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=TRUE, thickness=50, type="BarLine"), Site=list(position="top", showLegend=TRUE, type="Default"), Ugly=list(color="black", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot")
   )
 }
@@ -3369,7 +3385,7 @@ cXheatmap13 <- function() {
     showSmpOverlaysLegend=TRUE,
     showVarOverlaysLegend=TRUE,
     smpDendrogramPosition="right",
-    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", showLegend=TRUE, thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
+    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
     smpOverlays=list("Drug", "-", "Dose", "CellType", "-", "Time"),
     smpTitleLabelPosition="right",
     varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=TRUE, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
@@ -6910,6 +6926,28 @@ cXtreemap3 <- function() {
     widthFactor=4,
     xAxisTicksMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
+  )
+}
+
+cXupset1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-upsetMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-upsetMovies-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Heatmap",
+    heatmapType="upset"
+  )
+}
+
+cXupset2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-upsetMutations-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Heatmap",
+    heatmapType="upset"
   )
 }
 
