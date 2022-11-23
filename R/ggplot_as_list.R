@@ -212,8 +212,10 @@ gg_mapping <- function(o) {
   r = list();
   m = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'sample')
   s = as.vector(NULL)
+  e = TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
+      e = FALSE
       l = rlang::as_label(o$mapping[[i]])
       f = regexpr("factor", l)[1]
       if (f > 0) {
@@ -243,7 +245,11 @@ gg_mapping <- function(o) {
     r$asVariableFactors = unique(s)
     r$asSampleFactors = unique(s)
   }
-  r
+  if (e) {
+    gg_mapping(o$layers[[1]])
+  } else {
+    r
+  }
 }
 
 gg_proc_layer <- function (l) {
