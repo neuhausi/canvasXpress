@@ -1,11 +1,8 @@
 ## Comments from Maintainer
 
-* Updated the underlying JS library to 1.40.6
-* Minor test updates
+* Updated tests to accommodate the upcoming htmlWidgets 1.6 release per Carson's PR
 
-There is one note we cannot get rid of on Fedora Linux as we have no control over availability of system 
-libraries: 'NOTE Skipping checking HTML validation: no command "tidy" found'
-
+There may be a NOTE on some builds as the version contains 4 components - this is necessary to maintain sync with the underlying version of the JS library which is 40.6, so is preferred over incrementing to the next number as users are used to us following the JS library version that is embedded in the htmlwidget.
 
 ---  
 
@@ -14,14 +11,14 @@ libraries: 'NOTE Skipping checking HTML validation: no command "tidy" found'
 
 RStudio Server Pro (ubuntu 18.04.2)  
 
-* R 3.6.3
 * R 4.0.5
 * R 4.1.2
+* R 4.2.2
 
 CircleCI
 
 * R 4.0.5
-* R 4.1.2
+* R 4.2.2
 
 WinBuilder
 
