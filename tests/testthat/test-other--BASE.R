@@ -43,8 +43,7 @@ test_that("Missing Data", {
 })
 
 test_that("Incorrect Data Types", {
-    expect_error(canvasXpress(data = "'Test'"),
-                 regexp = "[Couldn\'t|Could not] resolve.*")
+    expect_error(canvasXpress(data = "'Test'"))
     expect_error(canvasXpress(data = c(1, 2, 3)),
                  regexp = "data must be a data.frame, matrix, or named list")
 })
@@ -88,7 +87,10 @@ test_that("Shiny Examples", {
                  regexp = "Valid examples are: 'example1', 'example2', 'example3'")
 })
 
+
 test_that("Shiny Input", {
+    skip_if_not_installed("htmlwidgets", "1.6")
+
     expect_equal(as.character(canvasXpressOutput("test_id")),
-                 '<div id=\"test_id\" style=\"width:100%; height:400px; \" class=\"canvasXpress html-widget html-widget-output\"></div>')
+                 '<div class="canvasXpress html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="test_id" style="width:100%;height:400px;"></div>')
 })

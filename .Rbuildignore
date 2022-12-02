@@ -12,3 +12,4 @@
 ^misc$
 ^\.circleci$
 ^CRAN-SUBMISSION$
+^_ARCHIVE

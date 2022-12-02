@@ -6,6 +6,12 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.40.6-2
+* Updated a test to avoid errors with the release of HTMLwidgets 1.6 (Carson's PR)
+
+## v1.40.6-1
+* Updated a test to avoid an error in debian due to changes in system messages for URL checking.
+
 ## v1.40.6
 * Updated CanvasXpress JS and CSS libraries to v40.6
 
