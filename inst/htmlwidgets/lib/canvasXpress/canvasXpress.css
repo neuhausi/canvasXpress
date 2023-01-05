@@ -741,6 +741,493 @@ span.CanvasXpressBin::selection {
     margin: 0px !important;
 }
 
+/* BEGIN OF CUSTOMIZER CSS */
+
+/*
+ * CanvasXpress Customizer
+ */
+
+.customizerPanel {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    font: normal 16px arial, tahoma, sans-serif;
+}
+
+.customizerLeftPanelTop {
+    grid-area: 1 / 1 / 2 / 2;
+    background: rgb(83,105,255);
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-top-left-radius: 10px;
+}
+
+.customizerLeftPanelMiddle {
+    grid-area: 2 / 1 / 3 / 2;
+    background: rgba(0,0,0,0);
+    border-right: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerLeftPanelBottom {
+    grid-area: 3 / 1 / 4 / 2;
+    background: rgb(83,105,255);
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-bottom-left-radius: 10px;
+}
+
+.customizerRightPanel {
+    grid-area: 1 / 2 / 4 / 3;
+    background: rgba(0,0,0,0);
+    border-right: 1px solid rgb(83, 105, 255) !important;
+}
+
+/*
+ * CanvasXpress Customizer Left Items
+ */
+
+.customizerLeftItem {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 4px;
+    align-items: center;
+}
+
+.customizerLeftItemTop {
+    grid-area: 1 / 1 / 2 / 2;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.customizerLeftItemBottom {
+    grid-area: 2 / 1 / 3 / 2;
+    margin: auto;
+}
+
+.customizerLeftIcon {
+    padding: 5px;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 4px;
+}
+
+/*
+ * CanvasXpress Customizer Right Items
+ */
+
+.customizerRightItem {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 2fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.customizerRightItemTop {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.customizerRightItemBottom {
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+/*
+ * CanvasXpress Customizer Right Item Header
+ */
+
+.customizerRightItemHeader {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 2fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background: rgba(83,105,255,0.1);
+}
+
+.customizerRightItemHeaderTop {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+}
+
+.customizerRightItemHeaderBottom {
+    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    align-items: center;
+}
+
+.customizerRightItemHeaderMain {
+    grid-area: 1 / 1 / 3 / 2;
+    display: flex;
+    align-items: center;
+}
+
+/*
+ * CanvasXpress Customizer Right Item Sub Header
+ */
+
+.customizerRightItemSubHeader {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background: rgba(83,105,255,0.1);
+}
+
+.customizerRightItemSubHeaderRow {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+}
+
+/*
+ * CanvasXpress Customizer Right Item Launcher
+ */
+
+.customizerRightItemLauncher {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-top: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerRightItemLauncherNB {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border: none !important;
+}
+
+.customizerRightItemLauncherLeft {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemLauncherRight {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    align-items: center;
+}
+
+/*
+ * CanvasXpress Customizer Right Item Input
+ */
+
+.customizerRightItemInput {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.customizerRightItemInputTopLeft {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+}
+
+.customizerRightItemInputTopRight {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    align-items: center;
+}
+
+.customizerRightItemInputBottom {
+    grid-area: 2 / 1 / 3 / 3;
+    display: flex;
+    align-items: center;
+}
+
+/*
+ * CanvasXpress Customizer Right Item Cols
+ */
+
+.customizerRightItemFullCol {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemHalfCol {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemThirdCol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemQuarterCol {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemFifthCol {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemSixthCol {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    margin: 5px;
+    height: fit-content;
+}
+
+.customizerRightItemCol1 {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemCol2 {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemCol3 {
+    grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemCol4 {
+    grid-area: 1 / 4 / 2 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemCol5 {
+    grid-area: 1 / 5 / 2 / 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemCol6 {
+    grid-area: 1 / 6 / 2 / 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemColMid {
+    grid-area: 1 / 3 / 2 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+ * Other Customizer classes
+ */
+
+.customizerContainer {
+    height: fit-content;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 4px;
+    margin: 10px;
+    float: left;
+}
+
+.customizerContainerRaw {
+    border: none !important;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerWrangling {
+    height: 102px;
+    margin: 0px 0px 10px 10px;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 4px;
+    overflow-y: hidden;
+}
+
+.customizerMask {
+    background: rgba(0, 0, 0, 0) !important;
+    border: 0px none !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px !important;
+    width: 100%;
+    height: 20px;
+}
+
+.customizerNumeric,
+.customizerString,
+.customizerUnique,
+.customizerNumericActive,
+.customizerStringActive,
+.customizerUniqueActive {
+    border: 1px solid rgb(83, 105, 255);
+    border-radius: 5px;
+    cursor: move;
+    margin: 3px;
+    padding: 3px;
+    word-wrap: normal;
+    display: inline-block;
+    text-align: start;
+    max-width: 150px;
+    overflow: hidden;
+    position: relative;
+}
+
+.customizerNumeric {
+    color: rgb(34, 34, 34);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.customizerString {
+    color: rgb(0, 255, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.customizerUnique {
+    color: rgb(0, 0, 255);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.customizerNumericActive,
+.customizerStringActive,
+.customizerUniqueActive {
+    background: rgba(83, 105, 255, 0.1);
+}
+
+.customizerListNumeric,
+.customizerListString,
+.customizerListUnique,
+.customizerListNumericActive,
+.customizerListStringActive,
+.customizerListUniqueActive {
+    border: none;
+    cursor: move;
+    color: rgb(34, 34, 34);
+    margin: 0;
+    padding: 0;
+    width: 350px;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: start;
+    overflow: hidden;
+    position: relative;
+}
+
+.customizerListNumeric,
+.customizerListNumericActive {
+    color: rgb(34, 34, 34);
+}
+
+.customizerListString,
+.customizerListStringActive {
+    color: rgb(0, 255, 0);
+}
+
+.customizerListUnique,
+.customizerListUniqueActive {
+    color: rgb(0, 0, 255);
+}
+
+.customizerListNumeric,
+.customizerListString,
+.customizerListUnique {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.customizerListNumericActive,
+.customizerListStringActive,
+.customizerListUniqueActive {
+    background: rgba(83, 105, 255, 0.1);
+}
+
+.customizerListNumeric:before,
+.customizerListNumericActive:before {
+    font: normal 10px courier;
+    color: rgb(83, 105, 255);
+    content: "\00a0#\00a0\00a0";
+}
+
+.customizerListString:before,
+.customizerListStringActive:before {
+    font: normal 10px courier;
+    color: rgb(83, 105, 255);
+    content: "Abc\00a0";
+}
+
+.customizerListUnique:before,
+.customizerListUniqueActive:before {
+    font: normal 10px courier;
+    color: rgb(83, 105, 255);
+    content: "Unq\00a0";
+}
+
+.customizerActive::selection,
+.customizerMask::selection,
+.customizerNumeric::selection,
+.customizerString::selection,
+.customizerUnique::selection,
+.customizerListNumeric::selection,
+.customizerListString::selection,
+.customizerListUnique::selection {
+    background: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 0;
+}
+
+/* END OF CUSTOMIZER CSS */
+
 /*
  * CanvasXpressCustomizer
  */
