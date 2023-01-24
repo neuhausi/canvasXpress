@@ -2,8 +2,9 @@
 
 /*
 * Favorite Colors
- * rgb(51, 122, 183) - #337ab7
- * rgb(83, 105, 255) - #5369ff
+ * rgb(51,  122,  183) - #337ab7
+ * rgb(76,  159,  224) - #4c9fe0
+ * rgb(83,  105,  255) - #5369ff
  */
 
 /*
@@ -742,26 +743,44 @@ span.CanvasXpressBin::selection {
 }
 
 /* BEGIN OF CUSTOMIZER CSS */
+/* https://cssgrid-generator.netlify.app/ */
 
 /*
  * CanvasXpress Customizer
  */
 
-.customizerPanel {
+svg {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.customizerPanelLeft {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr 8fr 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 100%;
-    position: absolute;
-    z-index: 1;
-    font: normal 16px arial, tahoma, sans-serif;
+    position: fixed;
+    z-index: 10001;
+    /*height: calc(100% - 5px);*/
+    background-color: rgb(255,255,255);
+    font-family: arial, tahoma, sans-serif;
+    font-weight: normal;
 }
 
 .customizerLeftPanelTop {
     grid-area: 1 / 1 / 2 / 2;
-    background: rgb(83,105,255);
+    background: rgb(83, 105, 255);
     border: 1px solid rgb(83, 105, 255) !important;
     border-top-left-radius: 10px;
 }
@@ -769,27 +788,40 @@ span.CanvasXpressBin::selection {
 .customizerLeftPanelMiddle {
     grid-area: 2 / 1 / 3 / 2;
     background: rgba(0,0,0,0);
-    border-right: 1px solid rgb(83, 105, 255) !important;
 }
 
 .customizerLeftPanelBottom {
     grid-area: 3 / 1 / 4 / 2;
-    background: rgb(83,105,255);
+    background: rgb(83, 105, 255);
     border: 1px solid rgb(83, 105, 255) !important;
     border-bottom-left-radius: 10px;
 }
 
-.customizerRightPanel {
-    grid-area: 1 / 2 / 4 / 3;
+.customizerLeftPanelTop .customizerLeftItem:hover svg,
+.customizerLeftPanelTop .customizerLeftItemActive svg,
+.customizerLeftPanelBottom .customizerLeftItem:hover svg,
+.customizerLeftPanelBottom .customizerLeftItemActive svg {
+    border: 1px solid rgb(255, 255, 255) !important;
     background: rgba(0,0,0,0);
+}
+
+.customizerRightPanel {
+    background: rgba(0,0,0,0);
+    border-left: 1px solid rgb(83, 105, 255) !important;
     border-right: 1px solid rgb(83, 105, 255) !important;
+    position: absolute;
+    z-index: 10000;
+    top: 0px;
+    font-family: arial, tahoma, sans-serif;
+    font-weight: normal;
 }
 
 /*
  * CanvasXpress Customizer Left Items
  */
 
-.customizerLeftItem {
+.customizerLeftItem,
+.customizerLeftItemActive {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 4fr;
@@ -797,8 +829,18 @@ span.CanvasXpressBin::selection {
     grid-row-gap: 0px;
     margin: 5px;
     border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
+    border-radius: 5px;
     align-items: center;
+}
+
+.customizerLeftItem:hover,
+.customizerLeftItemActive {
+    background: rgba(83, 105, 255,0.1);
+}
+
+.customizerLeftItem:hover svg,
+.customizerLeftItemActive svg {
+    background: rgb(255,255,255);
 }
 
 .customizerLeftItemTop {
@@ -815,7 +857,7 @@ span.CanvasXpressBin::selection {
 .customizerLeftIcon {
     padding: 5px;
     border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 /*
@@ -828,14 +870,65 @@ span.CanvasXpressBin::selection {
     grid-template-rows: 3fr 2fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 5px;
+    width: 95%;
 }
 
 .customizerRightItemTop {
     grid-area: 1 / 1 / 2 / 2;
+    padding-top: 5px;
+    margin: auto;
 }
 
 .customizerRightItemBottom {
+    display: grid;
     grid-area: 2 / 1 / 3 / 2;
+    margin: auto;
+}
+
+/*
+ * CanvasXpress Customizer Right Items Comb
+ */
+
+.customizerRightItemCombo {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-top: 1px solid rgb(83, 105, 255);
+}
+
+.customizerRightItemComboNB {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border: none !important;
+}
+
+.customizerRightItemComboLeft {
+    grid-area: 1 / 1 / 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemComboTopRight {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customizerRightItemComboBottomRight {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-bottom: 2px;
 }
 
 /*
@@ -845,10 +938,25 @@ span.CanvasXpressBin::selection {
 .customizerRightItemHeader {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 5fr 2fr;
+    grid-template-rows: 2fr 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    background: rgba(83,105,255,0.1);
+    background: rgba(83, 105, 255,0.1);
+    color: rgb(34, 34, 34);
+    border-bottom: 1px solid rgb(83, 105, 255) !important;
+    padding-left: 5px;
+}
+
+.customizerRightItemHeaderNB {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background: rgba(83, 105, 255,0.1);
+    color: rgb(34, 34, 34);
+    border-bottom: none !important;
+    padding-left: 5px;
 }
 
 .customizerRightItemHeaderTop {
@@ -861,6 +969,7 @@ span.CanvasXpressBin::selection {
     grid-area: 2 / 1 / 3 / 2;
     display: flex;
     align-items: center;
+    padding-left: 10px;
 }
 
 .customizerRightItemHeaderMain {
@@ -879,13 +988,21 @@ span.CanvasXpressBin::selection {
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    background: rgba(83,105,255,0.1);
+    background: rgba(83, 105, 255,0.1);
 }
 
 .customizerRightItemSubHeaderRow {
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     align-items: center;
+}
+
+.customizerRightItemSubHeaderRaw {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 5px;
+    background-color: rgba(83, 105, 255,0.1);
 }
 
 /*
@@ -910,17 +1027,24 @@ span.CanvasXpressBin::selection {
     border: none !important;
 }
 
+.customizerRightItemLauncher:hover,
+.customizerRightItemLauncherNB:hover {
+    background-color: rgba(83, 105, 255,0.1);
+}
+
 .customizerRightItemLauncherLeft {
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(83, 105, 255,0.1);
 }
 
 .customizerRightItemLauncherRight {
     grid-area: 1 / 2 / 2 / 3;
     display: flex;
     align-items: center;
+    padding-left: 5px;
 }
 
 /*
@@ -929,7 +1053,7 @@ span.CanvasXpressBin::selection {
 
 .customizerRightItemInput {
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 1fr 6fr;
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -987,7 +1111,7 @@ span.CanvasXpressBin::selection {
     height: fit-content;
 }
 
-.customizerRightItemQuarterCol {
+.customizerRightItemFourthCol {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
@@ -1064,6 +1188,22 @@ span.CanvasXpressBin::selection {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 5px;
+}
+
+.customizerRightItemSelect > select:hover,
+.customizerRightItemTextArea > svg:hover,
+.customizerRightItemTextArea > textarea:hover,
+.customizerContainerRaw > svg:hover,
+.customizerRightItemCol1 > svg:hover,
+.customizerRightItemCol2 > svg:hover,
+.customizerRightItemCol3 > svg:hover,
+.customizerRightItemCol4 > svg:hover,
+.customizerRightItemCol5 > svg:hover,
+.customizerRightItemCol6 > svg:hover,
+.customizerRightItem:hover {
+    background-color: rgba(83, 105, 255,0.1);
 }
 
 /*
@@ -1073,7 +1213,7 @@ span.CanvasXpressBin::selection {
 .customizerContainer {
     height: fit-content;
     border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
+    border-radius: 5px;
     margin: 10px;
     float: left;
 }
@@ -1090,8 +1230,13 @@ span.CanvasXpressBin::selection {
     height: 102px;
     margin: 0px 0px 10px 10px;
     border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
-    overflow-y: hidden;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.customizerWrangling:hover {
+    border: 1px dashed rgb(255,0,0) !important;
 }
 
 .customizerMask {
@@ -1108,10 +1253,7 @@ span.CanvasXpressBin::selection {
 
 .customizerNumeric,
 .customizerString,
-.customizerUnique,
-.customizerNumericActive,
-.customizerStringActive,
-.customizerUniqueActive {
+.customizerUnique {
     border: 1px solid rgb(83, 105, 255);
     border-radius: 5px;
     cursor: move;
@@ -1140,23 +1282,14 @@ span.CanvasXpressBin::selection {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.customizerNumericActive,
-.customizerStringActive,
-.customizerUniqueActive {
-    background: rgba(83, 105, 255, 0.1);
-}
-
 .customizerListNumeric,
 .customizerListString,
-.customizerListUnique,
-.customizerListNumericActive,
-.customizerListStringActive,
-.customizerListUniqueActive {
+.customizerListUnique {
     border: none;
     cursor: move;
     color: rgb(34, 34, 34);
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 3px;
     width: 350px;
     white-space: nowrap;
     display: inline-block;
@@ -1165,18 +1298,15 @@ span.CanvasXpressBin::selection {
     position: relative;
 }
 
-.customizerListNumeric,
-.customizerListNumericActive {
+.customizerListNumeric {
     color: rgb(34, 34, 34);
 }
 
-.customizerListString,
-.customizerListStringActive {
+.customizerListString {
     color: rgb(0, 255, 0);
 }
 
-.customizerListUnique,
-.customizerListUniqueActive {
+.customizerListUnique {
     color: rgb(0, 0, 255);
 }
 
@@ -1186,34 +1316,30 @@ span.CanvasXpressBin::selection {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.customizerListNumericActive,
-.customizerListStringActive,
-.customizerListUniqueActive {
+.customizerListNumeric:hover,
+.customizerListString:hover,
+.customizerListUnique:hover {
     background: rgba(83, 105, 255, 0.1);
 }
 
-.customizerListNumeric:before,
-.customizerListNumericActive:before {
+.customizerListNumeric:before {
     font: normal 10px courier;
     color: rgb(83, 105, 255);
     content: "\00a0#\00a0\00a0";
 }
 
-.customizerListString:before,
-.customizerListStringActive:before {
+.customizerListString:before {
     font: normal 10px courier;
     color: rgb(83, 105, 255);
     content: "Abc\00a0";
 }
 
-.customizerListUnique:before,
-.customizerListUniqueActive:before {
+.customizerListUnique:before {
     font: normal 10px courier;
     color: rgb(83, 105, 255);
     content: "Unq\00a0";
 }
 
-.customizerActive::selection,
 .customizerMask::selection,
 .customizerNumeric::selection,
 .customizerString::selection,
@@ -1226,454 +1352,60 @@ span.CanvasXpressBin::selection {
     padding: 0;
 }
 
-/* END OF CUSTOMIZER CSS */
-
-/*
- * CanvasXpressCustomizer
- */
-
-div.CanvasXpressCustomizerContainer {
-    background-color: rgba(255, 255, 255, 0.95);
-    float: left;
-    margin: 0;
-}
-
-div.CanvasXpressCustomizerContainerActive {
-    background: rgba(83, 105, 255, 0.1);
-    float: left;
-    margin: 0;
-}
-
-div.CanvasXpressCustomizerContainerActive::last-child {
-    border: none;
-}
-
-/*
- * Customizer Left Panel
- */
-
-div.CanvasXpressCustomizerLeftPanel {
-    border-right: 1px solid rgb(83, 105, 255) !important;
-    background-color: rgba(255, 255, 255, 0.95);
-    float: left;
-    display: grid;
-}
-
-a.CanvasXpressCustomizerLeft,
-a.CanvasXpressCustomizerLeftActive,
-a.CanvasXpressCustomizerLeftActive:hover {
-    border-style: solid;
-    border-width: 1px;
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 5px;
-    display: flex;
-    align-items: center;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none !important;
-    white-space: nowrap;
-    border-radius: 5px;
-}
-
-a.CanvasXpressCustomizerLeft {
-    border-color: rgb(83, 105, 255);
-}
-
-a.CanvasXpressCustomizerLeftActive,
-a.CanvasXpressCustomizerLeftActive:hover {
-    background: rgba(83, 105, 255, 0.1);
-    border-color: rgb(83, 105, 255);
-}
-
-svg.CanvasXpressCustomizerLeft {
-    background-position: center;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 5px;
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    font: normal 12px arial, tahoma, sans-serif;
-    height: 24px;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px !important;
-    padding: 5px;
-    position: absolute;
-    vertical-align: top;
-    width: 24px;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-span.CanvasXpressCustomizerLeft {
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    font: normal 16px arial, tahoma, sans-serif;
-    line-height: 28px;
-    list-style: none;
-    white-space: nowrap;
-    position: relative;
-    margin: auto;
-}
-
-/*
- * Customizer Right Panel
- */
-
-div.CanvasXpressCustomizerRightPanel {
-    top: 0;
-    border-left: 5px solid rgb(83, 105, 255) !important;
-    border-right: 5px solid rgb(83, 105, 255) !important;
-    background-color: rgba(255, 255, 255, 0.95);
-    float: left;
-}
-
-div.CanvasXpressCustomizerRightContainer {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
-    margin: 9px 0 0 9px;
-}
-
-div.CanvasXpressCustomizerRightContainerActive {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px dashed rgb(255, 0, 0) !important;
-    border-radius: 4px;
-    margin: 9px 0 0 9px;
-}
-
-img.CanvasXpressCustomizerRightContainer,
-svg.CanvasXpressCustomizerRightContainer {
-    background-position: center;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    list-style: none;
-    margin: 10px 0px 0px 10px !important;
-    position: relative;
-    padding: 2px;
-    vertical-align: top;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-div.CanvasXpressCustomizerRight {
-    background-color: rgb(238, 238, 238);
-    border-top: 1px solid rgb(83, 105, 255) !important;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: auto;
-    outline-style: none;
-    outline-width: 0px;
-    text-decoration: none;
-    white-space: nowrap;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    display: flex;
-}
-
-img.CanvasXpressCustomizerRight,
-svg.CanvasXpressCustomizerRight {
-    background-position: center;
-    border: 0px none !important;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    height: 24px;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px !important;
-    position: relative;
-    padding: 0px;
-    vertical-align: top;
-    width: 24px;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-img.CanvasXpressCustomizerRightB,
-svg.CanvasXpressCustomizerRightB {
-    background-position: center;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    height: 24px;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px !important;
-    position: relative;
-    padding: 0px;
-    vertical-align: top;
-    width: 24px;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-span.CanvasXpressCustomizerRight {
-    color: rgb(34, 34, 34);
-    font: normal 16px arial, tahoma, sans-serif;
-    line-height: 28px;
-    list-style: none;
-    white-space: nowrap;
-    position: relative;
-    height: 28px;
-}
-
-span.CanvasXpressCustomizerRightHelp {
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    list-style: none;
-    white-space: normal;
-    position: relative;
-}
-
-a.CanvasXpressCustomizerRight {
-    color: rgb(34, 34, 34);
-    margin-right: 10px;
-    margin-left: 15px;
-}
-
-/**
- * Customizer Widgets
- */
-
-/*
- * Header
- */
-
-a.CanvasXpressCustomizerHeader {
-    text-decoration: none;
-}
-
-div.CanvasXpressCustomizerHeader {
-    background: rgba(83, 105, 255, 0.1);
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: auto;
-    outline-style: none;
-    outline-width: 0px;
-    white-space: nowrap;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    display: flex;
-}
-
-span.CanvasXpressCustomizerHeader {
-    color: rgb(34, 34, 34);
-    font: normal 16px arial, tahoma, sans-serif;
-    line-height: 28px;
-    list-style: none;
-    white-space: nowrap;
-    position: relative;
-    height: 28px;
-}
-
-svg.CanvasXpressCustomizerHeader {
-    background-position: center;
-    border: 0px none !important;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    height: 24px;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px !important;
-    position: relative;
-    padding: 0px;
-    vertical-align: top;
-    width: 24px;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-span.CanvasXpressCustomizerHeaderHelp {
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    list-style: none;
-    white-space: normal;
-    position: relative;
-}
-
-/*
- * Call Customizer
- */
-
-a.CanvasXpressCallCustomizer,
-div.CanvasXpressCallCustomizer {
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-a.CanvasXpressCallCustomizerActive {
-    background: rgba(83, 105, 255, 0.1);
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-img.CanvasXpressCallCustomizer,
-svg.CanvasXpressCallCustomizer {
-    background-position: center;
-    border: 0px none !important;
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    font: normal 12px arial, tahoma, sans-serif;
-    height: 24px;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px !important;
-    padding: 0px;
-    position: relative;
-    vertical-align: top;
-    width: 24px;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-span.CanvasXpressCallCustomizer {
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    font: normal 16px arial, tahoma, sans-serif;
-    line-height: 28px;
-    list-style: none;
-    white-space: nowrap;
-    position: relative;
-}
-
-/*
- * Button
- */
-div.CanvasXpressButtonCustomizer {
-    float: left;
-    position: relative;
-    background: rgba(83, 105, 255, 0.1);
-}
-
-/*
- * Options Customizer
- */
-
-div.CanvasXpressOptionsCustomizer {
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    float: left;
-}
-
-img.CanvasXpressOptionsCustomizer,
-svg.CanvasXpressOptionsCustomizer {
-    background-position: center;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 4px;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    list-style: none;
-    margin: 10px 0px 0px 10px !important;
-    position: relative;
-    padding: 2px;
-    vertical-align: top;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
-/*
- * Axes Customizer
- */
-
-div.CanvasXpressAxesCustomizer {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgb(83, 105, 255);
-    border-radius: 4px;
-    box-sizing: border-box;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    margin: 9px 0 0 9px;
-    white-space: normal;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-img.CanvasXpressAxesCustomizer,
-svg.CanvasXpressAxesCustomizer {
-    background-position: center;
-    border: 0px none !important;
-    color: rgb(34, 34, 34);
-    font: normal 12px arial, tahoma, sans-serif;
-    list-style: none;
-    position: relative;
-    padding: 0px;
-    vertical-align: top;
-    white-space: nowrap;
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-}
-
 /*
  * Search Customizer
  */
-input.CanvasXpressSearchCustomizer {
+
+input.customizerSearch {
     margin: 9px;
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid rgb(83, 105, 255);
     color: rgb(34, 34, 34);
     cursor: default;
-    font: normal 16px arial, tahoma, sans-serif;
+    font: inherit;
     height: 40px;
     border-radius: 4px;
     float: left;
     clear: left;
 }
 
-select.CanvasXpressSearchCustomizer {
+input.customizerSearch[type="color"] {
+    padding: 0;
+    overflow: hidden;
+}
+input.customizerSearch:not([type="color"]) {
+    padding: 5px;
+}
+
+select.customizerSearch {
     margin: 9px;
     background-color: rgba(255, 255, 255, 0.95);
     border: 1px solid rgb(83, 105, 255);
     color: rgb(34, 34, 34);
     cursor: default;
-    font: normal 16px arial, tahoma, sans-serif;
+    font: inherit;
     padding-left: 3px;
     border-radius: 4px;
     float: left;
     clear: left;
 }
 
-span.CanvasXpressSearchCustomizer {
+span.customizerSearch {
     color: rgb(34, 34, 34);
-    font: normal 16px arial, tahoma, sans-serif;
+    font: inherit;
+    line-height: 20px;
+    list-style: none;
+    position: relative;
+    margin: 5px 5px 0 15px;
+    float: left;
+    clear: left;
+}
+
+span.customizerSearchSelect,
+span.customizerSearchDescription,
+span.customizerSearchCategory,
+span.customizerSearchCurrent {
+    font: inherit;
     line-height: 28px;
     list-style: none;
     position: relative;
@@ -1681,461 +1413,66 @@ span.CanvasXpressSearchCustomizer {
     margin-top: 5px;
     float: left;
     clear: left;
+    left: 15px;
 }
 
-span.CanvasXpressSearchCustomizerSelect,
-span.CanvasXpressSearchCustomizerDescription,
-span.CanvasXpressSearchCustomizerCategory,
-span.CanvasXpressSearchCustomizerCurrent {
-    font: normal 16px arial, tahoma, sans-serif;
-    line-height: 28px;
-    list-style: none;
-    position: relative;
-    height: 28px;
-    margin-top: 5px;
-    float: left;
-    clear: left;
-}
-
-span.CanvasXpressSearchCustomizerSelect {
+span.customizerSearchSelect {
     color: rgb(34, 34, 34);
 }
 
-span.CanvasXpressSearchCustomizerDescription,
-span.CanvasXpressSearchCustomizerCategory {
+span.customizerSearchDescription,
+span.customizerSearchCategory {
     color: rgb(83, 105, 255);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-span.CanvasXpressSearchCustomizerCurrent {
+span.customizerSearchCurrent {
     color: rgb(83, 105, 255);
 }
 
-span.CanvasXpressSearchCustomizerSelect:before {
+span.customizerSearchSelect:before {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: "Select property (";
 }
 
-span.CanvasXpressSearchCustomizerSelect:after {
+span.customizerSearchSelect:after {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: ")";
 }
 
-span.CanvasXpressSearchCustomizerDescription:before {
+span.customizerSearchDescription:before {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: "Description [ ";
 }
 
-span.CanvasXpressSearchCustomizerCategory:before {
+span.customizerSearchCategory:before {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: "Category [ ";
 }
 
-span.CanvasXpressSearchCustomizerDescription:after,
-span.CanvasXpressSearchCustomizerCategory:after {
+span.customizerSearchDescription:after,
+span.customizerSearchCategory:after {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: " ]";
 }
 
-span.CanvasXpressSearchCustomizerCurrent:before {
+span.customizerSearchCurrent:before {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: "Current Value [ ";
 }
 
-span.CanvasXpressSearchCustomizerCurrent:after {
+span.customizerSearchCurrent:after {
     color: rgb(34, 34, 34);
     font-weight: bold;
     content: " ]";
-}
-
-/*
- * Tool Customizer
- */
-
-a.CanvasXpressToolCustomizer {
-    text-decoration: none;
-}
-
-div.CanvasXpressToolCustomizer {
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-div.CanvasXpressToolCustomizerActive {
-    background: rgba(83, 105, 255, 0.1);
-    color: rgb(34, 34, 34);
-    cursor: pointer;
-    display: block;
-    font: normal 12px arial, tahoma, sans-serif;
-    line-height: 24px;
-    list-style: none;
-    margin: 0px;
-    outline-style: none;
-    outline-width: 0px;
-    position: relative;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-/*
- * Data Customizer
- */
-
-div.CanvasXpressCustomizerPanel {
-    font: normal 16px arial, tahoma, sans-serif;
-    margin: 10px;
-    float: left;
-}
-
-span.CanvasXpressCustomizerPanel {
-    border-width: 1px 1px 0 1px;
-    border-color: rgb(83, 105, 255);
-    border-style: solid;
-    border-radius: 5px 5px 0 0;
-    padding: 8px;
-    font: normal 16px arial, tahoma, sans-serif;
-}
-
-span.CanvasXpressCustomizerPanelActive {
-    border-bottom-width: 3px;
-    border-left-color: rgb(83, 105, 255);
-    border-top-color: rgb(83, 105, 255);
-    border-right-color: rgb(83, 105, 255);
-    border-bottom-color: rgb(238, 238, 238);
-    border-style: solid;
-    border-radius: 5px 5px 0 0;
-    padding: 8px;
-    font: normal 16px arial, tahoma, sans-serif;
-}
-
-div.CanvasXpressDataCustomizerActive {
-    border: 1px dashed rgb(255, 0, 0);
-    border-radius: 4px;
-    box-sizing: border-box;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    margin: 9px 0 0 9px;
-    padding: 5px;
-    white-space: normal;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-div.CanvasXpressDataCustomizer {
-    border: 1px solid rgb(83, 105, 255);
-    border-radius: 4px;
-    box-sizing: border-box;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    margin: 9px 0 0 9px;
-    padding: 5px;
-    white-space: normal;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-div.CanvasXpressDataCustomizerPanel {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 5px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    cursor: default;
-    height: auto;
-    max-height: 1000px;
-    overflow: hidden;
-    padding-top: 10px;
-}
-
-img.CanvasXpressDataCustomizerActive,
-svg.CanvasXpressDataCustomizerActive {
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    border: 1px dashed rgb(255, 0, 0) !important;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 3px !important;
-    padding: 2px;
-}
-
-img.CanvasXpressDataCustomizer,
-svg.CanvasXpressDataCustomizer {
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    border: 0px !important;
-    cursor: pointer;
-    margin: 3px !important;
-    padding: 2px;
-    -webkit-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    /* Safari */
-}
-
-img.CanvasXpressDataCustomizer:hover,
-img.CanvasXpressDataCustomizer3:hover img.CanvasXpressDataCustomizer4:hover,
-svg.CanvasXpressDataCustomizer:hover,
-svg.CanvasXpressDataCustomizer3:hover svg.CanvasXpressDataCustomizer4:hover {
-    background: rgba(0, 0, 0, 0) !important;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 2px 3px !important;
-    padding: 3px;
-    -webkit-transform: scale(1.8, 1.8);
-    -ms-transform: scale(1.8, 1.8);
-    transform: scale(1.8, 1.8);
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    /* Safari */
-    box-shadow: 10px 10px 5px rgb(136, 136, 136) !important;
-    z-index: 2;
-    position: relative;
-}
-
-img.CanvasXpressDataCustomizer2,
-img.CanvasXpressDataCustomizer4,
-svg.CanvasXpressDataCustomizer2,
-svg.CanvasXpressDataCustomizer4 {
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
-    border-radius: 0px;
-    cursor: pointer;
-    margin: 2px 3px !important;
-    -webkit-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    /* Safari */
-}
-
-img.CanvasXpressDataCustomizer2:hover,
-svg.CanvasXpressDataCustomizer2:hover {
-    background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 2px 4px !important;
-    padding: 4px;
-    -webkit-transform: scale(1.8, 1.8);
-    -ms-transform: scale(1.8, 1.8);
-    transform: scale(1.8, 1.8);
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    /* Safari */
-    box-shadow: 10px 10px 5px rgb(136, 136, 136) !important;
-    z-index: 2;
-    position: relative;
-}
-
-img.CanvasXpressDataCustomizer3,
-svg.CanvasXpressDataCustomizer3 {
-    background: rgba(0, 0, 0, 0) !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    border: 1px solid rgb(83, 105, 255) !important;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 12px 3px 3px 3px !important;
-    padding: 2px 3px;
-    -webkit-transform: scale(1, 1);
-    -ms-transform: scale(1, 1);
-    transform: scale(1, 1);
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    /* Safari */
-}
-
-img.CanvasXpressDataCustomizerMask,
-svg.CanvasXpressDataCustomizerMask {
-    background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    margin: 0px !important;
-    width: 100%;
-    height: 20px;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-
-span.CanvasXpressDataCustomizerNumeric,
-span.CanvasXpressDataCustomizerString,
-span.CanvasXpressDataCustomizerUnique,
-span.CanvasXpressDataCustomizerNumericActive,
-span.CanvasXpressDataCustomizerStringActive,
-span.CanvasXpressDataCustomizerUniqueActive {
-    border: 1px solid rgb(83, 105, 255);
-    border-radius: 5px;
-    cursor: move;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    margin: 3px;
-    padding: 3px;
-    word-wrap: normal;
-    display: inline-block;
-    text-align: start;
-    max-width: 150px;
-    overflow: hidden;
-    position: relative;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-}
-
-span.CanvasXpressDataCustomizerString {
-    color: rgb(255, 0, 0);
-}
-
-span.CanvasXpressDataCustomizerUnique {
-    color: rgb(0, 0, 255);
-}
-
-span.CanvasXpressDataCustomizerListNumeric,
-span.CanvasXpressDataCustomizerListString,
-span.CanvasXpressDataCustomizerListUnique,
-span.CanvasXpressDataCustomizerListNumericActive,
-span.CanvasXpressDataCustomizerListStringActive,
-span.CanvasXpressDataCustomizerListUniqueActive {
-    border: none;
-    cursor: move;
-    font: normal 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    margin: 0;
-    padding: 0;
-    width: 350px;
-    white-space: nowrap;
-    display: inline-block;
-    text-align: start;
-    overflow: hidden;
-    position: relative;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
-    -ms-user-select: none;
-}
-
-span.CanvasXpressDataCustomizerListNumeric,
-span.CanvasXpressDataCustomizerListNumericActive {
-    color: rgb(34, 34, 34);
-}
-
-span.CanvasXpressDataCustomizerListString,
-span.CanvasXpressDataCustomizerListStringActive {
-    color: rgb(255, 0, 0);
-}
-
-span.CanvasXpressDataCustomizerListUnique,
-span.CanvasXpressDataCustomizerListUniqueActive {
-    color: rgb(0, 0, 255);
-}
-
-span.CanvasXpressDataCustomizerListNumeric:before,
-span.CanvasXpressDataCustomizerListNumericActive:before {
-    font: normal 10px courier;
-    color: rgb(83, 105, 255);
-    content: "\00a0#\00a0\00a0\00a0";
-}
-
-span.CanvasXpressDataCustomizerListString:before,
-span.CanvasXpressDataCustomizerListStringActive:before {
-    font: normal 10px courier;
-    color: rgb(83, 105, 255);
-    content: "Abc\00a0\00a0";
-}
-
-span.CanvasXpressDataCustomizerListUnique:before,
-span.CanvasXpressDataCustomizerListUniqueActive:before {
-    font: normal 10px courier;
-    color: rgb(83, 105, 255);
-    content: "Unq\00a0\00a0";
-}
-
-span.CanvasXpressDataCustomizer {
-    border: 1px solid rgb(83, 105, 255);
-    border-radius: 5px;
-    cursor: pointer;
-    font: bold 16px arial, tahoma, sans-serif;
-    color: rgb(34, 34, 34);
-    line-height: 380%;
-    padding: 6px 29px;
-    margin-left: -4px;
-}
-
-img.CanvasXpressDataCustomizerActive::selection,
-img.CanvasXpressDataCustomizer::selection,
-svg.CanvasXpressDataCustomizerActive::selection,
-svg.CanvasXpressDataCustomizer::selection,
-div.CanvasXpressDataCustomizerActive::selection,
-div.CanvasXpressDataCustomizer::selection,
-img.CanvasXpressDataCustomizerMask::selection,
-svg.CanvasXpressDataCustomizerMask::selection,
-span.CanvasXpressDataCustomizerNumeric::selection,
-span.CanvasXpressDataCustomizerString::selection,
-span.CanvasXpressDataCustomizerUnique::selection,
-span.CanvasXpressDataCustomizerListNumeric::selection,
-span.CanvasXpressDataCustomizerListString::selection,
-span.CanvasXpressDataCustomizerListUnique::selection,
-span.CanvasXpressDataCustomizer::selection {
-    background: rgba(0, 0, 0, 0);
-    color: rgb(0, 0, 0);
-    padding: 0;
-}
-
-span.CanvasXpressDataCustomizerListNumericActive,
-span.CanvasXpressDataCustomizerListStringActive,
-span.CanvasXpressDataCustomizerListUniqueActive {
-    background: rgba(83, 105, 255, 0.1);
-}
-
-span.CanvasXpressDataCustomizerNumericActive,
-span.CanvasXpressDataCustomizerStringActive,
-span.CanvasXpressDataCustomizerUniqueActive {
-    background: rgba(83, 105, 255, 0.1);
-}
-
-span.CanvasXpressDataCustomizerListNumeric,
-span.CanvasXpressDataCustomizerListString,
-span.CanvasXpressDataCustomizerListUnique {
-    background-color: rgba(0, 0, 0, 0);
-}
-
-span.CanvasXpressDataCustomizerNumeric,
-span.CanvasXpressDataCustomizerString,
-span.CanvasXpressDataCustomizerUnique {
-    background-color: rgba(0, 0, 0, 0);
 }
 
 /*
