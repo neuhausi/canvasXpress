@@ -1960,7 +1960,9 @@ div.CanvasXpressDataTableToolbar {
 img.CanvasXpressDataTableToolbarImage,
 svg.CanvasXpressDataTableToolbarImage {
     background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 5px;
+    padding: 2px;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
     cursor: pointer;
     float: right;
@@ -1972,6 +1974,23 @@ svg.CanvasXpressDataTableToolbarImage {
     -o-user-select: none;
     -ms-user-select: none;
 }
+
+img.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageNB {
+    background: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    cursor: pointer;
+    float: right;
+    margin: 5px 8px 0px 0px !important;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+}
+
 
 div.CanvasXpressDataTableContainer {
     box-sizing: border-box;
@@ -2203,6 +2222,7 @@ div.CanvasXpressTableCell {
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: left;
 }
 
 div.CanvasXpressTableCellSortAsc {
@@ -2227,14 +2247,21 @@ div.CanvasXpressTableCellSortDesc {
 
 th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
     background: rgba(255, 255, 255, 0.95);
-    color: rgb(83, 105, 255);
+    /*color: rgb(83, 105, 255);*/
     border: 1px solid rgb(83, 105, 255);
+    border-radius: 5px;
+}
+
+th.CanvasXpressTableCellModernHead div.CanvasXpressTableCellEmpty {
+    background: rgba(255, 255, 255, 0.95);
+    /*color: rgb(83, 105, 255);*/
+    border: 1px solid rgba(255, 255, 255, 0.95);
     border-radius: 5px;
 }
 
 tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
     background: rgba(83, 105, 255, 0.1);
-    color: rgb(83, 105, 255);
+    /*color: rgb(83, 105, 255);*/
     border: 1px solid rgb(83, 105, 255);
     border-radius: 5px;
 }
@@ -2547,7 +2574,19 @@ span.CanvasXpressDataFilterToolbarText {
 img.CanvasXpressDataFilterToolbarImage,
 svg.CanvasXpressDataFilterToolbarImage {
     background: rgba(0, 0, 0, 0) !important;
-    border: 0px none !important;
+    border: 1px solid rgb(83, 105, 255) !important;
+    border-radius: 5px !important;
+    padding: 2px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+    cursor: pointer;
+    margin: 5px 8px 0px 0px !important;
+    float: right;
+}
+
+img.CanvasXpressDataFilterToolbarImageNB,
+svg.CanvasXpressDataFilterToolbarImageNB {
+    background: rgba(0, 0, 0, 0) !important;
+    border: none !important;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
     cursor: pointer;
     margin: 5px 8px 0px 0px !important;
@@ -2628,8 +2667,8 @@ div.CanvasXpressDataFilterContainerMask {
 
 div.CanvasXpressDataFilterContainerItem {
     box-sizing: border-box;
-    color: rgb(83, 105, 255);
-    height: 18px;
+    /*color: rgb(83, 105, 255);*/
+    height: 20px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2637,9 +2676,9 @@ div.CanvasXpressDataFilterContainerItem {
 
 div.CanvasXpressDataFilterContainerItemSelected {
     box-sizing: border-box;
-    background-color: rgb(223, 232, 246);
-    color: rgb(83, 105, 255);
-    height: 18px;
+    background-color: rgba(83, 105, 255, 0.1);
+    /*color: rgb(83, 105, 255);*/
+    height: 20px;
     padding: 1px 0px 0px 1px;
     overflow: hidden;
     white-space: nowrap;
@@ -2723,9 +2762,9 @@ div.CanvasXpressDataFilterContent {
     border: 1px solid rgb(83, 105, 255);
     border-radius: 0px 0px 4px 4px;
     border-top: 0px;
-    color: rgb(83, 105, 255);
+    /*color: rgb(83, 105, 255);*/
     font: normal 16px arial, tahoma, sans-serif;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding: 2px;
 }
@@ -3021,7 +3060,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-button,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-button,
-div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,
+/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
@@ -3039,7 +3078,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
 
 /* Tracks can be of two different colors */
 
-div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,
+/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar-track,
@@ -3063,7 +3102,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar-track {
 
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track:hover,
-div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,
+/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
@@ -3081,7 +3120,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
 
 /* scrollbar background could be of two different colors but match the style tracks above */
 
-div.CanvasXpressDataFilterContent::-webkit-scrollbar,
+/*div.CanvasXpressDataFilterContent::-webkit-scrollbar,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar,
@@ -3108,7 +3147,7 @@ div.CanvasXpressBinNameContainer::-webkit-scrollbar {
 
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-thumb,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-thumb,
-div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,
+/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
@@ -3134,7 +3173,6 @@ div.CanvasXpressDataFilterContainerItem::selection {
     background: rgba(0, 0, 0, 0);
     color: rgb(83, 105, 255);
 }
-
 
 /*
  * Menu
