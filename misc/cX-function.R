@@ -4851,18 +4851,81 @@ cXnonlinearfit1 <- function() {
 
 cXnonlinearfit2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-nor24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
     theme="CanvasXpress",
-    xAxis=list("Sepal.Length", "Sepal.Width"),
-    yAxis=list("Petal.Length", "Petal.Width"),
+    xAxis=list("X"),
+    yAxis=list("Y"),
     afterRender=list(list("addNormalDistributionLine"))
+  )
+}
+
+cXnonlinearfit3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-log11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(logarithmic=list(list(color="red"))),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXnonlinearfit4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-exp14-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(exponential=list(list(color="red"))),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXnonlinearfit5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-pow11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(power=list(list(color="red"))),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXnonlinearfit6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-poly8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(polynomial=list(list(color="red"))),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXnonlinearfit7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-lin20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(linear=list(list(color="red"))),
+    graphType="Scatter2D",
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    theme="CanvasXpress"
   )
 }
 
