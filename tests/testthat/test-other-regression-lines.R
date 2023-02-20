@@ -33,7 +33,6 @@ test_that("scatterplot per-sample regressionLine", {
                             graphType               = "Scatter2D",
                             title                   = "Scatterplot - per sample regressionLine",
                             showRegressionFullRange = TRUE,
-                            scatterPlotMatrix       = TRUE,
                             stringVariableFactors   = list("cyl"),
                             xAxis                   = list("wt"),
                             yAxis                   = list("mpg"),
