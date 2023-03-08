@@ -2686,6 +2686,7 @@ cXdotplot14 <- function() {
     showLegendTitle=FALSE,
     smpLabelScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
+    xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
 }
@@ -3266,9 +3267,9 @@ cXheatmap7 <- function() {
     heatmapIndicatorHistogram=TRUE,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
-    heatmapSmpSeparateBy="Treatment",
     samplesClustered=TRUE,
     smpOverlays=list("Treatment", "Site"),
+    splitSamplesBy="Treatment",
     title="Overlays in Heatmap",
     variablesClustered=TRUE
   )
@@ -3290,7 +3291,6 @@ cXheatmap8 <- function() {
     heatmapIndicatorHistogram=TRUE,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
-    heatmapSmpSeparateBy="Treatment",
     highlightSmp=list("S1", "S2", "S3", "S4", "S5"),
     highlightVar=list("V18", "V19", "V20"),
     samplesClustered=TRUE,
@@ -3404,8 +3404,6 @@ cXheatmap13 <- function() {
     varAnnot=z,
     graphType="Heatmap",
     heatmapIndicatorPosition="right",
-    heatmapSmpSeparateBy1="CellType",
-    heatmapVarSeparateBy1="GeneClass",
     overlayFontStyle="bold",
     overlayScaleFontFactor=2,
     samplesClustered=TRUE,
