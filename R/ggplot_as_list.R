@@ -60,7 +60,10 @@ gg_facet <- function (o) {
   if(!is.null(f)) {
     f = list(
       facet = ls(f),
-      facetLevels = sort(unique(o$data[[ls(f)]]))
+      facetLevels = sort(unique(o$data[[ls(f)]])),
+      facetType = "wrap",
+      facetXFree = o$facet$params$free$x,
+      facetYFree = o$facet$params$free$y
     )
     if (!is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
       f$facetCols = o$facet$params$ncol
@@ -79,6 +82,30 @@ gg_facet <- function (o) {
         f$facetCols = ceiling(sqrt(length(f$facetLevels)))
         f$facetRows = ceiling(length(f$facetLevels) / f$facetCols)
       }
+    }
+    f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
+  } else if (!is.null(o$facet$params$rows) || !is.null(o$facet$params$cols)) {
+    f = list(
+      facetType = "grid",
+      facetXFree = o$facet$params$free$x,
+      facetYFree = o$facet$params$free$y
+    )
+    if (length(o$facet$params$rows) > 0 && length(o$facet$params$cols) > 0) {
+      f$facet = c(ls(o$facet$params$rows)[1], ls(o$facet$params$cols)[1])
+      f$facetLevelsRows = sort(unique(o$data[[ls(o$facet$params$rows)]]))
+      f$facetLevelsCols = sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetRows = length(f$facetLevelsRows)
+      f$facetCols = length(f$facetLevelsCols)
+    } else if (length(o$facet$params$rows) > 0) {
+      f$facet = ls(o$facet$params$rows)
+      f$facetLevelsRows = sort(unique(o$data[[ls(o$facet$params$rows)]]))
+      f$facetRows = length(f$facetLevels)
+      f$facetCols = 1
+    } else if (length(o$facet$params$cols) > 0) {
+      f$facet = ls(o$facet$params$cols)
+      f$facetLevelsCols = sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetRows = 1
+      f$facetCols = length(f$facetLevels)
     }
     f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
   }
