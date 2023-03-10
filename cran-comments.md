@@ -1,7 +1,7 @@
 ## Comments from Maintainer
 
 Resubmission:
-* Badge link URL updated 
+* Badge link URL updated twice, first to solve the 500 and then to solve the 301 (which is invisible in the browser) - apologies!
 
 * Updated JS underlying library
 * Fixed some misc. bugs with htmlwidgets interaction as well as added ggplot functionality for conversions
