@@ -1,8 +1,7 @@
 ## Comments from Maintainer
 
-* Updated tests to accommodate the upcoming htmlWidgets 1.6 release per Carson's PR
-
-There may be a NOTE on some builds as the version contains 4 components - this is necessary to maintain sync with the underlying version of the JS library which is 40.6, so is preferred over incrementing to the next number as users are used to us following the JS library version that is embedded in the htmlwidget.
+* Updated JS underlying library
+* Fixed some misc. bugs with htmlwidgets interaction as well as added ggplot functionality for conversions
 
 ---  
 
