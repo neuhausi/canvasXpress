@@ -1,5 +1,8 @@
 ## Comments from Maintainer
 
+Resubmission:
+* Badge link URL updated 
+
 * Updated JS underlying library
 * Fixed some misc. bugs with htmlwidgets interaction as well as added ggplot functionality for conversions
 
