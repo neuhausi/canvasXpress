@@ -13,6 +13,7 @@ ggplot.as.list <- function(o) {
         data     = data_to_matrix(o$data),
         aes      = gg_mapping(o),
         scales   = gg_scales(o),
+        coords   = gg_coordinates(o),
         theme    = gg_theme(o),
         labels   = gg_labels(o),
         facet    = gg_facet(o),
@@ -49,8 +50,6 @@ ggplot.as.list <- function(o) {
     jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
 }
 
-
-
 # -- internal helper functions -- #
 
 gg_facet <- function (o) {
@@ -61,7 +60,10 @@ gg_facet <- function (o) {
   if(!is.null(f)) {
     f = list(
       facet = ls(f),
-      facetLevels = sort(unique(o$data[[ls(f)]]))
+      facetLevels = sort(unique(o$data[[ls(f)]])),
+      facetType = "wrap",
+      facetXFree = o$facet$params$free$x,
+      facetYFree = o$facet$params$free$y
     )
     if (!is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
       f$facetCols = o$facet$params$ncol
@@ -80,6 +82,30 @@ gg_facet <- function (o) {
         f$facetCols = ceiling(sqrt(length(f$facetLevels)))
         f$facetRows = ceiling(length(f$facetLevels) / f$facetCols)
       }
+    }
+    f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
+  } else if (!is.null(o$facet$params$rows) || !is.null(o$facet$params$cols)) {
+    f = list(
+      facetType = "grid",
+      facetXFree = o$facet$params$free$x,
+      facetYFree = o$facet$params$free$y
+    )
+    if (length(o$facet$params$rows) > 0 && length(o$facet$params$cols) > 0) {
+      f$facet = c(ls(o$facet$params$rows)[1], ls(o$facet$params$cols)[1])
+      f$facetLevelsRows = sort(unique(o$data[[ls(o$facet$params$rows)]]))
+      f$facetLevelsCols = sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetRows = length(f$facetLevelsRows)
+      f$facetCols = length(f$facetLevelsCols)
+    } else if (length(o$facet$params$rows) > 0) {
+      f$facet = ls(o$facet$params$rows)
+      f$facetLevelsRows = sort(unique(o$data[[ls(o$facet$params$rows)]]))
+      f$facetRows = length(f$facetLevels)
+      f$facetCols = 1
+    } else if (length(o$facet$params$cols) > 0) {
+      f$facet = ls(o$facet$params$cols)
+      f$facetLevelsCols = sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetRows = 1
+      f$facetCols = length(f$facetLevels)
     }
     f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
   }
@@ -113,50 +139,77 @@ gg_theme <- function(o) {
   t
 }
 
-gg_xscale <- function(o) {
-  if (missing(o)) {
-    o = ggplot2::last_plot()
-  }
-  n = length(o$scales$scales)
-  r = FALSE
-  if (n > 0) {
-    r = list(
-      setMinX = o$scales$scales[[1]]$limits[1],
-      setMaxX = o$scales$scales[[1]]$limits[2]
-    )
-  }
-  r
-}
-
-gg_yscale <- function(o) {
-  if (missing(o)) {
-    o = ggplot2::last_plot()
-  }
-  n = length(o$scales$scales)
-  r = FALSE
-  if (n > 1) {
-    r = list(
-      setMinY = o$scales$scales[[2]]$limits[1],
-      setMaxY = o$scales$scales[[2]]$limits[2]
-    )
-  }
-  r
-}
-
 gg_scales <- function (o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
   }
   r = list();
-  x = gg_xscale(o)
-  y = gg_yscale(o)
-  if (!isFALSE(x)) {
-    r$setMinX = x$setMinX
-    r$setMaxX = x$setMaxX
+  n = length(o$scales$scales)
+  if (n > 0) {
+    for (i in 1:n) {
+      s = o$scales$scales[[i]]
+      if (s$aesthetics[1] == "colour") {
+        if (stringr::str_detect(s$scale_name, "gradient")) {
+          if (s$scale_name == "gradient2") {
+            s$train(c(-1,1))
+          } else {
+            s$train(c(0,1))
+          }
+          r$colorSpectrum = s$break_positions()
+        } else {
+          p = s$palette(1)
+          if (!is.null(names(p))) {
+            k = names(p)
+            names(p) <- NULL
+            q = list();
+            for (j in 1:length(k)) {
+              q[[k[j]]] = p[j]
+            }
+            r$colorKey = q
+          } else {
+            r$colors = p
+          }
+        }
+      } else if (s$aesthetics[1] == "x") {
+        if (!is.null(s$limits)) {
+          r$setMinX = s$limits[1]
+          r$setMaxX = s$limits[2]
+        }
+        if (s$trans$name != "identity") {
+          r$xAxisTransform = stringr::str_replace(s$trans$name, "-", "")
+        }
+        if (is.character(s$name)) {
+          r$xAxisTitle = s$name
+        }
+      } else if (s$aesthetics[1] == "y") {
+        if (!is.null(s$limits)) {
+          r$setMinY = s$limits[1]
+          r$setMaxY = s$limits[2]
+        }
+        if (s$trans$name != "identity") {
+          r$yAxisTransform = stringr::str_replace(s$trans$name, "-", "")
+        }
+        if (is.character(s$name)) {
+          r$yAxisTitle = s$name
+        }
+      }
+    }
   }
-  if (!isFALSE(y)) {
-    r$setMinY = y$setMinY
-    r$setMaxY = y$setMaxY
+  r
+}
+
+gg_coordinates <- function (o) {
+  if (missing(o)) {
+    o = ggplot2::last_plot()
+  }
+  r = list();
+  if (!is.null(o$coordinates$limits$x)) {
+    r$setMinX = o$coordinates$limits$x[1]
+    r$setMaxX = o$coordinates$limits$x[2]
+  }
+  if (!is.null(o$coordinates$limits$y)) {
+    r$setMinY = o$coordinates$limits$y[1]
+    r$setMaxY = o$coordinates$limits$y[2]
   }
   r
 }
@@ -186,8 +239,10 @@ gg_mapping <- function(o) {
   r = list();
   m = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'sample')
   s = as.vector(NULL)
+  e = TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
+      e = FALSE
       l = rlang::as_label(o$mapping[[i]])
       f = regexpr("factor", l)[1]
       if (f > 0) {
@@ -217,7 +272,11 @@ gg_mapping <- function(o) {
     r$asVariableFactors = unique(s)
     r$asSampleFactors = unique(s)
   }
-  r
+  if (e) {
+    gg_mapping(o$layers[[1]])
+  } else {
+    r
+  }
 }
 
 gg_proc_layer <- function (l) {
