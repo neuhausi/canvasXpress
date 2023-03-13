@@ -6,6 +6,12 @@ information on changes to the stand-alone JavaScript CanvasXpress library see th
 
 ---
 
+## v1.42.9
+* Updated CanvasXpress JS and CSS libraries to v42.9
+* Updated htmlwidgets functionality to avoid a resizing issue in shiny applications
+* Updated ggplot conversion functionality to support new capabilities in cxplot
+* Various minor bugfixes throughout
+
 ## v1.40.6-2
 * Updated a test to avoid errors with the release of HTMLwidgets 1.6 (Carson's PR)
 
