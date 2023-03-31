@@ -34,6 +34,9 @@ try({
     testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
                      ", list\\(FALSE, \'red\'\\)", testFile)
 
+    #bubble3, bubble4
+    testFile <- gsub("true\\)\\)\\)", "TRUE\\)\\)\\)", testFile)
+
     # --- End Test Fixes
 
     temp <- tempfile(fileext = ".R")
