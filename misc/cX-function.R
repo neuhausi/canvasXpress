@@ -305,6 +305,7 @@ cXbar6 <- function() {
     showTransition=FALSE,
     smpLabelRotate=90,
     smpTitle="Species",
+    splitSamplesBy="Species",
     theme="blackAndWhite",
     title="Iris flower data set",
     xAxis2Show=FALSE
@@ -771,6 +772,7 @@ cXboxplot4 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
+    splitSamplesBy="dose",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
@@ -2467,6 +2469,7 @@ cXdotplot8 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
+    splitSamplesBy="dose",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
@@ -3130,6 +3133,19 @@ cXgenome3 <- function() {
   )
 }
 
+cXgenome4 <- function() {
+  library(canvasXpress)
+  library(jsonlite)
+  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeideogram.json")
+  canvasXpress(
+    data=genome,
+    background="rgb(245,245,245)",
+    graphType="Genome",
+    ideogramShowFullChromosome=TRUE,
+    showIdeogram=TRUE
+  )
+}
+
 cXheatmap1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3386,6 +3402,8 @@ cXheatmap12 <- function() {
     smpLabelScaleFontFactor=1.1,
     smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=TRUE, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=TRUE, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=TRUE, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
+    splitSamplesBy="Discrete",
+    splitVariablesBy="Drug",
     varLabelRotate=45,
     varLabelScaleFontFactor=1.7,
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=TRUE, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=TRUE, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=TRUE, thickness=50, type="Bar"), Female=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=TRUE, thickness=50, type="BarLine"), Site=list(position="top", showLegend=TRUE, type="Default"), Ugly=list(color="black", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot")),
@@ -4122,6 +4140,7 @@ cXline3 <- function() {
     smpLabelRotate=90,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
+    splitSamplesBy="Factor3",
     theme="blackAndWhite",
     title="Random Data"
   )
@@ -6260,11 +6279,11 @@ cXstacked4 <- function() {
     graphOrientation="horizontal",
     graphType="Stacked",
     legendBackgroundColor=FALSE,
-    sampleSpaceFactor=1.5,
     showDataValues=TRUE,
     smpLabelScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
+    splitSamplesBy="Factor3",
     theme="CanvasXpress",
     title="Random Data"
   )
