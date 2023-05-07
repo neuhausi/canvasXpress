@@ -4012,7 +4012,7 @@ cXlayout14 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     layoutAdjust=TRUE,
-    layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1, barLollipopOpen=TRUE, barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=FALSE, barType="lollipop", xAxisTitle="Baseline (mm)")),
     layoutLabelShow=FALSE,
     layoutTopology="3X1",
     showLegend=FALSE,
@@ -4267,14 +4267,14 @@ cXlollipop1 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    barLollipopFactor=3,
+    barLollipopFactor=1.8,
     barType="lollipop",
     colorScheme="CanvasXpress",
     graphType="Bar",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     showTransition=FALSE,
-    widthFactor=0.1
+    widthFactor=0.6
   )
 }
 
