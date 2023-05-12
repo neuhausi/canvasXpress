@@ -17,6 +17,7 @@ ggplot.as.list <- function(o, ...) {
         theme    = gg_theme(o),
         labels   = gg_labels(o),
         facet    = gg_facet(o),
+        order    = gg_order(o),
         layers   = as.vector(NULL),
         geoms    = as.vector(NULL),
         isGGPlot = TRUE,
@@ -52,6 +53,13 @@ ggplot.as.list <- function(o, ...) {
 }
 
 # -- internal helper functions -- #
+
+gg_order <- function(o) {
+  if (missing(o)) {
+    o = ggplot2::last_plot()
+  }
+  Filter(Negate(is.null), sapply(o$data, levels))
+}
 
 gg_facet <- function (o) {
   if (missing(o)) {
