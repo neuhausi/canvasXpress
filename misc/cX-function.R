@@ -6990,7 +6990,7 @@ cXtreemap1 <- function() {
     graphType="Treemap",
     objectBorderColor="rgb(0,0,0)",
     showDecorations=FALSE,
-    showTransition=TRUE,
+    showTransition=FALSE,
     theme="CanvasXpress",
     title="Population colored by Gross National Income 2014",
     afterRender=list(list("groupSamples", list("continent")))
