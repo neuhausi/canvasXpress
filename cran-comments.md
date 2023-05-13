@@ -1,7 +1,14 @@
 ## Comments from Maintainer
 
-* Updated JS underlying library
-* Added ggplot functionality for conversions and additional parameters
+
+Resubmission:
+
+* markdown for the news failed due to missing line return on windows  
+
+Original:
+
+* Updated JS underlying library  
+* Added ggplot functionality for conversions and additional parameters  
 
 ---  
 
