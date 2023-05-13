@@ -76,7 +76,7 @@ canvasXpress <- function(data = NULL,
         if (!(requireNamespace("ggplot2", quietly = TRUE))) {
             stop("The ggplot2 package is required to use this functionality.")
         }
-        cx_object <- ggplot.as.list(data)
+        cx_object <- ggplot.as.list(data, ...)
     } else	if (is.character(data) && (graphType != "Network")) {
 		if (httr::http_error(data)) {
 		    message("Unable to validate URL")

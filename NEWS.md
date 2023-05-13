@@ -1,10 +1,17 @@
 # R Package NEWS
 
+
 This file details changes to the canvasXpress R package only - for detailed 
 information on changes to the stand-alone JavaScript CanvasXpress library see the 
 <a href="https://www.canvasxpress.org"> main website</a>.
 
+
 ---
+
+
+## v1.43.7
+* Updated CanvasXpress JS and CSS libraries to v43.7
+* Updated ggplot conversion functionality to allow configuration changes
 
 ## v1.42.9
 * Updated CanvasXpress JS and CSS libraries to v42.9

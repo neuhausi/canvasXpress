@@ -1,10 +1,14 @@
 ## Comments from Maintainer
 
-Resubmission:
-* Badge link URL updated twice, first to solve the 500 and then to solve the 301 (which is invisible in the browser) - apologies!
 
-* Updated JS underlying library
-* Fixed some misc. bugs with htmlwidgets interaction as well as added ggplot functionality for conversions
+Resubmission:
+
+* markdown for the news failed due to missing line return on windows  
+
+Original:
+
+* Updated JS underlying library  
+* Added ggplot functionality for conversions and additional parameters  
 
 ---  
 
@@ -14,8 +18,9 @@ Resubmission:
 RStudio Server Pro (ubuntu 18.04.2)  
 
 * R 4.0.5
-* R 4.1.2
-* R 4.2.2
+* R 4.1.3
+* R 4.2.3
+* R 4.3.0
 
 CircleCI
 
