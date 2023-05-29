@@ -390,9 +390,9 @@ gg_proc_layer <- function (l) {
 }
 
 data_to_matrix <- function(d) {
-  d = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
-  nd = tibble::add_column(d, Id = row.names(d), .before = 1)
+  nd = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
+  nd = tibble::add_column(nd, Id = row.names(d), .before = 1)
   nd = tibble::add_row(nd, .before = 1)
-  nd[1,] = c("Id", colnames(d))
+  nd[1,] = colnames(nd)
   as.matrix(nd)
 }
