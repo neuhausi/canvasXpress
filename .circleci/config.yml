@@ -28,6 +28,7 @@ jobs:
             R -e 'BiocManager::install(c("limma"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
+            R -e 'install.packages("DT")'
 
       - run:
           name: Session information and installed package versions
@@ -76,6 +77,7 @@ jobs:
             R -e 'BiocManager::install(c("limma"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
+            R -e 'install.packages("DT")'
 
       - run:
           name: Session information and installed package versions
@@ -125,6 +127,7 @@ jobs:
             R -e 'BiocManager::install(c("limma"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
+            R -e 'install.packages("DT")'
 
       - run:
           name: Session information and installed package versions
