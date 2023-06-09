@@ -1,58 +1,9 @@
 # Notes:
 # - Docker containers with R, etc. provided by rocker.  See <https://hub.docker.com/r/rocker/verse>.
-# - Builds attempted for 3.6.3, 4.0.5, and the *latest* R edition supported by rocker.
+# - Builds attempted for 4.0.5, 4.2.3, and the *latest* R edition supported by rocker.
 
 version: 2.1
 jobs:
-  Build-for-r3_6_3:
-    docker:
-      - image: rocker/verse:3.6.3
-
-    steps:
-      - checkout
-      - run:
-          name: Review checkout
-          command: ls -la
-
-      - run:
-          name: Install Linux dependencies
-          command: |
-            sudo apt-get update -y
-            sudo apt-get install -yq texlive-fonts-recommended
-            sudo apt-get install -yq texlive-fonts-extra
-
-      - run:
-          name: Install R dependencies
-          command: |
-            R -e 'install.packages("BiocManager")'
-            R -e 'BiocManager::install(c("limma"))'
-            R -e 'install.packages("covr")'
-            R -e 'install.packages("canvasXpress.data")'
-            R -e 'install.packages("DT")'
-
-      - run:
-          name: Session information and installed package versions
-          command: |
-            Rscript -e 'sessionInfo()'
-            Rscript -e 'installed.packages()[, c("Package", "Version")]'
-            Rscript -e 'rmarkdown::pandoc_version()'
-
-      - run:
-          name: Build package
-          command: R CMD build .
-
-      - run:
-          name: Check coverage
-          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
-
-      - run:
-          name: Check package
-          command: |
-            # Install suggested packages
-            R -e 'install.packages("png")'
-            # Perform package check
-            R CMD check *tar.gz
-
   Build-for-r4_0_5:
     docker:
       - image: rocker/verse:4.0.5
@@ -102,6 +53,54 @@ jobs:
             # Perform package check
             R CMD check *tar.gz
 
+  Build-for-r4_2_3:
+    docker:
+      - image: rocker/verse:4.0.5
+
+    steps:
+      - checkout
+      - run:
+          name: Review checkout
+          command: ls -la
+
+      - run:
+          name: Install Linux dependencies
+          command: |
+            sudo apt-get update -y
+            sudo apt-get install -yq texlive-fonts-recommended
+            sudo apt-get install -yq texlive-fonts-extra
+
+      - run:
+          name: Install R dependencies
+          command: |
+            R -e 'install.packages("BiocManager")'
+            R -e 'BiocManager::install(c("limma"))'
+            R -e 'install.packages("covr")'
+            R -e 'install.packages("canvasXpress.data")'
+            R -e 'install.packages("DT")'
+
+      - run:
+          name: Session information and installed package versions
+          command: |
+            Rscript -e 'sessionInfo()'
+            Rscript -e 'installed.packages()[, c("Package", "Version")]'
+            Rscript -e 'rmarkdown::pandoc_version()'
+
+      - run:
+          name: Build package
+          command: R CMD build .
+
+      - run:
+          name: Check coverage
+          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
+
+      - run:
+          name: Check package
+          command: |
+            # Install suggested packages
+            R -e 'install.packages("png")'
+            # Perform package check
+            R CMD check *tar.gz
 
   Build-for-rLATEST:
     docker:
@@ -157,5 +156,5 @@ workflows:
   Prepare-All-R-Editions:
     jobs:
       - Build-for-r4_0_5
-      - Build-for-r3_6_3
+      - Build-for-r4_2_3
       - Build-for-rLATEST
