@@ -508,6 +508,7 @@ cXbar14 <- function() {
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
+    xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
 }
@@ -532,7 +533,7 @@ cXbar15 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelRotate=90,
     smpLabelScaleFontFactor=1.5,
     title="Animation Movies",
@@ -570,7 +571,7 @@ cXbar16 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelScaleFontFactor=3,
     title="Friendship, Love, Family",
     titleColor="rgb(254,225,60)",
@@ -2921,7 +2922,7 @@ cXfish2 <- function() {
     graphType="Fish",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    varLabelFontColor="green",
+    varLabelColor="green",
     varLabelRotate=30
   )
 }
@@ -6478,7 +6479,7 @@ cXstackedpercent5 <- function() {
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
     segregateVariablesBy=list("Gender"),
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelScaleFontFactor=3,
     title="Fewer Role Models",
     titleColor="rgb(252,157,156)",
@@ -6639,11 +6640,11 @@ cXtcga1 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showBoxplotOriginalData=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6666,10 +6667,10 @@ cXtcga2 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6692,9 +6693,9 @@ cXtcga3 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6718,11 +6719,11 @@ cXtcga4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6747,11 +6748,11 @@ cXtcga5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
