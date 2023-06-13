@@ -3,6 +3,11 @@ HTMLWidgets.widget({
     type : "output",
 
     factory: function(el, width, height) {
+
+        if (el && el.classList && el.classList.contains('noCanvas')) {
+            return;
+        }
+
         var c = document.createElement('canvas');
         c.id        = el.id + '-cx';
         c.className = 'CanvasXpress';
