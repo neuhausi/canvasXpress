@@ -383,6 +383,9 @@ gg_proc_layer <- function (l) {
   if (pos != 'normal') {
     r$position = pos
   }
+  if (class(l$stat)[1] == 'StatSina') {
+    r$sina = TRUE
+  }
   if (is.data.frame(l$data)) {
     r$data = data_to_matrix(l$data)
   }
