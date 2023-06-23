@@ -1,55 +1,68 @@
 ggplot.as.list <- function(o, ...) {
 
-    if (!(requireNamespace("ggplot2", quietly = TRUE))) {
-        stop("The ggplot2 package is required to use this functionality.")
-    } else if (!("ggplot") %in% class(o)) {
-        stop("Not a ggplot object")
+  if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+    stop("The ggplot2 package is required to use this functionality.")
+  } else if (!("ggplot") %in% class(o)) {
+    stop("Not a ggplot object")
+  }
+
+  target <- "canvas"
+
+  cx <- list(
+    renderTo = target,
+    data     = data_to_matrix(o$data),
+    aes      = gg_mapping(o),
+    scales   = gg_scales(o),
+    coords   = gg_coordinates(o),
+    theme    = gg_theme(o),
+    labels   = gg_labels(o),
+    facet    = gg_facet(o),
+    order    = gg_order(o),
+    layers   = as.vector(NULL),
+    geoms    = as.vector(NULL),
+    isGGPlot = TRUE,
+    config   = list(...),
+    isR      = TRUE)
+
+  layers <- sapply(o$layers, function(x) class(x$geom)[1])
+
+  proto_geom <- sapply( sapply( o$layers, "[[", "geom"), function(x) class(x)[[1]][1] )
+  proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
+
+  for (i in 1:length(layers)) {
+    l <- layers[i]
+    p <- gg_proc_layer(o$layers[[i]])
+    if ((l == "GeomTile") && (proto_stat[i] == "StatBin2d")) {
+      l = "GeomBin2d"
+    } else if ((l == "GeomPoint") && !is.null(p$position) && (p$position == "jitter")) {
+      l = "GeomJitter"
+    } else if ((l == "GeomBar") && (proto_stat[i] == "StatBin")) {
+      l = "GeomHistogram"
+    } else if ((l == "GeomPath") && (proto_stat[i] == "StatQqLine")) {
+      l = "GeomQqLine";
+    } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
+      l = "GeomQq";
+    } else if (l == "GeomErrorbar") {
+      if (class(ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
+        p$xmin = ggplot_build(o)$data[[i]]$xmin
+      }
+      if (class(ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
+        p$xmax = ggplot_build(o)$data[[i]]$xmax
+      }
+      if (class(ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
+        p$ymin = ggplot_build(o)$data[[i]]$ymin
+      }
+      if (class(ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
+        p$ymax = ggplot_build(o)$data[[i]]$ymax
+      }
     }
+    q <- list()
+    q[[l]]    <- p
+    cx$geoms  <- append(cx$geoms, l)
+    cx$layers <- append(cx$layers, q)
+  }
 
-    target <- "canvas"
-
-    cx <- list(
-        renderTo = target,
-        data     = data_to_matrix(o$data),
-        aes      = gg_mapping(o),
-        scales   = gg_scales(o),
-        coords   = gg_coordinates(o),
-        theme    = gg_theme(o),
-        labels   = gg_labels(o),
-        facet    = gg_facet(o),
-        order    = gg_order(o),
-        layers   = as.vector(NULL),
-        geoms    = as.vector(NULL),
-        isGGPlot = TRUE,
-        config   = list(...),
-        isR      = TRUE)
-
-    layers <- sapply(o$layers, function(x) class(x$geom)[1])
-
-    proto_geom <- sapply( sapply( o$layers, "[[", "geom"), function(x) class(x)[[1]][1] )
-    proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
-
-    for (i in 1:length(layers)) {
-        l <- layers[i]
-        p <- gg_proc_layer(o$layers[[i]])
-        if ((l == "GeomTile") && (proto_stat[i] == "StatBin2d")) {
-            l = "GeomBin2d"
-        } else if ((l == "GeomPoint") && !is.null(p$position) && (p$position == "jitter")) {
-            l = "GeomJitter"
-        } else if ((l == "GeomBar") && (proto_stat[i] == "StatBin")) {
-            l = "GeomHistogram"
-        } else if ((l == "GeomPath") && (proto_stat[i] == "StatQqLine")) {
-            l = "GeomQqLine";
-        } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
-            l = "GeomQq";
-        }
-        q <- list()
-        q[[l]]    <- p
-        cx$geoms  <- append(cx$geoms, l)
-        cx$layers <- append(cx$layers, q)
-    }
-
-    jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
+  jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
 }
 
 # -- internal helper functions -- #
@@ -246,7 +259,7 @@ gg_mapping <- function(o) {
     o = ggplot2::last_plot()
   }
   r = list();
-  m = c('x', 'y', 'z', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'sample')
+  m = c('x', 'y', 'z', 'xmin', 'xmax', 'ymin', 'ymax', 'zmin', 'zmax', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'sample')
   s = as.vector(NULL)
   e = TRUE
   for (i in m) {
