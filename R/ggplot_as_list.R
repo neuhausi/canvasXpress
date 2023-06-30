@@ -42,18 +42,22 @@ ggplot.as.list <- function(o, ...) {
       l = "GeomQqLine";
     } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
       l = "GeomQq";
-    } else if (l == "GeomErrorbar") {
+    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh") {
       if (class(ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
         p$xmin = ggplot_build(o)$data[[i]]$xmin
+        p$yorder = ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
         p$xmax = ggplot_build(o)$data[[i]]$xmax
+        p$yorder = ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
         p$ymin = ggplot_build(o)$data[[i]]$ymin
+        p$xorder = ggplot_build(o)$data[[i]]$x
       }
       if (class(ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
         p$ymax = ggplot_build(o)$data[[i]]$ymax
+        p$xorder = ggplot_build(o)$data[[i]]$x
       }
     }
     q <- list()
