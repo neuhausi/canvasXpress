@@ -420,7 +420,7 @@ data_to_matrix <- function(o) {
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
       q = rlang::as_label(o$mapping[[i]])
-      if (q %in% colnames(o$data)) {
+      if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
       } else {
         u = ggplot_build(o)$data[[1]][[i]]
