@@ -10,7 +10,7 @@ ggplot.as.list <- function(o, ...) {
 
   cx <- list(
     renderTo = target,
-    data     = data_to_matrix(o$data),
+    data     = data_to_matrix(o),
     aes      = gg_mapping(o),
     scales   = gg_scales(o),
     coords   = gg_coordinates(o),
@@ -43,21 +43,21 @@ ggplot.as.list <- function(o, ...) {
     } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
       l = "GeomQq";
     } else if (l == "GeomErrorbar" || l == "GeomErrorbarh") {
-      if (class(ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
-        p$xmin = ggplot_build(o)$data[[i]]$xmin
-        p$yorder = ggplot_build(o)$data[[i]]$y
+      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
+        p$xmin = ggplot2::ggplot_build(o)$data[[i]]$xmin
+        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
-      if (class(ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
-        p$xmax = ggplot_build(o)$data[[i]]$xmax
-        p$yorder = ggplot_build(o)$data[[i]]$y
+      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
+        p$xmax = ggplot2::ggplot_build(o)$data[[i]]$xmax
+        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
-      if (class(ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
-        p$ymin = ggplot_build(o)$data[[i]]$ymin
-        p$xorder = ggplot_build(o)$data[[i]]$x
+      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
+        p$ymin = ggplot2::ggplot_build(o)$data[[i]]$ymin
+        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
-      if (class(ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
-        p$ymax = ggplot_build(o)$data[[i]]$ymax
-        p$xorder = ggplot_build(o)$data[[i]]$x
+      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
+        p$ymax = ggplot2::ggplot_build(o)$data[[i]]$ymax
+        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
     }
     q <- list()
@@ -389,6 +389,9 @@ gg_proc_layer <- function (l) {
       }
     }
   }
+  if (!is.na(l$show.legend) && l$show.legend == FALSE) {
+    r$showLegend = FALSE;
+  }
   if (length(q) > 0) {
     r$stringVariableFactors = unique(q)
     r$stringSampleFactors = unique(q)
@@ -409,8 +412,36 @@ gg_proc_layer <- function (l) {
   r
 }
 
-data_to_matrix <- function(d) {
+data_to_matrix <- function(o) {
+  layers <- sapply(o$layers, function(x) class(x$geom)[1])
+  m = c('x', 'y', 'z')
+  d = o$data
   nd = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
+  for (i in m) {
+    if (!is.null(o$mapping[[i]])) {
+      q = rlang::as_label(o$mapping[[i]])
+      if (q %in% colnames(o$data)) {
+        ## Nothing to do
+      } else {
+        u = ggplot_build(o)$data[[1]][[i]]
+        nd[q] = u
+      }
+    }
+  }
+  for (i in 1:length(layers)) {
+    l <- layers[i]
+    for (j in m) {
+      if (!is.null(o$layers[[i]]$mapping[[j]])) {
+        q = rlang::as_label(o$layers[[i]]$mapping[[j]])
+        if (q %in% colnames(o$data)) {
+          ## Nothing to do
+        } else {
+          u = ggplot_build(o)$data[[i]][[j]]
+          nd[q] = u
+        }
+      }
+    }
+  }
   nd = tibble::add_column(nd, Id = row.names(d), .before = 1)
   nd = tibble::add_row(nd, .before = 1)
   nd[1,] = colnames(nd)
