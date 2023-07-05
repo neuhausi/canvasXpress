@@ -423,7 +423,7 @@ data_to_matrix <- function(o) {
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
       } else {
-        u = ggplot_build(o)$data[[1]][[i]]
+        u = ggplot2::ggplot_build(o)$data[[1]][[i]]
         nd[q] = u
       }
     }
@@ -436,7 +436,7 @@ data_to_matrix <- function(o) {
         if (q %in% colnames(o$data)) {
           ## Nothing to do
         } else {
-          u = ggplot_build(o)$data[[i]][[j]]
+          u = ggplot2::ggplot_build(o)$data[[i]][[j]]
           nd[q] = u
         }
       }
