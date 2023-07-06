@@ -45,19 +45,19 @@ ggplot.as.list <- function(o, ...) {
     } else if (l == "GeomErrorbar" || l == "GeomErrorbarh") {
       if (class(ggplot2::ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
         p$xmin = ggplot2::ggplot_build(o)$data[[i]]$xmin
-        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
+        #p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
         p$xmax = ggplot2::ggplot_build(o)$data[[i]]$xmax
-        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
+        #p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
         p$ymin = ggplot2::ggplot_build(o)$data[[i]]$ymin
-        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
+        #p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
         p$ymax = ggplot2::ggplot_build(o)$data[[i]]$ymax
-        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
+        #p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
     }
     q <- list()
@@ -423,7 +423,7 @@ data_to_matrix <- function(o) {
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
       } else {
-        u = ggplot_build(o)$data[[1]][[i]]
+        u = as.numeric(ggplot2::ggplot_build(o)$data[[1]][[i]])
         nd[q] = u
       }
     }
@@ -436,7 +436,7 @@ data_to_matrix <- function(o) {
         if (q %in% colnames(o$data)) {
           ## Nothing to do
         } else {
-          u = ggplot_build(o)$data[[i]][[j]]
+          u = as.numeric(ggplot2::ggplot_build(o)$data[[i]][[j]])
           nd[q] = u
         }
       }
