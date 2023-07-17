@@ -3,6 +3,11 @@ HTMLWidgets.widget({
     type : "output",
 
     factory: function(el, width, height) {
+
+        if (el && el.classList && el.classList.contains('noCanvas')) {
+            return;
+        }
+
         var c = document.createElement('canvas');
         c.id        = el.id + '-cx';
         c.className = 'CanvasXpress';
@@ -32,7 +37,11 @@ HTMLWidgets.widget({
 
             // reminder: called multiple times, any time the R binding function is called
             renderValue: function(x) {
-                // destroy old charts
+
+                // destroy old charts but keep track of the parent container
+                var n = CanvasXpress && CanvasXpress.instances && CanvasXpress.instances.length;
+                var p = n ? document.getElementById(c.id).parentNode.parentNode.parentNode.parentNode : document.getElementById(c.id).parentNode;
+
                 try {
                     for (var i = 0; i < CanvasXpress.instances.length; i++) {
                         if (CanvasXpress.instances[i].target.match(c.id)) {
@@ -47,7 +56,10 @@ HTMLWidgets.widget({
                 // create the new chart
                 if (!(x instanceof Array)) {
                     x.renderTo = c.id;
-
+                    var e = document.getElementById(c.id);
+                    if (e == null && p != null) {
+                        p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
+                    }
                     new CanvasXpress(x);
                     this.resize(chart_width, chart_height);
                 }

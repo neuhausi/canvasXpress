@@ -31,7 +31,7 @@ ggplot.as.list <- function(o, ...) {
 
   for (i in 1:length(layers)) {
     l <- layers[i]
-    p <- gg_proc_layer(o$layers[[i]])
+    p <- gg_proc_layer(o, i)
     if ((l == "GeomTile") && (proto_stat[i] == "StatBin2d")) {
       l = "GeomBin2d"
     } else if ((l == "GeomPoint") && !is.null(p$position) && (p$position == "jitter")) {
@@ -39,25 +39,21 @@ ggplot.as.list <- function(o, ...) {
     } else if ((l == "GeomBar") && (proto_stat[i] == "StatBin")) {
       l = "GeomHistogram"
     } else if ((l == "GeomPath") && (proto_stat[i] == "StatQqLine")) {
-      l = "GeomQqLine";
+      l = "GeomQqLine"
     } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
-      l = "GeomQq";
-    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh") {
+      l = "GeomQq"
+    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh" || l == "GeomRibbon" || l == "GeomArea") {
       if (class(ggplot2::ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
         p$xmin = ggplot2::ggplot_build(o)$data[[i]]$xmin
-        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
         p$xmax = ggplot2::ggplot_build(o)$data[[i]]$xmax
-        p$yorder = ggplot2::ggplot_build(o)$data[[i]]$y
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
         p$ymin = ggplot2::ggplot_build(o)$data[[i]]$ymin
-        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
       if (class(ggplot2::ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
         p$ymax = ggplot2::ggplot_build(o)$data[[i]]$ymax
-        p$xorder = ggplot2::ggplot_build(o)$data[[i]]$x
       }
     }
     q <- list()
@@ -305,7 +301,8 @@ gg_mapping <- function(o) {
   }
 }
 
-gg_proc_layer <- function (l) {
+gg_proc_layer <- function (o, idx) {
+  l = o$layers[[idx]]
   r = list()
   q = as.vector(NULL)
   if (!is.null(l$mapping)) {
@@ -405,9 +402,23 @@ gg_proc_layer <- function (l) {
   }
   if (class(l$stat)[1] == 'StatSina') {
     r$sina = TRUE
+  } else if (class(l$stat)[1] == 'StatStreamDensity') {
+    r$stream = TRUE
   }
   if (is.data.frame(l$data)) {
-    r$data = data_to_matrix(l$data)
+    dl = ggplot2::ggplot_build(o)$data[[idx]]
+    r$data = list()
+    if ('x' %in% colnames(dl) && 'y' %in% colnames(dl)) {
+      r$data$x = as.numeric(dl[['x']])
+      r$data$y = as.numeric(dl[['y']])
+    } else {
+      dl = l$data
+      nd = data.frame(lapply(dl, as.character), stringsAsFactors = FALSE)
+      nd = tibble::add_column(nd, Id = row.names(dl), .before = 1)
+      nd = tibble::add_row(nd, .before = 1)
+      nd[1,] = colnames(nd)
+      r$data = as.matrix(nd)
+    }
   }
   r
 }
@@ -423,7 +434,7 @@ data_to_matrix <- function(o) {
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
       } else {
-        u = ggplot2::ggplot_build(o)$data[[1]][[i]]
+        u = as.numeric(ggplot2::ggplot_build(o)$data[[1]][[i]])
         nd[q] = u
       }
     }
@@ -436,7 +447,7 @@ data_to_matrix <- function(o) {
         if (q %in% colnames(o$data)) {
           ## Nothing to do
         } else {
-          u = ggplot2::ggplot_build(o)$data[[i]][[j]]
+          u = as.numeric(ggplot2::ggplot_build(o)$data[[i]][[j]])
           nd[q] = u
         }
       }
