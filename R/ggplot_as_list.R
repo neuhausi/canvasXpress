@@ -8,11 +8,14 @@ ggplot.as.list <- function(o, ...) {
 
   target <- "canvas"
 
+  bld <- ggplot2::ggplot_build(o)
+
   cx <- list(
     renderTo = target,
     data     = data_to_matrix(o),
     aes      = gg_mapping(o),
     scales   = gg_scales(o),
+    colors   = list(fill = unique(bld$data[[1]]$fill), colors = unique(bld$data[[1]]$colour)),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
     labels   = gg_labels(o),
@@ -42,20 +45,34 @@ ggplot.as.list <- function(o, ...) {
       l = "GeomQqLine"
     } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
       l = "GeomQq"
-    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh" || l == "GeomRibbon" || l == "GeomArea") {
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
-        p$xmin = ggplot2::ggplot_build(o)$data[[i]]$xmin
+    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh" || l == "GeomRibbon") {
+      ll = o$layers[[i]]
+      if (class(bld$data[[i]]$xmin)[1] == 'numeric') {
+        p$xmin = bld$data[[i]]$xmin
+        if (rlang::as_label(ll$mapping[['xmin']]) %in% colnames(o$data)) {
+          p$x = rlang::as_label(ll$mapping[['xmin']])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
-        p$xmax = ggplot2::ggplot_build(o)$data[[i]]$xmax
+      if (class(bld$data[[i]]$xmax)[1] == 'numeric') {
+        p$xmax = bld$data[[i]]$xmax
+        if (rlang::as_label(ll$mapping[['xmax']]) %in% colnames(o$data)) {
+          p$x = rlang::as_label(ll$mapping[['xmax']])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
-        p$ymin = ggplot2::ggplot_build(o)$data[[i]]$ymin
+      if (class(bld$data[[i]]$ymin)[1] == 'numeric') {
+        p$ymin = bld$data[[i]]$ymin
+        if (rlang::as_label(ll$mapping[['ymin']]) %in% colnames(o$data)) {
+          p$y = rlang::as_label(ll$mapping[['ymin']])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
-        p$ymax = ggplot2::ggplot_build(o)$data[[i]]$ymax
+      if (class(bld$data[[i]]$ymax)[1] == 'numeric') {
+        p$ymax = bld$data[[i]]$ymax
+        if (rlang::as_label(ll$mapping[['ymax']]) %in% colnames(o$data)) {
+          p$y = rlang::as_label(ll$mapping[['ymax']])
+        }
       }
     }
+    p$stat = proto_stat[i]
     q <- list()
     q[[l]]    <- p
     cx$geoms  <- append(cx$geoms, l)
@@ -380,9 +397,6 @@ gg_proc_layer <- function (o, idx) {
             }
           }
         }
-      }
-      if ('binwidth' %in% atts) {
-        r$geomHistogram = TRUE
       }
     }
   }
