@@ -8,11 +8,14 @@ ggplot.as.list <- function(o, ...) {
 
   target <- "canvas"
 
+  bld <- ggplot2::ggplot_build(o)
+
   cx <- list(
     renderTo = target,
     data     = data_to_matrix(o),
     aes      = gg_mapping(o),
     scales   = gg_scales(o),
+    colors   = list(fill = unique(bld$data[[1]]$fill), colors = unique(bld$data[[1]]$colour)),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
     labels   = gg_labels(o),
@@ -42,20 +45,34 @@ ggplot.as.list <- function(o, ...) {
       l = "GeomQqLine"
     } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
       l = "GeomQq"
-    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh" || l == "GeomRibbon" || l == "GeomArea") {
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmin)[1] == 'numeric') {
-        p$xmin = ggplot2::ggplot_build(o)$data[[i]]$xmin
+    } else if (l == "GeomErrorbar" || l == "GeomErrorbarh" || l == "GeomRibbon") {
+      ll = o$layers[[i]]
+      if (class(bld$data[[i]]$xmin)[1] == "numeric") {
+        p$xmin = bld$data[[i]]$xmin
+        if (rlang::as_label(ll$mapping[["xmin"]]) %in% colnames(o$data)) {
+          p$x = rlang::as_label(ll$mapping[["xmin"]])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$xmax)[1] == 'numeric') {
-        p$xmax = ggplot2::ggplot_build(o)$data[[i]]$xmax
+      if (class(bld$data[[i]]$xmax)[1] == "numeric") {
+        p$xmax = bld$data[[i]]$xmax
+        if (rlang::as_label(ll$mapping[["xmax"]]) %in% colnames(o$data)) {
+          p$x = rlang::as_label(ll$mapping[["xmax"]])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymin)[1] == 'numeric') {
-        p$ymin = ggplot2::ggplot_build(o)$data[[i]]$ymin
+      if (class(bld$data[[i]]$ymin)[1] == "numeric") {
+        p$ymin = bld$data[[i]]$ymin
+        if (rlang::as_label(ll$mapping[["ymin"]]) %in% colnames(o$data)) {
+          p$y = rlang::as_label(ll$mapping[["ymin"]])
+        }
       }
-      if (class(ggplot2::ggplot_build(o)$data[[i]]$ymax)[1] == 'numeric') {
-        p$ymax = ggplot2::ggplot_build(o)$data[[i]]$ymax
+      if (class(bld$data[[i]]$ymax)[1] == "numeric") {
+        p$ymax = bld$data[[i]]$ymax
+        if (rlang::as_label(ll$mapping[["ymax"]]) %in% colnames(o$data)) {
+          p$y = rlang::as_label(ll$mapping[["ymax"]])
+        }
       }
     }
+    p$stat = proto_stat[i]
     q <- list()
     q[[l]]    <- p
     cx$geoms  <- append(cx$geoms, l)
@@ -105,7 +122,7 @@ gg_facet <- function (o) {
         f$facetRows = ceiling(length(f$facetLevels) / f$facetCols)
       }
     }
-    f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
+    f$facetTopology = paste(f$facetRows, "X", f$facetCols, sep = "")
   } else if (!is.null(o$facet$params$rows) || !is.null(o$facet$params$cols)) {
     f = list(
       facetType = "grid",
@@ -129,7 +146,7 @@ gg_facet <- function (o) {
       f$facetRows = 1
       f$facetCols = length(f$facetLevels)
     }
-    f$facetTopology = paste(f$facetRows, 'X', f$facetCols, sep = '')
+    f$facetTopology = paste(f$facetRows, "X", f$facetCols, sep = "")
   }
   f
 }
@@ -183,7 +200,7 @@ gg_scales <- function (o) {
           if (!is.null(names(p))) {
             k = names(p)
             names(p) <- NULL
-            q = list();
+            q = list()
             for (j in 1:length(k)) {
               q[[k[j]]] = p[j]
             }
@@ -241,13 +258,21 @@ gg_labels <- function (o) {
     o = ggplot2::last_plot()
   }
   r = list();
-  l = c('x', 'y', 'z', 'title', 'subtitle')
+  l = c("x", "y", "z", "title", "subtitle", "caption", "colour", "shape", "size")
   for (i in l) {
     if (!is.null(o$labels[[i]])) {
-      if (i %in% c('title', 'subtitle')) {
+      if (i %in% c("title", "subtitle")) {
         r[[i]] = o$labels[[i]]
+      } else if (i == "caption") {
+        r["citation"] = o$labels[[i]]
+      } else if (i %in% c("colour", "shape", "size")) {
+        if (i == "colour") {
+          r["colorLegendTitle"] = o$labels[[i]]
+        } else {
+          r[[paste(i, "LegendTitle", sep = "")]] = o$labels[[i]]
+        }
       } else {
-        r[[paste(i, 'AxisTitle', sep='')]] = o$labels[[i]]
+        r[[paste(i, "AxisTitle", sep = "")]] = o$labels[[i]]
       }
     }
   }
@@ -256,43 +281,21 @@ gg_labels <- function (o) {
 
 gg_mapping <- function(o) {
   if (missing(o)) {
-    o = ggplot2::last_plot()
+    o <- ggplot2::last_plot()
   }
-  r = list();
-  m = c('x', 'y', 'z', 'xmin', 'xmax', 'ymin', 'ymax', 'zmin', 'zmax', 'weight', 'group', 'colour', 'fill', 'size', 'alpha', 'linetype', 'label', 'vjust', 'sample')
-  s = as.vector(NULL)
-  e = TRUE
+  r <- list()
+  m <- c("x", "y", "z", "xmin", "xmax", "ymin", "ymax", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample")
+  e <- TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
-      e = FALSE
-      l = rlang::as_label(o$mapping[[i]])
-      f = regexpr("factor", l)[1]
-      if (f > 0) {
-        l = stringr::str_replace(stringr::str_replace(l, "factor\\(", ""), "\\)", "")
-        s = append(s , l)
-        if (!(i %in% c('x', 'y', 'z'))) {
-          if (i == 'colour') {
-            r[["color"]] = l
-          } else {
-            r[[i]] = l
-          }
-        } else {
-          r[[i]] = l
-        }
+      e <- FALSE
+      l <- rlang::as_label(o$mapping[[i]])
+      if (i == "colour") {
+        r[["color"]] <- l
       } else {
-        if (i == 'colour') {
-          r[["color"]] = l
-        } else {
-          r[[i]] = l
-        }
+        r[[i]] <- l
       }
     }
-  }
-  if (length(s) > 0) {
-    r$stringVariableFactors = unique(s)
-    r$stringSampleFactors = unique(s)
-    r$asVariableFactors = unique(s)
-    r$asSampleFactors = unique(s)
   }
   if (e) {
     gg_mapping(o$layers[[1]])
@@ -318,7 +321,7 @@ gg_proc_layer <- function (o, idx) {
           next
         }
         if (g > 0) {
-          p =  strsplit(b, split = '\\(' )[[1]]
+          p =  strsplit(b, split = "\\(" )[[1]]
           p[2] = stringr::str_replace(p[2], "\\)", "")
           w = strsplit(p[2], split = ",")[[1]]
           b = list()
@@ -329,15 +332,15 @@ gg_proc_layer <- function (o, idx) {
         } else if (f > 0) {
           b = stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
           q = append(q, b)
-          if (!(a %in% c('x', 'y', 'z'))) {
-            if (a == 'colour') {
+          if (!(a %in% c("x", "y", "z"))) {
+            if (a == "colour") {
               r[["color"]] = b
             } else {
               r[[a]] = b
             }
           }
         } else {
-          if (a == 'colour') {
+          if (a == "colour") {
             r[["color"]] = b
           } else {
             r[[a]] = b
@@ -346,8 +349,8 @@ gg_proc_layer <- function (o, idx) {
       }
     }
   }
-  prps = c('aes_params', 'geom_params', 'stat_params', 'position')
-  skip = c('compute_panel', 'preserve', 'setup_data', 'setup_params', 'super', 'compute_layer', 'orientation', 'contour', 'distribution', 'length')
+  prps = c("aes_params", "geom_params", "stat_params", "position")
+  skip = c("compute_panel", "preserve", "setup_data", "setup_params", "super", "compute_layer", "orientation", "contour", "distribution", "length")
   skip2 = c("na.rm", "reverse", "vjust")
   skip_values = list(
     na.rm = FALSE,
@@ -372,7 +375,7 @@ gg_proc_layer <- function (o, idx) {
               b = stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
             }
             if (is.null(r[[a]])) {
-              if (a == 'colour') {
+              if (a == "colour") {
                 r[["color"]] = b
               } else {
                 r[[a]] = b
@@ -380,9 +383,6 @@ gg_proc_layer <- function (o, idx) {
             }
           }
         }
-      }
-      if ('binwidth' %in% atts) {
-        r$geomHistogram = TRUE
       }
     }
   }
@@ -396,21 +396,21 @@ gg_proc_layer <- function (o, idx) {
     r$asSampleFactors = unique(q)
   }
   pos = class(l$position)[1]
-  pos = ifelse(pos == 'PositionJitter', 'jitter', ifelse(pos == 'PositionFill', "fill", ifelse(pos == "PositionStack", 'stack', ifelse(pos == "PositionDodge", 'dodge', 'normal'))))
-  if (pos != 'normal') {
+  pos = ifelse(pos == "PositionJitter", "jitter", ifelse(pos == "PositionFill", "fill", ifelse(pos == "PositionStack", "stack", ifelse(pos == "PositionDodge", "dodge", "normal"))))
+  if (pos != "normal") {
     r$position = pos
   }
-  if (class(l$stat)[1] == 'StatSina') {
+  if (class(l$stat)[1] == "StatSina") {
     r$sina = TRUE
-  } else if (class(l$stat)[1] == 'StatStreamDensity') {
+  } else if (class(l$stat)[1] == "StatStreamDensity") {
     r$stream = TRUE
   }
   if (is.data.frame(l$data)) {
     dl = ggplot2::ggplot_build(o)$data[[idx]]
     r$data = list()
-    if ('x' %in% colnames(dl) && 'y' %in% colnames(dl)) {
-      r$data$x = as.numeric(dl[['x']])
-      r$data$y = as.numeric(dl[['y']])
+    if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
+      r$data$x = as.numeric(dl[["x"]])
+      r$data$y = as.numeric(dl[["y"]])
     } else {
       dl = l$data
       nd = data.frame(lapply(dl, as.character), stringsAsFactors = FALSE)
@@ -425,7 +425,7 @@ gg_proc_layer <- function (o, idx) {
 
 data_to_matrix <- function(o) {
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
-  m = c('x', 'y', 'z')
+  m = c("x", "y", "z")
   d = o$data
   nd = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
   for (i in m) {
