@@ -3683,8 +3683,8 @@ cXkaplanmeier1 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
+    showKMConfidenceIntervals=FALSE,
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
@@ -3700,7 +3700,7 @@ cXkaplanmeier2 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
     xAxisTitle="Weeks",
@@ -3720,7 +3720,7 @@ cXkaplanmeier3 <- function() {
     graphType="Scatter2D",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("addKMPlot"))
@@ -3740,7 +3740,7 @@ cXkaplanmeier4 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottomLeft",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     xAxis=list("Survival", "Survival2"),
     xAxisTitle="Weeks",
     yAxis=list("Survival-Censor", "Survival2-Censor"),
@@ -3759,7 +3759,7 @@ cXkaplanmeier5 <- function() {
     colorBy="Sex",
     graphType="Scatter2D",
     invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
@@ -3791,11 +3791,12 @@ cXlayout2 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -3811,8 +3812,8 @@ cXlayout3 <- function() {
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine"))
+    showRegressionFit=TRUE,
+    theme="CanvasXpress"
   )
 }
 
@@ -3841,12 +3842,13 @@ cXlayout5 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=FALSE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -4043,7 +4045,8 @@ cXlayout16 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    segregateVariablesBy=list("dataset")
+    segregateVariablesBy=list("dataset"),
+    showRegressionFit="dataset"
   )
 }
 
@@ -4070,9 +4073,10 @@ cXlayout18 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("addRegressionLine", list("dataset")))
+    showRegressionFit="dataset"
   )
 }
 
@@ -5716,13 +5720,14 @@ cXscatter2d5 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5733,14 +5738,15 @@ cXscatter2d6 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     showRegressionFullRange=TRUE,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5783,11 +5789,11 @@ cXscatter2d8 <- function() {
     citation="Moore, David S., and George P. McCabe (1989)",
     citationScaleFontFactor=0.75,
     graphType="Scatter2D",
+    showRegressionFit=TRUE,
     theme="CanvasXpress",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
-    yAxis=list("Height"),
-    afterRender=list(list("addRegressionLine"))
+    yAxis=list("Height")
   )
 }
 
@@ -5808,14 +5814,14 @@ cXscatter2d9 <- function() {
     legendInside=TRUE,
     plotBox=FALSE,
     showDecorations=TRUE,
+    showRegressionFit=TRUE,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Mean annual temperature (in degrees F) and Mortality Index for neoplasms of the female breast.",
     xAxis=list("Mortality"),
     xAxisTickColor="rgb(255,255,255)",
     yAxis=list("Temperature"),
-    yAxisTickColor="rgb(255,255,255)",
-    afterRender=list(list("addRegressionLine", list(list(FALSE, 'red'))))
+    yAxisTickColor="rgb(255,255,255)"
   )
 }
 

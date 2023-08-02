@@ -57,7 +57,7 @@ HTMLWidgets.widget({
                 if (!(x instanceof Array)) {
                     x.renderTo = c.id;
                     var e = document.getElementById(c.id);
-                    if (e == null && p != null) {
+                    if (e === null && p !== null) {
                         p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
                     }
                     new CanvasXpress(x);
