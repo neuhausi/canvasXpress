@@ -1,14 +1,7 @@
 ## Comments from Maintainer
 
-
-Resubmission:
-
-* markdown for the news failed due to missing line return on windows  
-
-Original:
-
 * Updated JS underlying library  
-* Added ggplot functionality for conversions and additional parameters  
+* Updated ggplot functionality for conversions to canvasXpress  
 
 ---  
 
@@ -36,10 +29,7 @@ RHub
 
 * devtools::check_rhub(interactive = F, 
                        env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"))
-* devtools::check_rhub(interactive = F, 
-                       env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"),
-                       platforms = c("solaris-x86-patched", 
-                                     "macos-highsierra-release-cran"))
+
 
 ---  
 
