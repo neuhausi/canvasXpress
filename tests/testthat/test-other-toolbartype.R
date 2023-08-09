@@ -46,7 +46,7 @@ test_that("Scatterplot toolbarType over", {
                             xAxis                   = list("wt"),
                             yAxis                   = list("mpg"),
                             title                   =  "ScatterPlot - toolbarType: over",
-                            afterRender             = list(list("addRegressionLine", list("cyl"))),
+                            showRegressionFit       = "cyl",
                             toolbarType             = "over")
 
     check_ui_test(result)

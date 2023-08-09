@@ -15,6 +15,7 @@ ggplot.as.list <- function(o, ...) {
     data     = data_to_matrix(o),
     aes      = gg_mapping(o),
     scales   = gg_scales(o),
+    colors   = list(fill = unique(bld$data[[1]]$fill), colors = unique(bld$data[[1]]$colour)),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
     labels   = gg_labels(o),

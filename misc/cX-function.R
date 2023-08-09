@@ -508,6 +508,7 @@ cXbar14 <- function() {
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
+    xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
 }
@@ -532,7 +533,7 @@ cXbar15 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelRotate=90,
     smpLabelScaleFontFactor=1.5,
     title="Animation Movies",
@@ -570,7 +571,7 @@ cXbar16 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelScaleFontFactor=3,
     title="Friendship, Love, Family",
     titleColor="rgb(254,225,60)",
@@ -2281,11 +2282,9 @@ cXdotplot3 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     citation="Henderson, H. V. and Velleman, P. F. (1981), Building Regression Models Interactively. Biometrics, 37, 391-411.",
     citationFontStyle="italic",
     graphType="Dotplot",
@@ -2921,7 +2920,7 @@ cXfish2 <- function() {
     graphType="Fish",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    varLabelFontColor="green",
+    varLabelColor="green",
     varLabelRotate=30
   )
 }
@@ -3554,11 +3553,9 @@ cXhexplotbinplot5 <- function() {
 cXhistogram1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     varAnnot=z,
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
@@ -3576,11 +3573,9 @@ cXhistogram1 <- function() {
 cXhistogram2 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     varAnnot=z,
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
@@ -3598,10 +3593,8 @@ cXhistogram2 <- function() {
 cXhistogram3 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
@@ -3690,8 +3683,8 @@ cXkaplanmeier1 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
+    showKMConfidenceIntervals=FALSE,
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
@@ -3707,7 +3700,7 @@ cXkaplanmeier2 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
     xAxisTitle="Weeks",
@@ -3727,7 +3720,7 @@ cXkaplanmeier3 <- function() {
     graphType="Scatter2D",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("addKMPlot"))
@@ -3747,7 +3740,7 @@ cXkaplanmeier4 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottomLeft",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     xAxis=list("Survival", "Survival2"),
     xAxisTitle="Weeks",
     yAxis=list("Survival-Censor", "Survival2-Censor"),
@@ -3766,7 +3759,7 @@ cXkaplanmeier5 <- function() {
     colorBy="Sex",
     graphType="Scatter2D",
     invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
@@ -3798,11 +3791,12 @@ cXlayout2 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -3818,8 +3812,8 @@ cXlayout3 <- function() {
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine"))
+    showRegressionFit=TRUE,
+    theme="CanvasXpress"
   )
 }
 
@@ -3848,12 +3842,13 @@ cXlayout5 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=FALSE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -3886,11 +3881,9 @@ cXlayout7 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     graphOrientation="vertical",
     graphType="Dotplot",
     legendColumns=3,
@@ -4052,7 +4045,8 @@ cXlayout16 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    segregateVariablesBy=list("dataset")
+    segregateVariablesBy=list("dataset"),
+    showRegressionFit="dataset"
   )
 }
 
@@ -4079,9 +4073,10 @@ cXlayout18 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("addRegressionLine", list("dataset")))
+    showRegressionFit="dataset"
   )
 }
 
@@ -5640,10 +5635,8 @@ cXsankey4 <- function() {
 cXscatter2d1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
@@ -5727,13 +5720,14 @@ cXscatter2d5 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5744,14 +5738,15 @@ cXscatter2d6 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     showRegressionFullRange=TRUE,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5789,28 +5784,24 @@ cXscatter2d7 <- function() {
 cXscatter2d8 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     citation="Moore, David S., and George P. McCabe (1989)",
     citationScaleFontFactor=0.75,
     graphType="Scatter2D",
+    showRegressionFit=TRUE,
     theme="CanvasXpress",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
-    yAxis=list("Height"),
-    afterRender=list(list("addRegressionLine"))
+    yAxis=list("Height")
   )
 }
 
 cXscatter2d9 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-breastcancert-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-breastcancert-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     backgroundType="window",
     backgroundWindow="rgb(238,238,238)",
     citation="Velleman, P. F. and Hoaglin, D. C. (1981).\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA: Wadsworth, Inc., pp. 127-134.",
@@ -5823,14 +5814,14 @@ cXscatter2d9 <- function() {
     legendInside=TRUE,
     plotBox=FALSE,
     showDecorations=TRUE,
+    showRegressionFit=TRUE,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Mean annual temperature (in degrees F) and Mortality Index for neoplasms of the female breast.",
     xAxis=list("Mortality"),
     xAxisTickColor="rgb(255,255,255)",
     yAxis=list("Temperature"),
-    yAxisTickColor="rgb(255,255,255)",
-    afterRender=list(list("addRegressionLine", list(list(FALSE, 'red'))))
+    yAxisTickColor="rgb(255,255,255)"
   )
 }
 
@@ -6478,7 +6469,7 @@ cXstackedpercent5 <- function() {
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
     segregateVariablesBy=list("Gender"),
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
+    smpLabelColor="rgb(255,255,255)",
     smpLabelScaleFontFactor=3,
     title="Fewer Role Models",
     titleColor="rgb(252,157,156)",
@@ -6639,11 +6630,11 @@ cXtcga1 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showBoxplotOriginalData=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6666,10 +6657,10 @@ cXtcga2 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6692,9 +6683,9 @@ cXtcga3 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6718,11 +6709,11 @@ cXtcga4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6747,11 +6738,11 @@ cXtcga5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
     smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    toolbarType="over"
   )
 }
 
@@ -6889,11 +6880,9 @@ cXtagcloud1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     colorBy="Country",
     graphType="TagCloud",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",

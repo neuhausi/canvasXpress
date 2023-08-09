@@ -14,7 +14,7 @@ test_that("scatterplot overall regressionLine", {
                             smpAnnot                = x,
                             graphType               = "Scatter2D",
                             title                   = "Scatterplot - regressionLine",
-                            afterRender             = list(list("addRegressionLine")))
+                            showRegressionFit       = TRUE)
 
     check_ui_test(result)
 })
@@ -36,7 +36,7 @@ test_that("scatterplot per-sample regressionLine", {
                             stringVariableFactors   = list("cyl"),
                             xAxis                   = list("wt"),
                             yAxis                   = list("mpg"),
-                            afterRender             = list(list("addRegressionLine", list("cyl"))))
+                            showRegressionFit       = list("cyl"))
 
     check_ui_test(result)
 })
@@ -57,7 +57,7 @@ test_that("scatterplot per variable regressionLine", {
                             title                   = "Scatterplot - per variable regressionLine",
                             showRegressionFullRange = TRUE,
                             scatterPlotMatrix       = TRUE,
-                            afterRender             = list(list("addRegressionLine")))
+                            showRegressionFit       = TRUE)
 
     check_ui_test(result)
 })
@@ -78,7 +78,7 @@ test_that("scatterplot per variable and sample regressionLine", {
                             title                   = "Scatterplot - per variable and sample regressionLine",
                             showRegressionFullRange = TRUE,
                             scatterPlotMatrix       = TRUE,
-                            afterRender             = list(list("addRegressionLine", list("Species"))))
+                            showRegressionFit       = "Species")
 
     check_ui_test(result)
 })
