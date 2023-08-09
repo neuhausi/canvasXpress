@@ -187,7 +187,7 @@ gg_scales <- function (o) {
   if (n > 0) {
     for (i in 1:n) {
       s = o$scales$scales[[i]]
-      if (s$aesthetics[1] == "colour") {
+      if (s$aesthetics[1] == "colour" || s$aesthetics[1] == "fill") {
         if (stringr::str_detect(s$scale_name, "gradient")) {
           if (s$scale_name == "gradient2") {
             s$train(c(-1,1))
