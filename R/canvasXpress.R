@@ -393,7 +393,13 @@ canvasXpress <- function(data = NULL,
   if (cxplot) {
     assign("canvasXpress.last", cx_object, envir = .GlobalEnv)
   } else {
-    json <- jsonlite::toJSON(cx_object, pretty = TRUE, auto_unbox = TRUE)
+    ## Remove events because it messes it up
+    json <- jsonlite::toJSON(list(
+      data = list(y = y, x = x, z = z),
+      config = config,
+      events = as.character(events),
+      afterRender = afterRender
+    ), pretty = TRUE, auto_unbox = TRUE)
     assign("canvasXpress.last", json, envir = .GlobalEnv)
   }
 
