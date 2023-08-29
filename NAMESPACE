@@ -2,7 +2,10 @@
 
 export(canvasXpress)
 export(canvasXpress.json)
+export(canvasXpress.last)
 export(canvasXpressOutput)
 export(cxHtmlPage)
 export(cxShinyExample)
 export(renderCanvasXpress)
+export(ggplot.as.list)
+export(cxplot.as.list)
