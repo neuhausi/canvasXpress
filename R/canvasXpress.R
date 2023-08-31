@@ -83,7 +83,7 @@ canvasXpress <- function(data = NULL,
     cx_object <- ggplot.as.list(data, ...)
   } else if (!is.null(data) && is.data.frame(data) && ((!is.null(x) && x %in% colnames(data)) || (!is.null(y) && y %in% colnames(data)))) {
     cxplot <- TRUE
-    cx_object <- cxplot.as.list(data, config, x, y, z, ...)
+    cx_object <- canvasXpress.as.list(data, x, y, z, ...)
   } else if (is.character(data) && (graphType != "Network")) {
     if (httr::http_error(data)) {
       message("Unable to validate URL")
@@ -391,7 +391,7 @@ canvasXpress <- function(data = NULL,
   )
 
   if (cxplot) {
-    assign("canvasXpress.last", cx_object, envir = .GlobalEnv)
+    assign("canvasXpress.last", cx_object, globalenv())
   } else {
     ## Remove events because it messes it up
     json <- jsonlite::toJSON(list(
@@ -400,7 +400,7 @@ canvasXpress <- function(data = NULL,
       events = as.character(events),
       afterRender = afterRender
     ), pretty = TRUE, auto_unbox = TRUE)
-    assign("canvasXpress.last", json, envir = .GlobalEnv)
+    assign("canvasXpress.last", json, globalenv())
   }
 
   htmlwidgets::createWidget(
@@ -467,7 +467,7 @@ canvasXpress.json <- function(json,
     stop("json must be supplied and be a character or json object")
   }
 
-  assign("canvasXpress.last", json, envir = .GlobalEnv)
+  assign("canvasXpress.last", json, globalenv())
 
   htmlwidgets::createWidget(
     name = "canvasXpress",
