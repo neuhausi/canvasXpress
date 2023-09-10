@@ -103,7 +103,9 @@ gg_facet <- function (o) {
       facetLevels = sort(unique(o$data[[ls(f)]])),
       facetType = "wrap",
       facetXFree = o$facet$params$free$x,
-      facetYFree = o$facet$params$free$y
+      facetYFree = o$facet$params$free$y,
+      facetXSpace = o$facet$params$space_free$x,
+      facetYSpace = o$facet$params$space_free$y
     )
     if (!is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
       f$facetCols = o$facet$params$ncol
@@ -128,7 +130,9 @@ gg_facet <- function (o) {
     f = list(
       facetType = "grid",
       facetXFree = o$facet$params$free$x,
-      facetYFree = o$facet$params$free$y
+      facetYFree = o$facet$params$free$y,
+      facetXSpace = o$facet$params$space_free$x,
+      facetYSpace = o$facet$params$space_free$y
     )
     if (length(o$facet$params$rows) > 0 && length(o$facet$params$cols) > 0) {
       f$facet = c(ls(o$facet$params$rows)[1], ls(o$facet$params$cols)[1])
