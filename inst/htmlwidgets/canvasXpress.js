@@ -57,11 +57,12 @@ HTMLWidgets.widget({
                 if (!(x instanceof Array)) {
                     x.renderTo = c.id;
                     var e = document.getElementById(c.id);
-                    if (e === null && p !== null) {
+                    if (e == null && p != null) {
                         p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
                     }
-                    new CanvasXpress(x);
+                    var cx = new CanvasXpress(x);
                     this.resize(chart_width, chart_height);
+                    return cx;
                 }
             },
 
@@ -77,7 +78,7 @@ HTMLWidgets.widget({
                 chart_width  = width;
                 chart_height = height;
 
-                cx = CanvasXpress.getObject(c.id);
+                var cx = CanvasXpress.getObject(c.id);
                 if (cx) {
                     cx.setDimensions(chart_width, chart_height);
                 } else {
@@ -90,7 +91,7 @@ HTMLWidgets.widget({
             },
 
             getImage: function() {
-                cx = CanvasXpress.getObject(c.id);
+                var cx = CanvasXpress.getObject(c.id);
                 if (cx && cx.meta && cx.meta.base64) {
                     return cx.meta.base64;
                 } else {
