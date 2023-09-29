@@ -1,3 +1,5 @@
+#' Converts a ggplot object to a list that can be used by CanvasXpress.
+#' @export
 ggplot.as.list <- function(o, ...) {
 
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
@@ -15,7 +17,6 @@ ggplot.as.list <- function(o, ...) {
     data     = data_to_matrix(o),
     aes      = gg_mapping(o),
     scales   = gg_scales(o),
-    colors   = list(fill = unique(bld$data[[1]]$fill), colors = unique(bld$data[[1]]$colour)),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
     labels   = gg_labels(o),
@@ -102,7 +103,9 @@ gg_facet <- function (o) {
       facetLevels = sort(unique(o$data[[ls(f)]])),
       facetType = "wrap",
       facetXFree = o$facet$params$free$x,
-      facetYFree = o$facet$params$free$y
+      facetYFree = o$facet$params$free$y,
+      facetXSpace = o$facet$params$space_free$x,
+      facetYSpace = o$facet$params$space_free$y
     )
     if (!is.null(o$facet$params$ncol) && !is.null(o$facet$params$nrow)) {
       f$facetCols = o$facet$params$ncol
@@ -127,7 +130,9 @@ gg_facet <- function (o) {
     f = list(
       facetType = "grid",
       facetXFree = o$facet$params$free$x,
-      facetYFree = o$facet$params$free$y
+      facetYFree = o$facet$params$free$y,
+      facetXSpace = o$facet$params$space_free$x,
+      facetYSpace = o$facet$params$space_free$y
     )
     if (length(o$facet$params$rows) > 0 && length(o$facet$params$cols) > 0) {
       f$facet = c(ls(o$facet$params$rows)[1], ls(o$facet$params$cols)[1])

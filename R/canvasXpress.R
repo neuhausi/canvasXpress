@@ -16,7 +16,6 @@
 #' @aliases canvasXpress-package
 "_PACKAGE"
 
-
 #' HTML Widget Creation
 #'
 #' Custom HTML widget creation function based on widget YAML and JavaScript for
@@ -42,19 +41,15 @@
 canvasXpress <- function(data = NULL,
                          smpAnnot = NULL,
                          varAnnot = NULL,
-                         #config items
                          graphType = "Scatter2D",
-                         # straight-through
                          events = NULL,
-                         afterRender=NULL,
-                         #htmlwidgets options
+                         afterRender = NULL,
                          pretty = FALSE,
                          digits = 4,
-                         width  = 600,
+                         width = 600,
                          height = 400,
                          destroy = FALSE,
-                         ... ) {
-
+                         ...) {
     if (destroy) {
         return(htmlwidgets::createWidget("canvasXpress", list()))
     }
@@ -65,43 +60,40 @@ canvasXpress <- function(data = NULL,
         assertDataCorrectness(data, graphType, config)
     }
 
-    x             <- NULL
-    y             <- NULL
-    z             <- NULL
-    dataframe     <- "columns"
-    precalc.box   <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
-    precalc.bar   <- c("mean", "stdev")
+    x <- NULL
+    y <- NULL
+    z <- NULL
+
+    dataframe   <- "columns"
+    precalc.box <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
+    precalc.bar <- c("mean", "stdev")
 
     if (!is.null(data) && ("ggplot" %in% class(data))) {
         if (!(requireNamespace("ggplot2", quietly = TRUE))) {
             stop("The ggplot2 package is required to use this functionality.")
         }
         cx_object <- ggplot.as.list(data, ...)
-    } else	if (is.character(data) && (graphType != "Network")) {
-		if (httr::http_error(data)) {
-		    message("Unable to validate URL")
-		}
-		# CanvasXpress Object
-		cx_object <- list(data        = data,
-				          config      = config,
-				          events      = events,
-				          afterRender = afterRender)
-	}
-	else if (graphType == "Venn") {
+    } else if (is.character(data) && (graphType != "Network")) {
+        if (httr::http_error(data)) {
+            message("Unable to validate URL")
+        }
+        # CanvasXpress Object
+        cx_object <- list(data = data,
+                          config = config,
+                          events = events,
+                          afterRender = afterRender)
+    } else if (graphType == "Venn") {
         vdata <- NULL
         if (is.null(data)) {
             if (inherits(config$vennData, "list")) {
                 vdata <- config$vennData[[1]]
-            }
-            else {
+            } else {
                 vdata <- config$vennData
             }
-        }
-        else {
+        } else {
             if (inherits(data, "list")) {
                 vdata <- data[[1]]
-            }
-            else {
+            } else {
                 vdata <- data
             }
         }
@@ -111,47 +103,40 @@ canvasXpress <- function(data = NULL,
         config <- config[!(names(config) %in% c("vennData", "vennLegend"))]
 
         # CanvasXpress Object
-        cx_object <- list(data        = list(venn = list(data = vdata, legend = legend)),
-                          config      = config,
-                          events      = events,
+        cx_object <- list(data = list(venn = list(data = vdata, legend = legend)),
+                          config = config,
+                          events = events,
                           afterRender = afterRender)
-    }
-    else if (graphType == "Map" &&
-             (is.null(data) || (inherits(data, "logical") && data == FALSE))) {
-
+    } else if (graphType == "Map" && (is.null(data) || (inherits(data, "logical") && data == FALSE))) {
         # CanvasXpress Object
-        cx_object <- list(data        = FALSE,
-                          config      = config,
-                          events      = events,
+        cx_object <- list(data = FALSE,
+                          config = config,
+                          events = events,
                           afterRender = afterRender)
-    }
-    else if (graphType == "Network") {
+    } else if (graphType == "Network") {
         if (is.character(data)) {
             if (file.exists(data)) {
-                data <- paste(readLines(data), collapse = '\n')
-            }
-            else if (httr::http_error(data)) {
+                data <- paste(readLines(data), collapse = "\n")
+            } else if (httr::http_error(data)) {
                 message(data, " may not a valid file location or URL - unable to verify.")
             }
 
-            #optionally read appendNetworkData for config
+            # optionally read appendNetworkData for config
             nd <- config$appendNetworkData
             if (!is.null(nd) && (is.list(nd) || is.character(nd))) {
-                nd <- as.list(nd)
+                nd     <- as.list(nd)
                 nd.new <- list()
                 for (x in nd) {
                     if (is.character(x)) {
                         if (file.exists(x)) {
-                            nd.new <- append(nd.new, paste(readLines(x), collapse = '\n'))
-                        }
-                        else {
+                            nd.new <- append(nd.new, paste(readLines(x), collapse = "\n"))
+                        } else {
                             if (httr::http_error(x)) {
                                 message("Unable to validate URL")
                             }
                             nd.new <- append(nd.new, x)
                         }
-                    }
-                    else {
+                    } else {
                         nd.new <- append(nd.new, list(x))
                     }
                 }
@@ -159,58 +144,60 @@ canvasXpress <- function(data = NULL,
             }
 
             # CanvasXpress Object
-            cx_object <- list(data        = data,
-                              config      = config,
-                              events      = events,
+            cx_object <- list(data = data,
+                              config = config,
+                              events = events,
                               afterRender = afterRender)
-
-        }
-        else {
-            ndata     <- NULL
-            edata     <- NULL
+        } else {
+            ndata <- NULL
+            edata <- NULL
+            gdata <- NULL
+            cdata <- NULL
             dataframe <- "rows"
 
             if (is.null(data)) {
-                ndata <- config$nodeData
-                edata <- config$edgeData
-                config <- config[!(names(config) %in% c("nodeData", "edgeData"))]
-            }
-            else {
+                ndata  <- config$nodeData
+                edata  <- config$edgeData
+                gdata  <- config$groupData
+                cdata  <- config$constraintData
+                config <- config[!(names(config) %in% c("nodeData", "edgeData", "groupData", "constraintData"))]
+            } else {
                 ndata <- data$nodeData
                 edata <- data$edgeData
+                gdata <- data$groupData
+                cdata <- data$constraintData
             }
 
             # CanvasXpress Object
-            cx_object <- list(data        = list(nodes = ndata, edges = edata),
-                              config      = config,
-                              events      = events,
+            cx_object <- list(data = list(nodes       = ndata,
+                                          edges       = edata,
+                                          groups      = gdata,
+                                          constraints = cdata),
+                              config = config,
+                              events = events,
                               afterRender = afterRender)
         }
-    }
-    else if (graphType == "Genome") {
-        cx_object <- list(data        = data,
-                          config      = config,
-                          events      = events,
+    } else if (graphType == "Genome") {
+        cx_object <- list(data = data,
+                          config = config,
+                          events = events,
                           afterRender = afterRender)
         digits <- 16
-    }
-    else if (graphType == "Boxplot" &&
-             ((length(intersect(names(data), precalc.box[1:5])) == 5) ||
-              (length(intersect(rownames(data), precalc.box[1:5])) == 5))) {
-
+    } else if (graphType == "Boxplot" &&
+               ((length(intersect(names(data), precalc.box[1:5])) == 5) ||
+                (length(intersect(rownames(data), precalc.box[1:5])) == 5))) {
         if (inherits(data, "list")) {
             data.names <- names(data)
-            iqr1       <- as.matrix(t(data[["iqr1"]]));   dimnames(iqr1)   <- NULL
-            iqr3       <- as.matrix(t(data[["iqr3"]]));   dimnames(iqr3)   <- NULL
-            median     <- as.matrix(t(data[["median"]])); dimnames(median) <- NULL
-            qtl1       <- as.matrix(t(data[["qtl1"]]));   dimnames(qtl1)   <- NULL
-            qtl3       <- as.matrix(t(data[["qtl3"]]));   dimnames(qtl3)   <- NULL
+            iqr1   <- as.matrix(t(data[["iqr1"]]));   dimnames(iqr1) <- NULL
+            iqr3   <- as.matrix(t(data[["iqr3"]]));   dimnames(iqr3) <- NULL
+            median <- as.matrix(t(data[["median"]])); dimnames(median) <- NULL
+            qtl1   <- as.matrix(t(data[["qtl1"]]));   dimnames(qtl1) <- NULL
+            qtl3   <- as.matrix(t(data[["qtl3"]]));   dimnames(qtl3) <- NULL
 
             if (!is.null(smpAnnot)) {
                 if (inherits(smpAnnot, "character")) {
                     smps <- smpAnnot
-                }
-                else {
+                } else {
                     smps <- rownames(smpAnnot)
                 }
             } else {
@@ -225,20 +212,19 @@ canvasXpress <- function(data = NULL,
                       qtl1   = qtl1,
                       qtl3   = qtl3)
             if ("outliers" %in% data.names) {
-                out <- t(as.matrix(data[["outliers"]]))
+                out     <- t(as.matrix(data[["outliers"]]))
                 out.new <- sapply(out, strsplit, ",")
                 out.new <- unname(sapply(out.new, as.numeric))
                 out.new <- sapply(out.new, as.list)
-                y$out <- list(out.new)
+                y$out   <- list(out.new)
             }
-        }
-        else {
+        } else {
             data.names <- rownames(data)
-            iqr1   <- as.matrix(data["iqr1",]);   dimnames(iqr1)   <- NULL
-            iqr3   <- as.matrix(data["iqr3",]);   dimnames(iqr3)   <- NULL
-            median <- as.matrix(data["median",]); dimnames(median) <- NULL
-            qtl1   <- as.matrix(data["qtl1",]);   dimnames(qtl1)   <- NULL
-            qtl3   <- as.matrix(data["qtl3",]);   dimnames(qtl3)   <- NULL
+            iqr1   <- as.matrix(data["iqr1", ]);   dimnames(iqr1) <- NULL
+            iqr3   <- as.matrix(data["iqr3", ]);   dimnames(iqr3) <- NULL
+            median <- as.matrix(data["median", ]); dimnames(median) <- NULL
+            qtl1   <- as.matrix(data["qtl1", ]);   dimnames(qtl1) <- NULL
+            qtl3   <- as.matrix(data["qtl3", ]);   dimnames(qtl3) <- NULL
 
             y <- list(smps   = as.list(assignCanvasXpressColnames(data)),
                       vars   = as.list("precalculated BoxPlot"),
@@ -249,11 +235,11 @@ canvasXpress <- function(data = NULL,
                       qtl3   = qtl3)
             if ("outliers" %in% data.names) {
                 if ("outliers" %in% data.names) {
-                    out <- t(as.matrix(data["outliers",]))
+                    out     <- t(as.matrix(data["outliers", ]))
                     out.new <- sapply(out, strsplit, ",")
                     out.new <- unname(sapply(out.new, as.numeric))
                     out.new <- sapply(out.new, as.list)
-                    y$out <- list(out.new)
+                    y$out   <- list(out.new)
                 }
             }
         }
@@ -283,41 +269,37 @@ canvasXpress <- function(data = NULL,
                           config      = config,
                           events      = events,
                           afterRender = afterRender)
-    }
-    else if (graphType == "Bar" &&
-             ((length(intersect(names(data), precalc.bar[1:2])) == 2) ||
-              (length(intersect(rownames(data), precalc.bar[1:2])) == 2))) {
-
+    } else if (graphType == "Bar" &&
+               ((length(intersect(names(data), precalc.bar[1:2])) == 2) ||
+                (length(intersect(rownames(data), precalc.bar[1:2])) == 2))) {
         if (inherits(data, "list")) {
             data.names <- names(data)
-            mean       <- as.matrix(t(data[["mean"]]));   dimnames(mean)   <- NULL
-            stdev      <- as.matrix(t(data[["stdev"]]));  dimnames(stdev)  <- NULL
+            mean  <- as.matrix(t(data[["mean"]]));  dimnames(mean) <- NULL
+            stdev <- as.matrix(t(data[["stdev"]])); dimnames(stdev) <- NULL
 
             if (!is.null(smpAnnot)) {
                 if (inherits(smpAnnot, "character")) {
                     smps <- smpAnnot
-                }
-                else {
+                } else {
                     smps <- rownames(smpAnnot)
                 }
             } else {
                 smps <- make.names(1:length(data[["mean"]]))
             }
 
-            y <- list(smps   = as.list(smps),
-                      vars   = as.list("precalculated BarChart"),
-                      mean   = mean,
-                      stdev  = stdev)
-        }
-        else {
+            y <- list(smps  = as.list(smps),
+                      vars  = as.list("precalculated BarChart"),
+                      mean  = mean,
+                      stdev = stdev)
+        } else {
             data.names <- rownames(data)
-            mean   <- as.matrix(data["mean",]);   dimnames(mean)   <- NULL
-            stdev  <- as.matrix(data["stdev",]);  dimnames(stdev)  <- NULL
+            mean  <- as.matrix(data["mean", ]);  dimnames(mean) <- NULL
+            stdev <- as.matrix(data["stdev", ]); dimnames(stdev) <- NULL
 
-            y <- list(smps   = as.list(assignCanvasXpressColnames(data)),
-                      vars   = as.list("precalculated BarChart"),
-                      mean   = mean,
-                      stdev  = stdev)
+            y <- list(smps  = as.list(assignCanvasXpressColnames(data)),
+                      vars  = as.list("precalculated BarChart"),
+                      mean  = mean,
+                      stdev = stdev)
         }
 
         if (!is.null(smpAnnot)) {
@@ -345,9 +327,8 @@ canvasXpress <- function(data = NULL,
                           config      = config,
                           events      = events,
                           afterRender = afterRender)
-    }
-    # standard graph
-    else {
+    } else {
+        # standard graph
         y <- setup_y(data)
         x <- setup_x(y$smps, smpAnnot)
         z <- setup_z(y$vars, varAnnot)
@@ -357,19 +338,19 @@ canvasXpress <- function(data = NULL,
                           config      = config,
                           events      = events,
                           afterRender = afterRender)
-    } #standard graph
+    } # standard graph
 
-    attr(cx_object, 'TOJSON_ARGS') <- list(dataframe = dataframe,
-                                           pretty    = pretty,
-                                           digits    = digits)
+    attr(cx_object, "TOJSON_ARGS") <- list(
+        dataframe = dataframe,
+        pretty    = pretty,
+        digits    = digits)
 
-    htmlwidgets::createWidget(name = "canvasXpress",
-                              cx_object,
-                              width  = width,
-                              height = height,
+    htmlwidgets::createWidget(name    = "canvasXpress",
+                              x       = cx_object,
+                              width   = width,
+                              height  = height,
                               package = "canvasXpress")
 }
-
 
 #' HTML Widget Creation using JSON input
 #'
@@ -407,11 +388,10 @@ canvasXpress <- function(data = NULL,
 #'
 #' @export
 canvasXpress.json <- function(json,
-                              #htmlwidgets options
-                              pretty = FALSE,
-                              digits = 4,
-                              width  = 600,
-                              height = 400,
+                              pretty  = FALSE,
+                              digits  = 4,
+                              width   = 600,
+                              height  = 400,
                               destroy = FALSE) {
     if (destroy) {
         return(htmlwidgets::createWidget("canvasXpress", list()))
