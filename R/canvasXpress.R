@@ -38,27 +38,27 @@
 #' @return htmlwidgets object
 #'
 #' @export
-canvasXpress <- function(data = NULL,
-                         smpAnnot = NULL,
-                         varAnnot = NULL,
-                         graphType = "Scatter2D",
-                         events = NULL,
+canvasXpress <- function(data        = NULL,
+                         smpAnnot    = NULL,
+                         varAnnot    = NULL,
+                         graphType   = "Scatter2D",
+                         events      = NULL,
                          afterRender = NULL,
-                         pretty = FALSE,
-                         digits = 4,
-                         width = 600,
-                         height = 400,
-                         destroy = FALSE,
+                         pretty      = FALSE,
+                         digits      = 4,
+                         width       = 600,
+                         height      = 400,
+                         destroy     = FALSE,
                          ...) {
     if (destroy) {
         return(htmlwidgets::createWidget("canvasXpress", list()))
     }
 
-    config <- list(graphType = graphType, isR = TRUE, ...)
-
-    if (is.null(data) || !("ggplot" %in% class(data))) {
+    if (is.null(data) || !(any(c("canvasXpress", "ggplot") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)
     }
+
+    config <- list(graphType = graphType, isR = TRUE, ...)
 
     x <- NULL
     y <- NULL
@@ -68,7 +68,67 @@ canvasXpress <- function(data = NULL,
     precalc.box <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
     precalc.bar <- c("mean", "stdev")
 
-    if (!is.null(data) && ("ggplot" %in% class(data))) {
+    if (!is.null(data) && "canvasXpress" %in% class(data)) {
+        # piped in object that will receive changes
+
+        if (!missing(smpAnnot) || !missing(varAnnot)) {
+            stop("Data changes are not allowed when modifying a canvasXpress object (ie piping) - including smpAnnot, varAnnot, etc.")
+        }
+
+        if (is.null(data$x)) {
+            stop("Original canvasXpress object is invalid and cannot be read")
+        }
+
+        if (!is.null(data$x$config)) {
+            if (missing(graphType)) {
+                config$graphType = data$x$config$graphType
+            }
+            old_config <- data$x$config
+
+            # bring in old config values that are not specified in this object
+            for (c in names(old_config)) {
+                if (!c %in% config) {
+                    config[c] <- old_config[c]
+                }
+            }
+        }
+
+        if (!is.null(data$x$events) && missing(events)) {
+            events <- data$x$events
+        }
+
+        if (!is.null(data$x$afterRender) && missing(afterRender)) {
+            afterRender <- data$x$afterRender
+        }
+
+        old_attr <- attr(data$x, "TOJSON_ARGS")
+        if (!is.null(old_attr)) {
+            if (missing(pretty) && !is.null(old_attr$pretty)) {
+                pretty <- old_attr$pretty
+            }
+
+            if (missing(digits) && !is.null(old_attr$digits)) {
+                digits <- old_attr$digits
+            }
+
+            if (!is.null(old_attr$dataframe)) {
+                dataframe <- old_attr$dataframe
+            }
+        }
+
+        if (missing(width)) {
+            width <- data$width
+        }
+
+        if (missing(height)) {
+            height <- data$height
+        }
+
+        cx_object <- list(data        = data$x$data,
+                          config      = config,
+                          events      = events,
+                          afterRender = afterRender)
+    } else if (!is.null(data) && ("ggplot" %in% class(data))) {
         if (!(requireNamespace("ggplot2", quietly = TRUE))) {
             stop("The ggplot2 package is required to use this functionality.")
         }
@@ -78,9 +138,9 @@ canvasXpress <- function(data = NULL,
             message("Unable to validate URL")
         }
         # CanvasXpress Object
-        cx_object <- list(data = data,
-                          config = config,
-                          events = events,
+        cx_object <- list(data        = data,
+                          config      = config,
+                          events      = events,
                           afterRender = afterRender)
     } else if (graphType == "Venn") {
         vdata <- NULL
@@ -103,15 +163,15 @@ canvasXpress <- function(data = NULL,
         config <- config[!(names(config) %in% c("vennData", "vennLegend"))]
 
         # CanvasXpress Object
-        cx_object <- list(data = list(venn = list(data = vdata, legend = legend)),
-                          config = config,
-                          events = events,
+        cx_object <- list(data        = list(venn = list(data = vdata, legend = legend)),
+                          config      = config,
+                          events      = events,
                           afterRender = afterRender)
     } else if (graphType == "Map" && (is.null(data) || (inherits(data, "logical") && data == FALSE))) {
         # CanvasXpress Object
-        cx_object <- list(data = FALSE,
-                          config = config,
-                          events = events,
+        cx_object <- list(data        = FALSE,
+                          config      = config,
+                          events      = events,
                           afterRender = afterRender)
     } else if (graphType == "Network") {
         if (is.character(data)) {
@@ -144,9 +204,9 @@ canvasXpress <- function(data = NULL,
             }
 
             # CanvasXpress Object
-            cx_object <- list(data = data,
-                              config = config,
-                              events = events,
+            cx_object <- list(data        = data,
+                              config      = config,
+                              events      = events,
                               afterRender = afterRender)
         } else {
             ndata <- NULL
@@ -169,18 +229,18 @@ canvasXpress <- function(data = NULL,
             }
 
             # CanvasXpress Object
-            cx_object <- list(data = list(nodes       = ndata,
-                                          edges       = edata,
-                                          groups      = gdata,
-                                          constraints = cdata),
-                              config = config,
-                              events = events,
+            cx_object <- list(data        = list(nodes       = ndata,
+                                                 edges       = edata,
+                                                 groups      = gdata,
+                                                 constraints = cdata),
+                              config      = config,
+                              events      = events,
                               afterRender = afterRender)
         }
     } else if (graphType == "Genome") {
-        cx_object <- list(data = data,
-                          config = config,
-                          events = events,
+        cx_object <- list(data        = data,
+                          config      = config,
+                          events      = events,
                           afterRender = afterRender)
         digits <- 16
     } else if (graphType == "Boxplot" &&
