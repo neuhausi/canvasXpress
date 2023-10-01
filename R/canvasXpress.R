@@ -21,8 +21,7 @@
 #' Custom HTML widget creation function based on widget YAML and JavaScript for
 #' use in any html-compatible context
 #'
-#'
-#' @param data data.frame-, matrix-, or list- classed data object
+#' @param data data.frame-, matrix-, list- , or ggplot- classed object
 #' @param smpAnnot additional data that applies to samples (columns)
 #' @param varAnnot additional data that applies to variables (rows)
 #' @param graphType type of graph to be plotted - default = "Scatter2D"
@@ -34,6 +33,14 @@
 #' @param height plot height (valid CSS units) - default = 400px
 #' @param destroy used to indicate removal of a plot - default = FALSE
 #' @param ... additional parameters passed to canvasXpress
+#'
+#' @section Piping Support:
+#'   Piping is supported (both the magrittr '%>%' and native '|>' pipes) when sending an existing
+#'   canvasXpress object into data parameter.  Any new parameters will be added to the original configuration
+#'   of the object, any parameters with data that existed before will be replaced, and any parameters set
+#'   to null will be removed.  It is important to note that primary data changes are not allowed in this
+#'   construct - which means that anything specified by using the data, varAnnot, or smpAnnot parameters
+#'   cannot be changed from the original values.
 #'
 #' @return htmlwidgets object
 #'
@@ -54,11 +61,11 @@ canvasXpress <- function(data        = NULL,
         return(htmlwidgets::createWidget("canvasXpress", list()))
     }
 
+    config <- list(graphType = graphType, isR = TRUE, ...)
+
     if (is.null(data) || !(any(c("canvasXpress", "ggplot") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)
     }
-
-    config <- list(graphType = graphType, isR = TRUE, ...)
 
     x <- NULL
     y <- NULL
@@ -72,7 +79,7 @@ canvasXpress <- function(data        = NULL,
         # piped in object that will receive changes
 
         if (!missing(smpAnnot) || !missing(varAnnot)) {
-            stop("Data changes are not allowed when modifying a canvasXpress object (ie piping) - including smpAnnot, varAnnot, etc.")
+            stop("Primary object data changes are not supported when modifying a canvasXpress object (ie piping) - ie changes to the data, varAnnot or smpAnnot parameters.")
         }
 
         if (is.null(data$x)) {
