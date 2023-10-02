@@ -27,16 +27,19 @@ test_that("EXAMPLE - REMOVE", {
 
     check_ui_test(obj2a)
 
-    obj2b <- obj1 |> canvasXpress(
-        # change a parameter
-        graphOrientation = "vertical",
-        # add a parameter
-        subtitle         = "New subtitle",
-        # remove a parameter
-        title            = NULL,
-    )
+    if (supports_native_pipe) {
+        obj2b <- obj1 |> canvasXpress(
+            # change a parameter
+            graphOrientation = "vertical",
+            # add a parameter
+            subtitle         = "New subtitle",
+            # remove a parameter
+            title            = NULL,
+        )
 
-    check_ui_test(obj2b)
+        check_ui_test(obj2b)
+    }
+
 })
 
 

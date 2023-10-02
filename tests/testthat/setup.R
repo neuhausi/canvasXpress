@@ -46,6 +46,19 @@ try({
 })
 
 
+### Support for native pipe
+
+supports_native_pipe <- FALSE
+
+if (as.numeric(version$major) >= 4) {
+    # support testing for 4.3+, this is due to issues with messages and bugs in the native pipe
+    # messing up circleCI in 4.2.3 and lower.  It doesn't mean we don't support the pipe we just
+    # do not run the test below 4.3
+    if (as.numeric(substr(version$minor, 1, 1)) > 2) {
+        supports_native_pipe <- TRUE
+    }
+}
+
 
 
 ### Supporting Functions
@@ -66,3 +79,4 @@ check_ui_test <- function(result){
         warning('check_ui_test() errored with: ', e)
     })
 }
+
