@@ -124,6 +124,42 @@ cXarea6 <- function() {
   )
 }
 
+cXarea7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-scatterArea-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-scatterArea-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="g",
+    colorScheme="GGPlot",
+    graphType="Scatter2D",
+    scatterType="area",
+    theme="GGPlot"
+  )
+}
+
+cXarea8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fontana-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-fontana-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="country",
+    colors=list("rgb(0,63,92)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(160,81,149)", "rgb(212,80,135)", "rgb(249,93,106)", "rgb(255,124,67)", "rgb(255,166,0)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    legendColumns=4,
+    legendPosition="bottom",
+    scatterType="area",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
 cXarealine1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-arealine-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1881,14 +1917,15 @@ cXdashboard6 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    asDOE=TRUE,
     colorBy="Stay Home Sick",
     graphType="Map",
     histogramBins=FALSE,
+    layoutConfig=list(list(size="2X2")),
     legendPosition="top",
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
-    topoJSON="https://www.canvasxpress.org/data/bc.json",
-    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list(list('2X2', 0))))
+    topoJSON="https://www.canvasxpress.org/data/bc.json"
   )
 }
 
@@ -2039,7 +2076,6 @@ cXdensity9 <- function() {
     hideHistogram=TRUE,
     histogramData=TRUE,
     histogramStat="count",
-    segregateVariablesBy=list("Species"),
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
@@ -4682,6 +4718,183 @@ cXnetwork2 <- function() {
 
 cXnetwork3 <- function() {
   library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork4 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesG-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesG-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaAvoidOverlaps=TRUE,
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork5 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    is3DNetwork=TRUE,
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork6 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=60,
+    networkColaStartUnconstrainedIterations=30,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork7 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-dunart-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-dunart-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    graphType="Network",
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork8 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chris-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chris-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    graphType="Network",
+    networkColaStartUnconstrainedIterations=30,
+    networkColaSymmetricDiffLinkLengths=5,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork9 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    graphType="Network",
+    networkColaAllConstraintsIterations=20,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaFlowLayoutAxis="y",
+    networkColaFlowLayoutSeparation=30,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaSymmetricDiffLinkLengths=6,
+    networkColaUserConstraintIterations=20,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork10 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    graphType="Network",
+    is3DNetwork=TRUE,
+    networkColaAllConstraintsIterations=20,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaFlowLayoutAxis="y",
+    networkColaFlowLayoutSeparation=30,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaSymmetricDiffLinkLengths=6,
+    networkColaUserConstraintIterations=20,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork11 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-hierGroup-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-hierGroup-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(122,78,79)",
+    edgeThickness=3,
+    graphType="Network",
+    networkColaAllConstraintsIterations=50,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaGridSnapIterations=50,
+    networkColaLinkDistance=80,
+    networkColaStartUnconstrainedIterations=100,
+    networkColaUserConstraintIterations=0,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork12 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-constraints-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-constraints-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(122,78,79)",
+    edgeThickness=3,
+    graphType="Network",
+    networkColaAllConstraintsIterations=10,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaHandleDisconnected=TRUE,
+    networkColaLinkDistance=80,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaUserConstraintIterations=10,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork13 <- function() {
+  library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -4701,7 +4914,7 @@ cXnetwork3 <- function() {
   )
 }
 
-cXnetwork4 <- function() {
+cXnetwork14 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkradial-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkradial-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4717,7 +4930,7 @@ cXnetwork4 <- function() {
   )
 }
 
-cXnetwork5 <- function() {
+cXnetwork15 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkbasic-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkbasic-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4736,7 +4949,7 @@ cXnetwork5 <- function() {
   )
 }
 
-cXnetwork6 <- function() {
+cXnetwork16 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkkarate-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkkarate-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4750,7 +4963,7 @@ cXnetwork6 <- function() {
   )
 }
 
-cXnetwork7 <- function() {
+cXnetwork17 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4768,7 +4981,7 @@ cXnetwork7 <- function() {
   )
 }
 
-cXnetwork8 <- function() {
+cXnetwork18 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4787,7 +5000,7 @@ cXnetwork8 <- function() {
   )
 }
 
-cXnetwork9 <- function() {
+cXnetwork19 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/hsa05222.xml",
@@ -4797,7 +5010,7 @@ cXnetwork9 <- function() {
   )
 }
 
-cXnetwork10 <- function() {
+cXnetwork20 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/hsa05222.xml",
@@ -4810,7 +5023,7 @@ cXnetwork10 <- function() {
   )
 }
 
-cXnetwork11 <- function() {
+cXnetwork21 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/WP3624_95209.gpml",
@@ -4818,7 +5031,7 @@ cXnetwork11 <- function() {
   )
 }
 
-cXnetwork12 <- function() {
+cXnetwork22 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/example.xgmml",
@@ -4826,7 +5039,7 @@ cXnetwork12 <- function() {
   )
 }
 
-cXnetwork13 <- function() {
+cXnetwork23 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/Apoptosis.xml",
@@ -4834,13 +5047,157 @@ cXnetwork13 <- function() {
   )
 }
 
-cXnetwork14 <- function() {
+cXnetwork24 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/networkData.txt",
     colorNodeBy="name_mod1",
     graphType="Network",
     sizeEdgeBy="aa%1"
+  )
+}
+
+cXnetwork25 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-doctrine2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-doctrine2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork26 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-faker-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-faker-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork27 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-jquery-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-jquery-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork28 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-lichess-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-lichess-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork29 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-propel2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-propel2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork30 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-rails-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-rails-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork31 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-symfony-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-symfony-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork32 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-twig-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-twig-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork33 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-uptime-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-uptime-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    networkConvergenceThreshold=0.001,
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork34 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-wordpress-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-wordpress-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork35 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-zf2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-zf2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
   )
 }
 
@@ -6528,6 +6885,213 @@ cXstackedpercentline2 <- function() {
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
+  )
+}
+
+cXstreamgraph1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="both",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.2,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="none",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=1,
+    scatterStreamExtraSpan=0.2,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="none",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=15,
+    scatterStreamTrueRange="both",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamType="ridge",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="window",
+    backgroundWindow="rgb(222,222,222)",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamType="proportional",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisTicksMinorShow=FALSE,
+    yAxisTicksMinorShow=FALSE
+  )
+}
+
+cXstreamgraph7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-comics-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-comics-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    background="rgb(222,222,222)",
+    citation="Visualization inspired by Cédric Scherer's • Data by Claremont Run Project via Malcom Barret • Popularity Scores by ranker.com",
+    colorBy="char_costume",
+    colorKey=list(char_costume=list(Gambit (casual)   ="rgb(142,3,142)", Gambit (costumed)   ="rgb(213,5,213)", Magneto (casual)   ="rgb(194,0,8)", Magneto (costumed)   ="rgb(255,2,13)", Nightcrawler (casual)   ="rgb(19,175,239)", Nightcrawler (costumed)   ="rgb(78,195,243)", Storm (casual)="rgb(89,90,82)", Storm (costumed)="rgb(115,117,106)", Wolverine (casual)   ="rgb(255,180,0)", Wolverine (costumed)   ="rgb(255,199,64)")),
+    dataPointSizeScaleFactor=0,
+    decorations=list(image=list(list(height=64, scope="depicted", src="https://www.canvasxpress.org/assets/images/uncannyxmen.png", width=100, x=300, y=-100)), label=list(list(align="left", background="rgb(255,255,255)", color="rgb(142,3,142)", justify=40, label="**Gambit** was introduced for the first time inissue #266 called Gambit => Out of the Frying Pan nevertheless, he is the **4 most popular X-Men character**!", scope="depicted", x=250, y=-70), list(align="left", background="rgb(255,255,255)", color="rgb(255,180,0)", justify=40, label="**Wolverine is the most popular X-Men** and has a regular presence in the X-Men comics between 1975 and 1991.", scope="depicted", x=70, y=70), list(align="left", background="rgb(255,255,255)", color="rgb(194,0,8)", justify=40, label="**Magneto** was ranked by IGN as the *Greatest Comic Book Villain of All Time*. And even though he only appears from time to time he **ranks 2nd **—4 ranks higher than his friend and opponent Professor X!", scope="narrative", x=215, y=-70), list(align="left", background="rgb(255,255,255)", color="rgb(19,175,239)", justify=40, label="The **3rd most popular X-men character Nightcrawler** gets injured during the 'Mutant Massacre' and fell into a coma after an attack from Riptide in issue #211", scope="speech", x=211, y=-100), list(align="left", background="rgb(255,255,255)", color="rgb(89,90,82)", justify=40, label="**Storm** is by far the most thoughtful of the five most popular X-Men characters, especially in issues #220, #223 and #265. Storm **ranks 5th**", scope="thought", x=220, y=-70)), text=list(list(align="left", color="rgb(0,0,0)", label="Depicted", scope="depicted", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Narrative\nStatements", scope="narrative", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Speech\nBubbles", scope="speech", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Thought\nBubbles", scope="thought", x=85, y=-50))),
+    decorationsClipped=FALSE,
+    decorationsTextScaleFontFactor=0.6,
+    fontName="Trebuchet MS",
+    graphType="Scatter2D",
+    layoutLabelShow=FALSE,
+    layoutTopology="4X1",
+    layoutType="rows",
+    legendBackgroundBorderColor="rgb(0,0,0)",
+    legendBackgroundColor="rgb(255,255,255)",
+    legendColumns=5,
+    legendOrder=list(char_costume=list("Wolverine (casual)   ", "Magneto (casual)   ", "Nightcrawler (casual)   ", "Gambit (casual)   ", "Storm (casual)", "Wolverine (costumed)   ", "Magneto (costumed)   ", "Nightcrawler (costumed)   ", "Gambit (costumed)   ", "Storm (costumed)")),
+    legendPosition="bottom",
+    legendTextScaleFontFactor=0.6,
+    marginBottom=25,
+    marginTop=25,
+    scatterStreamBandwidth=0.55,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamWiggles=list("Wolverine (casual)   ", "Wolverine (costumed)   ", "Magneto (casual)   ", "Magneto (costumed)   ", "Nightcrawler (casual)   ", "Nightcrawler (costumed)   ", "Gambit (casual)   ", "Gambit (costumed)   ", "Storm (casual)", "Storm (costumed)"),
+    scatterType="stream",
+    segregateVariablesBy=list("parameter"),
+    setMaxX=325,
+    setMinX=75,
+    showLegendTitle=FALSE,
+    showLoessFit="char_costume",
+    title="Appearance of the Five Most Popular X-Men Characters in Chris Claremont's Comics",
+    titleScaleFontFactor=0.7,
+    xAxisTickLineType="dotted",
+    xAxisTickSize=2,
+    xAxisTicksMinorShow=FALSE,
+    yAxis=list("value"),
+    yAxisShow=FALSE,
+    yAxisTickBottomShow=FALSE,
+    yAxisTickTopShow=FALSE,
+    yAxisTicks=0,
+    yAxisTicksMajorShow=FALSE,
+    yAxisTicksMinorShow=FALSE,
+    yAxisTitle=FALSE
   )
 }
 
