@@ -94,7 +94,7 @@ canvasXpress <- function(data        = NULL,
 
             # bring in old config values that are not specified in this object
             for (c in names(old_config)) {
-                if (!c %in% config) {
+                if (!c %in% names(config)) {
                     config[c] <- old_config[c]
                 }
             }
