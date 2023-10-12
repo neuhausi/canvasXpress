@@ -1939,6 +1939,8 @@ cXdensity1 <- function() {
     graphType="Scatter2D",
     hideHistogram=TRUE,
     histogramData=TRUE,
+    histogramStat="count",
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     theme="CanvasXpress"
   )
@@ -1951,9 +1953,13 @@ cXdensity2 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="normal",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramData="sex",
+    histogramStat="density",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1967,10 +1973,13 @@ cXdensity3 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="stacked",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramData="sex",
+    histogramStat="density",
     showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1984,10 +1993,15 @@ cXdensity4 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="filled",
     graphType="Scatter2D",
     hideHistogram=TRUE,
     histogramData="sex",
+    histogramStat="density",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
     theme="CanvasXpress"
   )
 }
@@ -1999,9 +2013,13 @@ cXdensity5 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="stacked",
     graphType="Scatter2D",
     hideHistogram=TRUE,
     histogramData="sex",
+    histogramStat="count",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -2017,8 +2035,9 @@ cXdensity6 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData="sex",
+    histogramData=TRUE,
     showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -2033,17 +2052,69 @@ cXdensity7 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=FALSE,
-    histogramBins=20,
+    hideHistogram=TRUE,
     histogramData="sex",
-    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramData="sex",
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
   )
 }
 
-cXdensity8 <- function() {
+cXdensity9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramData="sex",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=20,
+    histogramData="sex",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity11 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-density2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-density2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2065,7 +2136,7 @@ cXdensity8 <- function() {
   )
 }
 
-cXdensity9 <- function() {
+cXdensity12 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2077,13 +2148,14 @@ cXdensity9 <- function() {
     histogramData=TRUE,
     histogramStat="count",
     showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     theme="CanvasXpress"
   )
 }
 
-cXdensity10 <- function() {
+cXdensity13 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2097,13 +2169,14 @@ cXdensity10 <- function() {
     histogramStat="count",
     segregateVariablesBy=list("Species"),
     showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     theme="CanvasXpress"
   )
 }
 
-cXdensity11 <- function() {
+cXdensity14 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2116,13 +2189,14 @@ cXdensity11 <- function() {
     histogramStat="count",
     segregateSamplesBy=list("sample"),
     showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     theme="CanvasXpress"
   )
 }
 
-cXdensity12 <- function() {
+cXdensity15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2136,6 +2210,7 @@ cXdensity12 <- function() {
     histogramStat="count",
     segregateSamplesBy=list("sample"),
     showFilledHistogramDensity=TRUE,
+    showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     theme="CanvasXpress"
@@ -3597,12 +3672,13 @@ cXhistogram1 <- function() {
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=10,
+    histogramData=TRUE,
+    showHistogram=TRUE,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
-    yAxisTitle="Number of Subjects",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Number of Subjects"
   )
 }
 
@@ -3617,68 +3693,93 @@ cXhistogram2 <- function() {
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=20,
-    showTransition=FALSE,
+    histogramData=TRUE,
+    showHistogram=TRUE,
+    showHistogramPath=TRUE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
-    yAxisTitle="Number of Subjects",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Number of Subjects"
   )
 }
 
 cXhistogram3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
-    decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
+    varAnnot=z,
+    axisTitleFontStyle="italic",
+    citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
+    hideHistogram=TRUE,
     histogramBins=20,
-    showTransition=FALSE,
+    histogramData=TRUE,
+    showFilledHistogramPath=TRUE,
+    showHistogram=TRUE,
+    showHistogramPath=TRUE,
     theme="CanvasXpress",
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
-    xAxisTitle="Pounds Spent",
-    yAxisTitle="Frequency",
-    afterRender=list(list("createHistogram"))
+    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    xAxisTitle="Survival (days)",
+    yAxisTitle="Number of Subjects"
   )
 }
 
 cXhistogram4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     graphType="Scatter2D",
     histogramBins=5,
-    histogramType="dodged",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    histogramData=TRUE,
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
   )
 }
 
 cXhistogram5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     graphType="Scatter2D",
     histogramBins=5,
+    histogramData=TRUE,
     histogramType="staggered",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
   )
 }
 
 cXhistogram6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
+    graphType="Scatter2D",
+    histogramBins=5,
+    histogramData=TRUE,
+    histogramType="stacked",
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
+  )
+}
+
+cXhistogram7 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3687,15 +3788,52 @@ cXhistogram6 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     histogramBins=5,
+    histogramData=TRUE,
+    histogramType="dodged",
+    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    segregateVariablesBy=list("dataset"),
+    showHistogram=TRUE
+  )
+}
+
+cXhistogram8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    histogramBins=5,
+    histogramData=TRUE,
+    histogramType="staggered",
+    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    segregateVariablesBy=list("dataset"),
+    showHistogram=TRUE
+  )
+}
+
+cXhistogram9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    histogramBins=5,
+    histogramData=TRUE,
     histogramType="stacked",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    showHistogram=TRUE
   )
 }
 
-cXhistogram7 <- function() {
+cXhistogram10 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-mtcars2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-mtcars2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3705,11 +3843,12 @@ cXhistogram7 <- function() {
     graphType="Scatter2D",
     histogramAsDotplot=TRUE,
     histogramBinWidth=3,
+    histogramData=TRUE,
+    showHistogram=TRUE,
     theme="CanvasXpress",
     xAxis=list("mpg"),
     xAxisTitle="mpg",
-    yAxisTitle="Frequency",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Frequency"
   )
 }
 
@@ -4736,9 +4875,11 @@ cXnetwork4 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesG-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-miserablesG-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-miserablesG-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    groupData=groups,
     colorNodeBy="group",
     graphType="Network",
     networkColaAvoidOverlaps=TRUE,
@@ -4786,9 +4927,13 @@ cXnetwork7 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-dunart-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-dunart-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-dunart-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-dunart-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    groupData=groups,
+    constraintData=constraints,
     graphType="Network",
     networkLayoutType="cola"
   )
@@ -4814,9 +4959,11 @@ cXnetwork9 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    constraintData=constraints,
     graphType="Network",
     networkColaAllConstraintsIterations=20,
     networkColaAvoidOverlaps=TRUE,
@@ -4835,9 +4982,11 @@ cXnetwork10 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    constraintData=constraints,
     graphType="Network",
     is3DNetwork=TRUE,
     networkColaAllConstraintsIterations=20,
@@ -4857,9 +5006,11 @@ cXnetwork11 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-hierGroup-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-hierGroup-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-hierGroup-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    groupData=groups,
     edgeColor="rgb(122,78,79)",
     edgeThickness=3,
     graphType="Network",
@@ -4877,9 +5028,11 @@ cXnetwork12 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-constraints-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-constraints-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-constraints-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
+    constraintData=constraints,
     edgeColor="rgb(122,78,79)",
     edgeThickness=3,
     graphType="Network",
