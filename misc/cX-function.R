@@ -4714,6 +4714,33 @@ cXmap14 <- function() {
   )
 }
 
+cXmap15 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    decorations=list(marker=list(list(color="blue", coords=list(40.701, -73.985), label="New York 1", shape="circle", size=1), list(color="red", coords=list(40.702, -74.011), label="New York 2", shape="teardrop", size=1.5), list(color="green", coords=list(40.703, -73.991), label="New York 3", shape="star", size=3))),
+    graphType="Map",
+    mapConfig=list(center=list(40.7, -74), zoom=15),
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
+cXmap16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    mapConfig=list(center=list(40.7, -74), zoom=15),
+    markerBy="shape",
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
 cXmeter1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
