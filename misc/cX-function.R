@@ -4741,6 +4741,43 @@ cXmap16 <- function() {
   )
 }
 
+cXmap17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    leafletZoomAlphaColor=1,
+    mapConfig=list(center=list(37.6, -99), zoom=4),
+    mapMarkerShape="circle",
+    mapMarkerShapeScaleFactor=0.5,
+    markerBy="State",
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
+cXmap18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    leafletZoomAlphaColor=1,
+    mapConfig=list(center=list(37.6, -99), zoom=4),
+    mapMarkerShape="circle",
+    mapMarkerShapeScaleFactor=0.75,
+    markerBy="State",
+    showLegend=FALSE,
+    sizeBy="Population",
+    useLeaflet=TRUE
+  )
+}
+
 cXmeter1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
