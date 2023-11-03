@@ -20,7 +20,7 @@ canvasXpress(
 )
 }
 \arguments{
-\item{data}{data.frame-, matrix-, or list- classed data object}
+\item{data}{data.frame-, matrix-, list- , or ggplot- classed object}
 
 \item{smpAnnot}{additional data that applies to samples (columns)}
 
@@ -51,3 +51,13 @@ htmlwidgets object
 Custom HTML widget creation function based on widget YAML and JavaScript for
 use in any html-compatible context
 }
+\section{Piping Support}{
+
+  Piping is supported (both the magrittr '%>%' and native '|>' pipes) when sending an existing
+  canvasXpress object into data parameter.  Any new parameters will be added to the original configuration
+  of the object, any parameters with data that existed before will be replaced, and any parameters set
+  to null will be removed.  It is important to note that primary data changes are not allowed in this
+  construct - which means that anything specified by using the data, varAnnot, or smpAnnot parameters
+  cannot be changed from the original values.
+}
+

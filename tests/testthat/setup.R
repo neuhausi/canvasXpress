@@ -47,7 +47,6 @@ try({
 
 
 
-
 ### Supporting Functions
 
 check_ui_test <- function(result){
@@ -66,3 +65,4 @@ check_ui_test <- function(result){
         warning('check_ui_test() errored with: ', e)
     })
 }
+

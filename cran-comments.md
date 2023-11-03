@@ -1,7 +1,8 @@
 ## Comments from Maintainer
 
 * Updated JS underlying library  
-* Updated ggplot functionality for conversions to canvasXpress  
+* Added piping capability
+* Added tests
 
 ---  
 
@@ -53,15 +54,14 @@ devtools::check()
 
 ```
 > revdepcheck::cran_revdeps('canvasXpress', bioc = T)
-[1] "canvasXpress"      "canvasXpress.data" "DGEobj.utils"      "MAFDash"           "periscope"  
-
+[1] "canvasXpress"      "canvasXpress.data" "DGEobj.utils"      "MAFDash"           "periscope"         "periscope2"       
 ```
 
 ```
 > revdepcheck:: revdep_report_cran()
 ## revdepcheck results
 
-We checked 4 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 5 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
  * We failed to check 0 packages
