@@ -89,9 +89,9 @@ test_that("Shiny Examples", {
 
 
 test_that("Shiny Input", {
-    skip_if_not_installed("htmlwidgets", "1.6")
+    skip_if_not_installed("htmlwidgets", "1.6.3")
+    skip_on_cran()
 
     expect_equal(as.character(canvasXpressOutput("test_id")),
-                 '<div class="canvasXpress html-widget html-widget-output shiny-report-size html-fill-item-overflow-hidden html-fill-item" id="test_id" style="width:100%;height:400px;"></div>')
+                 '<div class="canvasXpress html-widget html-widget-output shiny-report-size html-fill-item" id="test_id" style="width:100%;height:400px;"></div>')
 })
-
