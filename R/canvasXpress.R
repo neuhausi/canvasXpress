@@ -61,41 +61,11 @@ canvasXpress <- function(data        = NULL,
         return(htmlwidgets::createWidget("canvasXpress", list()))
     }
 
-  if (is.null(data) || !("ggplot" %in% class(data))) {
-    assertDataCorrectness(data, graphType, config)
-  }
+    config <- list(graphType = graphType, isR = TRUE, ...)
 
     if (is.null(data) || !(any(c("canvasXpress", "ggplot") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)
     }
-    cx_object <- ggplot.as.list(data, ...)
-  } else if (is.character(data) && (graphType != "Network")) {
-    if (httr::http_error(data)) {
-      message("Unable to validate URL")
-    }
-    # CanvasXpress Object
-    cx_object <- list(
-      data = data,
-      config = config,
-      events = events,
-      afterRender = afterRender
-    )
-  } else if (graphType == "Venn") {
-    vdata <- NULL
-    if (is.null(data)) {
-      if (inherits(config$vennData, "list")) {
-        vdata <- config$vennData[[1]]
-      } else {
-        vdata <- config$vennData
-      }
-    } else {
-      if (inherits(data, "list")) {
-        vdata <- data[[1]]
-      } else {
-        vdata <- data
-      }
-    }
-    legend <- config$vennLegend
 
     x <- NULL
     y <- NULL
@@ -196,19 +166,8 @@ canvasXpress <- function(data        = NULL,
         }
         legend <- config$vennLegend
 
-      # CanvasXpress Object
-      cx_object <- list(
-        data = data,
-        config = config,
-        events = events,
-        afterRender = afterRender
-      )
-    } else {
-      ndata <- NULL
-      edata <- NULL
-      gdata <- NULL
-      cdata <- NULL
-      dataframe <- "rows"
+        # Config - remove venn items
+        config <- config[!(names(config) %in% c("vennData", "vennLegend"))]
 
         # CanvasXpress Object
         cx_object <- list(data        = list(venn = list(data = vdata, legend = legend)),
@@ -351,51 +310,26 @@ canvasXpress <- function(data        = NULL,
                 }
             }
         }
-      }
-      if (!inherits(smpAnnot, "character")) {
-        x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
-      }
-    }
 
-    # NOTE: z should always be null with a boxplot chart
+        if (!is.null(smpAnnot)) {
+            if (!inherits(data, "list")) {
+                test <- as.list(assignCanvasXpressRownames(smpAnnot))
 
-    # CanvasXpress Object
-    cx_object <- list(
-      data = list(y = y, x = x, z = z),
-      config = config,
-      events = events,
-      afterRender = afterRender
-    )
-  } else if (graphType == "Bar" && ((length(intersect(names(data), precalc.bar[1:2])) == 2) || (length(intersect(rownames(data), precalc.bar[1:2])) == 2))) {
-    if (inherits(data, "list")) {
-      data.names <- names(data)
-      mean <- as.matrix(t(data[["mean"]]))
-      dimnames(mean) <- NULL
-      stdev <- as.matrix(t(data[["stdev"]]))
-      dimnames(stdev) <- NULL
+                if (!identical(test, y$smps)) {
+                    smpAnnot <- t(smpAnnot)
+                    test <- as.list(assignCanvasXpressRownames(smpAnnot))
+                }
 
-      if (!is.null(smpAnnot)) {
-        if (inherits(smpAnnot, "character")) {
-          smps <- smpAnnot
-        } else {
-          smps <- rownames(smpAnnot)
+                if (!identical(test, y$smps)) {
+                    stop("Row names in smpAnnot are different from column names in data")
+                }
+            }
+            if (!inherits(smpAnnot, "character")) {
+                x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
+            }
         }
-      } else {
-        smps <- make.names(1:length(data[["mean"]]))
-      }
 
-      y <- list(
-        smps = as.list(smps),
-        vars = as.list("precalculated BarChart"),
-        mean = mean,
-        stdev = stdev
-      )
-    } else {
-      data.names <- rownames(data)
-      mean <- as.matrix(data["mean", ])
-      dimnames(mean) <- NULL
-      stdev <- as.matrix(data["stdev", ])
-      dimnames(stdev) <- NULL
+        # NOTE: z should always be null with a boxplot chart
 
         # CanvasXpress Object
         cx_object <- list(data        = list(y = y, x = x, z = z),
@@ -434,13 +368,10 @@ canvasXpress <- function(data        = NULL,
                       mean  = mean,
                       stdev = stdev)
         }
-      }
-      if (!inherits(smpAnnot, "character")) {
-        x <- lapply(convertRowsToList(t(smpAnnot)), function(d) if (length(d) > 1) d else list(d))
-      }
-    }
 
-    z <- setup_z(y$vars, varAnnot)
+        if (!is.null(smpAnnot)) {
+            if (!inherits(data, "list")) {
+                test <- as.list(assignCanvasXpressRownames(smpAnnot))
 
                 if (!identical(test, y$smps)) {
                     smpAnnot <- t(smpAnnot)
@@ -529,24 +460,20 @@ canvasXpress.json <- function(json,
                               width   = 600,
                               height  = 400,
                               destroy = FALSE) {
-  if (destroy) {
-    return(htmlwidgets::createWidget("canvasXpress", list()))
-  }
+    if (destroy) {
+        return(htmlwidgets::createWidget("canvasXpress", list()))
+    }
 
-  if (any(
-    is.null(json),
-    is.na(json),
-    !(class(json) %in% c("character", "json")),
-    length(json) < 1
-  )) {
-    stop("json must be supplied and be a character or json object")
-  }
+    if (any(is.null(json),
+            is.na(json),
+            !(class(json) %in% c("character", "json")),
+            length(json) < 1)) {
+        stop("json must be supplied and be a character or json object")
+    }
 
-  htmlwidgets::createWidget(
-    name = "canvasXpress",
-    x = jsonlite::minify(json),
-    width = width,
-    height = height,
-    package = "canvasXpress"
-  )
+    htmlwidgets::createWidget(name    = "canvasXpress",
+                              x       = jsonlite::minify(json),
+                              width   = width,
+                              height  = height,
+                              package = "canvasXpress")
 }
