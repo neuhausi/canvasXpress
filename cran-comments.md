@@ -1,8 +1,10 @@
 ## Comments from Maintainer
 
-* Updated JS underlying library  
-* Added piping capability
-* Added tests
+* patch fix for tests for the release of HTMLwidgets 1.6.3 by Carson next week
+
+There is 1 note on the release because we put out a recent release but were just notified by Carson of this need in order to not end up with our package failing tests on CRAN.
+
+Version: I added -1 to the version because we intend to keep the underlying JS canvasXpress library in sync with the 2nd two components of the version of the package.  The package version reflects the JS library version so to make this patch we need to add a 4th component to the version.
 
 ---  
 
@@ -12,14 +14,13 @@
 RStudio Server Pro (ubuntu 18.04.2)  
 
 * R 4.0.5
-* R 4.1.3
 * R 4.2.3
-* R 4.3.0
+* R 4.3.1
 
 CircleCI
 
 * R 4.0.5
-* R 4.2.2
+* R 4.3.2
 
 WinBuilder
 
