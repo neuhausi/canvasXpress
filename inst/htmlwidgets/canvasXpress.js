@@ -69,7 +69,6 @@ HTMLWidgets.widget({
       resize: function (width, height) {
         // Check if we are running in the viewer; override the width and height
         if (/\bviewer_pane=1\b/.test(window.location)) {
-          console.log('---> in viewer pane');
           width = document.childNodes[1].clientWidth - 36;
           height = document.childNodes[1].clientHeight - 36;
         }

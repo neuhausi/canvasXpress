@@ -41,9 +41,6 @@ test_that("cXscatter2d8", {
 
 test_that("cXscatter2d9", {
     check_ui_test(cXscatter2d9())
-
-    warning('Generated test function has incorrect afterRender list')
-    # afterRender=list(list("addRegressionLine", list(FALSE, 'red')))
 })
 
 test_that("cXscatter2d10", {

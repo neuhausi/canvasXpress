@@ -1,13 +1,27 @@
-# R Package NEWS
+--- 
+  title: "R Package NEWS" 
+---
 
 
-This file details changes to the canvasXpress R package only - for detailed 
-information on changes to the stand-alone JavaScript CanvasXpress library see the 
-<a href="https://www.canvasxpress.org"> main website</a>.
+This file details changes to the canvasXpress R package only!
+
+For detailed information on changes to the stand-alone JavaScript CanvasXpress library see the 
+<a href="https://www.canvasxpress.org"> main CanvasXpress website</a>.
 
 
 ---
 
+## v1.46.9-1
+* Updated tests per input by Carson for the htmlwidgets release 1.6.3
+
+
+## v1.46.9
+* Updated CanvasXpress JS and CSS libraries to v46.9
+* Added piping support and tests
+
+## v1.45.4
+* Updated CanvasXpress JS and CSS libraries to v45.4
+* Updated ggplot conversion functionality to expand functionality and fix bugs
 
 ## v1.43.7
 * Updated CanvasXpress JS and CSS libraries to v43.7

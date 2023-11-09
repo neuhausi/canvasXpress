@@ -175,6 +175,57 @@ canvasXpress(data                  = cxdata,
 ![BoxPlot1](images/R-BoxPlot1.png)
 
 
+## Piping Support and Examples
+
+Standard (simple) piping is supported in the package.  You can pipe a canvasXpress object into the canvasXpress() function and make changes to the configuration of the object.  Primary data variables (data, varAnnot and smpAnnot) are not able to be changed via this method, but any other changes (both additions and subtractions) are supported.  The magrittr pipe and R pipe (4.2 and above) can both be used to access this functionality as well as using the function syntax to set the first argument to another canvasXpress object.  To change or add a configuration value, simply (re)define it in the piped function call; to remove a previously defined configuration value set the value to NULL.
+
+Create an initial chart
+```r
+initial_cx <- canvasXpress(
+    data                  = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", 
+                            header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, 
+                            check.names = FALSE, stringsAsFactors = FALSE),
+    asSampleFactors       = list("cyl"),
+    stringVariableFactors = list("cyl"),
+    colorBy               = "cyl",
+    graphType             = "Scatter2D")
+
+initial_cx
+```
+![Piping1](images/piping1.png)
+
+Update this chart using the magrittr pipe to add a title and subtitle, change the x and y axis, show a regression line and set the theme.
+
+```r
+update_1 <- initial_cx %>% canvasXpress(
+    title                             = "mtcars wt vs mpg",
+    subtitle                          = "regression by cyl",
+    showRegressionFit                 = "cyl",
+    confidenceIntervalColorCoordinate = TRUE,
+    theme                             = "GGPlot",
+    xAxis                             = "wt",
+    yAxis                             = "mpg"
+)
+
+update_1
+```
+![Piping2](images/piping2.png)
+
+Update the chart again using the R base pipe to change to a single regression line and remove the subtitle and theme configuration values
+
+```r
+update_2 <- update_1 |> canvasXpress(
+    showRegressionFit = TRUE,
+    subtitle          = NULL,
+    theme             = NULL,
+)
+
+update_2
+```
+![Piping3](images/piping3.png)
+
+
+
 ## Additional Information 
 
 Additional information and many examples with R code for the ***canvasXpress*** 
