@@ -49,3 +49,15 @@ test_that("cXdensity11", {
 test_that("cXdensity12", {
     check_ui_test(cXdensity12())
 })
+
+test_that("cXdensity13", {
+    check_ui_test(cXdensity13())
+})
+
+test_that("cXdensity14", {
+    check_ui_test(cXdensity14())
+})
+
+test_that("cXdensity15", {
+    check_ui_test(cXdensity15())
+})

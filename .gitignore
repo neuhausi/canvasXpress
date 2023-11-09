@@ -10,3 +10,4 @@ doc
 Meta
 revdep/*
 !revdep/run_job.R
+tests/testthat/Rplots.pdf

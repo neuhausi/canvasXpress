@@ -28,3 +28,11 @@ test_that("cXarea6", {
 
     warning("Names are different, web example uses smp/var, not S/V")
 })
+
+test_that("cXarea7", {
+    check_ui_test(cXarea7())
+})
+
+test_that("cXarea8", {
+    check_ui_test(cXarea8())
+})
