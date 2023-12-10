@@ -16,10 +16,6 @@
 #' @aliases canvasXpress-package
 "_PACKAGE"
 
-#' Last canvasXpress object
-#' @export
-canvasXpress.last <- NULL
-
 #' HTML Widget Creation
 #'
 #' Custom HTML widget creation function based on widget YAML and JavaScript for
@@ -45,10 +41,7 @@ canvasXpress.last <- NULL
 canvasXpress <- function(data = NULL,
                          smpAnnot = NULL,
                          varAnnot = NULL,
-                         x = NULL,
-                         y = NULL,
-                         z = NULL,
-                         # config items
+                         # config
                          graphType = "Scatter2D",
                          # straight-through
                          events = NULL,
@@ -70,7 +63,9 @@ canvasXpress <- function(data = NULL,
     assertDataCorrectness(data, graphType, config)
   }
 
-  cxplot <- FALSE
+  x <- NULL
+  y <- NULL
+  z <- NULL
   dataframe <- "columns"
   precalc.box <- c("iqr1", "qtl1", "median", "qtl3", "iqr3", "outliers")
   precalc.bar <- c("mean", "stdev")
@@ -79,11 +74,7 @@ canvasXpress <- function(data = NULL,
     if (!(requireNamespace("ggplot2", quietly = TRUE))) {
       stop("The ggplot2 package is required to use this functionality.")
     }
-    cxplot <- TRUE
     cx_object <- ggplot.as.list(data, ...)
-  } else if (!is.null(data) && is.data.frame(data) && ((!is.null(x) && x %in% colnames(data)) || (!is.null(y) && y %in% colnames(data)))) {
-    cxplot <- TRUE
-    cx_object <- canvasXpress.as.list(data, x, y, z, ...)
   } else if (is.character(data) && (graphType != "Network")) {
     if (httr::http_error(data)) {
       message("Unable to validate URL")
@@ -390,19 +381,6 @@ canvasXpress <- function(data = NULL,
     digits = digits
   )
 
-  if (cxplot) {
-    assign("canvasXpress.last", cx_object, globalenv())
-  } else {
-    ## Remove events because it messes it up
-    json <- jsonlite::toJSON(list(
-      data = list(y = y, x = x, z = z),
-      config = config,
-      events = as.character(events),
-      afterRender = afterRender
-    ), pretty = TRUE, auto_unbox = TRUE)
-    assign("canvasXpress.last", json, globalenv())
-  }
-
   htmlwidgets::createWidget(
     name = "canvasXpress",
     cx_object,
@@ -466,8 +444,6 @@ canvasXpress.json <- function(json,
   )) {
     stop("json must be supplied and be a character or json object")
   }
-
-  assign("canvasXpress.last", json, globalenv())
 
   htmlwidgets::createWidget(
     name = "canvasXpress",
