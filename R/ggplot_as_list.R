@@ -89,7 +89,11 @@ gg_order <- function(o) {
   if (missing(o)) {
     o = ggplot2::last_plot()
   }
-  Filter(Negate(is.null), sapply(o$data, levels))
+  b = ggplot2::ggplot_build(o)
+  r = Filter(Negate(is.null), sapply(o$data, levels))
+  r$xLabels = as.character(b$layout$panel_params[[1]]$x$get_labels())
+  r$yLabels = as.character(b$layout$panel_params[[1]]$y$get_labels())
+  r
 }
 
 gg_facet <- function (o) {
@@ -189,6 +193,7 @@ gg_scales <- function (o) {
   }
   r = list();
   n = length(o$scales$scales)
+  b = ggplot2::ggplot_build(o)
   if (n > 0) {
     for (i in 1:n) {
       s = o$scales$scales[[i]]
@@ -238,6 +243,16 @@ gg_scales <- function (o) {
         }
       }
     }
+  }
+  tx = as.character(b$layout$coord$trans$y)[1]
+  ty = as.character(b$layout$coord$trans$y)[1]
+  if (!is.na(tx)) {
+    r$xAxisTransform = stringr::str_replace(tx, "-", "")
+    r$xAxisTransformLinearTicks = TRUE
+  }
+  if (!is.na(ty)) {
+    r$yAxisTransform = stringr::str_replace(ty, "-", "")
+    r$yAxisTransformLinearTicks = TRUE
   }
   r
 }
