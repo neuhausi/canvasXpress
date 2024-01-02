@@ -4107,6 +4107,7 @@ cXlayout11 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Boxplot",
+    histogramBins=FALSE,
     showTransition=FALSE,
     smpLabelRotate=90,
     smpTitle="Smoking Status",
@@ -4122,6 +4123,7 @@ cXlayout12 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=FALSE,
     showTransition=FALSE,
     theme="CanvasXpress",
     afterRender=list(list("createDOE"))
@@ -4136,6 +4138,7 @@ cXlayout13 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=FALSE,
     invertCensored=TRUE,
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
