@@ -138,11 +138,10 @@ test_that("piping - area chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title         = "decoration lines, xAxisTickSize, shapeby",
+        canvasXpress(title         = "decoration lines, xAxisTickSize",
                      decorations   = list(line = list(list(color = "rgba(205,0,0,0.5)", width = 2, x = 2000),
                                                       list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
-                     xAxisTickSize = 2,
-                     shapeBy       = "country")
+                     xAxisTickSize = 2)
 
     check_ui_test(result)
 })
@@ -177,8 +176,7 @@ test_that("piping - barline chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "groupSamples and only plot V2",
-        groupSamples = list("Factor1"),
+        title        = "only plot V2 bars",
         xAxis        = list("V2")
     )
 
@@ -229,10 +227,9 @@ test_that("piping - circular chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title            = "subtitle NULL, xAxisTitle, smpLabelInterval 40",
-                     subtitle         = NULL,
-                     xAxisTitle       = "changed",
-                     smpLabelInterval = 40)
+        canvasXpress(title            = "smpLabelInterval 40",
+                     smpLabelInterval = 10
+                     )
 
     check_ui_test(result)
 })
@@ -278,8 +275,9 @@ test_that("piping - density chart", {
     check_ui_test(obj1)
     warning("remove segregateVariablesBy results in different color scheme than if you do it manually on the plot")
     result <- obj1 %>% canvasXpress(
-        title                = "remove segregation",
-        segregateVariablesBy = list()
+        title                = "hideHistogram and segregate by sex",
+        hideHistogram        = TRUE,
+        segregateVariablesBy = list("sex")
     )
 
     check_ui_test(result)
@@ -353,7 +351,7 @@ test_that("piping - gantt chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title     = "modify fish shape and axis",
+        title     = "pattern by indication",
         patternBy = "Indication")
 
     check_ui_test(result)
@@ -530,8 +528,8 @@ test_that("piping - parallelcoordinates chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title       = "change legend title to bold",
-        legendTitle = "bold")
+        title                = "change legend title to bold",
+        legendTitleFontStyle = "bold")
 
     check_ui_test(result)
 })
