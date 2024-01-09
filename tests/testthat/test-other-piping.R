@@ -71,17 +71,20 @@ test_that("piping - change afterRender", {
 })
 
 
-test_that("piping - change width/height", {
+test_that("piping - change height", {
     obj1 <- cXstacked1()
 
-    check_ui_test(obj1)
+    cxHtmlPage(chartObject = obj1) %>%
+        writeLines("html_chart_obj1.html")
 
     obj2 <- obj1 %>% canvasXpress(
         title  = "changed height",
         height = 300)
 
-    check_ui_test(obj2)
-    warning("you will need to view this in full screen to see the difference")
+    cxHtmlPage(chartObject = obj2) %>%
+        writeLines("html_chart_obj2.html")
+
+    warning("you will need to view the saved html plots as the Rstudio viewer fills the plot to the space")
 })
 
 
@@ -227,7 +230,7 @@ test_that("piping - circular chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title            = "smpLabelInterval 40",
+        canvasXpress(title            = "smpLabelInterval",
                      smpLabelInterval = 10
                      )
 
@@ -385,7 +388,7 @@ test_that("piping - hexplotbinplot chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "change bins and shape to rectangle)",
+        title        = "change bins and shape to rectangle",
         binplotBins  = 20,
         binplotShape = "rectangle")
 
