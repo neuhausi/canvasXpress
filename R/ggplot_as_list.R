@@ -312,6 +312,8 @@ gg_mapping <- function(o) {
       l <- rlang::as_label(o$mapping[[i]])
       if (i == "colour") {
         r[["color"]] <- l
+      } else if (i == "label") {
+        r[[i]] <- ggplot2::ggplot_build(o)$data[[1]]$label
       } else {
         r[[i]] <- l
       }
@@ -445,14 +447,18 @@ gg_proc_layer <- function (o, idx) {
 
 data_to_matrix <- function(o) {
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
+  #m = c("x", "y", "z", "label")
   m = c("x", "y", "z")
   d = o$data
-  nd = data.frame(lapply(d, as.character), stringsAsFactors = FALSE)
+  nd = data.frame(lapply(d, as.character), stringsAsFactors = FALSE, check.names = FALSE)
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
       q = rlang::as_label(o$mapping[[i]])
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
+      } else if (i == "label") {
+        u = as.character(ggplot2::ggplot_build(o)$data[[1]][[i]])
+        nd[i] = u
       } else {
         u = as.numeric(ggplot2::ggplot_build(o)$data[[1]][[i]])
         nd[q] = u
