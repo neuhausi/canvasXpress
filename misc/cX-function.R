@@ -6128,6 +6128,7 @@ cXsankey1 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Sankey",
+    sankeyNodesColor="rgba(20, 250, 50, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
     showTransition=FALSE,
@@ -6162,6 +6163,7 @@ cXsankey3 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Sankey",
+    sankeyNodesColor="rgba(20, 150, 250, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
     theme="CanvasXpress",
@@ -6182,6 +6184,23 @@ cXsankey4 <- function() {
     sankeySource="Source",
     sankeyTarget="Target",
     title="Multilevel Sankey"
+  )
+}
+
+cXsankey5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-titanicR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-titanicR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Survived",
+    colorScheme="GGPlot",
+    graphOrientation="horizontal",
+    graphType="Sankey",
+    sankeyAxes=list("Class", "Sex", "Age", "Survived"),
+    scheme="GGPlot",
+    title="Alluvial Plot"
   )
 }
 
