@@ -2026,6 +2026,7 @@ div.CanvasXpressDataTableVertical {
 
 img.CanvasXpressDataTableVertical {
     max-height: unset !important;
+    height: revert-layer !important;
 }
 
 div.CanvasXpressDataTableHorizontal {
