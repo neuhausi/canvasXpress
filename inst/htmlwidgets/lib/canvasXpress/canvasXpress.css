@@ -2046,6 +2046,50 @@ div.CanvasXpressTableCellLink {
   text-align: left;
 }
 
+/*
+div.CanvasXpressTableCell {
+  box-sizing: border-box;
+  color: var(--cx-font-color);
+  margin: 2px 2px 1px 5px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+div.CanvasXpressTableCell {
+  overflow: hidden;
+	line-height: unset !important;
+  text-align: left;
+}
+
+div.CanvasXpressTableCell:before {
+	content:"";
+	float: left;
+	width: 5px;
+}
+
+div.CanvasXpressTableCell > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px;
+}
+
+div.CanvasXpressTableCell:after {
+	content: "\02026";
+	float: right;
+  position: relative;
+	top: -25px; 
+  left: 100%;
+	width: 3em; 
+  margin-left: -3em;
+	padding-right: 5px;
+	text-align: right;
+}
+*/
+
 div.CanvasXpressTableCell:hover {
   background-color: rgba(83, 105, 255, 0.1);
 }
