@@ -2101,7 +2101,6 @@ div.CanvasXpressTableCellLink:hover {
 }
 
 th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCellEmpty,
 tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
 th.CanvasXpressTableCellModernHeadActive div.CanvasXpressTableCell,
 th.CanvasXpressTableCellHead div.CanvasXpressTableCell,
@@ -2112,11 +2111,6 @@ th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
 th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgb(83, 105, 255);
-}
-
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCellEmpty {
-  background: rgba(255, 255, 255, 0.95);
-  border: none !important;
 }
 
 tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
