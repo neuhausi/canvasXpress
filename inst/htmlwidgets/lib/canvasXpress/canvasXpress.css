@@ -46,12 +46,12 @@
   /* Favorite UI Styles - Not used but just to remember */
   --cx-color-modern: rgb(83, 105, 255);
   --cx-color-modern-hover: rgba(83, 105, 255, 0.1) ;
-  --cx-color-stripped: rgb(180, 180, 180) ;
+  --cx-color-stripped: rgb(230, 230, 230) ;
   --cx-color-stripped-hover: rgba(180, 180, 180, 0.3);
   --cx-color-default: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
   --cx-color-default-hover: rgba(230,230,230,0.1);
   /* UI */
-  --cx-font-family: arial, tahoma, sans-serif;
+  --cx-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif !important;
   --cx-font-size: 12px;
   --cx-font-weight: normal;
   --cx-font-color: var(--cx-color-ui-font);
@@ -427,8 +427,8 @@ span.cX-bin::selection {
 
 .customizerLeftPanelTopS,
 .customizerLeftPanelBottomS {
-  background: rgb(180, 180, 180);
-  border: 1px solid rgb(180, 180, 180)  !important;
+  background: rgb(200, 200, 200);
+  border: 1px solid rgb(200, 200, 200)  !important;
 }
 
 .customizerLeftPanelTopS,
@@ -476,8 +476,8 @@ span.cX-bin::selection {
 }
 
 .customizerRightPanelS {
-  border-left: 1px solid rgb(180, 180, 180) !important;
-  border-right: 1px solid rgb(180, 180, 180) !important;
+  border-left: 1px solid rgb(200, 200, 200) !important;
+  border-right: 1px solid rgb(200, 200, 200) !important;
 }
 
 /*
@@ -505,7 +505,7 @@ span.cX-bin::selection {
 
 .customizerLeftItemS,
 .customizerLeftItemSActive {
-  border: 1px solid rgb(180, 180, 180) !important;
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 
@@ -516,7 +516,7 @@ span.cX-bin::selection {
 
 .customizerLeftItemS:hover,
 .customizerLeftItemSActive {
-  background:rgba(180, 180, 180, 0.5);
+  background:rgba(200, 200, 200, 0.1);
 }
 
 .customizerLeftItem:hover svg,
@@ -545,7 +545,7 @@ span.cX-bin::selection {
 
 .customizerLeftIconS {
   padding: 5px;
-  border: 1px solid rgb(180, 180, 180) !important;
+  border: 1px solid rgb(200, 200, 200) !important;
   border-radius: 5px;
 }
 
@@ -569,7 +569,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemS {
-  border: 1px solid rgb(180, 180, 180) !important;
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemTop {
@@ -602,7 +602,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemComboS {
-  border-top: 1px solid rgb(180, 180, 180);
+  border-top: 1px solid rgb(200, 200, 200);
 }
 
 .customizerRightItemComboNB {
@@ -660,7 +660,7 @@ span.cX-bin::selection {
 
 .customizerRightItemHeaderS,
 .customizerRightItemHeaderNBS {
-  background: rgba(180, 180, 180, 0.1);
+  background: rgba(200, 200, 200, 0.1);
 }
 
 .customizerRightItemHeader {
@@ -668,7 +668,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemHeaderS {
-  border-bottom: 1px solid rgb(180, 180, 180) !important;
+  border-bottom: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemHeaderNB,
@@ -714,7 +714,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemSubHeaderS {
-  background: rgba(180, 180, 180, 0.1);
+  background: rgba(200, 200, 200, 0.1);
 }
 
 .customizerRightItemSubHeaderRow {
@@ -736,8 +736,8 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemSubHeaderRawS {
-  border: 1px solid  rgb(180, 180, 180) !important;
-  background-color:  rgba(180, 180, 180, 0.1);
+  border: 1px solid  rgb(200, 200, 200) !important;
+  background-color:  rgba(200, 200, 200, 0.1);
 }
 
 /*
@@ -758,7 +758,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemLauncherS {
-  border-top: 1px solid rgb(180, 180, 180) !important;
+  border-top: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemLauncherNBS,
@@ -778,7 +778,7 @@ span.cX-bin::selection {
 
 .customizerRightItemLauncherS:hover,
 .customizerRightItemLauncherNBS:hover {
-  background-color:  rgba(180, 180, 180, 0.1);
+  background-color:  rgba(200, 200, 200, 0.1);
 }
 
 .customizerRightItemLauncherLeftS,
@@ -794,7 +794,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemLauncherLeftS {
-  background-color: rgba(180, 180, 180, 0.1);
+  background-color: rgba(200, 200, 200, 0.1);
 }
 
 .customizerRightItemLauncherRightS,
@@ -955,7 +955,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemColMidS {
-  border: 1px solid rgb(180, 180, 180) !important;
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemSelect>select:hover,
@@ -1006,7 +1006,7 @@ span.cX-bin::selection {
 .customizerUniqueS,
 .customizerWranglingS,
 .customizerContainerS {
-  border: 1px solid rgb(180, 180, 180) !important;
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerWrangling:hover {
@@ -1121,7 +1121,7 @@ span.cX-bin::selection {
 .customizerListNumericS:hover,
 .customizerListStringS:hover,
 .customizerListUniqueS:hover {
-  background: rgba(180, 180, 180, 0.1);
+  background: rgba(200, 200, 200, 0.1);
 }
 
 .customizerListNumeric:before,
@@ -1142,7 +1142,7 @@ span.cX-bin::selection {
 .customizerListNumericS:before,
 .customizerListStringS:before,
 .customizerListUniqueS:before {
-  color: rgb(180, 180, 180);
+  color: rgb(200, 200, 200);
 }
 
 .customizerListNumeric:before,
@@ -1203,7 +1203,7 @@ input.customizerSearch {
 
 select.customizerSearchS,
 input.customizerSearchS {
-  border: 1px solid rgb(180, 180, 180);
+  border: 1px solid rgb(200, 200, 200);
 }
 
 input.customizerSearchS[type="color"],
@@ -1284,7 +1284,7 @@ span.customizerSearchCurrent {
 span.customizerSearchDescriptionS,
 span.customizerSearchCategoryS,
 span.customizerSearchCurrentS {
-  color: rgb(180, 180, 180);
+  color: rgb(200, 200, 200);
 }
 
 span.customizerSearchSelectS:before,
@@ -1754,7 +1754,7 @@ table.CanvasXpressDataTableDOE {
 th.CanvasXpressDataTableDOE {
   padding: 0 !important;
   font-size: 12px !important;
-  font-weight: bolder !important;
+  font-weight: bold !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
   height: 18px !important;
@@ -1925,7 +1925,7 @@ img.CanvasXpressDataTableToolbarImageLogo,
 svg.CanvasXpressDataTableToolbarImageLogo {
   border: none !important;
   float: left;
-  margin: 10px 0px 0px 10px !important;
+  margin: 5px 0px 0px 10px !important;
 }
 
 
@@ -1957,7 +1957,7 @@ th.CanvasXpressTableCellModernHeadActive {
   border-bottom: 1px solid rgb(204, 204, 204);
   border-left: none;
   border-right: none;
-  font-style: bold;
+  font-weight: bold;
   opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
@@ -1992,7 +1992,6 @@ a.CanvasXpressTableCellModernHeadActive {
   right: 8px;
   white-space: normal;
   text-decoration: none;
-  font-weight: bold;
   font-style: normal;
   width: 14px;
 }
@@ -2471,7 +2470,7 @@ input[type=checkbox].CanvasXpressCheckbox {
 }
 
 input[type=checkbox].CanvasXpressCheckboxS {
-  accent-color: rgb(180, 180, 180);
+  accent-color: rgb(200, 200, 200);
 }
 
 label.CanvasXpressCheckboxLabel {
@@ -2529,7 +2528,7 @@ div.CanvasXpressDataFilterContainerItemSelected {
 }
 
 div.CanvasXpressDataFilterContainerItemSSelected {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 div.CanvasXpressDataFilterContainerHoverable,
@@ -2608,7 +2607,7 @@ div.CanvasXpressDataFilterHeadOActive {
 }
 
 div.CanvasXpressDataFilterHeadSActive {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 div.CanvasXpressDataFilterHeadOActive {
@@ -2717,7 +2716,7 @@ input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitch {
 }
 
 input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS {
-  background: rgb(180, 180, 180);
+  background: rgb(200, 200, 200);
 }
 
 input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS:before,
@@ -2789,7 +2788,7 @@ input.CanvasXpressRangeSliderMax {
 
 input.CanvasXpressRangeSliderMinS,
 input.CanvasXpressRangeSliderMaxS {
-  color: rgb(180, 180, 180);
+  color: rgb(200, 200, 200);
 }
 
 input.CanvasXpressRangeSliderMinS,
@@ -2839,7 +2838,7 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
 }
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
-  background-color: rgb(180, 180, 180);
+  background-color: rgb(200, 200, 200);
 }
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
@@ -2862,7 +2861,7 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
-  background-color: rgb(180, 180, 180);
+  background-color: rgb(200, 200, 200);
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -4131,7 +4130,7 @@ canvas.CanvasXpress::selection {
 }
 
 div.CanvasXpressPlay {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   background-image: url('data:image/png;base64,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');
   background-position-x: 50%;
   background-position-y: center;
