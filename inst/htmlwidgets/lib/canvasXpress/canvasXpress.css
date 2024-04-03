@@ -1,354 +1,76 @@
 @charset "UTF-8";
 
 /*
-* Favorite Colors
+ * Favorite Colors
  * rgb(51,  122,  183) - #337ab7
  * rgb(76,  159,  224) - #4c9fe0
  * rgb(83,  105,  255) - #5369ff
  */
 
-/*
- * Loading
- */
-
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+:root {
+  /* Colors */
+  --cx-color-red: rgb(255, 0, 0);
+  --cx-color-blue: rgb(0, 0, 255);
+  --cx-color-green: rgb(0, 255, 0);
+  --cx-color-yellow: rgb(255, 255, 0);
+  --cx-color-orange: rgb(255, 165, 0);
+  --cx-color-purple: rgb(128, 0, 128);
+  --cx-color-white: rgb(255, 255, 255);
+  --cx-color-gray: rgb(128, 128, 128);
+  --cx-color-black: rgb(0, 0, 0);
+  --cx-color-transparent: rgba(0, 0, 0, 0);
+  /* Greys */
+  --cx-color-extra-dark-gray: rgb(34, 34, 34);
+  --cx-color-dark-gray: rgb(64, 64, 64);
+  --cx-color-medium-gray: rgb(180, 180, 180);
+  --cx-color-light-gray: rgb(204, 204, 204);
+  --cx-color-extra-light-gray: rgb(238, 238, 238);
+  /* Icons - Not used but just to remember */
+  --cx-icon-class-a: #5369ff;
+  --cx-icon-class-b: #292929;
+  --cx-icon-class-c: #999999;
+  --cx-icon-class-r: #ff0000;
+  /* Coding colors */
+  --cx-code-key: rgb(215, 48, 39);
+  --cx-code-value: rgb(69, 117, 180);
+  --cx-code-string: rgb(168, 82, 2);
+  --cx-code-number: rgb(69, 117, 180);
+  --cx-code-boolean: rgb(102, 102, 0);
+  --cx-code-null: rgb(69, 117, 180);
+  --cx-code-comment: rgb(58, 115, 0);
+  /* Favorite UI colors */
+  --cx-color-ui-background: rgba(255, 255, 255, 0.95);
+  --cx-color-ui-font: rgb(34, 34, 34);
+  --cx-color-widgets: rgb(83, 105, 255);
+  --cx-color-widgets-hover: rgba(83, 105, 255, 0.1);
+  /* Favorite UI Styles - Not used but just to remember */
+  --cx-color-modern: rgb(83, 105, 255);
+  --cx-color-modern-hover: rgba(83, 105, 255, 0.1) ;
+  --cx-color-stripped: rgb(230, 230, 230) ;
+  --cx-color-stripped-hover: rgba(180, 180, 180, 0.3);
+  --cx-color-default: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
+  --cx-color-default-hover: rgba(230,230,230,0.1);
+  /* UI */
+  --cx-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif !important;
+  --cx-font-size: 12px;
+  --cx-font-weight: normal;
+  --cx-font-color: var(--cx-color-ui-font);
+  --cx-font: var(--cx-font-weight) var(--cx-font-size) var(--cx-font-family);
+  --cx-background-ui-color: var(--cx-color-ui-background);
+  --cx-background-color: var(--cx-color-widgets);
+  --cx-background-hover-color: var(--cx-color-widgets-hover);
+  --cx-border-color: var(--cx-background-color);
+  --cx-border-radius: 5px;
+  --cx-border-width: 1px;
+  --cx-border-style: solid;
+  --cx-border: var(--cx-border-width) var(--cx-border-style) var(--cx-border-color);
+  --cx-border-transparent: var(--cx-border-width) var(--cx-border-style) var(--cx-color-transparent);
 }
-
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid rgb(83, 105, 255);
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgb(83, 105, 255) transparent transparent transparent;
-}
-
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*
- * Loading Image
- */
-
-/*
-.sk-fading-circle {
-    margin: 50px auto;
-    width: 80px;
-    height: 80px;
-    position: relative;
-}
-
-.sk-fading-circle .sk-circle {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.sk-fading-circle .sk-circle:before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 15%;
-    height: 15%;
-    background-color: rgb(51,51,51);
-    border-radius: 100%;
-    -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
-    animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
-}
-
-.sk-fading-circle .sk-circle2 {
-    -webkit-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    transform: rotate(30deg);
-}
-
-.sk-fading-circle .sk-circle3 {
-    -webkit-transform: rotate(60deg);
-    -ms-transform: rotate(60deg);
-    transform: rotate(60deg);
-}
-
-.sk-fading-circle .sk-circle4 {
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.sk-fading-circle .sk-circle5 {
-    -webkit-transform: rotate(120deg);
-    -ms-transform: rotate(120deg);
-    transform: rotate(120deg);
-}
-
-.sk-fading-circle .sk-circle6 {
-    -webkit-transform: rotate(150deg);
-    -ms-transform: rotate(150deg);
-    transform: rotate(150deg);
-}
-
-.sk-fading-circle .sk-circle7 {
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.sk-fading-circle .sk-circle8 {
-    -webkit-transform: rotate(210deg);
-    -ms-transform: rotate(210deg);
-    transform: rotate(210deg);
-}
-
-.sk-fading-circle .sk-circle9 {
-    -webkit-transform: rotate(240deg);
-    -ms-transform: rotate(240deg);
-    transform: rotate(240deg);
-}
-
-.sk-fading-circle .sk-circle10 {
-    -webkit-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-.sk-fading-circle .sk-circle11 {
-    -webkit-transform: rotate(300deg);
-    -ms-transform: rotate(300deg);
-    transform: rotate(300deg);
-}
-
-.sk-fading-circle .sk-circle12 {
-    -webkit-transform: rotate(330deg);
-    -ms-transform: rotate(330deg);
-    transform: rotate(330deg);
-}
-
-.sk-fading-circle .sk-circle2:before {
-    -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s;
-}
-
-.sk-fading-circle .sk-circle3:before {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-}
-
-.sk-fading-circle .sk-circle4:before {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s;
-}
-
-.sk-fading-circle .sk-circle5:before {
-    -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s;
-}
-
-.sk-fading-circle .sk-circle6:before {
-    -webkit-animation-delay: -0.7s;
-    animation-delay: -0.7s;
-}
-
-.sk-fading-circle .sk-circle7:before {
-    -webkit-animation-delay: -0.6s;
-    animation-delay: -0.6s;
-}
-
-.sk-fading-circle .sk-circle8:before {
-    -webkit-animation-delay: -0.5s;
-    animation-delay: -0.5s;
-}
-
-.sk-fading-circle .sk-circle9:before {
-    -webkit-animation-delay: -0.4s;
-    animation-delay: -0.4s;
-}
-
-.sk-fading-circle .sk-circle10:before {
-    -webkit-animation-delay: -0.3s;
-    animation-delay: -0.3s;
-}
-
-.sk-fading-circle .sk-circle11:before {
-    -webkit-animation-delay: -0.2s;
-    animation-delay: -0.2s;
-}
-
-.sk-fading-circle .sk-circle12:before {
-    -webkit-animation-delay: -0.1s;
-    animation-delay: -0.1s;
-}
-
-@-webkit-keyframes sk-circleFadeDelay {
-    0%,
-    39%,
-    100% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 1;
-    }
-}
-
-@keyframes sk-circleFadeDelay {
-    0%,
-    39%,
-    100% {
-        opacity: 0;
-    }
-    40% {
-        opacity: 1;
-    }
-}
-
-.counter {
-    position: relative;
-    top: 101px;
-    width: 25px;
-    font-size: x-large;
-    cursor: default;
-    overflow: hidden;
-    margin: 0px auto;
-}
-
-.timer {
-    height: 25px;
-    float: left;
-}
-
-.timer-val-container {
-    float: left;
-}
-
-.seconds-single {
-    animation: count-10 10s steps(10, end) infinite;
-}
-
-.timer-val {
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes count-10 {
-    to {
-        transform: translateY(-250px);
-    }
-}
-
-@-webkit-keyframes count-10 {
-    to {
-        transform: translateY(-250px);
-    }
-}
-*/
 
 *,
 :after,
 :before {
   box-sizing: border-box;
-}
-
-table.shorts {
-  margin: 2px 3px;
-  padding: 2px 3px;
-  border: 1px solid rgb(250, 250, 250);
-  border-collapse: collapse;
-  font-size: x-small
-}
-
-td.k {
-  text-align: center;
-  padding: 2px 5px;
-  margin: 2px 5px;
-  border: 1px solid rgb(204, 204, 204);
-}
-
-td.d {
-  padding: 2px 5px;
-  margin: 2px 5px;
-  border: 1px solid rgb(204, 204, 204);
-}
-
-th.d {
-  padding: 2px 5px;
-  margin: 2px 5px;
-  border: 1px solid rgb(204, 204, 204);
-}
-
-th.cxx,
-th.cxz,
-th.cxb,
-th.cxs,
-th.cxv,
-td.cxx,
-td.cxz,
-td.cxb,
-td.cxs,
-td.cxv {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mP88OHDf0aSiGfPntGaAAAL8XAJa+SuYgAAAABJRU5ErkJggg==);
-  background-repeat: repeat-x;
-  border: 1px solid rgb(204, 204, 204);
-  vertical-align: middle;
-}
-
-td.cxx,
-td.cxz,
-td.cxb,
-td.cxs,
-td.cxv {
-  font: normal 12px arial, tahoma, sans-serif;
-  line-height: 24px;
-  background: rgb(254, 254, 254);
-  padding: 1px;
-  color: rgb(34, 34, 34);
-}
-
-td.cxy {
-  font: normal 12px arial, tahoma, sans-serif;
-  line-height: 24px;
-  border: 1px solid rgb(204, 204, 204);
-  vertical-align: middle;
-  text-align: right;
-  background: rgb(254, 254, 254);
-  padding: 1px;
-  color: rgb(34, 34, 34);
-}
-
-input[type="color"] {
-  -webkit-appearance: none;
-  border: none;
-  width: 100%;
-  height: 100%;
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
@@ -359,397 +81,17 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
-.unselectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-div.cxc {
-  left: 0px;
-  top: 0px;
-  margin-left: 5px;
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.json-key {
-  color: rgb(215, 48, 39);
-  font-weight: bold;
-}
-
-.json-value {
-  color: rgb(69, 117, 180);
-}
-
-.json-string {
-  color: rgb(168, 82, 2);
-}
-
-.json-number {
-  color: rgb(69, 117, 180);
-}
-
-.json-boolean {
-  color: rgb(102, 102, 0);
-}
-
-.json-null {
-  color: rgb(69, 117, 180);
-}
-
-.json-comment {
-  color: rgb(58, 115, 0)
-}
-
-div.CanvasXpressCode {
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  box-sizing: border-box;
-  background-color: rgb(238, 238, 238);
-  cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
-  margin: 2px 3px;
-  padding: 10px 20px 20px 10px;
-  position: absolute;
-  white-space: nowrap;
-}
-
-img.CanvasXpressCode,
-svg.CanvasXpressCode {
-  background: rgba(0, 0, 0, 0) !important;
-  border-radius: 5px;
-  border: 1px solid rgb(83, 105, 255) !important;
-  padding: 5px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-pre.CanvasXpressCode {
-  text-align: left;
-  padding: inherit;
-  margin: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  word-break: inherit;
-  word-wrap: inherit;
-  background-color: inherit;
-  border: none;
-  border-radius: inherit;
-  counter-reset: line;
-}
-
-div.CanvasXpressCodeContainer {
-  box-sizing: border-box;
-  clear: both;
-  width: 600px;
-  overflow: auto;
-  resize: horizontal;
-  background-color: rgb(255, 255, 255);
-  position: relative;
-  top: 10px;
-}
-
-div.CanvasXpressCodeContent {
-  box-sizing: border-box;
-  margin: 2px 3px;
-  padding: 2px 3px;
-}
-
-div.CanvasXpressCodeError {
-  box-sizing: border-box;
-  height: 36px;
-  width: 300px;
-  float: left;
-  clear: none;
-  resize: none;
-  top: 5px;
-  left: 20px;
-  background-color: rgb(238, 238, 238);
-  overflow: hidden;
-  white-space: normal;
-  color: rgb(255, 0, 0);
-  position: relative;
-  cursor: pointer;
-}
-
-pre.CanvasXpressCodeContent {
-  margin: 0 !important;
-  padding: 0 !important;
-  white-space: pre;
-  font-size: inherit;
-  line-height: 0 !important;
-  color: inherit;
-  border: none !important;
-  outline: none !important;
-  cursor: text;
-}
-
-pre.CanvasXpressCodeContent:before {
-  counter-reset: listing;
-}
-
-pre.CanvasXpressCodeContent code {
-  counter-increment: listing;
-  padding: 0 !important;
-  white-space: inherit;
-  line-height: 1.5;
-}
-
-pre.CanvasXpressCodeContent code::before {
-  content: counter(listing) " ";
-  display: inline-block;
-  width: 3em;
-  /* Fixed width */
-  border-right: 1px solid rgb(221, 221, 221);
-  padding-left: auto;
-  margin-left: auto;
-  text-align: right;
-  /*color: rgb(136, 136, 136);*/
-  background-color: rgb(239, 239, 239);
-  -webkit-user-select: none;
-}
-
-/*
- * Carousel
- */
-
-div.CanvasXpressCarouselScene {
-  position: relative;
-  margin: 0;
-}
-
-div.CanvasXpressCarousel {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform: translateZ(-288px);
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
-span.CanvasXpressCarousel {
-  padding: 1px;
-  position: absolute;
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 2px;
-  line-height: 10px;
-  cursor: pointer;
-}
-
-div.CanvasXpressCarouselCell {
-  position: absolute;
-  transition: transform 1s, opacity 1s;
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  backface-visibility: hidden;
-}
-
-div.CanvasXpressCarouselCell:nth-child(1) {
-  transform: rotateY(0deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(2) {
-  transform: rotateY(40deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(3) {
-  transform: rotateY(80deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(4) {
-  transform: rotateY(120deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(5) {
-  transform: rotateY(160deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(6) {
-  transform: rotateY(200deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(7) {
-  transform: rotateY(240deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(8) {
-  transform: rotateY(280deg) translateZ(288px);
-}
-
-div.CanvasXpressCarouselCell:nth-child(9) {
-  transform: rotateY(320deg) translateZ(288px);
-}
-
-img.CanvasXpressCarousel:hover,
-svg.CanvasXpressCarousel:hover {
-  -webkit-transform: scale(1.8, 1.8);
-  -ms-transform: scale(1.8, 1.8);
-  transform: scale(1.8, 1.8);
-  transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  /* Safari */
-  box-shadow: 10px 10px 5px rgb(136, 136, 136);
-  z-index: 2;
-  position: relative;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  margin: 0px !important;
-}
-
-
-/*
- * CanvasXpressBin
- */
-
-div.CanvasXpressBin {
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-sizing: border-box;
-  cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
-  margin: 2px 3px;
-  padding: 2px 3px 5px 3px;
-  position: absolute;
-  white-space: nowrap;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-img.CanvasXpressBin,
-svg.CanvasXpressBin {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
-  float: right;
-  margin: 5px 5px 0px 0px !important;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-div.CanvasXpressBinContainer {
-  background-color: rgba(255, 255, 255, 0.95);
-  box-sizing: border-box;
-  clear: both;
-  text-align: left;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressBinContainerTab {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-width: 1px 1px 1px 1px;
-  border-style: solid;
-  border-color: rgb(83, 105, 255);
-  border-radius: 5px;
-  box-sizing: border-box;
-  clear: none;
-  height: 16px;
-  margin: 3px;
-  overflow-y: auto;
-  padding: 5px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressBinNameContainer {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  box-sizing: border-box;
-  clear: both;
-  max-height: 400px;
-  margin: 8px;
-  overflow-y: auto;
-  padding: 5px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-input.CanvasXpressBin {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
-  cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
-  line-height: 24px;
-  padding-left: 3px;
-  border-radius: 5px;
-  margin: 3px;
-}
-
-table.CanvasXpressBinTable {
-  border: collapse;
-  line-height: 20px;
-  color: rgb(34, 34, 34);
-  cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
-  line-height: 24px;
-  padding-left: 3px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-span.CanvasXpressBin {
-  font: bold 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
-  margin-left: 5px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-img.CanvasXpressBin::selection,
-svg.CanvasXpressBin::selection,
-span.CanvasXpressBin::selection {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  color: rgb(0, 0, 0);
-  margin: 0px !important;
-}
-
-/* BEGIN OF CUSTOMIZER CSS */
-/* https://cssgrid-generator.netlify.app/ */
-
-/*
- * CanvasXpress Customizer
- */
-
-svg {
+.unselectable,
+img,
+svg,
+img.cX-code,
+svg.cX-code,
+pre.cX-code-content code::before,
+div.cX-bin,
+div.cX-bin-container,
+div.cX-bin-name-container,
+table.cX-bin-table,
+span.cX-bin {
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -763,6 +105,305 @@ svg {
   user-select: none;
   /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
+
+/*****************
+ * SVG No border *
+ *****************/
+
+ svg.cX-bin,
+ svg.cX-code {
+  background: var(--cx-color-transparent) !important;
+  border: none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: default;
+  float: right;
+  margin: 5px 8px 0px 0px !important;
+}
+
+/*****************
+ *  SVG  Border  *
+ *****************/
+
+svg.cX-code {
+  border-radius: 5px;
+  border: var(--cx-border) !important;
+  padding: 5px;
+}
+
+/*****************
+ * Loading Timer *
+ *****************/
+
+.cX-loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.cX-loading div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid var(--cx-color-widgets);
+  border-radius: 50%;
+  animation: cX-loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--cx-color-widgets) transparent transparent transparent;
+}
+
+.cX-loading div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.cX-loading div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.cX-loading div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes cX-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*****************
+ *     Code      *
+ *****************/
+
+.cX-code-key {
+  color: var(--cx-code-key);
+  font-weight: bold;
+}
+
+.cX-code-value {
+  color: var(--cx-code-value);
+}
+
+.cX-code-string {
+  color: var(--cx-code-string);
+}
+
+.cX-code-number {
+  color: var(--cx-code-number);
+}
+
+.cX-code-boolean {
+  color: var(--cx-code-boolean);
+}
+
+.cX-code-null {
+  color: var(--cx-code-null);
+}
+
+.cX-code-comment {
+  color: var(--cx-code-comment);
+}
+
+div.cX-code,
+div.cX-code-container,
+div.cX-code-content,
+div.cX-code-error {
+  box-sizing: border-box;
+}
+
+div.cX-code {
+  border: var(--cx-border);
+  border-radius: 5px;
+  background-color: var(--cx-color-extra-light-gray);
+  cursor: move;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  margin: 2px 3px;
+  padding: 10px 20px 20px 10px;
+  position: absolute;
+  white-space: nowrap;
+}
+
+div.cX-code-container {
+  clear: both;
+  width: 600px;
+  overflow: auto;
+  resize: horizontal;
+  background-color: var(--cx-color-white);
+  position: relative;
+  top: 10px;
+}
+
+div.cX-code-content {
+  margin: 2px 3px;
+  padding: 2px 3px;
+}
+
+div.cX-code-error {
+  height: 36px;
+  width: 300px;
+  float: left;
+  clear: none;
+  resize: none;
+  top: 5px;
+  left: 20px;
+  background-color: var(--cx-color-extra-light-gray);
+  overflow: hidden;
+  white-space: normal;
+  color: var(--cx-color-red);
+  position: relative;
+  cursor: pointer;
+}
+
+pre.cX-code,
+pre.cX-code-content,
+pre.cX-code-content code {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  border: none;
+}
+
+pre.cX-code {
+  text-align: left;
+  word-break: inherit;
+  word-wrap: inherit;
+  background-color: inherit;
+  border-radius: inherit;
+  counter-reset: line;
+}
+
+pre.cX-code-content {
+  white-space: pre;
+  outline: none;
+  cursor: text;
+}
+
+pre.cX-code-content:before {
+  counter-reset: listing;
+}
+
+pre.cX-code-content code {
+  counter-increment: listing;
+  line-height: 1.5;
+}
+
+pre.cX-code-content code::before {
+  content: counter(listing) " ";
+  display: inline-block;
+  width: 3em;
+  border-right: 1px solid rgb(221, 221, 221);
+  text-align: right;
+  background-color: var(--cx-color-extra-light-gray);
+}
+
+/***************
+ *   Bin Data  *
+ ***************/
+
+ div.cX-bin,
+ div.cX-bin-name-container {
+  border: var(--cx-border);
+  border-radius: 5px;
+  background-color: var(--cx-background-ui-color);
+  box-sizing: border-box;
+}
+
+div.cX-bin {
+  cursor: move;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  margin: 2px 3px;
+  padding: 2px 3px 5px 3px;
+  position: absolute;
+  white-space: nowrap;
+}
+
+div.cX-bin-container {
+  background-color: var(--cx-background-ui-color);
+  box-sizing: border-box;
+  clear: both;
+  text-align: left;
+}
+
+div.cX-bin-name-container {
+  box-sizing: border-box;
+  border: none;
+  max-height: 400px;
+  margin: 8px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+input.cX-bin {
+  background-color: var(--cx-background-ui-color);
+  border: var(--cx-border);
+  color: var(--cx-font-color);
+  cursor: default;
+  font: var(--cx-font);
+  line-height: 24px;
+  padding-left: 3px;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+input.cX-bin-button {
+  float: left;
+  background-color: var(--cx-background-hover-color);
+  border: var(--cx-border);
+  border-radius: 5px;
+  color: var(--cx-font-color);
+  cursor: pointer;
+  font: bold var(--cx-font-size) var(--cx-font-family);
+  line-height: 24px;
+  margin: 0px 10px 10px 10px;
+  padding: 3px;
+}
+
+table.cX-bin-table {
+  border-collapse: collapse !important;
+  color: var(--cx-font-color);
+  cursor: default;
+  font: var(--cx-font);
+  line-height: 24px;
+}
+
+th.cX-bin {
+  text-align: center;
+  line-height: 24px;
+  color: var(--cx-font-color);
+  background-color: var(--cx-background-hover-color);
+  border: var(--cx-border);
+  font: bold var(--cx-font-size) var(--cx-font-family);
+}
+
+span.cX-bin {
+  font: bold var(--cx-font-size) var(--cx-font-family);
+  color: var(--cx-font-color);
+  margin-left: 5px;
+}
+
+svg.cX-bin::selection,
+span.cX-bin::selection {
+  background: var(--cx-color-transparent) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  color: rgb(0, 0, 0);
+  margin: 0px !important;
+}
+
+/* BEGIN OF CUSTOMIZER CSS */
+/* https://cssgrid-generator.netlify.app/ */
+
+/*
+ * CanvasXpress Customizer
+ */
 
 .customizerPanelLeft {
   display: grid;
@@ -778,11 +419,28 @@ svg {
   font-weight: normal;
 }
 
-.customizerLeftPanelTop {
-  grid-area: 1 / 1 / 2 / 2;
+.customizerLeftPanelTop,
+.customizerLeftPanelBottom {
   background: rgb(83, 105, 255);
   border: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerLeftPanelTopS,
+.customizerLeftPanelBottomS {
+  background: rgb(200, 200, 200);
+  border: 1px solid rgb(200, 200, 200)  !important;
+}
+
+.customizerLeftPanelTopS,
+.customizerLeftPanelTop {
+  grid-area: 1 / 1 / 2 / 2;
   border-top-left-radius: 10px;
+}
+
+.customizerLeftPanelBottomS,
+.customizerLeftPanelBottom {
+  grid-area: 3 / 1 / 4 / 2;
+  border-bottom-left-radius: 10px;
 }
 
 .customizerLeftPanelMiddle {
@@ -790,25 +448,21 @@ svg {
   background: rgba(0, 0, 0, 0);
 }
 
-.customizerLeftPanelBottom {
-  grid-area: 3 / 1 / 4 / 2;
-  background: rgb(83, 105, 255);
-  border: 1px solid rgb(83, 105, 255) !important;
-  border-bottom-left-radius: 10px;
-}
-
 .customizerLeftPanelTop .customizerLeftItem:hover svg,
 .customizerLeftPanelTop .customizerLeftItemActive svg,
+.customizerLeftPanelTopS .customizerLeftItemS:hover svg,
+.customizerLeftPanelTopS .customizerLeftItemSActive svg,
 .customizerLeftPanelBottom .customizerLeftItem:hover svg,
-.customizerLeftPanelBottom .customizerLeftItemActive svg {
+.customizerLeftPanelBottom .customizerLeftItemActive svg,
+.customizerLeftPanelBottomS .customizerLeftItemS:hover svg,
+.customizerLeftPanelBottomS .customizerLeftItemSActive svg {
   border: 1px solid rgb(255, 255, 255) !important;
   background: rgba(0, 0, 0, 0);
 }
 
-.customizerRightPanel {
+.customizerRightPanel,
+.customizerRightPanelS {
   background: rgba(0, 0, 0, 0);
-  border-left: 1px solid rgb(83, 105, 255) !important;
-  border-right: 1px solid rgb(83, 105, 255) !important;
   position: absolute;
   z-index: 10000;
   top: 0px;
@@ -816,30 +470,59 @@ svg {
   font-weight: normal;
 }
 
+.customizerRightPanel {
+  border-left: 1px solid rgb(83, 105, 255) !important;
+  border-right: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerRightPanelS {
+  border-left: 1px solid rgb(200, 200, 200) !important;
+  border-right: 1px solid rgb(200, 200, 200) !important;
+}
+
 /*
  * CanvasXpress Customizer Left Items
  */
 
 .customizerLeftItem,
-.customizerLeftItemActive {
+.customizerLeftItemActive,
+.customizerLeftItemS,
+.customizerLeftItemSActive {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   margin: 5px;
-  border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px;
   align-items: center;
 }
+
+.customizerLeftItem,
+.customizerLeftItemActive {
+  border: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerLeftItemS,
+.customizerLeftItemSActive {
+  border: 1px solid rgb(200, 200, 200) !important;
+}
+
 
 .customizerLeftItem:hover,
 .customizerLeftItemActive {
   background: rgba(83, 105, 255, 0.1);
 }
 
+.customizerLeftItemS:hover,
+.customizerLeftItemSActive {
+  background:rgba(200, 200, 200, 0.1);
+}
+
 .customizerLeftItem:hover svg,
-.customizerLeftItemActive svg {
+.customizerLeftItemS:hover svg,
+.customizerLeftItemActive svg,
+.customizerLeftItemSActive svg {
   background: rgb(255, 255, 255);
 }
 
@@ -860,19 +543,33 @@ svg {
   border-radius: 5px;
 }
 
+.customizerLeftIconS {
+  padding: 5px;
+  border: 1px solid rgb(200, 200, 200) !important;
+  border-radius: 5px;
+}
+
 /*
  * CanvasXpress Customizer Right Items
  */
 
+.customizerRightItemS,
 .customizerRightItem {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3fr 2fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px;
   width: 95%;
+}
+
+.customizerRightItem {
+  border: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerRightItemS {
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemTop {
@@ -891,13 +588,21 @@ svg {
  * CanvasXpress Customizer Right Items Comb
  */
 
+.customizerRightItemComboS,
 .customizerRightItemCombo {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 2fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+}
+
+.customizerRightItemCombo {
   border-top: 1px solid rgb(83, 105, 255);
+}
+
+.customizerRightItemComboS {
+  border-top: 1px solid rgb(200, 200, 200);
 }
 
 .customizerRightItemComboNB {
@@ -935,28 +640,40 @@ svg {
  * CanvasXpress Customizer Right Item Header
  */
 
-.customizerRightItemHeader {
+.customizerRightItemHeader,
+.customizerRightItemHeaderS,
+.customizerRightItemHeaderNB,
+.customizerRightItemHeaderNBS {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background: rgba(83, 105, 255, 0.1);
-  color: rgb(34, 34, 34);
-  border-bottom: 1px solid rgb(83, 105, 255) !important;
+  color: var(--cx-font-color);
   padding-left: 5px;
 }
 
+.customizerRightItemHeader,
 .customizerRightItemHeaderNB {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   background: rgba(83, 105, 255, 0.1);
-  color: rgb(34, 34, 34);
+}
+
+.customizerRightItemHeaderS,
+.customizerRightItemHeaderNBS {
+  background: rgba(200, 200, 200, 0.1);
+}
+
+.customizerRightItemHeader {
+  border-bottom: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerRightItemHeaderS {
+  border-bottom: 1px solid rgb(200, 200, 200) !important;
+}
+
+.customizerRightItemHeaderNB,
+.customizerRightItemHeaderNBS {
   border-bottom: none !important;
-  padding-left: 5px;
 }
 
 .customizerRightItemHeaderTop {
@@ -983,13 +700,21 @@ svg {
  * CanvasXpress Customizer Right Item Sub Header
  */
 
+.customizerRightItemSubHeaderS,
 .customizerRightItemSubHeader {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+}
+
+.customizerRightItemSubHeader {
   background: rgba(83, 105, 255, 0.1);
+}
+
+.customizerRightItemSubHeaderS {
+  background: rgba(200, 200, 200, 0.1);
 }
 
 .customizerRightItemSubHeaderRow {
@@ -998,27 +723,45 @@ svg {
   align-items: center;
 }
 
+.customizerRightItemSubHeaderRawS,
 .customizerRightItemSubHeaderRaw {
   display: flex;
   align-items: center;
-  border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px;
+}
+
+.customizerRightItemSubHeaderRaw {
+  border: 1px solid rgb(83, 105, 255) !important;
   background-color: rgba(83, 105, 255, 0.1);
+}
+
+.customizerRightItemSubHeaderRawS {
+  border: 1px solid  rgb(200, 200, 200) !important;
+  background-color:  rgba(200, 200, 200, 0.1);
 }
 
 /*
  * CanvasXpress Customizer Right Item Launcher
  */
 
+.customizerRightItemLauncherS,
 .customizerRightItemLauncher {
   display: grid;
   grid-template-columns: 1fr 6fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+}
+
+.customizerRightItemLauncher {
   border-top: 1px solid rgb(83, 105, 255) !important;
 }
 
+.customizerRightItemLauncherS {
+  border-top: 1px solid rgb(200, 200, 200) !important;
+}
+
+.customizerRightItemLauncherNBS,
 .customizerRightItemLauncherNB {
   display: grid;
   grid-template-columns: 1fr 6fr;
@@ -1033,14 +776,28 @@ svg {
   background-color: rgba(83, 105, 255, 0.1);
 }
 
+.customizerRightItemLauncherS:hover,
+.customizerRightItemLauncherNBS:hover {
+  background-color:  rgba(200, 200, 200, 0.1);
+}
+
+.customizerRightItemLauncherLeftS,
 .customizerRightItemLauncherLeft {
   grid-area: 1 / 1 / 2 / 2;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.customizerRightItemLauncherLeft {
   background-color: rgba(83, 105, 255, 0.1);
 }
 
+.customizerRightItemLauncherLeftS {
+  background-color: rgba(200, 200, 200, 0.1);
+}
+
+.customizerRightItemLauncherRightS,
 .customizerRightItemLauncherRight {
   grid-area: 1 / 2 / 2 / 3;
   display: flex;
@@ -1184,13 +941,21 @@ svg {
   justify-content: center;
 }
 
+.customizerRightItemColMidS,
 .customizerRightItemColMid {
   grid-area: 1 / 3 / 2 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px;
+}
+
+.customizerRightItemColMid {
+  border: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerRightItemColMidS {
+  border: 1px solid rgb(200, 200, 200) !important;
 }
 
 .customizerRightItemSelect>select:hover,
@@ -1211,12 +976,41 @@ svg {
  * Other Customizer classes
  */
 
+.customizerContainerS,
 .customizerContainer {
   height: fit-content;
-  border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px;
   margin: 10px;
   float: left;
+}
+
+.customizerWranglingS,
+.customizerWrangling {
+  height: 102px;
+  margin: 0px 0px 10px 10px;
+  border-radius: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.customizerNumeric,
+.customizerString,
+.customizerUnique,
+.customizerWrangling,
+.customizerContainer {
+  border: 1px solid rgb(83, 105, 255) !important;
+}
+
+.customizerNumericS,
+.customizerStringS,
+.customizerUniqueS,
+.customizerWranglingS,
+.customizerContainerS {
+  border: 1px solid rgb(200, 200, 200) !important;
+}
+
+.customizerWrangling:hover {
+  border: 1px dashed rgb(255, 0, 0) !important;
 }
 
 .customizerContainerRaw {
@@ -1227,19 +1021,7 @@ svg {
   justify-content: center;
 }
 
-.customizerWrangling {
-  height: 102px;
-  margin: 0px 0px 10px 10px;
-  border: 1px solid rgb(83, 105, 255) !important;
-  border-radius: 5px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.customizerWrangling:hover {
-  border: 1px dashed rgb(255, 0, 0) !important;
-}
-
+.customizerMaskS,
 .customizerMask {
   background: rgba(0, 0, 0, 0) !important;
   border: 0px none !important;
@@ -1252,10 +1034,12 @@ svg {
   height: 20px;
 }
 
+.customizerNumericS,
+.customizerStringS,
+.customizerUniqueS,
 .customizerNumeric,
 .customizerString,
 .customizerUnique {
-  border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   cursor: move;
   margin: 3px;
@@ -1268,27 +1052,32 @@ svg {
   position: relative;
 }
 
+.customizerNumericS,
 .customizerNumeric {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   background-color: rgba(0, 0, 0, 0);
 }
 
+.customizerStringS,
 .customizerString {
   color: rgb(0, 255, 0);
   background-color: rgba(0, 0, 0, 0);
 }
 
+.customizerUniqueS,
 .customizerUnique {
   color: rgb(0, 0, 255);
   background-color: rgba(0, 0, 0, 0);
 }
-
+.customizerListNumericS,
+.customizerListStringS,
+.customizerListUniqueS,
 .customizerListNumeric,
 .customizerListString,
 .customizerListUnique {
   border: none;
   cursor: move;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   margin: 0;
   padding: 0 0 0 3px;
   width: 350px;
@@ -1299,18 +1088,24 @@ svg {
   position: relative;
 }
 
+.customizerListNumericS,
 .customizerListNumeric {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
 }
 
+.customizerListStringS,
 .customizerListString {
   color: rgb(0, 255, 0);
 }
 
+.customizerListUniqueS,
 .customizerListUnique {
   color: rgb(0, 0, 255);
 }
 
+.customizerListNumericS,
+.customizerListStringS,
+.customizerListUniqueS,
 .customizerListNumeric,
 .customizerListString,
 .customizerListUnique {
@@ -1323,24 +1118,55 @@ svg {
   background: rgba(83, 105, 255, 0.1);
 }
 
-.customizerListNumeric:before {
+.customizerListNumericS:hover,
+.customizerListStringS:hover,
+.customizerListUniqueS:hover {
+  background: rgba(200, 200, 200, 0.1);
+}
+
+.customizerListNumeric:before,
+.customizerListString:before,
+.customizerListUnique:before,
+.customizerListNumericS:before,
+.customizerListStringS:before,
+.customizerListUniqueS:before {
   font: normal 10px courier;
+}
+
+.customizerListNumeric:before,
+.customizerListString:before,
+.customizerListUnique:before {
   color: rgb(83, 105, 255);
+}
+
+.customizerListNumericS:before,
+.customizerListStringS:before,
+.customizerListUniqueS:before {
+  color: rgb(200, 200, 200);
+}
+
+.customizerListNumeric:before,
+.customizerListNumericS:before {
   content: "\00a0#\00a0\00a0";
 }
 
-.customizerListString:before {
-  font: normal 10px courier;
-  color: rgb(83, 105, 255);
+.customizerListString:before,
+.customizerListStringS:before {
   content: "Abc\00a0";
 }
 
-.customizerListUnique:before {
-  font: normal 10px courier;
-  color: rgb(83, 105, 255);
+.customizerListUnique:before,
+.customizerListUniqueS:before {
   content: "Unq\00a0";
 }
 
+.customizerMaskS::selection,
+.customizerNumericS::selection,
+.customizerStringS::selection,
+.customizerUniqueS::selection,
+.customizerListNumericS::selection,
+.customizerListStringS::selection,
+.customizerListUniqueS::selection,
 .customizerMask::selection,
 .customizerNumeric::selection,
 .customizerString::selection,
@@ -1357,11 +1183,11 @@ svg {
  * Search Customizer
  */
 
+ input.customizerSearchS,
 input.customizerSearch {
   margin: 9px;
   background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: inherit;
   height: 40px;
@@ -1370,20 +1196,32 @@ input.customizerSearch {
   clear: left;
 }
 
+select.customizerSearch,
+input.customizerSearch {
+  border: 1px solid rgb(83, 105, 255);
+}
+
+select.customizerSearchS,
+input.customizerSearchS {
+  border: 1px solid rgb(200, 200, 200);
+}
+
+input.customizerSearchS[type="color"],
 input.customizerSearch[type="color"] {
   padding: 0;
   overflow: hidden;
 }
 
+input.customizerSearchS:not([type="color"]),
 input.customizerSearch:not([type="color"]) {
   padding: 5px;
 }
 
+select.customizerSearchS,
 select.customizerSearch {
   margin: 9px;
   background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: inherit;
   padding-left: 3px;
@@ -1392,8 +1230,9 @@ select.customizerSearch {
   clear: left;
 }
 
+span.customizerSearchS,
 span.customizerSearch {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font: inherit;
   line-height: 20px;
   list-style: none;
@@ -1403,6 +1242,10 @@ span.customizerSearch {
   clear: left;
 }
 
+span.customizerSearchSelectS,
+span.customizerSearchDescriptionS,
+span.customizerSearchCategoryS,
+span.customizerSearchCurrentS,
 span.customizerSearchSelect,
 span.customizerSearchDescription,
 span.customizerSearchCategory,
@@ -1418,61 +1261,79 @@ span.customizerSearchCurrent {
   left: 15px;
 }
 
+span.customizerSearchSelectS,
 span.customizerSearchSelect {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
 }
 
+span.customizerSearchDescriptionS,
+span.customizerSearchCategoryS,
 span.customizerSearchDescription,
 span.customizerSearchCategory {
-  color: rgb(83, 105, 255);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+span.customizerSearchDescription,
+span.customizerSearchCategory,
 span.customizerSearchCurrent {
   color: rgb(83, 105, 255);
 }
 
+span.customizerSearchDescriptionS,
+span.customizerSearchCategoryS,
+span.customizerSearchCurrentS {
+  color: rgb(200, 200, 200);
+}
+
+span.customizerSearchSelectS:before,
 span.customizerSearchSelect:before {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: "Select property (";
 }
 
+span.customizerSearchSelectS:after,
 span.customizerSearchSelect:after {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: ")";
 }
 
+span.customizerSearchDescriptionS:before,
 span.customizerSearchDescription:before {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: "Description [ ";
 }
 
+span.customizerSearchCategoryS:before,
 span.customizerSearchCategory:before {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: "Category [ ";
 }
 
+span.customizerSearchDescriptionS:after,
+span.customizerSearchCategoryS:after,
 span.customizerSearchDescription:after,
 span.customizerSearchCategory:after {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: " ]";
 }
 
+span.customizerSearchCurrentS:before,
 span.customizerSearchCurrent:before {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: "Current Value [ ";
 }
 
+span.customizerSearchCurrentS:after,
 span.customizerSearchCurrent:after {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-weight: bold;
   content: " ]";
 }
@@ -1482,12 +1343,11 @@ span.customizerSearchCurrent:after {
  */
 
 div.CanvasXpressPassword {
-  border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
   cursor: move;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font: normal 16px arial, tahoma, sans-serif;
   margin: 2px 3px;
   overflow: hidden;
@@ -1519,7 +1379,7 @@ svg.CanvasXpressPassword {
 div.CanvasXpressPasswordContainer {
   box-sizing: border-box;
   border-radius: 0px 0px 5px 5px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   display: block;
   left: 0px;
   line-height: 100%;
@@ -1574,8 +1434,8 @@ div.CanvasXpressTooltip {
   background-color: rgba(255, 255, 255, 0.95);
   box-sizing: border-box;
   cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
   margin: 2px 3px;
   overflow: hidden;
   padding: 5px 6px;
@@ -1673,8 +1533,8 @@ span.CanvasXpressTooltip {
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
   cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
   margin: 2px 3px;
   max-height: 800px;
   overflow: hidden;
@@ -1690,8 +1550,8 @@ div.CanvasXpressMousePosition {
   border: 0px none !important;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
   cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
   position: absolute;
   white-space: nowrap;
   text-align: left;
@@ -1722,8 +1582,8 @@ span.CanvasXpressMousePosition {
   border: 0px none !important;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
   cursor: move;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
   position: absolute;
   left: 4px;
   top: -20px;
@@ -1764,8 +1624,8 @@ div.CanvasXpressCanvasResizerloading2 {
  */
 
 div.CanvasXpressMotion {
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
 }
 
 img.CanvasXpressMotion,
@@ -1815,9 +1675,9 @@ div.CanvasXpressMarker {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: move;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   height: 502px;
   width: 286px;
   left: 0px;
@@ -1894,7 +1754,7 @@ table.CanvasXpressDataTableDOE {
 th.CanvasXpressDataTableDOE {
   padding: 0 !important;
   font-size: 12px !important;
-  font-weight: bolder !important;
+  font-weight: bold !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
   height: 18px !important;
@@ -1922,148 +1782,156 @@ tr.CanvasXpressDataTableDOE {
   font-size: 12px !important;
 }
 
-/*
- * Data Table
- */
+/***************/
+/*  Data Table */
+/***************/
 
-div.CanvasXpressDataTable {
-  box-sizing: border-box;
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  clear: both;
-  color: rgb(34, 34, 34);
-  overflow: hidden;
-  position: absolute;
+div.CanvasXpressDataTable,
+div.CanvasXpressDataTableToolbar,
+div.CanvasXpressDataTableContainer,
+div.CanvasXpressDataTableVertical,
+div.CanvasXpressDataTableVerticalS,
+div.CanvasXpressDataTableHorizontal,
+div.CanvasXpressDataTableHorizontalS,
+div.CanvasXpressDataTableMask,
+img.CanvasXpressDataTableToolbarImage,
+svg.CanvasXpressDataTableToolbarImage,
+img.CanvasXpressDataTableToolbarImageS,
+svg.CanvasXpressDataTableToolbarImageS,
+img.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageLogo,
+table.CanvasXpressDataTable,
+th.CanvasXpressTableCellHead,
+th.CanvasXpressTableCellModernHead,
+th.CanvasXpressTableCellHeadActive,
+th.CanvasXpressTableCellModernHeadActive,
+td.CanvasXpressTableCell,
+td.CanvasXpressTableCellModern,
+td.CanvasXpressTableCellActive,
+td.CanvasXpressTableCellModernActive,
+a.CanvasXpressTableCellHead,
+a.CanvasXpressTableCellModernHead,
+a.CanvasXpressTableCellHeadActive,
+a.CanvasXpressTableCellModernHeadActive {
+  user-select: none;
+  -ms-user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+}
+
+div.CanvasXpressDataTable,
+div.CanvasXpressDataTableToolbar,
+div.CanvasXpressDataTableContainer,
+div.CanvasXpressDataTableVertical,
+div.CanvasXpressDataTableVerticalS,
+div.CanvasXpressDataTableHorizontal,
+div.CanvasXpressDataTableHorizontalS,
+div.CanvasXpressDataTableMask {
+  box-sizing: border-box;
+  position: absolute;
+}
+
+div.CanvasXpressDataTable,
+div.CanvasXpressDataTableToolbar,
+div.CanvasXpressDataTableVertical,
+div.CanvasXpressDataTableVerticalS,
+div.CanvasXpressDataTableHorizontal,
+div.CanvasXpressDataTableHorizontalS {
+  color: var(--cx-font-color);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+div.CanvasXpressDataTable {
+  border: 1px solid rgb(83, 105, 255);
+  border-radius: 5px;
+  clear: both;
+  overflow: hidden;
 }
 
 div.CanvasXpressDataTableToolbar {
-  box-sizing: border-box;
   border-bottom: 1px solid rgb(204, 204, 204);
   border-radius: 5px 5px 0px 0px;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: rgb(34, 34, 34);
   height: 36px;
   left: 0px;
   line-height: 100%;
-  position: absolute;
   top: 0px;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
-
-img.CanvasXpressDataTableToolbarImage,
-svg.CanvasXpressDataTableToolbarImage {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 1px solid rgb(83, 105, 255) !important;
-  border-radius: 5px;
-  padding: 2px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-img.CanvasXpressDataTableToolbarImageS,
-svg.CanvasXpressDataTableToolbarImageS {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 1px solid rgb(0, 0, 0, 0.1) !important;
-  border-radius: 5px;
-  padding: 2px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-
-img.CanvasXpressDataTableToolbarImageNB,
-svg.CanvasXpressDataTableToolbarImageNB {
-  background: rgba(0, 0, 0, 0) !important;
-  border: none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
 
 div.CanvasXpressDataTableContainer {
-  box-sizing: border-box;
   border-radius: 0px 0px 5px 5px;
-  color: rgb(34, 34, 34);
   display: block;
   left: 0px;
   line-height: 100%;
-  position: absolute;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
+
 div.CanvasXpressDataTableVertical,
 div.CanvasXpressDataTableVerticalS {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
   overflow-x: hidden;
   overflow-y: auto;
-  position: absolute;
   right: 6px;
   top: 2px;
   width: 16px;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-img.CanvasXpressDataTableVertical {
-  max-height: unset !important;
-  height: revert-layer !important;
 }
 
 div.CanvasXpressDataTableHorizontal,
 div.CanvasXpressDataTableHorizontalS {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
   bottom: 12px;
   height: 16px;
   left: 2px;
   overflow-x: auto;
   overflow-y: hidden;
-  position: absolute;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
+}
+
+div.CanvasXpressDataTableMask {
+  border: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+
+img.CanvasXpressDataTableToolbarImage,
+svg.CanvasXpressDataTableToolbarImage,
+img.CanvasXpressDataTableToolbarImageS,
+svg.CanvasXpressDataTableToolbarImageS,
+img.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageNB {
+  background: rgba(0, 0, 0, 0) !important;
+  border-radius: 5px;
+  padding: 2px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  cursor: pointer;
+  float: right;
+  margin: 5px 8px 0px 0px !important;
+}
+
+img.CanvasXpressDataTableToolbarImage,
+svg.CanvasXpressDataTableToolbarImage {
+  border: 1px solid rgb(83, 105, 255) !important;
+}
+
+img.CanvasXpressDataTableToolbarImageS,
+svg.CanvasXpressDataTableToolbarImageS {
+  border: 1px solid rgb(0, 0, 0, 0.1) !important;
+}
+
+img.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageNB {
+  border: none !important;
+}
+
+img.CanvasXpressDataTableToolbarImageLogo,
+svg.CanvasXpressDataTableToolbarImageLogo {
+  border: none !important;
+  float: left;
+  margin: 5px 0px 0px 10px !important;
+}
+
+
+img.CanvasXpressDataTableVertical {
+  max-height: unset !important;
+  height: revert-layer !important;
 }
 
 img.CanvasXpressDataTableHorizontal {
@@ -2073,78 +1941,41 @@ img.CanvasXpressDataTableHorizontal {
 table.CanvasXpressDataTable {
   border: 0px;
   border-spacing: 1px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   left: 1px;
   position: absolute;
   opacity: 0.95;
   table-layout: fixed;
   top: 1px;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressDataTableMask {
-  box-sizing: border-box;
-  border: 0px;
-  position: absolute;
-  top: 0px;
-  overflow: hidden;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
 th.CanvasXpressTableCellHead,
-th.CanvasXpressTableCellModernHead {
-  border-top: none;
-  border-bottom: 1px solid rgb(204, 204, 204);
-  border-left: none;
-  border-right: none;
-  color: rgb(34, 34, 34);
-  font-style: bold;
-  opacity: 0.95;
-  padding: 2px;
-  vertical-align: middle;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-th.CanvasXpressTableCellHead {
-  background: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
-}
-
-th.CanvasXpressTableCellModernHead {
-  background: rgb(0, 0, 0, 0);
-}
-
+th.CanvasXpressTableCellModernHead,
 th.CanvasXpressTableCellHeadActive,
 th.CanvasXpressTableCellModernHeadActive {
   border-top: none;
   border-bottom: 1px solid rgb(204, 204, 204);
   border-left: none;
   border-right: none;
-  font-style: bold;
+  font-weight: bold;
   opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
+}
+
+th.CanvasXpressTableCellHead {
+  background: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
+  color: var(--cx-font-color);
+}
+
+th.CanvasXpressTableCellModernHead {
+  background: rgb(0, 0, 0, 0);
+  color: var(--cx-font-color);
 }
 
 th.CanvasXpressTableCellHeadActive {
   background: rgba(83, 105, 255, 0.1);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
 }
 
 th.CanvasXpressTableCellModernHeadActive {
@@ -2153,30 +1984,7 @@ th.CanvasXpressTableCellModernHeadActive {
 }
 
 a.CanvasXpressTableCellHead,
-a.CanvasXpressTableCellModernHead {
-  cursor: pointer;
-  position: absolute;
-  right: 8px;
-  white-space: normal;
-  text-decoration: none;
-  font-weight: bold;
-  font-style: normal;
-  width: 14px;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-a.CanvasXpressTableCellHead {
-  color: rgb(34, 34, 34);
-}
-
-a.CanvasXpressTableCellModernHead {
-  color: rgb(83, 105, 255);
-}
-
+a.CanvasXpressTableCellModernHead,
 a.CanvasXpressTableCellHeadActive,
 a.CanvasXpressTableCellModernHeadActive {
   cursor: pointer;
@@ -2184,16 +1992,15 @@ a.CanvasXpressTableCellModernHeadActive {
   right: 8px;
   white-space: normal;
   text-decoration: none;
-  font-weight: bold;
   font-style: normal;
   width: 14px;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
+a.CanvasXpressTableCellHead {
+  color: var(--cx-font-color);
+}
+
+a.CanvasXpressTableCellModernHead,
 a.CanvasXpressTableCellHeadActive {
   color: rgb(83, 105, 255);
 }
@@ -2203,43 +2010,33 @@ a.CanvasXpressTableCellModernHeadActive {
 }
 
 td.CanvasXpressTableCell,
-td.CanvasXpressTableCellModern {
-  background: rgb(0, 0, 0, 0);
+td.CanvasXpressTableCellModern,
+td.CanvasXpressTableCellActive,
+td.CanvasXpressTableCellModernActive {
   border-top: none;
   border-bottom: 1px solid rgb(204, 204, 204);
   border-left: none;
   border-right: none;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   padding: 2px;
   vertical-align: middle;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
+}
+
+td.CanvasXpressTableCell,
+td.CanvasXpressTableCellModern {
+  background: rgb(0, 0, 0, 0);
 }
 
 td.CanvasXpressTableCellActive,
 td.CanvasXpressTableCellModernActive {
   background-color: rgb(223, 232, 249);
-  border-top: none;
-  border-bottom: 1px solid rgb(204, 204, 204);
-  border-left: none;
-  border-right: none;
-  color: rgb(34, 34, 34);
-  padding: 2px;
   opacity: 0.95;
-  vertical-align: middle;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
-div.CanvasXpressTableCell {
+div.CanvasXpressTableCell,
+div.CanvasXpressTableCellLink {
   box-sizing: border-box;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   margin: 2px 2px 1px 5px;
   overflow: hidden;
   position: relative;
@@ -2248,46 +2045,90 @@ div.CanvasXpressTableCell {
   text-align: left;
 }
 
+/*
+div.CanvasXpressTableCell {
+  box-sizing: border-box;
+  color: var(--cx-font-color);
+  margin: 2px 2px 1px 5px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+div.CanvasXpressTableCell {
+  overflow: hidden;
+	line-height: unset !important;
+  text-align: left;
+}
+
+div.CanvasXpressTableCell:before {
+	content:"";
+	float: left;
+	width: 5px;
+}
+
+div.CanvasXpressTableCell > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px;
+}
+
+div.CanvasXpressTableCell:after {
+	content: "\02026";
+	float: right;
+  position: relative;
+	top: -25px; 
+  left: 100%;
+	width: 3em; 
+  margin-left: -3em;
+	padding-right: 5px;
+	text-align: right;
+}
+*/
+
 div.CanvasXpressTableCell:hover {
   background-color: rgba(83, 105, 255, 0.1);
 }
 
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
-  background: rgba(255, 255, 255, 0.95);
-  /*color: rgb(83, 105, 255);*/
-  border: 1px solid rgb(83, 105, 255);
+div.CanvasXpressTableCellLink:hover {
+  background-color: rgba(83, 105, 255, 0.1);
+  text-decoration: underline rgb(83, 105, 255);
+  cursor: pointer;
+}
+
+th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
+tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
+th.CanvasXpressTableCellModernHeadActive div.CanvasXpressTableCell,
+th.CanvasXpressTableCellHead div.CanvasXpressTableCell,
+th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
   border-radius: 5px;
 }
 
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCellEmpty {
+th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
   background: rgba(255, 255, 255, 0.95);
-  /*color: rgb(83, 105, 255);*/
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
+  border: 1px solid rgb(83, 105, 255);
 }
 
 tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
   background: rgba(83, 105, 255, 0.1);
-  /*color: rgb(83, 105, 255);*/
   border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
 }
 
 th.CanvasXpressTableCellModernHeadActive div.CanvasXpressTableCell {
   background: rgb(83, 105, 255);
   color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
 }
 
 th.CanvasXpressTableCellHead div.CanvasXpressTableCell {
   border: 1px solid rgba(0, 0, 0, 0);
-  border-radius: 5px;
 }
 
 th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
   border: 1px solid rgb(255, 255, 255);
-  border-radius: 5px;
 }
 
 /*
@@ -2300,9 +2141,9 @@ div.CanvasXpressConfigurator {
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   opacity: 0.95;
   line-height: 24px;
   text-align: left;
@@ -2315,8 +2156,8 @@ div.CanvasXpressConfigurator {
 
 span.CanvasXpressConfigurator {
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -2328,9 +2169,9 @@ textarea.CanvasXpressConfigurator {
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
 }
 
 img.CanvasXpressConfigurator,
@@ -2350,26 +2191,26 @@ svg.CanvasXpressConfigurator {
 select.CanvasXpressConfigurator {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   padding-left: 3px;
 }
 
 input.CanvasXpressConfigurator {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   padding-left: 3px;
 }
 
 div.CanvasXpressConfiguratorOptions {
   box-sizing: border-box;
   cursor: default;
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
   height: 100px;
   margin-top: 8px;
   overflow: auto;
@@ -2382,20 +2223,20 @@ div.CanvasXpressConfiguratorFilter {
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
 }
 
 select.CanvasXpressConfiguratorFilter {
   border: 1px solid rgb(83, 105, 255);
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
 }
 
 input.CanvasXpressConfiguratorFilter {
   border: 1px solid rgb(83, 105, 255);
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
 }
 
 div.CanvasXpressConfiguratorExample {
@@ -2404,8 +2245,8 @@ div.CanvasXpressConfiguratorExample {
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
-  font: normal 12px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  font: var(--cx-font);
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -2413,7 +2254,7 @@ div.CanvasXpressConfiguratorExample {
 span.CanvasXpressConfiguratorExample {
   cursor: default;
   font: bold 14px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 18px;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -2428,8 +2269,8 @@ div.CanvasXpressConfiguratorExampleContent {
 div.CanvasXpressConfiguratorColor {
   box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
   line-height: 18px;
 }
 
@@ -2439,8 +2280,8 @@ div.CanvasXpressConfiguratorColorMain {
   background-repeat: no-repeat;
   box-sizing: border-box;
   border: none;
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
   float: left;
   cursor: crosshair;
 }
@@ -2450,8 +2291,8 @@ div.CanvasXpressConfiguratorColorExtra {
   background-image: url(data:image/gif;base64,R0lGODlhDwAPAKEBAAAAAP///////////yH5BAEKAAIALAAAAAAPAA8AAAIklB8Qx53b4otSUWcvyiz4/4AeQJbmKY4p1HHapBlwPL/uVRsFADs=);
   background-repeat: no-repeat;
   border: none;
-  font: normal 12px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  font: var(--cx-font);
+  color: var(--cx-font-color);
   cursor: crosshair;
   overflow: hidden;
 }
@@ -2541,13 +2382,13 @@ div.CanvasXpressWrapper {
 /* Data Filter */
 /***************/
 
-div.CanvasXpressDataFilter {
+div.CanvasXpressDataFilter,
+div.CanvasXpressDataFilterToolbar {
   box-sizing: border-box;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 100%;
   margin: 0px;
-  padding: 0px;
   position: absolute;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -2556,72 +2397,55 @@ div.CanvasXpressDataFilter {
 }
 
 div.CanvasXpressDataFilterToolbar {
-  box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
   border-radius: 4px;
-  color: rgb(34, 34, 34);
-  font: normal 16px arial, tahoma, sans-serif;
   left: 0px;
-  line-height: 100%;
-  margin: 0px;
-  position: absolute;
   opacity: 0.95;
   top: 0px;
 }
 
-span.CanvasXpressDataFilterToolbarText {
-  font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
-  left: 8px;
-  line-height: 100%;
-  position: relative;
-  top: 9px;
+img.CanvasXpressDataFilterToolbarImage,
+svg.CanvasXpressDataFilterToolbarImage,
+img.CanvasXpressDataFilterToolbarImageNB,
+svg.CanvasXpressDataFilterToolbarImageNB {
+  background: rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  cursor: pointer;
+  margin: 5px 8px 0px 0px !important;
+  float: right;
 }
 
 img.CanvasXpressDataFilterToolbarImage,
 svg.CanvasXpressDataFilterToolbarImage {
-  background: rgba(0, 0, 0, 0) !important;
   border: 1px solid rgb(83, 105, 255) !important;
   border-radius: 5px !important;
   padding: 2px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  margin: 5px 8px 0px 0px !important;
-  float: right;
 }
 
 img.CanvasXpressDataFilterToolbarImageNB,
 svg.CanvasXpressDataFilterToolbarImageNB {
-  background: rgba(0, 0, 0, 0) !important;
   border: none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  margin: 5px 8px 0px 0px !important;
-  float: right;
+}
+
+span.CanvasXpressDataFilterToolbarText,
+span.CanvasXpressDataFilterText,
+span.CanvasXpressDataFilterTextActive {
+  font: normal 16px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  left: 8px;
+  line-height: 100%;
+  position: relative;
+  top: 9px;
+  background-repeat: no-repeat;
+  background-position: -0px;
 }
 
 span.CanvasXpressDataFilterText {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
-  background-repeat: no-repeat;
-  background-position: -0px;
-  font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
-  left: 8px;
-  line-height: 100%;
-  position: relative;
-  top: 9px;
 }
 
 span.CanvasXpressDataFilterTextActive {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
-  background-repeat: no-repeat;
-  background-position: -0px;
-  font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
-  left: 8px;
-  line-height: 100%;
-  position: relative;
-  top: 9px;
 }
 
 div.CanvasXpressDataFilterContainer {
@@ -2633,13 +2457,20 @@ div.CanvasXpressDataFilterContainer {
   position: absolute;
 }
 
-input[type=checkbox].CanvasXpressCheckbox {
-  accent-color: rgb(83, 105, 255);
+input[type=checkbox].CanvasXpressCheckbox,
+input[type=checkbox].CanvasXpressCheckboxS {
   border-radius: 5px;
   height: 14px;
   width: 14px;
   margin: 2px;
+}
 
+input[type=checkbox].CanvasXpressCheckbox {
+  accent-color: rgb(83, 105, 255);
+}
+
+input[type=checkbox].CanvasXpressCheckboxS {
+  accent-color: rgb(200, 200, 200);
 }
 
 label.CanvasXpressCheckboxLabel {
@@ -2650,21 +2481,23 @@ label.CanvasXpressCheckboxLabel {
   margin: 0 0 0 3px !important;
 }
 
-div.CanvasXpressDataFilterContainerMaskNoOverflow {
+div.CanvasXpressDataFilterContainerMaskNoOverflow,
+div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
   box-sizing: border-box;
-  border: 1px solid rgb(208, 208, 208);
   margin: 5px;
   overflow: hidden;
+}
+
+div.CanvasXpressDataFilterContainerMaskNoOverflow {
+  border: 1px solid rgb(208, 208, 208);
 }
 
 div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
-  box-sizing: border-box;
   border: none;
-  margin: 5px;
-  overflow: hidden;
 }
 
-div.CanvasXpressDataFilterContainerMask {
+div.CanvasXpressDataFilterContainerMask,
+div.CanvasXpressDataFilterContainerMaskS {
   box-sizing: border-box;
   border: 1px solid rgb(208, 208, 208);
   margin: 5px;
@@ -2672,9 +2505,18 @@ div.CanvasXpressDataFilterContainerMask {
   overflow-y: scroll;
 }
 
-div.CanvasXpressDataFilterContainerItem {
+select.CanvasXpressDataFilterContainerString {
+  background-color: rgba(255, 255, 255, 0.95);
+  font: normal 16px arial, tahoma, sans-serif;
+  color: var(--cx-font-color);
+  margin-left: 3px;
+  margin-bottom: 3px;
+}
+
+div.CanvasXpressDataFilterContainerItem,
+div.CanvasXpressDataFilterContainerItemSelected,
+div.CanvasXpressDataFilterContainerItemSSelected {
   box-sizing: border-box;
-  /*color: rgb(83, 105, 255);*/
   height: 20px;
   padding: 1px 0px 0px 1px;
   overflow: hidden;
@@ -2682,51 +2524,45 @@ div.CanvasXpressDataFilterContainerItem {
 }
 
 div.CanvasXpressDataFilterContainerItemSelected {
-  box-sizing: border-box;
   background-color: rgba(83, 105, 255, 0.1);
-  /*color: rgb(83, 105, 255);*/
-  height: 20px;
-  padding: 1px 0px 0px 1px;
-  overflow: hidden;
-  white-space: nowrap;
+}
+
+div.CanvasXpressDataFilterContainerItemSSelected {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+div.CanvasXpressDataFilterContainerHoverable,
+div.CanvasXpressDataFilterContainerHoverableS {
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 2px;
+  margin-bottom: 4px;
 }
 
 div.CanvasXpressDataFilterContainerHoverable {
-  box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
-  border-radius: 5px;
-  margin: 2px;
-  margin-bottom: 4px;
-}
-
-div.CanvasXpressDataFilterContainerHoverableOut {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  margin: 2px;
-  margin-bottom: 4px;
 }
 
 div.CanvasXpressDataFilterContainerHoverable:hover {
-  box-sizing: border-box;
   background-color: rgba(83, 105, 255, 0.1);
-  border-radius: 5px;
 }
 
-select.CanvasXpressDataFilterContainerString {
-  background-color: rgba(255, 255, 255, 0.95);
-  font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
-  margin-left: 3px;
-  margin-bottom: 3px;
+div.CanvasXpressDataFilterContainerHoverableS {
+  border: 1px solid var(--cx-font-color);
 }
 
-div.CanvasXpressDataFilterHead {
+div.CanvasXpressDataFilterContainerHoverableS:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+div.CanvasXpressDataFilterHead,
+div.CanvasXpressDataFilterHeadActive,
+div.CanvasXpressDataFilterHeadS,
+div.CanvasXpressDataFilterHeadSActive,
+div.CanvasXpressDataFilterHeadO,
+div.CanvasXpressDataFilterHeadOActive {
   box-sizing: border-box;
-  /*background: linear-gradient(rgb(240, 240, 240), rgb(230,230,230));*/
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 4px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   float: left;
   height: 38px;
@@ -2740,40 +2576,62 @@ div.CanvasXpressDataFilterHead {
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+}
+
+div.CanvasXpressDataFilterHead,
+div.CanvasXpressDataFilterHeadActive,
+div.CanvasXpressDataFilterHeadS,
+div.CanvasXpressDataFilterHeadSActive,
+div.CanvasXpressDataFilterHeadO,
+div.CanvasXpressDataFilterHeadOActive {
+  border: 1px solid rgb(83, 105, 255);
+  border-radius: 4px;
+}
+
+div.CanvasXpressDataFilterHeadActive,
+div.CanvasXpressDataFilterHeadSActive,
+div.CanvasXpressDataFilterHeadOActive {
+  border-bottom: 1px solid transparent !important;
+  border-radius: 4px 4px 0px 0px;
 }
 
 div.CanvasXpressDataFilterHeadActive {
-  box-sizing: border-box;
   background: rgba(83, 105, 255, 0.1);
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 4px 4px 0px 0px;
-  color: rgb(34, 34, 34);
-  cursor: pointer;
-  float: left;
-  height: 38px;
-  margin-top: 2px;
-  overflow: hidden;
-  opacity: 0.95;
-  padding: 2px;
-  text-align: left;
-  vertical-align: middle;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
-div.CanvasXpressDataFilterContent {
+div.CanvasXpressDataFilterHeadS,
+div.CanvasXpressDataFilterHeadSActive,
+div.CanvasXpressDataFilterHeadO,
+div.CanvasXpressDataFilterHeadOActive {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+div.CanvasXpressDataFilterHeadSActive {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+div.CanvasXpressDataFilterHeadOActive {
+  background: linear-gradient(rgb(240, 240, 240), rgb(230,230,230));
+}
+
+div.CanvasXpressDataFilterContent,
+div.CanvasXpressDataFilterContentS {
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
   border-radius: 0px 0px 4px 4px;
   border-top: 0px;
-  /*color: rgb(83, 105, 255);*/
   font: normal 16px arial, tahoma, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2px;
+}
+
+div.CanvasXpressDataFilterContent {
+  border: 1px solid rgb(83, 105, 255);
+}
+
+div.CanvasXpressDataFilterContentS {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 div.CanvasXpressDataFilterContainerTicks {
@@ -2783,32 +2641,28 @@ div.CanvasXpressDataFilterContainerTicks {
   height: 18px;
 }
 
-span.CanvasXpressDataFilterContainerTicksLong {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 1px;
-  background: gray;
-  height: 10px;
-  line-height: 10px;
-  margin-bottom: 10px;
-}
-
+span.CanvasXpressDataFilterContainerTicksLong,
 span.CanvasXpressDataFilterContainerTicks {
   position: relative;
   display: flex;
   justify-content: center;
   width: 1px;
-  background: gray;
-  height: 5px;
+  background: rgb(128, 128, 128);
   line-height: 10px;
   margin-bottom: 10px;
 }
 
-/**
- * Toggle
- */
+span.CanvasXpressDataFilterContainerTicksLong {
+  height: 10px;
+}
 
+span.CanvasXpressDataFilterContainerTicks {
+  height: 5px;
+}
+
+/***************/
+/*   Toggle    */
+/***************/
 div.CanvasXpressToggle {
   border: none;
   margin: 5px;
@@ -2819,6 +2673,7 @@ label.CanvasXpressToggle {
   cursor: pointer;
 }
 
+div.CanvasXpressToggleSwitchS,
 div.CanvasXpressToggleSwitch {
   display: inline-block;
   background: rgb(204, 204, 204);
@@ -2830,12 +2685,15 @@ div.CanvasXpressToggleSwitch {
   transition: background 0.25s;
 }
 
+div.CanvasXpressToggleSwitchS:before,
+div.CanvasXpressToggleSwitchS:after,
 div.CanvasXpressToggleSwitch:before,
 div.CanvasXpressToggleSwitch:after {
   content: "";
 }
 
-div.CanvasXpressToggleSwitch:before {
+div.CanvasXpressToggleSwitch:before,
+div.CanvasXpressToggleSwitchS:before {
   display: block;
   background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(238, 238, 238) 100%);
   border-radius: 50%;
@@ -2857,6 +2715,11 @@ input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitch {
   background: rgb(83, 105, 255);
 }
 
+input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS {
+  background: rgb(200, 200, 200);
+}
+
+input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS:before,
 input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitch:before {
   left: 12px;
 }
@@ -2873,9 +2736,9 @@ span.CanvasXpressToggle {
   top: -4px;
 }
 
-/**
- * Range Slider
- */
+/****************/
+/* Range Slider */
+/****************/
 
 div.CanvasXpressRangeSliderContainer {
   border: none;
@@ -2906,29 +2769,39 @@ div.CanvasXpressRangeSliderInput {
   margin: 8px 0;
 }
 
-input.CanvasXpressRangeSliderMin {
+input.CanvasXpressRangeSliderMin,
+input.CanvasXpressRangeSliderMax,
+input.CanvasXpressRangeSliderMinS,
+input.CanvasXpressRangeSliderMaxS {
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 5px;
-  color: rgb(83, 105, 255);
-  float: left;
   font: normal 16px arial, tahoma, sans-serif;
   margin-bottom: 2px;
-  margin-left: 1px;
   line-height: 100%;
   width: 60px;
 }
 
+input.CanvasXpressRangeSliderMin,
 input.CanvasXpressRangeSliderMax {
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
   color: rgb(83, 105, 255);
+}
+
+input.CanvasXpressRangeSliderMinS,
+input.CanvasXpressRangeSliderMaxS {
+  color: rgb(200, 200, 200);
+}
+
+input.CanvasXpressRangeSliderMinS,
+input.CanvasXpressRangeSliderMin {
+  float: left;
+  margin-left: 1px;
+}
+
+input.CanvasXpressRangeSliderMaxS,
+input.CanvasXpressRangeSliderMax {
   float: right;
-  font: normal 16px arial, tahoma, sans-serif;
-  margin-bottom: 2px;
   margin-right: 1px;
-  line-height: 100%;
   text-align: right;
-  width: 60px;
 }
 
 div.CanvasXpressRangeSlider {
@@ -2949,7 +2822,8 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderTrack {
   background-color: rgb(238, 238, 238);
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange,
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
   position: absolute;
   z-index: 10002;
   left: 0%;
@@ -2957,26 +2831,47 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
   top: 0;
   bottom: 0;
   border-radius: 5px;
+}
+
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
   background-color: rgb(83, 105, 255);
 }
 
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
+  background-color: rgb(200, 200, 200);
+}
+
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight,
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
   position: absolute;
   z-index: 10003;
   width: 18px;
   height: 18px;
-  background-color: rgb(83, 105, 255);
   border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(51, 122, 183, 0.1);
   transition: box-shadow .3s ease-in-out;
 }
 
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
+  background-color: rgb(83, 105, 255);
+  box-shadow: 0 0 0 0 rgba(51, 122, 183, 0.1);
+}
+
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
+  background-color: rgb(200, 200, 200);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+}
+
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft {
   left: 0%;
   transform: translate(-15px, -5px);
 }
 
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
   right: 0%;
   transform: translate(15px, -5px);
@@ -2988,6 +2883,14 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft:hover {
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight:hover {
   box-shadow: 0 0 0 10px rgba(51, 122, 183, 0.1);
+}
+
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS:hover {
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS:hover {
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input[type=range] {
@@ -3058,10 +2961,9 @@ input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-/**
- * Scrollbars
- */
-
+/***************/
+/*  Scrollbars */
+/***************/
 
 /* All scrollbar buttons*/
 
@@ -3071,6 +2973,7 @@ div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-button,
 div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-button,
 /*div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
+div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-button,
@@ -3079,7 +2982,7 @@ select.CanvasXpressConfigurator::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-button,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-button,
 select.CanvasXpressSlider::-webkit-scrollbar-button,
-div.CanvasXpressBinNameContainer::-webkit-scrollbar-button {
+div.cX-bin-name-container::-webkit-scrollbar-button {
   width: 4px;
   height: 4px;
 }
@@ -3096,6 +2999,7 @@ select.CanvasXpressSlider::-webkit-scrollbar-track {
   background-color: rgb(255, 255, 255);
 }
 
+div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-track,
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track,
 div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-track,
@@ -3104,7 +3008,7 @@ div.CanvasXpressDataExplorer::-webkit-scrollbar-track,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track,
-div.CanvasXpressBinNameContainer::-webkit-scrollbar-track {
+div.cX-bin-name-container::-webkit-scrollbar-track {
   background-color: rgb(245, 245, 245);
 }
 
@@ -3123,11 +3027,12 @@ select.CanvasXpressConfigurator::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
 select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
-div.CanvasXpressBinNameContainer::-webkit-scrollbar-track:hover {
+div.cX-bin-name-container::-webkit-scrollbar-track:hover {
   background-color: rgb(190, 190, 190);
   border-radius: 8px;
 }
 
+div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-track:hover {
   background-color: rgb(220, 220, 220);
@@ -3147,6 +3052,7 @@ select.CanvasXpressSlider::-webkit-scrollbar {
   background-color: rgb(255, 255, 255);
 }
 
+div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar,
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar,
 div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar,
@@ -3155,7 +3061,7 @@ div.CanvasXpressDataExplorer::-webkit-scrollbar,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar,
-div.CanvasXpressBinNameContainer::-webkit-scrollbar {
+div.cX-bin-name-container::-webkit-scrollbar {
   width: 8px;
   height: 8px;
   background-color: rgb(245, 245, 245);
@@ -3175,12 +3081,13 @@ select.CanvasXpressConfigurator::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
 select.CanvasXpressSlider::-webkit-scrollbar-thumb,
-div.CanvasXpressBinNameContainer::-webkit-scrollbar-thumb {
+div.cX-bin-name-container::-webkit-scrollbar-thumb {
   background-color: rgb(83, 105, 255);
   border-radius: 8px;
   border: none;
 }
 
+div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-thumb,
 div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-thumb,
 div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-thumb {
   background-color: rgb(153, 153, 153);
@@ -3192,7 +3099,7 @@ div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-thumb {
 div.CanvasXpressDataFilter::selection,
 div.CanvasXpressDataFilterToolbar::selection {
   background: rgba(0, 0, 0, 0);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
 }
 
 div.CanvasXpressDataFilterContainerItem::selection {
@@ -3212,7 +3119,7 @@ div.CanvasXpressLink {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 3px;
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 100%;
@@ -3267,7 +3174,7 @@ section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
   padding: 0.5px;
   overflow: hidden;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 100%;
 }
 
@@ -3301,7 +3208,7 @@ div.CanvasXpressMenu {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 3px;
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 100%;
@@ -3327,7 +3234,7 @@ li.CanvasXpressListItemSep {
   cursor: default;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-size: 1px;
   height: 100%;
   line-height: 1px;
@@ -3342,7 +3249,7 @@ input.CanvasXpressListItem {
   cursor: default;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 100%;
   list-style: none;
   margin: 0px;
@@ -3358,7 +3265,7 @@ div.CanvasXpressListItem {
   box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 24px;
 }
 
@@ -3369,7 +3276,7 @@ li.CanvasXpressListItem {
   cursor: default;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   height: 100%;
   line-height: 100%;
   list-style: none;
@@ -3388,7 +3295,7 @@ li.CanvasXpressListItemActive {
   cursor: default;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   height: 100%;
   line-height: 100%;
   list-style: none;
@@ -3473,7 +3380,7 @@ li.CanvasXpressListItemScrollSearch {
 }
 
 input.CanvasXpressListItemScrollSearch {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3489,7 +3396,7 @@ a.CanvasXpressListItemA {
   border-color: rgba(0, 0, 0, 0);
   border-style: solid;
   border-width: 0px 1px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
@@ -3508,7 +3415,7 @@ a.CanvasXpressListItemAActive {
   border-color: rgb(170, 204, 246);
   border-style: solid;
   border-width: 0px 1px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
@@ -3528,7 +3435,7 @@ a.CanvasXpressListItemAArrow {
   border-color: rgba(0, 0, 0, 0);
   border-style: solid;
   border-width: 0px 1px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
@@ -3548,7 +3455,7 @@ a.CanvasXpressListItemAArrowActive {
   border-color: rgb(170, 204, 246);
   border-style: solid;
   border-width: 0px 1px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
@@ -3567,7 +3474,7 @@ img.CanvasXpressListIcon,
 svg.CanvasXpressListIcon {
   background-position: center;
   border: 0px none !important;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   font: normal 16px arial, tahoma, sans-serif;
   height: 24px;
@@ -3586,7 +3493,7 @@ svg.CanvasXpressListIcon {
 }
 
 span.CanvasXpressListItemText {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3596,7 +3503,7 @@ span.CanvasXpressListItemText {
 }
 
 input.CanvasXpressListItemText {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3605,7 +3512,7 @@ input.CanvasXpressListItemText {
 }
 
 span.CanvasXpressListItemTextShort {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   float: right;
   font: italic 9px arial, tahoma, sans-serif;
@@ -3622,7 +3529,7 @@ span.CanvasXpressListItemTextSep {
   cursor: default;
   display: block;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font-size: 1px;
   line-height: 1px;
   list-style: none;
@@ -3634,10 +3541,10 @@ span.CanvasXpressListItemTextSep {
 table.CanvasXpressListItemTable {
   border: collapse;
   line-height: 20px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 24px;
   padding-left: 3px;
   -moz-user-select: none;
@@ -3667,7 +3574,7 @@ div.CanvasXpressToolbarHelp {
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3681,7 +3588,7 @@ div.CanvasXpressToolbarHelp {
 p.CanvasXpressToolbarHelp {
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   line-height: 24px;
   margin: 0px;
   padding: 5px 5px 5px 20px;
@@ -3692,7 +3599,7 @@ div.CanvasXpressForm {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: move;
   font: normal 16px arial, tahoma, sans-serif;
   margin: 8px;
@@ -3706,7 +3613,7 @@ input.CanvasXpressFormButton {
   background-repeat: repeat-x;
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px 5px 5px 5px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   float: left;
   height: 22px;
@@ -3727,7 +3634,7 @@ input.CanvasXpressFormButtonActive {
   background-repeat: repeat-x;
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px 5px 0px 0px;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: pointer;
   float: left;
   height: 22px;
@@ -3746,7 +3653,7 @@ input.CanvasXpressFormButtonActive {
 input.CanvasXpressFormText {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3756,7 +3663,7 @@ input.CanvasXpressFormText {
 form.CanvasXpressFormForm {
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid rgb(83, 105, 255);
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   cursor: default;
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 24px;
@@ -3863,7 +3770,7 @@ input.CanvasXpressSlider,
 select.CanvasXpressSlider {
   padding: 2px 3px 2px 2px;
   cursor: default;
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   border-left: none;
   border-right: none;
   border-top: none;
@@ -3954,7 +3861,7 @@ div.CanvasXpressTabPanelRibbon {
 }
 
 span.CanvasXpressTabPanelRibbon {
-  color: rgb(34, 34, 34);
+  color: var(--cx-font-color);
   font: normal 16px arial, tahoma, sans-serif;
   line-height: 28px;
   list-style: none;
@@ -4223,7 +4130,7 @@ canvas.CanvasXpress::selection {
 }
 
 div.CanvasXpressPlay {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
   background-image: url('data:image/png;base64,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');
   background-position-x: 50%;
   background-position-y: center;
@@ -4270,19 +4177,19 @@ div.CanvasXpressPlay:hover {
 }
 
 @media (min-width: 300px) {
-  div.CanvasXpressBin {
+  div.cX-bin {
     transform: scale(0.5);
   }
 }
 
 @media (min-width: 450px) {
-  div.CanvasXpressBin {
+  div.cX-bin {
     transform: scale(0.75);
   }
 }
 
 @media (min-width: 600px) {
-  div.CanvasXpressBin {
+  div.cX-bin {
     transform: scale(1);
   }
 }
