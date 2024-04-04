@@ -48,23 +48,28 @@
   --cx-color-modern-hover: rgba(83, 105, 255, 0.1) ;
   --cx-color-stripped: rgb(230, 230, 230) ;
   --cx-color-stripped-hover: rgba(180, 180, 180, 0.3);
-  --cx-color-default: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
-  --cx-color-default-hover: rgba(230,230,230,0.1);
-  /* UI */
+  --cx-color-old: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
+  --cx-color-old-hover: rgba(230,230,230,0.1);
+  /* UI: These are the exposed variables */
   --cx-font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif !important;
-  --cx-font-size: 12px;
-  --cx-font-weight: normal;
-  --cx-font-color: var(--cx-color-ui-font);
-  --cx-font: var(--cx-font-weight) var(--cx-font-size) var(--cx-font-family);
-  --cx-background-ui-color: var(--cx-color-ui-background);
-  --cx-background-color: var(--cx-color-widgets);
-  --cx-background-hover-color: var(--cx-color-widgets-hover);
-  --cx-border-color: var(--cx-background-color);
   --cx-border-radius: 5px;
   --cx-border-width: 1px;
   --cx-border-style: solid;
-  --cx-border: var(--cx-border-width) var(--cx-border-style) var(--cx-border-color);
   --cx-border-transparent: var(--cx-border-width) var(--cx-border-style) var(--cx-color-transparent);
+  /* Font */
+  --cx-font-size: 12px;
+  --cx-font-color: var(--cx-color-ui-font);
+  --cx-font: normal var(--cx-font-size) var(--cx-font-family);
+  --cx-font-bold: bold var(--cx-font-size) var(--cx-font-family);
+  --cx-font-italic: italic var(--cx-font-size) var(--cx-font-family);
+  /* Background */
+  --cx-background-widgets-color: var(--cx-color-ui-background);
+  --cx-background-color: var(--cx-color-widgets);
+  --cx-background-hover-color: var(--cx-color-widgets-hover);
+  --cx-background-accent-color: var(--cx-color-widgets-hover);
+  --cx-background-contrast-color: var(--cx-background-color);
+  /* Border */
+  --cx-border: var(--cx-border-width) var(--cx-border-style) var(--cx-color-widgets);
 }
 
 *,
@@ -91,7 +96,32 @@ div.cX-bin,
 div.cX-bin-container,
 div.cX-bin-name-container,
 table.cX-bin-table,
-span.cX-bin {
+span.cX-bin,
+div.CanvasXpressDataTable,
+div.CanvasXpressDataTableToolbar,
+div.CanvasXpressDataTableContainer,
+div.CanvasXpressDataTableVertical,
+div.CanvasXpressDataTableHorizontal,
+div.CanvasXpressDataTableMask,
+img.CanvasXpressDataTableToolbarImage,
+svg.CanvasXpressDataTableToolbarImage,
+img.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageNB,
+svg.CanvasXpressDataTableToolbarImageLogo,
+table.CanvasXpressDataTable,
+th.CanvasXpressTableCellHead,
+th.CanvasXpressTableCellHeadActive,
+td.CanvasXpressTableCell,
+td.CanvasXpressTableCellActive,
+a.CanvasXpressTableCellHead,
+a.CanvasXpressTableCellHeadActive,
+div.CanvasXpressDataFilter,
+div.CanvasXpressDataFilterToolbar,
+div.CanvasXpressDataFilterHead,
+div.CanvasXpressDataFilterHeadActive,
+div.CanvasXpressToolbar img.CanvasXpressToolbarImage,
+div.CanvasXpressToolbar svg.CanvasXpressToolbarImage,
+div.CanvasXpressMarker {
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -110,8 +140,12 @@ span.cX-bin {
  * SVG No border *
  *****************/
 
- svg.cX-bin,
- svg.cX-code {
+svg.cX-bin,
+svg.cX-code,
+img.CanvasXpressDataFilterToolbarImage,
+svg.CanvasXpressDataFilterToolbarImage,
+img.CanvasXpressDataFilterToolbarImageNB,
+svg.CanvasXpressDataFilterToolbarImageNB {
   background: var(--cx-color-transparent) !important;
   border: none !important;
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
@@ -311,7 +345,7 @@ pre.cX-code-content code::before {
  div.cX-bin-name-container {
   border: var(--cx-border);
   border-radius: 5px;
-  background-color: var(--cx-background-ui-color);
+  background-color: var(--cx-background-widgets-color);
   box-sizing: border-box;
 }
 
@@ -326,7 +360,7 @@ div.cX-bin {
 }
 
 div.cX-bin-container {
-  background-color: var(--cx-background-ui-color);
+  background-color: var(--cx-background-widgets-color);
   box-sizing: border-box;
   clear: both;
   text-align: left;
@@ -342,7 +376,7 @@ div.cX-bin-name-container {
 }
 
 input.cX-bin {
-  background-color: var(--cx-background-ui-color);
+  background-color: var(--cx-background-widgets-color);
   border: var(--cx-border);
   color: var(--cx-font-color);
   cursor: default;
@@ -421,23 +455,15 @@ span.cX-bin::selection {
 
 .customizerLeftPanelTop,
 .customizerLeftPanelBottom {
-  background: rgb(83, 105, 255);
-  border: 1px solid rgb(83, 105, 255) !important;
+  background: var(--cx-background-color);
+  border: var(--cx-border) !important;
 }
 
-.customizerLeftPanelTopS,
-.customizerLeftPanelBottomS {
-  background: rgb(200, 200, 200);
-  border: 1px solid rgb(200, 200, 200)  !important;
-}
-
-.customizerLeftPanelTopS,
 .customizerLeftPanelTop {
   grid-area: 1 / 1 / 2 / 2;
   border-top-left-radius: 10px;
 }
 
-.customizerLeftPanelBottomS,
 .customizerLeftPanelBottom {
   grid-area: 3 / 1 / 4 / 2;
   border-bottom-left-radius: 10px;
@@ -445,24 +471,19 @@ span.cX-bin::selection {
 
 .customizerLeftPanelMiddle {
   grid-area: 2 / 1 / 3 / 2;
-  background: rgba(0, 0, 0, 0);
+  background: var(--cx-color-transparent);
 }
 
 .customizerLeftPanelTop .customizerLeftItem:hover svg,
 .customizerLeftPanelTop .customizerLeftItemActive svg,
-.customizerLeftPanelTopS .customizerLeftItemS:hover svg,
-.customizerLeftPanelTopS .customizerLeftItemSActive svg,
 .customizerLeftPanelBottom .customizerLeftItem:hover svg,
-.customizerLeftPanelBottom .customizerLeftItemActive svg,
-.customizerLeftPanelBottomS .customizerLeftItemS:hover svg,
-.customizerLeftPanelBottomS .customizerLeftItemSActive svg {
+.customizerLeftPanelBottom .customizerLeftItemActive svg {
   border: 1px solid rgb(255, 255, 255) !important;
-  background: rgba(0, 0, 0, 0);
+  background: var(--cx-color-transparent);
 }
 
-.customizerRightPanel,
-.customizerRightPanelS {
-  background: rgba(0, 0, 0, 0);
+.customizerRightPanel {
+  background: var(--cx-color-transparent);
   position: absolute;
   z-index: 10000;
   top: 0px;
@@ -471,13 +492,8 @@ span.cX-bin::selection {
 }
 
 .customizerRightPanel {
-  border-left: 1px solid rgb(83, 105, 255) !important;
-  border-right: 1px solid rgb(83, 105, 255) !important;
-}
-
-.customizerRightPanelS {
-  border-left: 1px solid rgb(200, 200, 200) !important;
-  border-right: 1px solid rgb(200, 200, 200) !important;
+  border-left: var(--cx-border) !important;
+  border-right: var(--cx-border)!important;
 }
 
 /*
@@ -485,9 +501,7 @@ span.cX-bin::selection {
  */
 
 .customizerLeftItem,
-.customizerLeftItemActive,
-.customizerLeftItemS,
-.customizerLeftItemSActive {
+.customizerLeftItemActive {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 4fr;
@@ -500,29 +514,16 @@ span.cX-bin::selection {
 
 .customizerLeftItem,
 .customizerLeftItemActive {
-  border: 1px solid rgb(83, 105, 255) !important;
+  border: var(--cx-border) !important;
 }
-
-.customizerLeftItemS,
-.customizerLeftItemSActive {
-  border: 1px solid rgb(200, 200, 200) !important;
-}
-
 
 .customizerLeftItem:hover,
 .customizerLeftItemActive {
-  background: rgba(83, 105, 255, 0.1);
-}
-
-.customizerLeftItemS:hover,
-.customizerLeftItemSActive {
-  background:rgba(200, 200, 200, 0.1);
+  background: var(--cx-background-hover-color);
 }
 
 .customizerLeftItem:hover svg,
-.customizerLeftItemS:hover svg,
-.customizerLeftItemActive svg,
-.customizerLeftItemSActive svg {
+.customizerLeftItemActive svg {
   background: rgb(255, 255, 255);
 }
 
@@ -539,13 +540,7 @@ span.cX-bin::selection {
 
 .customizerLeftIcon {
   padding: 5px;
-  border: 1px solid rgb(83, 105, 255) !important;
-  border-radius: 5px;
-}
-
-.customizerLeftIconS {
-  padding: 5px;
-  border: 1px solid rgb(200, 200, 200) !important;
+  border: var(--cx-border) !important;
   border-radius: 5px;
 }
 
@@ -553,7 +548,6 @@ span.cX-bin::selection {
  * CanvasXpress Customizer Right Items
  */
 
-.customizerRightItemS,
 .customizerRightItem {
   display: grid;
   grid-template-columns: 1fr;
@@ -565,11 +559,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItem {
-  border: 1px solid rgb(83, 105, 255) !important;
-}
-
-.customizerRightItemS {
-  border: 1px solid rgb(200, 200, 200) !important;
+  border: var(--cx-border) !important;
 }
 
 .customizerRightItemTop {
@@ -588,7 +578,6 @@ span.cX-bin::selection {
  * CanvasXpress Customizer Right Items Comb
  */
 
-.customizerRightItemComboS,
 .customizerRightItemCombo {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -598,11 +587,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemCombo {
-  border-top: 1px solid rgb(83, 105, 255);
-}
-
-.customizerRightItemComboS {
-  border-top: 1px solid rgb(200, 200, 200);
+  border-top: var(--cx-border);
 }
 
 .customizerRightItemComboNB {
@@ -641,9 +626,7 @@ span.cX-bin::selection {
  */
 
 .customizerRightItemHeader,
-.customizerRightItemHeaderS,
-.customizerRightItemHeaderNB,
-.customizerRightItemHeaderNBS {
+.customizerRightItemHeaderNB {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
@@ -655,24 +638,14 @@ span.cX-bin::selection {
 
 .customizerRightItemHeader,
 .customizerRightItemHeaderNB {
-  background: rgba(83, 105, 255, 0.1);
-}
-
-.customizerRightItemHeaderS,
-.customizerRightItemHeaderNBS {
-  background: rgba(200, 200, 200, 0.1);
+  background: var(--cx-background-hover-color);
 }
 
 .customizerRightItemHeader {
-  border-bottom: 1px solid rgb(83, 105, 255) !important;
+  border-bottom: var(--cx-border) !important;
 }
 
-.customizerRightItemHeaderS {
-  border-bottom: 1px solid rgb(200, 200, 200) !important;
-}
-
-.customizerRightItemHeaderNB,
-.customizerRightItemHeaderNBS {
+.customizerRightItemHeaderNB {
   border-bottom: none !important;
 }
 
@@ -700,7 +673,6 @@ span.cX-bin::selection {
  * CanvasXpress Customizer Right Item Sub Header
  */
 
-.customizerRightItemSubHeaderS,
 .customizerRightItemSubHeader {
   display: grid;
   grid-template-columns: 1fr;
@@ -710,11 +682,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemSubHeader {
-  background: rgba(83, 105, 255, 0.1);
-}
-
-.customizerRightItemSubHeaderS {
-  background: rgba(200, 200, 200, 0.1);
+  background: var(--cx-background-hover-color);
 }
 
 .customizerRightItemSubHeaderRow {
@@ -723,7 +691,6 @@ span.cX-bin::selection {
   align-items: center;
 }
 
-.customizerRightItemSubHeaderRawS,
 .customizerRightItemSubHeaderRaw {
   display: flex;
   align-items: center;
@@ -731,20 +698,14 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemSubHeaderRaw {
-  border: 1px solid rgb(83, 105, 255) !important;
-  background-color: rgba(83, 105, 255, 0.1);
-}
-
-.customizerRightItemSubHeaderRawS {
-  border: 1px solid  rgb(200, 200, 200) !important;
-  background-color:  rgba(200, 200, 200, 0.1);
+  border: var(--cx-border) !important;
+  background-color: var(--cx-background-hover-color);
 }
 
 /*
  * CanvasXpress Customizer Right Item Launcher
  */
 
-.customizerRightItemLauncherS,
 .customizerRightItemLauncher {
   display: grid;
   grid-template-columns: 1fr 6fr;
@@ -754,14 +715,9 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemLauncher {
-  border-top: 1px solid rgb(83, 105, 255) !important;
+  border-top: var(--cx-border) !important;
 }
 
-.customizerRightItemLauncherS {
-  border-top: 1px solid rgb(200, 200, 200) !important;
-}
-
-.customizerRightItemLauncherNBS,
 .customizerRightItemLauncherNB {
   display: grid;
   grid-template-columns: 1fr 6fr;
@@ -773,15 +729,9 @@ span.cX-bin::selection {
 
 .customizerRightItemLauncher:hover,
 .customizerRightItemLauncherNB:hover {
-  background-color: rgba(83, 105, 255, 0.1);
+  background-color: var(--cx-background-hover-color);
 }
 
-.customizerRightItemLauncherS:hover,
-.customizerRightItemLauncherNBS:hover {
-  background-color:  rgba(200, 200, 200, 0.1);
-}
-
-.customizerRightItemLauncherLeftS,
 .customizerRightItemLauncherLeft {
   grid-area: 1 / 1 / 2 / 2;
   display: flex;
@@ -790,14 +740,9 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemLauncherLeft {
-  background-color: rgba(83, 105, 255, 0.1);
+  background-color: var(--cx-background-hover-color);
 }
 
-.customizerRightItemLauncherLeftS {
-  background-color: rgba(200, 200, 200, 0.1);
-}
-
-.customizerRightItemLauncherRightS,
 .customizerRightItemLauncherRight {
   grid-area: 1 / 2 / 2 / 3;
   display: flex;
@@ -941,7 +886,6 @@ span.cX-bin::selection {
   justify-content: center;
 }
 
-.customizerRightItemColMidS,
 .customizerRightItemColMid {
   grid-area: 1 / 3 / 2 / 5;
   display: flex;
@@ -951,11 +895,7 @@ span.cX-bin::selection {
 }
 
 .customizerRightItemColMid {
-  border: 1px solid rgb(83, 105, 255) !important;
-}
-
-.customizerRightItemColMidS {
-  border: 1px solid rgb(200, 200, 200) !important;
+  border: var(--cx-border) !important;
 }
 
 .customizerRightItemSelect>select:hover,
@@ -969,14 +909,13 @@ span.cX-bin::selection {
 .customizerRightItemCol5>svg:hover,
 .customizerRightItemCol6>svg:hover,
 .customizerRightItem:hover {
-  background-color: rgba(83, 105, 255, 0.1);
+  background-color: var(--cx-background-hover-color);
 }
 
 /*
  * Other Customizer classes
  */
 
-.customizerContainerS,
 .customizerContainer {
   height: fit-content;
   border-radius: 5px;
@@ -984,7 +923,6 @@ span.cX-bin::selection {
   float: left;
 }
 
-.customizerWranglingS,
 .customizerWrangling {
   height: 102px;
   margin: 0px 0px 10px 10px;
@@ -998,19 +936,11 @@ span.cX-bin::selection {
 .customizerUnique,
 .customizerWrangling,
 .customizerContainer {
-  border: 1px solid rgb(83, 105, 255) !important;
-}
-
-.customizerNumericS,
-.customizerStringS,
-.customizerUniqueS,
-.customizerWranglingS,
-.customizerContainerS {
-  border: 1px solid rgb(200, 200, 200) !important;
+  border: var(--cx-border) !important;
 }
 
 .customizerWrangling:hover {
-  border: 1px dashed rgb(255, 0, 0) !important;
+  border: 1px dashed var(--cx-color-red) !important;
 }
 
 .customizerContainerRaw {
@@ -1021,11 +951,10 @@ span.cX-bin::selection {
   justify-content: center;
 }
 
-.customizerMaskS,
 .customizerMask {
-  background: rgba(0, 0, 0, 0) !important;
+  background: var(--cx-color-transparent) !important;
   border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -1034,9 +963,6 @@ span.cX-bin::selection {
   height: 20px;
 }
 
-.customizerNumericS,
-.customizerStringS,
-.customizerUniqueS,
 .customizerNumeric,
 .customizerString,
 .customizerUnique {
@@ -1052,26 +978,20 @@ span.cX-bin::selection {
   position: relative;
 }
 
-.customizerNumericS,
 .customizerNumeric {
   color: var(--cx-font-color);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: var(--cx-color-transparent);
 }
 
-.customizerStringS,
 .customizerString {
-  color: rgb(0, 255, 0);
-  background-color: rgba(0, 0, 0, 0);
+  color: var(--cx-color-green);
+  background-color: var(--cx-color-transparent);
 }
 
-.customizerUniqueS,
 .customizerUnique {
-  color: rgb(0, 0, 255);
-  background-color: rgba(0, 0, 0, 0);
+  color: var(--cx-color-blue);
+  background-color: var(--cx-color-transparent);
 }
-.customizerListNumericS,
-.customizerListStringS,
-.customizerListUniqueS,
 .customizerListNumeric,
 .customizerListString,
 .customizerListUnique {
@@ -1088,85 +1008,54 @@ span.cX-bin::selection {
   position: relative;
 }
 
-.customizerListNumericS,
 .customizerListNumeric {
   color: var(--cx-font-color);
 }
 
-.customizerListStringS,
 .customizerListString {
-  color: rgb(0, 255, 0);
+  color: var(--cx-color-green);
 }
 
-.customizerListUniqueS,
 .customizerListUnique {
-  color: rgb(0, 0, 255);
+  color: var(--cx-color-blue);
 }
 
-.customizerListNumericS,
-.customizerListStringS,
-.customizerListUniqueS,
 .customizerListNumeric,
 .customizerListString,
 .customizerListUnique {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: var(--cx-color-transparent);
 }
 
 .customizerListNumeric:hover,
 .customizerListString:hover,
 .customizerListUnique:hover {
-  background: rgba(83, 105, 255, 0.1);
-}
-
-.customizerListNumericS:hover,
-.customizerListStringS:hover,
-.customizerListUniqueS:hover {
-  background: rgba(200, 200, 200, 0.1);
+  background: var(--cx-background-hover-color);
 }
 
 .customizerListNumeric:before,
 .customizerListString:before,
-.customizerListUnique:before,
-.customizerListNumericS:before,
-.customizerListStringS:before,
-.customizerListUniqueS:before {
+.customizerListUnique:before {
   font: normal 10px courier;
 }
 
 .customizerListNumeric:before,
 .customizerListString:before,
 .customizerListUnique:before {
-  color: rgb(83, 105, 255);
+  color: var(--cx-background-color);
 }
 
-.customizerListNumericS:before,
-.customizerListStringS:before,
-.customizerListUniqueS:before {
-  color: rgb(200, 200, 200);
-}
-
-.customizerListNumeric:before,
-.customizerListNumericS:before {
+.customizerListNumeric:before {
   content: "\00a0#\00a0\00a0";
 }
 
-.customizerListString:before,
-.customizerListStringS:before {
+.customizerListString:before {
   content: "Abc\00a0";
 }
 
-.customizerListUnique:before,
-.customizerListUniqueS:before {
+.customizerListUnique:before {
   content: "Unq\00a0";
 }
 
-.customizerMaskS::selection,
-.customizerNumericS::selection,
-.customizerStringS::selection,
-.customizerUniqueS::selection,
-.customizerListNumericS::selection,
-.customizerListStringS::selection,
-.customizerListUniqueS::selection,
 .customizerMask::selection,
 .customizerNumeric::selection,
 .customizerString::selection,
@@ -1174,8 +1063,8 @@ span.cX-bin::selection {
 .customizerListNumeric::selection,
 .customizerListString::selection,
 .customizerListUnique::selection {
-  background: rgba(0, 0, 0, 0);
-  color: rgb(0, 0, 0);
+  background: var(--cx-color-transparent);
+  color: var(--cx-color-black);
   padding: 0;
 }
 
@@ -1183,10 +1072,9 @@ span.cX-bin::selection {
  * Search Customizer
  */
 
- input.customizerSearchS,
 input.customizerSearch {
   margin: 9px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var( --cx-background-widgets-color);
   color: var(--cx-font-color);
   cursor: default;
   font: inherit;
@@ -1198,29 +1086,21 @@ input.customizerSearch {
 
 select.customizerSearch,
 input.customizerSearch {
-  border: 1px solid rgb(83, 105, 255);
+  border: var(--cx-border);
 }
 
-select.customizerSearchS,
-input.customizerSearchS {
-  border: 1px solid rgb(200, 200, 200);
-}
-
-input.customizerSearchS[type="color"],
 input.customizerSearch[type="color"] {
   padding: 0;
   overflow: hidden;
 }
 
-input.customizerSearchS:not([type="color"]),
 input.customizerSearch:not([type="color"]) {
   padding: 5px;
 }
 
-select.customizerSearchS,
 select.customizerSearch {
   margin: 9px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var( --cx-background-widgets-color);
   color: var(--cx-font-color);
   cursor: default;
   font: inherit;
@@ -1230,7 +1110,6 @@ select.customizerSearch {
   clear: left;
 }
 
-span.customizerSearchS,
 span.customizerSearch {
   color: var(--cx-font-color);
   font: inherit;
@@ -1242,10 +1121,6 @@ span.customizerSearch {
   clear: left;
 }
 
-span.customizerSearchSelectS,
-span.customizerSearchDescriptionS,
-span.customizerSearchCategoryS,
-span.customizerSearchCurrentS,
 span.customizerSearchSelect,
 span.customizerSearchDescription,
 span.customizerSearchCategory,
@@ -1261,13 +1136,10 @@ span.customizerSearchCurrent {
   left: 15px;
 }
 
-span.customizerSearchSelectS,
 span.customizerSearchSelect {
   color: var(--cx-font-color);
 }
 
-span.customizerSearchDescriptionS,
-span.customizerSearchCategoryS,
 span.customizerSearchDescription,
 span.customizerSearchCategory {
   overflow: hidden;
@@ -1278,45 +1150,33 @@ span.customizerSearchCategory {
 span.customizerSearchDescription,
 span.customizerSearchCategory,
 span.customizerSearchCurrent {
-  color: rgb(83, 105, 255);
+  color: var(--cx-background-color);
 }
 
-span.customizerSearchDescriptionS,
-span.customizerSearchCategoryS,
-span.customizerSearchCurrentS {
-  color: rgb(200, 200, 200);
-}
-
-span.customizerSearchSelectS:before,
 span.customizerSearchSelect:before {
   color: var(--cx-font-color);
   font-weight: bold;
   content: "Select property (";
 }
 
-span.customizerSearchSelectS:after,
 span.customizerSearchSelect:after {
   color: var(--cx-font-color);
   font-weight: bold;
   content: ")";
 }
 
-span.customizerSearchDescriptionS:before,
 span.customizerSearchDescription:before {
   color: var(--cx-font-color);
   font-weight: bold;
   content: "Description [ ";
 }
 
-span.customizerSearchCategoryS:before,
 span.customizerSearchCategory:before {
   color: var(--cx-font-color);
   font-weight: bold;
   content: "Category [ ";
 }
 
-span.customizerSearchDescriptionS:after,
-span.customizerSearchCategoryS:after,
 span.customizerSearchDescription:after,
 span.customizerSearchCategory:after {
   color: var(--cx-font-color);
@@ -1324,14 +1184,12 @@ span.customizerSearchCategory:after {
   content: " ]";
 }
 
-span.customizerSearchCurrentS:before,
 span.customizerSearchCurrent:before {
   color: var(--cx-font-color);
   font-weight: bold;
   content: "Current Value [ ";
 }
 
-span.customizerSearchCurrentS:after,
 span.customizerSearchCurrent:after {
   color: var(--cx-font-color);
   font-weight: bold;
@@ -1344,7 +1202,7 @@ span.customizerSearchCurrent:after {
 
 div.CanvasXpressPassword {
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--cx-background-widgets-color);
   box-sizing: border-box;
   cursor: move;
   color: var(--cx-font-color);
@@ -1361,7 +1219,7 @@ div.CanvasXpressPassword {
 
 img.CanvasXpressPassword,
 svg.CanvasXpressPassword {
-  background: rgba(0, 0, 0, 0) !important;
+  background: var(--cx-color-transparent) !important;
   border: 0px none !important;
   box-shadow: 0 0 0px rgb(0 0 0 / 0%) !important;
   box-sizing: border-box;
@@ -1592,13 +1450,6 @@ span.CanvasXpressMousePosition {
   z-index: 1;
 }
 
-
-/*
-div.CanvasXpressCanvasResizer {
-
-}
-*/
-
 div.CanvasXpressCanvasResizerClose {
   box-sizing: border-box;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAOCAYAAAD9lDaoAAAAcUlEQVR42mM8e/bsfwYCgBGkSE9PD6eCS5cuIRSxsrIy/P79Gy4J42MoAgGQBDIbRRFMNwzATMVQhGwNVjehm/T582cwfevWLfxu+vTpO8Pt29ew++7Hjx8MvLy8mIpgAKTg/38WOB+uiGCIE1JAXUUA5WZpcWW3WYkAAAAASUVORK5CYII=);
@@ -1618,10 +1469,9 @@ div.CanvasXpressCanvasResizerloading2 {
   background-repeat: no-repeat;
 }
 
-
-/*
- * Motion
- */
+/**********
+ * Motion *
+ **********/
 
 div.CanvasXpressMotion {
   color: var(--cx-font-color);
@@ -1631,9 +1481,9 @@ div.CanvasXpressMotion {
 img.CanvasXpressMotion,
 svg.CanvasXpressMotion {
   margin: 0px !important;
-  background: rgba(0, 0, 0, 0) !important;
+  background: var(--cx-color-transparent) !important;
   border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
 }
 
 div.CanvasXpressMotionContainer {
@@ -1665,17 +1515,15 @@ div.CanvasXpressMotionRange {
   z-index: 1000001;
 }
 
-
-/*
-* Marker
-*/
+/*********
+* Marker *
+**********/
 
 div.CanvasXpressMarker {
   box-sizing: border-box;
-  border: 1px solid rgb(83, 105, 255);
+  border: var(--cx-border);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--cx-font-color);
+  background-color: var(--cx-background-widgets-color);
   cursor: move;
   font: var(--cx-font);
   height: 502px;
@@ -1685,64 +1533,25 @@ div.CanvasXpressMarker {
   position: absolute;
   top: 0px;
   padding: 2px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
-
-/*
- * Toolbar
- */
-
-
-/*
-div.CanvasXpressToolbar {
-
-}
-*/
-
-/*
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage, div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
-    transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-}
-
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage:hover, div.CanvasXpressToolbar svg.CanvasXpressToolbarImage:hover{
-    margin: 0 7px;
-    transform: scale(1.2);
-    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.7)));
-}
-
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage:hover+img.CanvasXpressToolbarImage, div.CanvasXpressToolbar svg.CanvasXpressToolbarImage:hover+svg.CanvasXpressToolbarImage {
-    margin: 0 6px;
-    transform: scale(1.1);
-    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(255, 255, 255, 0.7)));
-    }
-*/
+/*************
+ *  Toolbar  *
+ *************/
 
 div.CanvasXpressToolbar img.CanvasXpressToolbarImage,
 div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
-  background: rgba(0, 0, 0, 0) !important;
+  background: var(--cx-color-transparent) !important;
   border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   cursor: pointer;
   float: right;
   margin: 5px 8px 0px 0px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
 }
 
-/*
- * Data Table DOE
- */
+/******************
+ * Data Table DOE *
+ ******************/
 
 table.CanvasXpressDataTableDOE {
   border-spacing: 0 !important;
@@ -1782,53 +1591,15 @@ tr.CanvasXpressDataTableDOE {
   font-size: 12px !important;
 }
 
-/***************/
-/*  Data Table */
-/***************/
+/****************/
+/*  Data Table  */
+/****************/
 
 div.CanvasXpressDataTable,
 div.CanvasXpressDataTableToolbar,
 div.CanvasXpressDataTableContainer,
 div.CanvasXpressDataTableVertical,
-div.CanvasXpressDataTableVerticalS,
 div.CanvasXpressDataTableHorizontal,
-div.CanvasXpressDataTableHorizontalS,
-div.CanvasXpressDataTableMask,
-img.CanvasXpressDataTableToolbarImage,
-svg.CanvasXpressDataTableToolbarImage,
-img.CanvasXpressDataTableToolbarImageS,
-svg.CanvasXpressDataTableToolbarImageS,
-img.CanvasXpressDataTableToolbarImageNB,
-svg.CanvasXpressDataTableToolbarImageNB,
-svg.CanvasXpressDataTableToolbarImageLogo,
-table.CanvasXpressDataTable,
-th.CanvasXpressTableCellHead,
-th.CanvasXpressTableCellModernHead,
-th.CanvasXpressTableCellHeadActive,
-th.CanvasXpressTableCellModernHeadActive,
-td.CanvasXpressTableCell,
-td.CanvasXpressTableCellModern,
-td.CanvasXpressTableCellActive,
-td.CanvasXpressTableCellModernActive,
-a.CanvasXpressTableCellHead,
-a.CanvasXpressTableCellModernHead,
-a.CanvasXpressTableCellHeadActive,
-a.CanvasXpressTableCellModernHeadActive {
-  user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressDataTable,
-div.CanvasXpressDataTableToolbar,
-div.CanvasXpressDataTableContainer,
-div.CanvasXpressDataTableVertical,
-div.CanvasXpressDataTableVerticalS,
-div.CanvasXpressDataTableHorizontal,
-div.CanvasXpressDataTableHorizontalS,
 div.CanvasXpressDataTableMask {
   box-sizing: border-box;
   position: absolute;
@@ -1837,22 +1608,20 @@ div.CanvasXpressDataTableMask {
 div.CanvasXpressDataTable,
 div.CanvasXpressDataTableToolbar,
 div.CanvasXpressDataTableVertical,
-div.CanvasXpressDataTableVerticalS,
-div.CanvasXpressDataTableHorizontal,
-div.CanvasXpressDataTableHorizontalS {
+div.CanvasXpressDataTableHorizontal {
   color: var(--cx-font-color);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--cx-background-widgets-color)
 }
 
 div.CanvasXpressDataTable {
-  border: 1px solid rgb(83, 105, 255);
+  border: var(--cx-border);
   border-radius: 5px;
   clear: both;
   overflow: hidden;
 }
 
 div.CanvasXpressDataTableToolbar {
-  border-bottom: 1px solid rgb(204, 204, 204);
+  border-bottom: var(--cx-border);
   border-radius: 5px 5px 0px 0px;
   height: 36px;
   left: 0px;
@@ -1867,8 +1636,7 @@ div.CanvasXpressDataTableContainer {
   line-height: 100%;
 }
 
-div.CanvasXpressDataTableVertical,
-div.CanvasXpressDataTableVerticalS {
+div.CanvasXpressDataTableVertical {
   overflow-x: hidden;
   overflow-y: auto;
   right: 6px;
@@ -1876,8 +1644,7 @@ div.CanvasXpressDataTableVerticalS {
   width: 16px;
 }
 
-div.CanvasXpressDataTableHorizontal,
-div.CanvasXpressDataTableHorizontalS {
+div.CanvasXpressDataTableHorizontal {
   bottom: 12px;
   height: 16px;
   left: 2px;
@@ -1893,14 +1660,12 @@ div.CanvasXpressDataTableMask {
 
 img.CanvasXpressDataTableToolbarImage,
 svg.CanvasXpressDataTableToolbarImage,
-img.CanvasXpressDataTableToolbarImageS,
-svg.CanvasXpressDataTableToolbarImageS,
 img.CanvasXpressDataTableToolbarImageNB,
 svg.CanvasXpressDataTableToolbarImageNB {
-  background: rgba(0, 0, 0, 0) !important;
+  background: var(--cx-color-transparent) !important;
   border-radius: 5px;
   padding: 2px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   cursor: pointer;
   float: right;
   margin: 5px 8px 0px 0px !important;
@@ -1908,12 +1673,7 @@ svg.CanvasXpressDataTableToolbarImageNB {
 
 img.CanvasXpressDataTableToolbarImage,
 svg.CanvasXpressDataTableToolbarImage {
-  border: 1px solid rgb(83, 105, 255) !important;
-}
-
-img.CanvasXpressDataTableToolbarImageS,
-svg.CanvasXpressDataTableToolbarImageS {
-  border: 1px solid rgb(0, 0, 0, 0.1) !important;
+  border: var(--cx-border) !important;
 }
 
 img.CanvasXpressDataTableToolbarImageNB,
@@ -1950,43 +1710,35 @@ table.CanvasXpressDataTable {
 }
 
 th.CanvasXpressTableCellHead,
-th.CanvasXpressTableCellModernHead,
-th.CanvasXpressTableCellHeadActive,
-th.CanvasXpressTableCellModernHeadActive {
+th.CanvasXpressTableCellHeadActive {
   border-top: none;
-  border-bottom: 1px solid rgb(204, 204, 204);
+  border-bottom: var(--cx-border-transparent);
   border-left: none;
-  border-right: none;
+  border-right: var(--cx-border-transparent);
   font-weight: bold;
   opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
 }
 
-th.CanvasXpressTableCellHead {
-  background: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
-  color: var(--cx-font-color);
+tr > th.CanvasXpressTableCell:last-child,
+tr > th.CanvasXpressTableCellActive:last-child {
+  border-right: var(--cx-border-transparent);
 }
 
-th.CanvasXpressTableCellModernHead {
-  background: rgb(0, 0, 0, 0);
+th.CanvasXpressTableCellHead {
+  background: var(--cx-background-accent-color);
   color: var(--cx-font-color);
 }
 
 th.CanvasXpressTableCellHeadActive {
-  background: rgba(83, 105, 255, 0.1);
+  background: var(--cx-background-accent-color);
   color: var(--cx-font-color);
 }
 
-th.CanvasXpressTableCellModernHeadActive {
-  background: rgb(83, 105, 255);
-  color: rgb(255, 255, 255);
-}
 
 a.CanvasXpressTableCellHead,
-a.CanvasXpressTableCellModernHead,
-a.CanvasXpressTableCellHeadActive,
-a.CanvasXpressTableCellModernHeadActive {
+a.CanvasXpressTableCellHeadActive {
   cursor: pointer;
   position: absolute;
   right: 8px;
@@ -2000,37 +1752,24 @@ a.CanvasXpressTableCellHead {
   color: var(--cx-font-color);
 }
 
-a.CanvasXpressTableCellModernHead,
 a.CanvasXpressTableCellHeadActive {
-  color: rgb(83, 105, 255);
-}
-
-a.CanvasXpressTableCellModernHeadActive {
-  color: rgb(255, 255, 255);
+  color: var(--cx-background-color);
 }
 
 td.CanvasXpressTableCell,
-td.CanvasXpressTableCellModern,
-td.CanvasXpressTableCellActive,
-td.CanvasXpressTableCellModernActive {
+td.CanvasXpressTableCellActive {
   border-top: none;
-  border-bottom: 1px solid rgb(204, 204, 204);
+  border-bottom: var(--cx-border-transparent);
   border-left: none;
-  border-right: none;
+  border-right: var(--cx-border-transparent);
   color: var(--cx-font-color);
   padding: 2px;
   vertical-align: middle;
 }
 
-td.CanvasXpressTableCell,
-td.CanvasXpressTableCellModern {
-  background: rgb(0, 0, 0, 0);
-}
-
-td.CanvasXpressTableCellActive,
-td.CanvasXpressTableCellModernActive {
-  background-color: rgb(223, 232, 249);
-  opacity: 0.95;
+tr > td.CanvasXpressTableCell:last-child,
+tr > td.CanvasXpressTableCellActive:last-child {
+  border-right: var(--cx-border-transparent);
 }
 
 div.CanvasXpressTableCell,
@@ -2045,337 +1784,27 @@ div.CanvasXpressTableCellLink {
   text-align: left;
 }
 
-/*
-div.CanvasXpressTableCell {
-  box-sizing: border-box;
-  color: var(--cx-font-color);
-  margin: 2px 2px 1px 5px;
-  overflow: hidden;
-  position: relative;
-  text-overflow: ellipsis;
-  text-align: left;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-div.CanvasXpressTableCell {
-  overflow: hidden;
-	line-height: unset !important;
-  text-align: left;
-}
-
-div.CanvasXpressTableCell:before {
-	content:"";
-	float: left;
-	width: 5px;
-}
-
-div.CanvasXpressTableCell > *:first-child {
-	float: right;
-	width: 100%;
-	margin-left: -5px;
-}
-
-div.CanvasXpressTableCell:after {
-	content: "\02026";
-	float: right;
-  position: relative;
-	top: -25px; 
-  left: 100%;
-	width: 3em; 
-  margin-left: -3em;
-	padding-right: 5px;
-	text-align: right;
-}
-*/
-
 div.CanvasXpressTableCell:hover {
-  background-color: rgba(83, 105, 255, 0.1);
+  background-color: var(--cx-background-hover-color);
 }
 
 div.CanvasXpressTableCellLink:hover {
-  background-color: rgba(83, 105, 255, 0.1);
-  text-decoration: underline rgb(83, 105, 255);
+  background-color: var(--cx-background-hover-color);
+  text-decoration: underline var(--cx-border);
   cursor: pointer;
 }
 
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
-tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell,
-th.CanvasXpressTableCellModernHeadActive div.CanvasXpressTableCell,
 th.CanvasXpressTableCellHead div.CanvasXpressTableCell,
 th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
   border-radius: 5px;
 }
 
-th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-}
-
-tr:nth-child(1) tr:nth-child(1) th.CanvasXpressTableCellModernHead div.CanvasXpressTableCell {
-  background: rgba(83, 105, 255, 0.1);
-  border: 1px solid rgb(83, 105, 255);
-}
-
-th.CanvasXpressTableCellModernHeadActive div.CanvasXpressTableCell {
-  background: rgb(83, 105, 255);
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(83, 105, 255);
-}
-
 th.CanvasXpressTableCellHead div.CanvasXpressTableCell {
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: var(--cx-border-transparent);
 }
 
 th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
-  border: 1px solid rgb(255, 255, 255);
-}
-
-/*
- * Configurator
- */
-
-div.CanvasXpressConfigurator {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
-  border: 1px solid rgb(83, 105, 255);
-  box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: var(--cx-font-color);
-  cursor: default;
-  font: var(--cx-font);
-  opacity: 0.95;
-  line-height: 24px;
-  text-align: left;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-span.CanvasXpressConfigurator {
-  cursor: default;
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-textarea.CanvasXpressConfigurator {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
-  border: 1px solid rgb(83, 105, 255);
-  box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: var(--cx-font-color);
-  cursor: default;
-  font: var(--cx-font);
-}
-
-img.CanvasXpressConfigurator,
-svg.CanvasXpressConfigurator {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
-  float: right;
-  margin: 0px 0px 0px 5px !important;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-select.CanvasXpressConfigurator {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  color: var(--cx-font-color);
-  cursor: default;
-  font: var(--cx-font);
-  padding-left: 3px;
-}
-
-input.CanvasXpressConfigurator {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgb(83, 105, 255);
-  color: var(--cx-font-color);
-  cursor: default;
-  font: var(--cx-font);
-  padding-left: 3px;
-}
-
-div.CanvasXpressConfiguratorOptions {
-  box-sizing: border-box;
-  cursor: default;
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  height: 100px;
-  margin-top: 8px;
-  overflow: auto;
-  width: 180px;
-}
-
-div.CanvasXpressConfiguratorFilter {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
-  border: 1px solid rgb(83, 105, 255);
-  box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: var(--cx-font-color);
-  font: var(--cx-font);
-}
-
-select.CanvasXpressConfiguratorFilter {
-  border: 1px solid rgb(83, 105, 255);
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-}
-
-input.CanvasXpressConfiguratorFilter {
-  border: 1px solid rgb(83, 105, 255);
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-}
-
-div.CanvasXpressConfiguratorExample {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 5px;
-  border: 1px solid rgb(83, 105, 255);
-  box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-  color: var(--cx-font-color);
-  font: var(--cx-font);
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-span.CanvasXpressConfiguratorExample {
-  cursor: default;
-  font: bold 14px arial, tahoma, sans-serif;
-  color: var(--cx-font-color);
-  line-height: 18px;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressConfiguratorExampleContent {
-  overflow: hidden;
-}
-
-div.CanvasXpressConfiguratorColor {
-  box-sizing: border-box;
-  border: 1px solid rgb(83, 105, 255);
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  line-height: 18px;
-}
-
-div.CanvasXpressConfiguratorColorMain {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,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);
-  background-repeat: no-repeat;
-  box-sizing: border-box;
-  border: none;
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  float: left;
-  cursor: crosshair;
-}
-
-div.CanvasXpressConfiguratorColorExtra {
-  box-sizing: border-box;
-  background-image: url(data:image/gif;base64,R0lGODlhDwAPAKEBAAAAAP///////////yH5BAEKAAIALAAAAAAPAA8AAAIklB8Qx53b4otSUWcvyiz4/4AeQJbmKY4p1HHapBlwPL/uVRsFADs=);
-  background-repeat: no-repeat;
-  border: none;
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  cursor: crosshair;
-  overflow: hidden;
-}
-
-div.accordionHead {
-  box-sizing: border-box;
-  margin-top: 2px;
-  height: 24px;
-  overflow: hidden;
-  float: left;
-  cursor: pointer;
-  vertical-align: middle;
-  text-align: left;
-  display: table-cell;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.accordionContent {
-  box-sizing: border-box;
-  overflow: auto;
-}
-
-div.hoverable:hover {
-  box-sizing: border-box;
-  background-color: rgba(83, 105, 255, 0.1);
-}
-
-div.CanvasXpressContainer {
-  box-sizing: border-box;
-  position: relative;
-  float: left;
-}
-
-div.CanvasXpressContainerNT {
-  box-sizing: border-box;
-  position: relative;
-  float: left;
-}
-
-div.CanvasXpressHandlerVerticalOpen {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAANklEQVR42mNkIBIwgoi0tLT/IHrWrFmMyJLI4igKkRWjizGi60YHMI1YrUJXhKEQn3sxFOICAH1yHAgCw6JnAAAAAElFTkSuQmCC);
-  position: relative;
-  float: left;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-
-div.CanvasXpressHandlerVerticalClose {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAAN0lEQVR42mNkIBIwogukpaX9B9GzZs1ixKkQpggGkBUz4lKErpgRXRFMAl0MRRDdXcjijAxEAgClNhwIDjZ11QAAAABJRU5ErkJggg==);
-  position: relative;
-  float: left;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-
-div.CanvasXpressHandlerHorizontalOpen {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAAMElEQVR42mNkwAMYQURaWtp/ED1r1ixGnJLoCuAMbApQjEFXQJwkTmPxOgivV3ABAClDIAsKqUy5AAAAAElFTkSuQmCC);
-  position: relative;
-  float: left;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-
-div.CanvasXpressHandlerHorizontalClose {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAAL0lEQVR42mNkwAMY0QXS0tL+g+hZs2YxMmKTwJBEl4Abi02COEm8xhJ0EEGvoAMAyTQgC6MMiAUAAAAASUVORK5CYII=);
-  position: relative;
-  float: left;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-}
-
-div.CanvasXpressWrapper {
-  box-sizing: border-box;
-  position: relative;
-  float: left;
-  line-height: 100%;
+  border: var(--cx-border)
 }
 
 /***************/
@@ -2383,55 +1812,35 @@ div.CanvasXpressWrapper {
 /***************/
 
 div.CanvasXpressDataFilter,
+div.CanvasXpressDataFilterToolbar,
+span.CanvasXpressDataFilterToolbarText,
+span.CanvasXpressDataFilterText,
+span.CanvasXpressDataFilterTextActive,
+select.CanvasXpressDataFilterContainerString {
+  font-family: var(--cx-font-family);
+  font-size: 16px;
+  color: var(--cx-font-color);
+}
+
+div.CanvasXpressDataFilter,
 div.CanvasXpressDataFilterToolbar {
   box-sizing: border-box;
-  color: var(--cx-font-color);
-  font: normal 16px arial, tahoma, sans-serif;
   line-height: 100%;
   margin: 0px;
   position: absolute;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
 }
 
 div.CanvasXpressDataFilterToolbar {
-  border: 1px solid rgb(83, 105, 255);
+  border: var(--cx-border) !important;
   border-radius: 4px;
   left: 0px;
   opacity: 0.95;
   top: 0px;
 }
 
-img.CanvasXpressDataFilterToolbarImage,
-svg.CanvasXpressDataFilterToolbarImage,
-img.CanvasXpressDataFilterToolbarImageNB,
-svg.CanvasXpressDataFilterToolbarImageNB {
-  background: rgba(0, 0, 0, 0) !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: pointer;
-  margin: 5px 8px 0px 0px !important;
-  float: right;
-}
-
-img.CanvasXpressDataFilterToolbarImage,
-svg.CanvasXpressDataFilterToolbarImage {
-  border: 1px solid rgb(83, 105, 255) !important;
-  border-radius: 5px !important;
-  padding: 2px;
-}
-
-img.CanvasXpressDataFilterToolbarImageNB,
-svg.CanvasXpressDataFilterToolbarImageNB {
-  border: none !important;
-}
-
 span.CanvasXpressDataFilterToolbarText,
 span.CanvasXpressDataFilterText,
 span.CanvasXpressDataFilterTextActive {
-  font: normal 16px arial, tahoma, sans-serif;
-  color: var(--cx-font-color);
   left: 8px;
   line-height: 100%;
   position: relative;
@@ -2440,37 +1849,32 @@ span.CanvasXpressDataFilterTextActive {
   background-position: -0px;
 }
 
-span.CanvasXpressDataFilterText {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
+select.CanvasXpressDataFilterContainerString {
+  background-color: var(--cx-background-widgets-color);
+  margin-left: 3px;
+  margin-bottom: 3px;
 }
 
-span.CanvasXpressDataFilterTextActive {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
-}
-
-div.CanvasXpressDataFilterContainer {
+div.CanvasXpressDataFilterContent {
   box-sizing: border-box;
-  border: 0px;
-  left: 0px;
-  margin: 0px;
-  padding: 0px;
-  position: absolute;
+  background-color: var(--cx-background-widgets-color);
+  border: var(--cx-border);
+  border-radius: 0px 0px 4px 4px;
+  border-top: 0px;
+  font-family: var(--cx-font-family);
+  font-size: 16px;
+  color: var(--cx-font-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px;
 }
 
-input[type=checkbox].CanvasXpressCheckbox,
-input[type=checkbox].CanvasXpressCheckboxS {
+input[type=checkbox].CanvasXpressCheckbox {
+  accent-color: var(--cx-background-accent-color);
   border-radius: 5px;
   height: 14px;
   width: 14px;
   margin: 2px;
-}
-
-input[type=checkbox].CanvasXpressCheckbox {
-  accent-color: rgb(83, 105, 255);
-}
-
-input[type=checkbox].CanvasXpressCheckboxS {
-  accent-color: rgb(200, 200, 200);
 }
 
 label.CanvasXpressCheckboxLabel {
@@ -2481,86 +1885,53 @@ label.CanvasXpressCheckboxLabel {
   margin: 0 0 0 3px !important;
 }
 
-div.CanvasXpressDataFilterContainerMaskNoOverflow,
-div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
-  box-sizing: border-box;
-  margin: 5px;
-  overflow: hidden;
-}
-
-div.CanvasXpressDataFilterContainerMaskNoOverflow {
-  border: 1px solid rgb(208, 208, 208);
-}
-
-div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
-  border: none;
-}
-
+div.CanvasXpressDataFilterContainer,
 div.CanvasXpressDataFilterContainerMask,
-div.CanvasXpressDataFilterContainerMaskS {
+div.CanvasXpressDataFilterContainerItem,
+div.CanvasXpressDataFilterContainerItemSelected,
+div.CanvasXpressDataFilterContainerHoverable {
   box-sizing: border-box;
-  border: 1px solid rgb(208, 208, 208);
+}
+
+div.CanvasXpressDataFilterContainer {
+  border: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+}
+
+div.CanvasXpressDataFilterContainerMask {
+  border: var(--cx-border);
   margin: 5px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-select.CanvasXpressDataFilterContainerString {
-  background-color: rgba(255, 255, 255, 0.95);
-  font: normal 16px arial, tahoma, sans-serif;
-  color: var(--cx-font-color);
-  margin-left: 3px;
-  margin-bottom: 3px;
-}
-
 div.CanvasXpressDataFilterContainerItem,
-div.CanvasXpressDataFilterContainerItemSelected,
-div.CanvasXpressDataFilterContainerItemSSelected {
-  box-sizing: border-box;
+div.CanvasXpressDataFilterContainerItemSelected {
   height: 20px;
   padding: 1px 0px 0px 1px;
   overflow: hidden;
   white-space: nowrap;
 }
 
-div.CanvasXpressDataFilterContainerItemSelected {
-  background-color: rgba(83, 105, 255, 0.1);
+div.CanvasXpressDataFilterContainerItemSelected,
+div.CanvasXpressDataFilterContainerHoverable:hover {
+  background-color: var(--cx-background-hover-color);
 }
 
-div.CanvasXpressDataFilterContainerItemSSelected {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-div.CanvasXpressDataFilterContainerHoverable,
-div.CanvasXpressDataFilterContainerHoverableS {
-  box-sizing: border-box;
+div.CanvasXpressDataFilterContainerHoverable {
+  border: var(--cx-border);
   border-radius: 5px;
   margin: 2px;
   margin-bottom: 4px;
 }
 
-div.CanvasXpressDataFilterContainerHoverable {
-  border: 1px solid rgb(83, 105, 255);
-}
-
-div.CanvasXpressDataFilterContainerHoverable:hover {
-  background-color: rgba(83, 105, 255, 0.1);
-}
-
-div.CanvasXpressDataFilterContainerHoverableS {
-  border: 1px solid var(--cx-font-color);
-}
-
-div.CanvasXpressDataFilterContainerHoverableS:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 div.CanvasXpressDataFilterHead,
-div.CanvasXpressDataFilterHeadActive,
-div.CanvasXpressDataFilterHeadS,
-div.CanvasXpressDataFilterHeadSActive,
-div.CanvasXpressDataFilterHeadO,
-div.CanvasXpressDataFilterHeadOActive {
+div.CanvasXpressDataFilterHeadActive {
+  border: var(--cx-border);
+  border-radius: 4px;
   box-sizing: border-box;
   color: var(--cx-font-color);
   cursor: pointer;
@@ -2572,66 +1943,12 @@ div.CanvasXpressDataFilterHeadOActive {
   padding: 2px;
   text-align: left;
   vertical-align: middle;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-}
-
-div.CanvasXpressDataFilterHead,
-div.CanvasXpressDataFilterHeadActive,
-div.CanvasXpressDataFilterHeadS,
-div.CanvasXpressDataFilterHeadSActive,
-div.CanvasXpressDataFilterHeadO,
-div.CanvasXpressDataFilterHeadOActive {
-  border: 1px solid rgb(83, 105, 255);
-  border-radius: 4px;
-}
-
-div.CanvasXpressDataFilterHeadActive,
-div.CanvasXpressDataFilterHeadSActive,
-div.CanvasXpressDataFilterHeadOActive {
-  border-bottom: 1px solid transparent !important;
-  border-radius: 4px 4px 0px 0px;
 }
 
 div.CanvasXpressDataFilterHeadActive {
-  background: rgba(83, 105, 255, 0.1);
-}
-
-div.CanvasXpressDataFilterHeadS,
-div.CanvasXpressDataFilterHeadSActive,
-div.CanvasXpressDataFilterHeadO,
-div.CanvasXpressDataFilterHeadOActive {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-div.CanvasXpressDataFilterHeadSActive {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-div.CanvasXpressDataFilterHeadOActive {
-  background: linear-gradient(rgb(240, 240, 240), rgb(230,230,230));
-}
-
-div.CanvasXpressDataFilterContent,
-div.CanvasXpressDataFilterContentS {
-  box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 0px 0px 4px 4px;
-  border-top: 0px;
-  font: normal 16px arial, tahoma, sans-serif;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 2px;
-}
-
-div.CanvasXpressDataFilterContent {
-  border: 1px solid rgb(83, 105, 255);
-}
-
-div.CanvasXpressDataFilterContentS {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background:var(--cx-background-hover-color);
+  border-bottom: var(--cx-border-transparent) !important;
+  border-radius: 4px 4px 0px 0px;
 }
 
 div.CanvasXpressDataFilterContainerTicks {
@@ -2641,28 +1958,64 @@ div.CanvasXpressDataFilterContainerTicks {
   height: 18px;
 }
 
-span.CanvasXpressDataFilterContainerTicksLong,
-span.CanvasXpressDataFilterContainerTicks {
+span.CanvasXpressDataFilterContainerTicks,
+span.CanvasXpressDataFilterContainerTicksLong {
   position: relative;
   display: flex;
   justify-content: center;
   width: 1px;
-  background: rgb(128, 128, 128);
+  background: var(--cx-background-color);
   line-height: 10px;
   margin-bottom: 10px;
-}
-
-span.CanvasXpressDataFilterContainerTicksLong {
-  height: 10px;
 }
 
 span.CanvasXpressDataFilterContainerTicks {
   height: 5px;
 }
 
+span.CanvasXpressDataFilterContainerTicksLong {
+  height: 10px;
+}
+
+img.CanvasXpressDataFilterToolbarImage,
+svg.CanvasXpressDataFilterToolbarImage {
+  border: var(--cx-border) !important;
+  border-radius: 5px !important;
+  padding: 2px;
+}
+
+img.CanvasXpressDataFilterToolbarImageNB,
+svg.CanvasXpressDataFilterToolbarImageNB {
+  border: none !important;
+}
+
+span.CanvasXpressDataFilterText {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
+}
+
+span.CanvasXpressDataFilterTextActive {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
+}
+
+div.CanvasXpressDataFilterContainerMaskNoOverflow,
+div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
+  box-sizing: border-box;
+  margin: 5px;
+  overflow: hidden;
+}
+
+div.CanvasXpressDataFilterContainerMaskNoOverflow {
+  border: var(--cx-border);
+}
+
+div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
+  border: none;
+}
+
 /***************/
 /*   Toggle    */
 /***************/
+
 div.CanvasXpressToggle {
   border: none;
   margin: 5px;
@@ -2673,7 +2026,6 @@ label.CanvasXpressToggle {
   cursor: pointer;
 }
 
-div.CanvasXpressToggleSwitchS,
 div.CanvasXpressToggleSwitch {
   display: inline-block;
   background: rgb(204, 204, 204);
@@ -2685,15 +2037,12 @@ div.CanvasXpressToggleSwitch {
   transition: background 0.25s;
 }
 
-div.CanvasXpressToggleSwitchS:before,
-div.CanvasXpressToggleSwitchS:after,
 div.CanvasXpressToggleSwitch:before,
 div.CanvasXpressToggleSwitch:after {
   content: "";
 }
 
-div.CanvasXpressToggleSwitch:before,
-div.CanvasXpressToggleSwitchS:before {
+div.CanvasXpressToggleSwitch:before {
   display: block;
   background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(238, 238, 238) 100%);
   border-radius: 50%;
@@ -2712,14 +2061,9 @@ label.CanvasXpressToggle:hover div.CanvasXpressToggleSwitch:before {
 }
 
 input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitch {
-  background: rgb(83, 105, 255);
+  background: var(--cx-background-color);
 }
 
-input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS {
-  background: rgb(200, 200, 200);
-}
-
-input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitchS:before,
 input.CanvasXpressToggle:checked+div.CanvasXpressToggleSwitch:before {
   left: 12px;
 }
@@ -2770,10 +2114,9 @@ div.CanvasXpressRangeSliderInput {
 }
 
 input.CanvasXpressRangeSliderMin,
-input.CanvasXpressRangeSliderMax,
-input.CanvasXpressRangeSliderMinS,
-input.CanvasXpressRangeSliderMaxS {
-  border: 1px solid rgba(255, 255, 255, 0.95);
+input.CanvasXpressRangeSliderMax {
+  color: var(--cx-background-color);
+  border: 1px solid var(--cx-background-widgets-color);
   border-radius: 5px;
   font: normal 16px arial, tahoma, sans-serif;
   margin-bottom: 2px;
@@ -2781,23 +2124,11 @@ input.CanvasXpressRangeSliderMaxS {
   width: 60px;
 }
 
-input.CanvasXpressRangeSliderMin,
-input.CanvasXpressRangeSliderMax {
-  color: rgb(83, 105, 255);
-}
-
-input.CanvasXpressRangeSliderMinS,
-input.CanvasXpressRangeSliderMaxS {
-  color: rgb(200, 200, 200);
-}
-
-input.CanvasXpressRangeSliderMinS,
 input.CanvasXpressRangeSliderMin {
   float: left;
   margin-left: 1px;
 }
 
-input.CanvasXpressRangeSliderMaxS,
 input.CanvasXpressRangeSliderMax {
   float: right;
   margin-right: 1px;
@@ -2822,8 +2153,8 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderTrack {
   background-color: rgb(238, 238, 238);
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
+  background-color: var(--cx-background-color);
   position: absolute;
   z-index: 10002;
   left: 0%;
@@ -2833,18 +2164,8 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
   border-radius: 5px;
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
-  background-color: rgb(83, 105, 255);
-}
-
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRangeS {
-  background-color: rgb(200, 200, 200);
-}
-
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
   position: absolute;
   z-index: 10003;
   width: 18px;
@@ -2855,42 +2176,23 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
-  background-color: rgb(83, 105, 255);
-  box-shadow: 0 0 0 0 rgba(51, 122, 183, 0.1);
+  background-color: var(--cx-background-color);
+  box-shadow: 0 0 0 0 var(--cx-background-hover-color);
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS {
-  background-color: rgb(200, 200, 200);
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
-}
-
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft {
   left: 0%;
   transform: translate(-15px, -5px);
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
   right: 0%;
   transform: translate(15px, -5px);
 }
 
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft:hover {
-  box-shadow: 0 0 0 10px rgba(51, 122, 183, 0.1);
-}
-
+div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft:hover,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight:hover {
-  box-shadow: 0 0 0 10px rgba(51, 122, 183, 0.1);
-}
-
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeftS:hover {
-  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRightS:hover {
-  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px var(--cx-background-hover-color);
 }
 
 input[type=range] {
@@ -2913,14 +2215,7 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 
-div.CanvasXpressRangeSliderTicks {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 10px;
-  height: 18px;
-  margin-top: 10px;
-}
-
+div.CanvasXpressRangeSliderTicks,
 div.CanvasXpressRangeSliderTicksLog {
   display: flex;
   padding: 0px 10px;
@@ -2928,30 +2223,31 @@ div.CanvasXpressRangeSliderTicksLog {
   margin-top: 10px;
 }
 
-span.CanvasXpressRangeSliderTicksLong {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 1px;
-  background: gray;
-  color: gray;
-  height: 10px;
-  line-height: 35px;
-  margin-bottom: 10px;
-  font-size: small;
+div.CanvasXpressRangeSliderTicks {
+  justify-content: space-between;
 }
 
+span.CanvasXpressRangeSliderTicksLong,
 span.CanvasXpressRangeSliderTicks {
   position: relative;
   display: flex;
   justify-content: center;
   width: 1px;
-  background: gray;
-  height: 5px;
-  line-height: 10px;
+  background: var(--cx-background-color);
   margin-bottom: 10px;
 }
 
+span.CanvasXpressRangeSliderTicksLong {
+  color: var(--cx-background-color);
+  height: 10px;
+  line-height: 35px;
+  font-size: small;
+}
+
+span.CanvasXpressRangeSliderTicks {
+  height: 5px;
+  line-height: 10px;
+}
 
 /**
  * Input type number
@@ -2969,11 +2265,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-button,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-button,
-div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-button,
-div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-button,
 /*div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,*/
 div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
-div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-button,
 div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-button,
@@ -2987,7 +2280,6 @@ div.cX-bin-name-container::-webkit-scrollbar-button {
   height: 4px;
 }
 
-
 /* Tracks can be of two different colors */
 
 /*div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,*/
@@ -2999,11 +2291,8 @@ select.CanvasXpressSlider::-webkit-scrollbar-track {
   background-color: rgb(255, 255, 255);
 }
 
-div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-track,
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar-track,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar-track,
-div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-track,
-div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-track,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-track,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track,
@@ -3011,7 +2300,6 @@ div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track,
 div.cX-bin-name-container::-webkit-scrollbar-track {
   background-color: rgb(245, 245, 245);
 }
-
 
 /* All tracks -hovers */
 
@@ -3028,14 +2316,7 @@ div.CanvasXpressConfiguratorExample::-webkit-scrollbar-track:hover,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-track:hover,
 select.CanvasXpressSlider::-webkit-scrollbar-track:hover,
 div.cX-bin-name-container::-webkit-scrollbar-track:hover {
-  background-color: rgb(190, 190, 190);
-  border-radius: 8px;
-}
-
-div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-track:hover,
-div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-track:hover,
-div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-track:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: var(--cx-background-hover-color);
   border-radius: 8px;
 }
 
@@ -3052,11 +2333,8 @@ select.CanvasXpressSlider::-webkit-scrollbar {
   background-color: rgb(255, 255, 255);
 }
 
-div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar,
 div.CanvasXpressDataTableHorizontal::-webkit-scrollbar,
 div.CanvasXpressDataTableVertical::-webkit-scrollbar,
-div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar,
-div.CanvasXpressDataTableVerticalS::-webkit-scrollbar,
 div.CanvasXpressDataExplorer::-webkit-scrollbar,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar,
 div.CanvasXpressConfiguratorExample::-webkit-scrollbar,
@@ -3082,29 +2360,20 @@ div.CanvasXpressConfiguratorExample::-webkit-scrollbar-thumb,
 div.CanvasXpressConfiguratorExampleContent::-webkit-scrollbar-thumb,
 select.CanvasXpressSlider::-webkit-scrollbar-thumb,
 div.cX-bin-name-container::-webkit-scrollbar-thumb {
-  background-color: rgb(83, 105, 255);
+  background-color: var(--cx-background-contrast-color);
   border-radius: 8px;
   border: none;
 }
-
-div.CanvasXpressDataFilterContainerMaskS::-webkit-scrollbar-thumb,
-div.CanvasXpressDataTableHorizontalS::-webkit-scrollbar-thumb,
-div.CanvasXpressDataTableVerticalS::-webkit-scrollbar-thumb {
-  background-color: rgb(153, 153, 153);
-  border-radius: 8px;
-  border: none;
-}
-
 
 div.CanvasXpressDataFilter::selection,
 div.CanvasXpressDataFilterToolbar::selection {
-  background: rgba(0, 0, 0, 0);
+  background: var(--cx-color-transparent);
   color: var(--cx-font-color);
 }
 
 div.CanvasXpressDataFilterContainerItem::selection {
-  background: rgba(0, 0, 0, 0);
-  color: rgb(83, 105, 255);
+  background: var(--cx-color-transparent);
+  color: var(--cx-background-color);
 }
 
 /*
@@ -3672,7 +2941,6 @@ form.CanvasXpressFormForm {
   padding-left: 3px;
 }
 
-
 /*
  * Slider
  */
@@ -4141,6 +3409,19 @@ div.CanvasXpressPlay {
 
 div.CanvasXpressPlay:hover {
   background-color: rgba(0, 0, 0, 0);
+}
+
+div.CanvasXpressContainer {
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+}
+
+div.CanvasXpressWrapper {
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  line-height: 100%;
 }
 
 /*

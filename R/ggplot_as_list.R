@@ -239,6 +239,7 @@ gg_scales <- function (o) {
         if (is.character(s$name)) {
           r$xAxisTitle <- s$name
         }
+        r$xAxisTicks <- length(b$layout$panel_params[[1]]$x$breaks)
       } else if (s$aesthetics[1] == "y") {
         if (!is.null(s$limits)) {
           r$setMinY <- s$limits[1]
@@ -250,6 +251,7 @@ gg_scales <- function (o) {
         if (is.character(s$name)) {
           r$yAxisTitle <- s$name
         }
+        r$yAxisTicks <- length(b$layout$panel_params[[1]]$y$breaks)
       }
     }
   }
