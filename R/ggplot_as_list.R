@@ -10,22 +10,24 @@ ggplot.as.list <- function(o, ...) {
 
   target <- "canvas"
 
+  config <- list(...)
+
   bld <- ggplot2::ggplot_build(o)
 
   cx <- list(
     renderTo = target,
-    data     = data_to_matrix(o),
-    aes      = gg_mapping(o),
-    scales   = gg_scales(o),
+    data     = data_to_matrix(o, bld),
+    aes      = gg_mapping(o, bld),
+    scales   = gg_scales(o, bld),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
     labels   = gg_labels(o),
     facet    = gg_facet(o),
-    order    = gg_order(o),
+    order    = gg_order(o, bld),
     layers   = as.vector(NULL),
     geoms    = as.vector(NULL),
     isGGPlot = TRUE,
-    config   = list(...),
+    config   = config,
     isR      = TRUE)
 
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
@@ -35,7 +37,7 @@ ggplot.as.list <- function(o, ...) {
 
   for (i in 1:length(layers)) {
     l <- layers[i]
-    p <- gg_proc_layer(o, i)
+    p <- gg_proc_layer(o, i, bld)
     if ((l == "GeomTile") && (proto_stat[i] == "StatBin2d")) {
       l <- "GeomBin2d"
     } else if ((l == "GeomPoint") && !is.null(p$position) && (p$position == "jitter")) {
@@ -72,6 +74,20 @@ ggplot.as.list <- function(o, ...) {
           p$y <- rlang::as_label(ll$mapping[["ymax"]])
         }
       }
+    } else if (l == "GeomVline" || l == "GeomHline" || l == "GeomAbline") {
+      if (!("color" %in% names(p))) {
+        p$color <- bld$data[[i]]$colour
+      }
+      if (!("linewidth" %in% names(p))) {
+        p$linewidth <- bld$data[[i]]$linewidth
+      }
+      if (!("linetype" %in% names(p))) {
+        p$linetype <- bld$data[[i]]$linetype
+      }
+    } else if (l == "GeomText") {
+      if (!("color" %in% names(p))) {
+        p$color <- bld$data[[i]]$colour
+      }
     }
     p$stat <- proto_stat[i]
     q <- list()
@@ -89,11 +105,10 @@ gg_fun <- function(x) {
   tryCatch(getFromNamespace(x, "ggplot2"), error = function(e) NULL)
 }
 
-gg_order <- function(o) {
+gg_order <- function(o, b) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
-  b <- ggplot2::ggplot_build(o)
   r <- Filter(Negate(is.null), sapply(o$data, levels))
   r$xLabels <- as.character(b$layout$panel_params[[1]]$x$get_labels())
   r$yLabels <- as.character(b$layout$panel_params[[1]]$y$get_labels())
@@ -108,7 +123,7 @@ gg_facet <- function (o) {
   if (!is.null(f)) {
     f <- list(
       facet = ls(f),
-      facetLevels = sort(unique(o$data[[ls(f)]])),
+      facetLevels = sort(unique(factor(as.character(o$data[[ls(f)]]), exclude = NULL))),
       facetType = "wrap",
       facetXFree = o$facet$params$free$x,
       facetYFree = o$facet$params$free$y,
@@ -144,18 +159,18 @@ gg_facet <- function (o) {
     )
     if (length(o$facet$params$rows) > 0 && length(o$facet$params$cols) > 0) {
       f$facet <- c(ls(o$facet$params$rows)[1], ls(o$facet$params$cols)[1])
-      f$facetLevelsRows <- sort(unique(o$data[[ls(o$facet$params$rows)]]))
-      f$facetLevelsCols <- sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetLevelsRows <- sort(unique(factor(as.character(o$data[[ls(o$facet$params$rows)]]), exclude = NULL)))
+      f$facetLevelsCols <- sort(unique(factor(as.character(o$data[[ls(o$facet$params$cols)]]), exclude = NULL)))
       f$facetRows <- length(f$facetLevelsRows)
       f$facetCols <- length(f$facetLevelsCols)
     } else if (length(o$facet$params$rows) > 0) {
       f$facet <- ls(o$facet$params$rows)
-      f$facetLevelsRows <- sort(unique(o$data[[ls(o$facet$params$rows)]]))
+      f$facetLevelsRows <- sort(unique(factor(as.character(o$data[[ls(o$facet$params$rows)]]), exclude = NULL)))
       f$facetRows <- length(f$facetLevels)
       f$facetCols <- 1
     } else if (length(o$facet$params$cols) > 0) {
       f$facet <- ls(o$facet$params$cols)
-      f$facetLevelsCols <- sort(unique(o$data[[ls(o$facet$params$cols)]]))
+      f$facetLevelsCols <- sort(unique(factor(as.character(o$data[[ls(o$facet$params$cols)]]), exclude = NULL)))
       f$facetRows <- 1
       f$facetCols <- length(f$facetLevels)
     }
@@ -177,9 +192,11 @@ gg_theme <- function(o) {
       if (length(atts2) > 0) {
         for (b in atts2) {
           if (b != "inherit.blank") {
+            k <- paste(a, b, sep = ".")
             v <- as.character(e[[a]][[b]])
-            if (length(v) > 0) {
-              t[[paste(a, b, sep = ".")]] <- v
+            m <- regexpr("margin", k)[1]
+            if (length(v) > 0 && m < 0) {
+              t[[k]] <- v
             }
           }
         }
@@ -188,7 +205,8 @@ gg_theme <- function(o) {
       }
     } else {
       v <- as.character(e[[a]])
-      if (length(v) > 0) {
+      m <- regexpr("margin", a)[1]
+      if (length(v) > 0 && m < 0) {
         t[[a]] <- v
       }
     }
@@ -196,25 +214,22 @@ gg_theme <- function(o) {
   t
 }
 
-gg_scales <- function (o) {
+gg_scales <- function(o, b) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
   r <- list()
   n <- length(o$scales$scales)
-  b <- ggplot2::ggplot_build(o)
+  k <- FALSE
   if (n > 0) {
     for (i in 1:n) {
       s <- o$scales$scales[[i]]
       if (s$aesthetics[1] == "colour" || s$aesthetics[1] == "fill") {
-        if (!is.null(s$scale_name) && length(s$scale_name) > 0 && stringr::str_detect(s$scale_name, "gradient")) {
-          if (s$scale_name == "gradient2") {
-            s$train(c(-1, 1))
-          } else {
-            s$train(c(0, 1))
-          }
-          r$colorSpectrum <- s$break_positions()
-        } else {
+        c <- class(s)[1]
+        if (c == "ScaleContinuous") {
+          r$colorSpectrum <- s$palette(c(0, 0.25, 0.5, 0.75, 1))
+          k <- TRUE
+        } else if (c == "ScaleDiscrete") {
           p <- s$palette(1)
           if (!is.null(names(p))) {
             k <- names(p)
@@ -224,10 +239,17 @@ gg_scales <- function (o) {
               q[[k[j]]] <- p[j]
             }
             r$colorKey <- q
-          } else {
-            r$colors <- p
           }
+          r$colors <- b[[3]]$scales$scales[[1]]$palette.cache
+          if (length (b[[3]]$scales$scales[[1]]$breaks) > 0) {
+            r$colorBreaks <- b[[3]]$scales$scales[[1]]$breaks
+          }
+        } else if (c == "ScaleBinned") {
+          r$colors <- b[[3]]$scales$scales[[1]]$palette.cache
+          r$colorBreaks <- b[[3]]$scales$scales[[1]]$breaks
+          r$colorLimits <- b[[3]]$scales$scales[[1]]$limits
         }
+        r$colorScale <- c
       } else if (s$aesthetics[1] == "x") {
         if (!is.null(s$limits)) {
           r$setMinX <- s$limits[1]
@@ -253,6 +275,43 @@ gg_scales <- function (o) {
         }
         r$yAxisTicks <- length(b$layout$panel_params[[1]]$y$breaks)
       }
+    }
+  }
+  if ("colors" %in% names(r) || k) {
+    ## Nothing to do
+  } else {
+    n <- length(b[[3]]$scales$scales)
+    k <- FALSE
+    if (n > 0) {
+      for (i in 1:n) {
+        if (!is.null(b[[3]]$scales$scales[[i]]$palette.cache)) {
+          r$colors <- b[[3]]$scales$scales[[i]]$palette.cache
+          k <- TRUE
+          break
+        }
+      }
+    }
+    if (!k) {
+      r$colorScale <- "NoScale"
+      cols <- list(unique(b$data[[1]]$fill))
+      if (length(cols) == 1) {
+        if (cols[1] == "NA") {
+          cols <- list(unique(b$data[[1]]$colour))
+          if (length(cols) == 1) {
+            if (cols[1] == "NA") {
+              cols <- list(unique(b$data[[1]]$color))
+              if (length(cols) == 1) {
+                r$cXscatterColor <- unique(b$data[[1]]$color)
+              }
+            }
+          }
+        }
+      }
+    }
+    if ("colors" %in% names(r)) {
+      ## Nothing to do
+    } else {
+      r$colors <- cols
     }
   }
   tx <- as.character(b$layout$coord$trans$y)[1]
@@ -310,7 +369,7 @@ gg_labels <- function (o) {
   r
 }
 
-gg_mapping <- function(o) {
+gg_mapping <- function(o, b) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
@@ -324,7 +383,7 @@ gg_mapping <- function(o) {
       if (i == "colour") {
         r[["color"]] <- l
       } else if (i == "label") {
-        r[[i]] <- ggplot2::ggplot_build(o)$data[[1]]$label
+        r[[i]] <- b$data[[1]]$label
       } else {
         r[[i]] <- l
       }
@@ -337,7 +396,7 @@ gg_mapping <- function(o) {
   }
 }
 
-gg_proc_layer <- function (o, idx) {
+gg_proc_layer <- function (o, idx, bld) {
   l <- o$layers[[idx]]
   r <- list()
   q <- as.vector(NULL)
@@ -439,7 +498,7 @@ gg_proc_layer <- function (o, idx) {
     r$stream <- TRUE
   }
   if (is.data.frame(l$data)) {
-    dl <- ggplot2::ggplot_build(o)$data[[idx]]
+    dl <- bld$data[[idx]]
     r$data <- list()
     if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
       r$data$x <- as.numeric(dl[["x"]])
@@ -456,7 +515,7 @@ gg_proc_layer <- function (o, idx) {
   r
 }
 
-data_to_matrix <- function(o) {
+data_to_matrix <- function(o, b) {
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
   m <- c("x", "y", "z")
   d <- o$data
@@ -467,24 +526,27 @@ data_to_matrix <- function(o) {
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
       } else if (i == "label") {
-        u <- as.character(ggplot2::ggplot_build(o)$data[[1]][[i]])
+        u <- as.character(b$data[[1]][[i]])
         nd[i] <- u
       } else {
-        u <- as.numeric(ggplot2::ggplot_build(o)$data[[1]][[i]])
+        u <- as.numeric(b$data[[1]][[i]])
         nd[q] <- u
       }
     }
   }
   for (i in 1:length(layers)) {
     l <- layers[i]
-    for (j in m) {
-      if (!is.null(o$layers[[i]]$mapping[[j]])) {
-        q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
-        if (q %in% colnames(o$data)) {
-          ## Nothing to do
-        } else {
-          u <- as.numeric(ggplot2::ggplot_build(o)$data[[i]][[j]])
-          nd[q] <- u
+    q <- class(o$layers[[i]]$geom)[1]
+    if (q != "GeomBlank") {
+      for (j in m) {
+        if (!is.null(o$layers[[i]]$mapping[[j]])) {
+          q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
+          if (q %in% colnames(o$data)) {
+            ## Nothing to do
+          } else {
+            u <- as.numeric(b$data[[i]][[j]])
+            nd[q] <- u
+          }
         }
       }
     }
