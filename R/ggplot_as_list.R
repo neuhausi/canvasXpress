@@ -32,7 +32,6 @@ ggplot.as.list <- function(o, ...) {
 
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
 
-  proto_geom <- sapply( sapply( o$layers, "[[", "geom"), function(x) class(x)[[1]][1] )
   proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
 
   for (i in 1:length(layers)) {
@@ -100,6 +99,22 @@ ggplot.as.list <- function(o, ...) {
 }
 
 # -- internal helper functions -- #
+
+gg_default_aes <- function(geom_name) {
+  geom_obj <- get(geom_name, envir = asNamespace("ggplot2"))
+  default_aes <- geom_obj$default_aes
+  # Filter out NULL and NA values. Ensure it returns a single logical value.
+  valid_aes <- Filter(function(x) {
+    if (is.vector(x) || is.list(x)) {
+      return(!any(is.na(x)) && !is.null(x))
+    } else {
+      return(FALSE)
+    }
+  }, default_aes)
+  # Convert to a simple character string for easy reading
+  valid_aes <- sapply(valid_aes, deparse)
+  return(valid_aes)
+}
 
 gg_fun <- function(x) {
   tryCatch(getFromNamespace(x, "ggplot2"), error = function(e) NULL)
@@ -400,6 +415,7 @@ gg_proc_layer <- function (o, idx, bld) {
   l <- o$layers[[idx]]
   r <- list()
   q <- as.vector(NULL)
+  d <- as.list(gg_default_aes(class(l$geom)[1]))
   if (!is.null(l$mapping)) {
     atts <- ls(l$mapping)
     if (length(atts) > 0) {
@@ -510,6 +526,74 @@ gg_proc_layer <- function (o, idx, bld) {
       nd <- tibble::add_row(nd, .before = 1)
       nd[1,] <- colnames(nd)
       r$data <- as.matrix(nd)
+    }
+  }
+  prps <- c("colour", "fill", "alpha")
+  for (p in prps) {
+    if ((!(p %in% names(r))) && !is.null(d[[p]])) {
+      if (p == "colour") {
+        if (!("color" %in% names(r))) {
+          r$color <- gsub("\"", "", d[[p]])
+        }
+      } else if (p == "shape") {
+        if (d[[p]] == 0) {
+          r$shape <- "square"
+        } else if (d[[p]] == 1) {
+          r$shape <- "circle"
+        } else if (d[[p]] == 2) {
+          r$shape <- "triangle"
+        } else if (d[[p]] == 3) {
+          r$shape <- "plus"
+        } else if (d[[p]] == 4) {
+          r$shape <- "minus"
+        } else if (d[[p]] == 5) {
+          r$shape <- "diamond"
+        } else if (d[[p]] == 6) {
+          r$shape <- "triangle2"
+        } else if (d[[p]] == 7) {
+          r$shape <- "hexagon"
+        } else if (d[[p]] == 8) {
+          r$shape <- "star"
+        } else if (d[[p]] == 9) {
+          r$shape <- "octagon"
+        } else if (d[[p]] == 10) {
+          r$shape <- "pentagon"
+        } else if (d[[p]] == 11) {
+          r$shape <- "mdavid"
+        } else if (d[[p]] == 12) {
+          r$shape <- "drop"
+        } else if (d[[p]] == 13) {
+          r$shape <- "circleOpen"
+        } else if (d[[p]] == 14) {
+          r$shape <- "square"
+        } else if (d[[p]] == 15) {
+          r$shape <- "square"
+        } else if (d[[p]] == 16) {
+          r$shape <- "circle"
+        } else if (d[[p]] == 17) {
+          r$shape <- "triangle"
+        } else if (d[[p]] == 18) {
+          r$shape <- "diamond"
+        } else if (d[[p]] == 19) {
+          r$shape <- "circle"
+        } else if (d[[p]] == 20) {
+          r$shape <- "circle"
+        } else if (d[[p]] == 21) {
+          r$shape <- "circleOpen"
+        } else if (d[[p]] == 22) {
+          r$shape <- "square"
+        } else if (d[[p]] == 23) {
+          r$shape <- "diamond"
+        } else if (d[[p]] == 24) {
+          r$shape <- "triangle"
+        } else if (d[[p]] == 25) {
+          r$shape <- "triangle2"
+        } else {
+          r$shape <- "circle"
+        }
+      } else {
+        r[[p]] <- gsub("\"", "", d[[p]])
+      }
     }
   }
   r
