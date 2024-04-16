@@ -519,6 +519,8 @@ gg_proc_layer <- function (o, idx, bld) {
     if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
       r$data$x <- as.numeric(dl[["x"]])
       r$data$y <- as.numeric(dl[["y"]])
+      r$data$label <- as.character(dl[["label"]])
+      r$data$color <- as.character(dl[["colour"]])
     } else {
       dl <- l$data
       nd <- data.frame(lapply(dl, as.character), stringsAsFactors = FALSE)
