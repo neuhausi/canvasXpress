@@ -210,7 +210,9 @@ gg_theme <- function(o) {
             k <- paste(a, b, sep = ".")
             v <- as.character(e[[a]][[b]])
             m <- regexpr("margin", k)[1]
-            if (length(v) > 0 && m < 0) {
+            if (m > 0 && length(v) > 0) {
+              suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+            } else if (length(v) > 0) {
               t[[k]] <- v
             }
           }
@@ -221,7 +223,9 @@ gg_theme <- function(o) {
     } else {
       v <- as.character(e[[a]])
       m <- regexpr("margin", a)[1]
-      if (length(v) > 0 && m < 0) {
+      if (m > 0 && length(v) > 0) {
+        t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+      } else if (length(v) > 0) {
         t[[a]] <- v
       }
     }
