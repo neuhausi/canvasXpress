@@ -137,7 +137,7 @@ test_that("Barplot segregated toolbarType fixed", {
                             legendColumns      = 2,
                             legendPosition     = "bottom",
                             showTransition     = FALSE,
-                            smpLabelRotate     = 90,
+                            smpTextRotate      = 90,
                             smpTitle           = "Species",
                             title              = "Segregated BarPlot - toolbarType: fixed",
                             segregateSamplesBy = list("Species"),

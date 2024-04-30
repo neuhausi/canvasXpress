@@ -1,6 +1,6 @@
 dependencies:
   - name: canvasXpress
-    version: 48.8
+    version: 49.4
     src: "htmlwidgets/lib/canvasXpress"
     script: canvasXpress.min.js
     stylesheet: canvasXpress.css

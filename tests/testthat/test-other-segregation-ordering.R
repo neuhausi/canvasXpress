@@ -19,7 +19,7 @@ test_that("segregation ordering - Samples", {
                            segregateSamplesBy      = list("supp"),
                            showBoxplotOriginalData = TRUE,
                            showLegend              = FALSE,
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            smpTitle                = "dose",
                            title                   = "Sorting descending by dose",
                            xAxisTitle              = "len",
