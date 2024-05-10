@@ -200,6 +200,7 @@ gg_theme <- function(o) {
   }
   t <- list()
   e <- gg_fun("plot_theme")(o)
+  s <- as.numeric(e[["text"]][["size"]])
   atts <- ls(e)
   for (a in atts) {
     if (is.list(e[[a]])) {
@@ -208,12 +209,17 @@ gg_theme <- function(o) {
         for (b in atts2) {
           if (b != "inherit.blank") {
             k <- paste(a, b, sep = ".")
+            c <- class(e[[a]][[b]])[1]
             v <- as.character(e[[a]][[b]])
             m <- regexpr("margin", k)[1]
             if (m > 0 && length(v) > 0) {
               suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
             } else if (length(v) > 0) {
-              t[[k]] <- v
+              if (b == "size" && c == "rel") {
+                t[[k]] <- s * as.numeric(v)
+              } else {
+                t[[k]] <- gsub("points", "", v)
+              }
             }
           }
         }
@@ -222,11 +228,16 @@ gg_theme <- function(o) {
       }
     } else {
       v <- as.character(e[[a]])
+      c <- class(e[[a]])[1]
       m <- regexpr("margin", a)[1]
       if (m > 0 && length(v) > 0) {
         t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
       } else if (length(v) > 0) {
-        t[[a]] <- v
+        if (a == "size" && c == "rel") {
+          t[[a]] <- s * as.numeric(v)
+        } else {
+          t[[a]] <- gsub("points", "", v)
+        }
       }
     }
   }
