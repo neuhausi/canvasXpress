@@ -216,7 +216,7 @@ gg_theme <- function(o) {
               suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
             } else if (length(v) > 0) {
               if (b == "size" && c == "rel") {
-                t[[k]] <- s * as.numeric(v)
+                t[[k]] <- ceiling(s * as.numeric(v) * 0.9)
               } else {
                 t[[k]] <- gsub("points", "", v)
               }
@@ -234,7 +234,7 @@ gg_theme <- function(o) {
         t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
       } else if (length(v) > 0) {
         if (a == "size" && c == "rel") {
-          t[[a]] <- s * as.numeric(v)
+          t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
         } else {
           t[[a]] <- gsub("points", "", v)
         }
