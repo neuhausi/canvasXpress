@@ -260,11 +260,11 @@ genePlot <- function(df, block, title, subtitle) {
             legendColumns           = 3,
             showLegendTitle         = FALSE,
             layoutAdjust            = FALSE,
-            smpLabelRotate          = 45,
+            smpTextRotate           = 45,
             xAxisMinorTicks         = FALSE,
             boxplotMedianWidth      = 2,
             subtitleScaleFontFactor = 0.5,
-            smpLabelScaleFontFactor = 0.5,
+            smpTextScaleFontFactor  = 0.5,
             showAnimation           = FALSE,
             width                   = "100%"
         )

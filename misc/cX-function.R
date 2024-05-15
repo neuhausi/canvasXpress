@@ -2724,7 +2724,7 @@ cXdotplot12 <- function() {
     smpLabelImage=TRUE,
     smpLabelImageRound=TRUE,
     smpTextScaleFontFactor=0.9,
-    sortData=list(list("cat", "smp", "Chapter Name")),
+    sortData=list(list("cat", "smp", "Character"), list("cat", "smp", "Chapter Name")),
     stripBackgroundBorderColor="rgba(0,0,0,0)",
     stripTextFontStyle="bold",
     stripTextScaleFontFactor=1.2,
@@ -4825,10 +4825,9 @@ cXmeter1 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="gauge"
   )
 }
@@ -4839,10 +4838,9 @@ cXmeter2 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=200,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 200),
+    meterSegments=list(0, 25, 50, 75, 200),
     meterType="speedometer"
   )
 }
@@ -4853,10 +4851,9 @@ cXmeter3 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="digital"
   )
 }
@@ -4889,10 +4886,9 @@ cXmeter6 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="vertical"
   )
 }
@@ -4914,16 +4910,31 @@ cXmeter7 <- function() {
 
 cXmeter8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     graphType="Meter",
+    meterGroup="Quarter",
+    meterSummary="sum",
     meterType="digital",
     meterVar="Revenue"
+  )
+}
+
+cXmeter9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    meterGroup="cyl",
+    meterSummary="average",
+    meterType="gauge",
+    meterVar="mpg"
   )
 }
 
@@ -7079,32 +7090,41 @@ cXstackedpercent5 <- function() {
     barPathColor="rgb(48,116,154)",
     barPathTransparency=1,
     colorBy="Color",
+    colorByShowLegend=FALSE,
     colors=list("rgb(255,190,179)", "rgb(251,153,134)", "rgb(244,112,96)", "rgb(230,68,72)", "rgb(210,41,63)", "rgb(173,18,58)"),
     fontName="Waltograph",
     fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
     graphOrientation="horizontal",
     graphType="StackedPercent",
     layoutCollapse=TRUE,
-    layoutStripTextScaleFontFactor=2.5,
-    marginBottom=50,
-    marginLeft=50,
+    legendBackgroundColor="rgb(63,149,180)",
+    legendColumns=2,
+    legendKeyBackgroundBorderColor="rgb(63,149,180)",
+    legendKeyBackgroundColor="rgb(63,149,180)",
+    legendPosition="bottom",
+    legendTextColor="rgb(255,255,255)",
+    legendTextScaleFontFactor=2,
+    marginBottom=10,
+    marginLeft=10,
     marginRight=50,
-    marginTop=50,
+    marginTop=30,
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     patternBy="InOut",
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
     plotBackgroundColor="rgb(63,149,180)",
     segregateVariablesBy=list("Gender"),
-    showLegend=FALSE,
+    showLegend=TRUE,
+    showLegendTitle=FALSE,
     smpTextColor="rgb(255,255,255)",
-    smpTextScaleFontFactor=3,
+    smpTextScaleFontFactor=2.2,
     stripBackgroundBorderColor="rgba(255,255,255,0)",
     stripTextColor="rgb(255,255,255)",
-    stripTextScaleFontFactor=3,
+    stripTextScaleFontFactor=2.2,
     title="Fewer Role Models",
+    titleAlign="center",
     titleColor="rgb(252,157,156)",
-    titleScaleFontFactor=2.5,
+    titleScaleFontFactor=4.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
