@@ -8,7 +8,36 @@ ggplot.as.list <- function(o, ...) {
     stop("Not a ggplot object")
   }
 
-  target <- "canvas"
+  if (("patchwork") %in% class(o)) {
+    l <- length(o)
+    c <- o$patches$layout$ncol
+    r <- o$patches$layout$nrow
+    cx <- list(...)
+    cx$length <- l
+    cx$isGGPlot <- TRUE
+    cx$isPatchwork <- TRUE
+    cx$isR <- TRUE
+    if (!is.null(c)) {
+      cx$cols <- c
+    }
+    if (!is.null(r)) {
+      cx$rows <- r
+    }
+    p <- list()
+    for (i in 1:l) {
+      t <- paste("canvas", i, sep = "-")
+      p[[i]] <- gg_cxplot(o[[i]], t)
+    }
+    cx$datasets <- p
+  } else {
+    cx <- gg_cxplot(o, "canvas", ...)
+  }
+
+  jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
+
+}
+
+gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
 
@@ -32,7 +61,7 @@ ggplot.as.list <- function(o, ...) {
 
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
 
-  proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1] )
+  proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1])
 
   for (i in 1:length(layers)) {
     l <- layers[i]
@@ -95,7 +124,8 @@ ggplot.as.list <- function(o, ...) {
     cx$layers <- append(cx$layers, q)
   }
 
-  jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
+  cx
+
 }
 
 # -- internal helper functions -- #
@@ -307,7 +337,7 @@ gg_scales <- function(o, b) {
       }
     }
   }
-  if ("colors" %in% names(r) || k) {
+  if ("colors" %in% names(r) || "colorSpectrum" %in% names(r)) {
     ## Nothing to do
   } else {
     n <- length(b[[3]]$scales$scales)
@@ -646,7 +676,9 @@ data_to_matrix <- function(o, b) {
             ## Nothing to do
           } else {
             u <- as.numeric(b$data[[i]][[j]])
-            nd[q] <- u
+            if (length(u) == length((nd[[1]]))) {
+              nd[q] <- u
+            }
           }
         }
       }
