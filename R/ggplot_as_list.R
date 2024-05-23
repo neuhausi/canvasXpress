@@ -1,7 +1,6 @@
 #' Converts a ggplot object to a list that can be used by CanvasXpress.
 #' @export
 ggplot.as.list <- function(o, ...) {
-
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
     stop("The ggplot2 package is required to use this functionality.")
   } else if (!("ggplot") %in% class(o)) {
@@ -34,11 +33,9 @@ ggplot.as.list <- function(o, ...) {
   }
 
   jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
-
 }
 
 gg_cxplot <- function(o, target, ...) {
-
   config <- list(...)
 
   bld <- ggplot2::ggplot_build(o)
@@ -57,11 +54,12 @@ gg_cxplot <- function(o, target, ...) {
     geoms    = as.vector(NULL),
     isGGPlot = TRUE,
     config   = config,
-    isR      = TRUE)
+    isR      = TRUE
+  )
 
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
 
-  proto_stat <- sapply( sapply( o$layers, "[[", "stat"), function(x) class(x)[[1]][1])
+  proto_stat <- sapply(sapply(o$layers, "[[", "stat"), function(x) class(x)[[1]][1])
 
   for (i in 1:length(layers)) {
     l <- layers[i]
@@ -119,13 +117,12 @@ gg_cxplot <- function(o, target, ...) {
     }
     p$stat <- proto_stat[i]
     q <- list()
-    q[[l]]    <- p
-    cx$geoms  <- append(cx$geoms, l)
+    q[[l]] <- p
+    cx$geoms <- append(cx$geoms, l)
     cx$layers <- append(cx$layers, q)
   }
 
   cx
-
 }
 
 # -- internal helper functions -- #
@@ -160,7 +157,7 @@ gg_order <- function(o, b) {
   r
 }
 
-gg_facet <- function (o) {
+gg_facet <- function(o) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
@@ -253,7 +250,7 @@ gg_theme <- function(o) {
             }
           }
         }
-      }  else {
+      } else {
         t[[a]] <- class(e[[a]])[1]
       }
     } else {
@@ -301,7 +298,7 @@ gg_scales <- function(o, b) {
             r$colorKey <- q
           }
           r$colors <- b[[3]]$scales$scales[[1]]$palette.cache
-          if (length (b[[3]]$scales$scales[[1]]$breaks) > 0) {
+          if (length(b[[3]]$scales$scales[[1]]$breaks) > 0) {
             r$colorBreaks <- b[[3]]$scales$scales[[1]]$breaks
           }
         } else if (c == "ScaleBinned") {
@@ -387,7 +384,7 @@ gg_scales <- function(o, b) {
   r
 }
 
-gg_coordinates <- function (o) {
+gg_coordinates <- function(o) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
@@ -403,7 +400,7 @@ gg_coordinates <- function (o) {
   r
 }
 
-gg_labels <- function (o) {
+gg_labels <- function(o) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
   }
@@ -412,17 +409,17 @@ gg_labels <- function (o) {
   for (i in l) {
     if (!is.null(o$labels[[i]])) {
       if (i %in% c("title", "subtitle")) {
-        r[[i]] <- o$labels[[i]]
+        r[[i]] <- as.character(o$labels[[i]])
       } else if (i == "caption") {
-        r["citation"] <- o$labels[[i]]
+        r["citation"] <- as.character(o$labels[[i]])
       } else if (i %in% c("colour", "shape", "size")) {
         if (i == "colour") {
-          r["colorLegendTitle"] <- o$labels[[i]]
+          r["colorLegendTitle"] <- as.character(o$labels[[i]])
         } else {
-          r[[paste(i, "LegendTitle", sep = "")]] <- o$labels[[i]]
+          r[[paste(i, "LegendTitle", sep = "")]] <- as.character(o$labels[[i]])
         }
       } else {
-        r[[paste(i, "AxisTitle", sep = "")]] <- o$labels[[i]]
+        r[[paste(i, "AxisTitle", sep = "")]] <- as.character(o$labels[[i]])
       }
     }
   }
@@ -456,7 +453,7 @@ gg_mapping <- function(o, b) {
   }
 }
 
-gg_proc_layer <- function (o, idx, bld) {
+gg_proc_layer <- function(o, idx, bld) {
   l <- o$layers[[idx]]
   r <- list()
   q <- as.vector(NULL)
@@ -470,11 +467,14 @@ gg_proc_layer <- function (o, idx, bld) {
         s <- regexpr("after_", b)[1]
         t <- regexpr("stage", b)[1]
         g <- regexpr("cut_", b)[1]
+        if (b == "...[[]]") {
+          b <- a
+        }
         if (s > 0 || t > 0) {
           next
         }
         if (g > 0) {
-          p <-  strsplit(b, split = "\\(" )[[1]]
+          p <- strsplit(b, split = "\\(")[[1]]
           p[2] <- stringr::str_replace(p[2], "\\)", "")
           w <- strsplit(p[2], split = ",")[[1]]
           b <- list()
@@ -571,7 +571,7 @@ gg_proc_layer <- function (o, idx, bld) {
       nd <- data.frame(lapply(dl, as.character), stringsAsFactors = FALSE)
       nd <- tibble::add_column(nd, Id = row.names(dl), .before = 1)
       nd <- tibble::add_row(nd, .before = 1)
-      nd[1,] <- colnames(nd)
+      nd[1, ] <- colnames(nd)
       r$data <- as.matrix(nd)
     }
   }
@@ -582,64 +582,64 @@ gg_proc_layer <- function (o, idx, bld) {
         if (!("color" %in% names(r))) {
           r$color <- gsub("\"", "", d[[p]])
         }
-      } else if (p == "shape") {
-        if (d[[p]] == 0) {
-          r$shape <- "square"
-        } else if (d[[p]] == 1) {
-          r$shape <- "circle"
-        } else if (d[[p]] == 2) {
-          r$shape <- "triangle"
-        } else if (d[[p]] == 3) {
-          r$shape <- "plus"
-        } else if (d[[p]] == 4) {
-          r$shape <- "minus"
-        } else if (d[[p]] == 5) {
-          r$shape <- "diamond"
-        } else if (d[[p]] == 6) {
-          r$shape <- "triangle2"
-        } else if (d[[p]] == 7) {
-          r$shape <- "hexagon"
-        } else if (d[[p]] == 8) {
-          r$shape <- "star"
-        } else if (d[[p]] == 9) {
-          r$shape <- "octagon"
-        } else if (d[[p]] == 10) {
-          r$shape <- "pentagon"
-        } else if (d[[p]] == 11) {
-          r$shape <- "mdavid"
-        } else if (d[[p]] == 12) {
-          r$shape <- "drop"
-        } else if (d[[p]] == 13) {
-          r$shape <- "circleOpen"
-        } else if (d[[p]] == 14) {
-          r$shape <- "square"
-        } else if (d[[p]] == 15) {
-          r$shape <- "square"
-        } else if (d[[p]] == 16) {
-          r$shape <- "circle"
-        } else if (d[[p]] == 17) {
-          r$shape <- "triangle"
-        } else if (d[[p]] == 18) {
-          r$shape <- "diamond"
-        } else if (d[[p]] == 19) {
-          r$shape <- "circle"
-        } else if (d[[p]] == 20) {
-          r$shape <- "circle"
-        } else if (d[[p]] == 21) {
-          r$shape <- "circleOpen"
-        } else if (d[[p]] == 22) {
-          r$shape <- "square"
-        } else if (d[[p]] == 23) {
-          r$shape <- "diamond"
-        } else if (d[[p]] == 24) {
-          r$shape <- "triangle"
-        } else if (d[[p]] == 25) {
-          r$shape <- "triangle2"
-        } else {
-          r$shape <- "circle"
-        }
       } else {
         r[[p]] <- gsub("\"", "", d[[p]])
+      }
+    } else if (p == "shape" && !is.null(d[[p]])) {
+      if (d[[p]] == 0) {
+        r$shape <- "square"
+      } else if (d[[p]] == 1) {
+        r$shape <- "circle"
+      } else if (d[[p]] == 2) {
+        r$shape <- "triangle"
+      } else if (d[[p]] == 3) {
+        r$shape <- "plus"
+      } else if (d[[p]] == 4) {
+        r$shape <- "minus"
+      } else if (d[[p]] == 5) {
+        r$shape <- "diamond"
+      } else if (d[[p]] == 6) {
+        r$shape <- "triangle2"
+      } else if (d[[p]] == 7) {
+        r$shape <- "hexagon"
+      } else if (d[[p]] == 8) {
+        r$shape <- "star"
+      } else if (d[[p]] == 9) {
+        r$shape <- "octagon"
+      } else if (d[[p]] == 10) {
+        r$shape <- "pentagon"
+      } else if (d[[p]] == 11) {
+        r$shape <- "mdavid"
+      } else if (d[[p]] == 12) {
+        r$shape <- "drop"
+      } else if (d[[p]] == 13) {
+        r$shape <- "circleOpen"
+      } else if (d[[p]] == 14) {
+        r$shape <- "square"
+      } else if (d[[p]] == 15) {
+        r$shape <- "square"
+      } else if (d[[p]] == 16) {
+        r$shape <- "circle"
+      } else if (d[[p]] == 17) {
+        r$shape <- "triangle"
+      } else if (d[[p]] == 18) {
+        r$shape <- "diamond"
+      } else if (d[[p]] == 19) {
+        r$shape <- "circle"
+      } else if (d[[p]] == 20) {
+        r$shape <- "circle"
+      } else if (d[[p]] == 21) {
+        r$shape <- "circleOpen"
+      } else if (d[[p]] == 22) {
+        r$shape <- "square"
+      } else if (d[[p]] == 23) {
+        r$shape <- "diamond"
+      } else if (d[[p]] == 24) {
+        r$shape <- "triangle"
+      } else if (d[[p]] == 25) {
+        r$shape <- "triangle2"
+      } else {
+        r$shape <- "circle"
       }
     }
   }
@@ -686,6 +686,6 @@ data_to_matrix <- function(o, b) {
   }
   nd <- tibble::add_column(nd, Id = row.names(d), .before = 1)
   nd <- tibble::add_row(nd, .before = 1)
-  nd[1,] <- colnames(nd)
+  nd[1, ] <- colnames(nd)
   as.matrix(nd)
 }
