@@ -4659,7 +4659,7 @@ cXmap8 <- function() {
     motionBy="Year",
     theme="wallStreetJournal",
     title="Cyclones in Australia 1940-2020",
-    topoJSON="https://www.canvasxpress.org/data/australia.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/AUS.json"
   )
 }
 
@@ -4674,7 +4674,7 @@ cXmap9 <- function() {
     legendPosition="bottomRight",
     mapId="colombia",
     mapPropertyId="ID_1",
-    topoJSON="https://www.canvasxpress.org/data/colombia.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/COL.json"
   )
 }
 
@@ -4686,7 +4686,7 @@ cXmap10 <- function() {
     graphType="Map",
     legendPosition="bottomLeft",
     mapId="italy",
-    topoJSON="https://www.canvasxpress.org/data/italy.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/ITA.json"
   )
 }
 
@@ -4699,7 +4699,7 @@ cXmap11 <- function() {
     mapColor="black",
     mapId="spain",
     mapOutlineColor="white",
-    topoJSON="https://www.canvasxpress.org/data/spain.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/ESP.json"
   )
 }
 
