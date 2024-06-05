@@ -114,6 +114,8 @@ gg_cxplot <- function(o, target, ...) {
       if (!("color" %in% names(p))) {
         p$color <- bld$data[[i]]$colour
       }
+    } else if (l == "GeomDensityRidges") {
+      p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
     }
     p$stat <- proto_stat[i]
     q <- list()

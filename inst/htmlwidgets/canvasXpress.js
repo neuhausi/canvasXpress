@@ -39,8 +39,9 @@ HTMLWidgets.widget({
       renderValue: function (x) {
 
         // destroy old charts but keep track of the parent container
+        var w = x instanceof Object && x.hasOwnProperty('isPatchwork');
         var n = CanvasXpress && CanvasXpress.instances && CanvasXpress.instances.length;
-        var p = n ? document.getElementById(c.id).parentNode.parentNode.parentNode.parentNode : document.getElementById(c.id).parentNode;
+        var p = n && !w ? document.getElementById(c.id).parentNode.parentNode.parentNode.parentNode : document.getElementById(c.id).parentNode;
 
         try {
           for (var i = 0; i < CanvasXpress.instances.length; i++) {
@@ -56,24 +57,16 @@ HTMLWidgets.widget({
         // create the new chart
         if (!(x instanceof Array)) {
           if (x instanceof Object && x.hasOwnProperty('isPatchwork')) {
+            console.log('---> patchwork ' + c.id);
             if (p.firstChild && p.firstChild.tagName && p.firstChild.tagName.toLowerCase() == 'canvas') {
-              // Running in RStudio
-              console.log('---> in viewer pane');
               p.removeChild(p.firstChild);
-            } else if (p.tagName.toLowerCase() == 'body') {
-              // Running in HTML page
-              console.log('---> in HTML page');
-              p = document.getElementById(c.id).parentNode;
-              if (p && p.firstChild && p.firstChild.tagName && p.firstChild.tagName.toLowerCase() == 'canvas') {
-                p.removeChild(p.firstChild);
-              }
             }
             if (x.cols) {
               x.rows = Math.ceil(x.length / x.cols);
             } else if (x.rows) {
               x.cols = Math.ceil(x.length / x.rows);
             } else {
-              x.cols = x.length
+              x.cols = x.length;
               x.rows = 1;
             }
             var cw = Math.floor(chart_width / x.cols);
@@ -107,6 +100,7 @@ HTMLWidgets.widget({
             }
             this.resize(chart_width, chart_height);
           } else {
+            console.log('---> regular ggplot ' + c.id);
             x.renderTo = c.id;
             var e = document.getElementById(c.id);
             if (e == null && p != null) {
