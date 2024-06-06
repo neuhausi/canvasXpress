@@ -3,7 +3,6 @@
 \docType{package}
 \name{canvasXpress-package}
 \alias{canvasXpress-package}
-\alias{_PACKAGE}
 \title{CanvasXpress Visualization Package}
 \description{
 A package to assist in creating visualizations in CanvasXpress in R.
