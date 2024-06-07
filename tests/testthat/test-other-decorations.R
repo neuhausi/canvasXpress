@@ -101,6 +101,8 @@ test_that("barplot annotations", {
 })
 
 test_that("segregated barplot and boxplot marker decorations", {
+    testthat::skip_if_not_installed("dplyr")
+
     tryCatch({
         data <- iris %>%
             mutate(Facet = paste0("facet_", seq(NROW(iris)) %% 2)) %>%
@@ -166,6 +168,8 @@ test_that("segregated barplot and boxplot marker decorations", {
 })
 
 test_that("double-segregated barplot and boxplot marker decorations", {
+    testthat::skip_if_not_installed("dplyr")
+
     tryCatch({
         data <- iris %>%
             mutate(Facet      = sample(c("facet_0", "facet_1", "NA"), size = NROW(iris), replace = TRUE),

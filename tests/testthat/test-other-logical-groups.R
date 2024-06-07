@@ -79,6 +79,8 @@ test_that("bar plot values are logical", {
 })
 
 test_that("pre-calculated bar plot values are logical", {
+    testthat::skip_if_not_installed("dplyr")
+
     precalc_data <- data.frame(mean      = c(5, 10),
                                stdev     = c(0.5, 1),
                                row.names = c(FALSE, TRUE)) %>%
@@ -108,8 +110,9 @@ test_that("pre-calculated bar plot values are logical", {
 })
 
 test_that("histogram values are logical", {
-    hist_data <- data.frame("TRUE" = vals, "FALSE" = vals, check.names = FALSE)
+    testthat::skip_if_not_installed("dplyr")
 
+    hist_data       <- data.frame("TRUE" = vals, "FALSE" = vals, check.names = FALSE)
     hist_annot_list <- list(NULL,
                             select(annot_data, NumericVar),
                             select(annot_data, CategoryVar))
@@ -133,8 +136,9 @@ test_that("histogram values are logical", {
 test_that("scatter plot values are logical", {
     scatter_data <- data %>%
         t() %>%
-        as.data.frame() %>%
-        mutate(QC_Var2 = 1:6)
+        as.data.frame()
+
+    scatter_data$QC_Var2 <- 1:6
 
     for (i in seq_along(annot_data_list)) {
         result <- canvasXpress(
