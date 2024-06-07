@@ -53,9 +53,9 @@ jobs:
             # Perform package check
             R CMD check *tar.gz
 
-  Build-for-r4_2_3:
+  Build-for-r4_3_3:
     docker:
-      - image: rocker/verse:4.0.5
+      - image: rocker/verse:4.3.3
 
     steps:
       - checkout
@@ -156,5 +156,5 @@ workflows:
   Prepare-All-R-Editions:
     jobs:
       - Build-for-r4_0_5
-      - Build-for-r4_2_3
+      - Build-for-r4_3_3
       - Build-for-rLATEST
