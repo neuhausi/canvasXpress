@@ -106,11 +106,45 @@ HTMLWidgets.widget({
             if (e == null && p != null) {
               p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
             }
-            var cx = new CanvasXpress(x);
+            var cx = new CanvasXpress(this.checkData(x));
             this.resize(chart_width, chart_height);
             return cx;
           }
         }
+      },
+
+      transpose(matrix) {
+        return matrix[0].map(function(col, i) { 
+          return matrix.map(function(row) { 
+            return row[i]; 
+          }) 
+        })
+      },
+
+      checkData: function (x) {
+        if (x instanceof Object && x.hasOwnProperty('data') && x.data.hasOwnProperty('y') && x.data.y.hasOwnProperty('data')) {
+          if (x.data.y.data instanceof Array && x.data.y.data[0] instanceof Array && x.data.y.hasOwnProperty('vars') && x.data.y.hasOwnProperty('smps')) {
+            for (var i = 0; i < x.data.y.data.length; i++) {
+              for (var j = 0; j < x.data.y.data[i].length; j++) {
+                var v = x.data.y.data[i][j];
+                var n = v === null || v === undefined ? true : !isNaN(parseFloat(v)) && isFinite(v);
+                if (!n) {
+                  for (var ii = 0; ii < x.data.y.data.length; ii++) {
+                    x.data.y.data[ii].unshift(x.data.y.vars[ii]);
+                  }
+                  x.data.y.data.unshift(x.data.y.smps);
+                  x.data.y.data[0].unshift('');
+                  x.data = x.data.y.data;
+                  if (x.hasOwnProperty('config')) {
+                    x.config.isDataFrame = true;
+                  }
+                  return x;
+                }
+              }
+            }
+          }
+        }
+        return x;
       },
 
       resize: function (width, height) {
