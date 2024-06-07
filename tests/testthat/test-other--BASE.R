@@ -77,6 +77,7 @@ test_that("Name mismatches", {
 # Shiny Functionality
 
 test_that("Shiny Render", {
+    testthat::skip_if_not_installed("shiny")
     expect_s3_class(renderCanvasXpress(NULL), "shiny.render.function")
 })
 

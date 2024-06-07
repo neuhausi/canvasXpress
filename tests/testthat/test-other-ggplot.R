@@ -1,6 +1,8 @@
 context("canvasXpress ggplot conversions")
 
 test_that("simple scatterplot", {
+    testthat::skip_if_not_installed("ggplot")
+
     gg1 <- ggplot(data = mpg,
                   aes(x      = displ,
                       y      = hwy)) +
