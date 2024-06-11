@@ -35,11 +35,19 @@ test_that("Correct Data Types", {
     expect_silent(canvasXpress(data = data1.l))
 })
 
+
+test_that("destroy", {
+    testobj <- canvasXpress(destroy = TRUE)
+    expect_equivalent(class(testobj), c("canvasXpress", "htmlwidget"))
+    expect_true(is.null(testobj$width))
+    expect_true(is.null(testobj$height))
+})
+
 # Negative Tests
 
 test_that("Missing Data", {
     expect_error(canvasXpress(data = NULL),
-                 regexp =  "data cannot be NULL!")
+                 regexp = "data cannot be NULL!")
 })
 
 test_that("Incorrect Data Types", {
@@ -74,6 +82,27 @@ test_that("Name mismatches", {
                                varAnnot = data1.var))
 })
 
+test_that("piping - non missing smpAnnot or varAnnot", {
+    expect_error(canvasXpress(data = iris) %>% canvasXpress(smpAnnot = "test"),
+                 regexp = "Primary object data changes are not supported when modifying a canvasXpress object (ie piping) - ie changes to the data, varAnnot or smpAnnot parameters.",
+                 fixed  = TRUE)
+})
+
+test_that("piping - missing original cx", {
+    cxobj   <- canvasXpress(destroy = TRUE)
+    cxobj$x <- NULL
+    expect_error(cxobj %>% canvasXpress(x = NULL),
+                 regexp = "Original canvasXpress object is invalid and cannot be read",
+                 fixed  = TRUE)
+})
+
+test_that("piping - missing graph type", {
+    cxobj <- canvasXpress(iris)
+    cxobj <- cxobj %>% canvasXpress(graphType = NULL)
+    expect_equivalent(class(cxobj), c("canvasXpress", "htmlwidget"))
+})
+
+
 # Shiny Functionality
 
 test_that("Shiny Render", {
@@ -95,4 +124,34 @@ test_that("Shiny Input", {
 
     expect_equal(as.character(canvasXpressOutput("test_id")),
                  '<div class="canvasXpress html-widget html-widget-output shiny-report-size html-fill-item" id="test_id" style="width:100%;height:400px;"></div>')
+})
+
+
+test_that("canvasXpressOutput", {
+    cx_output <- canvasXpressOutput("outputId")
+    expect_true(is.list(cx_output))
+})
+
+
+# json function
+test_that("canvasXpress.json - destroy ", {
+    cx_output <- canvasXpress.json(json = NULL, destroy = TRUE)
+    expect_equivalent(class(cx_output), c("canvasXpress", "htmlwidget"))
+    expect_true(is.null(cx_output$width))
+    expect_true(is.null(cx_output$height))
+})
+
+test_that("canvasXpress.json - null json ", {
+    expect_error(canvasXpress.json(json = NULL),
+                 regexp = "json must be supplied and be a character or json object",
+                 fixed  = TRUE)
+})
+
+test_that("canvasXpress.json - valid json ", {
+    my_json <- '{ "data": {"y": { "vars": ["Performance"],
+                              "smps": ["January"],
+                              "data": [[85]] }},
+              "config": { "graphType": "Meter",
+                          "meterType": "gauge" }}'
+    expect_equivalent(class(canvasXpress.json(json = my_json)), c("canvasXpress", "htmlwidget"))
 })
