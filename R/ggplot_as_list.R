@@ -229,7 +229,10 @@ gg_theme <- function(o) {
   }
   t <- list()
   e <- gg_fun("plot_theme")(o)
-  s <- as.numeric(e[["text"]][["size"]])
+  s <- 11
+  if (!is.null(e[["text"]][["size"]])) {
+    s <- as.numeric(e[["text"]][["size"]])
+  }
   atts <- ls(e)
   for (a in atts) {
     if (is.list(e[[a]])) {
