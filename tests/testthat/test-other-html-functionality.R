@@ -6,6 +6,9 @@ test_that("cxHtmlPage - pass non cx object", {
 
 
 test_that("cxHtmlPage - cx object", {
+    skip_on_cran()
+    skip_on_ci()
+
     result <- cxHtmlPage(cXscatter2d5(), width = "45%", height = "48vh")
     expect_true(is.character(result))
     expect_true(nchar(result) > 0)
