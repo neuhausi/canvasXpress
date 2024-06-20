@@ -116,6 +116,12 @@ gg_cxplot <- function(o, target, ...) {
       }
     } else if (l == "GeomDensityRidges") {
       p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
+    } else if (l == "GeomRect" || l == "GeomTile") {
+      p$xmin <- bld$data[[i]]$xmin
+      p$xmax <- bld$data[[i]]$xmax
+      p$ymin <- bld$data[[i]]$ymin
+      p$ymax <- bld$data[[i]]$ymax
+      p$col <- bld$data[[i]]$fill
     }
     p$stat <- proto_stat[i]
     q <- list()
