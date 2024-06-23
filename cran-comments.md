@@ -1,36 +1,36 @@
 ## Comments from Maintainer
 
-* patch fix for tests for the release of HTMLwidgets 1.6.3 by Carson next week
+- Update to underlying JS library (canvasXpress)
+- noSuggests issues resolved
 
-There is 1 note on the release because we put out a recent release but were just notified by Carson of this need in order to not end up with our package failing tests on CRAN.
-
-Version: I added -1 to the version because we intend to keep the underlying JS canvasXpress library in sync with the 2nd two components of the version of the package.  The package version reflects the JS library version so to make this patch we need to add a 4th component to the version.
+Note: there is a package that has been archived on CRAN that has a reverse dependency.  This is unable to be checked by revdepcheck as noted below, however is not something we can resolve on our end.  The package with the issue is MAFDash https://cran.r-project.org/package=MAFDash
 
 ---  
 
 ## Test environments
 
 
-RStudio Server Pro (ubuntu 18.04.2)  
+RStudio Server (ubuntu 20.04)  
 
-* R 4.0.5
-* R 4.2.3
-* R 4.3.1
+* R 4.3.3
 
 CircleCI
 
 * R 4.0.5
-* R 4.3.2
+* R 4.3.3
+* R Latest
 
 WinBuilder
 
 * devtools::check_win_devel()  
 * devtools::check_win_release()  
 
-RHub
 
-* devtools::check_rhub(interactive = F, 
-                       env_vars    = c(`_R_CHECK_FORCE_SUGGESTS_` = "false"))
+RHub (v2)
+
+rhub::rhub_check(branch    = "cran", 
+                 platforms = c("ubuntu-next", "ubuntu-release", "nosuggests",  # linux platforms
+                               "linux", "macos-arm64", "windows"))             # other platforms
 
 
 ---  
@@ -55,7 +55,7 @@ devtools::check()
 
 ```
 > revdepcheck::cran_revdeps('canvasXpress', bioc = T)
-[1] "canvasXpress"      "canvasXpress.data" "DGEobj.utils"      "MAFDash"           "periscope"         "periscope2"       
+[1] "dbparser"     "DGEobj.utils" "MAFDash"      "periscope"    "periscope2"  
 ```
 
 ```
@@ -65,6 +65,11 @@ devtools::check()
 We checked 5 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
- * We failed to check 0 packages
+ * We failed to check 1 packages
 
+Issues with CRAN packages are summarised below.
+
+### Failed to check
+
+* MAFDash (NA)
 ```
