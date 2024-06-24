@@ -46,7 +46,7 @@ test_that("Scatterplot toolbarType over", {
                             xAxis                   = list("wt"),
                             yAxis                   = list("mpg"),
                             title                   =  "ScatterPlot - toolbarType: over",
-                            afterRender             = list(list("addRegressionLine", list("cyl"))),
+                            showRegressionFit       = "cyl",
                             toolbarType             = "over")
 
     check_ui_test(result)
@@ -137,7 +137,7 @@ test_that("Barplot segregated toolbarType fixed", {
                             legendColumns      = 2,
                             legendPosition     = "bottom",
                             showTransition     = FALSE,
-                            smpLabelRotate     = 90,
+                            smpTextRotate      = 90,
                             smpTitle           = "Species",
                             title              = "Segregated BarPlot - toolbarType: fixed",
                             segregateSamplesBy = list("Species"),

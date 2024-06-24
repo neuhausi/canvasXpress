@@ -11,7 +11,7 @@ cXarea1 <- function() {
     showLegend=FALSE,
     showSampleNames=TRUE,
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="time"
   )
 }
@@ -29,7 +29,7 @@ cXarea2 <- function() {
     objectColorTransparency=0.7,
     showTransition=FALSE,
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     theme="CanvasXpress",
@@ -53,7 +53,7 @@ cXarea3 <- function() {
     legendPosition="right",
     lineType="spline",
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
@@ -75,7 +75,7 @@ cXarea4 <- function() {
     lineType="spline",
     showTransition=FALSE,
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
@@ -124,6 +124,42 @@ cXarea6 <- function() {
   )
 }
 
+cXarea7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-scatterArea-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-scatterArea-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="g",
+    colorScheme="GGPlot",
+    graphType="Scatter2D",
+    scatterType="area",
+    theme="GGPlot"
+  )
+}
+
+cXarea8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-fontana-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-fontana-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="country",
+    colors=list("rgb(0,63,92)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(160,81,149)", "rgb(212,80,135)", "rgb(249,93,106)", "rgb(255,124,67)", "rgb(255,166,0)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    legendColumns=4,
+    legendPosition="bottom",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterType="area",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
 cXarealine1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-arealine-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -138,7 +174,7 @@ cXarealine1 <- function() {
     lineThickness=3,
     lineType="spline",
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
@@ -164,7 +200,7 @@ cXarealine2 <- function() {
     lineThickness=3,
     lineType="spline",
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
@@ -189,7 +225,7 @@ cXarealine3 <- function() {
     lineThickness=3,
     lineType="spline",
     smpLabelInterval=20,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
@@ -207,7 +243,7 @@ cXbar1 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     showLegend=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
     title="Bar Graph Title",
@@ -224,7 +260,7 @@ cXbar2 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     showLegend=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
     title="Simple Bar graph with annotations",
@@ -241,7 +277,7 @@ cXbar3 <- function() {
     graphType="Bar",
     showDataValues=TRUE,
     showLegend=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
     title="Bar Graph Title",
@@ -256,7 +292,7 @@ cXbar4 <- function() {
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
     title="Bar graph with two series",
@@ -282,7 +318,7 @@ cXbar5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Species",
     title="Iris flower data set",
     xAxis2Show=FALSE
@@ -303,7 +339,7 @@ cXbar6 <- function() {
     legendColumns=2,
     legendPosition="bottom",
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Species",
     splitSamplesBy="Species",
     theme="blackAndWhite",
@@ -326,9 +362,9 @@ cXbar7 <- function() {
     graphType="Bar",
     legendTextFontStyle="italic",
     plotByVariable=TRUE,
-    smpLabelFontStyle="italic",
     smpLabelInterval=2,
-    smpLabelRotate=45,
+    smpTextFontStyle="italic",
+    smpTextRotate=45,
     smpTitle="Sample Title",
     theme="CanvasXpress",
     title="Random data set",
@@ -419,12 +455,12 @@ cXbar11 <- function() {
     legendPosition="right",
     objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     subtitle="2014 Census",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMinorShow=FALSE
   )
 }
 
@@ -504,10 +540,11 @@ cXbar14 <- function() {
     maxSmpStringLen=50,
     objectBorderColor="rgb(0,0,0)",
     showLegendTitle=FALSE,
-    smpLabelScaleFontFactor=2,
+    smpTextScaleFontFactor=2,
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
+    xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
 }
@@ -517,7 +554,6 @@ cXbar15 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-animationMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    background="rgb(48,114,148)",
     backgroundType="solid",
     colorScheme="Blues",
     colors=list("rgb(75,179,216)"),
@@ -531,18 +567,20 @@ cXbar15 <- function() {
     marginTop=50,
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
+    plotBackgroundColor="rgb(48,114,148)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.5,
+    smpTextColor="rgb(255,255,255)",
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.1,
     title="Animation Movies",
+    titleAlign="center",
     titleColor="rgb(255,255,255)",
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -553,7 +591,6 @@ cXbar16 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    background="rgb(48,114,148)",
     backgroundType="solid",
     barPath=TRUE,
     barPathColor="rgb(48,126,164)",
@@ -569,17 +606,19 @@ cXbar16 <- function() {
     marginTop=50,
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
+    plotBackgroundColor="rgb(48,114,148)",
     showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
-    smpLabelScaleFontFactor=3,
+    smpTextColor="rgb(255,255,255)",
+    smpTextScaleFontFactor=2,
     title="Friendship, Love, Family",
+    titleAlign="center",
     titleColor="rgb(254,225,60)",
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -599,7 +638,7 @@ cXbarline1 <- function() {
     lineThickness=2,
     lineType="spline",
     showTransition=FALSE,
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Collection of Samples",
     subtitle="Random Data",
     theme="CanvasXpress",
@@ -670,15 +709,15 @@ cXboxplot1 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -697,7 +736,7 @@ cXboxplot2 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     graphOrientation="horizontal",
@@ -706,15 +745,15 @@ cXboxplot2 <- function() {
     objectBorderColor=FALSE,
     objectColorTransparency=0.5,
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -727,7 +766,7 @@ cXboxplot3 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     boxplotNotched=TRUE,
@@ -736,15 +775,15 @@ cXboxplot3 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -757,7 +796,7 @@ cXboxplot4 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     boxplotNotched=TRUE,
@@ -767,8 +806,8 @@ cXboxplot4 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -776,7 +815,7 @@ cXboxplot4 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -789,7 +828,7 @@ cXboxplot5 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     boxplotMean=TRUE,
@@ -801,15 +840,15 @@ cXboxplot5 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -822,7 +861,7 @@ cXboxplot6 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     boxplotMedianColor="red",
@@ -833,15 +872,15 @@ cXboxplot6 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -854,7 +893,7 @@ cXboxplot7 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     boxplotHingeFunction="fivenum",
@@ -864,15 +903,15 @@ cXboxplot7 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dose"),
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -885,7 +924,7 @@ cXboxplot8 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     graphOrientation="vertical",
@@ -894,15 +933,15 @@ cXboxplot8 <- function() {
     jitter=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -915,7 +954,7 @@ cXboxplot9 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     binAlignment="center",
@@ -926,15 +965,15 @@ cXboxplot9 <- function() {
     jitter=FALSE,
     showBoxplotOriginalData=TRUE,
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -947,12 +986,11 @@ cXboxplot10 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -963,19 +1001,20 @@ cXboxplot10 <- function() {
     jitter=TRUE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     shapeBy="supp",
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -988,7 +1027,7 @@ cXboxplot11 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     colorBy="dose",
@@ -998,8 +1037,8 @@ cXboxplot11 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -1007,7 +1046,7 @@ cXboxplot11 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1020,12 +1059,11 @@ cXboxplot12 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -1035,17 +1073,18 @@ cXboxplot12 <- function() {
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1058,12 +1097,11 @@ cXboxplot13 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotType="range",
     colorBy="dose",
     colorScheme="GGPlot",
@@ -1074,17 +1112,18 @@ cXboxplot13 <- function() {
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1097,12 +1136,11 @@ cXboxplot14 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -1112,17 +1150,18 @@ cXboxplot14 <- function() {
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1135,7 +1174,7 @@ cXboxplot15 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     colorBy="dose",
@@ -1145,8 +1184,8 @@ cXboxplot15 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -1154,7 +1193,7 @@ cXboxplot15 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len",
     afterRender=list(list("pivotX", list("dose")))
   )
@@ -1168,12 +1207,11 @@ cXboxplot16 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotConnect=TRUE,
     colorBy="supp",
     colorScheme="GGPlot",
@@ -1184,18 +1222,19 @@ cXboxplot16 <- function() {
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1208,12 +1247,11 @@ cXboxplot17 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotConnect=TRUE,
     colorBy="supp",
     colorScheme="GGPlot",
@@ -1224,19 +1262,22 @@ cXboxplot17 <- function() {
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1249,12 +1290,11 @@ cXboxplot18 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="supp",
     colorScheme="GGPlot",
     connectBy="order",
@@ -1266,19 +1306,22 @@ cXboxplot18 <- function() {
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose", "order"),
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -1634,7 +1677,7 @@ cXcircular8 <- function() {
     ringsOrder=list("subject", "labels", "sample"),
     segregateSamplesBy=list("subject"),
     showLegend=FALSE,
-    smpLabelScaleFontFactor=0.3,
+    smpTextScaleFontFactor=0.3,
     xAxis=list("var1"),
     xAxisShow=FALSE
   )
@@ -1836,7 +1879,7 @@ cXdashboard3 <- function() {
     graphType="Boxplot",
     histogramBins=FALSE,
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Smoking Status",
     theme="lastAirBenderWater",
     afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
@@ -1880,14 +1923,15 @@ cXdashboard6 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    asDOE=TRUE,
     colorBy="Stay Home Sick",
     graphType="Map",
     histogramBins=FALSE,
+    layoutConfig=list(list(size="2X2")),
     legendPosition="top",
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
-    topoJSON="https://www.canvasxpress.org/data/bc.json",
-    afterRender=list(list("createDOE"), list("updateDOEGraphSize", list(list('2X2', 0))))
+    topoJSON="https://www.canvasxpress.org/data/bc.json"
   )
 }
 
@@ -1900,7 +1944,8 @@ cXdensity1 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramStat="count",
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     theme="CanvasXpress"
   )
@@ -1913,9 +1958,12 @@ cXdensity2 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="normal",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramStat="density",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1929,10 +1977,12 @@ cXdensity3 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="stacked",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramStat="density",
     showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1946,10 +1996,14 @@ cXdensity4 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="filled",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData="sex",
+    histogramStat="density",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
     theme="CanvasXpress"
   )
 }
@@ -1961,9 +2015,12 @@ cXdensity5 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    densityPosition="stacked",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData="sex",
+    histogramStat="count",
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1979,8 +2036,8 @@ cXdensity6 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData="sex",
     showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
@@ -1995,17 +2052,65 @@ cXdensity7 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=FALSE,
-    histogramBins=20,
-    histogramData="sex",
-    showFilledHistogramDensity=TRUE,
+    hideHistogram=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress"
   )
 }
 
-cXdensity8 <- function() {
+cXdensity9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=FALSE,
+    histogramBins=20,
+    showFilledHistogramDensity=TRUE,
+    showHistogram="sex",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=TRUE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity11 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-density2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-density2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2027,64 +2132,6 @@ cXdensity8 <- function() {
   )
 }
 
-cXdensity9 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    varAnnot=z,
-    graphType="Scatter2D",
-    hideHistogram=TRUE,
-    histogramData=TRUE,
-    histogramStat="count",
-    segregateVariablesBy=list("Species"),
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
-    theme="CanvasXpress"
-  )
-}
-
-cXdensity10 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    varAnnot=z,
-    colorBy="Species",
-    graphType="Scatter2D",
-    hideHistogram=TRUE,
-    histogramData=TRUE,
-    histogramStat="count",
-    segregateVariablesBy=list("Species"),
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
-    theme="CanvasXpress"
-  )
-}
-
-cXdensity11 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    varAnnot=z,
-    graphType="Scatter2D",
-    hideHistogram=TRUE,
-    histogramData=TRUE,
-    histogramStat="count",
-    segregateSamplesBy=list("sample"),
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
-    theme="CanvasXpress"
-  )
-}
-
 cXdensity12 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2092,13 +2139,70 @@ cXdensity12 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramStat="count",
+    showFilledHistogramDensity=TRUE,
+    showHistogram=TRUE,
+    showHistogramDensity=TRUE,
+    showHistogramMedian=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
     hideHistogram=TRUE,
-    histogramData=TRUE,
+    histogramStat="count",
+    segregateVariablesBy=list("Species"),
+    showFilledHistogramDensity=TRUE,
+    showHistogram="Species",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
     histogramStat="count",
     segregateSamplesBy=list("sample"),
     showFilledHistogramDensity=TRUE,
+    showHistogram="sample",
+    showHistogramDensity=TRUE,
+    showHistogramMedian=FALSE,
+    theme="CanvasXpress"
+  )
+}
+
+cXdensity15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Species",
+    graphType="Scatter2D",
+    hideHistogram=TRUE,
+    histogramStat="count",
+    segregateSamplesBy=list("sample"),
+    showFilledHistogramDensity=TRUE,
+    showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     theme="CanvasXpress"
@@ -2164,7 +2268,7 @@ cXdotline1 <- function() {
     legendPosition="bottom",
     lineThickness=2,
     lineType="spline",
-    smpLabelRotate=45,
+    smpTextRotate=45,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
@@ -2172,7 +2276,7 @@ cXdotline1 <- function() {
     title="Dot-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4"),
-    xAxisTickColor="rgb(0,0,0)"
+    xAxisGridMajorColor="rgb(0,0,0)"
   )
 }
 
@@ -2239,9 +2343,9 @@ cXdotplot1 <- function() {
     graphType="Dotplot",
     lineType="spline",
     showSmpOverlaysLegend=TRUE,
-    smpLabelRotate=45,
     smpOverlayProperties=list(Factor4=list(color="blue", showLegend=TRUE, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=TRUE, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=TRUE, thickness=50, type="Bar")),
     smpOverlays=list("Factor1", "Factor2", "Factor3"),
+    smpTextRotate=45,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
@@ -2258,7 +2362,7 @@ cXdotplot2 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
+    axisTextFontStyle="bold",
     axisTitleFontStyle="italic",
     citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
     citationFontStyle="italic",
@@ -2267,8 +2371,8 @@ cXdotplot2 <- function() {
     graphType="Dotplot",
     jitter=TRUE,
     marginBottom=30,
-    smpLabelFontStyle="italic",
-    smpLabelRotate=90,
+    smpTextFontStyle="italic",
+    smpTextRotate=90,
     smpTitle="Species",
     theme="CanvasXpress",
     title="Iris flower data set",
@@ -2281,11 +2385,9 @@ cXdotplot3 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     citation="Henderson, H. V. and Velleman, P. F. (1981), Building Regression Models Interactively. Biometrics, 37, 391-411.",
     citationFontStyle="italic",
     graphType="Dotplot",
@@ -2316,8 +2418,8 @@ cXdotplot4 <- function() {
     theme="CanvasXpress",
     title="Gender Earnings Disparity",
     xAxis2Title="Annual Salary",
+    xAxisGridMinorShow=FALSE,
     xAxisTickFormat="\$%sK",
-    xAxisTicksMinorShow=FALSE,
     xAxisTitle="Annual Salary",
     afterRender=list(list("sortSamplesByVariable", list("Men")))
   )
@@ -2331,7 +2433,7 @@ cXdotplot5 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     binned=TRUE,
@@ -2342,15 +2444,15 @@ cXdotplot5 <- function() {
     groupingFactors=list("dose"),
     jitter=FALSE,
     showLegend=FALSE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2363,7 +2465,7 @@ cXdotplot6 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     binned=TRUE,
@@ -2381,15 +2483,15 @@ cXdotplot6 <- function() {
     legendTitleScaleFontFactor=1.8,
     shapeBy="supp",
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2402,12 +2504,11 @@ cXdotplot7 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     binned=TRUE,
     colorBy="dose",
     colorScheme="Blues",
@@ -2420,18 +2521,19 @@ cXdotplot7 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     objectBorderColor="rgba(0,0,0)",
+    panelBackgroundColor="#E5E5E5",
     showErrorBars=FALSE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2444,12 +2546,11 @@ cXdotplot8 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     binned=TRUE,
     colorBy="dose",
     colorScheme="Blues",
@@ -2462,19 +2563,20 @@ cXdotplot8 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     objectBorderColor="rgba(0,0,0)",
+    panelBackgroundColor="#E5E5E5",
     showErrorBars=FALSE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
-    splitSamplesBy="dose",
+    splitSamplesBy="supp",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2487,12 +2589,11 @@ cXdotplot9 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     binned=TRUE,
     colorBy="dose",
     colorScheme="Blues",
@@ -2505,18 +2606,19 @@ cXdotplot9 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     objectBorderColor="rgba(0,0,0)",
+    panelBackgroundColor="#E5E5E5",
     showErrorBars=FALSE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2529,12 +2631,11 @@ cXdotplot10 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     binned=TRUE,
     colorBy="dose",
     colorScheme="Blues",
@@ -2547,19 +2648,22 @@ cXdotplot10 <- function() {
     legendTextScaleFontFactor=1.8,
     legendTitleScaleFontFactor=1.8,
     objectBorderColor="rgba(0,0,0)",
+    panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
     showErrorBars=FALSE,
     showLegend=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -2594,7 +2698,7 @@ cXdotplot12 <- function() {
     colorBy="Character",
     colors=list("rgb(45,24,18)", "rgb(95,50,31)", "rgb(22,25,16)", "rgb(56,54,25)", "rgb(165,113,76)", "rgb(116,50,36)", "rgb(170,99,47)", "rgb(195,152,60)", "rgb(0,0,0)"),
     dotplotOutlineThreshold=1,
-    dotplotType="movement",
+    dotplotType1="movement",
     fontName="Bilbo",
     fonts=list("Bilbo"),
     graphOrientation="horizontal",
@@ -2602,7 +2706,6 @@ cXdotplot12 <- function() {
     groupingFactors=list("Character"),
     images=list("https://www.canvasxpress.org/assets/images/Frodo.png", "https://www.canvasxpress.org/assets/images/Gandalf.png", "https://www.canvasxpress.org/assets/images/Merry.png", "https://www.canvasxpress.org/assets/images/Pippin.png", "https://www.canvasxpress.org/assets/images/Sam.png", "https://www.canvasxpress.org/assets/images/Aragorn.png", "https://www.canvasxpress.org/assets/images/Boromir.png", "https://www.canvasxpress.org/assets/images/Gimli.png", "https://www.canvasxpress.org/assets/images/Legolas.png"),
     layoutAdjust=TRUE,
-    layoutBoxShow=FALSE,
     layoutTopology="1X3",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
@@ -2617,15 +2720,22 @@ cXdotplot12 <- function() {
     sizeBy="Words",
     sizeByContinuous=TRUE,
     sizeByShowLegend=FALSE,
-    sizes=list(5, 10, 15, 25, 35, 40, 50, 60, 70, 90, 120),
+    sizes=list(5, 15, 25, 35, 45, 60, 80, 100, 120, 130, 150),
     smpLabelImage=TRUE,
     smpLabelImageRound=TRUE,
-    smpLabelScaleFontFactor=0.9,
+    smpTextScaleFontFactor=0.9,
+    sortData=list(list("cat", "smp", "Character"), list("cat", "smp", "Chapter Name")),
+    stripBackgroundBorderColor="rgba(0,0,0,0)",
+    stripTextFontStyle="bold",
+    stripTextScaleFontFactor=1.2,
     title="Words per Chapter by Character",
+    titleAlign="center",
+    titleFontStyle="bold",
+    titleScaleFontFactor=1.6,
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -2656,13 +2766,13 @@ cXdotplot13 <- function() {
     objectBorderColor="rgba(0,0,0)",
     showLegendTitle=FALSE,
     smpLabelInterval=8,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     timeFormat="year",
     title="The Life and Films of Audrey Hepburn",
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -2687,7 +2797,7 @@ cXdotplot14 <- function() {
     maxSmpStringLen=50,
     objectBorderColor="rgba(0,0,0)",
     showLegendTitle=FALSE,
-    smpLabelScaleFontFactor=2,
+    smpTextScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
     xAxis2Show=TRUE,
     xAxisShow=FALSE
@@ -2714,12 +2824,12 @@ cXdotplot15 <- function() {
     sizeBy="Size",
     sizes=list(2, 15, 25, 35, 70, 150),
     smpLabelInterval=100,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     timeFormat="isoDate",
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -2737,6 +2847,8 @@ cXfacet1 <- function() {
     layoutCollapse=FALSE,
     layoutType="rows",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
@@ -2756,6 +2868,8 @@ cXfacet2 <- function() {
     layoutCollapse=TRUE,
     layoutType="rows",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
   )
@@ -2775,6 +2889,8 @@ cXfacet3 <- function() {
     layoutCollapse=FALSE,
     layoutType="cols",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateVariables", list("Annt2")))
   )
@@ -2794,6 +2910,7 @@ cXfacet4 <- function() {
     layoutCollapse=FALSE,
     layoutType="wrap",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
   )
@@ -2812,6 +2929,8 @@ cXfacet5 <- function() {
     legendBox=TRUE,
     shapeBy="Age",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
@@ -2833,6 +2952,8 @@ cXfacet6 <- function() {
     legendBox=TRUE,
     shapeBy="Age",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
@@ -2854,6 +2975,8 @@ cXfacet7 <- function() {
     legendBox=TRUE,
     shapeBy="Age",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
@@ -2875,6 +2998,8 @@ cXfacet8 <- function() {
     legendBox=TRUE,
     shapeBy="Age",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
@@ -2888,8 +3013,7 @@ cXfish1 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    backgroundType="window",
-    backgroundWindow="#ffe4c4",
+    backgroundType="panel",
     colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 150),
     fishParents=list(0, 1, 1, 3),
@@ -2900,6 +3024,7 @@ cXfish1 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
+    panelBackgroundColor="#ffe4c4",
     title="Sample1"
   )
 }
@@ -2909,7 +3034,7 @@ cXfish2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    backgroundType="windowSolidGradient",
+    backgroundType="panelSolidGradient",
     colorSpectrum=list("bisque", "darkgoldenrod1", "darkorange3"),
     colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 423),
@@ -2921,8 +3046,8 @@ cXfish2 <- function() {
     graphType="Fish",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    varLabelFontColor="green",
-    varLabelRotate=30
+    varTextColor="green",
+    varTextRotate=30
   )
 }
 
@@ -2931,7 +3056,7 @@ cXfish3 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    backgroundType="windowSolidGradient",
+    backgroundType="panelSolidGradient",
     colorSpectrum=list("#ffe4c4", "#ffb90f", "#cd6600"),
     colors=list("#1B9E77", "#D95F02", "#7570B3", "#E7298A"),
     fishAxis=list(0, 120),
@@ -2952,7 +3077,7 @@ cXfish4 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    backgroundType="windowSolidGradient",
+    backgroundType="panelSolidGradient",
     colorSpectrum=list("#ffe4c4", "#ffb90f", "#cd6600"),
     colors=list("#888888", "#EF0000", "#8FFF40", "#FF6000", "#50FFAF", "#FFCF00", "#0070FF"),
     fishAxis=list(0, 34, 69, 187, 334, 505, 530, 650, 750),
@@ -2972,8 +3097,7 @@ cXfish5 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    backgroundType="window",
-    backgroundWindow="#ffe4c4",
+    backgroundType="panel",
     colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 150),
     fishCloneLabels=list("TP53,MET", "NF1", "", "8q+,6p-"),
@@ -2984,7 +3108,8 @@ cXfish5 <- function() {
     legendColumns=4,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="bottom"
+    legendPosition="bottom",
+    panelBackgroundColor="#ffe4c4"
   )
 }
 
@@ -3399,15 +3524,15 @@ cXheatmap12 <- function() {
     graphType="Heatmap",
     showSmpOverlaysLegend=FALSE,
     showVarOverlaysLegend=FALSE,
-    smpLabelScaleFontFactor=1.1,
     smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=TRUE, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=TRUE, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=TRUE, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
+    smpTextScaleFontFactor=1.1,
     splitSamplesBy="Discrete",
     splitVariablesBy="Drug",
-    varLabelRotate=45,
-    varLabelScaleFontFactor=1.7,
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=TRUE, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=TRUE, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=TRUE, thickness=50, type="Bar"), Female=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=TRUE, thickness=50, type="BarLine"), Site=list(position="top", showLegend=TRUE, type="Default"), Ugly=list(color="black", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot")),
-    varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot")
+    varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
+    varTextRotate=45,
+    varTextScaleFontFactor=1.7
   )
 }
 
@@ -3425,8 +3550,8 @@ cXheatmap13 <- function() {
     overlayFontStyle="bold",
     overlayScaleFontFactor=2,
     samplesClustered=TRUE,
-    showLevelOverlays=FALSE,
     showSmpOverlaysLegend=TRUE,
+    showValueOverlays=FALSE,
     showVarOverlaysLegend=TRUE,
     smpDendrogramPosition="right",
     smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
@@ -3554,68 +3679,116 @@ cXhexplotbinplot5 <- function() {
 cXhistogram1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     varAnnot=z,
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=10,
+    showHistogram=TRUE,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
-    yAxisTitle="Number of Subjects",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Number of Subjects"
   )
 }
 
 cXhistogram2 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     varAnnot=z,
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=20,
-    showTransition=FALSE,
+    showHistogram=TRUE,
+    showHistogramPath=TRUE,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
-    yAxisTitle="Number of Subjects",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Number of Subjects"
   )
 }
 
 cXhistogram3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
-    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
-    decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
+    varAnnot=z,
+    axisTitleFontStyle="italic",
+    citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
+    hideHistogram=TRUE,
     histogramBins=20,
-    showTransition=FALSE,
+    showFilledHistogramPath=TRUE,
+    showHistogram=TRUE,
+    showHistogramPath=TRUE,
     theme="CanvasXpress",
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
-    xAxisTitle="Pounds Spent",
-    yAxisTitle="Frequency",
-    afterRender=list(list("createHistogram"))
+    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    xAxisTitle="Survival (days)",
+    yAxisTitle="Number of Subjects"
   )
 }
 
 cXhistogram4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
+    graphType="Scatter2D",
+    histogramBins=5,
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
+  )
+}
+
+cXhistogram5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
+    graphType="Scatter2D",
+    histogramBins=5,
+    histogramType="staggered",
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
+  )
+}
+
+cXhistogram6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
+    graphType="Scatter2D",
+    histogramBins=5,
+    histogramType="stacked",
+    showHistogram=TRUE,
+    theme="CanvasXpress",
+    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxisTitle="Pounds Spent",
+    yAxisTitle="Frequency"
+  )
+}
+
+cXhistogram7 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3628,11 +3801,14 @@ cXhistogram4 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    showHistogram="dataset",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
-cXhistogram5 <- function() {
+cXhistogram8 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3645,11 +3821,14 @@ cXhistogram5 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    showHistogram="dataset",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
-cXhistogram6 <- function() {
+cXhistogram9 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3662,11 +3841,14 @@ cXhistogram6 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("createHistogram"))
+    showHistogram="dataset",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
-cXhistogram7 <- function() {
+cXhistogram10 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-mtcars2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-mtcars2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3676,11 +3858,11 @@ cXhistogram7 <- function() {
     graphType="Scatter2D",
     histogramAsDotplot=TRUE,
     histogramBinWidth=3,
+    showHistogram=TRUE,
     theme="CanvasXpress",
     xAxis=list("mpg"),
     xAxisTitle="mpg",
-    yAxisTitle="Frequency",
-    afterRender=list(list("createHistogram"))
+    yAxisTitle="Frequency"
   )
 }
 
@@ -3690,8 +3872,8 @@ cXkaplanmeier1 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
+    showKMConfidenceIntervals=FALSE,
     showLegend=FALSE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
@@ -3707,7 +3889,7 @@ cXkaplanmeier2 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     showTransition=FALSE,
     title="Kaplan-Meier Plot",
     xAxisTitle="Weeks",
@@ -3727,7 +3909,7 @@ cXkaplanmeier3 <- function() {
     graphType="Scatter2D",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("addKMPlot"))
@@ -3747,7 +3929,7 @@ cXkaplanmeier4 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottomLeft",
-    showConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=TRUE,
     xAxis=list("Survival", "Survival2"),
     xAxisTitle="Weeks",
     yAxis=list("Survival-Censor", "Survival2-Censor"),
@@ -3766,7 +3948,7 @@ cXkaplanmeier5 <- function() {
     colorBy="Sex",
     graphType="Scatter2D",
     invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=FALSE,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
@@ -3798,11 +3980,12 @@ cXlayout2 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -3818,8 +4001,8 @@ cXlayout3 <- function() {
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine"))
+    showRegressionFit=TRUE,
+    theme="CanvasXpress"
   )
 }
 
@@ -3848,12 +4031,13 @@ cXlayout5 <- function() {
     varAnnot=z,
     broadcast=TRUE,
     colorBy="Species",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=FALSE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
-    theme="CanvasXpress",
-    afterRender=list(list("addRegressionLine", list("Species")))
+    showRegressionFit="Species",
+    theme="CanvasXpress"
   )
 }
 
@@ -3864,7 +4048,7 @@ cXlayout6 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTickFontStyle="bold",
+    axisTextFontStyle="bold",
     axisTitleFontStyle="italic",
     citation="R. A. Fisher (1936). The use of multiple measurements in taxonomic problems. Annals of Eugenics 7 (2) => 179-188.",
     citationFontStyle="italic",
@@ -3872,9 +4056,11 @@ cXlayout6 <- function() {
     graphOrientation="vertical",
     graphType="Boxplot",
     showTransition=FALSE,
-    smpLabelFontStyle="italic",
-    smpLabelRotate=90,
+    smpTextFontStyle="italic",
+    smpTextRotate=90,
     smpTitle="Species",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Iris flower data set",
     xAxis2Show=FALSE,
@@ -3886,16 +4072,16 @@ cXlayout7 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     graphOrientation="vertical",
     graphType="Dotplot",
     legendColumns=3,
     legendPosition="bottom",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
@@ -3914,6 +4100,8 @@ cXlayout8 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("groupSamples", list("Factor1")), list("segregateSamples", list("Factor1")))
   )
@@ -3931,6 +4119,8 @@ cXlayout9 <- function() {
     graphOrientation="horizontal",
     graphType="Bar",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
   )
@@ -3949,6 +4139,8 @@ cXlayout10 <- function() {
     graphType="Bar",
     layoutType="rows",
     showTransition=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
@@ -3963,9 +4155,12 @@ cXlayout11 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Boxplot",
+    histogramBins=FALSE,
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Smoking Status",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
   )
 }
@@ -3978,6 +4173,7 @@ cXlayout12 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=FALSE,
     showTransition=FALSE,
     theme="CanvasXpress",
     afterRender=list(list("createDOE"))
@@ -3992,6 +4188,7 @@ cXlayout13 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
+    histogramBins=FALSE,
     invertCensored=TRUE,
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
@@ -4013,9 +4210,11 @@ cXlayout14 <- function() {
     graphType="Bar",
     layoutAdjust=TRUE,
     layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=FALSE, barType="lollipop", xAxisTitle="Baseline (mm)")),
-    layoutLabelShow=FALSE,
     layoutTopology="3X1",
     showLegend=FALSE,
+    stripBackgroundBorderColor="rgba(0,0,0,0)",
+    stripShow=FALSE,
+    stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Tumor Response and Duration by Subject Id",
     xAxis2Show=FALSE,
@@ -4034,13 +4233,15 @@ cXlayout15 <- function() {
     varAnnot=z,
     graphType="Heatmap",
     showTransition=FALSE,
-    smpLabelScaleFontFactor=1.1,
     smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
-    varLabelRotate=45,
-    varLabelScaleFontFactor=1.7,
+    smpTextScaleFontFactor=1.1,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", thickness=50, type="StackedPercent"), Conc=list(position="top", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", thickness=30, type="Increase"), Even=list(position="bottom", thickness=50, type="Bar"), Female=list(position="top", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", thickness=50, type="StackedPercent"), Male=list(position="top", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", thickness=50, type="Dotplot"), Odd=list(position="bottom", thickness=50, type="BarLine"), Site=list(position="top", type="Default"), Ugly=list(color="black", position="bottom", thickness=50, type="Dotplot")),
-    varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot")
+    varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
+    varTextRotate=45,
+    varTextScaleFontFactor=1.7
   )
 }
 
@@ -4052,7 +4253,11 @@ cXlayout16 <- function() {
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    segregateVariablesBy=list("dataset")
+    segregateVariablesBy=list("dataset"),
+    showRegressionFit="dataset",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
@@ -4068,7 +4273,9 @@ cXlayout17 <- function() {
     groupingFactors=list("dataset"),
     layoutTopology="2X1",
     segregateVariablesBy=list("variable"),
-    smpLabelRotate=45
+    smpTextRotate=45,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
@@ -4079,9 +4286,13 @@ cXlayout18 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     segregateVariablesBy=list("dataset"),
-    afterRender=list(list("addRegressionLine", list("dataset")))
+    showRegressionFit="dataset",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)"
   )
 }
 
@@ -4090,8 +4301,7 @@ cXline1 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-oranges-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    background="rgb(226,236,248)",
-    backgroundType="window",
+    backgroundType="panel",
     blockContrast=TRUE,
     evenColor="rgb(226,236,248)",
     graphOrientation="vertical",
@@ -4099,8 +4309,9 @@ cXline1 <- function() {
     legendInside=TRUE,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="bottomRight",
-    smpLabelRotate=90,
+    legendPosition="topLeft",
+    panelBackgroundColor="rgb(226,236,248)",
+    smpTextRotate=90,
     smpTitle="Days Old",
     theme="GGPlot",
     title="Growth of Orange Trees",
@@ -4137,7 +4348,7 @@ cXline3 <- function() {
     graphType="Line",
     legendPosition="right",
     lineDecoration="pattern",
-    smpLabelRotate=90,
+    smpTextRotate=90,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     splitSamplesBy="Factor3",
@@ -4305,12 +4516,12 @@ cXlollipop2 <- function() {
     setMinX=-150,
     showDataValues=TRUE,
     showLegend=FALSE,
-    smpLabelScaleFontFactor=2,
+    smpTextScaleFontFactor=2,
     title="Occupations",
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -4448,7 +4659,7 @@ cXmap8 <- function() {
     motionBy="Year",
     theme="wallStreetJournal",
     title="Cyclones in Australia 1940-2020",
-    topoJSON="https://www.canvasxpress.org/data/australia.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/AUS.json"
   )
 }
 
@@ -4463,7 +4674,7 @@ cXmap9 <- function() {
     legendPosition="bottomRight",
     mapId="colombia",
     mapPropertyId="ID_1",
-    topoJSON="https://www.canvasxpress.org/data/colombia.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/COL.json"
   )
 }
 
@@ -4475,7 +4686,7 @@ cXmap10 <- function() {
     graphType="Map",
     legendPosition="bottomLeft",
     mapId="italy",
-    topoJSON="https://www.canvasxpress.org/data/italy.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/ITA.json"
   )
 }
 
@@ -4488,7 +4699,7 @@ cXmap11 <- function() {
     mapColor="black",
     mapId="spain",
     mapOutlineColor="white",
-    topoJSON="https://www.canvasxpress.org/data/spain.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/ESP.json"
   )
 }
 
@@ -4544,16 +4755,79 @@ cXmap14 <- function() {
   )
 }
 
+cXmap15 <- function() {
+  library(canvasXpress)
+  canvasXpress(
+    data=FALSE,
+    decorations=list(marker=list(list(color="blue", coords=list(40.701, -73.985), label="New York 1", shape="circle", size=1), list(color="red", coords=list(40.702, -74.011), label="New York 2", shape="teardrop", size=1.5), list(color="green", coords=list(40.703, -73.991), label="New York 3", shape="star", size=3))),
+    graphType="Map",
+    mapConfig=list(center=list(40.7, -74), zoom=15),
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
+cXmap16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    mapConfig=list(center=list(40.7, -74), zoom=15),
+    markerBy="shape",
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
+cXmap17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    leafletZoomAlphaColor=1,
+    mapConfig=list(center=list(37.6, -99), zoom=4),
+    mapMarkerShape="circle",
+    mapMarkerShapeScaleFactor=0.5,
+    markerBy="State",
+    showLegend=FALSE,
+    useLeaflet=TRUE
+  )
+}
+
+cXmap18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    leafletZoomAlphaColor=1,
+    mapConfig=list(center=list(37.6, -99), zoom=4),
+    mapMarkerShape="circle",
+    mapMarkerShapeScaleFactor=0.75,
+    markerBy="State",
+    showLegend=FALSE,
+    sizeBy="Population",
+    useLeaflet=TRUE
+  )
+}
+
 cXmeter1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="gauge"
   )
 }
@@ -4564,10 +4838,9 @@ cXmeter2 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=200,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 200),
+    meterSegments=list(0, 25, 50, 75, 200),
     meterType="speedometer"
   )
 }
@@ -4578,10 +4851,9 @@ cXmeter3 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="digital"
   )
 }
@@ -4614,10 +4886,9 @@ cXmeter6 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterColors=list("rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"),
     meterMax=100,
     meterMin=0,
-    meterSegments=list(25, 50, 75, 100),
+    meterSegments=list(0, 25, 50, 75, 100),
     meterType="vertical"
   )
 }
@@ -4639,16 +4910,31 @@ cXmeter7 <- function() {
 
 cXmeter8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     graphType="Meter",
+    meterGroup="Quarter",
+    meterSummary="sum",
     meterType="digital",
     meterVar="Revenue"
+  )
+}
+
+cXmeter9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    meterGroup="cyl",
+    meterSummary="average",
+    meterType="gauge",
+    meterVar="mpg"
   )
 }
 
@@ -4687,6 +4973,197 @@ cXnetwork2 <- function() {
 
 cXnetwork3 <- function() {
   library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork4 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesG-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesG-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-miserablesG-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    groupData=groups,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaAvoidOverlaps=TRUE,
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork5 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    is3DNetwork=TRUE,
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=40,
+    networkColaStartUnconstrainedIterations=50,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork6 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorNodeBy="group",
+    graphType="Network",
+    networkColaJaccardLinkLengthDefault=0.7,
+    networkColaJaccardLinkLengths=60,
+    networkColaStartUnconstrainedIterations=30,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork7 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-dunart-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-dunart-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-dunart-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-dunart-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    groupData=groups,
+    constraintData=constraints,
+    graphType="Network",
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork8 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chris-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chris-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    graphType="Network",
+    networkColaStartUnconstrainedIterations=30,
+    networkColaSymmetricDiffLinkLengths=5,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork9 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    constraintData=constraints,
+    graphType="Network",
+    networkColaAllConstraintsIterations=20,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaFlowLayoutAxis="y",
+    networkColaFlowLayoutSeparation=30,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaSymmetricDiffLinkLengths=6,
+    networkColaUserConstraintIterations=20,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork10 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    constraintData=constraints,
+    graphType="Network",
+    is3DNetwork=TRUE,
+    networkColaAllConstraintsIterations=20,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaFlowLayoutAxis="y",
+    networkColaFlowLayoutSeparation=30,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaSymmetricDiffLinkLengths=6,
+    networkColaUserConstraintIterations=20,
+    networkLayoutType="cola",
+    nodeColor="rgb(31,119,180)",
+    nodeSizeScaleFactor=0.5
+  )
+}
+
+cXnetwork11 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-hierGroup-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-hierGroup-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/cX-hierGroup-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    groupData=groups,
+    edgeColor="rgb(122,78,79)",
+    edgeThickness=3,
+    graphType="Network",
+    networkColaAllConstraintsIterations=50,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaGridSnapIterations=50,
+    networkColaLinkDistance=80,
+    networkColaStartUnconstrainedIterations=100,
+    networkColaUserConstraintIterations=0,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork12 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-constraints-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-constraints-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/cX-constraints-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    constraintData=constraints,
+    edgeColor="rgb(122,78,79)",
+    edgeThickness=3,
+    graphType="Network",
+    networkColaAllConstraintsIterations=10,
+    networkColaAvoidOverlaps=TRUE,
+    networkColaHandleDisconnected=TRUE,
+    networkColaLinkDistance=80,
+    networkColaStartUnconstrainedIterations=10,
+    networkColaUserConstraintIterations=10,
+    networkLayoutType="cola"
+  )
+}
+
+cXnetwork13 <- function() {
+  library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -4706,7 +5183,7 @@ cXnetwork3 <- function() {
   )
 }
 
-cXnetwork4 <- function() {
+cXnetwork14 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkradial-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkradial-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4722,7 +5199,7 @@ cXnetwork4 <- function() {
   )
 }
 
-cXnetwork5 <- function() {
+cXnetwork15 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkbasic-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkbasic-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4741,7 +5218,7 @@ cXnetwork5 <- function() {
   )
 }
 
-cXnetwork6 <- function() {
+cXnetwork16 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-networkkarate-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-networkkarate-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4755,7 +5232,7 @@ cXnetwork6 <- function() {
   )
 }
 
-cXnetwork7 <- function() {
+cXnetwork17 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4773,7 +5250,7 @@ cXnetwork7 <- function() {
   )
 }
 
-cXnetwork8 <- function() {
+cXnetwork18 <- function() {
   library(canvasXpress)
   nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4792,7 +5269,7 @@ cXnetwork8 <- function() {
   )
 }
 
-cXnetwork9 <- function() {
+cXnetwork19 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/hsa05222.xml",
@@ -4802,7 +5279,7 @@ cXnetwork9 <- function() {
   )
 }
 
-cXnetwork10 <- function() {
+cXnetwork20 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/hsa05222.xml",
@@ -4815,7 +5292,7 @@ cXnetwork10 <- function() {
   )
 }
 
-cXnetwork11 <- function() {
+cXnetwork21 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/WP3624_95209.gpml",
@@ -4823,7 +5300,7 @@ cXnetwork11 <- function() {
   )
 }
 
-cXnetwork12 <- function() {
+cXnetwork22 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/example.xgmml",
@@ -4831,7 +5308,7 @@ cXnetwork12 <- function() {
   )
 }
 
-cXnetwork13 <- function() {
+cXnetwork23 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/Apoptosis.xml",
@@ -4839,13 +5316,157 @@ cXnetwork13 <- function() {
   )
 }
 
-cXnetwork14 <- function() {
+cXnetwork24 <- function() {
   library(canvasXpress)
   canvasXpress(
     data="https://www.canvasxpress.org/data/networkData.txt",
     colorNodeBy="name_mod1",
     graphType="Network",
     sizeEdgeBy="aa%1"
+  )
+}
+
+cXnetwork25 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-doctrine2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-doctrine2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork26 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-faker-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-faker-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork27 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-jquery-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-jquery-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork28 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-lichess-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-lichess-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork29 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-propel2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-propel2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork30 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-rails-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-rails-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork31 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-symfony-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-symfony-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork32 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-twig-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-twig-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork33 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-uptime-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-uptime-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    networkConvergenceThreshold=0.001,
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork34 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-wordpress-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-wordpress-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
+  )
+}
+
+cXnetwork35 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/cX-zf2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/cX-zf2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    edgeColor="rgb(158,202,225)",
+    graphType="Network",
+    useBarnesHutSimulation=TRUE
   )
 }
 
@@ -5040,7 +5661,7 @@ cXparallelcoordinates1 <- function() {
     graphType="ParallelCoordinates",
     lineDecoration=FALSE,
     showTransition=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     theme="CanvasXpress",
     title="Iris flower data set"
   )
@@ -5057,7 +5678,7 @@ cXparallelcoordinates2 <- function() {
     graphOrientation="vertical",
     graphType="ParallelCoordinates",
     lineDecoration=FALSE,
-    smpLabelRotate=90,
+    smpTextRotate=90,
     theme="CanvasXpress",
     title="Iris flower data set",
     afterRender=list(list("switchAnnotationToSmp", list("Species")))
@@ -5580,6 +6201,7 @@ cXsankey1 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Sankey",
+    sankeyNodesColor="rgba(20, 250, 50, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
     showTransition=FALSE,
@@ -5614,6 +6236,7 @@ cXsankey3 <- function() {
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Sankey",
+    sankeyNodesColor="rgba(20, 150, 250, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
     theme="CanvasXpress",
@@ -5637,13 +6260,28 @@ cXsankey4 <- function() {
   )
 }
 
-cXscatter2d1 <- function() {
+cXsankey5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-titanicR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-titanicR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
+    colorBy="Survived",
+    colorScheme="GGPlot",
+    graphOrientation="horizontal",
+    graphType="Sankey",
+    sankeyAxes=list("Class", "Sex", "Age", "Survived"),
+    scheme="GGPlot",
+    title="Alluvial Plot"
+  )
+}
+
+cXscatter2d1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
@@ -5727,13 +6365,14 @@ cXscatter2d5 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5744,14 +6383,15 @@ cXscatter2d6 <- function() {
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
+    confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     legendBox=TRUE,
+    showRegressionFit="cyl",
     showRegressionFullRange=TRUE,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
-    yAxis=list("mpg"),
-    afterRender=list(list("addRegressionLine", list("cyl")))
+    yAxis=list("mpg")
   )
 }
 
@@ -5789,30 +6429,25 @@ cXscatter2d7 <- function() {
 cXscatter2d8 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
     citation="Moore, David S., and George P. McCabe (1989)",
     citationScaleFontFactor=0.75,
     graphType="Scatter2D",
+    showRegressionFit=TRUE,
     theme="CanvasXpress",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
-    yAxis=list("Height"),
-    afterRender=list(list("addRegressionLine"))
+    yAxis=list("Height")
   )
 }
 
 cXscatter2d9 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-breastcancert-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-breastcancert-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
-    backgroundType="window",
-    backgroundWindow="rgb(238,238,238)",
+    backgroundType="panel",
     citation="Velleman, P. F. and Hoaglin, D. C. (1981).\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA: Wadsworth, Inc., pp. 127-134.",
     colors=list("rgba(64,64,64,0.5)"),
     decorationsBackgroundColor="rgb(238,238,238)",
@@ -5821,16 +6456,16 @@ cXscatter2d9 <- function() {
     graphType="Scatter2D",
     legendBackgroundColor="rgba(255,255,255,0)",
     legendInside=TRUE,
-    plotBox=FALSE,
+    panelBackgroundColor="rgb(238,238,238)",
     showDecorations=TRUE,
+    showRegressionFit=TRUE,
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Mean annual temperature (in degrees F) and Mortality Index for neoplasms of the female breast.",
     xAxis=list("Mortality"),
-    xAxisTickColor="rgb(255,255,255)",
+    xAxisGridMajorColor="rgb(255,255,255)",
     yAxis=list("Temperature"),
-    yAxisTickColor="rgb(255,255,255)",
-    afterRender=list(list("addRegressionLine", list(list(FALSE, 'red'))))
+    yAxisGridMajorColor="rgb(255,255,255)"
   )
 }
 
@@ -5861,8 +6496,7 @@ cXscatter2d11 <- function() {
     data=y,
     varAnnot=z,
     axisAlgorithm="rPretty",
-    backgroundType="window",
-    backgroundWindow="rgb(238,238,238)",
+    backgroundType="panel",
     colorBy="Group",
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)", "rgba(64,64,64,0.5)"),
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, y=0.5), list(color="rgba(0,104,139,0.5)", width=2, y=-0.5))),
@@ -5872,7 +6506,7 @@ cXscatter2d11 <- function() {
     legendBoxColor="rgb(0,0,0)",
     legendInside=TRUE,
     legendPosition="bottomRight",
-    plotBox=FALSE,
+    panelBackgroundColor="rgb(238,238,238)",
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLoessFit=TRUE,
@@ -5882,9 +6516,9 @@ cXscatter2d11 <- function() {
     theme="CanvasXpress",
     title="Profile plot",
     xAxis=list("AveExpr"),
-    xAxisTickColor="rgb(255,255,255)",
+    xAxisGridMajorColor="rgb(255,255,255)",
     yAxis=list("logFC"),
-    yAxisTickColor="rgb(255,255,255)"
+    yAxisGridMajorColor="rgb(255,255,255)"
   )
 }
 
@@ -5895,27 +6529,25 @@ cXscatter2d12 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
-    axisAlgorithm="rPretty",
-    backgroundType="window",
-    backgroundWindow="rgb(238,238,238)",
+    backgroundType="panel",
     colorBy="Group",
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)", "rgba(64,64,64,0.5)"),
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, x=0.5), list(color="rgba(0,104,139,0.5)", width=2, x=-0.5))),
     graphType="Scatter2D",
+    hoverTemplate="Group: {Group}<br/>Gene: {vars}<br/>logFC: {logFC}<br/>-log-pVal: {-log-pVal}<br/>FC: {FC}<br/>",
     legendBackgroundColor="rgb(238,238,238)",
     legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
-    plotBox=FALSE,
+    panelBackgroundColor="rgb(238,238,238)",
     showDecorations=TRUE,
-    showTransition=FALSE,
     sizeBy="FC",
     sizes=list(4, 12, 14, 15, 16, 17, 18),
     theme="CanvasXpress",
     title="Volcano plot",
     xAxis=list("logFC"),
-    xAxisTickColor="rgb(255,255,255)",
+    xAxisGridMajorColor="rgb(255,255,255)",
     yAxis=list("-log-pVal"),
-    yAxisTickColor="rgb(255,255,255)"
+    yAxisGridMajorColor="rgb(255,255,255)"
   )
 }
 
@@ -5927,8 +6559,7 @@ cXscatter2d13 <- function() {
     data=y,
     varAnnot=z,
     axisAlgorithm="rPretty",
-    backgroundType="window",
-    backgroundWindow="rgb(238,238,238)",
+    backgroundType="panel",
     colorBy="Group",
     colors=list("rgba(255,215,0,0.5)", "rgba(64,64,64,0.5)", "rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)"),
     decorations=list(line=list(list(color="rgba(64,64,64,0.5)", width=2, x=0), list(color="rgba(64,64,64,0.5)", width=2, y=0), list(color="rgba(255,215,0,0.5)", width=2, x=-5, x2=5, y=-5, y2=5))),
@@ -5938,7 +6569,7 @@ cXscatter2d13 <- function() {
     legendBoxColor="rgb(0,0,0)",
     legendInside=TRUE,
     legendPosition="bottomRight",
-    plotBox=FALSE,
+    panelBackgroundColor="rgb(238,238,238)",
     showDecorations=TRUE,
     showTransition=FALSE,
     sizeBy="Hit",
@@ -5947,9 +6578,9 @@ cXscatter2d13 <- function() {
     theme="CanvasXpress",
     title="Contrast plot",
     xAxis=list("logFC-X"),
-    xAxisTickColor="rgb(255,255,255)",
+    xAxisGridMajorColor="rgb(255,255,255)",
     yAxis=list("logFC-Y"),
-    yAxisTickColor="rgb(255,255,255)"
+    yAxisGridMajorColor="rgb(255,255,255)"
   )
 }
 
@@ -5959,20 +6590,19 @@ cXscatter2d14 <- function() {
   canvasXpress(
     data=y,
     axisAlgorithm="rPretty",
-    backgroundType="window",
-    backgroundWindow="rgb(238,238,238)",
+    backgroundType="panel",
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)"),
     graphType="Scatter2D",
     legendBackgroundColor="rgba(255,255,255,0)",
     legendInside=TRUE,
     legendPosition="topRight",
-    plotBox=FALSE,
+    panelBackgroundColor="rgb(238,238,238)",
     theme="CanvasXpress",
     title="Waterfall plot",
     xAxis=list("Row"),
-    xAxisTickColor="rgb(255,255,255)",
+    xAxisGridMajorColor="rgb(255,255,255)",
     yAxis=list("S1", "S2"),
-    yAxisTickColor="rgb(255,255,255)"
+    yAxisGridMajorColor="rgb(255,255,255)"
   )
 }
 
@@ -5984,7 +6614,7 @@ cXscatter2d15 <- function() {
     data=y,
     varAnnot=z,
     backgroundImage="https://www.canvasxpress.org/assets/images/visium.png",
-    backgroundType="windowImage",
+    backgroundType="panelImage",
     colorBy="signal",
     graphType="Scatter2D",
     plotBox=FALSE,
@@ -5992,13 +6622,13 @@ cXscatter2d15 <- function() {
     title="Visium Spatial Transcriptomics",
     visiumFlip=FALSE,
     xAxis=list("imagecol"),
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE,
     yAxis=list("imagerow"),
-    yAxisShow=FALSE,
-    yAxisTicksMajorShow=FALSE,
-    yAxisTicksMinorShow=FALSE
+    yAxisGridMajorShow=FALSE,
+    yAxisGridMinorShow=FALSE,
+    yAxisShow=FALSE
   )
 }
 
@@ -6045,7 +6675,7 @@ cXscatter3d1 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
-    axisTickScaleFontFactor=0.5,
+    axisTextScaleFontFactor=0.5,
     axisTitleScaleFontFactor=0.5,
     colorBy="Species",
     graphType="Scatter3D",
@@ -6066,7 +6696,7 @@ cXscatter3d2 <- function() {
   canvasXpress(
     data=y,
     varAnnot=z,
-    axisTickScaleFontFactor=0.5,
+    axisTextScaleFontFactor=0.5,
     axisTitleScaleFontFactor=0.5,
     colorBy="Species",
     ellipseBy="Species",
@@ -6238,7 +6868,7 @@ cXstacked2 <- function() {
     legendBackgroundColor=FALSE,
     sampleSpaceFactor=1,
     showDataValues=TRUE,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     theme="CanvasXpress",
@@ -6259,7 +6889,7 @@ cXstacked3 <- function() {
     graphOrientation="vertical",
     graphType="Stacked",
     legendBackgroundColor=FALSE,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     theme="CanvasXpress",
@@ -6280,7 +6910,7 @@ cXstacked4 <- function() {
     graphType="Stacked",
     legendBackgroundColor=FALSE,
     showDataValues=TRUE,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     splitSamplesBy="Factor3",
@@ -6375,7 +7005,7 @@ cXstackedpercent1 <- function() {
     sampleSpaceFactor=1,
     showDataValues=TRUE,
     showTransition=FALSE,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     theme="CanvasXpress",
@@ -6397,7 +7027,7 @@ cXstackedpercent2 <- function() {
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
     showDataValues=TRUE,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     theme="CanvasXpress",
@@ -6418,7 +7048,7 @@ cXstackedpercent3 <- function() {
     graphType="StackedPercent",
     legendBackgroundColor=FALSE,
     sampleSpaceFactor=1.5,
-    smpLabelScaleFontFactor=0.8,
+    smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     theme="CanvasXpress",
@@ -6455,39 +7085,51 @@ cXstackedpercent5 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    background="rgb(63,149,180)",
     backgroundType="solid",
     barPath=TRUE,
     barPathColor="rgb(48,116,154)",
     barPathTransparency=1,
     colorBy="Color",
+    colorByShowLegend=FALSE,
     colors=list("rgb(255,190,179)", "rgb(251,153,134)", "rgb(244,112,96)", "rgb(230,68,72)", "rgb(210,41,63)", "rgb(173,18,58)"),
     fontName="Waltograph",
     fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    layoutBoxShow=FALSE,
-    layoutLabelColor="rgb(255,255,255)",
-    marginBottom=50,
-    marginLeft=50,
+    layoutCollapse=TRUE,
+    legendBackgroundColor="rgb(63,149,180)",
+    legendColumns=2,
+    legendKeyBackgroundBorderColor="rgb(63,149,180)",
+    legendKeyBackgroundColor="rgb(63,149,180)",
+    legendPosition="bottom",
+    legendTextColor="rgb(255,255,255)",
+    legendTextScaleFontFactor=2,
+    marginBottom=10,
+    marginLeft=10,
     marginRight=50,
-    marginTop=50,
+    marginTop=30,
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     patternBy="InOut",
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
+    plotBackgroundColor="rgb(63,149,180)",
     segregateVariablesBy=list("Gender"),
-    showLegend=FALSE,
-    smpLabelFontColor="rgb(255,255,255)",
-    smpLabelScaleFontFactor=3,
+    showLegend=TRUE,
+    showLegendTitle=FALSE,
+    smpTextColor="rgb(255,255,255)",
+    smpTextScaleFontFactor=2.2,
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripTextColor="rgb(255,255,255)",
+    stripTextScaleFontFactor=2.2,
     title="Fewer Role Models",
+    titleAlign="center",
     titleColor="rgb(252,157,156)",
-    titleScaleFontFactor=2.5,
+    titleScaleFontFactor=4.5,
     widthFactor=1.1,
     xAxis2Show=FALSE,
-    xAxisShow=FALSE,
-    xAxisTicksMajorShow=FALSE,
-    xAxisTicksMinorShow=FALSE
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
@@ -6537,6 +7179,217 @@ cXstackedpercentline2 <- function() {
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
+  )
+}
+
+cXstreamgraph1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="both",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.2,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="none",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=1,
+    scatterStreamExtraSpan=0.2,
+    scatterStreamNumber=1000,
+    scatterStreamTrueRange="none",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=15,
+    scatterStreamTrueRange="both",
+    scatterStreamType="mirror",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamType="ridge",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="genre",
+    colors=list("rgb(255,180,0)", "rgb(255,199,64)", "rgb(194,0,8)", "rgb(255,2,13)", "rgb(19,175,239)"),
+    dataPointSizeScaleFactor=0,
+    graphType="Scatter2D",
+    panelBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.75,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamNumber=1000,
+    scatterStreamType="proportional",
+    scatterType="stream",
+    showConfidenceIntervals=FALSE,
+    showLoessFit="genre",
+    xAxisGridMinorShow=FALSE,
+    yAxisGridMinorShow=FALSE
+  )
+}
+
+cXstreamgraph7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-comics-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-comics-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="solid",
+    citation="Visualization inspired by Cédric Scherer's • Data by Claremont Run Project via Malcom Barret • Popularity Scores by ranker.com",
+    citationFontStyle="italic",
+    citationScaleFontFactor=0.7,
+    colorBy="char_costume",
+    colorKey=list(char_costume=list("Gambit (casual)   "="rgb(142,3,142)", "Gambit (costumed)   "="rgb(213,5,213)", "Magneto (casual)   "="rgb(194,0,8)", "Magneto (costumed)   "="rgb(255,2,13)", "Nightcrawler (casual)   "="rgb(19,175,239)", "Nightcrawler (costumed)   "="rgb(78,195,243)", "Storm (casual)"="rgb(89,90,82)", "Storm (costumed)"="rgb(115,117,106)", "Wolverine (casual)   "="rgb(255,180,0)", "Wolverine (costumed)   "="rgb(255,199,64)")),
+    dataPointSizeScaleFactor=0,
+    decorations=list(image=list(list(height=64, scope="depicted", src="https://www.canvasxpress.org/assets/images/uncannyxmen.png", width=100, x=305, y=-500)), label=list(list(align="left", background="rgb(255,255,255)", color="rgb(142,3,142)", justify=50, label="**Gambit** was introduced for the first time inissue #266 called Gambit => Out of the Frying Pan nevertheless, he is the **4 most popular X-Men character**!", scope="depicted", x=250, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(255,180,0)", justify=50, label="**Wolverine is the most popular X-Men** and has a regular presence in the X-Men comics between 1975 and 1991.", scope="depicted", x=65, y=70), list(align="left", background="rgb(255,255,255)", color="rgb(194,0,8)", justify=50, label="**Magneto** was ranked by IGN as the *Greatest Comic Book Villain of All Time*. And even though he only appears from time to time he **ranks 2nd **—4 ranks higher than his friend and opponent Professor X!", scope="narrative", x=215, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(19,175,239)", justify=50, label="The **3rd most popular X-men character Nightcrawler** gets injured during the 'Mutant Massacre' and fell into a coma after an attack from Riptide in issue #211", scope="speech", x=211, y=-110), list(align="left", background="rgb(255,255,255)", color="rgb(89,90,82)", justify=50, label="**Storm** is by far the most thoughtful of the five most popular X-Men characters, especially in issues #220, #223 and #265. Storm **ranks 5th**", scope="thought", x=220, y=-73)), text=list(list(align="left", color="rgb(0,0,0)", label="Depicted", scope="depicted", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Narrative\nStatements", scope="narrative", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Speech\nBubbles", scope="speech", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Thought\nBubbles", scope="thought", x=85, y=-50))),
+    decorationsClipped=FALSE,
+    decorationsTextScaleFontFactor=0.45,
+    fontName="Trebuchet MS",
+    graphType="Scatter2D",
+    layoutTopology="4X1",
+    layoutType="rows",
+    legendBackgroundBorderColor="rgb(0,0,0)",
+    legendBackgroundColor="rgb(255,255,255)",
+    legendColumns=5,
+    legendOrder=list(char_costume=list("Wolverine (casual)   ", "Magneto (casual)   ", "Nightcrawler (casual)   ", "Gambit (casual)   ", "Storm (casual)", "Wolverine (costumed)   ", "Magneto (costumed)   ", "Nightcrawler (costumed)   ", "Gambit (costumed)   ", "Storm (costumed)")),
+    legendPosition="bottom",
+    legendTextScaleFontFactor=0.45,
+    marginBottom=25,
+    marginTop=25,
+    panelBackgroundColor="rgb(222,222,222)",
+    plotBackgroundColor="rgb(222,222,222)",
+    scatterStreamBandwidth=0.55,
+    scatterStreamExtraSpan=0.1,
+    scatterStreamWiggles=list("Wolverine (casual)   ", "Wolverine (costumed)   ", "Magneto (casual)   ", "Magneto (costumed)   ", "Nightcrawler (casual)   ", "Nightcrawler (costumed)   ", "Gambit (casual)   ", "Gambit (costumed)   ", "Storm (casual)", "Storm (costumed)"),
+    scatterType="stream",
+    segregateVariablesBy=list("parameter"),
+    setMaxX=325,
+    setMinX=75,
+    showLegendTitle=FALSE,
+    showLoessFit="char_costume",
+    stripShow=FALSE,
+    title="Appearance of the Five Most Popular X-Men Characters in Chris Claremont's Comics",
+    titleScaleFontFactor=0.6,
+    xAxisGridMajorLineType="dotted",
+    xAxisGridMajorSize=2,
+    xAxisGridMinorShow=FALSE,
+    yAxis=list("value"),
+    yAxisGridMajorShow=FALSE,
+    yAxisGridMinorShow=FALSE,
+    yAxisShow=FALSE,
+    yAxisTickBottomShow=FALSE,
+    yAxisTickTopShow=FALSE,
+    yAxisTicks=0,
+    yAxisTitle=FALSE
   )
 }
 
@@ -6639,11 +7492,13 @@ cXtcga1 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showBoxplotOriginalData=TRUE,
-    smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    smpTextRotate=90,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
+    toolbarType="over"
   )
 }
 
@@ -6666,10 +7521,12 @@ cXtcga2 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
-    smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    smpTextRotate=90,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
+    toolbarType="over"
   )
 }
 
@@ -6692,9 +7549,9 @@ cXtcga3 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
-    smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    plotStyle="open",
+    smpTextRotate=90,
+    toolbarType="over"
   )
 }
 
@@ -6718,11 +7575,13 @@ cXtcga4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    smpTextRotate=90,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
+    toolbarType="over"
   )
 }
 
@@ -6747,11 +7606,13 @@ cXtcga5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
+    plotStyle="open",
     segregateVariablesBy=list("variable"),
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    toolbarType="over",
-    useOpenShapes=TRUE
+    smpTextRotate=90,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
+    toolbarType="over"
   )
 }
 
@@ -6766,7 +7627,6 @@ cXtcga6 <- function() {
     graphType="Scatter2D",
     hideHistogram=FALSE,
     histogramBins=15,
-    histogramData=TRUE,
     histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
@@ -6775,6 +7635,7 @@ cXtcga6 <- function() {
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
     showFilledHistogramDensity=FALSE,
+    showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     toolbarType="over",
@@ -6796,7 +7657,6 @@ cXtcga7 <- function() {
     graphType="Scatter2D",
     hideHistogram=FALSE,
     histogramBins=15,
-    histogramData=TRUE,
     histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
@@ -6806,8 +7666,12 @@ cXtcga7 <- function() {
     legendTextScaleFontFactor=1.5,
     segregateVariablesBy=list("dataset"),
     showFilledHistogramDensity=FALSE,
+    showHistogram="dataset",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     toolbarType="over",
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
@@ -6828,7 +7692,6 @@ cXtcga8 <- function() {
     graphType="Scatter2D",
     hideHistogram=TRUE,
     histogramBins=15,
-    histogramData=TRUE,
     histogramType="staggered",
     layoutTopology="1X3",
     legendColumns=3,
@@ -6838,8 +7701,12 @@ cXtcga8 <- function() {
     legendTextScaleFontFactor=1.5,
     segregateSamplesBy=list("sample"),
     showFilledHistogramDensity=TRUE,
+    showHistogram="dataset",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripBackgroundColor="rgba(0,0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     toolbarType="over",
     xAxisRugShow=TRUE,
     xAxisTitle="Expression",
@@ -6880,6 +7747,8 @@ cXtcga10 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     scatterType="cdf",
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     xAxisTitle="Expression",
     yAxisTitle="F(Expression)"
   )
@@ -6889,11 +7758,9 @@ cXtagcloud1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cars-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    varAnnot=z,
     colorBy="Country",
     graphType="TagCloud",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
@@ -7026,13 +7893,13 @@ cXtreemap3 <- function() {
     legendInside=TRUE,
     legendPosition="right",
     objectBorderColor="rgb(0,0,0)",
-    smpLabelRotate=45,
+    smpTextRotate=45,
     subtitle="2014 Census",
     theme="CanvasXpress",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
   )
 }
@@ -7099,22 +7966,22 @@ cXviolin1 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=FALSE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7122,8 +7989,8 @@ cXviolin1 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="area",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7136,30 +8003,30 @@ cXviolin2 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     graphOrientation="horizontal",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=FALSE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7172,22 +8039,22 @@ cXviolin3 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=FALSE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7195,8 +8062,8 @@ cXviolin3 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="count",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7209,22 +8076,22 @@ cXviolin4 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=FALSE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7232,8 +8099,8 @@ cXviolin4 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="width",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7246,12 +8113,11 @@ cXviolin5 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotNotched=TRUE,
     boxplotWishkersType="single",
     graphOrientation="vertical",
@@ -7259,11 +8125,12 @@ cXviolin5 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=FALSE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7271,8 +8138,8 @@ cXviolin5 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinTrim=FALSE,
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7285,12 +8152,11 @@ cXviolin6 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotNotched=TRUE,
     boxplotWishkersType="single",
     graphOrientation="vertical",
@@ -7298,19 +8164,20 @@ cXviolin6 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7323,12 +8190,11 @@ cXviolin7 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotMean=TRUE,
     boxplotMeanColor="rgb(255,215,0)",
     boxplotMeanColorBorder="red",
@@ -7339,19 +8205,20 @@ cXviolin7 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7364,12 +8231,11 @@ cXviolin8 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotMedianColor="red",
     boxplotMedianWidth=5,
     boxplotNotched=TRUE,
@@ -7379,19 +8245,20 @@ cXviolin8 <- function() {
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7404,32 +8271,32 @@ cXviolin9 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guides="solid",
     guidesColor="white",
     jitter=TRUE,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7442,12 +8309,11 @@ cXviolin10 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     binAlignment="center",
     binned=TRUE,
     graphOrientation="vertical",
@@ -7456,20 +8322,21 @@ cXviolin10 <- function() {
     guides="solid",
     guidesColor="white",
     jitter=FALSE,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=FALSE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7482,12 +8349,11 @@ cXviolin11 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotColor="gold",
     colorBy="dose",
     colorScheme="GGPlot",
@@ -7498,21 +8364,22 @@ cXviolin11 <- function() {
     guidesColor="white",
     jitter=TRUE,
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     shapeBy="supp",
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7525,12 +8392,11 @@ cXviolin12 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     graphOrientation="vertical",
     graphType="Boxplot",
@@ -7538,11 +8404,12 @@ cXviolin12 <- function() {
     guides="solid",
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7550,8 +8417,8 @@ cXviolin12 <- function() {
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7564,12 +8431,11 @@ cXviolin13 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -7578,19 +8444,20 @@ cXviolin13 <- function() {
     guides="solid",
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7603,12 +8470,11 @@ cXviolin14 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="dose",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -7617,19 +8483,20 @@ cXviolin14 <- function() {
     guides="solid",
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7642,12 +8509,11 @@ cXviolin15 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotConnect=TRUE,
     colorBy="supp",
     colorScheme="GGPlot",
@@ -7657,12 +8523,13 @@ cXviolin15 <- function() {
     guides="solid",
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
@@ -7670,8 +8537,8 @@ cXviolin15 <- function() {
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinColor="gold",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7684,12 +8551,11 @@ cXviolin16 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     boxplotConnect=TRUE,
     colorBy="supp",
     colorScheme="GGPlot",
@@ -7699,21 +8565,24 @@ cXviolin16 <- function() {
     guides="solid",
     guidesColor="white",
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose"),
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7726,12 +8595,11 @@ cXviolin17 <- function() {
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
-    axisTickScaleFontFactor=1.8,
+    axisTextScaleFontFactor=1.8,
     axisTitleFontStyle="bold",
     axisTitleScaleFontFactor=1.8,
     background="white",
-    backgroundType="window",
-    backgroundWindow="#E5E5E5",
+    backgroundType="panel",
     colorBy="supp",
     colorScheme="GGPlot",
     connectBy="order",
@@ -7742,21 +8610,24 @@ cXviolin17 <- function() {
     guidesColor="white",
     jitter=FALSE,
     legendTextScaleFontFactor=1.8,
+    panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
     showBoxplotIfViolin=TRUE,
     showBoxplotOriginalData=TRUE,
     showLegend=TRUE,
     showViolinBoxplot=TRUE,
-    smpLabelRotate=90,
-    smpLabelScaleFontFactor=1.8,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=1.8,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     smpTitleScaleFontFactor=1.8,
     stringSampleFactors=list("dose", "order"),
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis2Show=FALSE,
-    xAxisTickColor="white",
-    xAxisTicksMinorShow=FALSE,
+    xAxisGridMajorColor="white",
+    xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
 }
@@ -7789,6 +8660,8 @@ cXwaterfall2 <- function() {
     segregateSamplesBy=list("Treatment"),
     showLegend=FALSE,
     showSampleNames=FALSE,
+    stripBackgroundBorderColor="rgb(0,0,0)",
+    stripTextColor="rgb(0,0,0)",
     title="Waterfall plot changes in QoL scores",
     xAxisTitle="Change from baseline (%) in QoL score"
   )

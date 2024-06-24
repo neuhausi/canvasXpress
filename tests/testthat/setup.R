@@ -1,13 +1,17 @@
 require(testthat)
 require(htmlwidgets)
 require(canvasXpress)
-require(canvasXpress.data)
-require(readr)
-require(ggplot2)
-require(dplyr)
+
+# suggested packages
+try({
+    require(canvasXpress.data)
+    require(readr)
+    require(ggplot2)
+    require(dplyr)
+}, silent = T)
 
 try({
-    testFile <- read_lines(system.file("ui-examples/cX-function.R.gz", package = "canvasXpress", mustWork = TRUE))
+    testFile <- readr::read_lines(system.file("ui-examples/cX-function.R.gz", package = "canvasXpress", mustWork = TRUE))
 
     # --- Manual Test Fixes
 
@@ -47,7 +51,6 @@ try({
 
 
 
-
 ### Supporting Functions
 
 check_ui_test <- function(result){
@@ -66,3 +69,4 @@ check_ui_test <- function(result){
         warning('check_ui_test() errored with: ', e)
     })
 }
+

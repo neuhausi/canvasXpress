@@ -13,3 +13,4 @@
 ^\.circleci$
 ^CRAN-SUBMISSION$
 ^_ARCHIVE
+^\.github

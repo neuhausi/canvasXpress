@@ -117,7 +117,7 @@ shinyServer(function(input, output, session) {
                                    legendOrder = levels,
                                    width       = "100%",
                                    title       = glue("PCA for {input$factorSel}"),
-                                   axisTickScaleFontFactor  = 0.5,
+                                   axisTextScaleFontFactor  = 0.5,
                                    axisTitleScaleFontFactor = 0.7,
                                    transparency             = 0.8)
         }

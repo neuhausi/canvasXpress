@@ -20,7 +20,7 @@ test_that("segregation xAxis2Title", {
                            showBoxplotOriginalData = TRUE,
                            showLegend              = TRUE,
                            legendPosition          = "bottom",
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            smpTitle                = "dose",
                            title                   = "xAxis2 title and legend should be readable",
                            xAxis2Show              = TRUE,
@@ -49,7 +49,7 @@ test_that("segregation smpTitle", {
                            showBoxplotOriginalData = TRUE,
                            showLegend              = TRUE,
                            legendPosition          = "bottom",
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            title                   = "smpTitle and legend should be readable",
                            xAxisTitle              = "len",
                            smpTitle                = "smpTitle Custom title")

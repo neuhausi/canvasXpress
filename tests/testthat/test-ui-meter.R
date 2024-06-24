@@ -32,3 +32,7 @@ test_that("cXmeter7", {
 test_that("cXmeter8", {
     check_ui_test(cXmeter8())
 })
+
+test_that("cXmeter9", {
+    check_ui_test(cXmeter9())
+})

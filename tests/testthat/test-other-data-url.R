@@ -9,7 +9,7 @@ if (interactive()) {
                                graphOrientation = "vertical",
                                plotByVariable   = TRUE,
                                smpLabelInterval = 2,
-                               smpLabelRotate   = 45,
+                               smpTextRotate    = 45,
                                smpTitle         = "Sample Title",
                                title            = "Barplot: loading data from URL",
                                xAxis2Show       = FALSE)

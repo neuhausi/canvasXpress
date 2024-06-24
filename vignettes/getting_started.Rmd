@@ -13,7 +13,7 @@ vignette: >
 ---
 ## Overview
 
-<a href="https://www.canvasxpress.org"><img src="images/hexagon.png" align="left" width="175"></a>
+<a href="https://www.canvasxpress.org"><img src="images/hexagon.jpg" align="left" width="175"></a>
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis
 at Bristol-Myers Squibb. It supports a large number of [visualizations](https://canvasxpress.org/examples.html) to display scientific and non-scientific
@@ -48,7 +48,7 @@ canvasXpress(data      = y,
              axisTickScaleFontFactor  = 0.5,
              axisTitleScaleFontFactor = 0.5)
 ```
-![Scatter3D](images/R-Scatter3D.png)
+![Scatter3D](images/R-Scatter3D.jpg)
 
 ### Scatter 2D Matrix Plot
 
@@ -66,7 +66,7 @@ canvasXpress(data              = y,
              scatterPlotMatrix = TRUE,
              theme             = "CanvasXpress")
 ```
-![Scatter2DMatrix](images/R-Scatter2DMatrix.png)
+![Scatter2DMatrix](images/R-Scatter2DMatrix.jpg)
 
 ### Boxplot
 
@@ -91,7 +91,7 @@ canvasXpress(data                  = y,
              xAxis2Show            = FALSE,
              legendScaleFontFactor = 1.8)
 ```
-![Boxplot](images/R-Boxplot.png)
+![Boxplot](images/R-Boxplot.jpg)
 
 ### Heatmap
 
@@ -129,7 +129,7 @@ canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = 
              showHeatmapIndicator = FALSE,
              afterRender          = list(list("clusterSamples")))
 ```
-![Heatmap](images/R-Heatmap.png)
+![Heatmap](images/R-Heatmap.jpg)
 
 ### Four-way Venn Diagram
 
@@ -141,7 +141,7 @@ canvasXpress(vennData   = data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915,
              vennLegend = list(A="List 1", D="List 4", C="List 3", B="List 2"),
              vennGroups = 4)
 ```
-![Venn](images/R-Venn.png)
+![Venn](images/R-Venn.jpg)
 
 ## Additional Information 
 

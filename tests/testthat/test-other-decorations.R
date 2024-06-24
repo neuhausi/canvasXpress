@@ -101,6 +101,8 @@ test_that("barplot annotations", {
 })
 
 test_that("segregated barplot and boxplot marker decorations", {
+    testthat::skip_if_not_installed("dplyr")
+
     tryCatch({
         data <- iris %>%
             mutate(Facet = paste0("facet_", seq(NROW(iris)) %% 2)) %>%
@@ -139,7 +141,7 @@ test_that("segregated barplot and boxplot marker decorations", {
                            graphOrientation   = "vertical",
                            graphType          = "Bar",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Segregated Barplot - marker decoration above each bar",
                            segregateSamplesBy = list(list("Facet")),
@@ -154,7 +156,7 @@ test_that("segregated barplot and boxplot marker decorations", {
                            graphOrientation   = "vertical",
                            graphType          = "Boxplot",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Segregated Boxplot - marker decoration above each box",
                            segregateSamplesBy = list(list("Facet")),
@@ -166,6 +168,8 @@ test_that("segregated barplot and boxplot marker decorations", {
 })
 
 test_that("double-segregated barplot and boxplot marker decorations", {
+    testthat::skip_if_not_installed("dplyr")
+
     tryCatch({
         data <- iris %>%
             mutate(Facet      = sample(c("facet_0", "facet_1", "NA"), size = NROW(iris), replace = TRUE),
@@ -207,7 +211,7 @@ test_that("double-segregated barplot and boxplot marker decorations", {
                            graphOrientation   = "vertical",
                            graphType          = "Bar",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Double-segregated Barplot - marker decoration above each bar",
                            segregateSamplesBy = list(list("Facet"), list("OtherFacet")),
@@ -223,7 +227,7 @@ test_that("double-segregated barplot and boxplot marker decorations", {
                            graphOrientation   = "vertical",
                            graphType          = "Boxplot",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Double-segregated Boxplot - marker decoration above each box",
                            segregateSamplesBy = list(list("Facet"), list("OtherFacet")),
@@ -249,7 +253,7 @@ test_that("segregated Boxplot decorations with different values", {
                            graphOrientation   = "vertical",
                            graphType          = "Boxplot",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Segregated Boxplot - decorations with different values for each Species",
                            segregateSamplesBy = list(list("Species")),
@@ -277,7 +281,7 @@ test_that("segregated Boxplot decorations with same values", {
                            graphOrientation   = "vertical",
                            graphType          = "Boxplot",
                            legendBox          = FALSE,
-                           smpLabelRotate     = 90,
+                           smpTextRotate      = 90,
                            smpTitle           = "Species",
                            title              = "Segregated Boxplot - decoration should be on exactly the same height",
                            segregateSamplesBy = list(list("Species")),
@@ -311,7 +315,7 @@ test_that("segregated Boxplot decoration label position", {
                                groupingFactors    = list("dose"),
                                segregateVariablesBy = list(list("Gene")),
                                legendBox          = FALSE,
-                               smpLabelRotate     = 90,
+                               smpTextRotate      = 90,
                                smpTitle           = "dose",
                                title              = paste("Segregated Boxplot - decoration label position", pos),
                                layoutAdjust       = TRUE,
@@ -339,8 +343,8 @@ test_that("precalculated barplot - annotations", {
     result <- canvasXpress(data                  = precalc.data1,
                            graphType             = "Bar",
                            graphOrientation      = "vertical",
-                           smpLabelFontStyle     = "italic",
-                           smpLabelRotate        = 90,
+                           smpTextFontStyle      = "italic",
+                           smpTextRotate         = 90,
                            showLegend            = FALSE,
                            decorations           = list(marker = list(list(fontSize = 10,
                                                                            text     = "Group3",
@@ -365,8 +369,8 @@ test_that("precalculated barplot - annotations", {
                            segregateSamplesBy    = list(list("level")),
                            graphType             = "Bar",
                            graphOrientation      = "vertical",
-                           smpLabelFontStyle     = "italic",
-                           smpLabelRotate        = 90,
+                           smpTextFontStyle      = "italic",
+                           smpTextRotate         = 90,
                            showLegend            = FALSE,
                            decorations           = list(marker = list(list(fontSize = 10,
                                                                            text     = "Group3",
@@ -405,8 +409,8 @@ test_that("segregated and overlayed precalculated barplot - annotations", {
                              smpOverlays           = list("Project"),
                              graphType             = "Bar",
                              graphOrientation      = "vertical",
-                             smpLabelFontStyle     = "italic",
-                             smpLabelRotate        = 90,
+                             smpTextFontStyle      = "italic",
+                             smpTextRotate         = 90,
                              showLegend            = FALSE,
                              decorations           = list(marker = list(list(fontSize = 10,
                                                                              text     = "(Lev1, V1)",

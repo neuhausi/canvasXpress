@@ -1,4 +1,8 @@
 #' Converts a ggplot object to a list that can be used by CanvasXpress.
+#'
+#' @param o   the ggplot object
+#' @param ... additional parameters to the function
+#'
 #' @export
 ggplot.as.list <- function(o, ...) {
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
