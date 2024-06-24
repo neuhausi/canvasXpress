@@ -13,7 +13,6 @@ test_that("ggplot.as.list - ggplot2 GeomPoint", {
         geom_point(aes(color = cyl), position = "jitter")
     gplot <- gplot_orig +
         theme(legend.justification   = c(1, 1),
-              legend.position.inside = c(1, 1),
               legend.title           = element_blank(),
               panel.background       = element_rect(fill = "white", colour = "grey50")) +
         scale_colour_viridis_c() +
