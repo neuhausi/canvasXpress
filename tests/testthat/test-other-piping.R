@@ -71,17 +71,20 @@ test_that("piping - change afterRender", {
 })
 
 
-test_that("piping - change width/height", {
+test_that("piping - change height", {
     obj1 <- cXstacked1()
 
-    check_ui_test(obj1)
+    cxHtmlPage(chartObject = obj1) %>%
+        writeLines("html_chart_obj1.html")
 
     obj2 <- obj1 %>% canvasXpress(
         title  = "changed height",
         height = 300)
 
-    check_ui_test(obj2)
-    warning("you will need to view this in full screen to see the difference")
+    cxHtmlPage(chartObject = obj2) %>%
+        writeLines("html_chart_obj2.html")
+
+    warning("you will need to view the saved html plots as the Rstudio viewer fills the plot to the space")
 })
 
 
@@ -138,11 +141,10 @@ test_that("piping - area chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title         = "decoration lines, xAxisTickSize, shapeby",
-                     decorations   = list(line = list(list(color = "rgba(205,0,0,0.5)", width = 2, x = 2000),
-                                                      list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
-                     xAxisTickSize = 2,
-                     shapeBy       = "country")
+        canvasXpress(title              = "decoration lines, xAxisGridMajorSize",
+                     decorations        = list(line = list(list(color = "rgba(205,0,0,0.5)", width   = 2, x = 2000),
+                                                           list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
+                     xAxisGridMajorSize = 2)
 
     check_ui_test(result)
 })
@@ -152,9 +154,9 @@ test_that("piping - arealine chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title          = "subtitle text, smpLabelRotate = 90",
+        canvasXpress(title          = "subtitle text, smpTextRotate = 90",
                      subtitle       = "changed",
-                     smpLabelRotate = 90)
+                     smpTextRotate  = 90)
 
     check_ui_test(result)
 })
@@ -165,7 +167,7 @@ test_that("piping - bar chart", {
 
     result <- obj1 %>% canvasXpress(
         title         = "Smp label color, legendOrder",
-        smpLabelColor = "red",
+        smpTextColor  = "red",
         legendOrder   = list("Stage" = list("Stage4", "Stage2", "Stage1", "Stage3"))
     )
 
@@ -177,8 +179,7 @@ test_that("piping - barline chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "groupSamples and only plot V2",
-        groupSamples = list("Factor1"),
+        title        = "only plot V2 bars",
         xAxis        = list("V2")
     )
 
@@ -229,10 +230,9 @@ test_that("piping - circular chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title            = "subtitle NULL, xAxisTitle, smpLabelInterval 40",
-                     subtitle         = NULL,
-                     xAxisTitle       = "changed",
-                     smpLabelInterval = 40)
+        canvasXpress(title            = "smpLabelInterval",
+                     smpLabelInterval = 10
+                     )
 
     check_ui_test(result)
 })
@@ -278,8 +278,9 @@ test_that("piping - density chart", {
     check_ui_test(obj1)
     warning("remove segregateVariablesBy results in different color scheme than if you do it manually on the plot")
     result <- obj1 %>% canvasXpress(
-        title                = "remove segregation",
-        segregateVariablesBy = list()
+        title                = "hideHistogram and segregate by sex",
+        hideHistogram        = TRUE,
+        segregateVariablesBy = list("sex")
     )
 
     check_ui_test(result)
@@ -353,7 +354,7 @@ test_that("piping - gantt chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title     = "modify fish shape and axis",
+        title     = "pattern by indication",
         patternBy = "Indication")
 
     check_ui_test(result)
@@ -387,7 +388,7 @@ test_that("piping - hexplotbinplot chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "change bins and shape to rectangle)",
+        title        = "change bins and shape to rectangle",
         binplotBins  = 20,
         binplotShape = "rectangle")
 
@@ -530,8 +531,8 @@ test_that("piping - parallelcoordinates chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title       = "change legend title to bold",
-        legendTitle = "bold")
+        title                = "change legend title to bold",
+        legendTitleFontStyle = "bold")
 
     check_ui_test(result)
 })
@@ -565,9 +566,9 @@ test_that("piping - ridgeline chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title             = "show histogram and change xAxis grid to dashed",
-        hideHistogram     = FALSE,
-        xAxisTickLineType = "dashed")
+        title                  = "show histogram and change xAxis grid to dashed",
+        hideHistogram          = FALSE,
+        xAxisGridMajorLineType = "dashed")
 
     check_ui_test(result)
 })
@@ -640,7 +641,7 @@ test_that("piping - stacked chart", {
     result <- obj1 %>% canvasXpress(
         title            = "change graph orientation and axis label rotation",
         graphOrientation = "vertical",
-        smpLabelRotate   = 90)
+        smpTextRotate    = 90)
 
     check_ui_test(result)
 })
@@ -675,10 +676,10 @@ test_that("piping - stackedpercentline chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title             = "change grid line type, rotate x-axis labels, change theme",
-        xAxisTickLineType = "dashed",
-        smpLabelRotate    = 90,
-        theme             = "solarized")
+        title                  = "change grid line type, rotate x-axis labels, change theme",
+        xAxisGridMajorLineType = "dashed",
+        smpTextRotate          = 90,
+        theme                  = "solarized")
 
     check_ui_test(result)
 })
@@ -727,7 +728,7 @@ test_that("piping - tree chart", {
 
     result <- obj1 %>% canvasXpress(
         title         = "change label colour and colour spectrum",
-        smpLabelColor = "#60418c",
+        smpTextColor  = "#60418c",
         afterRender   = list(
             list(
                 "modifyColorSpectrumByScheme",
@@ -784,10 +785,10 @@ test_that("piping - waterfall chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title              = "changed grid line colour, bold font, colour scheme",
-        axisTitleFontStyle = "bold",
-        xAxisTickColor     = "#471a1a",
-        colorScheme        = "PuBu")
+        title               = "changed grid line colour, bold font, colour scheme",
+        axisTitleFontStyle  = "bold",
+        xAxisGridMajorColor = "#471a1a",
+        colorScheme         = "PuBu")
 
     check_ui_test(result)
 })

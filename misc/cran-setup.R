@@ -13,7 +13,7 @@
 #    inst/htmlwidgets/canvasXpress.yaml
 
 
-# Replace the following files with the released JS files for the version
+# Delete and upload the following files with the released JS files from ISAAC for the version
 #     inst/htmlwidgets/lib/canvasXpresscanvasXpress.css
 #     inst/htmlwidgets/lib/canvasXpresscanvasXpress.min.js
 

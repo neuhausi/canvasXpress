@@ -96,7 +96,7 @@ canvasXpress(data                    = cxdata,
              xAxisMinorTicks         = FALSE,
              yAxisMinorTicks         = FALSE)
 ```
-![Scatter2D](images/R-Scatter2D.png)
+![Scatter2D](images/R-Scatter2D.jpg)
 
 ### Stacked Bar Chart
 
@@ -116,7 +116,7 @@ canvasXpress(data                  = cxdata,
              xAxisTitle            = "Total Arrests",
              xAxis2Title           = "Total Arrests")
 ```
-![StackedBar](images/R-StackedBar.png)
+![StackedBar](images/R-StackedBar.jpg)
 
 ### Clustered Bar Chart
 
@@ -146,7 +146,7 @@ canvasXpress(data                    = cxdata,
              distance                = "manhattan",
              smpDendrogramPosition   = "left")
 ```
-![ClusteredBar1](images/R-ClusteredBar1.png)
+![ClusteredBar1](images/R-ClusteredBar1.jpg)
 
 
 ### Boxplot
@@ -172,7 +172,7 @@ canvasXpress(data                  = cxdata,
              showLegend            = FALSE,
              title                 = "US Arrests by Type")
 ```
-![BoxPlot1](images/R-BoxPlot1.png)
+![BoxPlot1](images/R-BoxPlot1.jpg)
 
 
 ## Piping Support and Examples
@@ -192,7 +192,7 @@ initial_cx <- canvasXpress(
 
 initial_cx
 ```
-![Piping1](images/piping1.png)
+![Piping1](images/piping1.jpg)
 
 Update this chart using the magrittr pipe to add a title and subtitle, change the x and y axis, show a regression line and set the theme.
 
@@ -209,7 +209,7 @@ update_1 <- initial_cx %>% canvasXpress(
 
 update_1
 ```
-![Piping2](images/piping2.png)
+![Piping2](images/piping2.jpg)
 
 Update the chart again using the R base pipe to change to a single regression line and remove the subtitle and theme configuration values
 
@@ -222,7 +222,7 @@ update_2 <- update_1 |> canvasXpress(
 
 update_2
 ```
-![Piping3](images/piping3.png)
+![Piping3](images/piping3.jpg)
 
 
 

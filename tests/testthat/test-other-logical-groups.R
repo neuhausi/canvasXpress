@@ -8,24 +8,23 @@ varx  <- c("Imputed")
 valx  <- c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE)
 datx  <- as.data.frame(matrix(valx, nrow = 1, ncol = 6, byrow = TRUE, dimnames = list(varx, smps)))
 
-annot_data <- datx %>%
-    t() %>%
-    as.data.frame() %>%
-    mutate(NumericVar  = 1.5:6.5,
-           CategoryVar = c("A", "B", "A", "B", "A", "B"))
+annot_data <- as.data.frame(t(datx))
+annot_data$NumericVar = 1.5:6.5
+annot_data$CategoryVar = c("A", "B", "A", "B", "A", "B")
 
 # different scenarios of annotation data to send to CX
 annot_data_list <- list(
-    logical_only = select(annot_data, Imputed),
+    logical_only    = data.frame(Imputed = annot_data$Imputed),
 
     # logical + numeric metadata -- we have to convert the logical field to character ("TRUE" and "FALSE")
     # to prevent CX from converting it to numeric (0 and 1)
-    logical_and_num = annot_data %>%
-        mutate(Imputed = as.character(Imputed)) %>%
-        select(Imputed, NumericVar),
+    logical_and_num = data.frame(Imputed    = as.character(annot_data$Imputed),
+                                 NumericVar = annot_data$NumericVar),
 
-    logical_and_char = select(annot_data, Imputed, CategoryVar)
+    logical_and_char = data.frame(Imputed     = annot_data$Imputed,
+                                  CategoryVar = annot_data$CategoryVar)
 )
+
 
 subtitle_list <- list(logical_only     = NULL,
                       logical_and_num  = "with additional numeric metadata",
@@ -80,6 +79,8 @@ test_that("bar plot values are logical", {
 })
 
 test_that("pre-calculated bar plot values are logical", {
+    testthat::skip_if_not_installed("dplyr")
+
     precalc_data <- data.frame(mean      = c(5, 10),
                                stdev     = c(0.5, 1),
                                row.names = c(FALSE, TRUE)) %>%
@@ -109,8 +110,9 @@ test_that("pre-calculated bar plot values are logical", {
 })
 
 test_that("histogram values are logical", {
-    hist_data <- data.frame("TRUE" = vals, "FALSE" = vals, check.names = FALSE)
+    testthat::skip_if_not_installed("dplyr")
 
+    hist_data       <- data.frame("TRUE" = vals, "FALSE" = vals, check.names = FALSE)
     hist_annot_list <- list(NULL,
                             select(annot_data, NumericVar),
                             select(annot_data, CategoryVar))
@@ -134,8 +136,9 @@ test_that("histogram values are logical", {
 test_that("scatter plot values are logical", {
     scatter_data <- data %>%
         t() %>%
-        as.data.frame() %>%
-        mutate(QC_Var2 = 1:6)
+        as.data.frame()
+
+    scatter_data$QC_Var2 <- 1:6
 
     for (i in seq_along(annot_data_list)) {
         result <- canvasXpress(
@@ -152,3 +155,4 @@ test_that("scatter plot values are logical", {
         check_ui_test(result)
     }
 })
+

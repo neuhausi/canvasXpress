@@ -21,7 +21,7 @@ test_that("boxplot - grouping", {
                            outlineWidth            = 2,
                            boxplotMedianWidth      = 4,
                            dataPointSize           = 50,
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            colorBy                 = "prop2",
                            shapeBy                 = "prop2",
                            title                   = "Boxplot - grouping",

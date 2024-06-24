@@ -110,7 +110,7 @@ test_that("boxplot null data", {
                            showBoxplotOriginalData = TRUE,
                            boxplotConnect          = TRUE,
                            showLegend              = TRUE,
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            smpTitle                = "Dose",
                            title                   = get_plot_title("Boxplot"),
                            xAxisTitle              = "len",

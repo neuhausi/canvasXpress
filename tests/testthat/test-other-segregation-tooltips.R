@@ -25,7 +25,7 @@ test_that("segregation boxplot tooltips", {
                            smpOverlays             = list("dose"),
                            showBoxplotOriginalData = TRUE,
                            showLegend              = TRUE,
-                           smpLabelRotate          = 90,
+                           smpTextRotate           = 90,
                            stringSampleFactors     = list("dose", "order"),
                            title                   = "Boxplot Overlay Tooltips")
 

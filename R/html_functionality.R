@@ -67,7 +67,7 @@ cxHtmlPage <- function(chartObject, width = NULL, height = NULL) {
                       "---",
                       "",
                       "```{r echo = FALSE}",
-                      paste0("htmltools::includeHTML('", tmp_widget, "')"),
+                      paste0("append_html_document('", tmp_widget, "')"),
                       "```")
 
         htmlwidgets::saveWidget(chartObject, tmp_widget)
@@ -94,4 +94,20 @@ cxHtmlPage <- function(chartObject, width = NULL, height = NULL) {
     })
 
     result
+}
+
+
+#  Append passed html document (i.e CX plot) to downloadable report.
+#  Note, this function is used over htmlTools package includeHTML function to
+#  override its generated warning that can't be silenced and added to the report
+append_html_document <- function(html_file) {
+    # convert html document to html fragment before appending it to
+    # another html document to avoid any possible browser issue from duplicated html tags
+    lines <- readLines(html_file, warn = FALSE, encoding = "UTF-8")
+    lines <- paste(lines, collapse = "\n")
+    lines <- gsub(pattern     = "^<!DOCTYPE html>|<html*>|</html>$",
+                  replacement = "",
+                  ignore.case = TRUE,
+                  x           = lines)
+    shiny::HTML(lines)
 }
