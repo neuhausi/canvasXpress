@@ -1573,6 +1573,25 @@ div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
   margin: 5px 8px 0px 0px;
 }
 
+/*************
+ *  Tooltip  *
+ *************/
+div.CanvasXpressAltTooltip {
+  background-color: var(--cx-background-widgets-color);
+  border: var(--cx-border);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--cx-color-transparent);
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  font-size: 12px;
+  line-height: 100%;
+  padding: 5px;
+  position: absolute;
+  display: none;
+  text-wrap: nowrap;
+  z-index: 1000000;
+}
+
 /******************
  * Data Table DOE *
  ******************/
@@ -1805,6 +1824,7 @@ div.CanvasXpressTableCellLink {
   position: relative;
   text-overflow: ellipsis;
   text-align: left;
+  white-space: nowrap;
 }
 
 div.CanvasXpressTableCell:hover {
