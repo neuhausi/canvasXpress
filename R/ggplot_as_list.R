@@ -164,8 +164,12 @@ gg_order <- function(o, b) {
     o <- ggplot2::last_plot()
   }
   r <- Filter(Negate(is.null), sapply(o$data, levels))
-  r$xLabels <- as.character(b$layout$panel_params[[1]]$x$get_labels())
-  r$yLabels <- as.character(b$layout$panel_params[[1]]$y$get_labels())
+  if (!is.null(b$layout$panel_params[[1]]$x)) {
+    r$xLabels <- as.character(b$layout$panel_params[[1]]$x$get_labels())
+  }
+  if (!is.null(b$layout$panel_params[[1]]$y)) {
+    r$yLabels <- as.character(b$layout$panel_params[[1]]$y$get_labels())
+  }
   r
 }
 
@@ -411,6 +415,12 @@ gg_coordinates <- function(o) {
   if (!is.null(o$coordinates$limits$y)) {
     r$setMinY <- o$coordinates$limits$y[1]
     r$setMaxY <- o$coordinates$limits$y[2]
+  }
+  l <- c("r", "theta", "start", "end", "direction", "inner_radius", "arc")
+  for (i in l) {
+    if (!is.null(o$coordinates[[i]])) {
+      r[[i]] <- o$coordinates[[i]]
+    }
   }
   r
 }
@@ -666,6 +676,7 @@ data_to_matrix <- function(o, b) {
   m <- c("x", "y", "z")
   d <- o$data
   nd <- data.frame(lapply(d, as.character), stringsAsFactors = FALSE, check.names = FALSE)
+  k <- length(row.names(nd))
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
       q <- rlang::as_label(o$mapping[[i]])
@@ -673,15 +684,18 @@ data_to_matrix <- function(o, b) {
         ## Nothing to do
       } else if (i == "label") {
         u <- as.character(b$data[[1]][[i]])
-        nd[i] <- u
+        if (length(u) == k) {
+          nd[i] <- u
+        }
       } else {
         u <- as.numeric(b$data[[1]][[i]])
-        nd[q] <- u
+        if (length(u) == k) {
+          nd[q] <- u
+        }
       }
     }
   }
   for (i in 1:length(layers)) {
-    l <- layers[i]
     q <- class(o$layers[[i]]$geom)[1]
     if (q != "GeomBlank") {
       for (j in m) {
