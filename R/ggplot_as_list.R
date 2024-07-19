@@ -40,13 +40,18 @@ ggplot.as.list <- function(o, ...) {
 }
 
 gg_cxplot <- function(o, target, ...) {
+
   config <- list(...)
+
+  meta <- as.list(sapply(o$data, is.factor))
 
   bld <- ggplot2::ggplot_build(o)
 
+  data <- data_to_matrix(o, bld)
+
   cx <- list(
     renderTo = target,
-    data     = data_to_matrix(o, bld),
+    data     = data,
     aes      = gg_mapping(o, bld),
     scales   = gg_scales(o, bld),
     coords   = gg_coordinates(o),
@@ -56,6 +61,7 @@ gg_cxplot <- function(o, target, ...) {
     order    = gg_order(o, bld),
     layers   = as.vector(NULL),
     geoms    = as.vector(NULL),
+    meta     = meta,
     isGGPlot = TRUE,
     config   = config,
     isR      = TRUE
@@ -126,6 +132,23 @@ gg_cxplot <- function(o, target, ...) {
       p$ymin <- bld$data[[i]]$ymin
       p$ymax <- bld$data[[i]]$ymax
       p$col <- bld$data[[i]]$fill
+      p$panel <- bld$data[[i]]$PANEL
+    } else if (l == "GeomSegment" || l == 'GeomCurve') {
+      p$x <- bld$data[[i]]$x
+      p$y <- bld$data[[i]]$y
+      p$xend <- bld$data[[i]]$xend
+      p$yend <- bld$data[[i]]$yend
+      p$col <- bld$data[[i]]$colour
+      p$linetype <- bld$data[[i]]$linetype
+      p$linewidth <- bld$data[[i]]$linewidth
+    } else if (l == "GeomPwc" || l == "GeomBracket") {
+      p$x <- bld$data[[i]]$x
+      p$y <- bld$data[[i]]$y
+      p$xmin <- bld$data[[i]]$xmin
+      p$xmax <- bld$data[[i]]$xmax
+      p$col <- bld$data[[i]]$colour
+      p$label <- bld$data[[i]]$label
+      p$panel <- bld$data[[i]]$PANEL
     }
     p$stat <- proto_stat[i]
     q <- list()
@@ -140,7 +163,12 @@ gg_cxplot <- function(o, target, ...) {
 # -- internal helper functions -- #
 
 gg_default_aes <- function(geom_name) {
-  geom_obj <- get(geom_name, envir = asNamespace("ggplot2"))
+  if (geom_name == "GeomPwc" || geom_name == "GeomBracket") {
+    namesp <- asNamespace("ggpubr")
+  } else {
+    namesp <- asNamespace("ggplot2")
+  }
+  geom_obj <- get(geom_name, envir = namesp)
   default_aes <- geom_obj$default_aes
   # Filter out NULL and NA values. Ensure it returns a single logical value.
   valid_aes <- Filter(function(x) {
@@ -602,7 +630,8 @@ gg_proc_layer <- function(o, idx, bld) {
   }
   prps <- c("colour", "fill", "alpha")
   for (p in prps) {
-    if ((!(p %in% names(r))) && !is.null(d[[p]])) {
+    #if ((!(p %in% names(r))) && !is.null(d[[p]])) {
+    if ((!(p %in% names(r))) && !is.null(d[[p]]) && rlang::as_label(o$mapping[[p]]) == "NULL") {
       if (p == "colour") {
         if (!("color" %in% names(r))) {
           r$color <- gsub("\"", "", d[[p]])
