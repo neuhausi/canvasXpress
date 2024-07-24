@@ -120,9 +120,14 @@ gg_cxplot <- function(o, target, ...) {
       if (!("linetype" %in% names(p))) {
         p$linetype <- bld$data[[i]]$linetype
       }
-    } else if (l == "GeomText") {
-      if (!("color" %in% names(p))) {
+    } else if (l == "GeomPoint") {
+      if (dim(bld$data[[i]])[1] != dim(o$data)[1]) {
+        p$x <- bld$data[[i]]$x
+        p$y <- bld$data[[i]]$y
         p$color <- bld$data[[i]]$colour
+        p$fill <- bld$data[[i]]$fill
+        p$size <- bld$data[[i]]$size
+        p$shape <- bld$data[[i]]$shape
       }
     } else if (l == "GeomDensityRidges") {
       p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
@@ -325,10 +330,11 @@ gg_scales <- function(o, b) {
   r <- list()
   n <- length(o$scales$scales)
   k <- FALSE
+  w <- 0
   if (n > 0) {
     for (i in 1:n) {
       s <- o$scales$scales[[i]]
-      if (s$aesthetics[1] == "colour" || s$aesthetics[1] == "fill") {
+      if (s$aesthetics[1] == "fill") {
         c <- class(s)[1]
         if (c == "ScaleContinuous") {
           r$colorSpectrum <- s$palette(c(0, 0.25, 0.5, 0.75, 1))
@@ -354,6 +360,34 @@ gg_scales <- function(o, b) {
           r$colorLimits <- b[[3]]$scales$scales[[1]]$limits
         }
         r$colorScale <- c
+        w <- w + 1
+      } else if (s$aesthetics[1] == "colour") {
+        c <- class(s)[1]
+        if (c == "ScaleContinuous") {
+          r$colorSpectrum2 <- s$palette(c(0, 0.25, 0.5, 0.75, 1))
+          k <- TRUE
+        } else if (c == "ScaleDiscrete") {
+          p <- s$palette(1)
+          if (!is.null(names(p))) {
+            k <- names(p)
+            names(p) <- NULL
+            q <- list()
+            for (j in 1:length(k)) {
+              q[[k[j]]] <- p[j]
+            }
+            r$colorKey2 <- q
+          }
+          r$colors2 <- b[[3]]$scales$scales[[1]]$palette.cache
+          if (length(b[[3]]$scales$scales[[1]]$breaks) > 0) {
+            r$colorBreaks2 <- b[[3]]$scales$scales[[1]]$breaks
+          }
+        } else if (c == "ScaleBinned") {
+          r$colors2 <- b[[3]]$scales$scales[[1]]$palette.cache
+          r$colorBreaks2 <- b[[3]]$scales$scales[[1]]$breaks
+          r$colorLimits2 <- b[[3]]$scales$scales[[1]]$limits
+        }
+        r$colorScale2 <- c
+        w <- w + 1
       } else if (s$aesthetics[1] == "x") {
         if (!is.null(s$limits)) {
           r$setMinX <- s$limits[1]
@@ -378,6 +412,32 @@ gg_scales <- function(o, b) {
           r$yAxisTitle <- s$name
         }
         r$yAxisTicks <- length(b$layout$panel_params[[1]]$y$breaks)
+      }
+    }
+    if (w == 1) {
+      if ("colorSpectrum2" %in% names(r)) {
+        r$colorSpectrum <- r$colorSpectrum2
+        r$colorSpectrum2 <- NULL
+      }
+      if ("colorKey2" %in% names(r)) {
+        r$colorKey <- r$colorKey2
+        r$colorKey2 <- NULL
+      }
+      if ("colors2" %in% names(r)) {
+        r$colors <- r$colors2
+        r$colors2 <- NULL
+      }
+      if ("colorBreaks2" %in% names(r)) {
+        r$colorBreaks <- r$colorBreaks2
+        r$colorBreaks2 <- NULL
+      }
+      if ("colorLimits2" %in% names(r)) {
+        r$colorLimits <- r$colorLimits2
+        r$colorLimits2 <- NULL
+      }
+      if ("colorScale2" %in% names(r)) {
+        r$colorScale <- r$colorScale2
+        r$colorScale2 <- NULL
       }
     }
   }
@@ -619,6 +679,9 @@ gg_proc_layer <- function(o, idx, bld) {
       r$data$y <- as.numeric(dl[["y"]])
       r$data$label <- as.character(dl[["label"]])
       r$data$color <- as.character(dl[["colour"]])
+      r$data$fill <- as.character(dl[["fill"]])
+      r$data$size <- as.character(dl[["size"]])
+      r$data$shape <- as.character(dl[["shape"]])
     } else {
       dl <- l$data
       nd <- data.frame(lapply(dl, as.character), stringsAsFactors = FALSE)
@@ -702,7 +765,7 @@ gg_proc_layer <- function(o, idx, bld) {
 
 data_to_matrix <- function(o, b) {
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
-  m <- c("x", "y", "z")
+  m <- c("x", "y", "z", "label", "colour", "fill", "size")
   d <- o$data
   nd <- data.frame(lapply(d, as.character), stringsAsFactors = FALSE, check.names = FALSE)
   k <- length(row.names(nd))
@@ -711,7 +774,7 @@ data_to_matrix <- function(o, b) {
       q <- rlang::as_label(o$mapping[[i]])
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
-      } else if (i == "label") {
+      } else if (i == "label" || i == "colour" || i == "fill") {
         u <- as.character(b$data[[1]][[i]])
         if (length(u) == k) {
           nd[i] <- u
@@ -732,6 +795,11 @@ data_to_matrix <- function(o, b) {
           q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
           if (q %in% colnames(o$data)) {
             ## Nothing to do
+          } else if (j == "label" || j == "colour" || j == "fill") {
+            u <- as.character(b$data[[1]][[j]])
+            if (length(u) == length((nd[[1]]))) {
+              nd[q] <- u
+            }
           } else {
             u <- as.numeric(b$data[[i]][[j]])
             if (length(u) == length((nd[[1]]))) {
