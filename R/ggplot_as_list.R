@@ -5,6 +5,7 @@
 #'
 #' @export
 ggplot.as.list <- function(o, ...) {
+
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
     stop("The ggplot2 package is required to use this functionality.")
   } else if (!("ggplot") %in% class(o)) {
@@ -135,9 +136,9 @@ gg_cxplot <- function(o, target, ...) {
         p$showKMConfidenceIntervals <- config$showKMConfidenceIntervals
         p$kmRiskTable <- config$kmRiskTable
         p$kmColors <- unique(p$data$color)
-        within(cx$config, rm(kmCxplot))
-        within(cx$config, rm(showKMConfidenceIntervals))
-        within(cx$config, rm(kmRiskTable))
+        within(cx$config, rm("kmCxplot"))
+        within(cx$config, rm("showKMConfidenceIntervals"))
+        within(cx$config, rm("kmRiskTable"))
         within(p, rm(data))
       }
     } else if (l == "GeomDensityRidges") {
@@ -202,7 +203,7 @@ gg_default_aes <- function(geom_name) {
 }
 
 gg_fun <- function(x) {
-  tryCatch(getFromNamespace(x, "ggplot2"), error = function(e) NULL)
+  tryCatch(utils::getFromNamespace(x, "ggplot2"), error = function(e) NULL)
 }
 
 gg_order <- function(o, b) {
