@@ -5,8 +5,10 @@
 #'
 #' @export
 ggplot.as.list <- function(o, ...) {
-  if (!any(c("ggplot", "ggsurvplot") %in% class(o))) {
-      stop("Not a supported ggplot object")
+  if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+    stop("The ggplot2 package is required to use this functionality.")
+  } else if (!("ggplot") %in% class(o)) {
+    stop("Not a ggplot object")
   }
 
   if (("patchwork") %in% class(o)) {

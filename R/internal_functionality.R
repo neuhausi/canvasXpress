@@ -1,8 +1,13 @@
 assertDataCorrectness <- function(data, graphType, config) {
 
     # skip all data validation in the following scenarios:
-    if (!is.null(data) && "ggplot" %in% class(data)) {
-        return()
+    if (!is.null(data)) {
+        if ("ggplot" %in% class(data)) {
+            return()
+        }
+        if ("ggsurvplot" %in% class(data)) {
+            return()
+        }
     }
 
     # proceed with validation
