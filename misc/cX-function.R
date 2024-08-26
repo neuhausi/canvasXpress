@@ -1199,7 +1199,7 @@ cXboxplot15 <- function() {
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len",
-    afterRender=list(list("pivotX", list("dose")))
+    afterRender=list(list("pivotX", list('dose')))
   )
 }
 
@@ -3879,37 +3879,117 @@ cXhistogram10 <- function() {
 
 cXkaplanmeier1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    varAnnot=z,
+    colorBy="Gender",
+    colors=list("#2E9FDF", "#E7B800"),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showKMConfidenceIntervals=FALSE,
-    showLegend=FALSE,
-    showTransition=FALSE,
-    title="Kaplan-Meier Plot",
-    xAxisTitle="Weeks",
-    yAxisTitle="Probability of Survival",
+    kmRiskTable=TRUE,
+    legendColumns=2,
+    legendPosition="top",
+    showKMConfidenceIntervals=TRUE,
+    title="Lung Cancer Data with Confidence Level and Risk Number Table",
+    xAxis=list("time"),
+    xAxisTitle="Time",
+    yAxis=list("status"),
+    yAxisTitle="Survival Probability",
     afterRender=list(list("addKMPlot"))
   )
 }
 
 cXkaplanmeier2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    varAnnot=z,
+    colorBy="Gender",
+    colors=list("#2E9FDF", "#E7B800"),
     graphType="Scatter2D",
+    kmRiskTable=FALSE,
     showKMConfidenceIntervals=TRUE,
-    showTransition=FALSE,
-    title="Kaplan-Meier Plot",
-    xAxisTitle="Weeks",
-    yAxisTitle="Probability of Survival",
+    title="Lung Cancer Data with Confidence Level",
+    xAxis=list("time"),
+    xAxisTitle="Time",
+    yAxis=list("status"),
+    yAxisTitle="Survival Probability",
     afterRender=list(list("addKMPlot"))
   )
 }
 
 cXkaplanmeier3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Gender",
+    colors=list("#2E9FDF", "#E7B800"),
+    graphType="Scatter2D",
+    kmRiskTable=FALSE,
+    legendColumns=2,
+    legendPosition="top",
+    showKMConfidenceIntervals=FALSE,
+    title="Lung Cancer Data - Minimal",
+    xAxis=list("time"),
+    xAxisTitle="Time",
+    yAxis=list("status"),
+    yAxisTitle="Survival Probability",
+    afterRender=list(list("addKMPlot"))
+  )
+}
+
+cXkaplanmeier4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Strata",
+    graphType="Scatter2D",
+    kmRiskTable=TRUE,
+    legendColumns=2,
+    legendPosition="top",
+    showKMConfidenceIntervals=FALSE,
+    title="KM Plot with right censoring method",
+    xAxis=list("Time"),
+    xAxisTitle="Time",
+    yAxis=list("Event"),
+    yAxisTitle="Survival Probability",
+    afterRender=list(list("addKMPlot"))
+  )
+}
+
+cXkaplanmeier5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Strata",
+    graphType="Scatter2D",
+    kmRiskTable=TRUE,
+    kmTime="Time2",
+    legendColumns=2,
+    legendPosition="top",
+    showKMConfidenceIntervals=FALSE,
+    title="KM Plot with counting method",
+    xAxis=list("Time"),
+    xAxisTitle="Time",
+    yAxis=list("Event"),
+    yAxisTitle="Survival Probability",
+    afterRender=list(list("addKMPlot"))
+  )
+}
+
+cXkaplanmeier6 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3918,6 +3998,7 @@ cXkaplanmeier3 <- function() {
     varAnnot=z,
     colorBy="Drug",
     graphType="Scatter2D",
+    kmRiskTable=TRUE,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     showKMConfidenceIntervals=FALSE,
@@ -3927,7 +4008,7 @@ cXkaplanmeier3 <- function() {
   )
 }
 
-cXkaplanmeier4 <- function() {
+cXkaplanmeier7 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3949,7 +4030,7 @@ cXkaplanmeier4 <- function() {
   )
 }
 
-cXkaplanmeier5 <- function() {
+cXkaplanmeier8 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)

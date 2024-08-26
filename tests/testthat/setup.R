@@ -22,18 +22,6 @@ try({
     testFile <- gsub("https://www.canvasxpress.org/data/cX-olympicMedals",
                      "https://www.canvasxpress.org/data/cX-OlympicMedals", testFile)
 
-    #layout12, kaplanmeier3, kaplanmeier5
-    testFile <- gsub("list\\(list\\('Survival','Survival-Censor'\\)\\)",
-                     "list\\('Survival','Survival-Censor'\\)", testFile)
-
-    #kaplanmeier4
-    testFile <- gsub("list\\(list\\('Survival2','Survival2-Censor'\\)\\)",
-                     "list\\('Survival2','Survival2-Censor'\\)", testFile)
-
-    #kaplanmeier1-2
-    testFile <- gsub("list\\(list\\('Time','Censor'\\)\\)",
-                     "list\\('Time','Censor'\\)", testFile)
-
     #scatter2d9
     testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
                      ", list\\(FALSE, \'red\'\\)", testFile)

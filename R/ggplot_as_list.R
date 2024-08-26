@@ -127,6 +127,17 @@ gg_cxplot <- function(o, target, ...) {
         p$size <- bld$data[[i]]$size
         p$shape <- bld$data[[i]]$shape
       }
+    } else if (l == "GeomStep") {
+      if (("kmCxplot") %in% names(config)) {
+        p$kmCxplot <- TRUE
+        p$showKMConfidenceIntervals <- config$showKMConfidenceIntervals
+        p$kmRiskTable <- config$kmRiskTable
+        p$kmColors <- unique(p$data$color)
+        within(cx$config, rm(kmCxplot))
+        within(cx$config, rm(showKMConfidenceIntervals))
+        within(cx$config, rm(kmRiskTable))
+        within(p, rm(data))
+      }
     } else if (l == "GeomDensityRidges") {
       p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
     } else if (l == "GeomRect" || l == "GeomTile") {
@@ -168,6 +179,8 @@ gg_cxplot <- function(o, target, ...) {
 gg_default_aes <- function(geom_name) {
   if (geom_name == "GeomPwc" || geom_name == "GeomBracket") {
     namesp <- asNamespace("ggpubr")
+  } else if (geom_name == "GeomConfint") {
+    namesp <- asNamespace("survminer")
   } else {
     namesp <- asNamespace("ggplot2")
   }
@@ -516,16 +529,18 @@ gg_labels <- function(o) {
     o <- ggplot2::last_plot()
   }
   r <- list()
-  l <- c("x", "y", "z", "title", "subtitle", "caption", "colour", "shape", "size")
+  l <- c("x", "y", "z", "title", "subtitle", "caption", "colour", "fill", "shape", "size")
   for (i in l) {
     if (!is.null(o$labels[[i]])) {
       if (i %in% c("title", "subtitle")) {
         r[[i]] <- as.character(o$labels[[i]])
       } else if (i == "caption") {
         r["citation"] <- as.character(o$labels[[i]])
-      } else if (i %in% c("colour", "shape", "size")) {
-        if (i == "colour") {
-          r["colorLegendTitle"] <- as.character(o$labels[[i]])
+      } else if (i %in% c("colour", "fill", "shape", "size")) {
+        if (i == "colour" || i == "fill") {
+          if (class(o$labels[[i]])[1] != "element_blank") {
+            r["colorLegendTitle"] <- as.character(o$labels[[i]])
+          }
         } else {
           r[[paste(i, "LegendTitle", sep = "")]] <- as.character(o$labels[[i]])
         }
