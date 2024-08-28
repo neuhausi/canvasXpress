@@ -26,6 +26,7 @@ jobs:
           command: |
             R -e 'install.packages("BiocManager")'
             R -e 'BiocManager::install(c("limma"))'
+            R -e 'BiocManager::install(c("survminer"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
@@ -75,6 +76,7 @@ jobs:
           command: |
             R -e 'install.packages("BiocManager")'
             R -e 'BiocManager::install(c("limma"))'
+            R -e 'BiocManager::install(c("survminer"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
@@ -124,6 +126,7 @@ jobs:
           command: |
             R -e 'install.packages("BiocManager")'
             R -e 'BiocManager::install(c("limma"))'
+            R -e 'BiocManager::install(c("survminer"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
