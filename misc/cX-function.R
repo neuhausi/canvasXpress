@@ -1,45 +1,155 @@
 cXarea1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    colorScheme="CanvasXpress",
     graphOrientation="vertical",
     graphType="Area",
-    lineType="rect",
-    objectBorderColor=FALSE,
     showLegend=FALSE,
-    showSampleNames=TRUE,
-    showTransition=FALSE,
     smpTextRotate=90,
-    smpTitle="time"
+    title="Area graph with one series",
+    xAxis=list("Value")
   )
 }
 
 cXarea2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    showLegend=FALSE,
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxis=list("Value"),
+    xAxisTitle="Value"
+  )
+}
+
+cXarea3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    subtitle="random data",
+    title="Area graph with three overlapping data series",
+    xAxisTitle="Value"
+  )
+}
+
+cXarea4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxisTitle="Value"
+  )
+}
+
+cXarea5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="percent",
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxisTitle="Value"
+  )
+}
+
+cXarea6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    filterData=list(list("guess", "false", "different", "ARRAY(0x11fc05488)")),
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxisTitle="Value"
+  )
+}
+
+cXarea7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    filterData=list(list("guess", "false", "exact", "ARRAY(0x11fc058f0)")),
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxisTitle="Value"
+  )
+}
+
+cXarea8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Series",
+    graphType="Area",
+    lineType="spline"
+  )
+}
+
+cXarea9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Series",
+    filterData=list(list("guess", "Series", "not like", "ARRAY(0x11f8a1990)")),
+    graphType="Area",
+    lineType="spline"
+  )
+}
+
+cXarea10 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Area",
-    legendPosition="right",
-    lineType="spline",
-    objectBorderColor=FALSE,
     objectColorTransparency=0.7,
-    showTransition=FALSE,
     smpLabelInterval=20,
     smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     theme="CanvasXpress",
     title="Age distribution of population in the United States",
-    xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
 }
 
-cXarea3 <- function() {
+cXarea11 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -48,43 +158,34 @@ cXarea3 <- function() {
     colorScheme="Blues",
     graphOrientation="vertical",
     graphType="Area",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="right",
-    lineType="spline",
     smpLabelInterval=20,
     smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
-    xAxis2Show=FALSE,
     xAxisTitle="Number of People (1000's)"
   )
 }
 
-cXarea4 <- function() {
+cXarea12 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="percent",
-    colorScheme="CanvasXpress",
+    colorScheme="GGPlot",
     graphOrientation="vertical",
     graphType="Area",
-    legendPosition="right",
-    lineType="spline",
-    showTransition=FALSE,
     smpLabelInterval=20,
     smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
-    xAxis2Show=FALSE,
-    xAxisTitle="Normalized Percentage of People"
+    xAxisTitle="Number of People (1000's)"
   )
 }
 
-cXarea5 <- function() {
+cXarea13 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-area3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -99,18 +200,19 @@ cXarea5 <- function() {
     objectColorTransparency=0.3,
     showLegend=FALSE,
     showSampleNames=FALSE,
-    showTransition=FALSE,
-    title="Steam Plot"
+    title="Steam Plot",
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
-cXarea6 <- function() {
+cXarea14 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-area2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
-    axisAlgorithm="wilkinsonExtended",
     colorScheme="ColorSpectrum",
     colorSpectrum=list("blue", "cyan", "yellow", "red"),
     graphOrientation="vertical",
@@ -120,11 +222,14 @@ cXarea6 <- function() {
     objectColorTransparency=0.6,
     showLegend=FALSE,
     showSampleNames=FALSE,
-    title="Data Mountain"
+    title="Data Mountain",
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
-cXarea7 <- function() {
+cXarea15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-scatterArea-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-scatterArea-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -133,13 +238,12 @@ cXarea7 <- function() {
     varAnnot=z,
     colorBy="g",
     colorScheme="GGPlot",
-    graphType="Scatter2D",
-    scatterType="area",
+    graphType="Area",
     theme="GGPlot"
   )
 }
 
-cXarea8 <- function() {
+cXarea16 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-fontana-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   z=read.table("https://www.canvasxpress.org/data/cX-fontana-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -150,11 +254,10 @@ cXarea8 <- function() {
     colorBy="country",
     colors=list("rgb(0,63,92)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(160,81,149)", "rgb(212,80,135)", "rgb(249,93,106)", "rgb(255,124,67)", "rgb(255,166,0)"),
     dataPointSizeScaleFactor=0,
-    graphType="Scatter2D",
-    legendColumns=4,
+    graphType="Area",
+    legendColumns=3,
     legendPosition="bottom",
     panelBackgroundColor="rgb(222,222,222)",
-    scatterType="area",
     xAxisGridMinorShow=FALSE,
     yAxisGridMinorShow=FALSE
   )
@@ -162,31 +265,73 @@ cXarea8 <- function() {
 
 cXarealine1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-arealine-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    colorScheme="CanvasXpress",
     graphOrientation="vertical",
     graphType="AreaLine",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="right",
     lineThickness=3,
     lineType="spline",
-    smpLabelInterval=20,
-    smpTextRotate=45,
-    smpTitle="Year",
-    subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United States",
-    xAxis=list("<5", "5-14", "15-24", "25-34"),
-    xAxis2=list("35-44", "45-54", "55-64", ">64"),
-    xAxisTitle="Number of People (1000's)"
+    objectColorTransparency=0.5,
+    setMaxX=50,
+    setMaxX2=50,
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxis=list("Series A", "Series B", "Series C"),
+    xAxis2=list("Series D", "Series E"),
+    xAxis2Show=TRUE,
+    xAxisShow=TRUE
   )
 }
 
 cXarealine2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-arealine-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    graphOrientation="vertical",
+    graphType="AreaLine",
+    lineThickness=3,
+    lineType="spline",
+    setMaxX=60,
+    setMaxX2=60,
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxis=list("Series A", "Series B", "Series C"),
+    xAxis2=list("Series D", "Series E"),
+    xAxis2Show=TRUE,
+    xAxisShow=TRUE
+  )
+}
+
+cXarealine3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("rgb(160,81,149)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(255,166,0)", "rgb(0,63,92)", "rgb(160,81,149)"),
+    graphOrientation="vertical",
+    graphType="AreaLine",
+    legendPosition="topRight",
+    lineThickness=3,
+    lineType="spline",
+    setMinX=0,
+    setMinX2=0,
+    smpTextRotate=90,
+    smpTitle="Month",
+    xAxis=list("Series A"),
+    xAxis2=list("Series D"),
+    xAxis2Show=TRUE,
+    xAxis2Title="Value2",
+    xAxisShow=TRUE,
+    xAxisTitle="Value"
+  )
+}
+
+cXarealine4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -194,34 +339,7 @@ cXarealine2 <- function() {
     colorSpectrum=list("blue", "cyan", "yellow", "red"),
     graphOrientation="vertical",
     graphType="AreaLine",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="right",
-    lineThickness=3,
-    lineType="spline",
-    smpLabelInterval=20,
-    smpTextRotate=45,
-    smpTitle="Year",
-    subtitle="gcookbook - uspopage",
-    title="Age distribution of population in the United States",
-    xAxis=list("<5", "5-14", "15-24", "25-34"),
-    xAxis2=list("35-44", "45-54", "55-64", ">64"),
-    xAxisTitle="Number of People (1000's)"
-  )
-}
-
-cXarealine3 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-arealine-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    colorScheme="Paired",
-    coordinateLineColor=TRUE,
-    graphOrientation="vertical",
-    graphType="AreaLine",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="right",
+    legendPosition="topRight",
     lineThickness=3,
     lineType="spline",
     smpLabelInterval=20,
