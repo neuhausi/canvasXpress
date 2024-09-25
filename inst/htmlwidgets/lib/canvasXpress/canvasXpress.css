@@ -62,8 +62,10 @@
   --cx-border-transparent: var(--cx-border-width) var(--cx-border-style) var(--cx-color-transparent);
   /* Font */
   --cx-font-size: 12px;
+  --cx-large-font-size: 14px;
   --cx-font-color: var(--cx-color-ui-font);
   --cx-font: normal var(--cx-font-size) var(--cx-font-family);
+  --cx-large-font: normal var(--cx-large-font-size) var(--cx-font-family);
   --cx-font-bold: bold var(--cx-font-size) var(--cx-font-family);
   --cx-font-italic: italic var(--cx-font-size) var(--cx-font-family);
   /* Background */
@@ -347,61 +349,62 @@ pre.cX-code-content code::before {
  * Chat Interface *
  ******************/
 
+div.cX-chat {
+  border: none;
+  background-color: var(--cx-color-transparent);
+  max-width: 600px;
+  min-height: 100px;
+  margin: 10px auto 0 auto;
+}
+
+div.cX-chat-container {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--cx-color-extra-light-gray);
+  color: var(--cx-font-color);
+  font: var(--cx-large-font);
+  display: flex;
+  align-items: center;
+}
+
+div.cX-chat-container-text {
+  float: left;
+  border: none;
+  background-color: var(--cx-color-transparent);
+  min-height: 50px;
+}
+
+span.cX-chat-question {
+  border: none;
+  background-color: var(--cx-color-transparent);
+  width: 100%;
+  margin: 0;
+  align-self: stretch;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+div.cX-chat-container-icon {
+  float: right;
+  border: none;
+  background-color: var(--cx-color-transparent);
+}
+
+div.cX-chat-container-thumbs {
+  float: left;
+  border: none;
+  background-color: var(--cx-color-transparent);
+  margin: 0;
+}
+
 svg.cX-chat-thumbs {
   background: var(--cx-color-transparent) !important;
   border: none !important;
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   cursor: default;
   float: left;
-  margin: 5px 0px 0px 20px !important;
-}
-
-div.cX-chat {
-  border: var(--cx-border);
-  border-radius: 5px;
-  background-color: var(--cx-background-widgets-color);
-  cursor: move;
-  left: 20px;
-  top: 60px;
-  width: 500px;
-  height: 270px;
-  color: var(--cx-font-color);
-  font: var(--cx-font);
-  position: absolute;
-  white-space: nowrap;
-}
-
-div.cX-chat-toolbar {
-  float: left;
-  position: relative;
-  height: 44px;
-  width: 100%;
-  border-bottom: 1px solid var(--cx-border) !important;
-  background: var(--cx-color-widgets);
-}
-
-div.cX-chat-container {
-  float: left;
-  position: relative;
-  width: 100%;
-  height: 224px;
-}
-
-textarea.cX-chat-question {
-  float: left;
-  position: relative;
-  border-radius: 5px;
-  padding: 5px;
-  resize: none;
-  width: 469px;
-  height: 150px;
-  margin: 15px;
-}
-
-input.cX-chat-question {
-  padding: 5px;
-  float: right;
-  margin: 0 15px 15px 15px;
 }
 
 /***************
@@ -2191,7 +2194,6 @@ span.CanvasXpressToggle {
   margin-left: 5px;
   margin-right: 5px;
   position: relative;
-  top: -4px;
 }
 
 /****************/
@@ -3696,6 +3698,21 @@ div.CanvasXpressWrapper {
   transition: all 300ms ease-in-out;
 }
 
+/* Hide Efect */
+
+.appear {
+  transition: all 1s linear;
+  opacity: 1;
+}
+
+.dissapear {
+  display: none;
+}
+
+.dissapearHidden {
+  transition: all 1s linear;
+  opacity: 0;
+}
 
 /* Magic Effects */
 
@@ -3711,6 +3728,56 @@ Copyright (c) 2018 Christian Pucci
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.showIn {
+  -webkit-animation-name: showIn;
+  animation-name: showIn;
+}
+
+@-webkit-keyframes showIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.showOut {
+  -webkit-animation-name: showOut;
+  animation-name: showOut;
+}
+
+@-webkit-keyframes showOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .puffIn {
