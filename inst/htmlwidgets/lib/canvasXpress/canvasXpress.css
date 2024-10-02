@@ -374,12 +374,13 @@ div.cX-chat-container-text {
   min-height: 50px;
 }
 
-span.cX-chat-question {
+div.cX-chat-question {
   border: none;
-  background-color: var(--cx-color-transparent);
+  background-color: var(--cx-color-extra-light-gray);
   width: 100%;
   margin: 0;
   align-self: stretch;
+  display: inline;;
 }
 
 [contenteditable] {
