@@ -374,12 +374,10 @@ div.cX-chat-container-text {
   min-height: 50px;
 }
 
-div.cX-chat-question {
+p.cX-chat-question {
   border: none;
   background-color: var(--cx-color-extra-light-gray);
-  width: 100%;
   margin: 0;
-  align-self: stretch;
   display: inline;;
 }
 
@@ -406,6 +404,70 @@ svg.cX-chat-thumbs {
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   cursor: default;
   float: left;
+}
+
+/****************
+ * LLM Examples *
+ ****************/
+
+div.cX-LLM-window {
+  position: absolute;
+  border: 1px solid #555555;
+  max-width: 440px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: var(--cx-color-extra-light-gray);
+  z-index: 10000;
+}
+
+a.cX-LLM-window-close {
+  position: sticky;
+  top: 0;
+  left: 410px;
+  font-size: xx-large;
+}
+
+div.cX-LLM-examples {
+  position: relative;
+  overflow: scroll;
+  max-height: 1000px;
+}
+
+div.cX-LLM-content {
+  top: 25px;
+  left: 25px;
+  position: absolute;
+}
+
+div.cX-LLM-container {
+  border: 1px solid #d3d3d3;
+  position: relative;
+  border-radius: 4px;
+  background: white;
+  float: left;
+  margin: 5px;
+  max-width: 810px;
+}
+
+div.cX-LLM-title {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center !important;
+  font-weight: bold;
+  border-bottom: 1px solid var(--cx-color-light-gray);
+}
+
+div.cX-LLM-plot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
 }
 
 /***************
