@@ -1454,91 +1454,11 @@ div.CanvasXpressTooltip {
   text-align: left;
 }
 
-div.CanvasXpressTooltipArrowLeft {
-  position: absolute;
-  height: 0;
-  width: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgb(83, 105, 255);
-  border-top: none;
-  border-right: none;
-  z-index: 1;
-}
-
-div.CanvasXpressTooltipArrowLeft:after,
-div.CanvasXpressTooltipArrowLeft:before {
-  border: solid transparent;
-  right: 0px;
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-div.CanvasXpressTooltipArrowLeft:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-right-color: rgb(245, 245, 245);
-  border-width: 8px;
-  margin-top: -8px;
-}
-
-div.CanvasXpressTooltipArrowLeft:before {
-  border-color: rgba(51, 122, 183, 0);
-  border-right-color: rgb(83, 105, 255);
-  border-width: 9px;
-  margin-top: -9px;
-}
-
-div.CanvasXpressTooltipArrowRight {
-  position: absolute;
-  height: 0;
-  width: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgb(83, 105, 255);
-  border-top: none;
-  border-left: none;
-  z-index: 1;
-}
-
-div.CanvasXpressTooltipArrowRight:after,
-div.CanvasXpressTooltipArrowRight:before {
-  border: solid transparent;
-  right: 0px;
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-div.CanvasXpressTooltipArrowRight:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-left-color: rgb(245, 245, 245);
-  border-width: 9px;
-  margin-top: -9px;
-}
-
-div.CanvasXpressTooltipArrowRight:before {
-  border-color: rgba(51, 122, 183, 0);
-  border-left-color: rgb(83, 105, 255);
-  border-width: 8px;
-  margin-top: -8px;
-}
-
-img.CanvasXpressTooltip,
-svg.CanvasXpressTooltip {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  cursor: default;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-span.CanvasXpressTooltip {
+span.CanvasXpressTooltip,
+span.CanvasXpressTooltipTop,
+span.CanvasXpressTooltipBottom,
+span.CanvasXpressTooltipLeft,
+span.CanvasXpressTooltipRight {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
@@ -1553,6 +1473,44 @@ span.CanvasXpressTooltip {
   white-space: nowrap;
   text-align: left;
   z-index: 1;
+  /*
+  --b: 2em;
+  --h: 1em;
+  border-image: fill 0 conic-gradient(var(--c,#CC333F) 0 0);
+  --webkit-border-image: fill 0 conic-gradient(var(--c,#CC333F) 0 0);
+  */
+}
+
+span.CanvasXpressTooltipBottom {
+  clip-path:
+    polygon(0 100%,0 0,100% 0,100% 100%,
+      calc(50% + var(--b)/2) 100%,
+      50% calc(100% + var(--h)),
+      calc(50% - var(--b)/2) 100%);
+}
+
+span.CanvasXpressTooltipTop {
+  clip-path:
+    polygon(0 0,0 100%,100% 100%,100% 0,
+      calc(50% + var(--b)/2) 0,
+      50% calc(-1*var(--h)),
+      calc(50% - var(--b)/2) 0);
+}
+
+span.CanvasXpressTooltipLeft {
+  clip-path:
+    polygon(0 100%,100% 100%,100% 0,0 0,
+      0 calc(50% - var(--b)/2),
+      calc(-1*var(--h)) 50%,
+      0 calc(50% + var(--b)/2));
+}
+
+span.CanvasXpressTooltipRight {
+  clip-path:
+    polygon(100% 100%,0 100%,0 0,100% 0,
+      100% calc(50% - var(--b)/2),
+      calc(100% + var(--h)) 50%,
+      100% calc(50% + var(--b)/2));
 }
 
 div.CanvasXpressMousePosition {
