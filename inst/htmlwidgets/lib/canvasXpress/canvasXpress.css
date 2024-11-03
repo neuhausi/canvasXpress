@@ -413,7 +413,7 @@ svg.cX-chat-thumbs {
 div.cX-LLM-window {
   position: absolute;
   border: 1px solid #555555;
-  max-width: 440px;
+  max-width: 545px;
   overflow: hidden;
   border-radius: 5px;
   background-color: var(--cx-color-extra-light-gray);
@@ -423,7 +423,7 @@ div.cX-LLM-window {
 a.cX-LLM-window-close {
   position: sticky;
   top: 0;
-  left: 410px;
+  left: 500px;
   font-size: xx-large;
 }
 
