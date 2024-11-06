@@ -79,7 +79,7 @@ cXarea6 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    filterData=list(list("guess", "false", "different", "ARRAY(0x12e269d58)")),
+    filterData=list(list("guess", "false", "different", "ARRAY(0x147b66f28)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -94,7 +94,7 @@ cXarea7 <- function() {
   y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    filterData=list(list("guess", "false", "exact", "ARRAY(0x12e26a1c0)")),
+    filterData=list(list("guess", "false", "exact", "ARRAY(0x147b67390)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -125,7 +125,7 @@ cXarea9 <- function() {
     data=y,
     varAnnot=z,
     colorBy="Series",
-    filterData=list(list("guess", "Series", "not like", "ARRAY(0x12e2d2060)")),
+    filterData=list(list("guess", "Series", "not like", "ARRAY(0x1478ab830)")),
     graphType="Area",
     lineType="spline"
   )
