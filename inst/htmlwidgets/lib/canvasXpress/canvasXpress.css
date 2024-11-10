@@ -77,6 +77,12 @@
   --cx-background-contrast-color: var(--cx-background-color);
   /* Border */
   --cx-border: var(--cx-border-width) var(--cx-border-style) var(--cx-color-widgets);
+  /* Callouts */
+  --cx-callout-size: 8px;
+  --cx-callout-radius: 10px;
+  --cx-callout-border-width: 1px;
+  --cx-callout-background-color: var(--cx-color-ui-background);
+  --cx-callout-border-color: var(--cx-color-widgets);
 }
 
 *,
@@ -1438,6 +1444,10 @@ div.CanvasXpressDragLayout {
   position: absolute;
 }
 
+/*
+ * Tooltip
+ */
+
 div.CanvasXpressTooltip {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
@@ -1454,11 +1464,7 @@ div.CanvasXpressTooltip {
   text-align: left;
 }
 
-span.CanvasXpressTooltip,
-span.CanvasXpressTooltipTop,
-span.CanvasXpressTooltipBottom,
-span.CanvasXpressTooltipLeft,
-span.CanvasXpressTooltipRight {
+div.CanvasXpressTooltipInfo {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
@@ -1473,44 +1479,279 @@ span.CanvasXpressTooltipRight {
   white-space: nowrap;
   text-align: left;
   z-index: 1;
-  /*
-  --b: 2em;
-  --h: 1em;
-  border-image: fill 0 conic-gradient(var(--c,#CC333F) 0 0);
-  --webkit-border-image: fill 0 conic-gradient(var(--c,#CC333F) 0 0);
-  */
 }
 
-span.CanvasXpressTooltipBottom {
-  clip-path:
-    polygon(0 100%,0 0,100% 0,100% 100%,
-      calc(50% + var(--b)/2) 100%,
-      50% calc(100% + var(--h)),
-      calc(50% - var(--b)/2) 100%);
+/*****************************************************/
+/* Generators                                        */
+/* A collection of Tooltips/Speech Bubbles           */
+/* https://css-generators.com/tooltip-speech-bubble/ */
+/*****************************************************/
+
+div.CanvasXpressTooltipInfoNone,
+div.CanvasXpressTooltipInfoBottom,
+div.CanvasXpressTooltipInfoTop,
+div.CanvasXpressTooltipInfoLeft,
+div.CanvasXpressTooltipInfoRight {
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  max-height: 800px;
+  padding: 10px;
+  position: absolute;
+  white-space: nowrap;
+  text-align: left;
+  z-index: 1;
 }
 
-span.CanvasXpressTooltipTop {
-  clip-path:
-    polygon(0 0,0 100%,100% 100%,100% 0,
-      calc(50% + var(--b)/2) 0,
-      50% calc(-1*var(--h)),
-      calc(50% - var(--b)/2) 0);
+div.CanvasXpressTooltipInfoBottom {
+  border-radius: var(--cx-callout-radius) var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg)) /
+    var(--cx-callout-radius);
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(100%, 50% + var(--cx-callout-size) * tan(45deg)) 100%,
+    50% calc(100% + var(--cx-callout-size)),
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 100%
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    var(--cx-callout-radius) max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+    0 max(0%, 50% - var(--cx-callout-size) * tan(45deg)) / 0 0
+    var(--cx-callout-size) 0;
 }
 
-span.CanvasXpressTooltipLeft {
-  clip-path:
-    polygon(0 100%,100% 100%,100% 0,0 0,
-      0 calc(50% - var(--b)/2),
-      calc(-1*var(--h)) 50%,
-      0 calc(50% + var(--b)/2));
+div.CanvasXpressTooltipInfoBottom:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      calc(100% - var(--cx-callout-border-width)),
+    50%
+      calc(
+        100% + var(--cx-callout-size) - var(--cx-callout-border-width) /
+          sin(45deg)
+      ),
+    max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      calc(100% - var(--cx-callout-border-width))
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    var(--cx-callout-radius)
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) / 0 0 var(--cx-callout-size) 0;
 }
 
-span.CanvasXpressTooltipRight {
-  clip-path:
-    polygon(100% 100%,0 100%,0 0,100% 0,
-      100% calc(50% - var(--b)/2),
-      calc(100% + var(--h)) 50%,
-      100% calc(50% + var(--b)/2));
+div.CanvasXpressTooltipInfoTop {
+  border-radius: min(
+      var(--cx-callout-radius),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius) var(--cx-callout-radius) / var(--cx-callout-radius);
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    min(100%, 50% + var(--cx-callout-size) * tan(45deg)) 0,
+    50% calc(-1 * var(--cx-callout-size)),
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 / 0
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius)
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) / var(--cx-callout-size)
+    0 0 0;
+}
+
+div.CanvasXpressTooltipInfoTop:before  {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      var(--cx-callout-border-width),
+    50%
+      calc(var(--cx-callout-border-width) / sin(45deg) - var(--cx-callout-size)),
+    max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      var(--cx-callout-border-width)
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0/ 0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) var(--cx-callout-radius) max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) / var(--cx-callout-size) 0 0 0;
+}
+
+
+div.CanvasXpressTooltipInfoLeft {
+  border-radius: var(--cx-callout-radius) /
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius) var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 min(100%, 50% + var(--cx-callout-size) * tan(45deg)),
+    calc(-1 * var(--cx-callout-size)) 50%,
+    0 max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius)
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0/0 0 0
+    var(--cx-callout-size);
+}
+
+div.CanvasXpressTooltipInfoLeft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    var(--cx-callout-border-width)
+      min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      ),
+    calc(var(--cx-callout-border-width) / sin(45deg) - var(--cx-callout-size))
+      50%,
+    var(--cx-callout-border-width)
+      max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    var(--cx-callout-radius)
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0/0 0 0 var(--cx-callout-size);
+}
+
+div.CanvasXpressTooltipInfoRight {
+  border-radius: var(--cx-callout-radius) / var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius);
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    100% min(100%, 50% + var(--cx-callout-size) * tan(45deg)),
+    calc(100% + var(--cx-callout-size)) 50%,
+    100% max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius) /
+    0 var(--cx-callout-size) 0 0;
+}
+
+div.CanvasXpressTooltipInfoRight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    calc(100% - var(--cx-callout-border-width))
+      min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      ),
+    calc(
+        100% + var(--cx-callout-size) - var(--cx-callout-border-width) /
+          sin(45deg)
+      )
+      50%,
+    calc(100% - var(--cx-callout-border-width))
+      max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    var(--cx-callout-radius) / 0 var(--cx-callout-size) 0 0;
 }
 
 div.CanvasXpressMousePosition {
