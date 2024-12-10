@@ -2099,7 +2099,7 @@ th.CanvasXpressTableCellHeadActive {
   border-bottom: var(--cx-border-transparent);
   border-left: none;
   border-right: var(--cx-border-transparent);
-  font-weight: bold;
+  font-weight: normal;
   opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
@@ -2113,14 +2113,14 @@ tr > th.CanvasXpressTableCellActive:last-child {
 th.CanvasXpressTableCellHead {
   background: var(--cx-background-accent-color);
   font: var(--cx-x-large-font);
-  font-weight: bold;
+  font-weight: normal;
   color: var(--cx-font-color);
 }
 
 th.CanvasXpressTableCellHeadActive {
   background: var(--cx-background-accent-color);
   font: var(--cx-x-large-font);
-  font-weight: bold;
+  font-weight: normal;
   color: var(--cx-font-color);
 }
 
@@ -2145,13 +2145,13 @@ a.CanvasXpressTableCellHeadActive {
 
 td.CanvasXpressTableCell,
 td.CanvasXpressTableCellActive {
-  border-top: none;
+  border-top: none !important;
   border-bottom: var(--cx-border-transparent);
-  border-left: none;
+  border-left: none !important;
   border-right: var(--cx-border-transparent);
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
-  padding: 2px;
+  padding: 2px !important;
   vertical-align: middle;
 }
 
