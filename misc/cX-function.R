@@ -99,7 +99,7 @@ cXarea6 <- function() {
   canvasXpress(
     data=y,
     colorScheme="Behance",
-    filterData=list(list("guess", "false", "different", "ARRAY(0x135a469a0)")),
+    filterData=list(list("guess", "false", "different", "ARRAY(0x142ac20b0)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -121,7 +121,7 @@ cXarea7 <- function() {
     data=y,
     areaType="stacked",
     colorScheme="LastAirBenderWater",
-    filterData=list(list("guess", "false", "exact", "ARRAY(0x135aa9538)")),
+    filterData=list(list("guess", "false", "exact", "ARRAY(0x142ac2648)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -167,7 +167,7 @@ cXarea9 <- function() {
     varAnnot=z,
     colorBy="Series",
     colorScheme="GameOfThronesStannis",
-    filterData=list(list("guess", "Series", "not like", "ARRAY(0x135aa9e50)")),
+    filterData=list(list("guess", "Series", "not like", "ARRAY(0x142ac2f60)")),
     graphType="Area",
     legendColumns=3,
     legendPosition="top",
@@ -406,66 +406,69 @@ cXarealine4 <- function() {
 
 cXbar1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-stBarOneSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
     showLegend=FALSE,
     smpTextRotate=90,
-    smpTitle="Samples",
+    smpTitle="Categories",
     theme="CanvasXpress",
-    title="Bar Graph Title",
+    title="Bar graph with a single series",
     xAxisTitle="Value"
   )
 }
 
 cXbar2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-stBarTwoSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    decorations=list(marker=list(list(color="red", fontSize=14, position="top", sample="S1", text="p < 0.01 ***", type="annotation", variable="V1"), list(fontSize=14, position="top", sample="S2", text="p < 0.05 **", type="annotation", variable="V1"), list(color="red", fontSize=14, fontStyle="bold", sample="S2", sample2="S3", text="p < 0.01 ***", type="comparison", variable="V1", variable2="V1"))),
     graphOrientation="vertical",
     graphType="Bar",
-    showLegend=FALSE,
+    showDataValues=TRUE,
     smpTextRotate=90,
-    smpTitle="Samples",
+    smpTitle="Categories",
     theme="CanvasXpress",
-    title="Simple Bar graph with annotations",
+    title="Bar graph showing data values",
     xAxisTitle="Value"
   )
 }
 
 cXbar3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-basic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-stBarThreeSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    legendColumns=3,
+    legendPosition="bottom",
     smpTextRotate=90,
-    smpTitle="Samples",
+    smpTitle="Categories",
     theme="CanvasXpress",
-    title="Bar Graph Title",
+    title="Bar graph with multiple series",
     xAxisTitle="Value"
   )
 }
 
 cXbar4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    smpAnnot=x,
     graphOrientation="vertical",
     graphType="Bar",
+    groupingFactors=list("Species"),
+    legendColumns=2,
+    legendPosition="bottom",
     smpTextRotate=90,
-    smpTitle="Samples",
+    smpTitle="Species",
     theme="CanvasXpress",
-    title="Bar graph with two series",
-    xAxisTitle="Value"
+    title="Iris flower data set"
   )
 }
 
@@ -476,48 +479,20 @@ cXbar5 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorScheme="CanvasXpress",
-    decorations=list(marker=list(list(sample="setosa", text="Species with__nl__lowest petal__nl__width", variable="Petal.Width", x=0.4, y=0.85))),
-    graphOrientation="vertical",
-    graphType="Bar",
-    groupingFactors=list("Species"),
-    legendColumns=2,
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="bottom",
-    showTransition=FALSE,
-    smpTextRotate=90,
-    smpTitle="Species",
-    title="Iris flower data set",
-    xAxis2Show=FALSE
-  )
-}
-
-cXbar6 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    axisTitleFontStyle="italic",
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Species"),
     legendColumns=2,
     legendPosition="bottom",
-    showTransition=FALSE,
     smpTextRotate=90,
     smpTitle="Species",
     splitSamplesBy="Species",
     theme="blackAndWhite",
-    title="Iris flower data set",
-    xAxis2Show=FALSE
+    title="Iris flower data set"
   )
 }
 
-cXbar7 <- function() {
+cXbar6 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -526,18 +501,32 @@ cXbar7 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    fontStyle="bold italic",
     graphOrientation="vertical",
     graphType="Bar",
-    legendTextFontStyle="italic",
     plotByVariable=TRUE,
     smpLabelInterval=2,
-    smpTextFontStyle="italic",
-    smpTextRotate=45,
-    smpTitle="Sample Title",
+    smpTextRotate=90,
+    smpTitle="Samples",
     theme="CanvasXpress",
-    title="Random data set",
-    xAxis2Show=FALSE
+    title="Data Organized by variables"
+  )
+}
+
+cXbar7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Drug Sensitivity",
+    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    smpTextRotate=90,
+    smpTitle="Cell Lines",
+    theme="CanvasXpress",
+    title="Sensitivity of cell lines to different drugs"
   )
 }
 
@@ -548,46 +537,110 @@ cXbar8 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorBy="Drug Sensitivity",
-    colorScheme="CanvasXpress",
+    colorBy="IC50",
     decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
-    decorationsTextScaleFontFactor=1.3,
     graphOrientation="vertical",
     graphType="Bar",
-    legendBox=TRUE,
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    smpOverlays=list("Drug Sensitivity"),
+    smpTextRotate=90,
     smpTitle="Cell Lines",
-    smpTitleFontStyle="bold",
-    title="Random data set",
-    xAxis2Show=FALSE
+    theme="CanvasXpress",
+    title="Sensitivity of cell lines to different drugs"
   )
 }
 
 cXbar9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-cancerDeathByType2021-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    smpAnnot=x,
-    axisTitleFontStyle="italic",
-    colorBy="IC50",
-    decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
-    decorationsTextScaleFontFactor=1.3,
-    graphOrientation="vertical",
+    citation="<b>Data source</b>: IHME, Global Burden of Disease (2024)",
+    citationScaleFontFactor=0.7,
+    graphOrientation="horizontal",
     graphType="Bar",
-    smpOverlays=list("Drug Sensitivity"),
-    smpTitle="Cell Lines",
-    smpTitleFontStyle="bold",
+    maxSmpStringLen=50,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    subtitle=" Estimated number of deaths from different types of cancer per 100,000 people.",
+    subtitleScaleFontFactor=0.6,
     theme="CanvasXpress",
-    title="Random data set",
-    xAxis2Show=FALSE
+    title="Cancer crude death rate by type, World, 2021",
+    widthFactor=2,
+    xAxisGridMajorShow=FALSE,
+    xAxisShow=FALSE
   )
 }
 
 cXbar10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-cancerDeathRateByAge-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/cX-cancerDeathRateByAge-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    citation="<b>Data source</b>: WHO Mortality Database (2024)",
+    citationScaleFontFactor=0.7,
+    graphOrientation="horizontal",
+    graphType="Bar",
+    maxSmpStringLen=50,
+    motionBy="Year",
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
+    subtitleScaleFontFactor=0.6,
+    theme="CanvasXpress",
+    title="Cancer death rate by age group, United States",
+    widthFactor=2,
+    xAxisGridMajorShow=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
+cXbar11 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("class"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTextRotate=90,
+    summaryType="count",
+    theme="ggplot",
+    title="Counting the number of cars by class",
+    widthFactor=2,
+    xAxis=list("displ")
+  )
+}
+
+cXbar12 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("class"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTextRotate=90,
+    summaryType="sum",
+    theme="ggplot",
+    title="Total engine displacement for each class",
+    widthFactor=2,
+    xAxis=list("displ")
+  )
+}
+
+cXbar13 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -599,15 +652,13 @@ cXbar10 <- function() {
     colorScheme="CanvasXpress",
     graphType="Bar",
     is3DPlot=TRUE,
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
     scatterType="bar",
-    widthFactor=1.2,
+    widthFactor=2.5,
     x3DRatio=0.5
   )
 }
 
-cXbar11 <- function() {
+cXbar14 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -616,24 +667,21 @@ cXbar11 <- function() {
     smpAnnot=x,
     axisAlgorithm="rPretty",
     colorBy="GNI",
-    decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.2, y=0.1))),
     graphOrientation="vertical",
     graphType="Stacked",
     groupingFactors=list("continent"),
     legendInside=TRUE,
     legendPosition="right",
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
     smpTextRotate=45,
     subtitle="2014 Census",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
-    widthFactor=4,
-    xAxisGridMinorShow=FALSE
+    widthFactor=4
   )
 }
 
-cXbar12 <- function() {
+cXbar15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -646,9 +694,6 @@ cXbar12 <- function() {
     graphOrientation="horizontal",
     graphType="Bar",
     groupingFactors=list("Subject"),
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    objectBorderColor=FALSE,
     objectColorTransparency=0.5,
     smpOverlays=list("Durable"),
     swimDurable="Durable",
@@ -662,7 +707,7 @@ cXbar12 <- function() {
   )
 }
 
-cXbar13 <- function() {
+cXbar16 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -674,10 +719,10 @@ cXbar13 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Subject"),
-    objectBorderColor=FALSE,
     objectColorTransparency=0.5,
     smpOverlayProperties=list(Durable=list(position="bottom"), Response=list(position="bottom", thickness=100, type="Bar")),
     smpOverlays=list("Durable", "Response"),
+    smpTextRotate=90,
     swimDurable="Durable",
     swimEnd="end",
     swimHigh="high",
@@ -690,7 +735,7 @@ cXbar13 <- function() {
   )
 }
 
-cXbar14 <- function() {
+cXbar17 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -702,14 +747,12 @@ cXbar14 <- function() {
     graphType="Bar",
     groupingFactors=list("Award"),
     legendColumns=2,
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
-    legendTextScaleFontFactor=2,
+    legendTextScaleFontFactor=1.5,
     maxSmpStringLen=50,
     objectBorderColor="rgb(0,0,0)",
     showLegendTitle=FALSE,
-    smpTextScaleFontFactor=2,
+    smpTextScaleFontFactor=1.5,
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
@@ -718,7 +761,7 @@ cXbar14 <- function() {
   )
 }
 
-cXbar15 <- function() {
+cXbar18 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-animationMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -740,12 +783,11 @@ cXbar15 <- function() {
     showLegend=FALSE,
     smpTextColor="rgb(255,255,255)",
     smpTextRotate=90,
-    smpTextScaleFontFactor=1.1,
+    smpTextScaleFontFactor=1.5,
     title="Animation Movies",
     titleAlign="center",
     titleColor="rgb(255,255,255)",
     titleScaleFontFactor=2.5,
-    widthFactor=1.1,
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -753,7 +795,7 @@ cXbar15 <- function() {
   )
 }
 
-cXbar16 <- function() {
+cXbar19 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-movies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-movies-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4715,51 +4757,46 @@ cXlollipop2 <- function() {
 cXmap1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-olympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-olympicMedalsT-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
     colorBy="Total",
     graphType="Map",
     legendPosition="bottom",
     mapId="medals",
     theme="tableau",
-    title="Total Number of Olympic Medals",
-    topoJSON="https://www.canvasxpress.org/data/world.geo.json"
+    title="Total Number of Olympic Medals in Paris - 2024",
+    topoJSON="https://www.canvasxpress.org/data/world.geojson"
   )
 }
 
 cXmap2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2T-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-CO2T-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
+    smpAnnot=x,
     colorBy="CO2",
     graphType="Map",
     legendPosition="left",
     mapId="countries",
     theme="solarized",
     title="CO2 Emmisions During 2018",
-    topoJSON="https://www.canvasxpress.org/data/world.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/world.geojson"
   )
 }
 
 cXmap3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-map-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-map-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=y,
-    varAnnot=z,
-    colorBy="id",
+    data=FALSE,
+    colorBy="ISO_A3",
     decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
     mapConfig=list(center=list(34.7, -96.1), zoom=3.2),
     mapId="colorCountries",
     showLegend=FALSE,
-    topoJSON="https://www.canvasxpress.org/data/world.geo.json"
+    topoJSON="https://www.canvasxpress.org/data/world.geojson"
   )
 }
 
@@ -4819,7 +4856,7 @@ cXmap7 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="fips",
+    colorBy="state_fips",
     graphType="Map",
     legendPosition="bottom",
     mapId="mercatorCounties",
@@ -4836,15 +4873,15 @@ cXmap8 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    colorBy="STATE_NAME",
+    colorBy="variable",
+    colorScheme="Bootstrap",
     graphType="Map",
-    legendColumns=3,
-    legendPosition="top",
+    legendPosition="bottomLeft",
+    legendTextScaleFontFactor=0.85,
     mapConfig=list(zoom=3),
     mapId="australia",
     markerBy="Category",
     motionBy="Year",
-    theme="wallStreetJournal",
     title="Cyclones in Australia 1940-2020",
     topoJSON="https://www.canvasxpress.org/data/maps/AUS.json"
   )
@@ -4856,9 +4893,10 @@ cXmap9 <- function() {
   canvasXpress(
     data=y,
     colorBy="Prop1",
+    colorSpectrum=list("rgb(247,252,253)", "rgb(229,245,249)", "rgb(204,236,230)", "rgb(153,216,201)", "rgb(102,194,164)", "rgb(65,174,118)", "rgb(35,139,69)", "rgb(0,109,44)", "rgb(0,68,27)"),
     decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
-    legendPosition="bottomRight",
+    legendPosition="bottomLeft",
     mapId="colombia",
     mapPropertyId="ID_1",
     topoJSON="https://www.canvasxpress.org/data/maps/COL.json"
@@ -4869,9 +4907,11 @@ cXmap10 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="NAME_1",
+    colorBy="variable",
+    colorScheme="Light",
     graphType="Map",
     legendPosition="bottomLeft",
+    legendTextScaleFontFactor=0.85,
     mapId="italy",
     topoJSON="https://www.canvasxpress.org/data/maps/ITA.json"
   )
@@ -4892,27 +4932,6 @@ cXmap11 <- function() {
 
 cXmap12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-codiv-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-codiv-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    varAnnot=z,
-    colorBy="Cases",
-    graphType="Map",
-    mapId="covid",
-    motionBy="Date",
-    reproduceTime=100,
-    showLegend=FALSE,
-    sizeBy="Deaths",
-    sizeByContinuous=TRUE,
-    subtitle="Colored by Cases and Sized by Deaths",
-    title="Geographic Distribution for COVID-19",
-    topoJSON="https://www.canvasxpress.org/data/world.geo.json"
-  )
-}
-
-cXmap13 <- function() {
-  library(canvasXpress)
   canvasXpress(
     data=FALSE,
     colorBy="Order",
@@ -4924,11 +4943,11 @@ cXmap13 <- function() {
   )
 }
 
-cXmap14 <- function() {
+cXmap13 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="name",
+    colorBy="varId",
     decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
     mapConfig=list(center=list(-90, 30)),
@@ -4942,7 +4961,7 @@ cXmap14 <- function() {
   )
 }
 
-cXmap15 <- function() {
+cXmap14 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
@@ -4954,7 +4973,7 @@ cXmap15 <- function() {
   )
 }
 
-cXmap16 <- function() {
+cXmap15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4969,7 +4988,7 @@ cXmap16 <- function() {
   )
 }
 
-cXmap17 <- function() {
+cXmap16 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4987,7 +5006,7 @@ cXmap17 <- function() {
   )
 }
 
-cXmap18 <- function() {
+cXmap17 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -7279,7 +7298,6 @@ cXstackedpercent5 <- function() {
     barPathColor="rgb(48,116,154)",
     barPathTransparency=1,
     colorBy="Color",
-    colorByShowLegend=FALSE,
     colors=list("rgb(255,190,179)", "rgb(251,153,134)", "rgb(244,112,96)", "rgb(230,68,72)", "rgb(210,41,63)", "rgb(173,18,58)"),
     fontName="Waltograph",
     fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
@@ -7303,11 +7321,13 @@ cXstackedpercent5 <- function() {
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
     plotBackgroundColor="rgb(63,149,180)",
     segregateVariablesBy=list("Gender"),
+    showColorLegend=FALSE,
     showLegend=TRUE,
     showLegendTitle=FALSE,
     smpTextColor="rgb(255,255,255)",
-    smpTextScaleFontFactor=2.2,
+    smpTextScaleFontFactor=1.2,
     stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
     stripTextColor="rgb(255,255,255)",
     stripTextScaleFontFactor=2.2,
     title="Fewer Role Models",

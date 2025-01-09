@@ -69,10 +69,6 @@ if (interactive()) {
     test_that("cXmap17", {
         check_ui_test(cXmap17())
     })
-
-    test_that("cXmap18", {
-        check_ui_test(cXmap18())
-    })
 } else {
     message("Non-interactive ui-map tests skipped")
 }
