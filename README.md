@@ -2,13 +2,13 @@
 title:  "CanvasXpress R Library"
 output: 
     html_document:
-        self_contained: no
+        self_contained: yes
 ---
 
-<a href="https://www.canvasxpress.org"><img src="vignettes/images/hexagon.png" align="left" width="175"></a>
+<a href="https://www.canvasxpress.org"><img src="vignettes/images/hexagon.jpg" align="left" width="175"></a>
 
 <!-- Badge Location -->
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
 [![CRAN_Downloads_Badge](https://cranlogs.r-pkg.org/badges/grand-total/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
 [![CDNJ version](https://img.shields.io/cdnjs/v/canvasXpress.svg)](https://cdnjs.com/libraries/canvasXpress)
 [![Coverage Status](https://img.shields.io/codecov/c/gh/cb4ds/canvasXpress/master.svg)](https://app.codecov.io/gh/cb4ds/canvasXpress?branch=master)
@@ -63,7 +63,7 @@ canvasXpress(data      = y,
              axisTickScaleFontFactor  = 0.5,
              axisTitleScaleFontFactor = 0.5)
 ```
-![Scatter3D](vignettes/images/R-Scatter3D.png)
+![Scatter3D](vignettes/images/R-Scatter3D.jpg)
 
 #### Scatter 2D Matrix Plot
 
@@ -81,7 +81,7 @@ canvasXpress(data              = y,
              scatterPlotMatrix = TRUE,
              theme             = "CanvasXpress")
 ```
-![Scatter2DMatrix](vignettes/images/R-Scatter2DMatrix.png)
+![Scatter2DMatrix](vignettes/images/R-Scatter2DMatrix.jpg)
 
 #### Boxplot
 
@@ -106,7 +106,7 @@ canvasXpress(data                  = y,
              xAxis2Show            = FALSE,
              legendScaleFontFactor = 1.8)
 ```
-![Boxplot](vignettes/images/R-Boxplot.png)
+![Boxplot](vignettes/images/R-Boxplot.jpg)
 
 #### Heatmap (Multi-dimensional)
 
@@ -138,7 +138,7 @@ canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = 
              showHeatmapIndicator = FALSE,
              afterRender          = list(list("clusterSamples")))
 ```
-![Heatmap](vignettes/images/R-Heatmap.png)
+![Heatmap](vignettes/images/R-Heatmap.jpg)
 
 #### Four way Venn Diagram
 
@@ -149,7 +149,7 @@ canvasXpress(vennData   = data.frame(AC=456, A=340, ABC=552, ABCD=148, BC=915, A
              vennLegend = list(A="List 1", D="List 4", C="List 3", B="List 2"),
              vennGroups = 4)
 ```
-![Venn](vignettes/images/R-Venn.png)
+![Venn](vignettes/images/R-Venn.jpg)
 
 
 ### More Examples and Resources
