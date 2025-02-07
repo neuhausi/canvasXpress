@@ -1894,14 +1894,118 @@ div.CanvasXpressMarker {
  *  Toolbar  *
  *************/
 
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage,
-div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
+div.CanvasXpressToolbarTop {
+  position: absolute;
+  width: auto;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarTopContainer {
+  border: var(--cx-border);
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarTopContainer img.CanvasXpressToolbarTopImage,
+div.CanvasXpressToolbarTopContainer svg.CanvasXpressToolbarTopImage {
   background: var(--cx-color-transparent) !important;
   border: 0px none !important;
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
   cursor: pointer;
   float: right;
   margin: 5px 8px 0px 0px;
+}
+
+div.CanvasXpressToolbarBottom {
+  position: absolute;
+  width: auto;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarBottomContainer {
+  border: var(--cx-border);
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarBottomRound {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.CanvasXpressToolbarBottomRound,
+div.CanvasXpressToolbarBottomStripe {
+  cursor: pointer;
+  float: left;
+}
+
+div.CanvasXpressToolbarLeft {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  align-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarLeftContainer {
+  border: var(--cx-border);
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+  align-content: center;
+  height: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarLeftContainer img.CanvasXpressToolbarLeftImage,
+div.CanvasXpressToolbarLeftContainer svg.CanvasXpressToolbarLeftImage {
+  background: var(--cx-color-transparent) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: pointer;
+  float: right;
+  margin: 5px 8px 0px 0px;
+}
+
+div.CanvasXpressToolbarRight {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  align-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarRightContainer {
+  border: var(--cx-border);
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+  align-content: center;
+  height: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarRightFont {
+  padding: 5px;
+  cursor: pointer;
 }
 
 /*************
