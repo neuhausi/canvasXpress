@@ -2504,6 +2504,24 @@ div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
   border: none;
 }
 
+input.CanvasXpressDateFilterContainerInputLeft {
+  float: left;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  color: var(--cx-background-color);
+}
+
+input.CanvasXpressDateFilterContainerInputRight {
+  float: right;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  color: var(--cx-background-color);
+}
+
 /***************/
 /*   Toggle    */
 /***************/
