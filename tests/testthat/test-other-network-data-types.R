@@ -3,8 +3,8 @@ context("canvasXpress Charts - Network")
 
 test_that("network as data list items", {
     tryCatch({
-        n <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        e <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        n <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        e <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -21,8 +21,8 @@ test_that("network as data list items", {
 
 test_that("network data requires both nodes and edges", {
     tryCatch({
-        n <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        e <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        n <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        e <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -41,8 +41,8 @@ test_that("network data requires both nodes and edges", {
 
 test_that("network data types", {
     tryCatch({
-        n <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        e <- read.table("https://www.canvasxpress.org/data/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        n <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-nodes.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        e <- read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-edges.txt", header = TRUE, sep = "\t", quote = "", fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')

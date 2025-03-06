@@ -3,8 +3,8 @@ context("canvasXpress regressionLines")
 
 test_that("scatterplot overall regressionLine", {
     tryCatch({
-        y = read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        x = read.table("https://www.canvasxpress.org/data/cX-ageheightt-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y = read.table("https://www.canvasxpress.org/data/r/cX-ageheightt-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x = read.table("https://www.canvasxpress.org/data/r/cX-ageheightt-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -21,7 +21,7 @@ test_that("scatterplot overall regressionLine", {
 
 test_that("scatterplot per-sample regressionLine", {
     tryCatch({
-        y2 = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y2 = read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -43,8 +43,8 @@ test_that("scatterplot per-sample regressionLine", {
 
 test_that("scatterplot per variable regressionLine", {
     tryCatch({
-        data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_y = read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_z = read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -64,8 +64,8 @@ test_that("scatterplot per variable regressionLine", {
 
 test_that("scatterplot per variable and sample regressionLine", {
     tryCatch({
-        data_y = read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        data_z = read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_y = read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data_z = read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')

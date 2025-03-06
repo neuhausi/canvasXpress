@@ -127,9 +127,9 @@ test_that("piping - attempted data changes", {
     # Attempt to replace the data variables
     # Get two dataframes to use
     error_msg <- "Primary object data changes are not supported when modifying a canvasXpress object"
-    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt",
+    y <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt",
                     header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt",
+    x <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt",
                     header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     expect_error(cXdotplot4() %>% canvasXpress(smpAnnot = y), regexp = error_msg)

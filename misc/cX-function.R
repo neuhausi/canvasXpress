@@ -1,12 +1,12 @@
 cXarea1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorScheme="Prism",
     graphOrientation="vertical",
     graphType="Area",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="Month / First Quarters of 2024",
     title="Area graph with one series",
@@ -18,14 +18,14 @@ cXarea1 <- function() {
 
 cXarea2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorScheme="Prism",
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="Month / First Quarters of 2024",
     title="Area graph with one series - Spline",
@@ -37,7 +37,7 @@ cXarea2 <- function() {
 
 cXarea3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorScheme="Behance",
@@ -57,7 +57,7 @@ cXarea3 <- function() {
 
 cXarea4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -76,7 +76,7 @@ cXarea4 <- function() {
 
 cXarea5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="percent",
@@ -95,11 +95,11 @@ cXarea5 <- function() {
 
 cXarea6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorScheme="Behance",
-    filterData=list(list("guess", "false", "different", "ARRAY(0x12a2d5b60)")),
+    filterData=list(list("guess", 0, "different", "ARRAY(0x11867b360)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -116,12 +116,12 @@ cXarea6 <- function() {
 
 cXarea7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
     colorScheme="LastAirBenderWater",
-    filterData=list(list("guess", "false", "exact", "ARRAY(0x12a2d60d0)")),
+    filterData=list(list("guess", 0, "exact", "ARRAY(0x118682be0)")),
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
@@ -137,8 +137,8 @@ cXarea7 <- function() {
 
 cXarea8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -160,14 +160,14 @@ cXarea8 <- function() {
 
 cXarea9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-area7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Series",
     colorScheme="GameOfThronesStannis",
-    filterData=list(list("guess", "Series", "not like", "ARRAY(0x12a2d7810)")),
+    filterData=list(list("guess", "Series", "not like", "ARRAY(0x138df9c20)")),
     graphType="Area",
     legendColumns=3,
     legendPosition="top",
@@ -184,7 +184,7 @@ cXarea9 <- function() {
 
 cXarea10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
@@ -202,7 +202,7 @@ cXarea10 <- function() {
 
 cXarea11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -220,7 +220,7 @@ cXarea11 <- function() {
 
 cXarea12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="percent",
@@ -238,7 +238,7 @@ cXarea12 <- function() {
 
 cXarea13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -247,20 +247,20 @@ cXarea13 <- function() {
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
-    objectBorderColor=FALSE,
+    objectBorderColor=0,
     objectColorTransparency=0.3,
-    showLegend=FALSE,
-    showSampleNames=FALSE,
+    showLegend=0,
+    showSampleNames=0,
     title="Steam Plot",
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXarea14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -269,21 +269,21 @@ cXarea14 <- function() {
     graphOrientation="vertical",
     graphType="Area",
     lineType="spline",
-    objectBorderColor=FALSE,
+    objectBorderColor=0,
     objectColorTransparency=0.6,
-    showLegend=FALSE,
-    showSampleNames=FALSE,
+    showLegend=0,
+    showSampleNames=0,
     title="Data Mountain",
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXarea15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatterArea-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scatterArea-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatterArea-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatterArea-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -296,8 +296,8 @@ cXarea15 <- function() {
 
 cXarea16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fontana-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-fontana-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fontana-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-fontana-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -309,14 +309,14 @@ cXarea16 <- function() {
     legendColumns=3,
     legendPosition="bottom",
     panelBackgroundColor="rgb(222,222,222)",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXarealine1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
@@ -330,14 +330,14 @@ cXarealine1 <- function() {
     smpTitle="Month",
     xAxis=list("Series A", "Series B", "Series C"),
     xAxis2=list("Series D", "Series E"),
-    xAxis2Show=TRUE,
-    xAxisShow=TRUE
+    xAxis2Show=1,
+    xAxisShow=1
   )
 }
 
 cXarealine2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -351,14 +351,14 @@ cXarealine2 <- function() {
     smpTitle="Month",
     xAxis=list("Series A", "Series B", "Series C"),
     xAxis2=list("Series D", "Series E"),
-    xAxis2Show=TRUE,
-    xAxisShow=TRUE
+    xAxis2Show=1,
+    xAxisShow=1
   )
 }
 
 cXarealine3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colors=list("rgb(160,81,149)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(255,166,0)", "rgb(0,63,92)", "rgb(160,81,149)"),
@@ -373,16 +373,16 @@ cXarealine3 <- function() {
     smpTitle="Month",
     xAxis=list("Series A"),
     xAxis2=list("Series D"),
-    xAxis2Show=TRUE,
+    xAxis2Show=1,
     xAxis2Title="Value2",
-    xAxisShow=TRUE,
+    xAxisShow=1,
     xAxisTitle="Value"
   )
 }
 
 cXarealine4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     areaType="stacked",
@@ -406,12 +406,12 @@ cXarealine4 <- function() {
 
 cXbar1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stBarOneSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stBarOneSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="Categories",
     theme="CanvasXpress",
@@ -422,12 +422,12 @@ cXbar1 <- function() {
 
 cXbar2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stBarTwoSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stBarTwoSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Bar",
-    showDataValues=TRUE,
+    showDataValues=1,
     smpTextRotate=90,
     smpTitle="Categories",
     theme="CanvasXpress",
@@ -438,7 +438,7 @@ cXbar2 <- function() {
 
 cXbar3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stBarThreeSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stBarThreeSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
@@ -455,8 +455,8 @@ cXbar3 <- function() {
 
 cXbar4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -474,8 +474,8 @@ cXbar4 <- function() {
 
 cXbar5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -494,16 +494,16 @@ cXbar5 <- function() {
 
 cXbar6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    plotByVariable=TRUE,
+    plotByVariable=1,
     smpLabelInterval=2,
     smpTextRotate=90,
     smpTitle="Samples",
@@ -514,8 +514,8 @@ cXbar6 <- function() {
 
 cXbar7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -532,8 +532,8 @@ cXbar7 <- function() {
 
 cXbar8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-simple-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-simple-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -551,55 +551,55 @@ cXbar8 <- function() {
 
 cXbar9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cancerDeathByType2021-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cancerDeathByType2021-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    citation="<b>Data source</b>: IHME, Global Burden of Disease (2024)",
+    citation="<b>Data source</b> :  IHME, Global Burden of Disease (2024)",
     citationScaleFontFactor=0.7,
     graphOrientation="horizontal",
     graphType="Bar",
     maxSmpStringLen=50,
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    showDataValues=1,
+    showLegend=0,
     subtitle=" Estimated number of deaths from different types of cancer per 100,000 people.",
     subtitleScaleFontFactor=0.6,
     theme="CanvasXpress",
     title="Cancer crude death rate by type, World, 2021",
     widthFactor=2,
-    xAxisGridMajorShow=FALSE,
-    xAxisShow=FALSE
+    xAxisGridMajorShow=0,
+    xAxisShow=0
   )
 }
 
 cXbar10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cancerDeathRateByAge-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cancerDeathRateByAge-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cancerDeathRateByAge-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-cancerDeathRateByAge-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    citation="<b>Data source</b>: WHO Mortality Database (2024)",
+    citation="<b>Data source</b> :  WHO Mortality Database (2024)",
     citationScaleFontFactor=0.7,
     graphOrientation="horizontal",
     graphType="Bar",
     maxSmpStringLen=50,
     motionBy="Year",
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    showDataValues=1,
+    showLegend=0,
     subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
     subtitleScaleFontFactor=0.6,
     theme="CanvasXpress",
     title="Cancer death rate by age group, United States",
     widthFactor=2,
-    xAxisGridMajorShow=FALSE,
-    xAxisShow=FALSE
+    xAxisGridMajorShow=0,
+    xAxisShow=0
   )
 }
 
 cXbar11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -607,8 +607,8 @@ cXbar11 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("class"),
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    showDataValues=1,
+    showLegend=0,
     smpTextRotate=90,
     summaryType="count",
     theme="ggplot",
@@ -620,8 +620,8 @@ cXbar11 <- function() {
 
 cXbar12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -629,8 +629,8 @@ cXbar12 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("class"),
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    showDataValues=1,
+    showLegend=0,
     smpTextRotate=90,
     summaryType="sum",
     theme="ggplot",
@@ -642,16 +642,16 @@ cXbar12 <- function() {
 
 cXbar13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     colorScheme="CanvasXpress",
     graphType="Bar",
-    is3DPlot=TRUE,
+    is3DPlot=1,
     scatterType="bar",
     widthFactor=2.5,
     x3DRatio=0.5
@@ -660,8 +660,8 @@ cXbar13 <- function() {
 
 cXbar14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -670,7 +670,7 @@ cXbar14 <- function() {
     graphOrientation="vertical",
     graphType="Stacked",
     groupingFactors=list("continent"),
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="right",
     objectBorderColor="rgb(0,0,0)",
     smpTextRotate=45,
@@ -683,8 +683,8 @@ cXbar14 <- function() {
 
 cXbar15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -709,8 +709,8 @@ cXbar15 <- function() {
 
 cXbar16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -737,8 +737,8 @@ cXbar16 <- function() {
 
 cXbar17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -751,19 +751,19 @@ cXbar17 <- function() {
     legendTextScaleFontFactor=1.5,
     maxSmpStringLen=50,
     objectBorderColor="rgb(0,0,0)",
-    showLegendTitle=FALSE,
+    showLegendTitle=0,
     smpTextScaleFontFactor=1.5,
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
-    xAxis2Show=TRUE,
-    xAxisShow=FALSE
+    xAxis2Show=1,
+    xAxisShow=0
   )
 }
 
 cXbar18 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-animationMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-animationMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="solid",
@@ -780,7 +780,7 @@ cXbar18 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     plotBackgroundColor="rgb(48,114,148)",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextColor="rgb(255,255,255)",
     smpTextRotate=90,
     smpTextScaleFontFactor=1.5,
@@ -788,22 +788,22 @@ cXbar18 <- function() {
     titleAlign="center",
     titleColor="rgb(255,255,255)",
     titleScaleFontFactor=2.5,
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXbar19 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-movies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-movies-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-movies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-movies-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     backgroundType="solid",
-    barPath=TRUE,
+    barPath=1,
     barPathColor="rgb(48,126,164)",
     barPathTransparency=1,
     colorBy="Color",
@@ -818,7 +818,7 @@ cXbar19 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     plotBackgroundColor="rgb(48,114,148)",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextColor="rgb(255,255,255)",
     smpTextScaleFontFactor=2,
     title="Friendship, Love, Family",
@@ -826,18 +826,18 @@ cXbar19 <- function() {
     titleColor="rgb(254,225,60)",
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXbarline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -848,7 +848,7 @@ cXbarline1 <- function() {
     legendPosition="bottom",
     lineThickness=2,
     lineType="spline",
-    showTransition=FALSE,
+    showTransition=0,
     smpTextRotate=45,
     smpTitle="Collection of Samples",
     subtitle="Random Data",
@@ -863,15 +863,15 @@ cXbarline1 <- function() {
 
 cXbarline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     colorScheme="CanvasXpress",
-    coordinateLineColor=TRUE,
+    coordinateLineColor=1,
     graphOrientation="vertical",
     graphType="BarLine",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
@@ -889,9 +889,9 @@ cXbarline2 <- function() {
 
 cXbarline3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -914,8 +914,8 @@ cXbarline3 <- function() {
 
 cXboxplot1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -924,21 +924,21 @@ cXboxplot1 <- function() {
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -947,107 +947,107 @@ cXboxplot2 <- function() {
     graphOrientation="horizontal",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    objectBorderColor=FALSE,
+    objectBorderColor=0,
     objectColorTransparency=0.5,
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotOutliersRatio=3,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     splitSamplesBy="dose",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
-    boxplotMean=TRUE,
+    boxplotMean=1,
     boxplotMeanColor="rgb(255,215,0)",
     boxplotMeanColorBorder="red",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1055,54 +1055,54 @@ cXboxplot6 <- function() {
     axisTitleFontStyle="bold",
     boxplotMedianColor="red",
     boxplotMedianWidth=5,
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
     boxplotHingeFunction="fivenum",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1111,52 +1111,52 @@ cXboxplot8 <- function() {
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    jitter=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=FALSE,
+    jitter=1,
+    showBoxplotOriginalData=1,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
     binAlignment="center",
-    binned=TRUE,
+    binned=1,
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    jitter=FALSE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=FALSE,
+    jitter=0,
+    showBoxplotOriginalData=1,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1171,28 +1171,28 @@ cXboxplot10 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=TRUE,
+    guidesShow=1,
+    jitter=1,
     panelBackgroundColor="#E5E5E5",
     shapeBy="supp",
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
+    showBoxplotOriginalData=1,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1202,23 +1202,23 @@ cXboxplot11 <- function() {
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1233,25 +1233,25 @@ cXboxplot12 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1267,25 +1267,25 @@ cXboxplot13 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1300,25 +1300,25 @@ cXboxplot14 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1328,24 +1328,24 @@ cXboxplot15 <- function() {
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose", "supp"),
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len",
-    afterRender=list(list("pivotX", list('dose')))
+    afterRender=list(list("pivotX", list("dose")))
   )
 }
 
 cXboxplot16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1353,7 +1353,7 @@ cXboxplot16 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotConnect=TRUE,
+    boxplotConnect=1,
     colorBy="supp",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -1361,26 +1361,26 @@ cXboxplot16 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
+    showBoxplotOriginalData=1,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1388,7 +1388,7 @@ cXboxplot17 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotConnect=TRUE,
+    boxplotConnect=1,
     colorBy="supp",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -1396,11 +1396,11 @@ cXboxplot17 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
+    showBoxplotOriginalData=1,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
@@ -1408,17 +1408,17 @@ cXboxplot17 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot18 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1434,12 +1434,12 @@ cXboxplot18 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
+    showBoxplotOriginalData=1,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
@@ -1447,17 +1447,17 @@ cXboxplot18 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXboxplot19 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1471,8 +1471,8 @@ cXboxplot19 <- function() {
 
 cXboxplot20 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1495,8 +1495,8 @@ cXboxplot20 <- function() {
 
 cXboxplot21 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1517,8 +1517,8 @@ cXboxplot21 <- function() {
 
 cXbubble1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1536,8 +1536,8 @@ cXbubble1 <- function() {
 
 cXbubble2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1550,15 +1550,15 @@ cXbubble2 <- function() {
     hierarchy=list("Continent", "Country"),
     legendColumns=4,
     legendPosition="top",
-    showLegend=FALSE,
+    showLegend=0,
     title="Annual CO2 Emmisions in 2018"
   )
 }
 
 cXbubble3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1574,7 +1574,7 @@ cXbubble3 <- function() {
     hierarchy=list("Continent", "Country"),
     legendColumns=4,
     legendPosition="top",
-    showLegend=FALSE,
+    showLegend=0,
     title="Annual CO2 Emmisions in 2018",
     afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
@@ -1582,8 +1582,8 @@ cXbubble3 <- function() {
 
 cXbubble4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1599,7 +1599,7 @@ cXbubble4 <- function() {
     hierarchy=list("Continent", "Country"),
     legendColumns=4,
     legendPosition="top",
-    showLegend=TRUE,
+    showLegend=1,
     title="Annual CO2 Emmisions in 2018",
     afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
@@ -1607,7 +1607,7 @@ cXbubble4 <- function() {
 
 cXchord1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     circularArc=360,
@@ -1615,12 +1615,12 @@ cXchord1 <- function() {
     circularType="chord",
     colors=list("#000000", "#FFDD89", "#957244", "#F26223"),
     graphType="Circular",
-    higlightGreyOut=TRUE,
+    higlightGreyOut=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Simple Chord Graph",
     transitionStep=50,
     transitionTime=1500
@@ -1629,19 +1629,19 @@ cXchord1 <- function() {
 
 cXchord2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     circularArc=360,
     circularRotate=180,
     circularType="chord",
     graphType="Circular",
-    higlightGreyOut=TRUE,
+    higlightGreyOut=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     title="Rotated Chord Graph",
     transitionStep=50,
@@ -1651,20 +1651,20 @@ cXchord2 <- function() {
 
 cXchord3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     circularArc=180,
     circularRotate=-90,
     circularType="chord",
     graphType="Circular",
-    higlightGreyOut=TRUE,
+    higlightGreyOut=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
-    showLegend=FALSE,
-    showTransition=FALSE,
+    showLegend=0,
+    showTransition=0,
     theme="CanvasXpress",
     title="Rotated Half Chord Graph",
     transitionStep=50,
@@ -1674,9 +1674,9 @@ cXchord3 <- function() {
 
 cXcircular1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1689,7 +1689,7 @@ cXcircular1 <- function() {
     ringGraphWeight=list(50, 25, 25),
     segregateSamplesBy=list("Species"),
     segregateVariablesBy=list("Ring"),
-    showTransition=FALSE,
+    showTransition=0,
     smpOverlays=list("Species"),
     title="Iris flower data set (1D Circular Plot)",
     transitionStep=50,
@@ -1699,9 +1699,9 @@ cXcircular1 <- function() {
 
 cXcircular2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-circular2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-circular2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-circular2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-circular2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-circular2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-circular2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1714,7 +1714,7 @@ cXcircular2 <- function() {
     ringGraphWeight=list(25, 25, 25, 25),
     segregateSamplesBy=list("Species"),
     segregateVariablesBy=list("Ring"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Iris flower data set (2D Circular Plot)",
     transitionStep=50,
     transitionTime=1500
@@ -1723,9 +1723,9 @@ cXcircular2 <- function() {
 
 cXcircular3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1736,7 +1736,7 @@ cXcircular3 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("heatmap"),
-    samplesClustered=TRUE,
+    samplesClustered=1,
     smpDendrogramPosition="outside",
     smpOverlays=list("Species"),
     title="Iris flower data set (Dendrogram Outside)"
@@ -1745,9 +1745,9 @@ cXcircular3 <- function() {
 
 cXcircular4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-circular-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-circular-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-circular-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1759,7 +1759,7 @@ cXcircular4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("heatmap"),
     ringsOrder=list("labels", "overlays", "dendrogram", "labels", "data"),
-    samplesClustered=TRUE,
+    samplesClustered=1,
     smpDendrogramPosition="inside",
     smpOverlays=list("Species"),
     title="Iris flower data set (Dendrogram Inside)"
@@ -1768,9 +1768,9 @@ cXcircular4 <- function() {
 
 cXcircular5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1780,16 +1780,16 @@ cXcircular5 <- function() {
     colors=list("#332288", "#6699CC", "#88CCEE", "#44AA99", "#117733", "#999933", "#DDCC77", "#661100", "#CC6677", "#AA4466", "#882255", "#AA4499"),
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
-    showIdeogram=TRUE,
+    showIdeogram=1,
     title="Default Settings"
   )
 }
 
 cXcircular6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1804,18 +1804,18 @@ cXcircular6 <- function() {
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
     ringGraphType=list("heatmap", "stacked"),
-    ringsOrder=list("chromosomes", "Annt1", "Lev:1", "anchors", "labels", "ideogram", "anchors2", "Lev:4"),
+    ringsOrder=list("chromosomes", "Annt1", "Lev : 1", "anchors", "labels", "ideogram", "anchors2", "Lev : 4"),
     segregateSamplesBy=list("Factor4"),
-    showIdeogram=TRUE,
+    showIdeogram=1,
     title="Custom Plotting Order"
   )
 }
 
 cXcircular7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-ideogram-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1827,17 +1827,17 @@ cXcircular7 <- function() {
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
     ringGraphType=list("heatmap", "area", "stacked", "dot", "bar"),
-    ringsOrder=list("scale", "ideogram", "labels", "anchors", "Annt2", "Annt1", "Lev:1", "Lev:2", "Lev:3", "Lev:4"),
+    ringsOrder=list("scale", "ideogram", "labels", "anchors", "Annt2", "Annt1", "Lev : 1", "Lev : 2", "Lev : 3", "Lev : 4"),
     segregateSamplesBy=list("Factor4"),
-    showIdeogram=TRUE,
+    showIdeogram=1,
     title="Custom radi for Chromosomes and Custom Plotting Order"
   )
 }
 
 cXcircular8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-circularNoData-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-circularNoData-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-circularNoData-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-circularNoData-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1850,23 +1850,23 @@ cXcircular8 <- function() {
     overlayScaleFontFactor=1,
     ringsOrder=list("subject", "labels", "sample"),
     segregateSamplesBy=list("subject"),
-    showLegend=FALSE,
+    showLegend=0,
     smpTextScaleFontFactor=0.3,
     xAxis=list("var1"),
-    xAxisShow=FALSE
+    xAxisShow=0
   )
 }
 
 cXcontour1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-volcano-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-volcano-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Heatmap",
-    heatmapCellBox=FALSE,
-    showContourLevel=TRUE,
-    showSampleNames=FALSE,
-    showVariableNames=FALSE,
+    heatmapCellBox=0,
+    showContourLevel=1,
+    showSampleNames=0,
+    showVariableNames=0,
     subtitle="datasets - volcano",
     title="Topographic Information on Auckland's Maunga Whau Volcano",
     afterRender=list(list("createContour"))
@@ -1875,14 +1875,14 @@ cXcontour1 <- function() {
 
 cXcontour2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-contour-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-contour-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     contourType="normal",
     graphType="Heatmap",
-    heatmapCellBox=FALSE,
-    showSampleNames=FALSE,
-    showVariableNames=FALSE,
+    heatmapCellBox=0,
+    showSampleNames=0,
+    showVariableNames=0,
     title="Basic Contour Plot",
     afterRender=list(list("createContour"))
   )
@@ -1890,12 +1890,12 @@ cXcontour2 <- function() {
 
 cXcontour3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-contour2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-contour2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourFilled=TRUE,
+    contourFilled=1,
     graphType="ScatterBubble2D",
-    showContourLevel=TRUE,
+    showContourLevel=1,
     title="Basic Contour Plot",
     afterRender=list(list("createContour"))
   )
@@ -1903,10 +1903,10 @@ cXcontour3 <- function() {
 
 cXcontour4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-contour3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-contour3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourFilled=TRUE,
+    contourFilled=1,
     contourType="normal",
     graphType="ScatterBubble2D",
     title="Custom Contour Plot",
@@ -1916,45 +1916,45 @@ cXcontour4 <- function() {
 
 cXcontour5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-contour4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-contour4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     contourType="normal",
     graphType="Heatmap",
-    heatmapCellBox=FALSE,
+    heatmapCellBox=0,
     lineType="spline",
-    showContourLevel=FALSE,
-    showSampleNames=FALSE,
-    showVariableNames=FALSE,
+    showContourLevel=0,
+    showSampleNames=0,
+    showVariableNames=0,
     afterRender=list(list("createContour"))
   )
 }
 
 cXcontour6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     contourType="normal",
     graphType="Scatter2D",
-    showContourDataPoints=TRUE,
-    showContourLevel=FALSE,
+    showContourDataPoints=1,
+    showContourLevel=0,
     afterRender=list(list("createContour"))
   )
 }
 
 cXcorrelation1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     correlationAxis="samples",
     graphType="Correlation",
-    showTransition=FALSE,
+    showTransition=0,
     title="Correlation Plot",
     yAxisTitle="Correlation Title"
   )
@@ -1962,9 +1962,9 @@ cXcorrelation1 <- function() {
 
 cXcorrelation2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -1972,7 +1972,7 @@ cXcorrelation2 <- function() {
     correlationAxis="samples",
     correlationType="circle",
     graphType="Correlation",
-    showTransition=FALSE,
+    showTransition=0,
     title="Correlation Plot",
     yAxisTitle="Correlation Title"
   )
@@ -1980,14 +1980,14 @@ cXcorrelation2 <- function() {
 
 cXcorrelation3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    correlationAnchorLegend=TRUE,
+    correlationAnchorLegend=1,
     correlationAnchorLegendAlignWidth=20,
     correlationAxis="variables",
     graphType="Correlation",
@@ -1998,7 +1998,7 @@ cXcorrelation3 <- function() {
 
 cXcorrelation4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcarst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcarst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Heatmap",
@@ -2009,15 +2009,15 @@ cXcorrelation4 <- function() {
 
 cXdashboard1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-titanic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-titanic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-titanic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-titanic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Pclass"),
-    histogramBins=FALSE,
+    histogramBins=0,
     stackBy="Survived",
     summaryType="count",
     theme="lastAirBenderFire",
@@ -2027,15 +2027,15 @@ cXdashboard1 <- function() {
 
 cXdashboard2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mpg2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("model"),
-    histogramBins=FALSE,
+    histogramBins=0,
     histogramType="stacked",
     theme="gameOfThronesStannis",
     afterRender=list(list("createHistogram"), list("createDOE"))
@@ -2044,15 +2044,15 @@ cXdashboard2 <- function() {
 
 cXdashboard3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scents-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-scents-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scents-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-scents-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Boxplot",
-    histogramBins=FALSE,
-    showTransition=FALSE,
+    histogramBins=0,
+    showTransition=0,
     smpTextRotate=90,
     smpTitle="Smoking Status",
     theme="lastAirBenderWater",
@@ -2062,14 +2062,14 @@ cXdashboard3 <- function() {
 
 cXdashboard4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-body2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-body2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-body2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-body2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    histogramBins=FALSE,
-    showTransition=FALSE,
+    histogramBins=0,
+    showTransition=0,
     theme="CanvasXpress",
     afterRender=list(list("createDOE"))
   )
@@ -2077,16 +2077,16 @@ cXdashboard4 <- function() {
 
 cXdashboard5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    invertCensored=1,
+    showConfidenceIntervals=0,
+    showDecorations=1,
+    showLegend=0,
     theme="gameOfThronesTargaryen",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
@@ -2094,300 +2094,300 @@ cXdashboard5 <- function() {
 
 cXdashboard6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bc-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    asDOE=TRUE,
+    asDOE=1,
     colorBy="Stay Home Sick",
     graphType="Map",
-    histogramBins=FALSE,
+    histogramBins=0,
     layoutConfig=list(list(size="2X2")),
     legendPosition="top",
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
-    topoJSON="https://www.canvasxpress.org/data/bc.json"
+    topoJSON="https://www.canvasxpress.org/data/json/bc.json"
   )
 }
 
 cXdensity1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
-    showHistogram=TRUE,
-    showHistogramDensity=TRUE,
+    showHistogram=1,
+    showHistogramDensity=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     densityPosition="normal",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="density",
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     densityPosition="stacked",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="density",
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     densityPosition="filled",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="density",
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     densityPosition="stacked",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
-    showFilledHistogramDensity=TRUE,
-    showHistogram=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    hideHistogram=1,
+    showFilledHistogramDensity=1,
+    showHistogram=1,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
+    showHistogramDensity=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
-    showFilledHistogramDensity=TRUE,
+    hideHistogram=1,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-density-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=FALSE,
+    hideHistogram=0,
     histogramBins=20,
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sex",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress"
   )
 }
 
 cXdensity11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-density2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-density2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-density2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-density2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphType="Scatter2D",
-    hideHistogram=FALSE,
+    hideHistogram=0,
     histogramBins=20,
     histogramStat="count",
-    showFilledHistogramDensity=TRUE,
-    showHistogramBars=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showFilledHistogramDensity=1,
+    showHistogramBars=1,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     theme="CanvasXpress",
     xAxisHistogramHeight=150,
-    xAxisHistogramShow=TRUE,
+    xAxisHistogramShow=1,
     yAxisHistogramHeight=150,
-    yAxisHistogramShow=TRUE
+    yAxisHistogramShow=1
   )
 }
 
 cXdensity12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
-    showFilledHistogramDensity=TRUE,
-    showHistogram=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showFilledHistogramDensity=1,
+    showHistogram=1,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     theme="CanvasXpress"
   )
 }
 
 cXdensity13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
     segregateVariablesBy=list("Species"),
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="Species",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     theme="CanvasXpress"
   )
 }
 
 cXdensity14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
     segregateSamplesBy=list("sample"),
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="sample",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     theme="CanvasXpress"
   )
 }
 
 cXdensity15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramStat="count",
     segregateSamplesBy=list("sample"),
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="Species",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     theme="CanvasXpress"
   )
 }
 
 cXdonnut1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2399,7 +2399,7 @@ cXdonnut1 <- function() {
     graphType="Circular",
     hierarchy=list("Month"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Simple Donnut",
     transitionStep=50,
     transitionTime=1500
@@ -2408,8 +2408,8 @@ cXdonnut1 <- function() {
 
 cXdonnut2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2421,7 +2421,7 @@ cXdonnut2 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Donnut with two levels",
     transitionStep=50,
     transitionTime=1500
@@ -2430,9 +2430,9 @@ cXdonnut2 <- function() {
 
 cXdotline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2457,14 +2457,14 @@ cXdotline1 <- function() {
 
 cXdotline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    coordinateLineColor=TRUE,
+    coordinateLineColor=1,
     graphOrientation="vertical",
     graphType="DotLine",
     lineThickness=3,
@@ -2481,14 +2481,14 @@ cXdotline2 <- function() {
 
 cXdotline3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    coordinateLineColor=TRUE,
+    coordinateLineColor=1,
     graphOrientation="horizontal",
     graphType="DotLine",
     legendColumns=2,
@@ -2507,9 +2507,9 @@ cXdotline3 <- function() {
 
 cXdotplot1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2517,8 +2517,8 @@ cXdotplot1 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     lineType="spline",
-    showSmpOverlaysLegend=TRUE,
-    smpOverlayProperties=list(Factor4=list(color="blue", showLegend=TRUE, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=TRUE, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=TRUE, thickness=50, type="Bar")),
+    showSmpOverlaysLegend=1,
+    smpOverlayProperties=list(Factor4=list(color="blue", showLegend=1, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=1, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=1, thickness=50, type="Bar")),
     smpOverlays=list("Factor1", "Factor2", "Factor3"),
     smpTextRotate=45,
     smpTitle="Collection of Samples",
@@ -2532,8 +2532,8 @@ cXdotplot1 <- function() {
 
 cXdotplot2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2544,22 +2544,22 @@ cXdotplot2 <- function() {
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Dotplot",
-    jitter=TRUE,
+    jitter=1,
     marginBottom=30,
     smpTextFontStyle="italic",
     smpTextRotate=90,
     smpTitle="Species",
     theme="CanvasXpress",
     title="Iris flower data set",
-    xAxis2Show=FALSE,
-    afterRender=list(list("groupSamples", list("Species")))
+    xAxis2Show=0,
+    afterRender=list(list("groupSamples", list("Species")), list("segregateSamples", list("Species")))
   )
 }
 
 cXdotplot3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2567,19 +2567,19 @@ cXdotplot3 <- function() {
     citationFontStyle="italic",
     graphType="Dotplot",
     legendColumns=2,
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="rightBottom",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
-    afterRender=list(list("groupSamples", list("Country")))
+    afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
   )
 }
 
 cXdotplot4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dumbbell-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dumbbell-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -2587,13 +2587,13 @@ cXdotplot4 <- function() {
     connectBy="Connect",
     dotplotType="stacked",
     graphType="Dotplot",
-    showTransition=FALSE,
+    showTransition=0,
     smpTitle="School",
     sortDir="descending",
     theme="CanvasXpress",
     title="Gender Earnings Disparity",
     xAxis2Title="Annual Salary",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTickFormat="\$%sK",
     xAxisTitle="Annual Salary",
     afterRender=list(list("sortSamplesByVariable", list("Men")))
@@ -2602,42 +2602,42 @@ cXdotplot4 <- function() {
 
 cXdotplot5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
-    binned=TRUE,
+    binned=1,
     errorBarsColor="red",
     errorBarsType="standardDeviation",
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("dose"),
-    jitter=FALSE,
-    showLegend=FALSE,
+    jitter=0,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
-    binned=TRUE,
+    binned=1,
     colorBy="dose",
     colorScheme="GGPlot",
     errorBarsColor="red",
@@ -2645,26 +2645,26 @@ cXdotplot6 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("dose"),
-    jitter=FALSE,
+    jitter=0,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     shapeBy="supp",
-    showLegend=TRUE,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
-    xAxisGridMinorShow=FALSE,
+    xAxis2Show=0,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2672,7 +2672,7 @@ cXdotplot7 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    binned=TRUE,
+    binned=1,
     colorBy="dose",
     colorScheme="Blues",
     graphOrientation="vertical",
@@ -2680,28 +2680,28 @@ cXdotplot7 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     objectBorderColor="rgba(0,0,0)",
     panelBackgroundColor="#E5E5E5",
-    showErrorBars=FALSE,
-    showLegend=TRUE,
+    showErrorBars=0,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2709,7 +2709,7 @@ cXdotplot8 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    binned=TRUE,
+    binned=1,
     colorBy="dose",
     colorScheme="Blues",
     graphOrientation="vertical",
@@ -2717,29 +2717,29 @@ cXdotplot8 <- function() {
     groupingFactors=list("supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     objectBorderColor="rgba(0,0,0)",
     panelBackgroundColor="#E5E5E5",
-    showErrorBars=FALSE,
-    showLegend=TRUE,
+    showErrorBars=0,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     splitSamplesBy="supp",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2747,7 +2747,7 @@ cXdotplot9 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    binned=TRUE,
+    binned=1,
     colorBy="dose",
     colorScheme="Blues",
     graphOrientation="vertical",
@@ -2755,28 +2755,28 @@ cXdotplot9 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     objectBorderColor="rgba(0,0,0)",
     panelBackgroundColor="#E5E5E5",
-    showErrorBars=FALSE,
-    showLegend=TRUE,
+    showErrorBars=0,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2784,7 +2784,7 @@ cXdotplot10 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    binned=TRUE,
+    binned=1,
     colorBy="dose",
     colorScheme="Blues",
     graphOrientation="vertical",
@@ -2792,13 +2792,13 @@ cXdotplot10 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     objectBorderColor="rgba(0,0,0)",
     panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
-    showErrorBars=FALSE,
-    showLegend=TRUE,
+    showErrorBars=0,
+    showLegend=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
@@ -2806,26 +2806,26 @@ cXdotplot10 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXdotplot11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    binned=TRUE,
+    binned=1,
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("dataset"),
     histogramBins=150,
-    jitter=FALSE,
+    jitter=0,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)"
   )
@@ -2833,8 +2833,8 @@ cXdotplot11 <- function() {
 
 cXdotplot12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lotr-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-lotr-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lotr-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-lotr-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2850,7 +2850,7 @@ cXdotplot12 <- function() {
     graphType="Dotplot",
     groupingFactors=list("Character"),
     images=list("https://www.canvasxpress.org/assets/images/Frodo.png", "https://www.canvasxpress.org/assets/images/Gandalf.png", "https://www.canvasxpress.org/assets/images/Merry.png", "https://www.canvasxpress.org/assets/images/Pippin.png", "https://www.canvasxpress.org/assets/images/Sam.png", "https://www.canvasxpress.org/assets/images/Aragorn.png", "https://www.canvasxpress.org/assets/images/Boromir.png", "https://www.canvasxpress.org/assets/images/Gimli.png", "https://www.canvasxpress.org/assets/images/Legolas.png"),
-    layoutAdjust=TRUE,
+    layoutAdjust=1,
     layoutTopology="1X3",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
@@ -2861,13 +2861,13 @@ cXdotplot12 <- function() {
     maxFontSize=40,
     objectColorTransparency=0.85,
     segregateSamplesBy=list("Film"),
-    showLegend=FALSE,
+    showLegend=0,
     sizeBy="Words",
-    sizeByContinuous=TRUE,
-    sizeByShowLegend=FALSE,
+    sizeByContinuous=1,
+    sizeByShowLegend=0,
     sizes=list(5, 15, 25, 35, 45, 60, 80, 100, 120, 130, 150),
-    smpLabelImage=TRUE,
-    smpLabelImageRound=TRUE,
+    smpLabelImage=1,
+    smpLabelImageRound=1,
     smpTextScaleFontFactor=0.9,
     sortData=list(list("cat", "smp", "Character"), list("cat", "smp", "Chapter Name")),
     stripBackgroundBorderColor="rgba(0,0,0,0)",
@@ -2878,17 +2878,17 @@ cXdotplot12 <- function() {
     titleAlign="center",
     titleFontStyle="bold",
     titleScaleFontFactor=1.6,
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXdotplot13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-audrey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-audrey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-audrey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-audrey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2899,8 +2899,8 @@ cXdotplot13 <- function() {
     graphOrientation="vertical",
     graphType="Dotplot",
     groupingFactors=list("Year"),
-    isGraphTime=TRUE,
-    jitter=FALSE,
+    isGraphTime=1,
+    jitter=0,
     legendColumns=3,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
@@ -2910,22 +2910,22 @@ cXdotplot13 <- function() {
     marginLeft=150,
     marginRight=150,
     objectBorderColor="rgba(0,0,0)",
-    showLegendTitle=FALSE,
+    showLegendTitle=0,
     smpLabelInterval=1,
     smpTextRotate=90,
     timeFormat="year",
     title="The Life and Films of Audrey Hepburn",
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXdotplot14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2933,7 +2933,7 @@ cXdotplot14 <- function() {
     colorScheme="Greens",
     graphType="Dotplot",
     groupingFactors=list("Award"),
-    jitter=FALSE,
+    jitter=0,
     legendColumns=2,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
@@ -2942,18 +2942,18 @@ cXdotplot14 <- function() {
     legendTitleScaleFontFactor=2,
     maxSmpStringLen=50,
     objectBorderColor="rgba(0,0,0)",
-    showLegendTitle=FALSE,
+    showLegendTitle=0,
     smpTextScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
-    xAxis2Show=TRUE,
-    xAxisShow=FALSE
+    xAxis2Show=1,
+    xAxisShow=0
   )
 }
 
 cXdotplot15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-timeliner-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-timeliner-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeliner-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-timeliner-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -2962,37 +2962,37 @@ cXdotplot15 <- function() {
     decorations=list(line=list(list(align="left", color="rgba(0,0,0,0.5)", value=1, width=1))),
     graphOrientation="vertical",
     graphType="Dotplot",
-    isGraphTime=TRUE,
+    isGraphTime=1,
     marginLeft=70,
     marginRight=70,
     objectColorTransparency=0.6,
-    showLegend=FALSE,
+    showLegend=0,
     sizeBy="Size",
     sizes=list(5, 15, 25, 35, 70, 150),
     smpLabelInterval=4,
     smpTextRotate=90,
     timeFormat="isoDate",
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXfacet1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="rows",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
@@ -3002,148 +3002,148 @@ cXfacet1 <- function() {
 
 cXfacet2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    layoutCollapse=TRUE,
+    layoutCollapse=1,
     layoutType="rows",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
-    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
 
 cXfacet3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="cols",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
-    afterRender=list(list("segregateVariables", list("Annt2")))
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
 
 cXfacet4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="wrap",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     theme="CanvasXpress",
-    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
 
 cXfacet5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="cols",
-    legendBox=TRUE,
+    legendBox=1,
     shapeBy="Age",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list("Opinion")))
   )
 }
 
 cXfacet6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="rows",
-    legendBox=TRUE,
+    legendBox=1,
     shapeBy="Age",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list("Opinion")))
   )
 }
 
 cXfacet7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    layoutCollapse=FALSE,
+    layoutCollapse=0,
     layoutType="wrap",
-    legendBox=TRUE,
+    legendBox=1,
     shapeBy="Age",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list("Opinion")))
   )
 }
 
 cXfacet8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    layoutCollapse=TRUE,
+    layoutCollapse=1,
     layoutType="cols",
-    legendBox=TRUE,
+    legendBox=1,
     shapeBy="Age",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
@@ -3156,7 +3156,7 @@ cXfacet8 <- function() {
 
 cXfish1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panel",
@@ -3177,7 +3177,7 @@ cXfish1 <- function() {
 
 cXfish2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fish2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fish2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panelSolidGradient",
@@ -3199,7 +3199,7 @@ cXfish2 <- function() {
 
 cXfish3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fish3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fish3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panelSolidGradient",
@@ -3220,7 +3220,7 @@ cXfish3 <- function() {
 
 cXfish4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fish4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fish4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panelSolidGradient",
@@ -3228,7 +3228,7 @@ cXfish4 <- function() {
     colors=list("#888888", "#EF0000", "#8FFF40", "#FF6000", "#50FFAF", "#FFCF00", "#0070FF"),
     fishAxis=list(0, 34, 69, 187, 334, 505, 530, 650, 750),
     fishParents=list(0, 1, 1, 1, 3, 4, 0),
-    fishSeparateIndependentClones=TRUE,
+    fishSeparateIndependentClones=1,
     fishShape="spline",
     fishTimepoints=list(0, 34, 69, 187, 334, 505, 530),
     gradientOrientation="horizontal",
@@ -3240,7 +3240,7 @@ cXfish4 <- function() {
 
 cXfish5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fish-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panel",
@@ -3261,10 +3261,10 @@ cXfish5 <- function() {
 
 cXgantt1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    blockContrast=TRUE,
+    blockContrast=1,
     ganttEnd="End",
     ganttStart="Start",
     graphType="Gantt",
@@ -3274,8 +3274,8 @@ cXgantt1 <- function() {
 
 cXgantt2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3289,12 +3289,12 @@ cXgantt2 <- function() {
 
 cXgantt3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    blockContrast=TRUE,
+    blockContrast=1,
     colorBy="Clinical Trial",
     ganttCompletion="Completion",
     ganttEnd="End",
@@ -3307,12 +3307,12 @@ cXgantt3 <- function() {
 
 cXgantt4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-gantt2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    blockContrast=TRUE,
+    blockContrast=1,
     colorBy="Indication",
     ganttCompletion="Completion",
     ganttDependency="Dependencies",
@@ -3325,12 +3325,12 @@ cXgantt4 <- function() {
 
 cXgantt5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-gantt3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-gantt3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    blockContrast=TRUE,
+    blockContrast=1,
     colorBy="Indication",
     ganttCompletion="Completion",
     ganttDependency="Dependencies",
@@ -3344,12 +3344,12 @@ cXgantt5 <- function() {
 
 cXgantt6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gantt3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-gantt3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gantt3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-gantt3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    blockContrast=TRUE,
+    blockContrast=1,
     colorBy="Clinical Trial",
     ganttCompletion="Completion",
     ganttDependency="Dependencies",
@@ -3368,7 +3368,7 @@ cXgantt6 <- function() {
 cXgenome1 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- read_json("https://www.canvasxpress.org/data/cX-genomesimple.json")
+  genome <- read_json("https://www.canvasxpress.org/data/r/cX-genomesimple.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -3381,7 +3381,7 @@ cXgenome1 <- function() {
 cXgenome2 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeintermediate.json")
+  genome <- read_json("https://www.canvasxpress.org/data/r/cX-genomeintermediate.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
@@ -3394,12 +3394,12 @@ cXgenome2 <- function() {
 cXgenome3 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeadvanced.json")
+  genome <- read_json("https://www.canvasxpress.org/data/r/cX-genomeadvanced.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
     dataPointSize=5,
-    featureStaggered=TRUE,
+    featureStaggered=1,
     graphType="Genome"
   )
 }
@@ -3407,21 +3407,21 @@ cXgenome3 <- function() {
 cXgenome4 <- function() {
   library(canvasXpress)
   library(jsonlite)
-  genome <- read_json("https://www.canvasxpress.org/data/cX-genomeideogram.json")
+  genome <- read_json("https://www.canvasxpress.org/data/r/cX-genomeideogram.json")
   canvasXpress(
     data=genome,
     background="rgb(245,245,245)",
     graphType="Genome",
-    ideogramShowFullChromosome=TRUE,
-    showIdeogram=TRUE
+    ideogramShowFullChromosome=1,
+    showIdeogram=1
   )
 }
 
 cXheatmap1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3434,9 +3434,9 @@ cXheatmap1 <- function() {
 
 cXheatmap2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3444,18 +3444,18 @@ cXheatmap2 <- function() {
     colorSpectrum=list("navy", "white", "firebrick3"),
     graphType="Heatmap",
     heatmapCellBoxColor="rgb(255,255,255)",
-    samplesClustered=TRUE,
-    showTransition=FALSE,
+    samplesClustered=1,
+    showTransition=0,
     title="Clustered data",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3464,39 +3464,39 @@ cXheatmap3 <- function() {
     colorSpectrumBreaks=list(1, 2, 10),
     graphType="Heatmap",
     heatmapCellBoxColor="rgb(255,255,255)",
-    samplesClustered=TRUE,
-    showSmpDendrogram=FALSE,
-    showVarDendrogram=FALSE,
+    samplesClustered=1,
+    showSmpDendrogram=0,
+    showVarDendrogram=0,
     title="Custom color breaks",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     colorSpectrum=list("magenta", "blue", "black", "red", "gold"),
     graphType="Heatmap",
-    heatmapCellBox=FALSE,
-    samplesClustered=TRUE,
-    showSmpDendrogram=FALSE,
-    showVarDendrogram=FALSE,
+    heatmapCellBox=0,
+    samplesClustered=1,
+    showSmpDendrogram=0,
+    showVarDendrogram=0,
     title="Cluster Heatmap Without Trees",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3504,19 +3504,19 @@ cXheatmap5 <- function() {
     colorSpectrum=list("magenta", "blue", "black", "red", "gold"),
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
-    samplesClustered=TRUE,
-    showSmpDendrogram=FALSE,
-    showVarDendrogram=FALSE,
+    samplesClustered=1,
+    showSmpDendrogram=0,
+    showVarDendrogram=0,
     title="Symetrical Colors in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3526,22 +3526,22 @@ cXheatmap6 <- function() {
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
     heatmapIndicatorHeight=60,
-    heatmapIndicatorHistogram=TRUE,
+    heatmapIndicatorHistogram=1,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
-    samplesClustered=TRUE,
+    samplesClustered=1,
     smpOverlayProperties=list(V1=list(color="brown", position="right", thickness=120, type="Boxplot"), V11=list(color="green", position="right", thickness=120, type="Boxplot"), V35=list(color="purple", position="right", thickness=120, type="Boxplot")),
     smpOverlays=list("V1", "V11", "V35"),
     title="R Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3551,22 +3551,22 @@ cXheatmap7 <- function() {
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
     heatmapIndicatorHeight=60,
-    heatmapIndicatorHistogram=TRUE,
+    heatmapIndicatorHistogram=1,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
-    samplesClustered=TRUE,
+    samplesClustered=1,
     smpOverlays=list("Treatment", "Site"),
     splitSamplesBy="Treatment",
     title="Overlays in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3575,24 +3575,24 @@ cXheatmap8 <- function() {
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
     heatmapIndicatorHeight=100,
-    heatmapIndicatorHistogram=TRUE,
+    heatmapIndicatorHistogram=1,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
     highlightSmp=list("S1", "S2", "S3", "S4", "S5"),
     highlightVar=list("V18", "V19", "V20"),
-    samplesClustered=TRUE,
-    showTransition=FALSE,
+    samplesClustered=1,
+    showTransition=0,
     smpOverlays=list("Treatment", "Site"),
     title="Highlight cells in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3602,34 +3602,34 @@ cXheatmap9 <- function() {
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
     heatmapIndicatorHeight=80,
-    heatmapIndicatorHistogram=TRUE,
+    heatmapIndicatorHistogram=1,
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
-    samplesClustered=TRUE,
-    showTransition=FALSE,
+    samplesClustered=1,
+    showTransition=0,
     smpOverlayProperties=list(Dose=list(position="right", thickness=50, type="Dotplot"), Site=list(position="left"), Treatment=list(position="right")),
     smpOverlays=list("Treatment", "Site", "Dose"),
     title="Advanced Overlays in Heatmaps",
     varOverlayProperties=list(Sens=list(color="red", position="bottom", thickness=20, type="Bar"), Type=list(position="top")),
     varOverlays=list("Type", "Sens"),
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
-    guidesShow=TRUE,
+    guidesShow=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     outlineBy="Outline",
@@ -3644,15 +3644,15 @@ cXheatmap10 <- function() {
 
 cXheatmap11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorSpectrum=list("#f0f0f0", "#bdbdbd", "#636363", "#000000"),
     graphType="Heatmap",
-    showHeatmapIndicator=FALSE,
-    showLegend=FALSE,
+    showHeatmapIndicator=0,
+    showLegend=0,
     sizeBy="Size",
-    sizeByContinuous=TRUE,
+    sizeByContinuous=1,
     sizeByData="data",
     title="A good old Northern Blot"
   )
@@ -3660,22 +3660,22 @@ cXheatmap11 <- function() {
 
 cXheatmap12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-overlays-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-overlays-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-overlays-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-overlays-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-overlays-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-overlays-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
-    showSmpOverlaysLegend=FALSE,
-    showVarOverlaysLegend=FALSE,
-    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=TRUE, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=TRUE, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=TRUE, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
+    showSmpOverlaysLegend=0,
+    showVarOverlaysLegend=0,
+    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=1, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=1, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=1, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=1, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=1, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=1, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     smpTextScaleFontFactor=1.1,
     splitSamplesBy="Discrete",
     splitVariablesBy="Drug",
-    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=TRUE, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=TRUE, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=TRUE, thickness=50, type="Bar"), Female=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=TRUE, thickness=50, type="BarLine"), Site=list(position="top", showLegend=TRUE, type="Default"), Ugly=list(color="black", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot")),
+    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=1, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=1, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=1, thickness=50, type="Bar"), Female=list(position="top", showLegend=1, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=1, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=1, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=1, thickness=50, type="BarLine"), Site=list(position="top", showLegend=1, type="Default"), Ugly=list(color="black", position="bottom", showLegend=1, thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
     varTextRotate=45,
     varTextScaleFontFactor=1.7
@@ -3684,9 +3684,9 @@ cXheatmap12 <- function() {
 
 cXheatmap13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-pheatmap-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-pheatmap-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-pheatmap-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -3695,52 +3695,52 @@ cXheatmap13 <- function() {
     heatmapIndicatorPosition="right",
     overlayFontStyle="bold",
     overlayScaleFontFactor=2,
-    samplesClustered=TRUE,
-    showSmpOverlaysLegend=TRUE,
-    showValueOverlays=FALSE,
-    showVarOverlaysLegend=TRUE,
+    samplesClustered=1,
+    showSmpOverlaysLegend=1,
+    showValueOverlays=0,
+    showVarOverlaysLegend=1,
     smpDendrogramPosition="right",
-    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
+    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=1, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=1, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=1, type="Default")),
     smpOverlays=list("Drug", "-", "Dose", "CellType", "-", "Time"),
     smpTitleLabelPosition="right",
-    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=TRUE, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
+    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=1, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
     varOverlays=list("ProteinA", "-", "GeneClass"),
     varTitleLabelPosition="bottom",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXheatmap14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-pheatmap2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap2-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-pheatmap2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2),
     smpAnnot=x,
     varAnnot=z,
     dendrogramHeight=50,
     graphType="Heatmap",
-    guidesShow=TRUE,
+    guidesShow=1,
     heatmapIndicatorPosition="top",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
-    samplesClustered=TRUE,
-    showSmpDendrogram=FALSE,
-    showVarDendrogram=FALSE,
+    samplesClustered=1,
+    showSmpDendrogram=0,
+    showVarDendrogram=0,
     sizeBy="Size",
     sizeByData="data2",
     title="Bubble Heatmap Plot",
-    variablesClustered=TRUE
+    variablesClustered=1
   )
 }
 
 cXhexplotbinplot1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3748,7 +3748,7 @@ cXhexplotbinplot1 <- function() {
     binplotShape="hexagon",
     graphType="Scatter2D",
     scatterType="bin2d",
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("carat"),
     yAxis=list("price")
   )
@@ -3756,8 +3756,8 @@ cXhexplotbinplot1 <- function() {
 
 cXhexplotbinplot2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3765,7 +3765,7 @@ cXhexplotbinplot2 <- function() {
     binplotShape="hexagon",
     graphType="Scatter2D",
     scatterType="bin2d",
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("carat"),
     yAxis=list("price")
   )
@@ -3773,8 +3773,8 @@ cXhexplotbinplot2 <- function() {
 
 cXhexplotbinplot3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3782,7 +3782,7 @@ cXhexplotbinplot3 <- function() {
     binplotShape="hexagon",
     graphType="Scatter2D",
     scatterType="bin2d",
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("carat"),
     yAxis=list("price")
   )
@@ -3790,8 +3790,8 @@ cXhexplotbinplot3 <- function() {
 
 cXhexplotbinplot4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3799,7 +3799,7 @@ cXhexplotbinplot4 <- function() {
     binplotShape="rectangle",
     graphType="Scatter2D",
     scatterType="bin2d",
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("carat"),
     yAxis=list("price")
   )
@@ -3807,8 +3807,8 @@ cXhexplotbinplot4 <- function() {
 
 cXhexplotbinplot5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3816,7 +3816,7 @@ cXhexplotbinplot5 <- function() {
     binplotShape="oval",
     graphType="Scatter2D",
     scatterType="bin2d",
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("carat"),
     yAxis=list("price")
   )
@@ -3824,8 +3824,8 @@ cXhexplotbinplot5 <- function() {
 
 cXhistogram1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3833,8 +3833,8 @@ cXhistogram1 <- function() {
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=10,
-    showHistogram=TRUE,
-    showTransition=FALSE,
+    showHistogram=1,
+    showTransition=0,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
@@ -3844,8 +3844,8 @@ cXhistogram1 <- function() {
 
 cXhistogram2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3853,8 +3853,8 @@ cXhistogram2 <- function() {
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
     histogramBins=20,
-    showHistogram=TRUE,
-    showHistogramPath=TRUE,
+    showHistogram=1,
+    showHistogramPath=1,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
@@ -3864,19 +3864,19 @@ cXhistogram2 <- function() {
 
 cXhistogram3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-cancersurvivalt-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     axisTitleFontStyle="italic",
     citation="Cameron, E. and Pauling, L. (1978). Proceedings of the National Academy of Science USA, 75.",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
-    showFilledHistogramPath=TRUE,
-    showHistogram=TRUE,
-    showHistogramPath=TRUE,
+    showFilledHistogramPath=1,
+    showHistogram=1,
+    showHistogramPath=1,
     theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxisTitle="Survival (days)",
@@ -3886,13 +3886,13 @@ cXhistogram3 <- function() {
 
 cXhistogram4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     graphType="Scatter2D",
     histogramBins=5,
-    showHistogram=TRUE,
+    showHistogram=1,
     theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxisTitle="Pounds Spent",
@@ -3902,14 +3902,14 @@ cXhistogram4 <- function() {
 
 cXhistogram5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     graphType="Scatter2D",
     histogramBins=5,
     histogramType="staggered",
-    showHistogram=TRUE,
+    showHistogram=1,
     theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxisTitle="Pounds Spent",
@@ -3919,14 +3919,14 @@ cXhistogram5 <- function() {
 
 cXhistogram6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     graphType="Scatter2D",
     histogramBins=5,
     histogramType="stacked",
-    showHistogram=TRUE,
+    showHistogram=1,
     theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxisTitle="Pounds Spent",
@@ -3936,8 +3936,8 @@ cXhistogram6 <- function() {
 
 cXhistogram7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3956,8 +3956,8 @@ cXhistogram7 <- function() {
 
 cXhistogram8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3976,8 +3976,8 @@ cXhistogram8 <- function() {
 
 cXhistogram9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -3996,15 +3996,15 @@ cXhistogram9 <- function() {
 
 cXhistogram10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcars2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-mtcars2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-mtcars2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    histogramAsDotplot=TRUE,
+    histogramAsDotplot=1,
     histogramBinWidth=3,
-    showHistogram=TRUE,
+    showHistogram=1,
     theme="CanvasXpress",
     xAxis=list("mpg"),
     xAxisTitle="mpg",
@@ -4014,19 +4014,19 @@ cXhistogram10 <- function() {
 
 cXkaplanmeier1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Gender",
     colors=list("#2E9FDF", "#E7B800"),
     graphType="Scatter2D",
-    kmRiskTable=TRUE,
+    kmRiskTable=1,
     legendColumns=2,
     legendPosition="top",
-    showKMConfidenceIntervals=TRUE,
-    showKMMedianSurvivalTime=TRUE,
+    showKMConfidenceIntervals=1,
+    showKMMedianSurvivalTime=1,
     title="Lung Cancer Data with Confidence Level and Risk Number Table",
     xAxis=list("time"),
     xAxisTitle="Time",
@@ -4038,16 +4038,16 @@ cXkaplanmeier1 <- function() {
 
 cXkaplanmeier2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Gender",
     colors=list("#2E9FDF", "#E7B800"),
     graphType="Scatter2D",
-    kmRiskTable=FALSE,
-    showKMConfidenceIntervals=TRUE,
+    kmRiskTable=0,
+    showKMConfidenceIntervals=1,
     title="Lung Cancer Data with Confidence Level",
     xAxis=list("time"),
     xAxisTitle="Time",
@@ -4059,18 +4059,18 @@ cXkaplanmeier2 <- function() {
 
 cXkaplanmeier3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lung-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-lung-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Gender",
     colors=list("#2E9FDF", "#E7B800"),
     graphType="Scatter2D",
-    kmRiskTable=FALSE,
+    kmRiskTable=0,
     legendColumns=2,
     legendPosition="top",
-    showKMConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=0,
     title="Lung Cancer Data - Minimal",
     xAxis=list("time"),
     xAxisTitle="Time",
@@ -4082,17 +4082,17 @@ cXkaplanmeier3 <- function() {
 
 cXkaplanmeier4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Strata",
     graphType="Scatter2D",
-    kmRiskTable=TRUE,
+    kmRiskTable=1,
     legendColumns=2,
     legendPosition="top",
-    showKMConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=0,
     title="KM Plot with right censoring method",
     xAxis=list("Time"),
     xAxisTitle="Time",
@@ -4104,18 +4104,18 @@ cXkaplanmeier4 <- function() {
 
 cXkaplanmeier5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-km-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-km-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Strata",
     graphType="Scatter2D",
-    kmRiskTable=TRUE,
+    kmRiskTable=1,
     kmTime="Time2",
     legendColumns=2,
     legendPosition="top",
-    showKMConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=0,
     title="KM Plot with counting method",
     xAxis=list("Time"),
     xAxisTitle="Time",
@@ -4127,17 +4127,17 @@ cXkaplanmeier5 <- function() {
 
 cXkaplanmeier6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Drug",
     graphType="Scatter2D",
-    kmRiskTable=TRUE,
+    kmRiskTable=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showKMConfidenceIntervals=FALSE,
+    showKMConfidenceIntervals=0,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("addKMPlot"))
@@ -4146,37 +4146,37 @@ cXkaplanmeier6 <- function() {
 
 cXkaplanmeier7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    invertCensored=TRUE,
-    legendInside=TRUE,
+    invertCensored=1,
+    legendInside=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottomLeft",
-    showKMConfidenceIntervals=TRUE,
+    showKMConfidenceIntervals=1,
     xAxis=list("Survival", "Survival2"),
     xAxisTitle="Weeks",
     yAxis=list("Survival-Censor", "Survival2-Censor"),
     yAxisTitle="Probability of Survival",
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"))
+    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
 
 cXkaplanmeier8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Sex",
     graphType="Scatter2D",
-    invertCensored=TRUE,
-    showKMConfidenceIntervals=FALSE,
+    invertCensored=1,
+    showKMConfidenceIntervals=0,
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
@@ -4185,33 +4185,33 @@ cXkaplanmeier8 <- function() {
 
 cXlayout1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     theme="CanvasXpress"
   )
 }
 
 cXlayout2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
-    confidenceIntervalColorCoordinate=TRUE,
+    confidenceIntervalColorCoordinate=1,
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     showRegressionFit="Species",
     theme="CanvasXpress"
   )
@@ -4219,50 +4219,50 @@ cXlayout2 <- function() {
 
 cXlayout3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
-    showRegressionFit=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
+    showRegressionFit=1,
     theme="CanvasXpress"
   )
 }
 
 cXlayout4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=FALSE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=0,
+    scatterPlotMatrix=1,
     theme="CanvasXpress"
   )
 }
 
 cXlayout5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
-    confidenceIntervalColorCoordinate=TRUE,
+    confidenceIntervalColorCoordinate=1,
     graphType="Scatter2D",
-    layoutAdjust=FALSE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=0,
+    scatterPlotMatrix=1,
     scatterPlotMatrixType="first",
     showRegressionFit="Species",
     theme="CanvasXpress"
@@ -4271,8 +4271,8 @@ cXlayout5 <- function() {
 
 cXlayout6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-iris-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-iris-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4283,7 +4283,7 @@ cXlayout6 <- function() {
     fontStyle="italic",
     graphOrientation="vertical",
     graphType="Boxplot",
-    showTransition=FALSE,
+    showTransition=0,
     smpTextFontStyle="italic",
     smpTextRotate=90,
     smpTitle="Species",
@@ -4291,15 +4291,15 @@ cXlayout6 <- function() {
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Iris flower data set",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     afterRender=list(list("groupSamples", list("Species")), list("segregateSamples", list("Species")))
   )
 }
 
 cXlayout7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4307,7 +4307,7 @@ cXlayout7 <- function() {
     graphType="Dotplot",
     legendColumns=3,
     legendPosition="bottom",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
@@ -4318,47 +4318,47 @@ cXlayout7 <- function() {
 
 cXlayout8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
-    afterRender=list(list("groupSamples", list("Factor1")), list("segregateSamples", list("Factor1")))
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
 
 cXlayout9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="Bar",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
-    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
+    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
 
 cXlayout10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4366,7 +4366,7 @@ cXlayout10 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     layoutType="rows",
-    showTransition=FALSE,
+    showTransition=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
@@ -4376,15 +4376,15 @@ cXlayout10 <- function() {
 
 cXlayout11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scents-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-scents-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scents-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-scents-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Boxplot",
-    histogramBins=FALSE,
-    showTransition=FALSE,
+    histogramBins=0,
+    showTransition=0,
     smpTextRotate=90,
     smpTitle="Smoking Status",
     stripBackgroundBorderColor="rgb(0,0,0)",
@@ -4395,14 +4395,14 @@ cXlayout11 <- function() {
 
 cXlayout12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-body2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-body2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-body2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-body2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    histogramBins=FALSE,
-    showTransition=FALSE,
+    histogramBins=0,
+    showTransition=0,
     theme="CanvasXpress",
     afterRender=list(list("createDOE"))
   )
@@ -4410,57 +4410,57 @@ cXlayout12 <- function() {
 
 cXlayout13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    histogramBins=FALSE,
-    invertCensored=TRUE,
-    showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    histogramBins=0,
+    invertCensored=1,
+    showConfidenceIntervals=0,
+    showDecorations=1,
+    showLegend=0,
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
 
 cXlayout14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-layoutContinuous-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-layoutContinuous-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-layoutContinuous-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-layoutContinuous-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-layoutContinuous-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-layoutContinuous-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="vertical",
     graphType="Bar",
-    layoutAdjust=TRUE,
-    layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=FALSE, barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutAdjust=1,
+    layoutConfig=list(list(axisCoordinate=1, graphType="BarLine", showDataValues=1, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=1, legendPosition="bottomLeft", showLegend=1, showLegendTitle=0, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=0, barType="lollipop", xAxisTitle="Baseline (mm)")),
     layoutTopology="3X1",
-    showLegend=FALSE,
+    showLegend=0,
     stripBackgroundBorderColor="rgba(0,0,0,0)",
-    stripShow=FALSE,
+    stripShow=0,
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
     title="Tumor Response and Duration by Subject Id",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     afterRender=list(list("segregateVariables", list("Panel")))
   )
 }
 
 cXlayout15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-overlays-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-overlays-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-overlays-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-overlays-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-overlays-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-overlays-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
-    showTransition=FALSE,
+    showTransition=0,
     smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     smpTextScaleFontFactor=1.1,
@@ -4475,8 +4475,8 @@ cXlayout15 <- function() {
 
 cXlayout16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -4491,8 +4491,8 @@ cXlayout16 <- function() {
 
 cXlayout17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-datasaurus2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4509,12 +4509,12 @@ cXlayout17 <- function() {
 
 cXlayout18 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    confidenceIntervalColorCoordinate=TRUE,
+    confidenceIntervalColorCoordinate=1,
     graphType="Scatter2D",
     segregateVariablesBy=list("dataset"),
     showRegressionFit="dataset",
@@ -4526,15 +4526,15 @@ cXlayout18 <- function() {
 
 cXline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-oranges-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-oranges-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panel",
-    blockContrast=TRUE,
+    blockContrast=1,
     evenColor="rgb(226,236,248)",
     graphOrientation="vertical",
     graphType="Line",
-    legendInside=TRUE,
+    legendInside=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="topLeft",
@@ -4549,8 +4549,8 @@ cXline1 <- function() {
 
 cXline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-oranges2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-oranges2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-oranges2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-oranges2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -4558,16 +4558,16 @@ cXline2 <- function() {
     graphOrientation="horizontal",
     graphType="Scatter2D",
     lineBy="Tree",
-    showLegend=FALSE,
+    showLegend=0,
     title="Growth of Orange Trees"
   )
 }
 
 cXline3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4587,8 +4587,8 @@ cXline3 <- function() {
 
 cXline4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-line-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-line-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-line-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-line-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4596,7 +4596,7 @@ cXline4 <- function() {
     graphType="Line",
     lineErrorType="area",
     lineType="spline",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     afterRender=list(list("groupSamples", list("Time")))
   )
@@ -4604,8 +4604,8 @@ cXline4 <- function() {
 
 cXline5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-timeline-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-timeline-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeline-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeline-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -4615,7 +4615,7 @@ cXline5 <- function() {
     lineBy="Condition",
     ribbonBy=list("CI_upper", "CI_lower"),
     ribbonByType="area",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     title="Spatiotemporal Control of RhoGTPase Activation",
     xAxis=list("Time"),
@@ -4627,8 +4627,8 @@ cXline5 <- function() {
 
 cXline6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-timeline2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-timeline2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeline2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-timeline2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4639,7 +4639,7 @@ cXline6 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     scatterType="line",
-    showTransition=FALSE,
+    showTransition=0,
     title="Spatiotemporal Control of RhoGTPase Activation",
     xAxis=list("Time"),
     xAxisTitle="Time [s]",
@@ -4650,12 +4650,12 @@ cXline6 <- function() {
 
 cXlinearfit1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     asSampleFactors=list("cyl"),
     graphType="Scatter2D",
-    showDecorations=TRUE,
+    showDecorations=1,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     title="QQ-Plot",
@@ -4667,13 +4667,13 @@ cXlinearfit1 <- function() {
 
 cXlinearfit2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
     graphType="Scatter2D",
-    showDecorations=TRUE,
+    showDecorations=1,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     title="QQ-Plot colored by cyl",
@@ -4685,16 +4685,16 @@ cXlinearfit2 <- function() {
 
 cXlinearfit3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mpg-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-mpg-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mpg-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-mpg-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     fitLineColor="rgb(0,0,255)",
     graphType="Scatter2D",
     quantiles=list(0.25, 0.5, 0.75),
-    showDecorations=TRUE,
-    showQuantileRegressionFit=TRUE,
+    showDecorations=1,
+    showQuantileRegressionFit=1,
     theme="CanvasXpress",
     title="Quantile Regression",
     xAxis=list("displ"),
@@ -4704,7 +4704,7 @@ cXlinearfit3 <- function() {
 
 cXlollipop1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     barLollipopFactor=1.8,
@@ -4713,22 +4713,22 @@ cXlollipop1 <- function() {
     graphType="Bar",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showTransition=FALSE,
+    showTransition=0,
     widthFactor=0.6
   )
 }
 
 cXlollipop2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lollipop2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-lollipop2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lollipop2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-lollipop2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     backgroundType="solid",
     barLollipopFactor=1.5,
-    barLollipopOpen=TRUE,
-    barPath=TRUE,
+    barLollipopOpen=1,
+    barPath=1,
     barPathColor="rgb(225,225,225)",
     barPathTransparency=1,
     barType="lollipop",
@@ -4743,20 +4743,20 @@ cXlollipop2 <- function() {
     objectBorderColor="rgba(255,255,255,0)",
     setMaxX=150,
     setMinX=-150,
-    showDataValues=TRUE,
-    showLegend=FALSE,
+    showDataValues=1,
+    showLegend=0,
     smpTextScaleFontFactor=2,
     title="Occupations",
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXmap1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-olympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-olympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorBy="Total",
@@ -4765,14 +4765,14 @@ cXmap1 <- function() {
     mapId="medals",
     theme="tableau",
     title="Total Number of Olympic Medals in Paris - 2024",
-    topoJSON="https://www.canvasxpress.org/data/world.geojson"
+    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
   )
 }
 
 cXmap2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-CO2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-CO2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4782,7 +4782,7 @@ cXmap2 <- function() {
     mapId="countries",
     theme="solarized",
     title="CO2 Emmisions During 2018",
-    topoJSON="https://www.canvasxpress.org/data/world.geojson"
+    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
   )
 }
 
@@ -4795,15 +4795,15 @@ cXmap3 <- function() {
     graphType="Map",
     mapConfig=list(center=list(34.7, -96.1), zoom=3.2),
     mapId="colorCountries",
-    showLegend=FALSE,
-    topoJSON="https://www.canvasxpress.org/data/world.geojson"
+    showLegend=0,
+    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
   )
 }
 
 cXmap4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-election2000-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-election2000-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-election2000-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-election2000-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -4814,14 +4814,14 @@ cXmap4 <- function() {
     mapProjection="albers",
     theme="wallStreetJournal",
     title="2000 Presidential Elections",
-    topoJSON="https://www.canvasxpress.org/data/usa-albers-states.json"
+    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-states.json"
   )
 }
 
 cXmap5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-election2000-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-election2000-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-election2000-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-election2000-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -4835,7 +4835,7 @@ cXmap5 <- function() {
     sizeBy="Total",
     theme="wallStreetJournal",
     title="2000 Presidential Elections",
-    topoJSON="https://www.canvasxpress.org/data/usa-albers-states.json"
+    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-states.json"
   )
 }
 
@@ -4848,7 +4848,7 @@ cXmap6 <- function() {
     legendPosition="bottom",
     mapId="albersCounties",
     title="Mercator Projection",
-    topoJSON="https://www.canvasxpress.org/data/usa-albers-counties.json"
+    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-counties.json"
   )
 }
 
@@ -4862,14 +4862,14 @@ cXmap7 <- function() {
     mapId="mercatorCounties",
     mapProjection="albers",
     title="Albers Projection",
-    topoJSON="https://www.canvasxpress.org/data/usa-albers-counties.json"
+    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-counties.json"
   )
 }
 
 cXmap8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-australia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-australia-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-australia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-australia-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -4889,7 +4889,7 @@ cXmap8 <- function() {
 
 cXmap9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-colombia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-colombia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorBy="Prop1",
@@ -4951,13 +4951,13 @@ cXmap13 <- function() {
     decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
     mapConfig=list(center=list(-90, 30)),
-    mapGraticuleShow=TRUE,
+    mapGraticuleShow=1,
     mapGraticuleType="solid",
     mapId="worldCountries",
     mapProjection="orthographic",
-    showLegend=FALSE,
+    showLegend=0,
     title="Ortographic Projection",
-    topoJSON="https://www.canvasxpress.org/data/worldLow.json"
+    topoJSON="https://www.canvasxpress.org/data/json/worldLow.json"
   )
 }
 
@@ -4968,30 +4968,30 @@ cXmap14 <- function() {
     decorations=list(marker=list(list(color="blue", coords=list(40.701, -73.985), label="New York 1", shape="circle", size=1), list(color="red", coords=list(40.702, -74.011), label="New York 2", shape="teardrop", size=1.5), list(color="green", coords=list(40.703, -73.991), label="New York 3", shape="star", size=3))),
     graphType="Map",
     mapConfig=list(center=list(40.7, -74), zoom=15),
-    showLegend=FALSE,
-    useLeaflet=TRUE
+    showLegend=0,
+    useLeaflet=1
   )
 }
 
 cXmap15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphType="Map",
     mapConfig=list(center=list(40.7, -74), zoom=15),
     markerBy="shape",
-    showLegend=FALSE,
-    useLeaflet=TRUE
+    showLegend=0,
+    useLeaflet=1
   )
 }
 
 cXmap16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5001,15 +5001,15 @@ cXmap16 <- function() {
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.5,
     markerBy="State",
-    showLegend=FALSE,
-    useLeaflet=TRUE
+    showLegend=0,
+    useLeaflet=1
   )
 }
 
 cXmap17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5019,15 +5019,15 @@ cXmap17 <- function() {
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.75,
     markerBy="State",
-    showLegend=FALSE,
+    showLegend=0,
     sizeBy="Population",
-    useLeaflet=TRUE
+    useLeaflet=1
   )
 }
 
 cXmeter1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5040,7 +5040,7 @@ cXmeter1 <- function() {
 
 cXmeter2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5053,7 +5053,7 @@ cXmeter2 <- function() {
 
 cXmeter3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5066,7 +5066,7 @@ cXmeter3 <- function() {
 
 cXmeter4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5076,7 +5076,7 @@ cXmeter4 <- function() {
 
 cXmeter5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5088,7 +5088,7 @@ cXmeter5 <- function() {
 
 cXmeter6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Meter",
@@ -5101,9 +5101,9 @@ cXmeter6 <- function() {
 
 cXmeter7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-meter2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5116,8 +5116,8 @@ cXmeter7 <- function() {
 
 cXmeter8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-meter3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5131,8 +5131,8 @@ cXmeter8 <- function() {
 
 cXmeter9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5146,8 +5146,8 @@ cXmeter9 <- function() {
 
 cXnetwork1 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-lesmiserable-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-lesmiserable-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserable-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5155,15 +5155,15 @@ cXnetwork1 <- function() {
     colorSpectrum=list("purple", "blue", "cyan", "green", "yellow", "orange", "red"),
     graphType="Network",
     networkLayoutType="forceDirected",
-    showAnimation=TRUE,
+    showAnimation=1,
     title="Les Miserable"
   )
 }
 
 cXnetwork2 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-lesmiserableBH-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-lesmiserableBH-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserableBH-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserableBH-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5171,16 +5171,16 @@ cXnetwork2 <- function() {
     colorSpectrum=list("purple", "blue", "cyan", "green", "yellow", "orange", "red"),
     graphType="Network",
     networkLayoutType="forceDirected",
-    showAnimation=TRUE,
+    showAnimation=1,
     title="Les Miserable",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork3 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5195,16 +5195,16 @@ cXnetwork3 <- function() {
 
 cXnetwork4 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesG-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesG-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  groups=read.table("https://www.canvasxpress.org/data/cX-miserablesG-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-miserablesG-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-miserablesG-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/r/cX-miserablesG-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     groupData=groups,
     colorNodeBy="group",
     graphType="Network",
-    networkColaAvoidOverlaps=TRUE,
+    networkColaAvoidOverlaps=1,
     networkColaJaccardLinkLengthDefault=0.7,
     networkColaJaccardLinkLengths=40,
     networkColaStartUnconstrainedIterations=50,
@@ -5214,14 +5214,14 @@ cXnetwork4 <- function() {
 
 cXnetwork5 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-miserables-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-miserables-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     colorNodeBy="group",
     graphType="Network",
-    is3DNetwork=TRUE,
+    is3DNetwork=1,
     networkColaJaccardLinkLengthDefault=0.7,
     networkColaJaccardLinkLengths=40,
     networkColaStartUnconstrainedIterations=50,
@@ -5231,8 +5231,8 @@ cXnetwork5 <- function() {
 
 cXnetwork6 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-miserablesC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-miserablesC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-miserablesC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-miserablesC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5247,10 +5247,10 @@ cXnetwork6 <- function() {
 
 cXnetwork7 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-dunart-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-dunart-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  groups=read.table("https://www.canvasxpress.org/data/cX-dunart-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  constraints=read.table("https://www.canvasxpress.org/data/cX-dunart-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-dunart-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-dunart-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/r/cX-dunart-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/r/cX-dunart-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5263,8 +5263,8 @@ cXnetwork7 <- function() {
 
 cXnetwork8 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-chris-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-chris-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-chris-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-chris-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5279,16 +5279,16 @@ cXnetwork8 <- function() {
 
 cXnetwork9 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     constraintData=constraints,
     graphType="Network",
     networkColaAllConstraintsIterations=20,
-    networkColaAvoidOverlaps=TRUE,
+    networkColaAvoidOverlaps=1,
     networkColaFlowLayoutAxis="y",
     networkColaFlowLayoutSeparation=30,
     networkColaStartUnconstrainedIterations=10,
@@ -5302,17 +5302,17 @@ cXnetwork9 <- function() {
 
 cXnetwork10 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  constraints=read.table("https://www.canvasxpress.org/data/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/r/cX-chrisC-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     constraintData=constraints,
     graphType="Network",
-    is3DNetwork=TRUE,
+    is3DNetwork=1,
     networkColaAllConstraintsIterations=20,
-    networkColaAvoidOverlaps=TRUE,
+    networkColaAvoidOverlaps=1,
     networkColaFlowLayoutAxis="y",
     networkColaFlowLayoutSeparation=30,
     networkColaStartUnconstrainedIterations=10,
@@ -5326,9 +5326,9 @@ cXnetwork10 <- function() {
 
 cXnetwork11 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-hierGroup-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-hierGroup-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  groups=read.table("https://www.canvasxpress.org/data/cX-hierGroup-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-hierGroup-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-hierGroup-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  groups=read.table("https://www.canvasxpress.org/data/r/cX-hierGroup-groups.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5337,7 +5337,7 @@ cXnetwork11 <- function() {
     edgeThickness=3,
     graphType="Network",
     networkColaAllConstraintsIterations=50,
-    networkColaAvoidOverlaps=TRUE,
+    networkColaAvoidOverlaps=1,
     networkColaGridSnapIterations=50,
     networkColaLinkDistance=80,
     networkColaStartUnconstrainedIterations=100,
@@ -5348,9 +5348,9 @@ cXnetwork11 <- function() {
 
 cXnetwork12 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-constraints-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-constraints-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  constraints=read.table("https://www.canvasxpress.org/data/cX-constraints-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-constraints-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-constraints-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  constraints=read.table("https://www.canvasxpress.org/data/r/cX-constraints-constraints.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5359,8 +5359,8 @@ cXnetwork12 <- function() {
     edgeThickness=3,
     graphType="Network",
     networkColaAllConstraintsIterations=10,
-    networkColaAvoidOverlaps=TRUE,
-    networkColaHandleDisconnected=TRUE,
+    networkColaAvoidOverlaps=1,
+    networkColaHandleDisconnected=1,
     networkColaLinkDistance=80,
     networkColaStartUnconstrainedIterations=10,
     networkColaUserConstraintIterations=10,
@@ -5370,8 +5370,8 @@ cXnetwork12 <- function() {
 
 cXnetwork13 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-lesmiserableC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserableC-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-lesmiserableC-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5380,8 +5380,8 @@ cXnetwork13 <- function() {
     graphType="Network",
     networkLayoutType="circular",
     nodeScaleFontFactor=1.8,
-    showAnimation=TRUE,
-    showLegend=FALSE,
+    showAnimation=1,
+    showLegend=0,
     showNodeNameSizeThreshold=25,
     showNodeNameThreshold=100,
     sizeNodeBy="nodeEdges",
@@ -5391,8 +5391,8 @@ cXnetwork13 <- function() {
 
 cXnetwork14 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-networkradial-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-networkradial-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-networkradial-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-networkradial-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
@@ -5400,57 +5400,57 @@ cXnetwork14 <- function() {
     networkLayoutType="radial",
     nodeFontColor="rgb(29,34,43)",
     nodeScaleFontFactor=2,
-    showAnimation=TRUE,
+    showAnimation=1,
     title="Radial Network"
   )
 }
 
 cXnetwork15 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-networkbasic-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-networkbasic-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-networkbasic-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-networkbasic-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
-    calculateLayout=FALSE,
+    calculateLayout=0,
     decorations=list("exp1", "exp2", "exp3"),
     decorationsPosition="top",
     decorationsType="bar",
     graphType="Network",
-    networkFreezeOnLoad=TRUE,
+    networkFreezeOnLoad=1,
     nodeFontColor="rgb(29,34,43)",
-    showAnimation=TRUE,
-    showDecorations=TRUE
+    showAnimation=1,
+    showDecorations=1
   )
 }
 
 cXnetwork16 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-networkkarate-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-networkkarate-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-networkkarate-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-networkkarate-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
-    coordinateNetworkConvexHullCommunityColor=TRUE,
+    coordinateNetworkConvexHullCommunityColor=1,
     graphType="Network",
-    showNetworkCommunities=TRUE,
+    showNetworkCommunities=1,
     title="Zachary's famous Karate Club"
   )
 }
 
 cXnetwork17 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
-    adjustBezier=FALSE,
-    calculateLayout=FALSE,
+    adjustBezier=0,
+    calculateLayout=0,
     graphType="Network",
-    networkFreeze=TRUE,
-    networkNodesOnTop=FALSE,
-    preScaleNetwork=FALSE,
+    networkFreeze=1,
+    networkNodesOnTop=0,
+    preScaleNetwork=0,
     showNodeNameThreshold=20000,
     title="Apoptosis"
   )
@@ -5458,18 +5458,18 @@ cXnetwork17 <- function() {
 
 cXnetwork18 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-wpapoptosis-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-wpapoptosis-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
-    adjustBezier=FALSE,
-    calculateLayout=FALSE,
+    adjustBezier=0,
+    calculateLayout=0,
     colorNodeBy="Exp1",
     graphType="Network",
-    networkFreeze=TRUE,
-    networkNodesOnTop=FALSE,
-    preScaleNetwork=FALSE,
+    networkFreeze=1,
+    networkNodesOnTop=0,
+    preScaleNetwork=0,
     showNodeNameThreshold=20000,
     title="Apoptosis"
   )
@@ -5478,8 +5478,8 @@ cXnetwork18 <- function() {
 cXnetwork19 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/hsa05222.xml",
-    appendNetworkData=list("https://www.canvasxpress.org/data/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/data/xml/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/data/txt/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     colorNodeBy="Exp1",
     graphType="Network"
   )
@@ -5488,8 +5488,8 @@ cXnetwork19 <- function() {
 cXnetwork20 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/hsa05222.xml",
-    appendNetworkData=list("https://www.canvasxpress.org/data/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
+    data="https://www.canvasxpress.org/data/xml/hsa05222.xml",
+    appendNetworkData=list("https://www.canvasxpress.org/data/txt/hsa05222.txt", list(data=list("2"=list(Exp5=-3, Exp6=4, Exp7="H", Exp8=list(CL1=2, CL2=14, CL3=7), Exp9=list(CL1=32, CL2=1, CL3=5)), "3"=list(Exp5=-1, Exp6=15, Exp7="L", Exp8=list(CL1=2, CL2=40, CL3=22), Exp9=list(CL1=45, CL2=4)), "4"=list(Exp5=5, Exp6=40, Exp7="H", Exp8=list(CL1=32, CL2=4, CL3=15), Exp9=list(CL1=52, CL2=4)), "8"=list(Exp5=10, Exp6=24, Exp7="H", Exp8=list(CL1=12, CL2=4, CL3=1), Exp9=list(CL1=21, CL2=44, CL3=9)), "9"=list(Exp5=-8, Exp6=14, Exp7="M", Exp8=list(CL1=2, CL2=14, CL3=32), Exp9=list(CL1=12, CL2=4))), type="node")),
     decorations=list("Exp2", "Exp3"),
     decorationsHeight=18,
     decorationsPosition="right",
@@ -5501,7 +5501,7 @@ cXnetwork20 <- function() {
 cXnetwork21 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/WP3624_95209.gpml",
+    data="https://www.canvasxpress.org/data/xml/WP3624_95209.gpml",
     graphType="Network"
   )
 }
@@ -5509,7 +5509,7 @@ cXnetwork21 <- function() {
 cXnetwork22 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/example.xgmml",
+    data="https://www.canvasxpress.org/data/xml/example.xgmml",
     graphType="Network"
   )
 }
@@ -5517,7 +5517,7 @@ cXnetwork22 <- function() {
 cXnetwork23 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/Apoptosis.xml",
+    data="https://www.canvasxpress.org/data/xml/Apoptosis.xml",
     graphType="Network"
   )
 }
@@ -5525,7 +5525,7 @@ cXnetwork23 <- function() {
 cXnetwork24 <- function() {
   library(canvasXpress)
   canvasXpress(
-    data="https://www.canvasxpress.org/data/networkData.txt",
+    data="https://www.canvasxpress.org/data/txt/networkData.txt",
     colorNodeBy="name_mod1",
     graphType="Network",
     sizeEdgeBy="aa%1"
@@ -5534,173 +5534,173 @@ cXnetwork24 <- function() {
 
 cXnetwork25 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-doctrine2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-doctrine2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-doctrine2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-doctrine2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork26 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-faker-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-faker-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-faker-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-faker-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork27 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-jquery-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-jquery-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-jquery-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-jquery-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork28 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-lichess-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-lichess-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-lichess-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-lichess-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork29 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-propel2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-propel2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-propel2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-propel2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork30 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-rails-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-rails-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-rails-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-rails-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork31 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-symfony-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-symfony-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-symfony-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-symfony-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork32 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-twig-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-twig-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-twig-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-twig-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork33 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-uptime-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-uptime-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-uptime-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-uptime-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
     networkConvergenceThreshold=0.001,
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork34 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-wordpress-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-wordpress-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-wordpress-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-wordpress-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnetwork35 <- function() {
   library(canvasXpress)
-  nodes=read.table("https://www.canvasxpress.org/data/cX-zf2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  edges=read.table("https://www.canvasxpress.org/data/cX-zf2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-zf2-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-zf2-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     nodeData=nodes,
     edgeData=edges,
     edgeColor="rgb(158,202,225)",
     graphType="Network",
-    useBarnesHutSimulation=TRUE
+    useBarnesHutSimulation=1
   )
 }
 
 cXnonlinearfit1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-nonlinearfit-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-nonlinearfit-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(nlfit=list(list(label="Custom Fit", param=list(164, 313, 0.031, -1.5, 1.2e-06, 1.9), type="cst"), list(label="Regular Fit", param=list(164, 313, 0.031, 1.5, 1.2e-06, 1.9), type="reg"))),
     graphType="Scatter2D",
     setMaxY=350,
     setMinY=100,
-    showDecorations=TRUE,
+    showDecorations=1,
     theme="CanvasXpress",
     xAxisTransform="log10",
-    xAxisTransformTicks=TRUE,
-    yAxisExact=TRUE
+    xAxisTransformTicks=1,
+    yAxisExact=1
   )
 }
 
 cXnonlinearfit2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-nor24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-nor24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress",
     xAxis=list("X"),
     yAxis=list("Y"),
@@ -5710,77 +5710,77 @@ cXnonlinearfit2 <- function() {
 
 cXnonlinearfit3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-log11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-log11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(logarithmic=list(list(color="red"))),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress"
   )
 }
 
 cXnonlinearfit4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exp14-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exp14-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(exponential=list(list(color="red"))),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress"
   )
 }
 
 cXnonlinearfit5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-pow11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-pow11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(power=list(list(color="red"))),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress"
   )
 }
 
 cXnonlinearfit6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-poly8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-poly8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(polynomial=list(list(color="red"))),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress"
   )
 }
 
 cXnonlinearfit7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lin20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lin20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(linear=list(list(color="red"))),
     graphType="Scatter2D",
-    showDecorations=TRUE,
-    showLegend=FALSE,
+    showDecorations=1,
+    showLegend=0,
     theme="CanvasXpress"
   )
 }
 
 cXoncoprint1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     smpAnnot=x,
@@ -5789,18 +5789,18 @@ cXoncoprint1 <- function() {
     oncoprintCNA="data2",
     oncoprintMUT="data3",
     overlaysThickness=100,
-    showTransition=FALSE
+    showTransition=0
   )
 }
 
 cXoncoprint2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     smpAnnot=x,
@@ -5809,7 +5809,7 @@ cXoncoprint2 <- function() {
     oncoprintCNA="data2",
     oncoprintMUT="data3",
     overlaysThickness=100,
-    showTransition=FALSE,
+    showTransition=0,
     smpOverlayProperties=list(Annt2=list(position="right", type="Bar"), Annt3=list(type="Stacked"), Annt4=list(type="Stacked"), Annt5=list(type="Stacked")),
     smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5")
   )
@@ -5817,12 +5817,12 @@ cXoncoprint2 <- function() {
 
 cXoncoprint3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table("https://www.canvasxpress.org/data/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-oncoprint-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     smpAnnot=x,
@@ -5840,11 +5840,11 @@ cXoncoprint3 <- function() {
 
 cXoncoprint4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y2=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y3=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  y4=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-LungCancinoma-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-LungCancinoma-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y2=read.table("https://www.canvasxpress.org/data/r/cX-LungCancinoma-dat2.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y3=read.table("https://www.canvasxpress.org/data/r/cX-LungCancinoma-dat3.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y4=read.table("https://www.canvasxpress.org/data/r/cX-LungCancinoma-dat4.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-LungCancinoma-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=list(y=y, data2=y2, data3=y3, data4=y4),
     varAnnot=z,
@@ -5857,16 +5857,16 @@ cXoncoprint4 <- function() {
 
 cXparallelcoordinates1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphOrientation="vertical",
     graphType="ParallelCoordinates",
-    lineDecoration=FALSE,
-    showTransition=FALSE,
+    lineDecoration=0,
+    showTransition=0,
     smpTextRotate=90,
     theme="CanvasXpress",
     title="Iris flower data set"
@@ -5875,15 +5875,15 @@ cXparallelcoordinates1 <- function() {
 
 cXparallelcoordinates2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphOrientation="vertical",
     graphType="ParallelCoordinates",
-    lineDecoration=FALSE,
+    lineDecoration=0,
     smpTextRotate=90,
     theme="CanvasXpress",
     title="Iris flower data set",
@@ -5893,9 +5893,9 @@ cXparallelcoordinates2 <- function() {
 
 cXpie1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5907,18 +5907,18 @@ cXpie1 <- function() {
     pieSegmentLabels="inside",
     pieSegmentPrecision=0,
     pieSegmentSeparation=1,
-    showPieGrid=TRUE,
-    showPieSampleLabel=TRUE,
-    showTransition=FALSE,
+    showPieGrid=1,
+    showPieSampleLabel=1,
+    showTransition=0,
     xAxis=list("S1", "S2", "S3", "S4", "S5", "S6")
   )
 }
 
 cXpie2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5930,15 +5930,15 @@ cXpie2 <- function() {
     pieSegmentPrecision=1,
     pieSegmentSeparation=2,
     pieType="solid",
-    showTransition=FALSE
+    showTransition=0
   )
 }
 
 cXradar1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5951,7 +5951,7 @@ cXradar1 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("line"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Radar - Line",
     transitionStep=50,
     transitionTime=1500
@@ -5960,9 +5960,9 @@ cXradar1 <- function() {
 
 cXradar2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -5976,7 +5976,7 @@ cXradar2 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     ringGraphType=list("area"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Radar - Area",
     transitionStep=50,
     transitionTime=1500
@@ -5985,9 +5985,9 @@ cXradar2 <- function() {
 
 cXradar3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6000,7 +6000,7 @@ cXradar3 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("bar"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Radar - Bar",
     transitionStep=50,
     transitionTime=1500
@@ -6009,9 +6009,9 @@ cXradar3 <- function() {
 
 cXradar4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6025,7 +6025,7 @@ cXradar4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     ringGraphType=list("dot"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Radar - Scatter",
     transitionStep=50,
     transitionTime=1500
@@ -6034,9 +6034,9 @@ cXradar4 <- function() {
 
 cXradar5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6050,7 +6050,7 @@ cXradar5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     ringGraphType=list("stacked"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Radar - Stacked",
     transitionStep=50,
     transitionTime=1500
@@ -6059,9 +6059,9 @@ cXradar5 <- function() {
 
 cXradar6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6074,7 +6074,7 @@ cXradar6 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("line"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Half Radar",
     transitionStep=50,
     transitionTime=1500
@@ -6083,9 +6083,9 @@ cXradar6 <- function() {
 
 cXradar7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6099,7 +6099,7 @@ cXradar7 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     ringGraphType=list("line"),
-    showTransition=FALSE,
+    showTransition=0,
     title="Rotated Half Radar",
     transitionStep=50,
     transitionTime=1500
@@ -6108,9 +6108,9 @@ cXradar7 <- function() {
 
 cXradar8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6124,7 +6124,7 @@ cXradar8 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
     ringGraphType=list("line"),
-    showTransition=FALSE,
+    showTransition=0,
     smpOverlays=list("Factor3", "-", "Factor1", "Factor2"),
     title="Radar with Overlays",
     transitionStep=50,
@@ -6134,146 +6134,146 @@ cXradar8 <- function() {
 
 cXridgeline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
     ridgeBy="Species",
     ridgelineScale=2,
     setMaxX=9,
     setMinX=3.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1
   )
 }
 
 cXridgeline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
     ridgeBy="Species",
     ridgelineScale=1.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE,
-    xAxisRugShow=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1,
+    xAxisRugShow=1
   )
 }
 
 cXridgeline3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
     ridgeBy="Species",
     ridgelineScale=2.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDataPoints=TRUE,
-    showHistogramDensity=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDataPoints=1,
+    showHistogramDensity=1
   )
 }
 
 cXridgeline4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-petallength-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-petallength-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Species",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
     ridgeBy="Species",
     ridgelineScale=1,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramQuantiles=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1,
+    showHistogramQuantiles=1
   )
 }
 
 cXridgeline5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-lincoln-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-lincoln-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-lincoln-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-lincoln-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="data",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=20,
     ridgeBy="Month",
     ridgelineScale=2.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1
   )
 }
 
 cXridgeline6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-datasaurus-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ridgeBy="dataset",
     ridgelineScale=2.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1
   )
 }
 
 cXridgeline7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-anscombeQuartet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-anscombeQuartet-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ridgeBy="dataset",
-    showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showFilledHistogramDensity=1,
+    showHistogramDensity=1
   )
 }
 
 cXsplom1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     scatterPlotMatrixType="both",
     theme="CanvasXpress"
   )
@@ -6281,16 +6281,16 @@ cXsplom1 <- function() {
 
 cXsplom2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     scatterPlotMatrixType="upper",
     theme="CanvasXpress"
   )
@@ -6298,16 +6298,16 @@ cXsplom2 <- function() {
 
 cXsplom3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     scatterPlotMatrixType="lower",
     theme="CanvasXpress"
   )
@@ -6315,15 +6315,15 @@ cXsplom3 <- function() {
 
 cXsplom4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
+    layoutAdjust=1,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlation",
     theme="CanvasXpress"
@@ -6332,15 +6332,15 @@ cXsplom4 <- function() {
 
 cXsplom5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
+    layoutAdjust=1,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationHistogram",
     theme="CanvasXpress"
@@ -6349,15 +6349,15 @@ cXsplom5 <- function() {
 
 cXsplom6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
+    layoutAdjust=1,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationDensity",
     theme="CanvasXpress"
@@ -6366,15 +6366,15 @@ cXsplom6 <- function() {
 
 cXsplom7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
+    layoutAdjust=1,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="all",
     theme="CanvasXpress"
@@ -6383,16 +6383,16 @@ cXsplom7 <- function() {
 
 cXsplom8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
-    broadcast=TRUE,
+    broadcast=1,
     colorBy="Species",
     graphType="Scatter2D",
-    layoutAdjust=TRUE,
-    scatterPlotMatrix=TRUE,
+    layoutAdjust=1,
+    scatterPlotMatrix=1,
     scatterPlotMatrixType="first",
     theme="CanvasXpress"
   )
@@ -6400,8 +6400,8 @@ cXsplom8 <- function() {
 
 cXsankey1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sankey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sankey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sankey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sankey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6410,7 +6410,7 @@ cXsankey1 <- function() {
     sankeyNodesColor="rgba(20, 250, 50, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     title="Single Level Sankey"
   )
@@ -6418,8 +6418,8 @@ cXsankey1 <- function() {
 
 cXsankey2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sankey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sankey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sankey-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sankey-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6435,8 +6435,8 @@ cXsankey2 <- function() {
 
 cXsankey3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sankey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sankey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sankey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sankey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6452,8 +6452,8 @@ cXsankey3 <- function() {
 
 cXsankey4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sankey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sankey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sankey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sankey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6468,8 +6468,8 @@ cXsankey4 <- function() {
 
 cXsankey5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-titanicR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-titanicR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-titanicR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-titanicR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6483,15 +6483,29 @@ cXsankey5 <- function() {
   )
 }
 
+cXsankey6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sankey3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sankey3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Department",
+    graphType="Sankey",
+    sankeyAxes=list("Department", "Division", "Requester", "Program", "Operator", "Tool"),
+    title="Alluvial Plot"
+  )
+}
+
 cXscatter2d1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-alcoholtobaccot-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     citation="Moore, David S., and George P. McCabe (1989). Introduction to the Practice of Statistics, p. 179.",
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Alcohol"),
@@ -6501,15 +6515,15 @@ cXscatter2d1 <- function() {
 
 cXscatter2d2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-spider-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-spider-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-spider-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-spider-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Response",
     graphType="Scatter2D",
-    legendBox=TRUE,
-    legendInside=TRUE,
+    legendBox=1,
+    legendInside=1,
     legendPosition="topRight",
     lineBy="Subject",
     theme="CanvasXpress",
@@ -6521,12 +6535,12 @@ cXscatter2d2 <- function() {
 
 cXscatter2d3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-loess2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-loess2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Scatter2D",
-    showConfidenceIntervals=TRUE,
-    showLoessFit=TRUE,
+    showConfidenceIntervals=1,
+    showLoessFit=1,
     theme="CanvasXpress",
     title="Loess Fit",
     xAxis=list("E"),
@@ -6536,8 +6550,8 @@ cXscatter2d3 <- function() {
 
 cXscatter2d4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6545,36 +6559,36 @@ cXscatter2d4 <- function() {
     graphType="Scatter2D",
     histogramBins=5,
     histogramStat="count",
-    legendBox=TRUE,
+    legendBox=1,
     setMaxX=100,
     setMaxY=150,
     setMinX=0,
     setMinY=0,
     shapeBy="Smoker",
-    showHistogramBars=TRUE,
-    showTransition=FALSE,
+    showHistogramBars=1,
+    showTransition=0,
     sizeBy="Age",
     theme="CanvasXpress",
     title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
-    xAxisExact=TRUE,
-    xAxisHistogramShow=TRUE,
+    xAxisExact=1,
+    xAxisHistogramShow=1,
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    yAxisExact=TRUE,
-    yAxisHistogramShow=TRUE
+    yAxisExact=1,
+    yAxisHistogramShow=1
   )
 }
 
 cXscatter2d5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
-    confidenceIntervalColorCoordinate=TRUE,
+    confidenceIntervalColorCoordinate=1,
     graphType="Scatter2D",
-    legendBox=TRUE,
+    legendBox=1,
     showRegressionFit="cyl",
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
@@ -6585,16 +6599,16 @@ cXscatter2d5 <- function() {
 
 cXscatter2d6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     asSampleFactors=list("cyl"),
     colorBy="cyl",
-    confidenceIntervalColorCoordinate=TRUE,
+    confidenceIntervalColorCoordinate=1,
     graphType="Scatter2D",
-    legendBox=TRUE,
+    legendBox=1,
     showRegressionFit="cyl",
-    showRegressionFullRange=TRUE,
+    showRegressionFullRange=1,
     stringVariableFactors=list("cyl"),
     theme="CanvasXpress",
     xAxis=list("wt"),
@@ -6604,8 +6618,8 @@ cXscatter2d6 <- function() {
 
 cXscatter2d7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scentst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scentst-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6614,35 +6628,35 @@ cXscatter2d7 <- function() {
     graphType="Scatter2D",
     histogramBins=5,
     histogramStat="count",
-    legendBox=TRUE,
+    legendBox=1,
     objectBorderColor="rgb(0,0,0)",
     setMaxX=100,
     setMaxY=150,
     setMinX=0,
     setMinY=0,
     shapeBy="Smoker",
-    showHistogramBars=TRUE,
+    showHistogramBars=1,
     sizeBy="Age",
     theme="CanvasXpress",
     title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
-    xAxisExact=TRUE,
-    xAxisHistogramShow=TRUE,
+    xAxisExact=1,
+    xAxisHistogramShow=1,
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    yAxisExact=TRUE,
-    yAxisHistogramShow=TRUE
+    yAxisExact=1,
+    yAxisHistogramShow=1
   )
 }
 
 cXscatter2d8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-ageheightt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-ageheightt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     citation="Moore, David S., and George P. McCabe (1989)",
     citationScaleFontFactor=0.75,
     graphType="Scatter2D",
-    showRegressionFit=TRUE,
+    showRegressionFit=1,
     theme="CanvasXpress",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
@@ -6652,22 +6666,22 @@ cXscatter2d8 <- function() {
 
 cXscatter2d9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-breastcancert-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-breastcancert-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     backgroundType="panel",
-    citation="Velleman, P. F. and Hoaglin, D. C. (1981).\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA: Wadsworth, Inc., pp. 127-134.",
+    citation="Velleman, P. F. and Hoaglin, D. C. (1981).\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA :  Wadsworth, Inc., pp. 127-134.",
     colors=list("rgba(64,64,64,0.5)"),
     decorationsBackgroundColor="rgb(238,238,238)",
     decorationsBorderColor="rgb(0,0,0)",
     decorationsPosition="bottomRight",
     graphType="Scatter2D",
     legendBackgroundColor="rgba(255,255,255,0)",
-    legendInside=TRUE,
+    legendInside=1,
     panelBackgroundColor="rgb(238,238,238)",
-    showDecorations=TRUE,
-    showRegressionFit=TRUE,
-    showTransition=FALSE,
+    showDecorations=1,
+    showRegressionFit=1,
+    showTransition=0,
     theme="CanvasXpress",
     title="Mean annual temperature (in degrees F) and Mortality Index for neoplasms of the female breast.",
     xAxis=list("Mortality"),
@@ -6679,27 +6693,27 @@ cXscatter2d9 <- function() {
 
 cXscatter2d10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-nonlinearfit-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-nonlinearfit-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     decorations=list(nlfit=list(list(label="Custom Fit", param=list(164, 313, 0.031, -1.5, 1.2e-06, 1.9), type="cst"), list(label="Regular Fit", param=list(164, 313, 0.031, 1.5, 1.2e-06, 1.9), type="reg"))),
     graphType="Scatter2D",
     setMaxY=350,
     setMinY=100,
-    showDecorations=TRUE,
+    showDecorations=1,
     theme="CanvasXpress",
     xAxis=list("Concentration"),
     xAxisTransform="log10",
-    xAxisTransformTicks=TRUE,
+    xAxisTransformTicks=1,
     yAxis=list("V1"),
-    yAxisExact=TRUE
+    yAxisExact=1
   )
 }
 
 cXscatter2d11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatterR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scatterR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatterR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatterR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6710,15 +6724,15 @@ cXscatter2d11 <- function() {
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, y=0.5), list(color="rgba(0,104,139,0.5)", width=2, y=-0.5))),
     graphType="Scatter2D",
     legendBackgroundColor="rgb(238,238,238)",
-    legendBox=TRUE,
+    legendBox=1,
     legendBoxColor="rgb(0,0,0)",
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="bottomRight",
     panelBackgroundColor="rgb(238,238,238)",
-    showConfidenceIntervals=FALSE,
-    showDecorations=TRUE,
-    showLoessFit=TRUE,
-    showTransition=FALSE,
+    showConfidenceIntervals=0,
+    showDecorations=1,
+    showLoessFit=1,
+    showTransition=0,
     sizeBy="FC",
     sizes=list(4, 12, 14, 15, 16, 17, 18),
     theme="CanvasXpress",
@@ -6732,8 +6746,8 @@ cXscatter2d11 <- function() {
 
 cXscatter2d12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatterR2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scatterR2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatterR2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatterR2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6742,12 +6756,12 @@ cXscatter2d12 <- function() {
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)", "rgba(64,64,64,0.5)"),
     decorations=list(line=list(list(color="rgba(205,0,0,0.5)", width=2, x=0.5), list(color="rgba(0,104,139,0.5)", width=2, x=-0.5))),
     graphType="Scatter2D",
-    hoverTemplate="Group: {Group}<br/>Gene: {vars}<br/>logFC: {logFC}<br/>-log-pVal: {-log-pVal}<br/>FC: {FC}<br/>",
+    hoverTemplate="Group :  {Group}<br/>Gene :  {vars}<br/>logFC :  {logFC}<br/>-log-pVal :  {-log-pVal}<br/>FC :  {FC}<br/>",
     legendBackgroundColor="rgb(238,238,238)",
-    legendBox=TRUE,
+    legendBox=1,
     legendBoxColor="rgb(0,0,0)",
     panelBackgroundColor="rgb(238,238,238)",
-    showDecorations=TRUE,
+    showDecorations=1,
     sizeBy="FC",
     sizes=list(4, 12, 14, 15, 16, 17, 18),
     theme="CanvasXpress",
@@ -6761,8 +6775,8 @@ cXscatter2d12 <- function() {
 
 cXscatter2d13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatterR3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-scatterR3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatterR3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatterR3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6773,15 +6787,15 @@ cXscatter2d13 <- function() {
     decorations=list(line=list(list(color="rgba(64,64,64,0.5)", width=2, x=0), list(color="rgba(64,64,64,0.5)", width=2, y=0), list(color="rgba(255,215,0,0.5)", width=2, x=-5, x2=5, y=-5, y2=5))),
     graphType="Scatter2D",
     legendBackgroundColor="rgb(238,238,238)",
-    legendBox=TRUE,
+    legendBox=1,
     legendBoxColor="rgb(0,0,0)",
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="bottomRight",
     panelBackgroundColor="rgb(238,238,238)",
-    showDecorations=TRUE,
-    showTransition=FALSE,
+    showDecorations=1,
+    showTransition=0,
     sizeBy="Hit",
-    sizeByShowLegend=FALSE,
+    sizeByShowLegend=0,
     sizes=list(4, 14),
     theme="CanvasXpress",
     title="Contrast plot",
@@ -6794,7 +6808,7 @@ cXscatter2d13 <- function() {
 
 cXscatter2d14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatterR4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatterR4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     axisAlgorithm="rPretty",
@@ -6802,7 +6816,7 @@ cXscatter2d14 <- function() {
     colors=list("rgba(0,104,139,0.5)", "rgba(205,0,0,0.5)"),
     graphType="Scatter2D",
     legendBackgroundColor="rgba(255,255,255,0)",
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="topRight",
     panelBackgroundColor="rgb(238,238,238)",
     theme="CanvasXpress",
@@ -6816,8 +6830,8 @@ cXscatter2d14 <- function() {
 
 cXscatter2d15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-visium-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-visium-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-visium-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-visium-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6825,24 +6839,24 @@ cXscatter2d15 <- function() {
     backgroundType="panelImage",
     colorBy="signal",
     graphType="Scatter2D",
-    plotBox=FALSE,
+    plotBox=0,
     scatterType="visium",
     title="Visium Spatial Transcriptomics",
-    visiumFlip=FALSE,
+    visiumFlip=0,
     xAxis=list("imagecol"),
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0,
     yAxis=list("imagerow"),
-    yAxisGridMajorShow=FALSE,
-    yAxisGridMinorShow=FALSE,
-    yAxisShow=FALSE
+    yAxisGridMajorShow=0,
+    yAxisGridMinorShow=0,
+    yAxisShow=0
   )
 }
 
 cXscatter2d16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-gwas-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-gwas-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     chromosomeLengths=list(1500, 1191, 1040, 945, 877, 825, 784, 750, 721, 696, 674, 655, 638, 622, 608, 595, 583, 572, 562, 553, 544, 535),
@@ -6860,13 +6874,13 @@ cXscatter2d16 <- function() {
 
 cXscatter2d17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-fcyt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-fcyt-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     dataPointSize=5,
     graphType="Scatter2D",
     scatterOutlineThreshold=1,
-    showScatterDensity=TRUE,
+    showScatterDensity=1,
     xAxis=list("FL1-A"),
     xAxisTitle="FL1-A",
     xAxisTransform="log10",
@@ -6878,8 +6892,8 @@ cXscatter2d17 <- function() {
 
 cXscatter3d1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6899,8 +6913,8 @@ cXscatter3d1 <- function() {
 
 cXscatter3d2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -6921,26 +6935,26 @@ cXscatter3d2 <- function() {
 
 cXscatter3d3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-loess3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-loess3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Scatter3D",
-    showConfidenceIntervals=TRUE,
-    showLoessFit=TRUE,
+    showConfidenceIntervals=1,
+    showLoessFit=1,
     theme="CanvasXpress",
     title="Loess Fit",
     xAxis=list("E"),
-    xAxisExact=TRUE,
+    xAxisExact=1,
     yAxis=list("NOx"),
-    yAxisExact=TRUE,
+    yAxisExact=1,
     zAxis=list("C"),
-    zAxisExact=TRUE
+    zAxisExact=1
   )
 }
 
 cXscatter3d4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatter3d-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Scatter3D",
@@ -6953,7 +6967,7 @@ cXscatter3d4 <- function() {
 
 cXscatter3d5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-scatter3d-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Scatter3D",
@@ -6967,9 +6981,9 @@ cXscatter3d5 <- function() {
 
 cXscatter3d6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -6989,14 +7003,14 @@ cXscatter3d6 <- function() {
 
 cXscatterbubble2d1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-bubble-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-bubble-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bubble-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-bubble-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="Continent",
     graphType="ScatterBubble2D",
-    showTransition=FALSE,
+    showTransition=0,
     theme="CanvasXpress",
     xAxis=list("LifeExpectancy"),
     yAxis=list("GDPPerCapita"),
@@ -7007,9 +7021,9 @@ cXscatterbubble2d1 <- function() {
 
 cXscatterbubble2d2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7024,8 +7038,8 @@ cXscatterbubble2d2 <- function() {
 
 cXscatterbubble2d3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-bubble-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-bubble-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bubble-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-bubble-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7042,8 +7056,8 @@ cXscatterbubble2d3 <- function() {
 
 cXstacked1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stacked2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-stacked2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-stacked2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7056,7 +7070,7 @@ cXstacked1 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     objectBorderColor="rgb(0,0,0)",
     sampleSpaceFactor=1,
-    showTransition=FALSE,
+    showTransition=0,
     title="Random Data",
     treemapBy=list("Factor2", "Factor3")
   )
@@ -7064,18 +7078,18 @@ cXstacked1 <- function() {
 
 cXstacked2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor=0,
     sampleSpaceFactor=1,
-    showDataValues=TRUE,
+    showDataValues=1,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -7086,17 +7100,17 @@ cXstacked2 <- function() {
 
 cXstacked3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    gradient=TRUE,
+    gradient=1,
     graphOrientation="vertical",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor=0,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -7107,17 +7121,17 @@ cXstacked3 <- function() {
 
 cXstacked4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
-    showDataValues=TRUE,
+    legendBackgroundColor=0,
+    showDataValues=1,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -7129,7 +7143,7 @@ cXstacked4 <- function() {
 
 cXstacked5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-diverging-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-diverging-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     axisAlgorithm="wilkinson",
@@ -7141,7 +7155,7 @@ cXstacked5 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
     marginRight=20,
-    showDataValues=TRUE,
+    showDataValues=1,
     title="Diverging Stacked Graph",
     xAxisTickFormat="%s%%"
   )
@@ -7149,9 +7163,9 @@ cXstacked5 <- function() {
 
 cXstackedline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7160,8 +7174,8 @@ cXstackedline1 <- function() {
     graphType="StackedLine",
     lineThickness=3,
     lineType="spline",
-    showDataValues=TRUE,
-    showTransition=FALSE,
+    showDataValues=1,
+    showTransition=0,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
@@ -7174,17 +7188,17 @@ cXstackedline1 <- function() {
 
 cXstackedline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    coordinateLineColor=TRUE,
+    coordinateLineColor=1,
     graphOrientation="horizontal",
     graphType="StackedLine",
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="topRight",
     lineThickness=3,
     lineType="spline",
@@ -7200,19 +7214,19 @@ cXstackedline2 <- function() {
 
 cXstackedpercent1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor=0,
     sampleSpaceFactor=1,
-    showDataValues=TRUE,
-    showTransition=FALSE,
+    showDataValues=1,
+    showTransition=0,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -7223,18 +7237,18 @@ cXstackedpercent1 <- function() {
 
 cXstackedpercent2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    gradient=TRUE,
+    gradient=1,
     graphOrientation="vertical",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
-    showDataValues=TRUE,
+    legendBackgroundColor=0,
+    showDataValues=1,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -7245,16 +7259,16 @@ cXstackedpercent2 <- function() {
 
 cXstackedpercent3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor=0,
     sampleSpaceFactor=1.5,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -7266,7 +7280,7 @@ cXstackedpercent3 <- function() {
 
 cXstackedpercent4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-diverging-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-diverging-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     axisAlgorithm="wilkinson",
@@ -7278,7 +7292,7 @@ cXstackedpercent4 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
     marginRight=20,
-    showDataValues=TRUE,
+    showDataValues=1,
     title="Diverging Stacked Percent Graph",
     xAxisTickFormat="%s%%"
   )
@@ -7286,15 +7300,15 @@ cXstackedpercent4 <- function() {
 
 cXstackedpercent5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-movieRoles-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-movieRoles-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-movieRoles-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-movieRoles-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-movieRoles-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-movieRoles-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
     backgroundType="solid",
-    barPath=TRUE,
+    barPath=1,
     barPathColor="rgb(48,116,154)",
     barPathTransparency=1,
     colorBy="Color",
@@ -7303,7 +7317,7 @@ cXstackedpercent5 <- function() {
     fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    layoutCollapse=TRUE,
+    layoutCollapse=1,
     legendBackgroundColor="rgb(63,149,180)",
     legendColumns=2,
     legendKeyBackgroundBorderColor="rgb(63,149,180)",
@@ -7321,9 +7335,9 @@ cXstackedpercent5 <- function() {
     patterns=list("solid", "stripeHorizontal", "hatchForward", "hatchReverse", "stripeVertical", "polkaDot"),
     plotBackgroundColor="rgb(63,149,180)",
     segregateVariablesBy=list("Gender"),
-    showColorLegend=FALSE,
-    showLegend=TRUE,
-    showLegendTitle=FALSE,
+    showColorLegend=0,
+    showLegend=1,
+    showLegendTitle=0,
     smpTextColor="rgb(255,255,255)",
     smpTextScaleFontFactor=1.2,
     stripBackgroundBorderColor="rgba(255,255,255,0)",
@@ -7335,18 +7349,18 @@ cXstackedpercent5 <- function() {
     titleColor="rgb(252,157,156)",
     titleScaleFontFactor=4.5,
     widthFactor=1.1,
-    xAxis2Show=FALSE,
-    xAxisGridMajorShow=FALSE,
-    xAxisGridMinorShow=FALSE,
-    xAxisShow=FALSE
+    xAxis2Show=0,
+    xAxisGridMajorShow=0,
+    xAxisGridMinorShow=0,
+    xAxisShow=0
   )
 }
 
 cXstackedpercentline1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7355,8 +7369,8 @@ cXstackedpercentline1 <- function() {
     graphType="StackedPercentLine",
     lineThickness=3,
     lineType="spline",
-    showDataValues=TRUE,
-    showTransition=FALSE,
+    showDataValues=1,
+    showTransition=0,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
@@ -7369,14 +7383,14 @@ cXstackedpercentline1 <- function() {
 
 cXstackedpercentline2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    coordinateLineColor=TRUE,
+    coordinateLineColor=1,
     graphOrientation="horizontal",
     graphType="StackedPercentLine",
     lineThickness=3,
@@ -7393,8 +7407,8 @@ cXstackedpercentline2 <- function() {
 
 cXstreamgraph1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7410,17 +7424,17 @@ cXstreamgraph1 <- function() {
     scatterStreamTrueRange="both",
     scatterStreamType="mirror",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7436,17 +7450,17 @@ cXstreamgraph2 <- function() {
     scatterStreamTrueRange="none",
     scatterStreamType="mirror",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7462,17 +7476,17 @@ cXstreamgraph3 <- function() {
     scatterStreamTrueRange="none",
     scatterStreamType="mirror",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7488,17 +7502,17 @@ cXstreamgraph4 <- function() {
     scatterStreamTrueRange="both",
     scatterStreamType="mirror",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7513,17 +7527,17 @@ cXstreamgraph5 <- function() {
     scatterStreamNumber=1000,
     scatterStreamType="ridge",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-blockbusters-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7538,17 +7552,17 @@ cXstreamgraph6 <- function() {
     scatterStreamNumber=1000,
     scatterStreamType="proportional",
     scatterType="stream",
-    showConfidenceIntervals=FALSE,
+    showConfidenceIntervals=0,
     showLoessFit="genre",
-    xAxisGridMinorShow=FALSE,
-    yAxisGridMinorShow=FALSE
+    xAxisGridMinorShow=0,
+    yAxisGridMinorShow=0
   )
 }
 
 cXstreamgraph7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-comics-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-comics-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-comics-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-comics-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7560,7 +7574,7 @@ cXstreamgraph7 <- function() {
     colorKey=list(char_costume=list("Gambit (casual)   "="rgb(142,3,142)", "Gambit (costumed)   "="rgb(213,5,213)", "Magneto (casual)   "="rgb(194,0,8)", "Magneto (costumed)   "="rgb(255,2,13)", "Nightcrawler (casual)   "="rgb(19,175,239)", "Nightcrawler (costumed)   "="rgb(78,195,243)", "Storm (casual)"="rgb(89,90,82)", "Storm (costumed)"="rgb(115,117,106)", "Wolverine (casual)   "="rgb(255,180,0)", "Wolverine (costumed)   "="rgb(255,199,64)")),
     dataPointSizeScaleFactor=0,
     decorations=list(image=list(list(height=64, scope="depicted", src="https://www.canvasxpress.org/assets/images/uncannyxmen.png", width=100, x=305, y=-500)), label=list(list(align="left", background="rgb(255,255,255)", color="rgb(142,3,142)", justify=50, label="**Gambit** was introduced for the first time inissue #266 called Gambit => Out of the Frying Pan nevertheless, he is the **4 most popular X-Men character**!", scope="depicted", x=250, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(255,180,0)", justify=50, label="**Wolverine is the most popular X-Men** and has a regular presence in the X-Men comics between 1975 and 1991.", scope="depicted", x=65, y=70), list(align="left", background="rgb(255,255,255)", color="rgb(194,0,8)", justify=50, label="**Magneto** was ranked by IGN as the *Greatest Comic Book Villain of All Time*. And even though he only appears from time to time he **ranks 2nd **—4 ranks higher than his friend and opponent Professor X!", scope="narrative", x=215, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(19,175,239)", justify=50, label="The **3rd most popular X-men character Nightcrawler** gets injured during the 'Mutant Massacre' and fell into a coma after an attack from Riptide in issue #211", scope="speech", x=211, y=-110), list(align="left", background="rgb(255,255,255)", color="rgb(89,90,82)", justify=50, label="**Storm** is by far the most thoughtful of the five most popular X-Men characters, especially in issues #220, #223 and #265. Storm **ranks 5th**", scope="thought", x=220, y=-73)), text=list(list(align="left", color="rgb(0,0,0)", label="Depicted", scope="depicted", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Narrative\nStatements", scope="narrative", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Speech\nBubbles", scope="speech", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Thought\nBubbles", scope="thought", x=85, y=-50))),
-    decorationsClipped=FALSE,
+    decorationsClipped=0,
     decorationsTextScaleFontFactor=0.45,
     fontName="Trebuchet MS",
     graphType="Scatter2D",
@@ -7583,29 +7597,29 @@ cXstreamgraph7 <- function() {
     segregateVariablesBy=list("parameter"),
     setMaxX=325,
     setMinX=75,
-    showLegendTitle=FALSE,
+    showLegendTitle=0,
     showLoessFit="char_costume",
-    stripShow=FALSE,
+    stripShow=0,
     title="Appearance of the Five Most Popular X-Men Characters in Chris Claremont's Comics",
     titleScaleFontFactor=0.6,
     xAxisGridMajorLineType="dotted",
     xAxisGridMajorSize=2,
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     yAxis=list("value"),
-    yAxisGridMajorShow=FALSE,
-    yAxisGridMinorShow=FALSE,
-    yAxisShow=FALSE,
-    yAxisTickBottomShow=FALSE,
-    yAxisTickTopShow=FALSE,
+    yAxisGridMajorShow=0,
+    yAxisGridMinorShow=0,
+    yAxisShow=0,
+    yAxisTickBottomShow=0,
+    yAxisTickTopShow=0,
     yAxisTicks=0,
-    yAxisTitle=FALSE
+    yAxisTitle=0
   )
 }
 
 cXsunburst1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7617,15 +7631,15 @@ cXsunburst1 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Simple Sunburst"
   )
 }
 
 cXsunburst2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7637,15 +7651,15 @@ cXsunburst2 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Simple Sunburst Colored by Category"
   )
 }
 
 cXsunburst3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7656,15 +7670,15 @@ cXsunburst3 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Rotated Sunburst"
   )
 }
 
 cXsunburst4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-sunburst-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7675,19 +7689,19 @@ cXsunburst4 <- function() {
     graphType="Circular",
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
-    showTransition=FALSE,
+    showTransition=0,
     title="Rotated Half Sunburst"
   )
 }
 
 cXtcga1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
-    binned=TRUE,
+    binned=1,
     boxplotWhiskersType="single",
     colorBy="dataset",
     colorScheme="JCO",
@@ -7703,7 +7717,7 @@ cXtcga1 <- function() {
     legendTextScaleFontFactor=1.5,
     plotStyle="open",
     segregateVariablesBy=list("variable"),
-    showBoxplotOriginalData=TRUE,
+    showBoxplotOriginalData=1,
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
@@ -7713,8 +7727,8 @@ cXtcga1 <- function() {
 
 cXtcga2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7741,8 +7755,8 @@ cXtcga2 <- function() {
 
 cXtcga3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7766,8 +7780,8 @@ cXtcga3 <- function() {
 
 cXtcga4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7786,7 +7800,7 @@ cXtcga4 <- function() {
     legendTextScaleFontFactor=1.5,
     plotStyle="open",
     segregateVariablesBy=list("variable"),
-    showViolinBoxplot=TRUE,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
@@ -7796,8 +7810,8 @@ cXtcga4 <- function() {
 
 cXtcga5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-exprtcga-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7808,7 +7822,7 @@ cXtcga5 <- function() {
     graphType="Dotplot",
     groupingFactors=list("dataset"),
     histogramBins=150,
-    jitter=TRUE,
+    jitter=1,
     layoutTopology="1X3",
     legendColumns=3,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
@@ -7817,7 +7831,7 @@ cXtcga5 <- function() {
     legendTextScaleFontFactor=1.5,
     plotStyle="open",
     segregateVariablesBy=list("variable"),
-    showViolinBoxplot=TRUE,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
@@ -7827,14 +7841,14 @@ cXtcga5 <- function() {
 
 cXtcga6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorScheme="JCO",
     graphType="Scatter2D",
-    hideHistogram=FALSE,
+    hideHistogram=0,
     histogramBins=15,
     histogramType="staggered",
     layoutTopology="1X3",
@@ -7843,13 +7857,13 @@ cXtcga6 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
-    showFilledHistogramDensity=TRUE,
-    showHistogram=TRUE,
-    showHistogramBars=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showFilledHistogramDensity=1,
+    showHistogram=1,
+    showHistogramBars=1,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     toolbarType="over",
-    xAxisRugShow=FALSE,
+    xAxisRugShow=0,
     xAxisTitle="Expression",
     yAxisTitle="Density"
   )
@@ -7857,15 +7871,15 @@ cXtcga6 <- function() {
 
 cXtcga7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
     colorBy="dataset",
     colorScheme="JCO",
     graphType="Scatter2D",
-    hideHistogram=FALSE,
+    hideHistogram=0,
     histogramBins=15,
     histogramType="staggered",
     layoutTopology="1X3",
@@ -7875,16 +7889,16 @@ cXtcga7 <- function() {
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
     segregateVariablesBy=list("dataset"),
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="dataset",
-    showHistogramBars=TRUE,
-    showHistogramDensity=TRUE,
-    showHistogramMedian=FALSE,
+    showHistogramBars=1,
+    showHistogramDensity=1,
+    showHistogramMedian=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
     toolbarType="over",
-    xAxisRugShow=FALSE,
+    xAxisRugShow=0,
     xAxisTitle="Expression",
     yAxisTitle="Density"
   )
@@ -7892,8 +7906,8 @@ cXtcga7 <- function() {
 
 cXtcga8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7901,7 +7915,7 @@ cXtcga8 <- function() {
     colorKey=list(dataset=list(BRCA="#0073c2", LUSC="#efc000", OV="#868686")),
     colorScheme="JCO",
     graphType="Scatter2D",
-    hideHistogram=TRUE,
+    hideHistogram=1,
     histogramBins=15,
     histogramType="staggered",
     layoutTopology="1X3",
@@ -7911,15 +7925,15 @@ cXtcga8 <- function() {
     legendPosition="top",
     legendTextScaleFontFactor=1.5,
     segregateSamplesBy=list("sample"),
-    showFilledHistogramDensity=TRUE,
+    showFilledHistogramDensity=1,
     showHistogram="dataset",
-    showHistogramDensity=TRUE,
-    showHistogramMedian=TRUE,
+    showHistogramDensity=1,
+    showHistogramMedian=1,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
     toolbarType="over",
-    xAxisRugShow=TRUE,
+    xAxisRugShow=1,
     xAxisTitle="Expression",
     yAxisTitle="Density"
   )
@@ -7927,8 +7941,8 @@ cXtcga8 <- function() {
 
 cXtcga9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7946,8 +7960,8 @@ cXtcga9 <- function() {
 
 cXtcga10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-exprtcgat-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -7967,8 +7981,8 @@ cXtcga10 <- function() {
 
 cXtagcloud1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-cars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-cars-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -7976,42 +7990,42 @@ cXtagcloud1 <- function() {
     graphType="TagCloud",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showTransition=FALSE
+    showTransition=0
   )
 }
 
 cXtree1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=TRUE,
+    showTransition=1,
     title="Collapsible Tree"
   )
 }
 
 cXtree2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-tree2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-tree2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphType="Tree",
     hierarchy=list("Level1", "Level2"),
-    showTransition=TRUE,
+    showTransition=1,
     title="Collapsible Tree"
   )
 }
 
 cXtree3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8020,46 +8034,46 @@ cXtree3 <- function() {
     hierarchy=list("Level1", "Level2", "Level3"),
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showTransition=TRUE,
+    showTransition=1,
     title="Collapsible Tree"
   )
 }
 
 cXtree4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     colorBy="Annot2",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=TRUE,
+    showTransition=1,
     title="Collapsible Tree"
   )
 }
 
 cXtree5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-tree-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     colorBy="Annot2",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
-    showTransition=TRUE,
+    showTransition=1,
     title="Collapsible Tree",
-    treeCircular=TRUE
+    treeCircular=1
   )
 }
 
 cXtreemap1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8067,8 +8081,8 @@ cXtreemap1 <- function() {
     decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.15, y=0.1))),
     graphType="Treemap",
     objectBorderColor="rgb(0,0,0)",
-    showDecorations=FALSE,
-    showTransition=FALSE,
+    showDecorations=0,
+    showTransition=0,
     theme="CanvasXpress",
     title="Population colored by Gross National Income 2014",
     afterRender=list(list("groupSamples", list("continent")))
@@ -8077,9 +8091,9 @@ cXtreemap1 <- function() {
 
 cXtreemap2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8091,8 +8105,8 @@ cXtreemap2 <- function() {
 
 cXtreemap3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8101,7 +8115,7 @@ cXtreemap3 <- function() {
     decorations=list(marker=list(list(align="center", baseline="middle", color="red", sample="Norway", text="Norway is the country\nwith the largest GNI\naccording to 2014 census", variable="population", x=0.65, y=0.7), list(align="center", baseline="middle", color="red", sample="China", text="China is the country with\nthe largest population\naccording to 2014 census", variable="population", x=0.2, y=0.1))),
     graphOrientation="vertical",
     graphType="Stacked",
-    legendInside=TRUE,
+    legendInside=1,
     legendPosition="right",
     objectBorderColor="rgb(0,0,0)",
     smpTextRotate=45,
@@ -8110,15 +8124,15 @@ cXtreemap3 <- function() {
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     afterRender=list(list("groupSamples", list("continent")))
   )
 }
 
 cXupset1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-upsetMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/cX-upsetMovies-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-upsetMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-upsetMovies-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     varAnnot=z,
@@ -8129,7 +8143,7 @@ cXupset1 <- function() {
 
 cXupset2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-upsetMutations-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-upsetMutations-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphType="Heatmap",
@@ -8143,7 +8157,7 @@ cXvenn1 <- function() {
     vennData=data.frame(A=340, AB=639, ABC=552, ABCD=148, ABD=578, AC=456, ACD=298, AD=257, B=562, BC=915, BCD=613, BD=354, C=620, CD=143, D=592),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
-    showTransition=FALSE,
+    showTransition=0,
     vennGroups=4
   )
 }
@@ -8154,7 +8168,7 @@ cXvenn2 <- function() {
     vennData=data.frame(A=340, AB=639, ABC=552, ABCD=148, ABD=578, AC=456, ACD=298, AD=257, B=562, BC=915, BCD=613, BD=354, C=620, CD=143, D=592),
     vennLegend=list(A="List 1", B="List 2", C="List 3", D="List 4"),
     graphType="Venn",
-    showTransition=FALSE,
+    showTransition=0,
     vennGroups=3
   )
 }
@@ -8171,8 +8185,8 @@ cXvenn3 <- function() {
 
 cXviolin1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8185,28 +8199,28 @@ cXviolin1 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=FALSE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=0,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="area",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8219,27 +8233,27 @@ cXviolin2 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=FALSE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=0,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8252,28 +8266,28 @@ cXviolin3 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=FALSE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=0,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="count",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8286,28 +8300,28 @@ cXviolin4 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=FALSE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=0,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="width",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8315,35 +8329,35 @@ cXviolin5 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=FALSE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=0,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    violinTrim=FALSE,
-    xAxis2Show=FALSE,
+    violinTrim=0,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin6 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8351,34 +8365,34 @@ cXviolin6 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin7 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8386,37 +8400,37 @@ cXviolin7 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotMean=TRUE,
+    boxplotMean=1,
     boxplotMeanColor="rgb(255,215,0)",
     boxplotMeanColorBorder="red",
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8426,34 +8440,34 @@ cXviolin8 <- function() {
     backgroundType="panel",
     boxplotMedianColor="red",
     boxplotMedianWidth=5,
-    boxplotNotched=TRUE,
+    boxplotNotched=1,
     boxplotWishkersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin9 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8466,29 +8480,29 @@ cXviolin9 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=TRUE,
+    guidesShow=1,
+    jitter=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin10 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8497,35 +8511,35 @@ cXviolin10 <- function() {
     background="white",
     backgroundType="panel",
     binAlignment="center",
-    binned=TRUE,
+    binned=1,
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=FALSE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=0,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin11 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8541,30 +8555,30 @@ cXviolin11 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=TRUE,
+    guidesShow=1,
+    jitter=1,
     panelBackgroundColor="#E5E5E5",
     shapeBy="supp",
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin12 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8578,28 +8592,28 @@ cXviolin12 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8614,27 +8628,27 @@ cXviolin13 <- function() {
     groupingFactors=list("dose"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin14 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8649,27 +8663,27 @@ cXviolin14 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8677,7 +8691,7 @@ cXviolin15 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotConnect=TRUE,
+    boxplotConnect=1,
     colorBy="supp",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -8685,29 +8699,29 @@ cXviolin15 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinColor="gold",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8715,7 +8729,7 @@ cXviolin16 <- function() {
     axisTitleFontStyle="bold",
     background="white",
     backgroundType="panel",
-    boxplotConnect=TRUE,
+    boxplotConnect=1,
     colorBy="supp",
     colorScheme="GGPlot",
     graphOrientation="vertical",
@@ -8723,13 +8737,13 @@ cXviolin16 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
+    guidesShow=1,
     panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
@@ -8737,17 +8751,17 @@ cXviolin16 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXviolin17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8763,14 +8777,14 @@ cXviolin17 <- function() {
     groupingFactors=list("dose", "supp"),
     guidesColor="white",
     guidesLineType="solid",
-    guidesShow=TRUE,
-    jitter=FALSE,
+    guidesShow=1,
+    jitter=0,
     panelBackgroundColor="#E5E5E5",
     segregateSamplesBy=list("supp"),
-    showBoxplotIfViolin=TRUE,
-    showBoxplotOriginalData=TRUE,
-    showLegend=TRUE,
-    showViolinBoxplot=TRUE,
+    showBoxplotIfViolin=1,
+    showBoxplotOriginalData=1,
+    showLegend=1,
+    showViolinBoxplot=1,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
@@ -8778,24 +8792,24 @@ cXviolin17 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisGridMajorColor="white",
-    xAxisGridMinorShow=FALSE,
+    xAxisGridMinorShow=0,
     xAxisTitle="len"
   )
 }
 
 cXwaterfall1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-waterfall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-waterfall-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-waterfall-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Bar",
-    showLegend=FALSE,
-    showSampleNames=FALSE,
+    showLegend=0,
+    showSampleNames=0,
     title="Waterfall plot changes in QoL scores",
     xAxisTitle="Change from baseline (%) in QoL score"
   )
@@ -8803,16 +8817,16 @@ cXwaterfall1 <- function() {
 
 cXwaterfall2 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-waterfall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-waterfall-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-waterfall-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
     graphOrientation="vertical",
     graphType="Bar",
     segregateSamplesBy=list("Treatment"),
-    showLegend=FALSE,
-    showSampleNames=FALSE,
+    showLegend=0,
+    showSampleNames=0,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="Waterfall plot changes in QoL scores",
@@ -8822,8 +8836,8 @@ cXwaterfall2 <- function() {
 
 cXwaterfall3 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-waterfall2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/cX-waterfall2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-waterfall2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     smpAnnot=x,
@@ -8831,27 +8845,27 @@ cXwaterfall3 <- function() {
     colorScheme="NEJM",
     graphOrientation="vertical",
     graphType="Bar",
-    legendInside=TRUE,
+    legendInside=1,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="topRight",
-    showSampleNames=FALSE,
+    showSampleNames=0,
     smpOverlayProperties=list(Status=list(position="bottom", scheme="White")),
     smpOverlays=list("Status"),
     title="Clinical Trial",
-    xAxis2Show=FALSE,
+    xAxis2Show=0,
     xAxisTitle="Best tumor shrinkage (%)"
   )
 }
 
 cXwaterfall4 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-waterfall3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",
     graphType="Waterfall",
-    showLegend=FALSE,
+    showLegend=0,
     smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
@@ -8862,7 +8876,7 @@ cXwaterfall4 <- function() {
 
 cXwaterfall5 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/cX-waterfall4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     graphOrientation="vertical",

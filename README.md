@@ -45,9 +45,9 @@ in the Examples section of the main website at
 #### Scatter 3D Plot
 
 ```r
-y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+z <- read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data      = y,
@@ -68,9 +68,9 @@ canvasXpress(data      = y,
 #### Scatter 2D Matrix Plot
 
 ```r
-y <- read.table("https://www.canvasxpress.org/data/cX-irist-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z <- read.table("https://www.canvasxpress.org/data/cX-irist-var.txt", header=TRUE, sep= "\t", 
+z <- read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep= "\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data              = y,
@@ -86,9 +86,9 @@ canvasXpress(data              = y,
 #### Boxplot
 
 ```r
-y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
+y <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
+x <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header=TRUE, sep="\t", 
                 quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data                  = y,
@@ -111,17 +111,17 @@ canvasXpress(data                  = y,
 #### Heatmap (Multi-dimensional)
 
 ```r
-y  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", 
+y  <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y2 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", 
+y2 <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat2.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y3 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", 
+y3 <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat3.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-y4 <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", 
+y4 <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-dat4.txt", header=TRUE, sep="\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-x  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep= "\t", 
+x  <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-smp.txt", header=TRUE, sep= "\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-z  <- read.table("https://www.canvasxpress.org/data/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
+z  <- read.table("https://www.canvasxpress.org/data/r/cX-multidimensionalheatmap-var.txt", header=TRUE, sep= "\t", 
                  quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
 
 canvasXpress(data                 = list(y = y, data2 = y2, data3 = y3, data4 = y4),
