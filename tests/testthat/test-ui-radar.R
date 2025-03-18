@@ -32,3 +32,7 @@ test_that("cXradar7", {
 test_that("cXradar8", {
     check_ui_test(cXradar8())
 })
+
+test_that("cXradar9", {
+    check_ui_test(cXradar9())
+})

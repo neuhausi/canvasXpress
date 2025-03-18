@@ -1711,6 +1711,7 @@ cXcircular2 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     rAxis="Number",
+    rAxisPercentShow=FALSE,
     ringGraphWeight=list(25, 25, 25, 25),
     segregateSamplesBy=list("Species"),
     segregateVariablesBy=list("Ring"),
@@ -3733,6 +3734,28 @@ cXheatmap14 <- function() {
     sizeBy="Size",
     sizeByData="data2",
     title="Bubble Heatmap Plot",
+    variablesClustered=TRUE
+  )
+}
+
+cXheatmap15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorBy="Lab",
+    colorSpectrumByFactor=list(Lab=list(A=list(spectrum=list("rgb(255,215,0)", "rgb(255,255,255)", "rgb(160,32,240)")), B=list(spectrum=list("rgb(0,0,255)", "rgb(255,255,255)", "rgb(255,0,0)")))),
+    graphType="Heatmap",
+    samplesClustered=TRUE,
+    showSmpDendrogram=FALSE,
+    showVarDendrogram=FALSE,
+    smpOverlays=list("Treatment"),
+    splitVariablesBy="Lab",
+    varOverlays=list("Lab"),
     variablesClustered=TRUE
   )
 }
@@ -6129,6 +6152,31 @@ cXradar8 <- function() {
     title="Radar with Overlays",
     transitionStep=50,
     transitionTime=1500
+  )
+}
+
+cXradar9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-radar-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-radar-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    circularType="radar",
+    colorBy="color",
+    graphType="Circular",
+    rAxis="radians",
+    rAxisPercentShow=FALSE,
+    rAxisShow=TRUE,
+    ringGraphType=list("scatter"),
+    setMaxR=6.28318530717959,
+    setMaxY=5,
+    setMinR=0,
+    setMinY=0,
+    showLegend=FALSE,
+    showSampleNames=FALSE,
+    sizeBy="size",
+    yAxis=list("radius")
   )
 }
 
