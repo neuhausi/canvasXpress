@@ -4779,7 +4779,7 @@ cXlollipop2 <- function() {
 
 cXmap1 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-olympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-OlympicMedalsT-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colorBy="Total",
