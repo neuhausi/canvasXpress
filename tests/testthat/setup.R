@@ -18,10 +18,6 @@ try({
     #general - escape sequence incorrect
     testFile <- gsub('\\$', '$', testFile, fixed = T)
 
-    #map1
-    testFile <- gsub("https://www.canvasxpress.org/data/cX-olympicMedals",
-                     "https://www.canvasxpress.org/data/cX-OlympicMedals", testFile)
-
     #scatter2d9
     testFile <- gsub(", list\\(list\\(FALSE, \'red\'\\)\\)",
                      ", list\\(FALSE, \'red\'\\)", testFile)
