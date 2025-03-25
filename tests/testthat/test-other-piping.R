@@ -141,10 +141,11 @@ test_that("piping - area chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title              = "decoration lines, xAxisGridMajorSize",
-                     decorations        = list(line = list(list(color = "rgba(205,0,0,0.5)", width   = 2, x = 2000),
-                                                           list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
-                     xAxisGridMajorSize = 2)
+        canvasXpress(
+            title               = "decoration lines, xAxisGridMajorWidth",
+            decorations         = list(line = list(list(color = "rgba(205,0,0,0.5)",   width = 2, x = 2),
+                                                   list(color = "rgba(0,104,139,0.5)", width = 2, x = 5))),
+            xAxisGridMajorWidth = 5)
 
     check_ui_test(result)
 })
@@ -165,11 +166,11 @@ test_that("piping - bar chart", {
     obj1 <- cXbar13()
     check_ui_test(obj1)
 
-    result <- obj1 %>% canvasXpress(
-        title         = "Smp label color, legendOrder",
-        smpTextColor  = "red",
-        legendOrder   = list("Stage" = list("Stage4", "Stage2", "Stage1", "Stage3"))
-    )
+    result <- obj1 %>%
+        canvasXpress(
+            title       = "ColorBy Factor2, legendOrder",
+            colorBy     = "Factor2",
+            legendOrder = list("Factor2" = list("Lev : B", "Lev : A")))
 
     check_ui_test(result)
 })
@@ -266,8 +267,8 @@ test_that("piping - dashboard chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "layout 2x1",
-        layoutConfig = list(list(size = "2X1"))
+        title        = "layout 4x4",
+        layoutConfig = list(list(size = "4X2"))
     )
 
     check_ui_test(result)
