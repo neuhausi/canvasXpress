@@ -1914,6 +1914,24 @@ div.CanvasXpressToolbarTopContainer {
   background-color: var(--cx-background-widgets-color);
 }
 
+div.CanvasXpressToolbarTopOverContainer {
+  border: var(--cx-border);
+  border: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarTopOverContainer img.CanvasXpressToolbarTopImage,
+div.CanvasXpressToolbarTopOverContainer svg.CanvasXpressToolbarTopImage {
+  background: var(--cx-color-transparent) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: pointer;
+  float: right;
+  margin: 5px 8px 0px 0px;
+}
+
 div.CanvasXpressToolbarTopContainer img.CanvasXpressToolbarTopImage,
 div.CanvasXpressToolbarTopContainer svg.CanvasXpressToolbarTopImage {
   background: var(--cx-color-transparent) !important;
@@ -3033,7 +3051,7 @@ ul.CanvasXpressList {
   list-style: none;
   margin: 0px;
   overflow: auto;
-  padding: 2px;
+  padding: 2px !important;
   height: calc(100% - 100px);
 }
 
