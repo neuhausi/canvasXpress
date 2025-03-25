@@ -141,10 +141,11 @@ test_that("piping - area chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title              = "decoration lines, xAxisGridMajorSize",
-                     decorations        = list(line = list(list(color = "rgba(205,0,0,0.5)", width   = 2, x = 2000),
-                                                           list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
-                     xAxisGridMajorSize = 2)
+        canvasXpress(
+            title               = "decoration lines, xAxisGridMajorWidth",
+            decorations         = list(line = list(list(color = "rgba(205,0,0,0.5)",   width = 2, x = 2),
+                                                   list(color = "rgba(0,104,139,0.5)", width = 2, x = 5))),
+            xAxisGridMajorWidth = 5)
 
     check_ui_test(result)
 })
