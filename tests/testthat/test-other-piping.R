@@ -166,11 +166,11 @@ test_that("piping - bar chart", {
     obj1 <- cXbar13()
     check_ui_test(obj1)
 
-    result <- obj1 %>% canvasXpress(
-        title         = "Smp label color, legendOrder",
-        smpTextColor  = "red",
-        legendOrder   = list("Stage" = list("Stage4", "Stage2", "Stage1", "Stage3"))
-    )
+    result <- obj1 %>%
+        canvasXpress(
+            title       = "ColorBy Factor2, legendOrder",
+            colorBy     = "Factor2",
+            legendOrder = list("Factor2" = list("Lev : B", "Lev : A")))
 
     check_ui_test(result)
 })
