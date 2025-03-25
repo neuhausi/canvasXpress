@@ -267,8 +267,8 @@ test_that("piping - dashboard chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "layout 2x1",
-        layoutConfig = list(list(size = "2X1"))
+        title        = "layout 4x4",
+        layoutConfig = list(list(size = "4X2"))
     )
 
     check_ui_test(result)
