@@ -147,12 +147,12 @@ canvasXpress <- function(data        = NULL,
         if (!(requireNamespace("survminer", quietly = TRUE))) {
             stop("The survminer package is required to use this functionality.")
         }
-        if (is.null(data$table)) {
-            tab <- FALSE
-        } else {
-            tab <- TRUE
-        }
-        cx_object <- ggplot.as.list(data$plot, kmCxplot = TRUE, kmRiskTable = tab, showKMConfidenceIntervals = data$plot$plot_env$conf.int, ...)
+        cx_object <- do.call(ggplot.as.list,
+                             args = list("o"                         = data$plot,
+                                         "kmCxplot"                  = TRUE,
+                                         "kmRiskTable"               = ifelse(is.null(data$table), FALSE, TRUE),
+                                         "showKMConfidenceIntervals" = data$plot$plot_env$conf.int,
+                                         ...))
     } else if (is.character(data) && (graphType != "Network")) {
         if (httr::http_error(data)) {
             message("Unable to validate URL")

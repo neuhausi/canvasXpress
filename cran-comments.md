@@ -1,7 +1,6 @@
 ## Comments from Maintainer
 
 - Update to underlying JS library (canvasXpress)
-- noSuggests issues resolved
 
 Note: there is a package that has been archived on CRAN that has a reverse dependency.  This is unable to be checked by revdepcheck as noted below, however is not something we can resolve on our end.  The package with the issue is MAFDash https://cran.r-project.org/package=MAFDash
 

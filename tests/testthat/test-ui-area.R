@@ -36,3 +36,35 @@ test_that("cXarea7", {
 test_that("cXarea8", {
     check_ui_test(cXarea8())
 })
+
+test_that("cXarea9", {
+    check_ui_test(cXarea9())
+})
+
+test_that("cXarea10", {
+    check_ui_test(cXarea10())
+})
+
+test_that("cXarea11", {
+    check_ui_test(cXarea11())
+})
+
+test_that("cXarea12", {
+    check_ui_test(cXarea12())
+})
+
+test_that("cXarea13", {
+    check_ui_test(cXarea13())
+})
+
+test_that("cXarea14", {
+    check_ui_test(cXarea14())
+})
+
+test_that("cXarea15", {
+    check_ui_test(cXarea15())
+})
+
+test_that("cXarea16", {
+    check_ui_test(cXarea16())
+})

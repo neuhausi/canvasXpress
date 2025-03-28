@@ -182,7 +182,7 @@ Standard (simple) piping is supported in the package.  You can pipe a canvasXpre
 Create an initial chart
 ```r
 initial_cx <- canvasXpress(
-    data                  = read.table("https://www.canvasxpress.org/data/cX-mtcars-dat.txt", 
+    data                  = read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", 
                             header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, 
                             check.names = FALSE, stringsAsFactors = FALSE),
     asSampleFactors       = list("cyl"),
