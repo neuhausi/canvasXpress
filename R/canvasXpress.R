@@ -147,7 +147,6 @@ canvasXpress <- function(data        = NULL,
         if (!(requireNamespace("survminer", quietly = TRUE))) {
             stop("The survminer package is required to use this functionality.")
         }
-
         cx_object <- do.call(ggplot.as.list,
                              args = list("o"                         = data$plot,
                                          "kmCxplot"                  = TRUE,
