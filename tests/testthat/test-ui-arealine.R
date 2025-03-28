@@ -12,3 +12,7 @@ test_that("cXarealine2", {
 test_that("cXarealine3", {
     check_ui_test(cXarealine3())
 })
+
+test_that("cXarealine4", {
+    check_ui_test(cXarealine4())
+})

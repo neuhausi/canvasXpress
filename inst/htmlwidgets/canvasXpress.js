@@ -114,10 +114,10 @@ HTMLWidgets.widget({
       },
 
       transpose(matrix) {
-        return matrix[0].map(function(col, i) { 
-          return matrix.map(function(row) { 
-            return row[i]; 
-          }) 
+        return matrix[0].map(function(col, i) {
+          return matrix.map(function(row) {
+            return row[i];
+          })
         })
       },
 

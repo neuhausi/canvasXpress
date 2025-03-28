@@ -3,8 +3,8 @@ context("canvasXpress duplicated labels")
 
 test_that("segregated barplot duplicated labels", {
     tryCatch({
-        data     <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        smp_data <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data     <- read.table("https://www.canvasxpress.org/data/r/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        smp_data <- read.table("https://www.canvasxpress.org/data/r/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
         sample_names <- c("S1", "S2", "S4", "S4", "S5", "S1", "S4", "S4")
     },
     error = function(e) {
@@ -33,8 +33,8 @@ test_that("segregated barplot duplicated labels", {
 
 test_that("barplot duplicated labels", {
     tryCatch({
-        data     <- read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        smp_data <- read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        data     <- read.table("https://www.canvasxpress.org/data/r/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        smp_data <- read.table("https://www.canvasxpress.org/data/r/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
         sample_names <- c("S1", "S2", "S4", "S4", "S5", "S1", "S4", "S4")
     },
     error = function(e) {

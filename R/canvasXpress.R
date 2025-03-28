@@ -63,7 +63,7 @@ canvasXpress <- function(data        = NULL,
 
     config <- list(graphType = graphType, isR = TRUE, ...)
 
-    if (is.null(data) || !(any(c("canvasXpress", "ggplot") %in% class(data)))) {
+    if (is.null(data) || !(any(c("canvasXpress", "ggplot", "ggsurvplot") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)
     }
 
@@ -140,6 +140,20 @@ canvasXpress <- function(data        = NULL,
             stop("The ggplot2 package is required to use this functionality.")
         }
         cx_object <- ggplot.as.list(data, ...)
+    } else if (!is.null(data) && ("ggsurvplot" %in% class(data))) {
+        if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+            stop("The ggplot2 package is required to use this functionality.")
+        }
+        if (!(requireNamespace("survminer", quietly = TRUE))) {
+            stop("The survminer package is required to use this functionality.")
+        }
+
+        cx_object <- do.call(ggplot.as.list,
+                             args = list("o"                         = data$plot,
+                                         "kmCxplot"                  = TRUE,
+                                         "kmRiskTable"               = ifelse(is.null(data$table), FALSE, TRUE),
+                                         "showKMConfidenceIntervals" = data$plot$plot_env$conf.int,
+                                         ...))
     } else if (is.character(data) && (graphType != "Network")) {
         if (httr::http_error(data)) {
             message("Unable to validate URL")

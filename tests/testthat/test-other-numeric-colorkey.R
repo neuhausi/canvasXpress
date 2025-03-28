@@ -3,8 +3,8 @@ context("canvasXpress numeric colorkey")
 
 test_that("ColorKey for numeric values", {
     tryCatch({
-        y = read.table("https://www.canvasxpress.org/data/cX-heatmapR-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        z = read.table("https://www.canvasxpress.org/data/cX-heatmapR-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y = read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z = read.table("https://www.canvasxpress.org/data/r/cX-heatmapR-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')

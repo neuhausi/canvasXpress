@@ -1,8 +1,13 @@
 assertDataCorrectness <- function(data, graphType, config) {
 
     # skip all data validation in the following scenarios:
-    if (!is.null(data) && "ggplot" %in% class(data)) {
-        return()
+    if (!is.null(data)) {
+        if ("ggplot" %in% class(data)) {
+            return()
+        }
+        if ("ggsurvplot" %in% class(data)) {
+            return()
+        }
     }
 
     # proceed with validation
@@ -13,7 +18,7 @@ assertDataCorrectness <- function(data, graphType, config) {
                          "Pie", "ParallelCoordinates", "Sankey", "Scatter2D",
                          "Scatter3D", "ScatterBubble2D", "Stacked",
                          "StackedPercent", "StackedLine", "StackedPercentLine",
-                         "Tree", "Treemap", "TagCloud", "Venn", "Gantt")
+                         "Tree", "Treemap", "TagCloud", "Venn", "Gantt", "Waterfall")
     noDataNecessary  <- c("Map")
 
     if (is.null(graphType)) stop("graphType cannot be NULL!")

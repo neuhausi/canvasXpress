@@ -20,3 +20,7 @@ test_that("cXsankey4", {
 test_that("cXsankey5", {
     check_ui_test(cXsankey5())
 })
+
+test_that("cXsankey6", {
+    check_ui_test(cXsankey6())
+})

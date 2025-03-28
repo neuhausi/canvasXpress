@@ -61,11 +61,17 @@
   --cx-border-style: solid;
   --cx-border-transparent: var(--cx-border-width) var(--cx-border-style) var(--cx-color-transparent);
   /* Font */
-  --cx-font-size: 12px;
+  --cx-small-font-size: 9px;
+  --cx-font-size: 11px;
+  --cx-large-font-size: 13px;
+  --cx-x-large-font-size: 15px;
   --cx-font-color: var(--cx-color-ui-font);
   --cx-font: normal var(--cx-font-size) var(--cx-font-family);
+  --cx-large-font: normal var(--cx-large-font-size) var(--cx-font-family);
+  --cx-x-large-font: normal var(--cx-x-large-font-size) var(--cx-font-family);
   --cx-font-bold: bold var(--cx-font-size) var(--cx-font-family);
   --cx-font-italic: italic var(--cx-font-size) var(--cx-font-family);
+  --cx-small-font-italic: italic var(--cx-small-font-size) var(--cx-font-family);
   /* Background */
   --cx-background-widgets-color: var(--cx-color-ui-background);
   --cx-background-color: var(--cx-color-widgets);
@@ -75,6 +81,12 @@
   --cx-background-contrast-color: var(--cx-background-color);
   /* Border */
   --cx-border: var(--cx-border-width) var(--cx-border-style) var(--cx-color-widgets);
+  /* Callouts */
+  --cx-callout-size: 8px;
+  --cx-callout-radius: 10px;
+  --cx-callout-border-width: 1px;
+  --cx-callout-background-color: var(--cx-color-ui-background);
+  --cx-callout-border-color: var(--cx-color-widgets);
 }
 
 *,
@@ -147,6 +159,7 @@ div.CanvasXpressMarker {
 
 svg.cX-bin,
 svg.cX-code,
+svg.cX-chat,
 img.CanvasXpressDataFilterToolbarImage,
 svg.CanvasXpressDataFilterToolbarImage,
 img.CanvasXpressDataFilterToolbarImageNB,
@@ -342,12 +355,137 @@ pre.cX-code-content code::before {
   background-color: var(--cx-color-extra-light-gray);
 }
 
+/******************
+ * Chat Interface *
+ ******************/
+
+div.cX-chat {
+  border: none;
+  background-color: var(--cx-color-transparent);
+  max-width: 600px;
+  min-height: 100px;
+  margin: 10px auto 0 auto;
+}
+
+div.cX-chat-container {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--cx-color-extra-light-gray);
+  color: var(--cx-font-color);
+  font: var(--cx-x-large-font);
+  display: flex;
+  align-items: center;
+}
+
+div.cX-chat-container-text {
+  float: left;
+  border: none;
+  background-color: var(--cx-color-transparent);
+  min-height: 50px;
+}
+
+p.cX-chat-question {
+  border: none;
+  background-color: var(--cx-color-extra-light-gray);
+  margin: 0;
+  display: inline;;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+div.cX-chat-container-icon {
+  float: right;
+  border: none;
+  background-color: var(--cx-color-transparent);
+}
+
+div.cX-chat-container-thumbs {
+  float: left;
+  border: none;
+  background-color: var(--cx-color-transparent);
+  margin: 0;
+}
+
+svg.cX-chat-thumbs {
+  background: var(--cx-color-transparent) !important;
+  border: none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: default;
+  float: left;
+}
+
+/****************
+ * LLM Examples *
+ ****************/
+
+div.cX-LLM-window {
+  position: absolute;
+  border: 1px solid #555555;
+  max-width: 545px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: var(--cx-color-extra-light-gray);
+  z-index: 10000;
+}
+
+a.cX-LLM-window-close {
+  position: sticky;
+  top: 0;
+  left: 500px;
+  font-size: xx-large;
+}
+
+div.cX-LLM-examples {
+  position: relative;
+  overflow: scroll;
+  max-height: 1000px;
+}
+
+div.cX-LLM-content {
+  top: 25px;
+  left: 25px;
+  position: absolute;
+}
+
+div.cX-LLM-container {
+  border: 1px solid #d3d3d3;
+  position: relative;
+  border-radius: 4px;
+  background: white;
+  float: left;
+  margin: 5px;
+  max-width: 810px;
+}
+
+div.cX-LLM-title {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  font-size: 22px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center !important;
+  font-weight: bold;
+  border-bottom: 1px solid var(--cx-color-light-gray);
+}
+
+div.cX-LLM-plot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+}
+
 /***************
  *   Bin Data  *
  ***************/
 
- div.cX-bin,
- div.cX-bin-name-container {
+div.cX-bin,
+div.cX-bin-name-container {
   border: var(--cx-border);
   border-radius: 5px;
   background-color: var(--cx-background-widgets-color);
@@ -454,7 +592,7 @@ span.cX-bin::selection {
   z-index: 10001;
   /*height: calc(100% - 5px);*/
   background-color: rgb(255, 255, 255);
-  font-family: arial, tahoma, sans-serif;
+  font-family: var(--cx-font-family);
   font-weight: normal;
 }
 
@@ -495,7 +633,7 @@ span.cX-bin::selection {
   position: absolute;
   z-index: 10000;
   top: 0px;
-  font-family: arial, tahoma, sans-serif;
+  font-family: var(--cx-font-family);
   font-weight: normal;
 }
 
@@ -1310,6 +1448,10 @@ div.CanvasXpressDragLayout {
   position: absolute;
 }
 
+/*
+ * Tooltip
+ */
+
 div.CanvasXpressTooltip {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
@@ -1326,91 +1468,7 @@ div.CanvasXpressTooltip {
   text-align: left;
 }
 
-div.CanvasXpressTooltipArrowLeft {
-  position: absolute;
-  height: 0;
-  width: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgb(83, 105, 255);
-  border-top: none;
-  border-right: none;
-  z-index: 1;
-}
-
-div.CanvasXpressTooltipArrowLeft:after,
-div.CanvasXpressTooltipArrowLeft:before {
-  border: solid transparent;
-  right: 0px;
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-div.CanvasXpressTooltipArrowLeft:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-right-color: rgb(245, 245, 245);
-  border-width: 8px;
-  margin-top: -8px;
-}
-
-div.CanvasXpressTooltipArrowLeft:before {
-  border-color: rgba(51, 122, 183, 0);
-  border-right-color: rgb(83, 105, 255);
-  border-width: 9px;
-  margin-top: -9px;
-}
-
-div.CanvasXpressTooltipArrowRight {
-  position: absolute;
-  height: 0;
-  width: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgb(83, 105, 255);
-  border-top: none;
-  border-left: none;
-  z-index: 1;
-}
-
-div.CanvasXpressTooltipArrowRight:after,
-div.CanvasXpressTooltipArrowRight:before {
-  border: solid transparent;
-  right: 0px;
-  content: "";
-  position: absolute;
-  pointer-events: none;
-}
-
-div.CanvasXpressTooltipArrowRight:after {
-  border-color: rgba(245, 245, 245, 0);
-  border-left-color: rgb(245, 245, 245);
-  border-width: 9px;
-  margin-top: -9px;
-}
-
-div.CanvasXpressTooltipArrowRight:before {
-  border-color: rgba(51, 122, 183, 0);
-  border-left-color: rgb(83, 105, 255);
-  border-width: 8px;
-  margin-top: -8px;
-}
-
-img.CanvasXpressTooltip,
-svg.CanvasXpressTooltip {
-  background: rgba(0, 0, 0, 0) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
-  float: right;
-  margin: 5px 8px 0px 0px !important;
-  cursor: default;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-}
-
-span.CanvasXpressTooltip {
+div.CanvasXpressTooltipInfo {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.95);
@@ -1425,6 +1483,279 @@ span.CanvasXpressTooltip {
   white-space: nowrap;
   text-align: left;
   z-index: 1;
+}
+
+/*****************************************************/
+/* Generators                                        */
+/* A collection of Tooltips/Speech Bubbles           */
+/* https://css-generators.com/tooltip-speech-bubble/ */
+/*****************************************************/
+
+div.CanvasXpressTooltipInfoNone,
+div.CanvasXpressTooltipInfoBottom,
+div.CanvasXpressTooltipInfoTop,
+div.CanvasXpressTooltipInfoLeft,
+div.CanvasXpressTooltipInfoRight {
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  max-height: 800px;
+  padding: 10px;
+  position: absolute;
+  white-space: nowrap;
+  text-align: left;
+  z-index: 1;
+}
+
+div.CanvasXpressTooltipInfoBottom {
+  border-radius: var(--cx-callout-radius) var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg)) /
+    var(--cx-callout-radius);
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(100%, 50% + var(--cx-callout-size) * tan(45deg)) 100%,
+    50% calc(100% + var(--cx-callout-size)),
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 100%
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    var(--cx-callout-radius) max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+    0 max(0%, 50% - var(--cx-callout-size) * tan(45deg)) / 0 0
+    var(--cx-callout-size) 0;
+}
+
+div.CanvasXpressTooltipInfoBottom:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      calc(100% - var(--cx-callout-border-width)),
+    50%
+      calc(
+        100% + var(--cx-callout-size) - var(--cx-callout-border-width) /
+          sin(45deg)
+      ),
+    max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      calc(100% - var(--cx-callout-border-width))
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    var(--cx-callout-radius)
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) / 0 0 var(--cx-callout-size) 0;
+}
+
+div.CanvasXpressTooltipInfoTop {
+  border-radius: min(
+      var(--cx-callout-radius),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius) var(--cx-callout-radius) / var(--cx-callout-radius);
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    min(100%, 50% + var(--cx-callout-size) * tan(45deg)) 0,
+    50% calc(-1 * var(--cx-callout-size)),
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 / 0
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius)
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) / var(--cx-callout-size)
+    0 0 0;
+}
+
+div.CanvasXpressTooltipInfoTop:before  {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      var(--cx-callout-border-width),
+    50%
+      calc(var(--cx-callout-border-width) / sin(45deg) - var(--cx-callout-size)),
+    max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+      var(--cx-callout-border-width)
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0/ 0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) var(--cx-callout-radius) max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    ) / var(--cx-callout-size) 0 0 0;
+}
+
+
+div.CanvasXpressTooltipInfoLeft {
+  border-radius: var(--cx-callout-radius) /
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius) var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 min(100%, 50% + var(--cx-callout-size) * tan(45deg)),
+    calc(-1 * var(--cx-callout-size)) 50%,
+    0 max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius)
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0/0 0 0
+    var(--cx-callout-size);
+}
+
+div.CanvasXpressTooltipInfoLeft::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    var(--cx-callout-border-width)
+      min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      ),
+    calc(var(--cx-callout-border-width) / sin(45deg) - var(--cx-callout-size))
+      50%,
+    var(--cx-callout-border-width)
+      max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    var(--cx-callout-radius)
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0/0 0 0 var(--cx-callout-size);
+}
+
+div.CanvasXpressTooltipInfoRight {
+  border-radius: var(--cx-callout-radius) / var(--cx-callout-radius)
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    min(var(--cx-callout-radius), 50% - var(--cx-callout-size) * tan(45deg))
+    var(--cx-callout-radius);
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    100% min(100%, 50% + var(--cx-callout-size) * tan(45deg)),
+    calc(100% + var(--cx-callout-size)) 50%,
+    100% max(0%, 50% - var(--cx-callout-size) * tan(45deg))
+  );
+  background: var(--cx-callout-border-color);
+  border-image: conic-gradient(var(--cx-callout-border-color) 0 0) fill 0 /
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) 0
+    max(0%, 50% - var(--cx-callout-size) * tan(45deg)) var(--cx-callout-radius) /
+    0 var(--cx-callout-size) 0 0;
+}
+
+div.CanvasXpressTooltipInfoRight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: var(--cx-callout-border-width);
+  border-radius: inherit;
+  clip-path: polygon(
+    100% 0,
+    0 0,
+    0 100%,
+    100% 100%,
+    calc(100% - var(--cx-callout-border-width))
+      min(
+        100% - var(--cx-callout-border-width),
+        50% + var(--cx-callout-size) * tan(45deg) -
+          var(--cx-callout-border-width) * tan(22.5deg)
+      ),
+    calc(
+        100% + var(--cx-callout-size) - var(--cx-callout-border-width) /
+          sin(45deg)
+      )
+      50%,
+    calc(100% - var(--cx-callout-border-width))
+      max(
+        var(--cx-callout-border-width),
+        50% - var(--cx-callout-size) * tan(45deg) +
+          var(--cx-callout-border-width) * tan(22.5deg)
+      )
+  );
+  background: var(--cx-callout-background-color) content-box;
+  border-image: conic-gradient(var(--cx-callout-background-color) 0 0) fill 0 /
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    0
+    max(
+      var(--cx-callout-border-width),
+      50% - var(--cx-callout-size) * tan(45deg)
+    )
+    var(--cx-callout-radius) / 0 var(--cx-callout-size) 0 0;
 }
 
 div.CanvasXpressMousePosition {
@@ -1563,8 +1894,36 @@ div.CanvasXpressMarker {
  *  Toolbar  *
  *************/
 
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage,
-div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
+div.CanvasXpressToolbarTop {
+  position: absolute;
+  width: auto;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarTopContainer {
+  border: var(--cx-border);
+  border-radius: 0 0 8px 8px;
+  border-top: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarTopOverContainer {
+  border: var(--cx-border);
+  border: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarTopOverContainer img.CanvasXpressToolbarTopImage,
+div.CanvasXpressToolbarTopOverContainer svg.CanvasXpressToolbarTopImage {
   background: var(--cx-color-transparent) !important;
   border: 0px none !important;
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
@@ -1573,20 +1932,133 @@ div.CanvasXpressToolbar svg.CanvasXpressToolbarImage {
   margin: 5px 8px 0px 0px;
 }
 
+div.CanvasXpressToolbarTopContainer img.CanvasXpressToolbarTopImage,
+div.CanvasXpressToolbarTopContainer svg.CanvasXpressToolbarTopImage {
+  background: var(--cx-color-transparent) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: pointer;
+  float: right;
+  margin: 5px 8px 0px 0px;
+}
+
+div.CanvasXpressToolbarBottom {
+  position: absolute;
+  width: auto;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarBottomContainer {
+  border: var(--cx-border);
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  width: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarBottomRound {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+div.CanvasXpressToolbarBottomRound,
+div.CanvasXpressToolbarBottomStripe {
+  cursor: pointer;
+  float: left;
+}
+
+div.CanvasXpressToolbarLeft {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  align-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarLeftContainer {
+  border: var(--cx-border);
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+  align-content: center;
+  height: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarLeftContainer img.CanvasXpressToolbarLeftImage,
+div.CanvasXpressToolbarLeftContainer svg.CanvasXpressToolbarLeftImage {
+  background: var(--cx-color-transparent) !important;
+  border: 0px none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+  cursor: pointer;
+  float: right;
+  margin: 5px 8px 0px 0px;
+}
+
+div.CanvasXpressToolbarRight {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+  align-content: center;
+  z-index: 10000;
+}
+
+div.CanvasXpressToolbarRightContainer {
+  border: var(--cx-border);
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+  align-content: center;
+  height: auto;
+  padding: 1px;
+  background-color: var(--cx-background-widgets-color);
+}
+
+div.CanvasXpressToolbarRightFont {
+  padding: 5px;
+  cursor: pointer;
+}
+
+/*************
+ *  Tooltip  *
+ *************/
+div.CanvasXpressAltTooltip {
+  background-color: var(--cx-background-widgets-color);
+  border: var(--cx-border);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--cx-color-transparent);
+  color: var(--cx-font-color);
+  font: var(--cx-font);
+  font-size: var(--cx-font-size);
+  line-height: 100%;
+  padding: 5px;
+  position: absolute;
+  display: none;
+  text-wrap: nowrap;
+  z-index: 1000000;
+}
+
 /******************
  * Data Table DOE *
  ******************/
 
 table.CanvasXpressDataTableDOE {
   border-spacing: 0 !important;
-  font-size: 12px !important;
+  font-size: var(--cx-font-size) !important;
   padding: 0 !important;
   border: none !important;
 }
 
 th.CanvasXpressDataTableDOE {
   padding: 0 !important;
-  font-size: 12px !important;
+  font-size: var(--cx-font-size) !important;
   font-weight: bold !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
@@ -1600,7 +2072,7 @@ th.CanvasXpressDataTableDOE {
 
 td.CanvasXpressDataTableDOE {
   padding: 0 !important;
-  font-size: 12px !important;
+  font-size: var(--cx-font-size) !important;
   padding-left: 5px !important;
   padding-right: 18px !important;
   height: 18px !important;
@@ -1612,12 +2084,22 @@ td.CanvasXpressDataTableDOE {
 }
 
 tr.CanvasXpressDataTableDOE {
-  font-size: 12px !important;
+  font-size: var(--cx-font-size) !important;
 }
 
 /****************/
 /*  Data Table  */
 /****************/
+
+div.CanvasXpressDataTableUpload {
+  border: 1px solid rgba(35, 82, 124, 0.2);
+  border-radius: 6px;
+  margin: -1px;
+  background-image: url('data:image/png;base64,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');
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
 
 div.CanvasXpressDataTable,
 div.CanvasXpressDataTableToolbar,
@@ -1739,7 +2221,7 @@ th.CanvasXpressTableCellHeadActive {
   border-bottom: var(--cx-border-transparent);
   border-left: none;
   border-right: var(--cx-border-transparent);
-  font-weight: bold;
+  font-weight: normal;
   opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
@@ -1752,14 +2234,17 @@ tr > th.CanvasXpressTableCellActive:last-child {
 
 th.CanvasXpressTableCellHead {
   background: var(--cx-background-accent-color);
+  font: var(--cx-x-large-font);
+  font-weight: normal;
   color: var(--cx-font-color);
 }
 
 th.CanvasXpressTableCellHeadActive {
   background: var(--cx-background-accent-color);
+  font: var(--cx-x-large-font);
+  font-weight: normal;
   color: var(--cx-font-color);
 }
-
 
 a.CanvasXpressTableCellHead,
 a.CanvasXpressTableCellHeadActive {
@@ -1782,12 +2267,13 @@ a.CanvasXpressTableCellHeadActive {
 
 td.CanvasXpressTableCell,
 td.CanvasXpressTableCellActive {
-  border-top: none;
+  border-top: none !important;
   border-bottom: var(--cx-border-transparent);
-  border-left: none;
+  border-left: none !important;
   border-right: var(--cx-border-transparent);
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
-  padding: 2px;
+  padding: 2px !important;
   vertical-align: middle;
 }
 
@@ -1805,6 +2291,7 @@ div.CanvasXpressTableCellLink {
   position: relative;
   text-overflow: ellipsis;
   text-align: left;
+  white-space: nowrap;
 }
 
 div.CanvasXpressTableCell:hover {
@@ -1841,7 +2328,7 @@ span.CanvasXpressDataFilterText,
 span.CanvasXpressDataFilterTextActive,
 select.CanvasXpressDataFilterContainerString {
   font-family: var(--cx-font-family);
-  font-size: 16px;
+  font-size: var(--cx-x-large-font-size);
   color: var(--cx-font-color);
 }
 
@@ -1885,7 +2372,7 @@ div.CanvasXpressDataFilterContent {
   border-radius: 0px 0px 4px 4px;
   border-top: 0px;
   font-family: var(--cx-font-family);
-  font-size: 16px;
+  font-size: var(--cx-x-large-font-size);
   color: var(--cx-font-color);
   overflow-y: auto;
   overflow-x: hidden;
@@ -2035,6 +2522,24 @@ div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
   border: none;
 }
 
+input.CanvasXpressDateFilterContainerInputLeft {
+  float: left;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  color: var(--cx-background-color);
+}
+
+input.CanvasXpressDateFilterContainerInputRight {
+  float: right;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: small;
+  color: var(--cx-background-color);
+}
+
 /***************/
 /*   Toggle    */
 /***************/
@@ -2100,7 +2605,6 @@ span.CanvasXpressToggle {
   margin-left: 5px;
   margin-right: 5px;
   position: relative;
-  top: -4px;
 }
 
 /****************/
@@ -2141,7 +2645,7 @@ input.CanvasXpressRangeSliderMax {
   color: var(--cx-background-color);
   border: 1px solid var(--cx-background-widgets-color);
   border-radius: 5px;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   margin-bottom: 2px;
   line-height: 100%;
   width: 60px;
@@ -2442,7 +2946,7 @@ div.CanvasXpressLink {
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   line-height: 100%;
   margin: 0px;
   opacity: 0.95;
@@ -2494,7 +2998,7 @@ section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
   margin: 0;
   padding: 0.5px;
   overflow: hidden;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   color: var(--cx-font-color);
   line-height: 100%;
 }
@@ -2531,7 +3035,7 @@ div.CanvasXpressMenu {
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 100%;
   margin: 0px;
   padding: 0px;
@@ -2547,14 +3051,14 @@ ul.CanvasXpressList {
   list-style: none;
   margin: 0px;
   overflow: auto;
-  padding: 2px;
+  padding: 2px !important;
   height: calc(100% - 100px);
 }
 
 li.CanvasXpressListItemSep {
   cursor: default;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   font-size: 1px;
   height: 100%;
@@ -2569,7 +3073,7 @@ li.CanvasXpressListItemSep {
 input.CanvasXpressListItem {
   cursor: default;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 100%;
   list-style: none;
@@ -2585,7 +3089,7 @@ input[type=file] {
 div.CanvasXpressListItem {
   box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 24px;
 }
@@ -2596,7 +3100,7 @@ li.CanvasXpressListItem {
   border-width: 1px 0px;
   cursor: default;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   height: 100%;
   line-height: 100%;
@@ -2615,7 +3119,7 @@ li.CanvasXpressListItemActive {
   border-width: 1px 0px;
   cursor: default;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   height: 100%;
   line-height: 100%;
@@ -2703,7 +3207,7 @@ li.CanvasXpressListItemScrollSearch {
 input.CanvasXpressListItemScrollSearch {
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin: 3px;
@@ -2720,7 +3224,7 @@ a.CanvasXpressListItemA {
   color: var(--cx-font-color);
   cursor: pointer;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin: 0px;
@@ -2739,7 +3243,7 @@ a.CanvasXpressListItemAActive {
   color: var(--cx-font-color);
   cursor: pointer;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin: 0px;
@@ -2759,7 +3263,7 @@ a.CanvasXpressListItemAArrow {
   color: var(--cx-font-color);
   cursor: pointer;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin: 0px;
@@ -2779,7 +3283,7 @@ a.CanvasXpressListItemAArrowActive {
   color: var(--cx-font-color);
   cursor: pointer;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin: 0px;
@@ -2797,7 +3301,7 @@ svg.CanvasXpressListIcon {
   border: 0px none !important;
   color: var(--cx-font-color);
   cursor: pointer;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   height: 24px;
   line-height: 24px;
   list-style: none;
@@ -2816,7 +3320,7 @@ svg.CanvasXpressListIcon {
 span.CanvasXpressListItemText {
   color: var(--cx-font-color);
   cursor: pointer;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   margin-right: 10px;
@@ -2826,7 +3330,7 @@ span.CanvasXpressListItemText {
 input.CanvasXpressListItemText {
   color: var(--cx-font-color);
   cursor: pointer;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
   white-space: nowrap;
@@ -2836,7 +3340,7 @@ span.CanvasXpressListItemTextShort {
   color: var(--cx-font-color);
   cursor: pointer;
   float: right;
-  font: italic 9px arial, tahoma, sans-serif;
+  font: var(--cx-small-font-italic);
   line-height: 24px;
   list-style: none;
   margin-left: 10px;
@@ -2849,7 +3353,7 @@ span.CanvasXpressListItemTextSep {
   border-bottom-color: rgb(255, 255, 255);
   cursor: default;
   display: block;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   font-size: 1px;
   line-height: 1px;
@@ -2864,7 +3368,7 @@ table.CanvasXpressListItemTable {
   line-height: 20px;
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 24px;
   padding-left: 3px;
@@ -2897,7 +3401,7 @@ div.CanvasXpressToolbarHelp {
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -2908,7 +3412,7 @@ div.CanvasXpressToolbarHelp {
 
 p.CanvasXpressToolbarHelp {
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 24px;
   margin: 0px;
@@ -2922,7 +3426,7 @@ div.CanvasXpressForm {
   background-color: rgba(255, 255, 255, 0.95);
   color: var(--cx-font-color);
   cursor: move;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   margin: 8px;
   padding: 8px;
   position: absolute;
@@ -2976,7 +3480,7 @@ input.CanvasXpressFormText {
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   padding-left: 3px;
 }
@@ -2986,7 +3490,7 @@ form.CanvasXpressFormForm {
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
   cursor: default;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 24px;
   margin: 8px;
   overflow: auto;
@@ -2996,7 +3500,7 @@ form.CanvasXpressFormForm {
 div.CanvasXpressConfiguratorColor {
   box-sizing: content-box;
   border: 1px solid rgb(83, 105, 255);
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   color: rgb(34, 34, 34);
   line-height: 18px;
 }
@@ -3007,7 +3511,7 @@ div.CanvasXpressConfiguratorColorMain {
   background-repeat: no-repeat;
   box-sizing: content-box;
   border: none;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   color:var(--cx-font-color);
   float: left;
   cursor: crosshair;
@@ -3018,7 +3522,7 @@ div.CanvasXpressConfiguratorColorExtra {
   background-image: url(data:image/gif;base64,R0lGODlhDwAPAKEBAAAAAP///////////yH5BAEKAAIALAAAAAAPAA8AAAIklB8Qx53b4otSUWcvyiz4/4AeQJbmKY4p1HHapBlwPL/uVRsFADs=);
   background-repeat: no-repeat;
   border: none;
-  font: normal 12px arial, tahoma, sans-serif;
+  font: var(--cx-font);
   color: var(--cx-font-color);
   cursor: crosshair;
   overflow: hidden;
@@ -3172,7 +3676,7 @@ div.CanvasXpress-ParentNode {
  */
 
 div.CanvasXpressTabPanel {
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   float: left;
   width: 100%
 }
@@ -3213,7 +3717,7 @@ div.CanvasXpressTabPanelRibbon {
 
 span.CanvasXpressTabPanelRibbon {
   color: var(--cx-font-color);
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   line-height: 28px;
   list-style: none;
   white-space: nowrap;
@@ -3244,7 +3748,7 @@ svg.CanvasXpressTabPanelRibbon:hover {
 /* Header */
 
 div.CanvasXpressTabPanelHeader {
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   border-bottom: 2px solid rgb(83, 105, 255);
   height: 38px;
   width: 100%;
@@ -3252,7 +3756,7 @@ div.CanvasXpressTabPanelHeader {
 }
 
 div.CanvasXpressTabPanelHeaderTab {
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   margin-left: 20px;
   margin-right: 20px;
   float: left;
@@ -3264,7 +3768,7 @@ input.CanvasXpressTabPanelHeader {
   border-style: solid;
   border-radius: 5px 5px 0 0;
   padding: 8px;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   max-width: 100px;
   outline: none;
   text-align: center;
@@ -3279,7 +3783,7 @@ input.CanvasXpressTabPanelHeaderActive {
   border-style: solid;
   border-radius: 5px 5px 0 0;
   padding: 8px;
-  font: normal 16px arial, tahoma, sans-serif;
+  font: var(--cx-x-large-font);
   max-width: 100px;
   outline: none;
   text-align: center;
@@ -3605,6 +4109,21 @@ div.CanvasXpressWrapper {
   transition: all 300ms ease-in-out;
 }
 
+/* Hide Efect */
+
+.appear {
+  transition: all 1s linear;
+  opacity: 1;
+}
+
+.dissapear {
+  display: none;
+}
+
+.dissapearHidden {
+  transition: all 1s linear;
+  opacity: 0;
+}
 
 /* Magic Effects */
 
@@ -3620,6 +4139,56 @@ Copyright (c) 2018 Christian Pucci
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.showIn {
+  -webkit-animation-name: showIn;
+  animation-name: showIn;
+}
+
+@-webkit-keyframes showIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.showOut {
+  -webkit-animation-name: showOut;
+  animation-name: showOut;
+}
+
+@-webkit-keyframes showOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 .puffIn {

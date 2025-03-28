@@ -19,6 +19,6 @@
 
 
 # Run the following to put the proper version of the function file into the package
-webFile <- readr::read_lines(file = "https://www.canvasxpress.org/data/cX-function.R")
+webFile <- readr::read_lines(file = "https://www.canvasxpress.org/data/r/cX-function.R")
 readr::write_lines(webFile, file = "inst/ui-examples/cX-function.R.gz")
 readr::write_lines(webFile, file = "misc/cX-function.R") # for our ease of use in determining changes

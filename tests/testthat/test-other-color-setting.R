@@ -3,8 +3,8 @@ context("canvasXpress color setting")
 
 test_that("barplot line color", {
     tryCatch({
-        y = read.table("https://www.canvasxpress.org/data/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        x = read.table("https://www.canvasxpress.org/data/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y = read.table("https://www.canvasxpress.org/data/r/cX-simple-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x = read.table("https://www.canvasxpress.org/data/r/cX-simple-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -22,7 +22,7 @@ test_that("barplot line color", {
 
 test_that("barplot annotations color", {
     tryCatch({
-        y <- read.table("https://www.canvasxpress.org/data/cX-basic2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y <- read.table("https://www.canvasxpress.org/data/r/cX-basic2-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data file')
@@ -39,8 +39,8 @@ test_that("barplot annotations color", {
 
 test_that("scatter2d ColorScheme", {
     tryCatch({
-        y = read.table("https://www.canvasxpress.org/data/cX-spider-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        z = read.table("https://www.canvasxpress.org/data/cX-spider-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y = read.table("https://www.canvasxpress.org/data/r/cX-spider-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        z = read.table("https://www.canvasxpress.org/data/r/cX-spider-var.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -63,8 +63,8 @@ test_that("scatter2d ColorScheme", {
 
 test_that("boxplot ColorScheme", {
     tryCatch({
-        y = read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-        x = read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y = read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        x = read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
     },
     error = function(e) {
         skip('Unable to read data files')
@@ -86,7 +86,7 @@ test_that("boxplot ColorScheme", {
 
 test_that("stackedbar custom colors", {
     tryCatch({
-        y <- read.table("https://www.canvasxpress.org/data/cX-generic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
+        y <- read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
         z <- data.frame(Category = c("A", "B", "C", "D"), stringsAsFactors = F)
         rownames(z) <- rownames(y)
     },
