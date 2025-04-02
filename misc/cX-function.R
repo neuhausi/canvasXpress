@@ -196,6 +196,7 @@ cXarea10 <- function() {
     subtitle="gcookbook - uspopage",
     theme="CanvasXpress",
     title="Age distribution of population in the United States",
+    xAxis=list("<5", "5-14", "15-24", "25-34", "35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
   )
 }
@@ -214,6 +215,7 @@ cXarea11 <- function() {
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
+    xAxis=list("<5", "5-14", "15-24", "25-34", "35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
   )
 }
@@ -232,6 +234,7 @@ cXarea12 <- function() {
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
     title="Age distribution of population in the United States",
+    xAxis=list("<5", "5-14", "15-24", "25-34", "35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
   )
 }
@@ -252,6 +255,7 @@ cXarea13 <- function() {
     showLegend=FALSE,
     showSampleNames=FALSE,
     title="Steam Plot",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30"),
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisShow=FALSE
@@ -274,6 +278,7 @@ cXarea14 <- function() {
     showLegend=FALSE,
     showSampleNames=FALSE,
     title="Data Mountain",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30"),
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisShow=FALSE
@@ -290,7 +295,9 @@ cXarea15 <- function() {
     colorBy="g",
     colorScheme="GGPlot",
     graphType="Area",
-    theme="GGPlot"
+    theme="GGPlot",
+    xAxis=list("x"),
+    yAxis=list("y")
   )
 }
 
@@ -309,7 +316,9 @@ cXarea16 <- function() {
     legendColumns=3,
     legendPosition="bottom",
     panelBackgroundColor="rgb(222,222,222)",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("total_wealth"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -416,6 +425,7 @@ cXbar1 <- function() {
     smpTitle="Categories",
     theme="CanvasXpress",
     title="Bar graph with a single series",
+    xAxis=list("Value"),
     xAxisTitle="Value"
   )
 }
@@ -432,6 +442,7 @@ cXbar2 <- function() {
     smpTitle="Categories",
     theme="CanvasXpress",
     title="Bar graph showing data values",
+    xAxis=list("Var 1", "Var 2"),
     xAxisTitle="Value"
   )
 }
@@ -449,6 +460,7 @@ cXbar3 <- function() {
     smpTitle="Categories",
     theme="CanvasXpress",
     title="Bar graph with multiple series",
+    xAxis=list("Var 1", "Var 2", "Var 3"),
     xAxisTitle="Value"
   )
 }
@@ -468,7 +480,8 @@ cXbar4 <- function() {
     smpTextRotate=90,
     smpTitle="Species",
     theme="CanvasXpress",
-    title="Iris flower data set"
+    title="Iris flower data set",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -488,7 +501,8 @@ cXbar5 <- function() {
     smpTitle="Species",
     splitSamplesBy="Species",
     theme="blackAndWhite",
-    title="Iris flower data set"
+    title="Iris flower data set",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -508,7 +522,8 @@ cXbar6 <- function() {
     smpTextRotate=90,
     smpTitle="Samples",
     theme="CanvasXpress",
-    title="Data Organized by variables"
+    title="Data Organized by variables",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -526,7 +541,8 @@ cXbar7 <- function() {
     smpTextRotate=90,
     smpTitle="Cell Lines",
     theme="CanvasXpress",
-    title="Sensitivity of cell lines to different drugs"
+    title="Sensitivity of cell lines to different drugs",
+    xAxis=list("V1")
   )
 }
 
@@ -545,7 +561,8 @@ cXbar8 <- function() {
     smpTextRotate=90,
     smpTitle="Cell Lines",
     theme="CanvasXpress",
-    title="Sensitivity of cell lines to different drugs"
+    title="Sensitivity of cell lines to different drugs",
+    xAxis=list("V1")
   )
 }
 
@@ -566,6 +583,7 @@ cXbar9 <- function() {
     theme="CanvasXpress",
     title="Cancer crude death rate by type, World, 2021",
     widthFactor=2,
+    xAxis=list("Number of Deaths per 100000 people"),
     xAxisGridMajorShow=FALSE,
     xAxisShow=FALSE
   )
@@ -591,6 +609,7 @@ cXbar10 <- function() {
     theme="CanvasXpress",
     title="Cancer death rate by age group, United States",
     widthFactor=2,
+    xAxis=list(1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021),
     xAxisGridMajorShow=FALSE,
     xAxisShow=FALSE
   )
@@ -677,7 +696,8 @@ cXbar14 <- function() {
     subtitle="2014 Census",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
-    widthFactor=4
+    widthFactor=4,
+    xAxis=list("population")
   )
 }
 
@@ -788,6 +808,7 @@ cXbar18 <- function() {
     titleAlign="center",
     titleColor="rgb(255,255,255)",
     titleScaleFontFactor=2.5,
+    xAxis=list("Total"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -826,6 +847,7 @@ cXbar19 <- function() {
     titleColor="rgb(254,225,60)",
     titleScaleFontFactor=2.5,
     widthFactor=1.1,
+    xAxis=list("Topic"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -930,6 +952,7 @@ cXboxplot1 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisTitle="len"
   )
@@ -955,6 +978,7 @@ cXboxplot2 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -981,6 +1005,7 @@ cXboxplot3 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1009,6 +1034,7 @@ cXboxplot4 <- function() {
     splitSamplesBy="dose",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1038,6 +1064,7 @@ cXboxplot5 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1066,6 +1093,7 @@ cXboxplot6 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1093,6 +1121,7 @@ cXboxplot7 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1119,6 +1148,7 @@ cXboxplot8 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1147,6 +1177,7 @@ cXboxplot9 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1182,6 +1213,7 @@ cXboxplot10 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1209,6 +1241,7 @@ cXboxplot11 <- function() {
     stringSampleFactors=list("dose"),
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -1241,6 +1274,7 @@ cXboxplot12 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1275,6 +1309,7 @@ cXboxplot13 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1308,6 +1343,7 @@ cXboxplot14 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1335,6 +1371,7 @@ cXboxplot15 <- function() {
     stringSampleFactors=list("dose"),
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len",
@@ -1370,6 +1407,7 @@ cXboxplot16 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1408,6 +1446,7 @@ cXboxplot17 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1447,6 +1486,7 @@ cXboxplot18 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -1465,7 +1505,8 @@ cXboxplot19 <- function() {
     graphType="Boxplot",
     groupingFactors=list("dataset"),
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)"
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -1530,7 +1571,8 @@ cXbubble1 <- function() {
     legendColumns=4,
     legendPosition="bottom",
     theme="paulTol",
-    title="Annual CO2 Emmisions in 2018"
+    title="Annual CO2 Emmisions in 2018",
+    xAxis=list("CO2")
   )
 }
 
@@ -1551,7 +1593,8 @@ cXbubble2 <- function() {
     legendColumns=4,
     legendPosition="top",
     showLegend=FALSE,
-    title="Annual CO2 Emmisions in 2018"
+    title="Annual CO2 Emmisions in 2018",
+    xAxis=list("CO2")
   )
 }
 
@@ -1576,6 +1619,7 @@ cXbubble3 <- function() {
     legendPosition="top",
     showLegend=FALSE,
     title="Annual CO2 Emmisions in 2018",
+    xAxis=list("CO2"),
     afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
 }
@@ -1601,6 +1645,7 @@ cXbubble4 <- function() {
     legendPosition="top",
     showLegend=TRUE,
     title="Annual CO2 Emmisions in 2018",
+    xAxis=list("CO2"),
     afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
 }
@@ -1898,6 +1943,9 @@ cXcontour3 <- function() {
     graphType="ScatterBubble2D",
     showContourLevel=TRUE,
     title="Basic Contour Plot",
+    xAxis=list("s1"),
+    yAxis=list("s2"),
+    zAxis=list("s3"),
     afterRender=list(list("createContour"))
   )
 }
@@ -1911,6 +1959,9 @@ cXcontour4 <- function() {
     contourType="normal",
     graphType="ScatterBubble2D",
     title="Custom Contour Plot",
+    xAxis=list("s1"),
+    yAxis=list("s2"),
+    zAxis=list("s3"),
     afterRender=list(list("createContour"))
   )
 }
@@ -1940,6 +1991,8 @@ cXcontour6 <- function() {
     graphType="Scatter2D",
     showContourDataPoints=TRUE,
     showContourLevel=FALSE,
+    xAxis=list("eruptions"),
+    yAxis=list("waiting"),
     afterRender=list(list("createContour"))
   )
 }
@@ -2022,6 +2075,7 @@ cXdashboard1 <- function() {
     stackBy="Survived",
     summaryType="count",
     theme="lastAirBenderFire",
+    xAxis=list("Age"),
     afterRender=list(list("createHistogram"), list("createDOE"))
   )
 }
@@ -2039,6 +2093,7 @@ cXdashboard2 <- function() {
     histogramBins=FALSE,
     histogramType="stacked",
     theme="gameOfThronesStannis",
+    xAxis=list("displ", "cyl", "cty", "hwy"),
     afterRender=list(list("createHistogram"), list("createDOE"))
   )
 }
@@ -2057,6 +2112,7 @@ cXdashboard3 <- function() {
     smpTextRotate=90,
     smpTitle="Smoking Status",
     theme="lastAirBenderWater",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3", "S-Trial 1", "S-Trial 2", "S-Trial 3"),
     afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
   )
 }
@@ -2072,6 +2128,8 @@ cXdashboard4 <- function() {
     histogramBins=FALSE,
     showTransition=FALSE,
     theme="CanvasXpress",
+    xAxis=list("Weight"),
+    yAxis=list("Height"),
     afterRender=list(list("createDOE"))
   )
 }
@@ -2122,7 +2180,8 @@ cXdensity1 <- function() {
     histogramStat="count",
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2141,7 +2200,8 @@ cXdensity2 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2160,7 +2220,8 @@ cXdensity3 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2179,7 +2240,8 @@ cXdensity4 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2198,7 +2260,8 @@ cXdensity5 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2215,7 +2278,8 @@ cXdensity6 <- function() {
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2230,7 +2294,8 @@ cXdensity7 <- function() {
     hideHistogram=TRUE,
     showHistogram="sex",
     showHistogramDensity=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2246,7 +2311,8 @@ cXdensity8 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2263,7 +2329,8 @@ cXdensity9 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2281,7 +2348,8 @@ cXdensity10 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("weight")
   )
 }
 
@@ -2301,8 +2369,10 @@ cXdensity11 <- function() {
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
     theme="CanvasXpress",
+    xAxis=list("Weight-Fem"),
     xAxisHistogramHeight=150,
     xAxisHistogramShow=TRUE,
+    yAxis=list("Weight-Mas"),
     yAxisHistogramHeight=150,
     yAxisHistogramShow=TRUE
   )
@@ -2322,7 +2392,8 @@ cXdensity12 <- function() {
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -2342,7 +2413,8 @@ cXdensity13 <- function() {
     showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -2361,7 +2433,8 @@ cXdensity14 <- function() {
     showHistogram="sample",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -2381,7 +2454,8 @@ cXdensity15 <- function() {
     showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress"
+    theme="CanvasXpress",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -2403,7 +2477,8 @@ cXdonnut1 <- function() {
     showTransition=FALSE,
     title="Simple Donnut",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("Sales")
   )
 }
 
@@ -2425,7 +2500,8 @@ cXdonnut2 <- function() {
     showTransition=FALSE,
     title="Donnut with two levels",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("Sales")
   )
 }
 
@@ -2520,13 +2596,14 @@ cXdotplot1 <- function() {
     lineType="spline",
     showSmpOverlaysLegend=TRUE,
     smpOverlayProperties=list(Factor4=list(color="blue", showLegend=1, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=1, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=1, thickness=50, type="Bar")),
-    smpOverlays=list("Factor1", "Factor2", "Factor3"),
+    smpOverlays=list("Factor1", "Factor2", "Factor3", "Factor4", "Factor5", "Factor6"),
     smpTextRotate=45,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
     theme="CanvasXpress",
     title="Dotplot Graph",
+    xAxis=list("V1", "V2", "V3", "V4"),
     xAxisTickFormat="%.0f Mil."
   )
 }
@@ -2552,6 +2629,7 @@ cXdotplot2 <- function() {
     smpTitle="Species",
     theme="CanvasXpress",
     title="Iris flower data set",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"),
     xAxis2Show=FALSE,
     afterRender=list(list("groupSamples", list("Species")), list("segregateSamples", list("Species")))
   )
@@ -2573,6 +2651,7 @@ cXdotplot3 <- function() {
     showTransition=FALSE,
     theme="CanvasXpress",
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
+    xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
     afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
   )
 }
@@ -2593,6 +2672,7 @@ cXdotplot4 <- function() {
     sortDir="descending",
     theme="CanvasXpress",
     title="Gender Earnings Disparity",
+    xAxis=list("Women", "Men"),
     xAxis2Title="Annual Salary",
     xAxisGridMinorShow=FALSE,
     xAxisTickFormat="\$%sK",
@@ -2623,6 +2703,7 @@ cXdotplot5 <- function() {
     smpTitleFontStyle="bold",
     theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -2656,6 +2737,7 @@ cXdotplot6 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
@@ -2692,6 +2774,7 @@ cXdotplot7 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -2730,6 +2813,7 @@ cXdotplot8 <- function() {
     splitSamplesBy="supp",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -2767,6 +2851,7 @@ cXdotplot9 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -2807,6 +2892,7 @@ cXdotplot10 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -2828,7 +2914,8 @@ cXdotplot11 <- function() {
     histogramBins=150,
     jitter=FALSE,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)"
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -2879,6 +2966,7 @@ cXdotplot12 <- function() {
     titleAlign="center",
     titleFontStyle="bold",
     titleScaleFontFactor=1.6,
+    xAxis=list("Chapter"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -2916,6 +3004,7 @@ cXdotplot13 <- function() {
     smpTextRotate=90,
     timeFormat="year",
     title="The Life and Films of Audrey Hepburn",
+    xAxis=list("Number"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -2946,6 +3035,7 @@ cXdotplot14 <- function() {
     showLegendTitle=FALSE,
     smpTextScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
+    xAxis=list("Year"),
     xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
@@ -2973,6 +3063,7 @@ cXdotplot15 <- function() {
     smpLabelInterval=4,
     smpTextRotate=90,
     timeFormat="isoDate",
+    xAxis=list("Unit"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -2997,6 +3088,7 @@ cXfacet1 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
@@ -3018,6 +3110,7 @@ cXfacet2 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
@@ -3039,6 +3132,7 @@ cXfacet3 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
@@ -3059,6 +3153,7 @@ cXfacet4 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
