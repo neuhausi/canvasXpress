@@ -590,10 +590,12 @@ span.cX-bin::selection {
   grid-row-gap: 0px;
   position: fixed;
   z-index: 10001;
+  line-height: 100%;
   /*height: calc(100% - 5px);*/
   background-color: rgb(255, 255, 255);
   font-family: var(--cx-font-family);
   font-weight: normal;
+  color: var(--cx-font-color);
 }
 
 .customizerLeftPanelTop,
@@ -632,9 +634,11 @@ span.cX-bin::selection {
   background: var(--cx-color-transparent);
   position: absolute;
   z-index: 10000;
+  line-height: 100%;
   top: 0px;
   font-family: var(--cx-font-family);
   font-weight: normal;
+  color: var(--cx-font-color);
 }
 
 .customizerRightPanel {
