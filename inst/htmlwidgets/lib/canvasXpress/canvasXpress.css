@@ -62,7 +62,7 @@
   --cx-border-transparent: var(--cx-border-width) var(--cx-border-style) var(--cx-color-transparent);
   /* Font */
   --cx-small-font-size: 9px;
-  --cx-font-size: 11px;
+  --cx-font-size: 12px;
   --cx-large-font-size: 13px;
   --cx-x-large-font-size: 15px;
   --cx-font-color: var(--cx-color-ui-font);
@@ -70,7 +70,11 @@
   --cx-large-font: normal var(--cx-large-font-size) var(--cx-font-family);
   --cx-x-large-font: normal var(--cx-x-large-font-size) var(--cx-font-family);
   --cx-font-bold: bold var(--cx-font-size) var(--cx-font-family);
+  --cx-large-font-bold: bold var(--cx-large-font-size) var(--cx-font-family);
+  --cx-x-large-font-bold: bold var(--cx-x-large-font-size) var(--cx-font-family);
   --cx-font-italic: italic var(--cx-font-size) var(--cx-font-family);
+  --cx-large-font-italic: italic var(--cx-large-font-size) var(--cx-font-family);
+  --cx-x-large-font-italic: italic var(--cx-x-large-font-size) var(--cx-font-family);
   --cx-small-font-italic: italic var(--cx-small-font-size) var(--cx-font-family);
   /* Background */
   --cx-background-widgets-color: var(--cx-color-ui-background);
@@ -335,6 +339,7 @@ pre.cX-code-content {
   white-space: pre;
   outline: none;
   cursor: text;
+  font-size: small;
 }
 
 pre.cX-code-content:before {
@@ -495,7 +500,7 @@ div.cX-bin-name-container {
 div.cX-bin {
   cursor: move;
   color: var(--cx-font-color);
-  font: var(--cx-font);
+  font: var(--cx-large-font);
   margin: 2px 3px;
   padding: 2px 3px 5px 3px;
   position: absolute;
@@ -507,13 +512,14 @@ div.cX-bin-container {
   box-sizing: border-box;
   clear: both;
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 div.cX-bin-name-container {
   box-sizing: border-box;
   border: none;
   max-height: 400px;
-  margin: 8px;
   overflow-y: auto;
   padding: 5px;
 }
@@ -523,7 +529,7 @@ input.cX-bin {
   border: var(--cx-border);
   color: var(--cx-font-color);
   cursor: default;
-  font: var(--cx-font);
+  font: var(--cx-large-font);
   line-height: 24px;
   padding-left: 3px;
   border-radius: 5px;
@@ -537,7 +543,7 @@ input.cX-bin-button {
   border-radius: 5px;
   color: var(--cx-font-color);
   cursor: pointer;
-  font: bold var(--cx-font-size) var(--cx-font-family);
+  font: var(--cx-large-font-bold);
   line-height: 24px;
   margin: 0px 10px 10px 10px;
   padding: 3px;
@@ -547,7 +553,7 @@ table.cX-bin-table {
   border-collapse: collapse !important;
   color: var(--cx-font-color);
   cursor: default;
-  font: var(--cx-font);
+  font: var(--cx-large-font-bold);
   line-height: 24px;
 }
 
@@ -557,11 +563,11 @@ th.cX-bin {
   color: var(--cx-font-color);
   background-color: var(--cx-background-hover-color);
   border: var(--cx-border);
-  font: bold var(--cx-font-size) var(--cx-font-family);
+  font: var(--cx-large-font-bold);
 }
 
 span.cX-bin {
-  font: bold var(--cx-font-size) var(--cx-font-family);
+  font: var(--cx-large-font-bold);
   color: var(--cx-font-color);
   margin-left: 5px;
 }
