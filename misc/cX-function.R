@@ -194,7 +194,6 @@ cXarea10 <- function() {
     smpTextRotate=45,
     smpTitle="Year",
     subtitle="gcookbook - uspopage",
-    theme="CanvasXpress",
     title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34", "35-44", "45-54", "55-64", ">64"),
     xAxisTitle="Number of People (1000's)"
@@ -409,6 +408,8 @@ cXarealine4 <- function() {
     title="Age distribution of population in the United States",
     xAxis=list("<5", "5-14", "15-24", "25-34"),
     xAxis2=list("35-44", "45-54", "55-64", ">64"),
+    xAxis2Show=TRUE,
+    xAxisShow=TRUE,
     xAxisTitle="Number of People (1000's)"
   )
 }
@@ -423,10 +424,9 @@ cXbar1 <- function() {
     showLegend=FALSE,
     smpTextRotate=90,
     smpTitle="Categories",
-    theme="CanvasXpress",
     title="Bar graph with a single series",
-    xAxis=list("Value"),
-    xAxisTitle="Value"
+    xAxis=list("Var 1"),
+    xAxisTitle="Var 1"
   )
 }
 
@@ -435,12 +435,13 @@ cXbar2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-stBarTwoSeries-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    graphOrientation="vertical",
+    dataTextColor="#FFFFFF",
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
     graphType="Bar",
     showDataValues=TRUE,
     smpTextRotate=90,
     smpTitle="Categories",
-    theme="CanvasXpress",
     title="Bar graph showing data values",
     xAxis=list("Var 1", "Var 2"),
     xAxisTitle="Value"
@@ -458,7 +459,6 @@ cXbar3 <- function() {
     legendPosition="bottom",
     smpTextRotate=90,
     smpTitle="Categories",
-    theme="CanvasXpress",
     title="Bar graph with multiple series",
     xAxis=list("Var 1", "Var 2", "Var 3"),
     xAxisTitle="Value"
@@ -472,14 +472,15 @@ cXbar4 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
+    dataTextScaleFontFactor=0.8,
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Species"),
     legendColumns=2,
     legendPosition="bottom",
+    showDataValues=TRUE,
     smpTextRotate=90,
     smpTitle="Species",
-    theme="CanvasXpress",
     title="Iris flower data set",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
@@ -521,7 +522,6 @@ cXbar6 <- function() {
     smpLabelInterval=2,
     smpTextRotate=90,
     smpTitle="Samples",
-    theme="CanvasXpress",
     title="Data Organized by variables",
     xAxis=list("V1", "V2", "V3", "V4")
   )
@@ -540,7 +540,6 @@ cXbar7 <- function() {
     graphType="Bar",
     smpTextRotate=90,
     smpTitle="Cell Lines",
-    theme="CanvasXpress",
     title="Sensitivity of cell lines to different drugs",
     xAxis=list("V1")
   )
@@ -560,7 +559,6 @@ cXbar8 <- function() {
     smpOverlays=list("Drug Sensitivity"),
     smpTextRotate=90,
     smpTitle="Cell Lines",
-    theme="CanvasXpress",
     title="Sensitivity of cell lines to different drugs",
     xAxis=list("V1")
   )
@@ -573,6 +571,9 @@ cXbar9 <- function() {
     data=y,
     citation="<b>Data source</b> :  IHME, Global Burden of Disease (2024)",
     citationScaleFontFactor=0.7,
+    dataTextColor="#FFFFFF",
+    dataTextScaleFontFactor=0.8,
+    dataValuesPosition="inside",
     graphOrientation="horizontal",
     graphType="Bar",
     maxSmpStringLen=50,
@@ -580,7 +581,6 @@ cXbar9 <- function() {
     showLegend=FALSE,
     subtitle=" Estimated number of deaths from different types of cancer per 100,000 people.",
     subtitleScaleFontFactor=0.6,
-    theme="CanvasXpress",
     title="Cancer crude death rate by type, World, 2021",
     widthFactor=2,
     xAxis=list("Number of Deaths per 100000 people"),
@@ -598,6 +598,7 @@ cXbar10 <- function() {
     varAnnot=z,
     citation="<b>Data source</b> :  WHO Mortality Database (2024)",
     citationScaleFontFactor=0.7,
+    dataTextScaleFontFactor=0.7,
     graphOrientation="horizontal",
     graphType="Bar",
     maxSmpStringLen=50,
@@ -606,7 +607,6 @@ cXbar10 <- function() {
     showLegend=FALSE,
     subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
     subtitleScaleFontFactor=0.6,
-    theme="CanvasXpress",
     title="Cancer death rate by age group, United States",
     widthFactor=2,
     xAxis=list(1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021),
@@ -645,6 +645,8 @@ cXbar12 <- function() {
     data=y,
     smpAnnot=x,
     colorScheme="GGPlot",
+    dataTextColor="#FFFFFF",
+    dataValuesPosition="inside",
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("class"),
@@ -673,7 +675,10 @@ cXbar13 <- function() {
     is3DPlot=TRUE,
     scatterType="bar",
     widthFactor=2.5,
-    x3DRatio=0.5
+    x3DRatio=0.5,
+    xAxis=list("V1", "V2", "V3", "V4"),
+    yAxis=list("data"),
+    zAxis=list("S1", "S2", "S3", "S4", "S5", "S6")
   )
 }
 
@@ -723,6 +728,7 @@ cXbar15 <- function() {
     swimStart="start",
     swimStatus="Status",
     title="Tumor Response with Duration by Stage and Month",
+    xAxis=list("high", "start", "end"),
     xAxisTitle="Duration of Treatment in Months"
   )
 }
@@ -749,8 +755,8 @@ cXbar16 <- function() {
     swimHighCap="High Cap",
     swimStart="start",
     swimStatus="Status",
-    theme="CanvasXpress",
     title="Tumor Response with Duration by Stage and Month",
+    xAxis=list("high", "start", "end"),
     xAxisTitle="Duration of Treatment in Months"
   )
 }
@@ -776,6 +782,7 @@ cXbar17 <- function() {
     stackBy="Result",
     summaryType="count",
     title="The Awards of Audrey Hepburn",
+    xAxis=list("Year"),
     xAxis2Show=TRUE,
     xAxisShow=FALSE
   )
@@ -824,9 +831,8 @@ cXbar19 <- function() {
     data=y,
     smpAnnot=x,
     backgroundType="solid",
-    barPath=TRUE,
-    barPathColor="rgb(48,126,164)",
-    barPathTransparency=1,
+    barType="bullet",
+    bulletWidthRatio=1,
     colorBy="Color",
     colors=list("rgb(250,165,44)", "rgb(254,225,60)", "rgb(253,243,169)"),
     fontName="Waltograph",
@@ -839,6 +845,8 @@ cXbar19 <- function() {
     maxTextSize=80,
     objectBorderColor="rgba(255,255,255,0)",
     plotBackgroundColor="rgb(48,114,148)",
+    rangeColorTransparency=1,
+    rangeColors=list("rgb(48,126,164)"),
     showLegend=FALSE,
     smpTextColor="rgb(255,255,255)",
     smpTextScaleFontFactor=2,
@@ -874,11 +882,12 @@ cXbarline1 <- function() {
     smpTextRotate=45,
     smpTitle="Collection of Samples",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Bar-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4"),
+    xAxis2Show=TRUE,
     xAxis2TickFormat="%.0f T",
+    xAxisShow=TRUE,
     xAxisTickFormat="%.0f M"
   )
 }
@@ -905,7 +914,9 @@ cXbarline2 <- function() {
     subtitle="Random Data",
     title="Bar-Line Graphs",
     xAxis=list("V1", "V2"),
-    xAxis2=list("V3", "V4")
+    xAxis2=list("V3", "V4"),
+    xAxis2Show=TRUE,
+    xAxisShow=TRUE
   )
 }
 
@@ -927,10 +938,11 @@ cXbarline3 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Bar-Line Graphs",
     xAxis=list("V1", "V2"),
-    xAxis2=list("V3", "V4")
+    xAxis2=list("V3", "V4"),
+    xAxis2Show=TRUE,
+    xAxisShow=TRUE
   )
 }
 
@@ -950,7 +962,6 @@ cXboxplot1 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -970,13 +981,11 @@ cXboxplot2 <- function() {
     graphOrientation="horizontal",
     graphType="Boxplot",
     groupingFactors=list("dose"),
-    objectBorderColor=FALSE,
     objectColorTransparency=0.5,
     showLegend=FALSE,
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -995,7 +1004,7 @@ cXboxplot3 <- function() {
     axisAlgorithm="rPretty",
     axisTitleFontStyle="bold",
     boxplotNotched=TRUE,
-    boxplotWishkersType="single",
+    boxplotWhiskersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -1003,10 +1012,8 @@ cXboxplot3 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
-    xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
     xAxisTitle="len"
   )
@@ -1023,7 +1030,7 @@ cXboxplot4 <- function() {
     axisTitleFontStyle="bold",
     boxplotNotched=TRUE,
     boxplotOutliersRatio=3,
-    boxplotWishkersType="single",
+    boxplotWhiskersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -1032,7 +1039,6 @@ cXboxplot4 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     splitSamplesBy="dose",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1054,7 +1060,7 @@ cXboxplot5 <- function() {
     boxplotMeanColor="rgb(255,215,0)",
     boxplotMeanColorBorder="red",
     boxplotNotched=TRUE,
-    boxplotWishkersType="single",
+    boxplotWhiskersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -1062,7 +1068,6 @@ cXboxplot5 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1083,7 +1088,7 @@ cXboxplot6 <- function() {
     boxplotMedianColor="red",
     boxplotMedianWidth=5,
     boxplotNotched=TRUE,
-    boxplotWishkersType="single",
+    boxplotWhiskersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -1091,7 +1096,6 @@ cXboxplot6 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1111,7 +1115,7 @@ cXboxplot7 <- function() {
     axisTitleFontStyle="bold",
     boxplotHingeFunction="fivenum",
     boxplotNotched=TRUE,
-    boxplotWishkersType="single",
+    boxplotWhiskersType="single",
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("dose"),
@@ -1119,7 +1123,6 @@ cXboxplot7 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1146,7 +1149,6 @@ cXboxplot8 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1175,7 +1177,6 @@ cXboxplot9 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1239,7 +1240,6 @@ cXboxplot11 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1369,7 +1369,6 @@ cXboxplot15 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -1650,6 +1649,147 @@ cXbubble4 <- function() {
   )
 }
 
+cXbullet1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bullet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    bulletTargetVarName="V5",
+    dataTextColor="#000000",
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Bullet",
+    rangeColors=list("#777777", "#AAAAAA", "#DDDDDD"),
+    rangeStack=list("V2", "V3", "V4"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    xAxis=list("V1")
+  )
+}
+
+cXbullet2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bullet-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    bulletTargetVarColor="#3F3F3F",
+    bulletTargetVarName="V5",
+    colors=list("#3F3F3F"),
+    graphOrientation="vertical",
+    graphType="Bullet",
+    layoutAdjust=TRUE,
+    layoutTopology="1X6",
+    rangeColors=list("#945D55", "#C4A285", "#EBE7DE"),
+    rangeStack=list("V2", "V3", "V4"),
+    segregateSamplesBy=list("sample"),
+    showDataValues=TRUE,
+    smpTextRotate=90,
+    stripShow=FALSE,
+    widthFactor=2,
+    xAxis=list("V1"),
+    xAxisTextScaleFontFactor=0.6
+  )
+}
+
+cXbullet3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-movies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-movies-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    backgroundType="solid",
+    bulletWidthRatio=1,
+    colorBy="Color",
+    colors=list("rgb(250,165,44)", "rgb(254,225,60)", "rgb(253,243,169)"),
+    fontName="Waltograph",
+    fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
+    graphOrientation="vertical",
+    graphType="Bullet",
+    marginBottom=0,
+    marginLeft=50,
+    marginRight=50,
+    marginTop=50,
+    maxTextSize=80,
+    objectBorderColor="rgba(255,255,255,0)",
+    plotBackgroundColor="rgb(48,114,148)",
+    rangeColorTransparency=1,
+    rangeColors=list("rgb(48,126,164)"),
+    showLegend=FALSE,
+    smpTextColor="rgb(255,255,255)",
+    smpTextRotate=30,
+    smpTextScaleFontFactor=2,
+    title="Friendship, Love, Family",
+    titleAlign="center",
+    titleColor="rgb(254,225,60)",
+    titleScaleFontFactor=2.5,
+    widthFactor=1.1,
+    xAxis=list("Topic"),
+    xAxis2Show=FALSE,
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
+cXbullet4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bullet2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    bulletTargetVarName="Target",
+    colors=list("#305DCB", "#E4EFFD", "#ADCFFA", "#73AFF8"),
+    dataTextColor="#FFFFFF",
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Bullet",
+    rangeColors=list("#73AFF8", "#ADCFFA", "#E4EFFD"),
+    rangeStack=list("Low", "Average", "High"),
+    showDataValues=TRUE,
+    widthFactor=2,
+    xAxis=list("Value")
+  )
+}
+
+cXbullet5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bullet3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    barType="bullet",
+    bulletStyle="roundGradient",
+    bulletTargetType="openCircle",
+    bulletTargetVarName="Target",
+    bulletTargetWidthRatio=0.2,
+    bulletWidthRatio=0.5,
+    colors=list("#9422F5"),
+    dataTextColor="#FFFFFF",
+    dataTextScaleFontFactor=0.8,
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Bullet",
+    layoutAdjust=TRUE,
+    layoutSpacing=20,
+    layoutTopology="3X1",
+    rangeColors=list("#FFFFFF", "#F2F2F2", "#D8D8D8"),
+    rangeStack=list("Bad", "Acceptable", "Good"),
+    rangeStackShow=TRUE,
+    segregateSamplesBy=list("sample"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    showSampleNames=FALSE,
+    stripBackgroundColor="#FFFFFF",
+    stripTextAlign="left",
+    stripTextColor="#000000",
+    widthFactor=15,
+    xAxis=list("Value"),
+    xAxis2Show=TRUE,
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
 cXchord1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -1677,6 +1817,7 @@ cXchord2 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    chordColor="largest",
     circularArc=360,
     circularRotate=180,
     circularType="chord",
@@ -1687,7 +1828,6 @@ cXchord2 <- function() {
     objectBorderColor="rgb(0,0,0)",
     rAxisTickFormat=list("%sK", " / 1000"),
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Rotated Chord Graph",
     transitionStep=50,
     transitionTime=1500
@@ -1710,8 +1850,29 @@ cXchord3 <- function() {
     rAxisTickFormat=list("%sK", " / 1000"),
     showLegend=FALSE,
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Rotated Half Chord Graph",
+    transitionStep=50,
+    transitionTime=1500
+  )
+}
+
+cXchord4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-rrobin-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    chordColor="largest",
+    chordScaleShow=FALSE,
+    circularArc=360,
+    circularRotate=180,
+    circularType="chord",
+    graphType="Circular",
+    higlightGreyOut=TRUE,
+    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    objectBorderColor="rgb(0,0,0)",
+    showTransition=TRUE,
+    title="Four way Round Robin Tournament",
     transitionStep=50,
     transitionTime=1500
   )
@@ -1728,17 +1889,17 @@ cXcircular1 <- function() {
     varAnnot=z,
     connections=list(list("rgb(255,0,0)", "s1", "s15"), list("rgb(0,255,0)", "s25", "s120"), list("rgb(255,0,0)", "s34", "s2"), list("rgb(255,0,0)", "s47", "s69"), list("rgb(255,0,0)", "s15", "s74"), list("rgb(0,120,0)", "s57", "s87"), list("rgb(255,34,0)", "s54", "s118"), list("rgb(255,0,100)", "s78", "s18"), list("rgb(255,134,0)", "s90", "s48"), list("rgb(120,0,0)", "s120", "s68"), list("rgb(255,0,0)", "s131", "s92"), list("rgb(0,255,0)", "s148", "s119"), list("rgb(0,0,255)", "s10", "s14"), list("rgb(255,0,0)", "s56", "s6"), list("rgb(255,0,0)", "s98", "s90"), list("rgb(255,0,0)", "s113", "s20")),
     graphType="Circular",
+    legendColumns=4,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
+    legendPosition="bottom",
     ringGraphType=list("dot", "heatmap", "bar"),
     ringGraphWeight=list(50, 25, 25),
+    ringTracks=list(1, 2, 2, 3),
     segregateSamplesBy=list("Species"),
-    segregateVariablesBy=list("Ring"),
-    showTransition=FALSE,
     smpOverlays=list("Species"),
     title="Iris flower data set (1D Circular Plot)",
-    transitionStep=50,
-    transitionTime=1500
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -1753,17 +1914,17 @@ cXcircular2 <- function() {
     varAnnot=z,
     connections=list(list("rgb(0,0,255)", "setosa", 42, "versicolor", 35, 1, 2), list("rgb(0,255,0)", "virginica", 26, "versicolor", 15, 4, 8), list("rgb(120,0,255)", "setosa", 36, "virginica", 5, 6, 9), list("rgb(0,40,255)", "versicolor", 9, "versicolor", 18, 2, 5), list("rgb(80,0,55)", "versicolor", 14, "setosa", 9, 3, 4), list("rgb(0,55,140)", "setosa", 12, "setosa", 41, 5, 2), list("rgb(255,0,0)", "virginica", 25, "setosa", 3, 2, 6)),
     graphType="Circular",
+    legendColumns=4,
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
+    legendPosition="bottom",
     rAxis="Number",
     rAxisPercentShow=FALSE,
     ringGraphWeight=list(25, 25, 25, 25),
+    ringTracks=list("", "A", "B", "B", "C"),
     segregateSamplesBy=list("Species"),
-    segregateVariablesBy=list("Ring"),
-    showTransition=FALSE,
     title="Iris flower data set (2D Circular Plot)",
-    transitionStep=50,
-    transitionTime=1500
+    xAxis=list("Number", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -1785,7 +1946,8 @@ cXcircular3 <- function() {
     samplesClustered=TRUE,
     smpDendrogramPosition="outside",
     smpOverlays=list("Species"),
-    title="Iris flower data set (Dendrogram Outside)"
+    title="Iris flower data set (Dendrogram Outside)",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -1804,11 +1966,12 @@ cXcircular4 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ringGraphType=list("heatmap"),
-    ringsOrder=list("labels", "overlays", "dendrogram", "labels", "data"),
+    ringOrder=list("labels", "overlays", "dendrogram", "labels", "data"),
     samplesClustered=TRUE,
     smpDendrogramPosition="inside",
     smpOverlays=list("Species"),
-    title="Iris flower data set (Dendrogram Inside)"
+    title="Iris flower data set (Dendrogram Inside)",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -1827,7 +1990,8 @@ cXcircular5 <- function() {
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
     showIdeogram=TRUE,
-    title="Default Settings"
+    title="Default Settings",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40", "V41", "V42", "V43", "V44", "V45", "V46", "V47", "V48", "V49", "V50", "V51", "V52", "V53", "V54", "V55", "V56", "V57", "V58", "V59", "V60", "V61", "V62", "V63", "V64", "V65", "V66", "V67", "V68", "V69", "V70", "V71", "V72", "V73", "V74", "V75", "V76", "V77", "V78", "V79", "V80", "V81", "V82", "V83", "V84", "V85", "V86", "V87", "V88", "V89", "V90", "V91", "V92", "V93", "V94", "V95", "V96", "V97", "V98", "V99", "V100", "V101", "V102", "V103", "V104", "V105", "V106", "V107", "V108", "V109", "V110", "V111", "V112", "V113", "V114", "V115", "V116", "V117", "V118", "V119", "V120", "V121", "V122", "V123", "V124", "V125", "V126", "V127", "V128", "V129", "V130", "V131", "V132", "V133", "V134", "V135", "V136", "V137", "V138", "V139", "V140", "V141", "V142", "V143", "V144", "V145", "V146", "V147", "V148", "V149", "V150", "V151", "V152", "V153", "V154", "V155", "V156", "V157", "V158", "V159", "V160", "V161", "V162", "V163", "V164", "V165", "V166", "V167", "V168", "V169", "V170", "V171", "V172", "V173", "V174", "V175", "V176", "V177", "V178", "V179", "V180", "V181", "V182", "V183", "V184", "V185", "V186", "V187", "V188", "V189", "V190", "V191", "V192", "V193", "V194", "V195", "V196", "V197", "V198", "V199", "V200")
   )
 }
 
@@ -1850,10 +2014,11 @@ cXcircular6 <- function() {
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
     ringGraphType=list("heatmap", "stacked"),
-    ringsOrder=list("chromosomes", "Annt1", "Lev : 1", "anchors", "labels", "ideogram", "anchors2", "Lev : 4"),
+    ringOrder=list("chromosomes", "Annt1", "Lev : 1", "anchors", "labels", "ideogram", "anchors2", "Lev : 4"),
     segregateSamplesBy=list("Factor4"),
     showIdeogram=TRUE,
-    title="Custom Plotting Order"
+    title="Custom Plotting Order",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40", "V41", "V42", "V43", "V44", "V45", "V46", "V47", "V48", "V49", "V50", "V51", "V52", "V53", "V54", "V55", "V56", "V57", "V58", "V59", "V60", "V61", "V62", "V63", "V64", "V65", "V66", "V67", "V68", "V69", "V70", "V71", "V72", "V73", "V74", "V75", "V76", "V77", "V78", "V79", "V80", "V81", "V82", "V83", "V84", "V85", "V86", "V87", "V88", "V89", "V90", "V91", "V92", "V93", "V94", "V95", "V96", "V97", "V98", "V99", "V100", "V101", "V102", "V103", "V104", "V105", "V106", "V107", "V108", "V109", "V110", "V111", "V112", "V113", "V114", "V115", "V116", "V117", "V118", "V119", "V120", "V121", "V122", "V123", "V124", "V125", "V126", "V127", "V128", "V129", "V130", "V131", "V132", "V133", "V134", "V135", "V136", "V137", "V138", "V139", "V140", "V141", "V142", "V143", "V144", "V145", "V146", "V147", "V148", "V149", "V150", "V151", "V152", "V153", "V154", "V155", "V156", "V157", "V158", "V159", "V160", "V161", "V162", "V163", "V164", "V165", "V166", "V167", "V168", "V169", "V170", "V171", "V172", "V173", "V174", "V175", "V176", "V177", "V178", "V179", "V180", "V181", "V182", "V183", "V184", "V185", "V186", "V187", "V188", "V189", "V190", "V191", "V192", "V193", "V194", "V195", "V196", "V197", "V198", "V199", "V200")
   )
 }
 
@@ -1873,10 +2038,11 @@ cXcircular7 <- function() {
     connections=list(list("rgb(0,0,255)", 1, 17615830, 13, 60500000, 100000000, 20000000), list("rgb(0,255,0)", 1, 2300000, 8, 13650000, 40000000, 80000000), list("rgb(120,0,255)", 3, 71800000, 17, 6800000, 50000000, 25000000), list("rgb(0,40,255)", 7, 71800000, 12, 5520000, 200000000, 80000000), list("rgb(80,0,55)", 4, 8430000, 22, 6600000, 100000000, 50000000), list("rgb(0,55,140)", 4, 3100000, 14, 64100000, 58000000, 10000000), list("rgb(255,0,0)", 2, 94840000, 20, 6243500, 70000000, 30000000)),
     graphType="Circular",
     ringGraphType=list("heatmap", "area", "stacked", "dot", "bar"),
-    ringsOrder=list("scale", "ideogram", "labels", "anchors", "Annt2", "Annt1", "Lev : 1", "Lev : 2", "Lev : 3", "Lev : 4"),
+    ringOrder=list("scale", "ideogram", "labels", "anchors", "Annt2", "Annt1", "Lev : 1", "Lev : 2", "Lev : 3", "Lev : 4"),
     segregateSamplesBy=list("Factor4"),
     showIdeogram=TRUE,
-    title="Custom radi for Chromosomes and Custom Plotting Order"
+    title="Custom radi for Chromosomes and Custom Plotting Order",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40", "V41", "V42", "V43", "V44", "V45", "V46", "V47", "V48", "V49", "V50", "V51", "V52", "V53", "V54", "V55", "V56", "V57", "V58", "V59", "V60", "V61", "V62", "V63", "V64", "V65", "V66", "V67", "V68", "V69", "V70", "V71", "V72", "V73", "V74", "V75", "V76", "V77", "V78", "V79", "V80", "V81", "V82", "V83", "V84", "V85", "V86", "V87", "V88", "V89", "V90", "V91", "V92", "V93", "V94", "V95", "V96", "V97", "V98", "V99", "V100", "V101", "V102", "V103", "V104", "V105", "V106", "V107", "V108", "V109", "V110", "V111", "V112", "V113", "V114", "V115", "V116", "V117", "V118", "V119", "V120", "V121", "V122", "V123", "V124", "V125", "V126", "V127", "V128", "V129", "V130", "V131", "V132", "V133", "V134", "V135", "V136", "V137", "V138", "V139", "V140", "V141", "V142", "V143", "V144", "V145", "V146", "V147", "V148", "V149", "V150", "V151", "V152", "V153", "V154", "V155", "V156", "V157", "V158", "V159", "V160", "V161", "V162", "V163", "V164", "V165", "V166", "V167", "V168", "V169", "V170", "V171", "V172", "V173", "V174", "V175", "V176", "V177", "V178", "V179", "V180", "V181", "V182", "V183", "V184", "V185", "V186", "V187", "V188", "V189", "V190", "V191", "V192", "V193", "V194", "V195", "V196", "V197", "V198", "V199", "V200")
   )
 }
 
@@ -1894,7 +2060,7 @@ cXcircular8 <- function() {
     graphType="Circular",
     overlayLevelOrientation="perpendicular",
     overlayScaleFontFactor=1,
-    ringsOrder=list("subject", "labels", "sample"),
+    ringOrder=list("subject", "labels", "sample"),
     segregateSamplesBy=list("subject"),
     showLegend=FALSE,
     smpTextScaleFontFactor=0.3,
@@ -1915,6 +2081,7 @@ cXcontour1 <- function() {
     showVariableNames=FALSE,
     subtitle="datasets - volcano",
     title="Topographic Information on Auckland's Maunga Whau Volcano",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40", "V41", "V42", "V43", "V44", "V45", "V46", "V47", "V48", "V49", "V50", "V51", "V52", "V53", "V54", "V55", "V56", "V57", "V58", "V59", "V60", "V61"),
     afterRender=list(list("createContour"))
   )
 }
@@ -1930,6 +2097,7 @@ cXcontour2 <- function() {
     showSampleNames=FALSE,
     showVariableNames=FALSE,
     title="Basic Contour Plot",
+    xAxis=list("v1", "v2", "v3", "v4", "v5"),
     afterRender=list(list("createContour"))
   )
 }
@@ -1978,6 +2146,7 @@ cXcontour5 <- function() {
     showContourLevel=FALSE,
     showSampleNames=FALSE,
     showVariableNames=FALSE,
+    xAxis=list("v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8"),
     afterRender=list(list("createContour"))
   )
 }
@@ -2008,8 +2177,8 @@ cXcorrelation1 <- function() {
     varAnnot=z,
     correlationAxis="samples",
     graphType="Correlation",
-    showTransition=FALSE,
     title="Correlation Plot",
+    xAxis=list("V1", "V2", "V3", "V4"),
     yAxisTitle="Correlation Title"
   )
 }
@@ -2026,8 +2195,8 @@ cXcorrelation2 <- function() {
     correlationAxis="samples",
     correlationType="circle",
     graphType="Correlation",
-    showTransition=FALSE,
     title="Correlation Plot",
+    xAxis=list("V1", "V2", "V3", "V4"),
     yAxisTitle="Correlation Title"
   )
 }
@@ -2046,6 +2215,7 @@ cXcorrelation3 <- function() {
     correlationAxis="variables",
     graphType="Correlation",
     title="Correlation Plot",
+    xAxis=list("V1", "V2", "V3", "V4"),
     yAxisTitle="Correlation Title"
   )
 }
@@ -2057,6 +2227,7 @@ cXcorrelation4 <- function() {
     data=y,
     graphType="Heatmap",
     title="Heatmap - Correlation",
+    xAxis=list("mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb"),
     afterRender=list(list("createHeatmapCorrelation"), list("clusterVariables"), list("clusterSamples"))
   )
 }
@@ -2127,7 +2298,6 @@ cXdashboard4 <- function() {
     graphType="Scatter2D",
     histogramBins=FALSE,
     showTransition=FALSE,
-    theme="CanvasXpress",
     xAxis=list("Weight"),
     yAxis=list("Height"),
     afterRender=list(list("createDOE"))
@@ -2147,6 +2317,8 @@ cXdashboard5 <- function() {
     showDecorations=TRUE,
     showLegend=FALSE,
     theme="gameOfThronesTargaryen",
+    xAxis=list("Survival"),
+    yAxis=list("Survival-Censor"),
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
@@ -2164,7 +2336,8 @@ cXdashboard6 <- function() {
     legendPosition="top",
     mapId="bc",
     mapPropertyId="LOCAL_HLTH_AREA_CODE",
-    topoJSON="https://www.canvasxpress.org/data/json/bc.json"
+    topoJSON="https://www.canvasxpress.org/data/json/bc.json",
+    xAxis=list("No Preventive Actions", "Physical Distancing", "Stay Home Sick")
   )
 }
 
@@ -2180,7 +2353,6 @@ cXdensity1 <- function() {
     histogramStat="count",
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2200,7 +2372,6 @@ cXdensity2 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2220,7 +2391,6 @@ cXdensity3 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2240,7 +2410,6 @@ cXdensity4 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2260,7 +2429,6 @@ cXdensity5 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2278,7 +2446,6 @@ cXdensity6 <- function() {
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2294,7 +2461,6 @@ cXdensity7 <- function() {
     hideHistogram=TRUE,
     showHistogram="sex",
     showHistogramDensity=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2311,7 +2477,6 @@ cXdensity8 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2329,7 +2494,6 @@ cXdensity9 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2348,7 +2512,6 @@ cXdensity10 <- function() {
     showHistogram="sex",
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("weight")
   )
 }
@@ -2368,7 +2531,6 @@ cXdensity11 <- function() {
     showHistogramBars=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=TRUE,
-    theme="CanvasXpress",
     xAxis=list("Weight-Fem"),
     xAxisHistogramHeight=150,
     xAxisHistogramShow=TRUE,
@@ -2392,7 +2554,6 @@ cXdensity12 <- function() {
     showHistogram=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -2413,7 +2574,6 @@ cXdensity13 <- function() {
     showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -2433,7 +2593,6 @@ cXdensity14 <- function() {
     showHistogram="sample",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -2454,7 +2613,6 @@ cXdensity15 <- function() {
     showHistogram="Species",
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    theme="CanvasXpress",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -2524,7 +2682,6 @@ cXdotline1 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Dot-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4"),
@@ -2549,7 +2706,6 @@ cXdotline2 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Dot-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -2575,7 +2731,6 @@ cXdotline3 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Dot-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -2601,7 +2756,6 @@ cXdotplot1 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Dotplot Graph",
     xAxis=list("V1", "V2", "V3", "V4"),
     xAxisTickFormat="%.0f Mil."
@@ -2627,7 +2781,6 @@ cXdotplot2 <- function() {
     smpTextFontStyle="italic",
     smpTextRotate=90,
     smpTitle="Species",
-    theme="CanvasXpress",
     title="Iris flower data set",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"),
     xAxis2Show=FALSE,
@@ -2647,35 +2800,33 @@ cXdotplot3 <- function() {
     graphType="Dotplot",
     legendColumns=2,
     legendInside=TRUE,
-    legendPosition="rightBottom",
+    legendPosition="bottomRight",
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
-    afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
+    afterRender=list(list("groupSamples", list("Country")))
   )
 }
 
 cXdotplot4 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    varAnnot=z,
     axisAlgorithm="wilkinson",
-    connectBy="Connect",
+    dataPointSizeScaleFactor=3,
+    dataTextScaleFontFactor=0.6,
     dotplotType="stacked",
     graphType="Dotplot",
-    showTransition=FALSE,
+    plotStyle="open",
+    showDataValues=TRUE,
     smpTitle="School",
     sortDir="descending",
-    theme="CanvasXpress",
     title="Gender Earnings Disparity",
     xAxis=list("Women", "Men"),
     xAxis2Title="Annual Salary",
     xAxisGridMinorShow=FALSE,
-    xAxisTickFormat="\$%sK",
+    xAxisTickFormat="$%sK",
     xAxisTitle="Annual Salary",
     afterRender=list(list("sortSamplesByVariable", list("Men")))
   )
@@ -2701,7 +2852,6 @@ cXdotplot5 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     xAxis=list("len"),
     xAxis2Show=FALSE,
@@ -2931,7 +3081,7 @@ cXdotplot12 <- function() {
     colorBy="Character",
     colors=list("rgb(45,24,18)", "rgb(95,50,31)", "rgb(22,25,16)", "rgb(56,54,25)", "rgb(165,113,76)", "rgb(116,50,36)", "rgb(170,99,47)", "rgb(195,152,60)", "rgb(0,0,0)"),
     dotplotOutlineThreshold=1,
-    dotplotType1="movement",
+    dotplotType="transition",
     fontName="Bilbo",
     fonts=list("Bilbo"),
     graphOrientation="horizontal",
@@ -2953,7 +3103,7 @@ cXdotplot12 <- function() {
     sizeBy="Words",
     sizeByContinuous=TRUE,
     sizeByShowLegend=FALSE,
-    sizes=list(5, 15, 25, 35, 45, 60, 80, 100, 120, 130, 150),
+    sizes=list(5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55),
     smpLabelImage=TRUE,
     smpLabelImageRound=TRUE,
     smpTextScaleFontFactor=0.9,
@@ -3028,12 +3178,9 @@ cXdotplot14 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="top",
-    legendTextScaleFontFactor=2,
-    legendTitleScaleFontFactor=2,
     maxSmpStringLen=50,
     objectBorderColor="rgba(0,0,0)",
     showLegendTitle=FALSE,
-    smpTextScaleFontFactor=2,
     title="The Awards of Audrey Hepburn",
     xAxis=list("Year"),
     xAxis2Show=TRUE,
@@ -3071,6 +3218,173 @@ cXdotplot15 <- function() {
   )
 }
 
+cXdumbbell1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("grey", "blue", "pink"),
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    sortDir="ascending",
+    title="Age Range by Gender",
+    xAxis=list("Female", "Male"),
+    xAxis2Show=TRUE,
+    xAxisShow=FALSE,
+    xAxisTitle2="Age"
+  )
+}
+
+cXdumbbell2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("grey", "blue", "pink"),
+    dataPointSizeScaleFactor=3.5,
+    dataTextScaleFontFactor=0.6,
+    graphOrientation="vertical",
+    graphType="Dumbbell",
+    highlightSmp=list("Russia"),
+    legendColumns=2,
+    legendPosition="bottom",
+    plotStyle="open",
+    showDataValues=TRUE,
+    smpTextRotate=30,
+    sortDir="ascending",
+    subtitle="The age difference between men and women is largest in Russia",
+    title="Age Range by Gender",
+    titleFontStyle="bold",
+    xAxis=list("Female", "Male"),
+    xAxisTitle="Age"
+  )
+}
+
+cXdumbbell3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataPointSizeScaleFactor=3,
+    dataTextScaleFontFactor=0.5,
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    plotStyle="open",
+    showDataValues=TRUE,
+    sortDir="ascending",
+    theme="wallStreetJournal",
+    title="Age Range by Gender",
+    titleFontStyle="bold",
+    xAxis=list("Female", "Male"),
+    xAxisTitle="Age"
+  )
+}
+
+cXdumbbell4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dumbbellType="cleveland",
+    graphOrientation="vertical",
+    graphType="Dumbbell",
+    legendColumns=3,
+    legendPosition="top",
+    smpTextRotate=30,
+    sortDir="ascending",
+    title="Age Range by Gender",
+    titleFontStyle="bold",
+    xAxis=list("Female", "Male", "Combined"),
+    xAxisTitle="Age"
+  )
+}
+
+cXdumbbell5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataPointSizeScaleFactor=3,
+    dataTextScaleFontFactor=0.5,
+    dumbbellType="bullet",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    plotStyle="open",
+    showDataValues=TRUE,
+    sortDir="ascending",
+    title="Age Range by Gender",
+    titleFontStyle="bold",
+    xAxis=list("Female", "Male"),
+    xAxisTitle="Age"
+  )
+}
+
+cXdumbbell6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("grey", "blue", "pink"),
+    dumbbellType="arrow",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    sortDir="ascending",
+    title="Age Range by Gender",
+    xAxis=list("Female", "Male"),
+    xAxis2Show=TRUE,
+    xAxisShow=FALSE,
+    xAxisTitle2="Age"
+  )
+}
+
+cXdumbbell7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("grey", "blue", "pink"),
+    dumbbellType="line",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    sortDir="ascending",
+    title="Age Range by Gender",
+    xAxis=list("Female", "Male"),
+    xAxis2Show=TRUE,
+    xAxisShow=FALSE,
+    xAxisTitle2="Age"
+  )
+}
+
+cXdumbbell8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("grey", "blue", "pink"),
+    connectByColor="#ffffff",
+    dataPointSizeScaleFactor=3,
+    dumbbellType="lineConnected",
+    graphOrientation="vertical",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    smpTextRotate=30,
+    sortDir="ascending",
+    theme="wallStreetJournal",
+    title="Age Range by Gender",
+    xAxis=list("Female", "Male"),
+    xAxisTitle="Age"
+  )
+}
+
 cXfacet1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3087,7 +3401,6 @@ cXfacet1 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
@@ -3102,16 +3415,15 @@ cXfacet2 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    graphOrientation="vertical",
+    graphOrientation="horizontal",
     graphType="Bar",
     layoutCollapse=TRUE,
     layoutType="rows",
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     xAxis=list("V1", "V2", "V3", "V4"),
-    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
+    afterRender=list(list("segregateSamples", list("Factor1")), list("segregateVariables", list("Annt2")))
   )
 }
 
@@ -3131,9 +3443,8 @@ cXfacet3 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     xAxis=list("V1", "V2", "V3", "V4"),
-    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
+    afterRender=list(list("segregateVariables", list("Annt2")))
   )
 }
 
@@ -3152,7 +3463,6 @@ cXfacet4 <- function() {
     layoutType="wrap",
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
@@ -3173,11 +3483,10 @@ cXfacet5 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -3196,11 +3505,10 @@ cXfacet6 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -3219,11 +3527,10 @@ cXfacet7 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list("Opinion")))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -3242,7 +3549,6 @@ cXfacet8 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
@@ -3267,7 +3573,8 @@ cXfish1 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
     panelBackgroundColor="#ffe4c4",
-    title="Sample1"
+    title="Sample1",
+    xAxis=list("Founding", "Subclone 1", "Subclone 2", "Subclone 3")
   )
 }
 
@@ -3289,7 +3596,8 @@ cXfish2 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     varTextColor="green",
-    varTextRotate=30
+    varTextRotate=30,
+    xAxis=list("C1", "C2", "C3", "C4")
   )
 }
 
@@ -3310,7 +3618,8 @@ cXfish3 <- function() {
     graphType="Fish",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    title="BRC32"
+    title="BRC32",
+    xAxis=list("S1", "S2", "S3", "S4")
   )
 }
 
@@ -3330,7 +3639,8 @@ cXfish4 <- function() {
     gradientOrientation="horizontal",
     graphType="Fish",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)"
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    xAxis=list("C1", "C2", "C3", "C4", "C5", "C6", "C7")
   )
 }
 
@@ -3351,7 +3661,8 @@ cXfish5 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     legendPosition="bottom",
-    panelBackgroundColor="#ffe4c4"
+    panelBackgroundColor="#ffe4c4",
+    xAxis=list("Founding", "Subclone 1", "Subclone 2", "Subclone 3")
   )
 }
 
@@ -3364,7 +3675,7 @@ cXgantt1 <- function() {
     ganttEnd="End",
     ganttStart="Start",
     graphType="Gantt",
-    theme="CanvasXpress"
+    xAxis=list("Start", "End")
   )
 }
 
@@ -3379,7 +3690,7 @@ cXgantt2 <- function() {
     ganttEnd="End",
     ganttStart="Start",
     graphType="Gantt",
-    theme="CanvasXpress"
+    xAxis=list("Start", "End")
   )
 }
 
@@ -3397,7 +3708,7 @@ cXgantt3 <- function() {
     ganttStart="Start",
     graphType="Gantt",
     groupingFactors=list("Clinical Trial"),
-    theme="CanvasXpress"
+    xAxis=list("Start", "End")
   )
 }
 
@@ -3415,7 +3726,7 @@ cXgantt4 <- function() {
     ganttEnd="End",
     ganttStart="Start",
     graphType="Gantt",
-    theme="CanvasXpress"
+    xAxis=list("Start", "End")
   )
 }
 
@@ -3434,7 +3745,7 @@ cXgantt5 <- function() {
     ganttStart="Start",
     graphType="Gantt",
     groupingFactors=list("Clinical Trial"),
-    theme="CanvasXpress"
+    xAxis=list("Start", "End", "Milestone")
   )
 }
 
@@ -3457,7 +3768,7 @@ cXgantt6 <- function() {
     graphType="Gantt",
     groupingFactors=list("Clinical Trial"),
     patternBy="Indication",
-    theme="CanvasXpress"
+    xAxis=list("Start", "End", "Milestone")
   )
 }
 
@@ -3524,7 +3835,8 @@ cXheatmap1 <- function() {
     varAnnot=z,
     colorSpectrum=list("navy", "white", "firebrick3"),
     graphType="Heatmap",
-    title="Simple Heatmap"
+    title="Simple Heatmap",
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3541,9 +3853,9 @@ cXheatmap2 <- function() {
     graphType="Heatmap",
     heatmapCellBoxColor="rgb(255,255,255)",
     samplesClustered=TRUE,
-    showTransition=FALSE,
     title="Clustered data",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3564,7 +3876,8 @@ cXheatmap3 <- function() {
     showSmpDendrogram=FALSE,
     showVarDendrogram=FALSE,
     title="Custom color breaks",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3584,7 +3897,8 @@ cXheatmap4 <- function() {
     showSmpDendrogram=FALSE,
     showVarDendrogram=FALSE,
     title="Cluster Heatmap Without Trees",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3604,7 +3918,8 @@ cXheatmap5 <- function() {
     showSmpDendrogram=FALSE,
     showVarDendrogram=FALSE,
     title="Symetrical Colors in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3629,7 +3944,8 @@ cXheatmap6 <- function() {
     smpOverlayProperties=list(V1=list(color="brown", position="right", thickness=120, type="Boxplot"), V11=list(color="green", position="right", thickness=120, type="Boxplot"), V35=list(color="purple", position="right", thickness=120, type="Boxplot")),
     smpOverlays=list("V1", "V11", "V35"),
     title="R Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3654,7 +3970,8 @@ cXheatmap7 <- function() {
     smpOverlays=list("Treatment", "Site"),
     splitSamplesBy="Treatment",
     title="Overlays in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3677,10 +3994,10 @@ cXheatmap8 <- function() {
     highlightSmp=list("S1", "S2", "S3", "S4", "S5"),
     highlightVar=list("V18", "V19", "V20"),
     samplesClustered=TRUE,
-    showTransition=FALSE,
     smpOverlays=list("Treatment", "Site"),
     title="Highlight cells in Heatmap",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3693,7 +4010,7 @@ cXheatmap9 <- function() {
     data=y,
     smpAnnot=x,
     varAnnot=z,
-    colorKey=list(Sens=list("white", "green"), Site="Pastel1", Treatment="Accent", Type="YlGn"),
+    colorKey=list(Sens=list("white", "green"), Site="GnBu", Treatment="RdPu", Type="YlGn"),
     colorSpectrum=list("magenta", "blue", "black", "red", "gold"),
     colorSpectrumZeroValue=0,
     graphType="Heatmap",
@@ -3702,13 +4019,13 @@ cXheatmap9 <- function() {
     heatmapIndicatorPosition="topLeft",
     heatmapIndicatorWidth=120,
     samplesClustered=TRUE,
-    showTransition=FALSE,
     smpOverlayProperties=list(Dose=list(position="right", thickness=50, type="Dotplot"), Site=list(position="left"), Treatment=list(position="right")),
     smpOverlays=list("Treatment", "Site", "Dose"),
     title="Advanced Overlays in Heatmaps",
     varOverlayProperties=list(Sens=list(color="red", position="bottom", thickness=20, type="Bar"), Type=list(position="top")),
     varOverlays=list("Type", "Sens"),
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3734,6 +4051,7 @@ cXheatmap10 <- function() {
     shapeByData="data3",
     sizeBy="Size",
     sizeByData="data4",
+    xAxis=list("V1", "V2", "V3", "V4", "V5"),
     afterRender=list(list("clusterSamples"))
   )
 }
@@ -3750,7 +4068,8 @@ cXheatmap11 <- function() {
     sizeBy="Size",
     sizeByContinuous=TRUE,
     sizeByData="data",
-    title="A good old Northern Blot"
+    title="A good old Northern Blot",
+    xAxis=list("V1", "V2", "V3", "V4", "V5")
   )
 }
 
@@ -3774,7 +4093,8 @@ cXheatmap12 <- function() {
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=1, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=1, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=1, thickness=50, type="Bar"), Female=list(position="top", showLegend=1, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=1, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=1, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=1, thickness=50, type="BarLine"), Site=list(position="top", showLegend=1, type="Default"), Ugly=list(color="black", position="bottom", showLegend=1, thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
     varTextRotate=45,
-    varTextScaleFontFactor=1.7
+    varTextScaleFontFactor=1.7,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6")
   )
 }
 
@@ -3802,7 +4122,8 @@ cXheatmap13 <- function() {
     varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=1, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
     varOverlays=list("ProteinA", "-", "GeneClass"),
     varTitleLabelPosition="bottom",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("Var1", "Var2", "Var3", "Var4", "Var5", "Var6", "Var7", "Var8", "Var9", "Var10", "Var11", "Var12", "Var13", "Var14", "Var15", "Var16", "Var17", "Var18", "Var19", "Var20")
   )
 }
 
@@ -3829,7 +4150,8 @@ cXheatmap14 <- function() {
     sizeBy="Size",
     sizeByData="data2",
     title="Bubble Heatmap Plot",
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("Var1", "Var2", "Var3", "Var4", "Var5", "Var6", "Var7", "Var8", "Var9", "Var10", "Var11", "Var12", "Var13", "Var14", "Var15", "Var16", "Var17", "Var18", "Var19", "Var20")
   )
 }
 
@@ -3851,7 +4173,8 @@ cXheatmap15 <- function() {
     smpOverlays=list("Treatment"),
     splitVariablesBy="Lab",
     varOverlays=list("Lab"),
-    variablesClustered=TRUE
+    variablesClustered=TRUE,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40")
   )
 }
 
@@ -3953,8 +4276,8 @@ cXhistogram1 <- function() {
     histogramBins=10,
     showHistogram=TRUE,
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
   )
@@ -3972,9 +4295,8 @@ cXhistogram2 <- function() {
     graphType="Scatter2D",
     histogramBins=20,
     showHistogram=TRUE,
-    showHistogramPath=TRUE,
-    theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
   )
@@ -3995,8 +4317,8 @@ cXhistogram3 <- function() {
     showFilledHistogramPath=TRUE,
     showHistogram=TRUE,
     showHistogramPath=TRUE,
-    theme="CanvasXpress",
     title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
   )
@@ -4011,8 +4333,8 @@ cXhistogram4 <- function() {
     graphType="Scatter2D",
     histogramBins=5,
     showHistogram=TRUE,
-    theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
   )
@@ -4028,8 +4350,8 @@ cXhistogram5 <- function() {
     histogramBins=5,
     histogramType="staggered",
     showHistogram=TRUE,
-    theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
   )
@@ -4045,8 +4367,8 @@ cXhistogram6 <- function() {
     histogramBins=5,
     histogramType="stacked",
     showHistogram=TRUE,
-    theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
   )
@@ -4068,7 +4390,8 @@ cXhistogram7 <- function() {
     showHistogram="dataset",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4088,7 +4411,8 @@ cXhistogram8 <- function() {
     showHistogram="dataset",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4108,7 +4432,8 @@ cXhistogram9 <- function() {
     showHistogram="dataset",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4123,7 +4448,6 @@ cXhistogram10 <- function() {
     histogramAsDotplot=TRUE,
     histogramBinWidth=3,
     showHistogram=TRUE,
-    theme="CanvasXpress",
     xAxis=list("mpg"),
     xAxisTitle="mpg",
     yAxisTitle="Frequency"
@@ -4256,6 +4580,7 @@ cXkaplanmeier6 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     showKMConfidenceIntervals=FALSE,
+    xAxis=list("Survival", "Survival-Censor"),
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("addKMPlot"))
@@ -4295,6 +4620,7 @@ cXkaplanmeier8 <- function() {
     graphType="Scatter2D",
     invertCensored=TRUE,
     showKMConfidenceIntervals=FALSE,
+    xAxis=list("Survival", "Survival-Censor"),
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
@@ -4313,7 +4639,7 @@ cXlayout1 <- function() {
     graphType="Scatter2D",
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -4331,7 +4657,7 @@ cXlayout2 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     showRegressionFit="Species",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -4348,7 +4674,7 @@ cXlayout3 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     showRegressionFit=TRUE,
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -4364,7 +4690,7 @@ cXlayout4 <- function() {
     graphType="Scatter2D",
     layoutAdjust=FALSE,
     scatterPlotMatrix=TRUE,
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -4383,7 +4709,7 @@ cXlayout5 <- function() {
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
     showRegressionFit="Species",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -4407,8 +4733,8 @@ cXlayout6 <- function() {
     smpTitle="Species",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Iris flower data set",
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width"),
     xAxis2Show=FALSE,
     afterRender=list(list("groupSamples", list("Species")), list("segregateSamples", list("Species")))
   )
@@ -4428,8 +4754,8 @@ cXlayout7 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
+    xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
     afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
   )
 }
@@ -4448,8 +4774,8 @@ cXlayout8 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
-    afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
+    xAxis=list("V1", "V2", "V3", "V4"),
+    afterRender=list(list("segregateSamples", list("Factor1")), list("groupSamples", list("Factor1")))
   )
 }
 
@@ -4467,7 +4793,7 @@ cXlayout9 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
@@ -4487,7 +4813,7 @@ cXlayout10 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
+    xAxis=list("V1", "V2", "V3", "V4"),
     afterRender=list(list("segregateVariables", list("Annt2")), list("segregateSamples", list("Factor1")))
   )
 }
@@ -4507,6 +4833,7 @@ cXlayout11 <- function() {
     smpTitle="Smoking Status",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
+    xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3", "S-Trial 1", "S-Trial 2", "S-Trial 3"),
     afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
   )
 }
@@ -4520,8 +4847,7 @@ cXlayout12 <- function() {
     varAnnot=z,
     graphType="Scatter2D",
     histogramBins=FALSE,
-    showTransition=FALSE,
-    theme="CanvasXpress",
+    xAxis=list("Weight", "Height"),
     afterRender=list(list("createDOE"))
   )
 }
@@ -4539,6 +4865,7 @@ cXlayout13 <- function() {
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLegend=FALSE,
+    xAxis=list("Survival", "Survival-Censor"),
     afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
   )
 }
@@ -4561,8 +4888,8 @@ cXlayout14 <- function() {
     stripBackgroundBorderColor="rgba(0,0,0,0)",
     stripShow=FALSE,
     stripTextColor="rgb(0,0,0)",
-    theme="CanvasXpress",
     title="Tumor Response and Duration by Subject Id",
+    xAxis=list("Duration", "Discontinued", "Response", "Baseline"),
     xAxis2Show=FALSE,
     afterRender=list(list("segregateVariables", list("Panel")))
   )
@@ -4578,7 +4905,6 @@ cXlayout15 <- function() {
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
-    showTransition=FALSE,
     smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", type="Default"), Continuous=list(position="left", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", thickness=50, type="Bar"), PhaseB=list(position="left", thickness=50, type="Bar"), PhaseC=list(position="left", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     smpTextScaleFontFactor=1.1,
@@ -4587,7 +4913,8 @@ cXlayout15 <- function() {
     varOverlayProperties=list(Cold=list(color="blue", position="bottom", thickness=50, type="StackedPercent"), Conc=list(position="top", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", thickness=30, type="Increase"), Even=list(position="bottom", thickness=50, type="Bar"), Female=list(position="top", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", thickness=50, type="StackedPercent"), Male=list(position="top", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", thickness=50, type="Dotplot"), Odd=list(position="bottom", thickness=50, type="BarLine"), Site=list(position="top", type="Default"), Ugly=list(color="black", position="bottom", thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
     varTextRotate=45,
-    varTextScaleFontFactor=1.7
+    varTextScaleFontFactor=1.7,
+    xAxis=list("V1", "V2", "V3", "V4", "V5", "V6")
   )
 }
 
@@ -4603,7 +4930,8 @@ cXlayout16 <- function() {
     showRegressionFit="dataset",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4621,7 +4949,8 @@ cXlayout17 <- function() {
     segregateVariablesBy=list("variable"),
     smpTextRotate=45,
     stripBackgroundBorderColor="rgb(0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4638,7 +4967,8 @@ cXlayout18 <- function() {
     showRegressionFit="dataset",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
-    stripTextColor="rgb(0,0,0)"
+    stripTextColor="rgb(0,0,0)",
+    xAxis=list("x", "y")
   )
 }
 
@@ -4661,6 +4991,7 @@ cXline1 <- function() {
     smpTitle="Days Old",
     theme="GGPlot",
     title="Growth of Orange Trees",
+    xAxis=list(1, 2, 3, 4, 5),
     xAxisTitle="Circumference (mm)"
   )
 }
@@ -4677,7 +5008,9 @@ cXline2 <- function() {
     graphType="Scatter2D",
     lineBy="Tree",
     showLegend=FALSE,
-    title="Growth of Orange Trees"
+    title="Growth of Orange Trees",
+    xAxis=list("Days Old"),
+    yAxis=list("Circumference (mm)")
   )
 }
 
@@ -4699,7 +5032,8 @@ cXline3 <- function() {
     smpTitleFontStyle="italic",
     splitSamplesBy="Factor3",
     theme="blackAndWhite",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -4714,8 +5048,7 @@ cXline4 <- function() {
     graphType="Line",
     lineErrorType="area",
     lineType="spline",
-    showTransition=FALSE,
-    theme="CanvasXpress",
+    xAxis=list("Var1", "Var2"),
     afterRender=list(list("groupSamples", list("Time")))
   )
 }
@@ -4734,7 +5067,6 @@ cXline5 <- function() {
     ribbonBy=list("CI_upper", "CI_lower"),
     ribbonByType="area",
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Spatiotemporal Control of RhoGTPase Activation",
     xAxis=list("Time"),
     xAxisTitle="Time [s]",
@@ -4775,7 +5107,6 @@ cXlinearfit1 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     stringVariableFactors=list("cyl"),
-    theme="CanvasXpress",
     title="QQ-Plot",
     xAxis=list("mpg"),
     yAxis=list("mpg"),
@@ -4793,7 +5124,6 @@ cXlinearfit2 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     stringVariableFactors=list("cyl"),
-    theme="CanvasXpress",
     title="QQ-Plot colored by cyl",
     xAxis=list("mpg"),
     yAxis=list("mpg"),
@@ -4813,7 +5143,6 @@ cXlinearfit3 <- function() {
     quantiles=list(0.25, 0.5, 0.75),
     showDecorations=TRUE,
     showQuantileRegressionFit=TRUE,
-    theme="CanvasXpress",
     title="Quantile Regression",
     xAxis=list("displ"),
     yAxis=list("hwy")
@@ -4832,7 +5161,8 @@ cXlollipop1 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     showTransition=FALSE,
-    widthFactor=0.6
+    widthFactor=0.6,
+    xAxis=list("V1")
   )
 }
 
@@ -4844,12 +5174,10 @@ cXlollipop2 <- function() {
     data=y,
     smpAnnot=x,
     backgroundType="solid",
-    barLollipopFactor=1.5,
+    barLollipopFactor=1.25,
     barLollipopOpen=TRUE,
-    barPath=TRUE,
-    barPathColor="rgb(225,225,225)",
-    barPathTransparency=1,
-    barType="lollipop",
+    barType="lollipopBullet",
+    bulletRangeColors=list("rgb(180,180,180)"),
     colorBy="Color",
     colorScheme="GGPlot",
     graphType="Bar",
@@ -4863,8 +5191,8 @@ cXlollipop2 <- function() {
     setMinX=-150,
     showDataValues=TRUE,
     showLegend=FALSE,
-    smpTextScaleFontFactor=2,
     title="Occupations",
+    xAxis=list("Var1"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -4994,6 +5322,7 @@ cXmap8 <- function() {
     colorBy="variable",
     colorScheme="Bootstrap",
     graphType="Map",
+    legendInside=TRUE,
     legendPosition="bottomLeft",
     legendTextScaleFontFactor=0.85,
     mapConfig=list(zoom=3),
@@ -5014,6 +5343,7 @@ cXmap9 <- function() {
     colorSpectrum=list("rgb(247,252,253)", "rgb(229,245,249)", "rgb(204,236,230)", "rgb(153,216,201)", "rgb(102,194,164)", "rgb(65,174,118)", "rgb(35,139,69)", "rgb(0,109,44)", "rgb(0,68,27)"),
     decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
+    legendInside=TRUE,
     legendPosition="bottomLeft",
     mapId="colombia",
     mapPropertyId="ID_1",
@@ -5028,6 +5358,7 @@ cXmap10 <- function() {
     colorBy="variable",
     colorScheme="Light",
     graphType="Map",
+    legendInside=TRUE,
     legendPosition="bottomLeft",
     legendTextScaleFontFactor=0.85,
     mapId="italy",
@@ -5149,10 +5480,11 @@ cXmeter1 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterMax=100,
-    meterMin=0,
-    meterSegments=list(0, 25, 50, 75, 100),
-    meterType="gauge"
+    meterType="gauge",
+    rangeSegments=list(0, 25, 50, 75, 100),
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
   )
 }
 
@@ -5162,10 +5494,11 @@ cXmeter2 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterMax=200,
-    meterMin=0,
-    meterSegments=list(0, 25, 50, 75, 200),
-    meterType="speedometer"
+    meterType="speedometer",
+    rangeSegments=list(0, 25, 50, 75, 200),
+    setMax=200,
+    setMin=0,
+    xAxis=list("Performance")
   )
 }
 
@@ -5175,10 +5508,11 @@ cXmeter3 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterMax=100,
-    meterMin=0,
-    meterSegments=list(0, 25, 50, 75, 100),
-    meterType="digital"
+    meterType="digital",
+    rangeSegments=list(0, 25, 50, 75, 100),
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
   )
 }
 
@@ -5188,7 +5522,8 @@ cXmeter4 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterType="state"
+    meterType="state",
+    xAxis=list("Performance")
   )
 }
 
@@ -5198,9 +5533,10 @@ cXmeter5 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterMax=100,
-    meterMin=0,
-    meterType="horizontal"
+    meterType="horizontal",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
   )
 }
 
@@ -5210,10 +5546,11 @@ cXmeter6 <- function() {
   canvasXpress(
     data=y,
     graphType="Meter",
-    meterMax=100,
-    meterMin=0,
-    meterSegments=list(0, 25, 50, 75, 100),
-    meterType="vertical"
+    meterType="vertical",
+    rangeSegments=list(0, 25, 50, 75, 100),
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
   )
 }
 
@@ -5228,7 +5565,8 @@ cXmeter7 <- function() {
     varAnnot=z,
     graphType="Meter",
     meterType="number",
-    meterVar="Revenue"
+    meterVar="Revenue",
+    xAxis=list("Revenue")
   )
 }
 
@@ -5240,10 +5578,11 @@ cXmeter8 <- function() {
     data=y,
     smpAnnot=x,
     graphType="Meter",
-    meterGroup="Quarter",
-    meterSummary="sum",
+    groupingFactors=list("Quarter"),
     meterType="digital",
-    meterVar="Revenue"
+    meterVar="Revenue",
+    summaryType="sum",
+    xAxis=list("Revenue")
   )
 }
 
@@ -5255,10 +5594,11 @@ cXmeter9 <- function() {
     data=y,
     smpAnnot=x,
     graphType="Meter",
-    meterGroup="cyl",
-    meterSummary="average",
+    groupingFactors=list("cyl"),
     meterType="gauge",
-    meterVar="mpg"
+    meterVar="mpg",
+    summaryType="average",
+    xAxis=list("mpg")
   )
 }
 
@@ -5804,10 +6144,11 @@ cXnonlinearfit1 <- function() {
     setMaxY=350,
     setMinY=100,
     showDecorations=TRUE,
-    theme="CanvasXpress",
+    xAxis=list("Concentration"),
     xAxisTransform="log10",
     xAxisTransformTicks=TRUE,
-    yAxisExact=TRUE
+    yAxisExact=TRUE,
+    yXis=list("V1")
   )
 }
 
@@ -5819,7 +6160,6 @@ cXnonlinearfit2 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress",
     xAxis=list("X"),
     yAxis=list("Y"),
     afterRender=list(list("addNormalDistributionLine"))
@@ -5835,7 +6175,8 @@ cXnonlinearfit3 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress"
+    xAxis=list("Age"),
+    yAxis=list("Height")
   )
 }
 
@@ -5848,7 +6189,8 @@ cXnonlinearfit4 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress"
+    xAxis=list("Time"),
+    yAxis=list("Temp")
   )
 }
 
@@ -5861,7 +6203,8 @@ cXnonlinearfit5 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress"
+    xAxis=list("Diameter"),
+    yAxis=list("Length")
   )
 }
 
@@ -5874,7 +6217,8 @@ cXnonlinearfit6 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress"
+    xAxis=list("X"),
+    yAxis=list("Y")
   )
 }
 
@@ -5887,7 +6231,8 @@ cXnonlinearfit7 <- function() {
     graphType="Scatter2D",
     showDecorations=TRUE,
     showLegend=FALSE,
-    theme="CanvasXpress"
+    xAxis=list("Hours"),
+    yAxis=list("Score")
   )
 }
 
@@ -5907,7 +6252,7 @@ cXoncoprint1 <- function() {
     oncoprintCNA="data2",
     oncoprintMUT="data3",
     overlaysThickness=100,
-    showTransition=FALSE
+    xAxis=list("V1", "V2", "V3")
   )
 }
 
@@ -5927,9 +6272,9 @@ cXoncoprint2 <- function() {
     oncoprintCNA="data2",
     oncoprintMUT="data3",
     overlaysThickness=100,
-    showTransition=FALSE,
     smpOverlayProperties=list(Annt2=list(position="right", type="Bar"), Annt3=list(type="Stacked"), Annt4=list(type="Stacked"), Annt5=list(type="Stacked")),
-    smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5")
+    smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5"),
+    xAxis=list("S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9")
   )
 }
 
@@ -5952,7 +6297,8 @@ cXoncoprint3 <- function() {
     patternBy="Pattern",
     patternByData="data4",
     smpOverlayProperties=list(Annt2=list(position="right", type="Bar"), Annt3=list(type="Stacked"), Annt4=list(type="Stacked"), Annt5=list(type="Stacked")),
-    smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5")
+    smpOverlays=list("Annt1", "-", "Annt2", "Annt3", "Annt4", "Annt5"),
+    xAxis=list("S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9")
   )
 }
 
@@ -5969,7 +6315,8 @@ cXoncoprint4 <- function() {
     graphType="Heatmap",
     oncoprintCNA="data3",
     oncoprintMUT="data4",
-    overlaysThickness=100
+    overlaysThickness=100,
+    xAxis=list("TCGA-18-3406-01", "TCGA-18-3407-01", "TCGA-18-3408-01", "TCGA-18-3409-01", "TCGA-18-3410-01", "TCGA-18-3411-01", "TCGA-18-3412-01", "TCGA-18-3414-01", "TCGA-18-3415-01", "TCGA-18-3416-01", "TCGA-18-3417-01", "TCGA-18-3419-01", "TCGA-18-3421-01", "TCGA-18-4083-01", "TCGA-18-4086-01", "TCGA-18-4721-01", "TCGA-18-5592-01", "TCGA-18-5595-01", "TCGA-21-1070-01", "TCGA-21-1071-01", "TCGA-21-1076-01", "TCGA-21-1077-01", "TCGA-21-1078-01", "TCGA-21-1081-01", "TCGA-21-5782-01", "TCGA-21-5784-01", "TCGA-21-5786-01", "TCGA-21-5787-01", "TCGA-22-0944-01", "TCGA-22-1002-01", "TCGA-22-1011-01", "TCGA-22-1012-01", "TCGA-22-1016-01", "TCGA-22-4591-01", "TCGA-22-4593-01", "TCGA-22-4595-01", "TCGA-22-4599-01", "TCGA-22-4601-01", "TCGA-22-4604-01", "TCGA-22-4607-01", "TCGA-22-4613-01", "TCGA-22-5471-01", "TCGA-22-5472-01", "TCGA-22-5473-01", "TCGA-22-5474-01", "TCGA-22-5477-01", "TCGA-22-5478-01", "TCGA-22-5480-01", "TCGA-22-5482-01", "TCGA-22-5485-01", "TCGA-22-5489-01", "TCGA-22-5491-01", "TCGA-22-5492-01", "TCGA-33-4532-01", "TCGA-33-4533-01", "TCGA-33-4538-01", "TCGA-33-4547-01", "TCGA-33-4566-01", "TCGA-33-4582-01", "TCGA-33-4583-01", "TCGA-33-4586-01", "TCGA-33-6737-01", "TCGA-34-2596-01", "TCGA-34-2600-01", "TCGA-34-2608-01", "TCGA-34-5231-01", "TCGA-34-5232-01", "TCGA-34-5234-01", "TCGA-34-5236-01", "TCGA-34-5239-01", "TCGA-34-5240-01", "TCGA-34-5241-01", "TCGA-34-5927-01", "TCGA-34-5928-01", "TCGA-34-5929-01", "TCGA-37-3783-01", "TCGA-37-3789-01", "TCGA-37-4133-01", "TCGA-37-4135-01", "TCGA-37-4141-01", "TCGA-37-5819-01", "TCGA-39-5016-01", "TCGA-39-5019-01", "TCGA-39-5021-01", "TCGA-39-5022-01", "TCGA-39-5024-01", "TCGA-39-5027-01", "TCGA-39-5028-01", "TCGA-39-5029-01", "TCGA-39-5030-01", "TCGA-39-5031-01", "TCGA-39-5035-01", "TCGA-39-5036-01", "TCGA-39-5037-01", "TCGA-39-5039-01", "TCGA-43-2578-01", "TCGA-43-3394-01", "TCGA-43-3920-01", "TCGA-43-5668-01", "TCGA-43-6143-01", "TCGA-43-6647-01", "TCGA-43-6770-01", "TCGA-43-6771-01", "TCGA-46-3765-01", "TCGA-46-3766-01", "TCGA-46-3767-01", "TCGA-46-3768-01", "TCGA-46-3769-01", "TCGA-46-6025-01", "TCGA-46-6026-01", "TCGA-51-4079-01", "TCGA-51-4080-01", "TCGA-51-4081-01", "TCGA-56-1622-01", "TCGA-56-5897-01", "TCGA-56-5898-01", "TCGA-56-6545-01", "TCGA-56-6546-01", "TCGA-60-2698-01", "TCGA-60-2707-01", "TCGA-60-2708-01", "TCGA-60-2709-01", "TCGA-60-2710-01", "TCGA-60-2711-01", "TCGA-60-2712-01", "TCGA-60-2713-01", "TCGA-60-2715-01", "TCGA-60-2719-01", "TCGA-60-2720-01", "TCGA-60-2721-01", "TCGA-60-2722-01", "TCGA-60-2723-01", "TCGA-60-2724-01", "TCGA-60-2725-01", "TCGA-60-2726-01", "TCGA-63-5128-01", "TCGA-63-5131-01", "TCGA-63-6202-01", "TCGA-66-2727-01", "TCGA-66-2734-01", "TCGA-66-2742-01", "TCGA-66-2744-01", "TCGA-66-2754-01", "TCGA-66-2755-01", "TCGA-66-2756-01", "TCGA-66-2757-01", "TCGA-66-2758-01", "TCGA-66-2759-01", "TCGA-66-2763-01", "TCGA-66-2765-01", "TCGA-66-2766-01", "TCGA-66-2767-01", "TCGA-66-2768-01", "TCGA-66-2770-01", "TCGA-66-2771-01", "TCGA-66-2773-01", "TCGA-66-2777-01", "TCGA-66-2778-01", "TCGA-66-2780-01", "TCGA-66-2781-01", "TCGA-66-2782-01", "TCGA-66-2783-01", "TCGA-66-2785-01", "TCGA-66-2786-01", "TCGA-66-2787-01", "TCGA-66-2788-01", "TCGA-66-2789-01", "TCGA-66-2791-01", "TCGA-66-2792-01", "TCGA-66-2793-01", "TCGA-66-2794-01", "TCGA-66-2795-01", "TCGA-66-2800-01", "TCGA-70-6722-01", "TCGA-70-6723-01", "TCGA-85-6175-01", "TCGA-85-6560-01", "TCGA-85-6561-01")
   )
 }
 
@@ -5986,8 +6333,8 @@ cXparallelcoordinates1 <- function() {
     lineDecoration=FALSE,
     showTransition=FALSE,
     smpTextRotate=90,
-    theme="CanvasXpress",
-    title="Iris flower data set"
+    title="Iris flower data set",
+    xAxis=list("s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16", "s17", "s18", "s19", "s20", "s21", "s22", "s23", "s24", "s25", "s26", "s27", "s28", "s29", "s30", "s31", "s32", "s33", "s34", "s35", "s36", "s37", "s38", "s39", "s40", "s41", "s42", "s43", "s44", "s45", "s46", "s47", "s48", "s49", "s50", "s51", "s52", "s53", "s54", "s55", "s56", "s57", "s58", "s59", "s60", "s61", "s62", "s63", "s64", "s65", "s66", "s67", "s68", "s69", "s70", "s71", "s72", "s73", "s74", "s75", "s76", "s77", "s78", "s79", "s80", "s81", "s82", "s83", "s84", "s85", "s86", "s87", "s88", "s89", "s90", "s91", "s92", "s93", "s94", "s95", "s96", "s97", "s98", "s99", "s100", "s101", "s102", "s103", "s104", "s105", "s106", "s107", "s108", "s109", "s110", "s111", "s112", "s113", "s114", "s115", "s116", "s117", "s118", "s119", "s120", "s121", "s122", "s123", "s124", "s125", "s126", "s127", "s128", "s129", "s130", "s131", "s132", "s133", "s134", "s135", "s136", "s137", "s138", "s139", "s140", "s141", "s142", "s143", "s144", "s145", "s146", "s147", "s148", "s149", "s150")
   )
 }
 
@@ -6003,8 +6350,8 @@ cXparallelcoordinates2 <- function() {
     graphType="ParallelCoordinates",
     lineDecoration=FALSE,
     smpTextRotate=90,
-    theme="CanvasXpress",
     title="Iris flower data set",
+    xAxis=list("s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16", "s17", "s18", "s19", "s20", "s21", "s22", "s23", "s24", "s25", "s26", "s27", "s28", "s29", "s30", "s31", "s32", "s33", "s34", "s35", "s36", "s37", "s38", "s39", "s40", "s41", "s42", "s43", "s44", "s45", "s46", "s47", "s48", "s49", "s50", "s51", "s52", "s53", "s54", "s55", "s56", "s57", "s58", "s59", "s60", "s61", "s62", "s63", "s64", "s65", "s66", "s67", "s68", "s69", "s70", "s71", "s72", "s73", "s74", "s75", "s76", "s77", "s78", "s79", "s80", "s81", "s82", "s83", "s84", "s85", "s86", "s87", "s88", "s89", "s90", "s91", "s92", "s93", "s94", "s95", "s96", "s97", "s98", "s99", "s100", "s101", "s102", "s103", "s104", "s105", "s106", "s107", "s108", "s109", "s110", "s111", "s112", "s113", "s114", "s115", "s116", "s117", "s118", "s119", "s120", "s121", "s122", "s123", "s124", "s125", "s126", "s127", "s128", "s129", "s130", "s131", "s132", "s133", "s134", "s135", "s136", "s137", "s138", "s139", "s140", "s141", "s142", "s143", "s144", "s145", "s146", "s147", "s148", "s149", "s150"),
     afterRender=list(list("switchAnnotationToSmp", list("Species")))
   )
 }
@@ -6048,7 +6395,8 @@ cXpie2 <- function() {
     pieSegmentPrecision=1,
     pieSegmentSeparation=2,
     pieType="solid",
-    showTransition=FALSE
+    showTransition=FALSE,
+    xAxis=list("S1")
   )
 }
 
@@ -6072,7 +6420,8 @@ cXradar1 <- function() {
     showTransition=FALSE,
     title="Radar - Line",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6097,7 +6446,8 @@ cXradar2 <- function() {
     showTransition=FALSE,
     title="Radar - Area",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6121,7 +6471,8 @@ cXradar3 <- function() {
     showTransition=FALSE,
     title="Radar - Bar",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6146,7 +6497,8 @@ cXradar4 <- function() {
     showTransition=FALSE,
     title="Radar - Scatter",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6171,7 +6523,8 @@ cXradar5 <- function() {
     showTransition=FALSE,
     title="Radar - Stacked",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6195,7 +6548,8 @@ cXradar6 <- function() {
     showTransition=FALSE,
     title="Half Radar",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6220,7 +6574,8 @@ cXradar7 <- function() {
     showTransition=FALSE,
     title="Rotated Half Radar",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6246,7 +6601,8 @@ cXradar8 <- function() {
     smpOverlays=list("Factor3", "-", "Factor1", "Factor2"),
     title="Radar with Overlays",
     transitionStep=50,
-    transitionTime=1500
+    transitionTime=1500,
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -6259,6 +6615,7 @@ cXradar9 <- function() {
     smpAnnot=x,
     circularType="radar",
     colorBy="color",
+    colorKey=list(color=list(blue="#0000FF", brown="#A52A2A", green="#00FF00", red="#FF0000")),
     graphType="Circular",
     rAxis="radians",
     rAxisPercentShow=FALSE,
@@ -6268,7 +6625,7 @@ cXradar9 <- function() {
     setMaxY=5,
     setMinR=0,
     setMinY=0,
-    showLegend=FALSE,
+    showLegend=TRUE,
     showSampleNames=FALSE,
     sizeBy="size",
     yAxis=list("radius")
@@ -6291,7 +6648,8 @@ cXridgeline1 <- function() {
     setMaxX=9,
     setMinX=3.5,
     showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showHistogramDensity=TRUE,
+    xAxis=list("Sepal.Length")
   )
 }
 
@@ -6310,6 +6668,7 @@ cXridgeline2 <- function() {
     ridgelineScale=1.5,
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE,
+    xAxis=list("Sepal.Length"),
     xAxisRugShow=TRUE
   )
 }
@@ -6329,7 +6688,8 @@ cXridgeline3 <- function() {
     ridgelineScale=2.5,
     showFilledHistogramDensity=TRUE,
     showHistogramDataPoints=TRUE,
-    showHistogramDensity=TRUE
+    showHistogramDensity=TRUE,
+    xAxis=list("Sepal.Length")
   )
 }
 
@@ -6348,7 +6708,8 @@ cXridgeline4 <- function() {
     ridgelineScale=1,
     showFilledHistogramDensity=TRUE,
     showHistogramDensity=TRUE,
-    showHistogramQuantiles=TRUE
+    showHistogramQuantiles=TRUE,
+    xAxis=list("Sepal.Length")
   )
 }
 
@@ -6366,7 +6727,8 @@ cXridgeline5 <- function() {
     ridgeBy="Month",
     ridgelineScale=2.5,
     showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showHistogramDensity=TRUE,
+    xAxis=list("Temperature")
   )
 }
 
@@ -6384,7 +6746,8 @@ cXridgeline6 <- function() {
     ridgeBy="dataset",
     ridgelineScale=2.5,
     showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showHistogramDensity=TRUE,
+    xAxis=list("x", "y")
   )
 }
 
@@ -6401,7 +6764,8 @@ cXridgeline7 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     ridgeBy="dataset",
     showFilledHistogramDensity=TRUE,
-    showHistogramDensity=TRUE
+    showHistogramDensity=TRUE,
+    xAxis=list("x", "y")
   )
 }
 
@@ -6418,7 +6782,7 @@ cXsplom1 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="both",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6435,7 +6799,7 @@ cXsplom2 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="upper",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6452,7 +6816,7 @@ cXsplom3 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="lower",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6469,7 +6833,7 @@ cXsplom4 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlation",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6486,7 +6850,7 @@ cXsplom5 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationHistogram",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6503,7 +6867,7 @@ cXsplom6 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationDensity",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6520,7 +6884,7 @@ cXsplom7 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="all",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6537,7 +6901,7 @@ cXsplom8 <- function() {
     layoutAdjust=TRUE,
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
-    theme="CanvasXpress"
+    xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
 
@@ -6554,8 +6918,8 @@ cXsankey1 <- function() {
     sankeySource="Source",
     sankeyTarget="Target",
     showTransition=FALSE,
-    theme="CanvasXpress",
-    title="Single Level Sankey"
+    title="Single Level Sankey",
+    xAxis=list("Weight")
   )
 }
 
@@ -6571,8 +6935,8 @@ cXsankey2 <- function() {
     graphType="Sankey",
     sankeySource="Source",
     sankeyTarget="Target",
-    theme="CanvasXpress",
-    title="Single Level Sankey"
+    title="Single Level Sankey",
+    xAxis=list("Weight")
   )
 }
 
@@ -6588,8 +6952,8 @@ cXsankey3 <- function() {
     sankeyNodesColor="rgba(20, 150, 250, 0.4)",
     sankeySource="Source",
     sankeyTarget="Target",
-    theme="CanvasXpress",
-    title="Multilevel Sankey"
+    title="Multilevel Sankey",
+    xAxis=list("Weight")
   )
 }
 
@@ -6605,7 +6969,8 @@ cXsankey4 <- function() {
     graphType="Sankey",
     sankeySource="Source",
     sankeyTarget="Target",
-    title="Multilevel Sankey"
+    title="Multilevel Sankey",
+    xAxis=list("Weight")
   )
 }
 
@@ -6621,8 +6986,10 @@ cXsankey5 <- function() {
     graphOrientation="horizontal",
     graphType="Sankey",
     sankeyAxes=list("Class", "Sex", "Age", "Survived"),
+    sankeyNodesColor="rgb(255,255,255)",
     scheme="GGPlot",
-    title="Alluvial Plot"
+    title="Alluvial Plot",
+    xAxis=list("Freq")
   )
 }
 
@@ -6636,7 +7003,9 @@ cXsankey6 <- function() {
     colorBy="Department",
     graphType="Sankey",
     sankeyAxes=list("Department", "Division", "Requester", "Program", "Operator", "Tool"),
-    title="Alluvial Plot"
+    sankeyNodesColor="rgb(255,255,255)",
+    title="Alluvial Plot",
+    xAxis=list("Ticket")
   )
 }
 
@@ -6649,7 +7018,6 @@ cXscatter2d1 <- function() {
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Alcohol"),
     yAxis=list("Tobacco")
@@ -6669,7 +7037,6 @@ cXscatter2d2 <- function() {
     legendInside=TRUE,
     legendPosition="topRight",
     lineBy="Subject",
-    theme="CanvasXpress",
     title="Tumor Response by Week",
     xAxis=list("Weeks"),
     yAxis=list("Change From Baseline %")
@@ -6684,7 +7051,6 @@ cXscatter2d3 <- function() {
     graphType="Scatter2D",
     showConfidenceIntervals=TRUE,
     showLoessFit=TRUE,
-    theme="CanvasXpress",
     title="Loess Fit",
     xAxis=list("E"),
     yAxis=list("NOx")
@@ -6711,7 +7077,6 @@ cXscatter2d4 <- function() {
     showHistogramBars=TRUE,
     showTransition=FALSE,
     sizeBy="Age",
-    theme="CanvasXpress",
     title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     xAxisExact=TRUE,
@@ -6734,7 +7099,6 @@ cXscatter2d5 <- function() {
     legendBox=TRUE,
     showRegressionFit="cyl",
     stringVariableFactors=list("cyl"),
-    theme="CanvasXpress",
     xAxis=list("wt"),
     yAxis=list("mpg")
   )
@@ -6753,7 +7117,6 @@ cXscatter2d6 <- function() {
     showRegressionFit="cyl",
     showRegressionFullRange=TRUE,
     stringVariableFactors=list("cyl"),
-    theme="CanvasXpress",
     xAxis=list("wt"),
     yAxis=list("mpg")
   )
@@ -6767,7 +7130,7 @@ cXscatter2d7 <- function() {
     data=y,
     varAnnot=z,
     citation="Hirsch, A. R., and Johnston, L. H. Odors and Learning, Smell & Taste Treatment and Research Foundation, Chicago.",
-    colorScheme="White",
+    colorScheme="GreyHC",
     graphType="Scatter2D",
     histogramBins=5,
     histogramStat="count",
@@ -6780,7 +7143,6 @@ cXscatter2d7 <- function() {
     shapeBy="Smoker",
     showHistogramBars=TRUE,
     sizeBy="Age",
-    theme="CanvasXpress",
     title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     xAxisExact=TRUE,
@@ -6800,7 +7162,6 @@ cXscatter2d8 <- function() {
     citationScaleFontFactor=0.75,
     graphType="Scatter2D",
     showRegressionFit=TRUE,
-    theme="CanvasXpress",
     title="Mean heights of a group of children in Kalama",
     xAxis=list("Age"),
     yAxis=list("Height")
@@ -6825,7 +7186,6 @@ cXscatter2d9 <- function() {
     showDecorations=TRUE,
     showRegressionFit=TRUE,
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Mean annual temperature (in degrees F) and Mortality Index for neoplasms of the female breast.",
     xAxis=list("Mortality"),
     xAxisGridMajorColor="rgb(255,255,255)",
@@ -6844,7 +7204,6 @@ cXscatter2d10 <- function() {
     setMaxY=350,
     setMinY=100,
     showDecorations=TRUE,
-    theme="CanvasXpress",
     xAxis=list("Concentration"),
     xAxisTransform="log10",
     xAxisTransformTicks=TRUE,
@@ -6878,7 +7237,6 @@ cXscatter2d11 <- function() {
     showTransition=FALSE,
     sizeBy="FC",
     sizes=list(4, 12, 14, 15, 16, 17, 18),
-    theme="CanvasXpress",
     title="Profile plot",
     xAxis=list("AveExpr"),
     xAxisGridMajorColor="rgb(255,255,255)",
@@ -6907,7 +7265,6 @@ cXscatter2d12 <- function() {
     showDecorations=TRUE,
     sizeBy="FC",
     sizes=list(4, 12, 14, 15, 16, 17, 18),
-    theme="CanvasXpress",
     title="Volcano plot",
     xAxis=list("logFC"),
     xAxisGridMajorColor="rgb(255,255,255)",
@@ -6940,7 +7297,6 @@ cXscatter2d13 <- function() {
     sizeBy="Hit",
     sizeByShowLegend=FALSE,
     sizes=list(4, 14),
-    theme="CanvasXpress",
     title="Contrast plot",
     xAxis=list("logFC-X"),
     xAxisGridMajorColor="rgb(255,255,255)",
@@ -6962,7 +7318,6 @@ cXscatter2d14 <- function() {
     legendInside=TRUE,
     legendPosition="topRight",
     panelBackgroundColor="rgb(238,238,238)",
-    theme="CanvasXpress",
     title="Waterfall plot",
     xAxis=list("Row"),
     xAxisGridMajorColor="rgb(255,255,255)",
@@ -7011,7 +7366,9 @@ cXscatter2d16 <- function() {
     manhattanMarkerPosition="Pos",
     scatterOutlineThreshold=5000,
     scatterType="manhattan",
-    title="Manhattan Plot"
+    title="Manhattan Plot",
+    xAxis=list("Pos"),
+    yAxis=list("-log10(pValue)")
   )
 }
 
@@ -7033,6 +7390,21 @@ cXscatter2d17 <- function() {
   )
 }
 
+cXscatter2d18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bump-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-bump-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="group",
+    dataPointSize=26,
+    graphType="Bump",
+    lineBy="group",
+    theme="GGPlot"
+  )
+}
+
 cXscatter3d1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -7046,7 +7418,6 @@ cXscatter3d1 <- function() {
     graphType="Scatter3D",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    theme="CanvasXpress",
     title="Iris Data Set",
     xAxis=list("Sepal.Length"),
     yAxis=list("Sepal.Width"),
@@ -7068,7 +7439,6 @@ cXscatter3d2 <- function() {
     graphType="Scatter3D",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    theme="CanvasXpress",
     title="Iris Data Set",
     xAxis=list("Sepal.Length"),
     yAxis=list("Petal.Width"),
@@ -7084,7 +7454,6 @@ cXscatter3d3 <- function() {
     graphType="Scatter3D",
     showConfidenceIntervals=TRUE,
     showLoessFit=TRUE,
-    theme="CanvasXpress",
     title="Loess Fit",
     xAxis=list("E"),
     xAxisExact=TRUE,
@@ -7101,7 +7470,6 @@ cXscatter3d4 <- function() {
   canvasXpress(
     data=y,
     graphType="Scatter3D",
-    theme="CanvasXpress",
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
@@ -7115,7 +7483,6 @@ cXscatter3d5 <- function() {
     data=y,
     graphType="Scatter3D",
     scatterType="bar",
-    theme="CanvasXpress",
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
@@ -7137,7 +7504,6 @@ cXscatter3d6 <- function() {
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     shapeBy="Annt2",
     sizeBy="Annt3",
-    theme="CanvasXpress",
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
@@ -7154,7 +7520,6 @@ cXscatterbubble2d1 <- function() {
     colorBy="Continent",
     graphType="ScatterBubble2D",
     showTransition=FALSE,
-    theme="CanvasXpress",
     xAxis=list("LifeExpectancy"),
     yAxis=list("GDPPerCapita"),
     yAxisTransform="log2",
@@ -7172,7 +7537,6 @@ cXscatterbubble2d2 <- function() {
     smpAnnot=x,
     varAnnot=z,
     graphType="ScatterBubble2D",
-    theme="CanvasXpress",
     xAxis=list("S1", "S4"),
     yAxis=list("S2", "S5"),
     zAxis=list("S3", "S6")
@@ -7189,7 +7553,6 @@ cXscatterbubble2d3 <- function() {
     colorBy="Continent",
     graphType="ScatterBubble2D",
     motionBy="Year",
-    theme="CanvasXpress",
     xAxis=list("LifeExpectancy"),
     yAxis=list("GDPPerCapita"),
     yAxisTransform="log2",
@@ -7215,7 +7578,8 @@ cXstacked1 <- function() {
     sampleSpaceFactor=1,
     showTransition=FALSE,
     title="Random Data",
-    treemapBy=list("Factor2", "Factor3")
+    treemapBy=list("Factor2", "Factor3"),
+    xAxis=list("Var1", "Var2", "Var3")
   )
 }
 
@@ -7236,8 +7600,8 @@ cXstacked2 <- function() {
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7257,8 +7621,8 @@ cXstacked3 <- function() {
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7279,8 +7643,8 @@ cXstacked4 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     splitSamplesBy="Factor3",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7300,6 +7664,7 @@ cXstacked5 <- function() {
     marginRight=20,
     showDataValues=TRUE,
     title="Diverging Stacked Graph",
+    xAxis=list("Pants on Fire", "False", "Mostly False", "Half True", "Mostly True", "True"),
     xAxisTickFormat="%s%%"
   )
 }
@@ -7322,7 +7687,6 @@ cXstackedline1 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -7348,7 +7712,6 @@ cXstackedline2 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -7373,8 +7736,8 @@ cXstackedpercent1 <- function() {
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7395,8 +7758,8 @@ cXstackedpercent2 <- function() {
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7416,8 +7779,8 @@ cXstackedpercent3 <- function() {
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
-    theme="CanvasXpress",
-    title="Random Data"
+    title="Random Data",
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -7437,6 +7800,7 @@ cXstackedpercent4 <- function() {
     marginRight=20,
     showDataValues=TRUE,
     title="Diverging Stacked Percent Graph",
+    xAxis=list("Pants on Fire", "False", "Mostly False", "Half True", "Mostly True", "True"),
     xAxisTickFormat="%s%%"
   )
 }
@@ -7492,6 +7856,7 @@ cXstackedpercent5 <- function() {
     titleColor="rgb(252,157,156)",
     titleScaleFontFactor=4.5,
     widthFactor=1.1,
+    xAxis=list("Females-in", "Females-out", "Males-in", "Males-out"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
     xAxisGridMinorShow=FALSE,
@@ -7517,7 +7882,6 @@ cXstackedpercentline1 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -7541,7 +7905,6 @@ cXstackedpercentline2 <- function() {
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
     subtitle="Random Data",
-    theme="CanvasXpress",
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
@@ -7569,7 +7932,9 @@ cXstreamgraph1 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7595,7 +7960,9 @@ cXstreamgraph2 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7621,7 +7988,9 @@ cXstreamgraph3 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7647,7 +8016,9 @@ cXstreamgraph4 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7672,7 +8043,9 @@ cXstreamgraph5 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7697,7 +8070,9 @@ cXstreamgraph6 <- function() {
     scatterType="stream",
     showConfidenceIntervals=FALSE,
     showLoessFit="genre",
+    xAxis=list("year"),
     xAxisGridMinorShow=FALSE,
+    yAxis=list("box_office"),
     yAxisGridMinorShow=FALSE
   )
 }
@@ -7745,6 +8120,7 @@ cXstreamgraph7 <- function() {
     stripShow=FALSE,
     title="Appearance of the Five Most Popular X-Men Characters in Chris Claremont's Comics",
     titleScaleFontFactor=0.6,
+    xAxis=list("issue"),
     xAxisGridMajorLineType="dotted",
     xAxisGridMajorSize=2,
     xAxisGridMinorShow=FALSE,
@@ -7775,7 +8151,8 @@ cXsunburst1 <- function() {
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
-    title="Simple Sunburst"
+    title="Simple Sunburst",
+    xAxis=list("Sales")
   )
 }
 
@@ -7795,7 +8172,8 @@ cXsunburst2 <- function() {
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
-    title="Simple Sunburst Colored by Category"
+    title="Simple Sunburst Colored by Category",
+    xAxis=list("Sales")
   )
 }
 
@@ -7814,7 +8192,8 @@ cXsunburst3 <- function() {
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
-    title="Rotated Sunburst"
+    title="Rotated Sunburst",
+    xAxis=list("Sales")
   )
 }
 
@@ -7833,7 +8212,8 @@ cXsunburst4 <- function() {
     hierarchy=list("Quarter", "Month", "Week"),
     objectBorderColor="rgb(0,0,0)",
     showTransition=FALSE,
-    title="Rotated Half Sunburst"
+    title="Rotated Half Sunburst",
+    xAxis=list("Sales")
   )
 }
 
@@ -7864,7 +8244,8 @@ cXtcga1 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over"
+    toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -7892,7 +8273,8 @@ cXtcga2 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over"
+    toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -7917,7 +8299,8 @@ cXtcga3 <- function() {
     legendTextScaleFontFactor=1.5,
     plotStyle="open",
     smpTextRotate=90,
-    toolbarType="over"
+    toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -7947,7 +8330,8 @@ cXtcga4 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over"
+    toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -7978,7 +8362,8 @@ cXtcga5 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over"
+    toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
 
@@ -8006,6 +8391,7 @@ cXtcga6 <- function() {
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
     toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
@@ -8041,6 +8427,7 @@ cXtcga7 <- function() {
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
     toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
@@ -8076,6 +8463,7 @@ cXtcga8 <- function() {
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
     toolbarType="over",
+    xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=TRUE,
     xAxisTitle="Expression",
     yAxisTitle="Density"
@@ -8096,6 +8484,7 @@ cXtcga9 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     scatterType="qq",
+    xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisTitle="",
     yAxisTitle=""
   )
@@ -8117,6 +8506,7 @@ cXtcga10 <- function() {
     scatterType="cdf",
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
+    xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisTitle="Expression",
     yAxisTitle="F(Expression)"
   )
@@ -8133,7 +8523,8 @@ cXtagcloud1 <- function() {
     graphType="TagCloud",
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showTransition=FALSE
+    showTransition=FALSE,
+    xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders")
   )
 }
 
@@ -8147,7 +8538,9 @@ cXtree1 <- function() {
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
-    title="Collapsible Tree"
+    title="Collapsible Tree",
+    treeLabelAlign="left",
+    xAxis=list("Order")
   )
 }
 
@@ -8161,7 +8554,8 @@ cXtree2 <- function() {
     graphType="Tree",
     hierarchy=list("Level1", "Level2"),
     showTransition=TRUE,
-    title="Collapsible Tree"
+    title="Collapsible Tree",
+    xAxis=list("Order")
   )
 }
 
@@ -8178,7 +8572,9 @@ cXtree3 <- function() {
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
     legendKeyBackgroundColor="rgba(255,255,255,0)",
     showTransition=TRUE,
-    title="Collapsible Tree"
+    title="Collapsible Tree",
+    treeLabelAlign="right",
+    xAxis=list("Order")
   )
 }
 
@@ -8193,7 +8589,8 @@ cXtree4 <- function() {
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
-    title="Collapsible Tree"
+    title="Collapsible Tree",
+    xAxis=list("Order")
   )
 }
 
@@ -8209,7 +8606,28 @@ cXtree5 <- function() {
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
     title="Collapsible Tree",
-    treeCircular=TRUE
+    treeType="circular",
+    xAxis=list("Order")
+  )
+}
+
+cXtree6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bracket-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-bracket-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Tree",
+    hierarchy=list("Final", "Semifinal", "4th", "8th"),
+    showTransition=FALSE,
+    title="Bracket",
+    treeBracketLabelAlign="left",
+    treeClickDisable=TRUE,
+    treeInverted=TRUE,
+    treeNodeSizeScaleFactor=4,
+    treeType="bracket",
+    xAxis=list("Goals")
   )
 }
 
@@ -8226,8 +8644,8 @@ cXtreemap1 <- function() {
     objectBorderColor="rgb(0,0,0)",
     showDecorations=FALSE,
     showTransition=FALSE,
-    theme="CanvasXpress",
     title="Population colored by Gross National Income 2014",
+    xAxis=list("population"),
     afterRender=list(list("groupSamples", list("continent")))
   )
 }
@@ -8242,7 +8660,7 @@ cXtreemap2 <- function() {
     smpAnnot=x,
     varAnnot=z,
     graphType="Treemap",
-    theme="CanvasXpress"
+    xAxis=list("V1", "V2", "V3", "V4")
   )
 }
 
@@ -8263,10 +8681,10 @@ cXtreemap3 <- function() {
     objectBorderColor="rgb(0,0,0)",
     smpTextRotate=45,
     subtitle="2014 Census",
-    theme="CanvasXpress",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
     widthFactor=4,
+    xAxis=list("population"),
     xAxisGridMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
   )
@@ -8280,7 +8698,8 @@ cXupset1 <- function() {
     data=y,
     varAnnot=z,
     graphType="Heatmap",
-    heatmapType="upset"
+    heatmapType="upset",
+    xAxis=list("Action", "Adventure", "Children", "Comedy", "Crime", "Documentary", "Drama", "Fantasy", "Noir", "Horror", "Musical", "Mystery", "Romance", "SciFi", "Thriller", "War", "Western")
   )
 }
 
@@ -8290,7 +8709,8 @@ cXupset2 <- function() {
   canvasXpress(
     data=y,
     graphType="Heatmap",
-    heatmapType="upset"
+    heatmapType="upset",
+    xAxis=list("TTN", "PTEN", "TP53", "EGFR", "MUC16", "FLG", "RYR2", "PCLO", "PIK3R1", "PIK3CA", "NF1", "MUC17", "HMCN1", "SPTA1", "USH2A", "RB1", "PKHD1", "OBSCN", "AHNAK2", "RYR3", "RELN", "FRAS1", "GPR98", "DNAH5", "ATRX", "APOB", "TCHH", "SYNE1", "LRP2", "KEL", "HRNR", "DNAH3", "COL6A3", "MUC5B", "LAMA1", "DSP", "DNAH8", "CNTNAP2", "SDK1", "NBPF10", "DNAH2", "NLRP5", "MLL3", "IDH1", "HCN1", "FCGBP", "DOCK5", "RIMS2", "PCDHA1", "MXRA5", "HEATR7B2", "GRIN2A", "FGD5", "TMEM132D", "STAG2", "SEMA3C", "SCN9A", "PRDM9", "POM121L12", "PIK3CG", "PDGFRA", "GABRA6", "FLG2", "FBN3", "FBN2", "FAT2", "DNAH11", "DMD", "COL1A2", "ABCC9", "XIRP2", "TSHZ2", "TEX15", "SLIT3", "RBM47", "PIK3C2G", "PCDH11X", "MYH2", "MACF1", "KSR2", "DNAH9", "DCHS2", "CSMD3", "CDH18", "BCOR", "AHNAK", "ZAN", "TRRAP", "THSD7B", "TAF1L", "SPAG17", "SLCO5A1", "SCN10A", "RYR1", "RIMBP2", "PLEKHG4B", "PCDHB7", "NPTX2", "NOS1", "LZTR1")
   )
 }
 
@@ -8350,9 +8770,9 @@ cXviolin1 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="area",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8384,8 +8804,8 @@ cXviolin2 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8417,9 +8837,9 @@ cXviolin3 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="count",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8451,9 +8871,9 @@ cXviolin4 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinScale="width",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8487,9 +8907,9 @@ cXviolin5 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinTrim=FALSE,
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8523,8 +8943,8 @@ cXviolin6 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8561,8 +8981,8 @@ cXviolin7 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8598,8 +9018,8 @@ cXviolin8 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8633,8 +9053,8 @@ cXviolin9 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8670,8 +9090,8 @@ cXviolin10 <- function() {
     smpTextRotate=90,
     smpTitle="dose",
     smpTitleFontStyle="bold",
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8711,6 +9131,7 @@ cXviolin11 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8744,8 +9165,8 @@ cXviolin12 <- function() {
     smpTitle="dose",
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
-    theme="CanvasXpress",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8781,6 +9202,7 @@ cXviolin13 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8816,6 +9238,7 @@ cXviolin14 <- function() {
     smpTitleFontStyle="bold",
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8854,6 +9277,7 @@ cXviolin15 <- function() {
     stringSampleFactors=list("dose"),
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
     violinColor="gold",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8894,6 +9318,7 @@ cXviolin16 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8935,6 +9360,7 @@ cXviolin17 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="The Effect of Vitamin C on Tooth Growth in Guinea Pigs",
+    xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMajorColor="white",
     xAxisGridMinorShow=FALSE,
@@ -8954,6 +9380,7 @@ cXwaterfall1 <- function() {
     showLegend=FALSE,
     showSampleNames=FALSE,
     title="Waterfall plot changes in QoL scores",
+    xAxis=list("QoL-Score"),
     xAxisTitle="Change from baseline (%) in QoL score"
   )
 }
@@ -8973,6 +9400,7 @@ cXwaterfall2 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     title="Waterfall plot changes in QoL scores",
+    xAxis=list("QoL-Score"),
     xAxisTitle="Change from baseline (%) in QoL score"
   )
 }
@@ -8996,6 +9424,7 @@ cXwaterfall3 <- function() {
     smpOverlayProperties=list(Status=list(position="bottom", scheme="White")),
     smpOverlays=list("Status"),
     title="Clinical Trial",
+    xAxis=list("Shrinkage"),
     xAxis2Show=FALSE,
     xAxisTitle="Best tumor shrinkage (%)"
   )
@@ -9011,8 +9440,8 @@ cXwaterfall4 <- function() {
     showLegend=FALSE,
     smpTextRotate=90,
     smpTitle="Samples",
-    theme="CanvasXpress",
     title="Traditional Waterfall",
+    xAxis=list("V1"),
     xAxisTitle="Value"
   )
 }
@@ -9026,8 +9455,8 @@ cXwaterfall5 <- function() {
     graphType="Waterfall",
     smpTextRotate=90,
     smpTitle="Samples",
-    theme="CanvasXpress",
     title="Traditional Waterfall",
+    xAxis=list("V1", "V2"),
     xAxisTitle="Value"
   )
 }
