@@ -373,6 +373,9 @@ gg_scales <- function(o, b) {
           r$colorLimits <- b[[3]]$scales$scales[[1]]$limits
         }
         r$colorScale <- c
+        if (!is.null(s$name) && length(s$name) > 0) {
+          r$colorLegendTitle <- s$name
+        }
         w <- w + 1
       } else if (s$aesthetics[1] == "colour") {
         c <- class(s)[1]
@@ -400,6 +403,9 @@ gg_scales <- function(o, b) {
           r$colorLimits2 <- b[[3]]$scales$scales[[1]]$limits
         }
         r$colorScale2 <- c
+        if (!is.null(s$name) && length(s$name) > 0) {
+          r$colorLegendTitle <- s$name
+        }
         w <- w + 1
       } else if (s$aesthetics[1] == "x") {
         if (!is.null(s$limits)) {
