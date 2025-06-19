@@ -5154,13 +5154,10 @@ cXlollipop1 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    barLollipopFactor=1.8,
     barType="lollipop",
     colorScheme="CanvasXpress",
+    dataPointSizeScaleFactor=6,
     graphType="Bar",
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    showTransition=FALSE,
     widthFactor=0.6,
     xAxis=list("V1")
   )
@@ -5173,20 +5170,18 @@ cXlollipop2 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
-    backgroundType="solid",
-    barLollipopFactor=1.25,
     barLollipopOpen=TRUE,
     barType="lollipopBullet",
-    bulletRangeColors=list("rgb(180,180,180)"),
     colorBy="Color",
     colorScheme="GGPlot",
+    dataPointSizeScaleFactor=7,
     graphType="Bar",
     marginBottom=50,
     marginLeft=50,
     marginRight=50,
     marginTop=50,
     maxTextSize=80,
-    objectBorderColor="rgba(255,255,255,0)",
+    rangeColors=list("rgb(200,200,200)"),
     setMaxX=150,
     setMinX=-150,
     showDataValues=TRUE,
