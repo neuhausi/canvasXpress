@@ -405,6 +405,10 @@ gg_scales <- function(o, b) {
         if (!is.null(s$limits)) {
           r$setMinX <- s$limits[1]
           r$setMaxX <- s$limits[2]
+        } else {
+          r$xAxisSetValues <- b$layout$panel_params[[1]]$x$breaks
+          r$xAxisSetMinorValues <- b$layout$panel_params[[1]]$x$minor_breaks
+          r$xAxisTicks <- length(b$layout$panel_params[[1]]$x$breaks)
         }
         if (!is.null(s$trans$name) && s$trans$name != "identity") {
           r$xAxisTransform <- stringr::str_replace(s$trans$name, "-", "")
@@ -412,13 +416,14 @@ gg_scales <- function(o, b) {
         if (is.character(s$name)) {
           r$xAxisTitle <- s$name
         }
-        r$xAxisSetValues <- b$layout$panel_params[[1]]$x$breaks
-        r$xAxisSetMinorValues <- b$layout$panel_params[[1]]$x$minor_breaks
-        r$xAxisTicks <- length(b$layout$panel_params[[1]]$x$breaks)
       } else if (s$aesthetics[1] == "y") {
         if (!is.null(s$limits)) {
           r$setMinY <- s$limits[1]
           r$setMaxY <- s$limits[2]
+        } else {
+          r$yAxisSetValues <- b$layout$panel_params[[1]]$y$breaks
+          r$yAxisSetMinorValues <- b$layout$panel_params[[1]]$y$minor_breaks
+          r$yAxisTicks <- length(b$layout$panel_params[[1]]$y$breaks)
         }
         if (!is.null(s$trans$name) && s$trans$name != "identity") {
           r$yAxisTransform <- stringr::str_replace(s$trans$name, "-", "")
@@ -426,9 +431,6 @@ gg_scales <- function(o, b) {
         if (is.character(s$name)) {
           r$yAxisTitle <- s$name
         }
-        r$yAxisSetValues <- b$layout$panel_params[[1]]$y$breaks
-        r$yAxisSetMinorValues <- b$layout$panel_params[[1]]$y$minor_breaks
-        r$yAxisTicks <- length(b$layout$panel_params[[1]]$y$breaks)
       }
     }
     if (w == 1) {
@@ -484,6 +486,12 @@ gg_scales <- function(o, b) {
               if (length(cols) == 1) {
                 r$cXscatterColor <- unique(b$data[[1]]$color)
               }
+            } else {
+              l <- sapply(o$layers, function(x) class(x$geom)[1])
+              if ("GeomDumbbell" %in% l) {
+                cl <- cols[1];
+                cols <- c(cl, cl, cl)
+              }
             }
           }
         }
@@ -504,6 +512,14 @@ gg_scales <- function(o, b) {
   if (!is.na(ty)) {
     r$yAxisTransform <- stringr::str_replace(ty, "-", "")
     r$yAxisTransformLinearTicks <- TRUE
+  }
+  ## Sizes
+  n <- length(b$data)
+  for (i in 1:n) {
+    if (!is.null(b$data[[i]]$shape) && !is.null(b$data[[i]]$size)) {
+      r$sizes <- floor(unique(ceiling(sort(b$data[[i]]$size)) * 3))
+      break
+    }
   }
   r
 }
@@ -526,6 +542,10 @@ gg_coordinates <- function(o) {
     if (!is.null(o$coordinates[[i]])) {
       r[[i]] <- o$coordinates[[i]]
     }
+  }
+  f <- class(o$coordinates)[1]
+  if (f == "CoordFlip") {
+    r$flip <- TRUE
   }
   r
 }
@@ -563,7 +583,7 @@ gg_mapping <- function(o, b) {
     o <- ggplot2::last_plot()
   }
   r <- list()
-  m <- c("x", "y", "z", "xmin", "xmax", "ymin", "ymax", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample")
+  m <- c("x", "y", "z", "xmin", "xmax", "xend", "ymin", "ymax", "yend", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample")
   e <- TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
@@ -812,6 +832,7 @@ data_to_matrix <- function(o, b) {
       for (j in m) {
         if (!is.null(o$layers[[i]]$mapping[[j]])) {
           q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
+          q <- gsub("\"", "", q)
           if (q %in% colnames(o$data)) {
             ## Nothing to do
           } else if (j == "label" || j == "colour" || j == "fill") {
