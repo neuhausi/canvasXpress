@@ -320,23 +320,39 @@ gg_theme <- function(o) {
         t[[a]] <- class(e[[a]])[1]
       }
     } else {
-      v <- as.character(e[[a]])
-      c <- class(e[[a]])[1]
-      m <- regexpr("margin", a)[1]
-      if (m > 0 && length(v) > 0) {
-        t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
-      } else if (length(v) > 0) {
-        if (a == "size" && c == "rel") {
-          t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
-        } else {
-          t[[a]] <- gsub("points", "", v)
+        if (is_simple_type(e[[a]])) {
+            v <- as.character(e[[a]])
+            c <- class(e[[a]])[1]
+            m <- regexpr("margin", a)[1]
+            if (m > 0 && length(v) > 0) {
+                t[[a]] <- suppressWarnings(t[[a]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+            } else if (length(v) > 0) {
+                if (a == "size" && c == "rel") {
+                    t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
+                } else {
+                    t[[a]] <- gsub("points", "", v)
+                }
+            }
         }
-      }
     }
   }
   t
 }
 
+is_simple_type <- function(element_value) {
+    simple_type     <- TRUE
+    converted_value <- NULL
+    tryCatch({
+        converted_value = as.character(element_value)
+    }, error = function(e) {
+        NULL
+    })
+
+    if (is.null(converted_value)) {
+        simple_type <- FALSE
+    }
+    simple_type
+}
 gg_scales <- function(o, b) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
