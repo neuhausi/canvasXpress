@@ -671,7 +671,7 @@ gg_proc_layer <- function(o, idx, bld) {
             next
           }
           b <- l[[p]][[a]]
-          if (is.vector(b)) {
+          if (!(missing(b)) && is.vector(b)) {
             f <- regexpr("factor", b)[1]
             if (is.character(f) && f > 0) {
               b <- stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
