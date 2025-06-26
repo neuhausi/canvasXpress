@@ -324,11 +324,11 @@ gg_theme <- function(o) {
           }
         }
       } else {
-        t[[a]] <- class(e[[a]])[1]
+        t[[a]] <- gsub("ggplot2::", "", class(e[[a]])[1])
       }
     } else {
         v <- as.character(e[[a]])
-        c <- class(e[[a]])[1]
+        c <- gsub("ggplot2::", "", class(e[[a]])[1])
         m <- regexpr("margin", a)[1]
         if (m > 0 && length(v) > 0) {
             t[[a]] <- suppressWarnings(t[[a]] <- max(as.numeric(gsub("points", "", as.character(v)))))
