@@ -7,8 +7,8 @@
 ggplot.as.list <- function(o, ...) {
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
     stop("The ggplot2 package is required to use this functionality.")
-  } else if (!("ggplot") %in% class(o)) {
-    stop("Not a ggplot object")
+  } else if (!("ggplot") %in% class(o) && !("ggmatrix") %in% class(o)) {
+    stop("Not a ggplot or ggmatrix object")
   }
 
   if (("patchwork") %in% class(o)) {
@@ -32,12 +32,56 @@ ggplot.as.list <- function(o, ...) {
       p[[i]] <- gg_cxplot(o[[i]], t)
     }
     cx$datasets <- p
+  } else if (("ggmatrix") %in% class(o)) {
+    d <- o$data
+    l <- length(o$plots)
+    c <- o$ncol
+    r <- o$nrow
+    cx <- list(...)
+    cx$length <- l
+    cx$isGGPlot <- TRUE
+    cx$isGGMatrix <- TRUE
+    cx$isR <- TRUE
+    ## Find the longest in the data frame which will be used to calculate the margins
+    v <- na.omit(unlist(lapply(d, as.character)))
+    z <- if (length(v) > 0) v[which.max(nchar(v))] else ""
+    cx$longestString <- as.character(unlist(z))
+    if (!is.null(c)) {
+      cx$cols <- c
+    }
+    if (!is.null(r)) {
+      cx$rows <- r
+    }
+    p <- list()
+    for (i in 1:l) {
+      t <- paste("canvas", i, sep = "-")
+      p[[i]] <- gg_cxplot(o$plots[[i]]$fn(d, o$plots[[i]]$mapping), t)
+      p[[i]]$isGGMatrix <- cx$longestString
+    }
+    cx$datasets <- p
   } else {
     cx <- gg_cxplot(o, "canvas", ...)
   }
 
   jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
 }
+
+#longest <- sapply(d, function(col) {
+#  if (is.character(col) || is.factor(col) || is.numeric(col)) {
+#    # Convert column to character and remove any NA values
+#    col_char <- as.character(col)
+#    col_char_no_na <- col_char[!is.na(col_char)]
+#    # If the column is empty after removing NAs, return an empty string
+#    if (length(col_char_no_na) == 0) {
+#      return("")
+#    }
+#    # Return the element with the maximum number of characters
+#    return(col_char_no_na[which.max(nchar(col_char_no_na))])
+#  } else {
+#    # For other column types, return an empty string
+#    return("")
+#  }
+#})
 
 gg_cxplot <- function(o, target, ...) {
 
@@ -832,32 +876,36 @@ data_to_matrix <- function(o, b) {
       }
     }
   }
-  for (i in 1:length(layers)) {
-    q <- class(o$layers[[i]]$geom)[1]
-    if (q != "GeomBlank") {
-      for (j in m) {
-        if (!is.null(o$layers[[i]]$mapping[[j]])) {
-          q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
-          q <- gsub("\"", "", q)
-          if (q %in% colnames(o$data)) {
-            ## Nothing to do
-          } else if (j == "label" || j == "colour" || j == "fill") {
-            u <- as.character(b$data[[1]][[j]])
-            if (length(u) == length((nd[[1]]))) {
-              nd[q] <- u
-            }
-          } else {
-            u <- as.numeric(b$data[[i]][[j]])
-            if (length(u) == length((nd[[1]]))) {
-              nd[q] <- u
+  if (length(nd) == 0) {
+    nd
+  } else {
+    for (i in 1:length(layers)) {
+      q <- class(o$layers[[i]]$geom)[1]
+      if (q != "GeomBlank") {
+        for (j in m) {
+          if (!is.null(o$layers[[i]]$mapping[[j]])) {
+            q <- rlang::as_label(o$layers[[i]]$mapping[[j]])
+            q <- gsub("\"", "", q)
+            if (q %in% colnames(o$data)) {
+              ## Nothing to do
+            } else if (j == "label" || j == "colour" || j == "fill") {
+              u <- as.character(b$data[[1]][[j]])
+              if (length(u) == length((nd[[1]]))) {
+                nd[q] <- u
+              }
+            } else {
+              u <- as.numeric(b$data[[i]][[j]])
+              if (length(u) == length((nd[[1]]))) {
+                nd[q] <- u
+              }
             }
           }
         }
       }
     }
+    nd <- tibble::add_column(nd, Id = row.names(d), .before = 1)
+    nd <- tibble::add_row(nd, .before = 1)
+    nd[1, ] <- colnames(nd)
+    as.matrix(nd)
   }
-  nd <- tibble::add_column(nd, Id = row.names(d), .before = 1)
-  nd <- tibble::add_row(nd, .before = 1)
-  nd[1, ] <- colnames(nd)
-  as.matrix(nd)
 }

@@ -63,7 +63,7 @@ canvasXpress <- function(data        = NULL,
 
     config <- list(graphType = graphType, isR = TRUE, ...)
 
-    if (is.null(data) || !(any(c("canvasXpress", "ggplot", "ggsurvplot") %in% class(data)))) {
+    if (is.null(data) || !(any(c("canvasXpress", "ggplot", "ggsurvplot", "ggmatrix") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)
     }
 
@@ -136,6 +136,11 @@ canvasXpress <- function(data        = NULL,
                           events      = events,
                           afterRender = afterRender)
     } else if (!is.null(data) && ("ggplot" %in% class(data))) {
+        if (!(requireNamespace("ggplot2", quietly = TRUE))) {
+            stop("The ggplot2 package is required to use this functionality.")
+        }
+        cx_object <- ggplot.as.list(data, ...)
+    } else if (!is.null(data) && ("ggmatrix" %in% class(data))) {
         if (!(requireNamespace("ggplot2", quietly = TRUE))) {
             stop("The ggplot2 package is required to use this functionality.")
         }

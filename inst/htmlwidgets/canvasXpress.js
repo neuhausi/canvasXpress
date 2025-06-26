@@ -56,8 +56,9 @@ HTMLWidgets.widget({
 
         // create the new chart
         if (!(x instanceof Array)) {
-          if (x instanceof Object && x.hasOwnProperty('isPatchwork')) {
-            console.log('---> patchwork ' + c.id);
+          if (x instanceof Object && (x.hasOwnProperty('isPatchwork') || x.hasOwnProperty('isGGMatrix'))) {
+            var type = x.hasOwnProperty('isPatchwork') ? 'patchwork' : 'ggmatrix';
+            console.log('---> ' + type + ' ' + c.id);
             if (p.firstChild && p.firstChild.tagName && p.firstChild.tagName.toLowerCase() == 'canvas') {
               p.removeChild(p.firstChild);
             }

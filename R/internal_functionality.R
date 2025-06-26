@@ -8,6 +8,9 @@ assertDataCorrectness <- function(data, graphType, config) {
         if ("ggsurvplot" %in% class(data)) {
             return()
         }
+        if ("ggmatrix" %in% class(data)) {
+            return()
+        }
     }
 
     # proceed with validation
