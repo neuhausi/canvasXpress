@@ -296,14 +296,21 @@ gg_theme <- function(o) {
   }
   atts <- ls(e)
   for (a in atts) {
-    if (is.list(e[[a]])) {
-      atts2 <- ls(e[[a]])
+    if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
+      is_s7_object  <- ("S7_object" %in% class(e[[a]]))
+      attrs_values  <- e[[a]]
+      if (is_s7_object) {
+          attrs_values <- S7::props(e[[a]])
+      }
+
+      atts2 <- ls(attrs_values)
+
       if (length(atts2) > 0) {
         for (b in atts2) {
           if (b != "inherit.blank") {
             k <- paste(a, b, sep = ".")
-            c <- class(e[[a]][[b]])[1]
-            v <- as.character(e[[a]][[b]])
+            c <- class(attrs_values[[b]])[1]
+            v <- as.character(attrs_values[[b]])
             m <- regexpr("margin", k)[1]
             if (m > 0 && length(v) > 0) {
               suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
@@ -320,18 +327,16 @@ gg_theme <- function(o) {
         t[[a]] <- class(e[[a]])[1]
       }
     } else {
-        if (is_simple_type(e[[a]])) {
-            v <- as.character(e[[a]])
-            c <- class(e[[a]])[1]
-            m <- regexpr("margin", a)[1]
-            if (m > 0 && length(v) > 0) {
-                t[[a]] <- suppressWarnings(t[[a]] <- max(as.numeric(gsub("points", "", as.character(v)))))
-            } else if (length(v) > 0) {
-                if (a == "size" && c == "rel") {
-                    t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
-                } else {
-                    t[[a]] <- gsub("points", "", v)
-                }
+        v <- as.character(e[[a]])
+        c <- class(e[[a]])[1]
+        m <- regexpr("margin", a)[1]
+        if (m > 0 && length(v) > 0) {
+            t[[a]] <- suppressWarnings(t[[a]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+        } else if (length(v) > 0) {
+            if (a == "size" && c == "rel") {
+                t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
+            } else {
+                t[[a]] <- gsub("points", "", v)
             }
         }
     }
@@ -339,20 +344,7 @@ gg_theme <- function(o) {
   t
 }
 
-is_simple_type <- function(element_value) {
-    simple_type     <- TRUE
-    converted_value <- NULL
-    tryCatch({
-        converted_value = as.character(element_value)
-    }, error = function(e) {
-        NULL
-    })
 
-    if (is.null(converted_value)) {
-        simple_type <- FALSE
-    }
-    simple_type
-}
 gg_scales <- function(o, b) {
   if (missing(o)) {
     o <- ggplot2::last_plot()
