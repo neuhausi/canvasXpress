@@ -30,7 +30,6 @@ jobs:
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
-            R -e 'install.packages("S7")'
 
       - run:
           name: Session information and installed package versions
