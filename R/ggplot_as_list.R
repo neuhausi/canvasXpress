@@ -298,7 +298,7 @@ gg_theme <- function(o) {
   for (a in atts) {
     if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
       attrs_values  <- e[[a]]
-      if ("S7_object" %in% class(e[[a]])) {
+      if (requireNamespace("S7", quietly = TRUE) && ("S7_object" %in% class(e[[a]]))) {
           attrs_values <- S7::props(e[[a]])
       }
 
