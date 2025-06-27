@@ -297,10 +297,9 @@ gg_theme <- function(o) {
   atts <- ls(e)
   for (a in atts) {
     if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
-      is_s7_object  <- ("S7_object" %in% class(e[[a]]))
       attrs_values  <- e[[a]]
-      if (is_s7_object) {
-          attrs_values <- S7::props(e[[a]])
+      if ("S7_object" %in% class(e[[a]])) {
+          attrs_values <- props(e[[a]])
       }
 
       atts2 <- ls(attrs_values)
