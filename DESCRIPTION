@@ -38,6 +38,7 @@ Suggests:
     readr,
     rlang,
     rmarkdown,
+    S7,
     stringr,
     testthat,
     tibble,
