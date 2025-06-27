@@ -331,7 +331,7 @@ gg_theme <- function(o) {
         c <- gsub("ggplot2::", "", class(e[[a]])[1])
         m <- regexpr("margin", a)[1]
         if (m > 0 && length(v) > 0) {
-            t[[a]] <- suppressWarnings(t[[a]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+            t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
         } else if (length(v) > 0) {
             if (a == "size" && c == "rel") {
                 t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
