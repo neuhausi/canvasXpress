@@ -149,7 +149,7 @@ test_that("ggplot.as.list - ggplot2 GeomErrorbar", {
         se    = c(0.1, 0.3, 0.3, 0.2))
     gplot <- ggplot(data, aes(resp, trt, colour = group)) +
         geom_point() +
-        geom_errorbarh(aes(xmax = resp + se, xmin = resp - se))
+        geom_errorbar(aes(xmax = resp + se, xmin = resp - se), orientation = "y")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
     cxplot_list <- jsonlite::parse_json(cxplot)
