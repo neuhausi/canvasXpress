@@ -296,14 +296,20 @@ gg_theme <- function(o) {
   }
   atts <- ls(e)
   for (a in atts) {
-    if (is.list(e[[a]])) {
-      atts2 <- ls(e[[a]])
+    if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
+      attrs_values  <- e[[a]]
+      if (("S7_object" %in% class(e[[a]])) && requireNamespace("S7", quietly = TRUE)) {
+          attrs_values <- S7::props(e[[a]])
+      }
+
+      atts2 <- ls(attrs_values)
+
       if (length(atts2) > 0) {
         for (b in atts2) {
           if (b != "inherit.blank") {
             k <- paste(a, b, sep = ".")
-            c <- class(e[[a]][[b]])[1]
-            v <- as.character(e[[a]][[b]])
+            c <- class(attrs_values[[b]])[1]
+            v <- as.character(attrs_values[[b]])
             m <- regexpr("margin", k)[1]
             if (m > 0 && length(v) > 0) {
               suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
@@ -317,25 +323,26 @@ gg_theme <- function(o) {
           }
         }
       } else {
-        t[[a]] <- class(e[[a]])[1]
+        t[[a]] <- gsub("ggplot2::", "", class(e[[a]])[1])
       }
     } else {
-      v <- as.character(e[[a]])
-      c <- class(e[[a]])[1]
-      m <- regexpr("margin", a)[1]
-      if (m > 0 && length(v) > 0) {
-        t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
-      } else if (length(v) > 0) {
-        if (a == "size" && c == "rel") {
-          t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
-        } else {
-          t[[a]] <- gsub("points", "", v)
+        v <- as.character(e[[a]])
+        c <- gsub("ggplot2::", "", class(e[[a]])[1])
+        m <- regexpr("margin", a)[1]
+        if (m > 0 && length(v) > 0) {
+            t[[a]] <- suppressWarnings(t[[k]] <- max(as.numeric(gsub("points", "", as.character(v)))))
+        } else if (length(v) > 0) {
+            if (a == "size" && c == "rel") {
+                t[[a]] <- ceiling(s * as.numeric(v) * 0.9)
+            } else {
+                t[[a]] <- gsub("points", "", v)
+            }
         }
-      }
     }
   }
   t
 }
+
 
 gg_scales <- function(o, b) {
   if (missing(o)) {
@@ -655,7 +662,7 @@ gg_proc_layer <- function(o, idx, bld) {
             next
           }
           b <- l[[p]][[a]]
-          if (is.vector(b)) {
+          if (!(missing(b)) && is.vector(b)) {
             f <- regexpr("factor", b)[1]
             if (is.character(f) && f > 0) {
               b <- stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
