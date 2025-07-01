@@ -51,6 +51,10 @@ jobs:
           command: |
             # Install suggested packages
             R -e 'install.packages("png")'
+            # Set environment variable to exclude S7
+            export _R_CHECK_DEPENDS_ONLY_=FALSE
+            export _R_CHECK_SUGGESTS_ONLY_=TRUE
+            export _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_=S7
             # Perform package check
             R CMD check *tar.gz
 
