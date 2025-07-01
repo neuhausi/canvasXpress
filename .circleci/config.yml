@@ -51,6 +51,9 @@ jobs:
           command: |
             # Install suggested packages
             R -e 'install.packages("png")'
+            # Set environment variable to exclude S7
+            export _R_CHECK_FORCE_SUGGESTS_=FALSE
+            export _R_CHECK_SUGGESTS_ONLY_=TRUE
             # Perform package check
             R CMD check *tar.gz
 
@@ -80,6 +83,7 @@ jobs:
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
+            R -e 'install.packages("S7")'
 
       - run:
           name: Session information and installed package versions
@@ -130,6 +134,7 @@ jobs:
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
+            R -e 'install.packages("S7")'
 
       - run:
           name: Session information and installed package versions
@@ -180,6 +185,7 @@ jobs:
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
+            R -e 'install.packages("S7")'
 
       - run:
           name: Session information and installed package versions
