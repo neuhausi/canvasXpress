@@ -44,5 +44,6 @@ Suggests:
     tidyr,
     limma,
     ggplot2,
-    survminer
+    survminer,
+    S7
 VignetteBuilder: knitr
