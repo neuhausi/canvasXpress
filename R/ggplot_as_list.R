@@ -209,6 +209,18 @@ gg_cxplot <- function(o, target, ...) {
       p$col <- bld$data[[i]]$colour
       p$label <- bld$data[[i]]$label
       p$panel <- bld$data[[i]]$PANEL
+    } else if (l == "GeomTextNpc") {
+      p$label <- bld$data[[i]]$label
+      p$npcx <- bld$data[[i]]$npcx
+      p$npcy <- bld$data[[i]]$npcy
+    } else if (l == "GeomBarPattern" || l == "GeomColPattern") {
+      p$data_pattern <- bld$data[[i]]$pattern
+      p$data_pattern_spacing <- bld$data[[i]]$pattern_spacing
+      p$data_pattern_angle <- bld$data[[i]]$pattern_angle
+      p$data_pattern_density <- bld$data[[i]]$pattern_density
+      p$data_pattern_fill <- bld$data[[i]]$fill
+      p$data_pattern_color <- bld$data[[i]]$colour
+      p$data_pattern_key <- bld$data[[i]]$pattern_key
     }
     p$stat <- proto_stat[i]
     q <- list()
@@ -481,6 +493,8 @@ gg_scales <- function(o, b) {
         if (is.character(s$name)) {
           r$yAxisTitle <- s$name
         }
+      } else if (s$aesthetics[1] == "pattern" || s$aesthetics[1] == "pattern_spacing" || s$aesthetics[1] == "pattern_angle") {
+        r$colors <- list(unique(b$data[[1]]$fill))
       }
     }
     if (w == 1) {
@@ -735,6 +749,23 @@ gg_proc_layer <- function(o, idx, bld) {
               } else {
                 r[[a]] <- b
               }
+            }
+          } else if (class(b)[1] == "formula") {
+            dl <- bld$data[[idx]]
+            r$formula <- list()
+            r$formula$def <- deparse(b)
+            if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
+              r$formula$x <- as.numeric(dl[["x"]])
+              r$formula$y <- as.numeric(dl[["y"]])
+            }
+            if ("ymin" %in% colnames(dl) && "ymax" %in% colnames(dl)) {
+              r$formula$ymin <- as.numeric(dl[["ymin"]])
+              r$formula$ymax <- as.numeric(dl[["ymax"]])
+              max <- bld$layout$panel_scales_y[[1]]$range$range[2]
+              min <- bld$layout$panel_scales_y[[1]]$range$range[1]
+              ext <- (max - min) * 0.05
+              r$formula$minY <- min - ext
+              r$formula$maxY <- max + ext
             }
           }
         }
