@@ -213,14 +213,6 @@ gg_cxplot <- function(o, target, ...) {
       p$label <- bld$data[[i]]$label
       p$npcx <- bld$data[[i]]$npcx
       p$npcy <- bld$data[[i]]$npcy
-    } else if (l == "GeomBarPattern" || l == "GeomColPattern") {
-      p$data_pattern <- bld$data[[i]]$pattern
-      p$data_pattern_spacing <- bld$data[[i]]$pattern_spacing
-      p$data_pattern_angle <- bld$data[[i]]$pattern_angle
-      p$data_pattern_density <- bld$data[[i]]$pattern_density
-      p$data_pattern_fill <- bld$data[[i]]$fill
-      p$data_pattern_color <- bld$data[[i]]$colour
-      p$data_pattern_key <- bld$data[[i]]$pattern_key
     }
     p$stat <- proto_stat[i]
     q <- list()
@@ -529,12 +521,18 @@ gg_scales <- function(o, b) {
   } else {
     n <- length(b[[3]]$scales$scales)
     k <- FALSE
+    h <- colnames(b$data[[1]])
     if (n > 0) {
       for (i in 1:n) {
         if (!is.null(b[[3]]$scales$scales[[i]]$palette.cache)) {
-          r$colors <- b[[3]]$scales$scales[[i]]$palette.cache
-          k <- TRUE
-          break
+          if (b[[3]]$scales$scales[[i]]$aesthetics[1] == "pattern") {
+            r$patterns <- b[[3]]$scales$scales[[i]]$palette.cache
+            
+          } else {
+            r$colors <- b[[3]]$scales$scales[[i]]$palette.cache
+            k <- TRUE
+            break
+          }
         }
       }
     }
@@ -565,6 +563,27 @@ gg_scales <- function(o, b) {
       ## Nothing to do
     } else {
       r$colors <- cols
+    }
+  }
+  layers <- sapply(o$layers, function(x) class(x$geom)[1])
+  for (i in 1:length(layers)) {
+    l <- layers[i]
+    if (regexpr("Pattern", l)[1] > 0) {
+      if (l == "GeomViolinPattern") {
+        r$data_pattern <- unique(b$data[[i]]$pattern)
+        r$data_pattern_spacing <- list(unique(b$data[[i]]$pattern_spacing))
+        r$data_pattern_angle <- list(unique(b$data[[i]]$pattern_angle))
+        r$data_pattern_density <- list(unique(b$data[[i]]$pattern_density))
+        r$data_pattern_fill <- list(unique(b$data[[i]]$pattern_fill))
+        r$data_pattern_color <- list(unique(b$data[[i]]$pattern_colour))
+      } else {
+        r$data_pattern <- b$data[[i]]$pattern
+        r$data_pattern_spacing <- b$data[[i]]$pattern_spacing
+        r$data_pattern_angle <- b$data[[i]]$pattern_angle
+        r$data_pattern_density <- b$data[[i]]$pattern_density
+        r$data_pattern_fill <- b$data[[i]]$pattern_fill
+        r$data_pattern_color <- b$data[[i]]$pattern_colour
+      }
     }
   }
   tx <- as.character(b$layout$coord$trans$y)[1]
@@ -647,12 +666,13 @@ gg_mapping <- function(o, b) {
     o <- ggplot2::last_plot()
   }
   r <- list()
-  m <- c("x", "y", "z", "xmin", "xmax", "xend", "ymin", "ymax", "yend", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample")
+  m <- c("x", "y", "z", "xmin", "xmax", "xend", "ymin", "ymax", "yend", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample", "pattern")
   e <- TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
       e <- FALSE
       l <- rlang::as_label(o$mapping[[i]])
+      l <- stringr::str_replace(stringr::str_replace(stringr::str_replace(l, "factor\\(", ""), "\\)", ""), "as\\.", "")
       if (i == "colour") {
         r[["color"]] <- l
       } else if (i == "label") {
@@ -699,7 +719,7 @@ gg_proc_layer <- function(o, idx, bld) {
           b[[p[1]]] <- c
           r[[a]] <- b
         } else if (f > 0) {
-          b <- stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
+          b <- stringr::str_replace(stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", ""), "as\\.", "")
           q <- append(q, b)
           if (!(a %in% c("x", "y", "z"))) {
             if (a == "colour") {
@@ -741,7 +761,7 @@ gg_proc_layer <- function(o, idx, bld) {
           if (is.vector(b)) {
             f <- regexpr("factor", b)[1]
             if (is.character(f) && f > 0) {
-              b <- stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", "")
+              b <- stringr::str_replace(stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", ""), "as\\.", "")
             }
             if (is.null(r[[a]])) {
               if (a == "colour") {
