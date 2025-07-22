@@ -11,8 +11,12 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ---
 
+## v1.57.4
+* Updated CanvasXpress JS and CSS libraries to v57.4  
+* Added compatability with ggplot2 v4.x
+
 ## v1.56.1
-* Updated CanvasXpress JS and CSS libraries to v55.9
+* Updated CanvasXpress JS and CSS libraries to v56.1
 
 
 ## v1.55.9
