@@ -1,12 +1,7 @@
 ## Comments from Maintainer
 
-- This is an update to underlying JS library (canvasXpress)
-
-Additional Notes:  
-
-- this update is close to the previous release due to a bug found post-release.  We would appreciate still being able to update
-the package sooner rather than waiting a few weeks if at all possible.
-- there is a package that has been archived on CRAN that has a reverse dependency.  This is unable to be checked by revdepcheck as noted below, however is not something we can resolve on our end.  The package with the issue is MAFDash https://cran.r-project.org/package=MAFDash
+- This is an update to underlying JS library (canvasXpress) and updates for compatibility with the upcoming
+ggplot2 4.0 release
 
 ---  
 
@@ -34,7 +29,7 @@ RHub (v2)
 
 rhub::rhub_check(branch    = "cran", 
                  platforms = c("ubuntu-next", "ubuntu-release", "nosuggests",  # linux platforms
-                               "linux", "macos-arm64", "windows"))             # other platforms
+                               "linux", "macos", "windows"))             # other platforms
 
 
 ---  

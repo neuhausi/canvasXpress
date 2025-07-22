@@ -74,3 +74,7 @@ test_that("cXscatter2d16", {
 test_that("cXscatter2d17", {
     check_ui_test(cXscatter2d17())
 })
+
+test_that("cXscatter2d18", {
+    check_ui_test(cXscatter2d18())
+})
