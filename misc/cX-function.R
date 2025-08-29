@@ -2156,13 +2156,11 @@ cXcontour6 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-contourdensity-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    contourType="normal",
-    graphType="Scatter2D",
+    graphType="Contour",
     showContourDataPoints=TRUE,
     showContourLevel=FALSE,
     xAxis=list("eruptions"),
-    yAxis=list("waiting"),
-    afterRender=list(list("createContour"))
+    yAxis=list("waiting")
   )
 }
 
@@ -4149,6 +4147,7 @@ cXheatmap14 <- function() {
     showVarDendrogram=FALSE,
     sizeBy="Size",
     sizeByData="data2",
+    sizes=list(4, 6, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48),
     title="Bubble Heatmap Plot",
     variablesClustered=TRUE,
     xAxis=list("Var1", "Var2", "Var3", "Var4", "Var5", "Var6", "Var7", "Var8", "Var9", "Var10", "Var11", "Var12", "Var13", "Var14", "Var15", "Var16", "Var17", "Var18", "Var19", "Var20")
