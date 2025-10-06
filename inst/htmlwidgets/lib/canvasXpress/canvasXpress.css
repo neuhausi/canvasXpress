@@ -2297,11 +2297,12 @@ div.CanvasXpressTableCellLink {
   box-sizing: border-box;
   color: var(--cx-font-color);
   margin: 2px 2px 1px 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-y: hidden;
   position: relative;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   text-align: left;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 div.CanvasXpressTableCell:hover {

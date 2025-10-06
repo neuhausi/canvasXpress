@@ -2,6 +2,7 @@
 
 - Map charts 17 - CX site - R reproducible code is not executable
 - Network plot custom tooltips cut off at right edge of plot
+- Tree plot crash when smpTextColor is changed
 
 ---
 
