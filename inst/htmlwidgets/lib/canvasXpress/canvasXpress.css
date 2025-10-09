@@ -2321,11 +2321,11 @@ th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
 }
 
 th.CanvasXpressTableCellHead div.CanvasXpressTableCell {
-  border: var(--cx-border-transparent);
+  /* border: var(--cx-border-transparent); */
 }
 
 th.CanvasXpressTableCellHeadActive div.CanvasXpressTableCell {
-  border: var(--cx-border)
+  /* border: var(--cx-border) */
 }
 
 /***************/
