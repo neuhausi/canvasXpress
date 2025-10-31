@@ -2098,6 +2098,52 @@ tr.CanvasXpressDataTableDOE {
 }
 
 /****************/
+/*     Grid     */
+/****************/
+
+div.cX-Grid {
+  border: var(--cx-border);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+div.cX-Grid-Banner {
+  display: flex;
+}
+
+div.cX-Grid-Root {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  height: 0;
+  min-height: 0;
+}
+
+div.cX-Grid-Status {
+  border-top: var(--cx-border);
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.5;
+  overflow: hidden;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+div.cX-Grid-Pagination {
+  align-items: center;
+  border-top: var(--cx-border);
+  display: flex;
+  gap: 32px;
+  height: 42px;
+  justify-content: flex-end;
+  padding: 0 16px;
+}
+
+/****************/
 /*  Data Table  */
 /****************/
 
