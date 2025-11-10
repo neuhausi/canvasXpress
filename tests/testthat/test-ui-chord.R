@@ -12,3 +12,7 @@ test_that("cXchord2", {
 test_that("cXchord3", {
     check_ui_test(cXchord3())
 })
+
+test_that("cXchord4", {
+    check_ui_test(cXchord4())
+})

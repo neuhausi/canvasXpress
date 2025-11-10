@@ -127,9 +127,9 @@ test_that("piping - attempted data changes", {
     # Attempt to replace the data variables
     # Get two dataframes to use
     error_msg <- "Primary object data changes are not supported when modifying a canvasXpress object"
-    y <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-dat.txt",
+    y <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-dat.txt",
                     header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
-    x <- read.table("https://www.canvasxpress.org/data/cX-toothgrowth-smp.txt",
+    x <- read.table("https://www.canvasxpress.org/data/r/cX-toothgrowth-smp.txt",
                     header = TRUE, sep = "\t", quote = "", row.names = 1, fill = TRUE, check.names = FALSE, stringsAsFactors = FALSE)
 
     expect_error(cXdotplot4() %>% canvasXpress(smpAnnot = y), regexp = error_msg)
@@ -141,10 +141,11 @@ test_that("piping - area chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>%
-        canvasXpress(title              = "decoration lines, xAxisGridMajorSize",
-                     decorations        = list(line = list(list(color = "rgba(205,0,0,0.5)", width   = 2, x = 2000),
-                                                           list(color = "rgba(0,104,139,0.5)", width = 2, x = 2005))),
-                     xAxisGridMajorSize = 2)
+        canvasXpress(
+            title               = "decoration lines, xAxisGridMajorWidth",
+            decorations         = list(line = list(list(color = "rgba(205,0,0,0.5)",   width = 2, x = 2),
+                                                   list(color = "rgba(0,104,139,0.5)", width = 2, x = 5))),
+            xAxisGridMajorWidth = 5)
 
     check_ui_test(result)
 })
@@ -165,11 +166,11 @@ test_that("piping - bar chart", {
     obj1 <- cXbar13()
     check_ui_test(obj1)
 
-    result <- obj1 %>% canvasXpress(
-        title         = "Smp label color, legendOrder",
-        smpTextColor  = "red",
-        legendOrder   = list("Stage" = list("Stage4", "Stage2", "Stage1", "Stage3"))
-    )
+    result <- obj1 %>%
+        canvasXpress(
+            title       = "ColorBy Factor2, legendOrder",
+            colorBy     = "Factor2",
+            legendOrder = list("Factor2" = list("Lev : B", "Lev : A")))
 
     check_ui_test(result)
 })
@@ -266,8 +267,8 @@ test_that("piping - dashboard chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title        = "layout 2x1",
-        layoutConfig = list(list(size = "2X1"))
+        title        = "layout 4x4",
+        layoutConfig = list(list(size = "4X2"))
     )
 
     check_ui_test(result)
@@ -728,7 +729,6 @@ test_that("piping - tree chart", {
 
     result <- obj1 %>% canvasXpress(
         title         = "change label colour and colour spectrum",
-        smpTextColor  = "#60418c",
         afterRender   = list(
             list(
                 "modifyColorSpectrumByScheme",

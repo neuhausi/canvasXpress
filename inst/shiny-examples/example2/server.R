@@ -186,7 +186,6 @@ shinyServer(function(input, output, session) {
     observeEvent(levels_choices(), {
         updateSelectizeInput(session, "levelSel",
                              choices  = levels_choices(),
-                             selected = levels_choices()[1],
-                             server   = TRUE)
+                             selected = levels_choices()[1])
     })
 })

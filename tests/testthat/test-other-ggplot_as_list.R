@@ -24,7 +24,7 @@ test_that("ggplot.as.list - ggplot2 GeomPoint", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_true(length(cxplot_list$data) == 33)
     expect_equal(cxplot_list$data[[2]][[1]], "Mazda RX4")
@@ -50,7 +50,7 @@ test_that("ggplot.as.list - ggplot2 GeomBin2d", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_true(length(cxplot_list$data) > 0)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -67,7 +67,7 @@ test_that("ggplot.as.list - ggplot2 GeomBar", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 53941)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -84,7 +84,7 @@ test_that("ggplot.as.list - ggplot2 GeomPath", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 575)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -102,7 +102,7 @@ test_that("ggplot.as.list - ggplot2 StatQq", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 201)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -132,7 +132,7 @@ test_that("ggplot.as.list - ggplot2 point range", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 6)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -149,13 +149,13 @@ test_that("ggplot.as.list - ggplot2 GeomErrorbar", {
         se    = c(0.1, 0.3, 0.3, 0.2))
     gplot <- ggplot(data, aes(resp, trt, colour = group)) +
         geom_point() +
-        geom_errorbarh(aes(xmax = resp + se, xmin = resp - se))
+        geom_errorbar(aes(xmax = resp + se, xmin = resp - se), orientation = "y")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 5)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -173,7 +173,7 @@ test_that("ggplot.as.list - ggplot2 facets", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 14)
+    expect_equal(length(cxplot_list), 15)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 235)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
