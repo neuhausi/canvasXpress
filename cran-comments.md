@@ -1,7 +1,6 @@
 ## Comments from Maintainer
 
-- This is an update to underlying JS library (canvasXpress) and updates for compatibility with the upcoming
-ggplot2 4.0 release
+- This is an update to underlying JS library (canvasXpress) 
 
 ---  
 
@@ -10,7 +9,7 @@ ggplot2 4.0 release
 
 RStudio Server (ubuntu 20.04)  
 
-* R 4.3.3
+* R 4.5.1
 
 CircleCI
 

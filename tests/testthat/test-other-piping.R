@@ -729,7 +729,6 @@ test_that("piping - tree chart", {
 
     result <- obj1 %>% canvasXpress(
         title         = "change label colour and colour spectrum",
-        smpTextColor  = "#60418c",
         afterRender   = list(
             list(
                 "modifyColorSpectrumByScheme",

@@ -77,7 +77,12 @@ test_that("scatterplot notePoint", {
                             yAxis                   = list("-log-pVal"),
                             showLegend              = FALSE,
                             title                   = "Scatterplot - notePoint",
-                            decorations             = list(marker = list(list(sample = list("logFC", "-log-pVal"), text = "Maybe an Outlier?", variable = "Gene30", x = 0.11, y = 0.45))))
+                            decorations             = list(marker = list(list(
+                                sample   = list("logFC", "-log-pVal"),
+                                text     = "Maybe an Outlier?",
+                                variable = "Gene30",
+                                x        = 0.2,
+                                y        = 0.45))))
 
     check_ui_test(result)
 })
