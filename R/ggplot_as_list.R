@@ -184,10 +184,12 @@ gg_cxplot <- function(o, target, ...) {
         p$showKMConfidenceIntervals <- config$showKMConfidenceIntervals
         p$kmRiskTable <- config$kmRiskTable
         p$kmColors <- unique(p$data$color)
-        within(cx$config, rm("kmCxplot"))
-        within(cx$config, rm("showKMConfidenceIntervals"))
-        within(cx$config, rm("kmRiskTable"))
-        within(p, rm(data))
+        cx$config <- within(cx$config, {
+          rm(kmCxplot)
+          rm(showKMConfidenceIntervals)
+          rm(kmRiskTable)
+        })
+        p <- within(p, rm(data))
       }
     } else if (l == "GeomDensityRidges") {
       p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
@@ -351,14 +353,6 @@ gg_theme <- function(o) {
     if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
       attrs_values  <- e[[a]]
       if (("S7_object" %in% class(e[[a]])) && requireNamespace("S7", quietly = TRUE)) {
-          attrs_values <- S7::props(e[[a]])
-      }
-
-      atts2 <- ls(attrs_values)
-
-    if (is.list(e[[a]]) || ("S7_object" %in% class(e[[a]]))) {
-      attrs_values  <- e[[a]]
-      if (("S7_object" %in% class(e[[a]])) && requireNamespace("S7", quietly = TRUE)) {
           if ("element_blank" %in% class(attrs_values)) {
             t[[a]] <- "element_blank"
             next
@@ -406,7 +400,6 @@ gg_theme <- function(o) {
   }
   t
 }
-
 
 gg_scales <- function(o, b) {
   if (missing(o)) {
