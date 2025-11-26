@@ -39,7 +39,7 @@
   --cx-code-null: rgb(69, 117, 180);
   --cx-code-comment: rgb(58, 115, 0);
   /* Favorite UI colors */
-  --cx-color-ui-background: rgba(255, 255, 255, 0.95);
+  --cx-color-ui-background: rgb(255, 255, 255);
   --cx-color-ui-font: rgb(34, 34, 34);
   --cx-color-widgets: rgb(83, 105, 255);
   --cx-color-widgets-hover: rgba(83, 105, 255, 0.1);
@@ -1450,7 +1450,7 @@ div.CanvasXpressDrag {
   opacity: 0.75;
   box-sizing: border-box;
   filter: alpha(opacity=75);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   position: absolute;
 }
 
@@ -1469,7 +1469,7 @@ div.CanvasXpressDragLayout {
 div.CanvasXpressTooltip {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   box-sizing: border-box;
   cursor: move;
   color: var(--cx-font-color);
@@ -1485,7 +1485,7 @@ div.CanvasXpressTooltip {
 div.CanvasXpressTooltipInfo {
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   cursor: move;
   color: var(--cx-font-color);
   font: var(--cx-font);
@@ -2144,7 +2144,7 @@ div.cX-DataTable-Banner {
 }
 
 div.cX-DataTable-Logo {
-  margin: none;
+
 }
 
 div.cX-DataTable-Search {
@@ -2156,8 +2156,8 @@ input.cX-DataTable-Search {
   border: 1px var(--cx-grid-border-style) var(--cx-grid-border-color);
   border-radius: var(--cx-border-radius);
   color: var(--cx-font-color);
-  margin-right: 8px;
-  padding: 2px;
+  margin-right: 10px;
+  padding: 10px;
   outline: none;
   font-size: 14px;
   display: flex;
@@ -2173,7 +2173,21 @@ input[type="search"]::-webkit-search-cancel-button.cX-DataTable-Search {
 div.cX-DataTable-Toolbar {
   background-color: var(--cx-grid-toolbar-background-color);
   border-bottom: 1px var(--cx-grid-border-style) var(--cx-grid-border-color);
+  -moz-transition: height 0.5s ease;
+  -webkit-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
 }
+
+div.cX-DataTable-Toolbar-Zero {
+  background-color: var(--cx-grid-toolbar-background-color);
+  border-bottom: none;
+  -moz-transition: height 0.5s ease;
+  -webkit-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+}
+
 
 img.cX-DataTable-Toolbar-Image,
 svg.cX-DataTable-Toolbar-Image {
@@ -2221,7 +2235,6 @@ div.cX-DataTable-Vertical-Scrollbar {
 
 img.cX-DataTable-Vertical-Scrollbar-Image {
   max-height: unset !important;
-  height: revert-layer !important;
 }
 
 div.cX-DataTable-Horizontal-Scrollbar {
@@ -2242,12 +2255,20 @@ div.cX-DataTable-Status {
   position: relative;
   align-items: center;
   display: flex;
+  font-family: var(--cx-font-family);
+  font-weight: normal;
+  font-variant-numeric: tabular-nums;
+  color: var(--cx-font-color);
+}
+
+div.cX-DataTable-Status-Left {
+  display:flex;
 }
 
 span.cX-DataTable-Dimensions {
   display: flex;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 20px;
   font-size: medium;
 }
 
@@ -2257,6 +2278,10 @@ div.cX-DataTable-Pagination {
   position: relative;
   align-items: center;
   display: flex;
+  font-family: var(--cx-font-family);
+  font-weight: normal;
+  font-variant-numeric: tabular-nums;
+  color: var(--cx-font-color);
 }
 
 span.cX-DataTable-Pagination-Size {
@@ -2266,6 +2291,18 @@ span.cX-DataTable-Pagination-Size {
   gap: 10px;
 }
 
+select.cX-DataTable-Pagination-Size-Select {
+  background-color: var(--cx-background-widgets-color);
+  border: 1px var(--cx-border-style) var(--cx-border-color);
+  border-radius: var(--cx-border-radius);
+  color: var(--cx-font-color);
+  height: 20px;
+  padding: 2px;
+  outline: none;
+  font-size: var(--cx-font-size);
+  cursor: pointer;
+}
+
 span.cX-DataTable-Pagination-Rows {
   display: flex;
   align-items: center;
@@ -2273,11 +2310,22 @@ span.cX-DataTable-Pagination-Rows {
   gap: 10px;
 }
 
+span.cX-DataTable-Pagination-Label-Bold {
+  font-weight: bold;
+}
+
 span.cX-DataTable-Pagination-Controls {
+  cursor: pointer;
   margin-right: auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  padding-bottom: 5px;
+}
+
+div.cX-DataTable-Pagination-Control-Disabled {
+  opacity: 0.2;
+  cursor: none;
 }
 
 /* Data Table Table */
@@ -2296,6 +2344,20 @@ tr.cX-DataTable-Row-Active {
   position: relative;
 }
 
+tr.cX-DataTable-Row-Active td,
+tr.cX-DataTable-Row-Active th {
+  background-color: var(--cx-background-hover-color)!important;
+}
+
+.cX-DataTable-Row:not(:first-child):hover {
+  background-color: var(--cx-background-hover-color) !important;
+}
+
+.cX-DataTable-Row:not(:first-child):hover td,
+.cX-DataTable-Row:not(:first-child):hover th {
+  background-color: transparent !important;
+}
+
 /* Data Table Header th */
 
 th.cX-DataTable-Cell-Head,
@@ -2309,6 +2371,7 @@ th.cX-DataTable-Cell-Head-Active {
   cursor: pointer;
   font: var(--cx-x-large-font);
   font-weight: bold;
+  font-variant-numeric: tabular-nums;
   padding: 0 3px 0 0 !important;
   vertical-align: middle !important;
   display: flex;
@@ -2350,6 +2413,26 @@ a.cX-DataTable-Cell-Header-Menu:hover {
   transform: scale(1.8);
 }
 
+div.cX-DataTable-Cell-Header-Filter {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+div.cX-DataTable-Cell div.cX-DataTable-Cell-Header-Filter {
+  right: 22px;
+  left: auto;
+}
+
+div.cX-DataTable-Cell-Number div.cX-DataTable-Cell-Header-Filter {
+  left: 19px;
+  right: auto;
+}
+
 div.cX-DataTable-Cell-Header-Sort {
   cursor: pointer;
   display: flex;
@@ -2360,13 +2443,17 @@ div.cX-DataTable-Cell-Header-Sort {
   transform: translateY(-50%);
 }
 
+svg.cX-DataTable-Cell-Header-Filter-Image:hover {
+  transform: scale(1.4);
+}
+
 div.cX-DataTable-Cell div.cX-DataTable-Cell-Header-Sort {
-  right: 16px;
+  right: 34px;
   left: auto;
 }
 
 div.cX-DataTable-Cell-Number div.cX-DataTable-Cell-Header-Sort {
-  left: 13px;
+  left: 31px;
   right: auto;
 }
 
@@ -2389,6 +2476,7 @@ td.cX-DataTable-Cell-Active {
   border-left: none !important;
   border-right: var(--cx-border-transparent);
   font: var(--cx-x-large-font);
+  font-variant-numeric: tabular-nums;
   color: var(--cx-font-color);
   padding: 0 3px 0 0 !important;
   vertical-align: middle;
@@ -2398,7 +2486,10 @@ td.cX-DataTable-Cell-Active {
 
 div.cX-DataTable-Cell,
 div.cX-DataTable-Cell-Number,
-div.cX-DataTable-Cell-Link {
+div.cX-DataTable-Cell-Link,
+div.cX-DataTable-Cell-Active,
+div.cX-DataTable-Cell-Number-Active,
+div.cX-DataTable-Cell-Link-Active {
   box-sizing: border-box;
   color: var(--cx-font-color);
   margin: 0px !important;
@@ -2409,20 +2500,32 @@ div.cX-DataTable-Cell-Link {
 }
 
 div.cX-DataTable-Cell,
-div.cX-DataTable-Cell-Link {
+div.cX-DataTable-Cell-Link,
+div.cX-DataTable-Cell-Active,
+div.cX-DataTable-Cell-Link-Active {
   padding-left: 15px;
   text-align: left;
 }
 
-div.cX-DataTable-Cell-Number {
+div.cX-DataTable-Cell-Number,
+div.cX-DataTable-Cell-Number-Active {
   padding-right: 15px;
   text-align: right;
 }
 
-div.cX-DataTable-Cell-Link {
+div.cX-DataTable-Cell-Link,
+div.cX-DataTable-Cell-Link-Active {
   text-decoration: underline var(--cx-border);
   text-underline-offset: 2px;
   cursor: pointer;
+}
+
+div.cX-DataTable-Cell-Active,
+div.cX-DataTable-Cell-Number-Active,
+div.cX-DataTable-Cell-Link-Active {
+  background-color: var(--cx-background-hover-color) !important;
+  border: var(--cx-border) !important;
+  border-width: 1px !important;
 }
 
 td.cX-DataTable-Cell > div.cX-DataTable-Cell:hover,
@@ -2470,7 +2573,6 @@ div.CanvasXpressDataFilterToolbar {
   border: var(--cx-border) !important;
   border-radius: 4px;
   left: 0px;
-  opacity: 0.95;
   top: 0px;
 }
 
@@ -2521,10 +2623,30 @@ label.CanvasXpressCheckboxLabel {
   margin: 0 0 0 3px !important;
 }
 
+input.cX-DataFilter-Search {
+  border: 1px var(--cx-grid-border-style) var(--cx-grid-border-color);
+  border-radius: var(--cx-border-radius);
+  color: var(--cx-font-color);
+  cursor: default;
+  width: calc(100% - 10px);
+  margin-left: 5px;
+  padding-left: 5px;
+  height: 25px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  display: flex;
+}
+
+input[type="search"]::-webkit-search-cancel-button.cX-DataFilter-Search {
+  -webkit-appearance: auto;
+  color: var(--cx-font-color);
+  height: 16px;
+  width: 16px;
+}
+
 div.CanvasXpressDataFilterContainer,
 div.CanvasXpressDataFilterContainerMask,
-div.CanvasXpressDataFilterContainerItem,
-div.CanvasXpressDataFilterContainerItemSelected,
 div.CanvasXpressDataFilterContainerHoverable {
   box-sizing: border-box;
 }
@@ -2544,15 +2666,6 @@ div.CanvasXpressDataFilterContainerMask {
   overflow-y: scroll;
 }
 
-div.CanvasXpressDataFilterContainerItem,
-div.CanvasXpressDataFilterContainerItemSelected {
-  height: 20px;
-  padding: 1px 0px 0px 1px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-div.CanvasXpressDataFilterContainerItemSelected,
 div.CanvasXpressDataFilterContainerHoverable:hover {
   background-color: var(--cx-background-hover-color);
 }
@@ -2575,7 +2688,6 @@ div.CanvasXpressDataFilterHeadActive {
   height: 38px;
   margin-top: 2px;
   overflow: hidden;
-  opacity: 0.95;
   padding: 2px;
   text-align: left;
   vertical-align: middle;
@@ -2773,6 +2885,7 @@ input.CanvasXpressRangeSliderMax {
   border: 1px solid var(--cx-background-widgets-color);
   border-radius: 5px;
   font: var(--cx-font);
+  color: var(--cx-font-color);
   margin-bottom: 2px;
   line-height: 100%;
   width: 60px;
@@ -2911,6 +3024,7 @@ div.CanvasXpressRangeSliderTicks {
 }
 
 span.CanvasXpressRangeSliderTicksLong,
+span.CanvasXpressRangeSliderTicksLongSmall,
 span.CanvasXpressRangeSliderTicks {
   position: relative;
   display: flex;
@@ -2921,10 +3035,17 @@ span.CanvasXpressRangeSliderTicks {
 }
 
 span.CanvasXpressRangeSliderTicksLong {
-  color: var(--cx-background-color);
+  color: var(--cx-font-color);
   height: 10px;
   line-height: 35px;
-  font-size: small;
+  font-size: x-small;
+}
+
+span.CanvasXpressRangeSliderTicksLongSmall {
+  color:  var(--cx-font-color);
+  height: 10px;
+  line-height: 35px;
+  font-size: x-small;
 }
 
 span.CanvasXpressRangeSliderTicks {
@@ -3065,7 +3186,7 @@ div.CanvasXpressDataFilterContainerItem::selection {
 
 div.CanvasXpressLink {
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   background-image: url(data:image/gif;base64,R0lGODlh+gABAIcAAOLj4/Dw8P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAP8ALAAAAAD6AAEAAAgfAAMIHEiwoMGBAAQcXMiwocOHECNKnEixosWLGCMGBAA7);
   background-repeat: repeat-y;
   border: 1px solid rgb(83, 105, 255);
@@ -3076,7 +3197,6 @@ div.CanvasXpressLink {
   font: var(--cx-font);
   line-height: 100%;
   margin: 0px;
-  opacity: 0.95;
   padding: 0px;
   position: absolute;
   -moz-box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -3156,7 +3276,7 @@ input:checked.CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigu
 
 div.CanvasXpressMenu {
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
   border-radius: 3px;
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -3167,7 +3287,6 @@ div.CanvasXpressMenu {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  opacity: 0.95;
   -moz-box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
 }
 
@@ -3522,7 +3641,7 @@ svg.CanvasXpressToolbarHelp {
 
 div.CanvasXpressToolbarHelp {
   box-sizing: border-box;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
@@ -3550,7 +3669,7 @@ div.CanvasXpressForm {
   box-sizing: border-box;
   border: 1px solid rgb(83, 105, 255);
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   color: var(--cx-font-color);
   cursor: move;
   font: var(--cx-x-large-font);
@@ -3581,7 +3700,7 @@ input.CanvasXpressFormButton {
 }
 
 input.CanvasXpressFormButtonActive {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAeCAYAAADtlXTHAAAAFklEQVR42mN89fnvf0aSiBvPf9GaAABVL3D5nF6uqAAAAABJRU5ErkJggg==);
   background-repeat: repeat-x;
   border: 1px solid rgb(83, 105, 255);
@@ -3592,7 +3711,6 @@ input.CanvasXpressFormButtonActive {
   height: 22px;
   margin-top: 2px;
   overflow: hidden;
-  opacity: 0.95;
   padding: 2px;
   vertical-align: middle;
   -moz-user-select: none;
@@ -3603,7 +3721,7 @@ input.CanvasXpressFormButtonActive {
 }
 
 input.CanvasXpressFormText {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
   cursor: default;
@@ -3613,7 +3731,7 @@ input.CanvasXpressFormText {
 }
 
 form.CanvasXpressFormForm {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
   cursor: default;
