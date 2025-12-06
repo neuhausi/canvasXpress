@@ -140,12 +140,11 @@ td.cX-DataTable-Cell,
 td.cX-DataTable-Cell-Active,
 a.cX-DataTable-Cell-Head,
 a.cX-DataTable-Cell-Head-Active,
-div.CanvasXpressDataFilter,
-div.CanvasXpressDataFilterToolbar,
-div.CanvasXpressDataFilterHead,
-div.CanvasXpressDataFilterHeadActive,
-div.CanvasXpressToolbar img.CanvasXpressToolbarImage,
-div.CanvasXpressToolbar svg.CanvasXpressToolbarImage,
+div.cX-DataFilter,
+div.cX-DataFilter-Toolbar,
+div.cX-DataFilter-Head,
+div.cX-DataFilter-Head-Active,
+div.cX-DataFilter-Toolbar svg.cX-DataFilter-Toolbar-Image,
 div.CanvasXpressMarker {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -168,10 +167,8 @@ div.CanvasXpressMarker {
 svg.cX-bin,
 svg.cX-code,
 svg.cX-chat,
-img.CanvasXpressDataFilterToolbarImage,
-svg.CanvasXpressDataFilterToolbarImage,
-img.CanvasXpressDataFilterToolbarImageNB,
-svg.CanvasXpressDataFilterToolbarImageNB {
+svg.cX-DataFilter-Toolbar-Image,
+svg.cX-DataFilter-Toolbar-ImageNB {
   background: var(--cx-color-transparent) !important;
   border: none !important;
   box-shadow: 0 0 0px var(--cx-color-transparent) !important;
@@ -2188,8 +2185,6 @@ div.cX-DataTable-Toolbar-Zero {
   transition: height 0.5s ease;
 }
 
-
-img.cX-DataTable-Toolbar-Image,
 svg.cX-DataTable-Toolbar-Image {
   background: var(--cx-color-transparent) !important;
   border-radius: 5px;
@@ -2200,16 +2195,22 @@ svg.cX-DataTable-Toolbar-Image {
   margin: 5px 8px 0px 0px !important;
 }
 
-img.cX-DataTable-Toolbar-Image,
 svg.cX-DataTable-Toolbar-Image {
   border: var(--cx-border) !important;
 }
 
-img.cX-DataTable-Toolbar-Image-Logo,
 svg.cX-DataTable-Toolbar-Image-Logo {
   border: none !important;
   float: left;
   margin: 5px 0px 0px 10px !important;
+}
+
+div.cX-DataTable-Toolbar-Spacer {
+  float: right;
+  margin-top: 5px;
+  margin-left: 8px;
+  width: 16px;
+  border-left: 1px var(--cx-grid-border-style) var(--cx-grid-border-color);
 }
 
 div.cX-DataTable-Root {
@@ -2534,51 +2535,50 @@ td.cX-DataTable-Cell > div.cX-DataTable-Cell-Number:hover {
 }
 
 div.cX-DataTable-Upload {
-  top: 0px;
-  left: 0px;
-  border: 1px solid rgba(35, 82, 124, 0.2);
-  border-radius: 6px;
-  margin: -1px;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAQn0lEQVR4nO3dX4gd133A8W/CLSztUrZ0Hzbgh01Z6BZUWIpKHKKHDcigB1EMVcAPwmxBUIea1g95UMFNEEENJhFFEa6dGOMoxijCMW4QJlHjoAZHyK1TFOqAFCSQiAwrWIMMa1jDCrYPZxcvK91zZu6dmTNz5/uBQbZXvvu7c+f3u2fOnD8gSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSVJffSZ3AOqFWWARmN8+/hSY2f7v03v+7ifA3e0/V4HfAx8A17f/VIUsAKraDLAMfBH4K2CJkOhV+Bj4LfAu8N/bf96u6LUljehR4CTwHrDV8HEDOAMcBAZ1v1FJwT7gOeAOzSf9sGMNeInQApFUsSngKHCF/MmeOq4BXyPckkgawwxwnNAplzuxyx7rwGlgrvKzIk24KeAEcI/8iTzusYGF4AE+BdAwx4BvUk/CfLR93B7y8zlCq6Ou330K+A7hUWOvWQC01xLwAqFnf1wfAr8C/g94n/As/zbhcV4RA2Bh+1gEvgDsJ4wlGNdN4KvA2xW8ltR5U4Rvxk3Ga2b/FHiakLB1mQNWgFcZ//bkLHYUqueWgKuMlkCbhKQ/yoOj+powIIwBeJVQgEZ5D3fw0aF66hijJc4qYfDPI82HPNQMofVxg9EK2YnmQ87LPoA8Zgn3sY8QLtoZ4I+3f/b77T9vE8a+36wphgHwMvBkyf/vLmEA0Iu0uxPtceAbhNZNGf8J/C3F+ymkpEcJz9EvEEarlb2vvkoY7voE1YyrnwMul4xjDXiG0FfQJUco3yK4Ruh4lEa2TBiWWjbhizRV3wGeYrTOqwXCBV7m950e8Xe1xRShAK9T7hZnf45g1V1ThHvQMgk2zrFBaMYX7XFfpNxovqtMVhLMA5co/v7XgQM5AlW3DAjN45xDZc8Tb7aWSf5Nwn3+pM6ue5riHZ8WAUUdZLRe5zqOncTde59eJvlXt9/TpFui+OdmEdADpgmDSHIn/cOOW3x6wc5RPPnfo12P9eo2DVyk2Lm5R72Dm9Qh+wlJljvRU62Bk4QhuEX+/hvkGciT2wB4nmLn6A5OJuq9o4w+4myD0An1bcIjvZ1x7bvvtXfWzztE6Fc4R/2LbjzP5N7vF/U1ireSuvYoVBU5zmhJf44wMGWcC2cf8CzVtzxOjxHTpHmGYufsbK4Alc9pyiXWKqFgVLUg5m6HKPc4y+QvrmgROJYrQDXvBOW+8U/QTDPxIMXv8fcerzUQX1edJH3+1rFTsBeOUTypLlHNXPUyBoT71zL9Er/Ae/6UIk94ruJ5nGjLFJsfv0lo7udU9Ln2Dbo9rLcpA4otfvpsrgBVr1mKPT9fpz0DZ2aAXxKPdV+26LqnyBiKDZw4NJHeIp38q5Sfblq3AeGZvh1X1ThI+jr4abboVIujdLsT6GFF4HzWiLqtyBOgQ9miU6VmSDf7Nmn/2PDdReAW3vePY4r0DM/3sUNwIjxHuto/lS26cgaEb/62F6suKHIrsJIrOFVjjvTjtDeyRafczpN+wmIroMNOEf+A16hnZJ+6YZ70F8TjuYLTeKZIrzFvL7pSHYJX8oWmcaRG/DnqS1DsNnGSllHrjXeIf6hH8oWmlkm1Ar6XLzSNYo74B3oLv/31qXniQ8TX6ciaAZ/NHUBLHE78/GXgfhOBqBNuAz+L/Hya9DWlFjlHvAXgWG/tdZj4NfN6vtBUVmzJrfczxqX2GhDf9KUTtwHeAoTn+rGVcN0/Xg9zH/hR5OfTdGAEZp86tuYITfmF7X/+I0Lip1Z5vVxzXOqunxA2GRnmMfwCyWKeMKPvDGFgRpk94fYebZ3xp/wGxK8tBwU1ZIowHfMFql81V4p5k+HXzib93GuhMcvAK4z3DZ96/i/FpFYRbn0/QNfMEBbBbGIH3qsNvSd116PEr6Fn8oWW1qVOwDngn4EnaW5xi48a+j3qrt8QnggMy6U/bzCWiTRDWKRj1O24xjlc601FxPZmeCdjXEltbgEMCDP0vkk9c/DvAx9Efj4L3K3h92ryXGf4asvzDcZRWlsLwBLwEtVMq7wN/Br4X8IHdZOQ+DbvVZWbkZ/1abv1sQ0I22oV2Yxj2HEPeJUwDsCtnNWEp4lfk/PZIuuQecLWy6Mk/QYh6Q/S3laNJtcR4tdn2/aOaJ3DpJfjethxg/CYxSWvldMy8et0OVdgXVBm593dib+C3/Zqh9RYgOVskbXYgLBFdZnEX8XEV/vME79uXU5uj2nCFtVFE3+TsA6bTX210Tzx63clV2BtNE2YYls0+a/hKqtqt3lsARRSNvlP04FVVdR7B7APIGkAXKRY4q9j1VR3LGMBSDpLseS/xfBhlVIbOQ4g4VmKJf9VHL2n7nEkYMQhiiX/ZVw9Rd30LeLXdm/NU2yEn8mvLnud4df2nYxxZTUgvd/eFmEutcmvLuvsegB1KnLffwfv+dVtU8Rnr76QL7R8FklP6V3H3lF1337i13mr1wSsyxXS3/5PZItOqo6rAu+xQjr53T9dk8J9AXaZJszYiyX/NXp2UjSxUjsD9W5Z+dTc/k3C3GlpEhwkfr2fyhda82ZIP/N/Plt0UvVOE7/eD+ULrXmpb/81nM/fNqdw0tWoBsRvd9fp0UzWKUKCxwpAbBtlNW/n22sTi8AoDhO/3l/PF1rzniJ+Mm7gMl5tsrfpahEoL9b737vH3KnlvFeyRaa9ht23WgSKmyc+0K1Xzf/USKhV/PZvi1SnlUWgmNR5/Dn1bGfXSqmTcTxfaNol9TlZBIqZo/hGtdeAM0z4hjV3iF9MTvbJr2jyWwTSyp7LnWONMAJ2oua/pBZDfDNfaNo26gVrEXhQmW//2HEJeLzh2GtxkvgbnYg32WGjJr9F4OHGPZ97jyt0fLJQrPd/gx71hLZQVRerRSCo6tv/YcdrdLDTcIb4m7qQL7Teq/qbyiJQ/Tnde6yRocU8Ts9kquny1hivrdGdBv6x4tccAOe2//nHFb92V1whzO6bBf5w+7/9CeGLcBZ4BFhg9Jmus4Q+s+8D/wDcHyfYJqTu/xfzhdZbdX9L2RJI20cY+HaO+FTh2HGZDjw9u8DwN3AvY1x9VXfyWwTKmyI06y+QXiJv73GN0KJorVsMD977/2YVTf5V4lO2b1DsQrUIlLdA2B2rTCFYpaUt6SnigX87X2i9Uyb5F4kX7lcIiW0RqM8iYahwmSLQutuBfcSDPpYvtF4pm/yQLgBgEWjCCsX7CFq3jF5qu6/lbJH1xyjJD8UKAFgEmjBPeLJQ5HO8SIvmE6wQD3Y+V2A9MWryQ/ECABaBJkwDb1Ds8zyRKcYHHCceaGsq1QQaJ/mhXAEAi0ATBsDLFDvHrVhU9+vEA1U9xk1+KF8AwCLQlPOkz/E1WjDEPlYAbmWMa5JVkfwwWgEAi0ATBoR7/dQ5PpkrwB2vYAFoUlXJD6MXALAINGGGMB4jdn43CEOPs7EANKfK5IfxCgBYBJqwRPocn80WHfCtIUFZAKpVdfLD+AUALAJNKLLLVrahwrE+gI1cQU2YOpIfqikAYBGo2xTpW4HTuYLzKUC96kp+qK4AgEWgbo8TP6/3yPREYCURWNYOio6rM/mh2gIAFoG6pUYKruQIKlWZ9ucIagLUnfxQfQEAi0CdjhA/pz/PEVRqMxA/5PKaSH6opwCARaAuqU1IN8kwUWg2EtAWbgZSVlPJD/UVALAI1OU5WviFG1tYolc7o46pyeSHegsAWATqkGpxn8kR1JVIQDdyBNRBTSc/1F8AwCJQh9htwNUcAZ2JBLRFGNKo4XIkPzRTAMAiULXXiZ/DxmfgrkQC2sJdgWJyJT80VwDAIlClZ4ifw31NB7SYCOiFpgPqiJzJD80WALAIVCW1CtfhHEHF7kvu5Aio5XInPzRfAMAiUIV54ufuqRxBvZIIaqK2Qh5TG5If8hQAsAiMa0D8vH09R1BHE0GdyhFUC6VGTjaV/JCvAEDxIrBBC5fCboHY5qRZCsB0IqhVXB9wR6oF0NQmEDkLAKSLgC2A4WKf3Uu5gnozEtQWfpi7DSsCTe4Ak7sAwPAiYPLHtbIAPBEJagu4lCuwltpbBJre/qkNBQAeLAImf1rrbgEgzEeODQvews7AvXaKQI6939pSAODTImDyFxPLsWwFANL3t2/mC621TpBn48c2FQAIiW/yp80Tz7EsjwF3LAwJylZA+7StAKiYWgYCfbai4G4C/5H4O/9W0e+S+ig11Pf2KC9aVQGA9L5ly4QOQ0nlfSHys0+A600FEpN6JHgHZwnm5i1AN60x/HN7b9QXrbIFAOlWwCNkXMpY6qgDhFW4hvnVqC9cdQH4DfDDxN95kkwzl6SO+kri579sJIqC5kiPC1jDpcNz8RagW1KLgm4wxqKgVbcAAO4C/5L4O7OE/oLs2xxLLXeE+MSonwEfNxRLKZdIjw14LVt0/WULoFtSG4O09snaPLBOughk3+u8ZywA3ZGaZ7NGy1vRK6QLwBZhvTM1wwLQDVPEP6stOrLexlksAm1iAeiGU8TzpTOLpkwRBioUKQLuKFQ/C0D7HSC9clKnxtPMEX+Usfv4Hq4iVCcLQLvNEUbMxnLkHh359t9tkWKdglvAL4iPfNLoLADtNQAuM8Et5QMULwK3gEfzhDnRLADtNADeIJ0XV+l4C7lMEdgkzC/o9BtuGQtA+xRN/k0mZF2NMkVgp+rtzxLp5LEAtMs0cJFieTBRT8r2U7xjcKf6vUwHOz9axgLQHvuAaxS7/s9nirFWCxQ/ATvHOuG2wHUFRmMBaIenKd4KvsIYE37abhp4i3JFYIvwKOQ0YcixirMA5LUEvEPx6/waPWn1HqfYtlEPuzW4QJg11epx0S1hAchjgTAqtsw13pvk37Gf8rcEe28PXiVMovAW4eEsAM2ZIuwLeYHy1/L79Cz5d0wRxkGP0hrYe1wFzhAmJS1hCwEsAHVbJFxv5yj3pGv3cZGG7vk/08QvGdESIXkPVPy6H2wfd4GPCIsprFX8O3L6IfElom8xvN/kB8DfRf7fJeBvRglqQv0BYWWracI5XWT8xP1X4BvA/TFfZ2I8Adxg/NZAX47lxPkcpwWw0oL3N6nHHcLmH42qY0mwqv0I+AvCN9PNzLFIdfg+8JeE5b0a1YUCAKE59ANCIfgK8G7WaKRq/Bfw18DfE25HG9eVArDjPvBj4IuEivld4MOsEUnlvQ18efv4dc5AulYAdvst8E/A54DHgBcJnXtSG30I/Dvhi+sxwrd/dpMwy+4+oaK+DXyV0BO7DHyJMJ14IVtk6rvrhOvyJ4SEb13P/iQUgL2ubx8vbv/7NGHSxQLwZ8DnE///NPUuRjJLvc94P6nxtT9mxF1oJ9wnhMfKN4HfEa6/d/H2VC00zmNATZgu9wFIGpMFQOoxC4DUYxYAqccsAFKPWQCkHrMASD1mAZB6zAIg9ZgFQOoxC4DUYxYAqccsAFKPWQCkHrMASD1mAZB6zAIg9ZgFQOoxC4DUYxYAqccsAFKPWQCkHrMASD1mAZB6zAIg9ZgFQOoxC4DUYxYAqccsAFKPWQCkHrMASD02yB2AGvc/wO0hP/tdg3FIkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRl9P8s0/RVv6+5CQAAAABJRU5ErkJggg==');
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center center;
   background-color: #ffffff;
   position: relative;
+}
+
+div.cX-DataTable-Upload div.cX-DataTable-Root {
+  opacity: 0.1;
 }
 
 /***************/
 /* Data Filter */
 /***************/
 
-div.CanvasXpressDataFilter,
-div.CanvasXpressDataFilterToolbar,
-span.CanvasXpressDataFilterToolbarText,
-span.CanvasXpressDataFilterText,
-span.CanvasXpressDataFilterTextActive,
-select.CanvasXpressDataFilterContainerString {
+div.cX-DataFilter,
+div.cX-DataFilter-Toolbar,
+span.cX-DataFilter-Toolbar-Text,
+span.cX-DataFilter-Text,
+span.cX-DataFilter-Text-Active {
   font-family: var(--cx-font-family);
   font-size: var(--cx-x-large-font-size);
   color: var(--cx-font-color);
 }
 
-div.CanvasXpressDataFilter,
-div.CanvasXpressDataFilterToolbar {
+div.cX-DataFilter,
+div.cX-DataFilter-Toolbar {
   box-sizing: border-box;
   line-height: 100%;
   margin: 0px;
   position: absolute;
 }
 
-div.CanvasXpressDataFilterToolbar {
+div.cX-DataFilter-Toolbar {
   border: var(--cx-border) !important;
   border-radius: 4px;
   left: 0px;
   top: 0px;
 }
 
-span.CanvasXpressDataFilterToolbarText,
-span.CanvasXpressDataFilterText,
-span.CanvasXpressDataFilterTextActive {
+span.cX-DataFilter-Toolbar-Text,
+span.cX-DataFilter-Text,
+span.cX-DataFilter-Text-Active {
   left: 8px;
   line-height: 100%;
   position: relative;
@@ -2587,13 +2587,7 @@ span.CanvasXpressDataFilterTextActive {
   background-position: -0px;
 }
 
-select.CanvasXpressDataFilterContainerString {
-  background-color: var(--cx-background-widgets-color);
-  margin-left: 3px;
-  margin-bottom: 3px;
-}
-
-div.CanvasXpressDataFilterContent {
+div.cX-DataFilter-Content {
   box-sizing: border-box;
   background-color: var(--cx-background-widgets-color);
   border: var(--cx-border);
@@ -2607,7 +2601,7 @@ div.CanvasXpressDataFilterContent {
   padding: 2px;
 }
 
-input[type=checkbox].CanvasXpressCheckbox {
+input[type=checkbox].cX-Checkbox {
   accent-color: var(--cx-background-accent-color);
   border-radius: 5px;
   height: 14px;
@@ -2615,7 +2609,7 @@ input[type=checkbox].CanvasXpressCheckbox {
   margin: 2px;
 }
 
-label.CanvasXpressCheckboxLabel {
+label.cX-Checkbox-Label {
   width: 220px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2645,13 +2639,13 @@ input[type="search"]::-webkit-search-cancel-button.cX-DataFilter-Search {
   width: 16px;
 }
 
-div.CanvasXpressDataFilterContainer,
-div.CanvasXpressDataFilterContainerMask,
-div.CanvasXpressDataFilterContainerHoverable {
+div.cX-DataFilter-Container,
+div.cX-DataFilter-Container-Mask,
+div.cX-DataFilter-Container-Hoverable {
   box-sizing: border-box;
 }
 
-div.CanvasXpressDataFilterContainer {
+div.cX-DataFilter-Container {
   border: 0px;
   left: 0px;
   margin: 0px;
@@ -2659,26 +2653,26 @@ div.CanvasXpressDataFilterContainer {
   position: absolute;
 }
 
-div.CanvasXpressDataFilterContainerMask {
+div.cX-DataFilter-Container-Mask {
   border: var(--cx-border);
   margin: 5px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-div.CanvasXpressDataFilterContainerHoverable:hover {
+div.cX-DataFilter-Container-Hoverable:hover {
   background-color: var(--cx-background-hover-color);
 }
 
-div.CanvasXpressDataFilterContainerHoverable {
+div.cX-DataFilter-Container-Hoverable {
   border: var(--cx-border);
   border-radius: 5px;
   margin: 2px;
   margin-bottom: 4px;
 }
 
-div.CanvasXpressDataFilterHead,
-div.CanvasXpressDataFilterHeadActive {
+div.cX-DataFilter-Head,
+div.cX-DataFilter-Head-Active {
   border: var(--cx-border);
   border-radius: 4px;
   box-sizing: border-box;
@@ -2693,74 +2687,38 @@ div.CanvasXpressDataFilterHeadActive {
   vertical-align: middle;
 }
 
-div.CanvasXpressDataFilterHeadActive {
+div.cX-DataFilter-Head-Active {
   background:var(--cx-background-hover-color);
   border-bottom: var(--cx-border-transparent) !important;
   border-radius: 4px 4px 0px 0px;
 }
 
-div.CanvasXpressDataFilterContainerTicks {
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 10px;
-  height: 18px;
-}
-
-span.CanvasXpressDataFilterContainerTicks,
-span.CanvasXpressDataFilterContainerTicksLong {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 1px;
-  background: var(--cx-background-color);
-  line-height: 10px;
-  margin-bottom: 10px;
-}
-
-span.CanvasXpressDataFilterContainerTicks {
-  height: 5px;
-}
-
-span.CanvasXpressDataFilterContainerTicksLong {
-  height: 10px;
-}
-
-img.CanvasXpressDataFilterToolbarImage,
-svg.CanvasXpressDataFilterToolbarImage {
+svg.cX-DataFilter-Toolbar-Image {
   border: var(--cx-border) !important;
   border-radius: 5px !important;
   padding: 2px;
 }
 
-img.CanvasXpressDataFilterToolbarImageNB,
-svg.CanvasXpressDataFilterToolbarImageNB {
+svg.cX-DataFilter-Toolbar-ImageNB {
   border: none !important;
 }
 
-span.CanvasXpressDataFilterText {
+span.cX-DataFilter-Text {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASElEQVR42mNkoBAwUt2A/0AAlgACsg0A6QWZQ4whOA2AsgkagtcAYgwhaAAhQ4gyAJ8htHcBRWFAUSxQlA7AEuSmRFLBwBsAAMDpRxF7e4BAAAAAAElFTkSuQmCC);
 }
 
-span.CanvasXpressDataFilterTextActive {
+span.cX-DataFilter-Text-Active {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR42mNkoBAwjhqAMOA/EBCtCQiwGoAkjhOA7MFqADGGoGvGGga4DMGmGWcgohuCSzNOA5ANwacZrwFIhuBVM4gS0oAZAAD1oisRsByngAAAAABJRU5ErkJggg==);
 }
 
-div.CanvasXpressDataFilterContainerMaskNoOverflow,
-div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
+div.cX-DataFilter-Container-Mask-NoOverflow {
+  border: var(--cx-border);
   box-sizing: border-box;
   margin: 5px;
   overflow: hidden;
 }
 
-div.CanvasXpressDataFilterContainerMaskNoOverflow {
-  border: var(--cx-border);
-}
-
-div.CanvasXpressDataFilterContainerMaskNoOverflowOut {
-  border: none;
-}
-
-input.CanvasXpressDateFilterContainerInputLeft {
+input.cX-DataFilter-Container-Input-Left {
   float: left;
   margin: 10px;
   border: none;
@@ -2769,7 +2727,7 @@ input.CanvasXpressDateFilterContainerInputLeft {
   color: var(--cx-background-color);
 }
 
-input.CanvasXpressDateFilterContainerInputRight {
+input.cX-DataFilter-Container-Input-Right {
   float: right;
   margin: 10px;
   border: none;
@@ -3069,9 +3027,9 @@ input[type=number]::-webkit-inner-spin-button {
 
 div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-button,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-button,
-/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-button,*/
-div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-button,
-div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-button,
+/*div.cX-DataFilter-Content::-webkit-scrollbar-button,*/
+div.cX-DataFilter-Container-Mask::-webkit-scrollbar-button,
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-button,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-button,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-button,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar-button,
@@ -3086,9 +3044,9 @@ div.cX-bin-name-container::-webkit-scrollbar-button {
 
 /* Tracks can be of two different colors */
 
-/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-track,*/
-div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track,
-div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track,
+/*div.cX-DataFilter-Content::-webkit-scrollbar-track,*/
+div.cX-DataFilter-Container-Mask::-webkit-scrollbar-track,
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-track,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar-track,
 select.CanvasXpressConfigurator::-webkit-scrollbar-track,
 select.CanvasXpressSlider::-webkit-scrollbar-track {
@@ -3109,9 +3067,9 @@ div.cX-bin-name-container::-webkit-scrollbar-track {
 
 div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-track:hover,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-track:hover,
-/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-track:hover,*/
-div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-track:hover,
-div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-track:hover,
+/*div.cX-DataFilter-Content::-webkit-scrollbar-track:hover,*/
+div.cX-DataFilter-Container-Mask::-webkit-scrollbar-track:hover,
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-track:hover,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-track:hover,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar-track:hover,
@@ -3126,9 +3084,9 @@ div.cX-bin-name-container::-webkit-scrollbar-track:hover {
 
 /* scrollbar background could be of two different colors but match the style tracks above */
 
-/*div.CanvasXpressDataFilterContent::-webkit-scrollbar,*/
-div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar,
-div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar,
+/*div.cX-DataFilter-Content::-webkit-scrollbar,*/
+div.cX-DataFilter-Container-Mask::-webkit-scrollbar,
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar,
 select.CanvasXpressConfigurator::-webkit-scrollbar,
 select.CanvasXpressSlider::-webkit-scrollbar {
@@ -3153,9 +3111,9 @@ div.cX-bin-name-container::-webkit-scrollbar {
 
 div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-thumb,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-thumb,
-/*div.CanvasXpressDataFilterContent::-webkit-scrollbar-thumb,*/
-div.CanvasXpressDataFilterContainerMask::-webkit-scrollbar-thumb,
-div.CanvasXpressDataFilterContainerMaskNoOverflow::-webkit-scrollbar-thumb,
+/*div.cX-DataFilter-Content::-webkit-scrollbar-thumb,*/
+div.cX-DataFilter-Container-Mask::-webkit-scrollbar-thumb,
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-thumb,
 div.CanvasXpressDataExplorer::-webkit-scrollbar-thumb,
 div.CanvasXpressDataCustomizer::-webkit-scrollbar-thumb,
 select.CanvasXpressSearchCustomizer::-webkit-scrollbar-thumb,
@@ -3169,13 +3127,13 @@ div.cX-bin-name-container::-webkit-scrollbar-thumb {
   border: none;
 }
 
-div.CanvasXpressDataFilter::selection,
-div.CanvasXpressDataFilterToolbar::selection {
+div.cX-DataFilter::selection,
+div.cX-DataFilter-Toolbar::selection {
   background: var(--cx-color-transparent);
   color: var(--cx-font-color);
 }
 
-div.CanvasXpressDataFilterContainerItem::selection {
+div.cX-DataFilter-Container-Item::selection {
   background: var(--cx-color-transparent);
   color: var(--cx-background-color);
 }
