@@ -89,9 +89,9 @@
   --cx-large-font-size: 13px;
   --cx-x-large-font-size: 15px;
   --cx-font-color: var(--cx-color-ui-font);
-  --cx-font: normal var(--cx-font-size) var(--cx-font-family);
-  --cx-large-font: normal var(--cx-large-font-size) var(--cx-font-family);
-  --cx-x-large-font: normal var(--cx-x-large-font-size) var(--cx-font-family);
+  --cx-font: var(--cx-font-size) var(--cx-font-family);
+  --cx-large-font: var(--cx-large-font-size) var(--cx-font-family);
+  --cx-x-large-font: var(--cx-x-large-font-size) var(--cx-font-family);
   --cx-font-bold: bold var(--cx-font-size) var(--cx-font-family);
   --cx-large-font-bold: bold var(--cx-large-font-size) var(--cx-font-family);
   --cx-x-large-font-bold: bold var(--cx-x-large-font-size) var(--cx-font-family);
@@ -142,6 +142,9 @@ div.cX-bin-name-container,
 table.cX-bin-table,
 span.cX-bin,
 div.cX-DataTable,
+div.cX-DataTable-Container,
+table.cX-DataTable-Tooltip,
+div.cX-DataTable-Cell-Tooltip,
 div.cX-DataTable-Root,
 div.cX-DataTable-Vertical-Scrollbar,
 div.cX-DataTable-Horizontal-Scrollbar,
@@ -1897,26 +1900,6 @@ div.CanvasXpressMotionRange {
   z-index: 1000001;
 }
 
-/*********
-* Marker *
-**********/
-
-div.CanvasXpressMarker {
-  box-sizing: border-box;
-  border: var(--cx-border);
-  border-radius: 5px;
-  background-color: var(--cx-background-widgets-color);
-  cursor: move;
-  font: var(--cx-font);
-  height: 502px;
-  width: 286px;
-  left: 0px;
-  line-height: 100%;
-  position: absolute;
-  top: 0px;
-  padding: 2px;
-}
-
 /*************
  *  Toolbar  *
  *************/
@@ -2072,6 +2055,95 @@ div.CanvasXpressAltTooltip {
   z-index: 1000000;
 }
 
+/*********
+* Marker *
+**********/
+
+div.cX-Marker {
+  box-sizing: border-box;
+  border: var(--cx-border);
+  border-radius: 5px;
+  background-color: var(--cx-background-widgets-color);
+  cursor: move;
+  font: var(--cx-font);
+  width: 308px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  padding: 2px;
+}
+
+div.cX-Marker-Table-Container {
+  position: relative;
+  width: 286px;
+  left: 8px;
+  top: 2px;
+  overflow: hidden;
+}
+
+textarea.cX-Marker{
+  width: 100%;
+  height: 96px;
+  outline: none;
+  resize: none;
+  padding-left: 5px;
+  border-radius: var(--cx-border-radius);
+  border: var(--cx-border);
+}
+
+input.cX-Marker {
+  width: 100%;
+  height: 32px;
+  cursor: pointer;
+  outline: none;
+  padding-left: 5px;
+  border-radius: var(--cx-border-radius);
+  border: var(--cx-border);
+}
+
+select.cX-Marker {
+  width: 100%;
+  height: 32px;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  padding-left: 5px;
+  border-radius: var(--cx-border-radius);
+  border: var(--cx-border);
+}
+
+div.cX-Marker-Button-Container {
+  float: left;
+  position: relative;
+  top: 8px;
+  left: 8px;
+  width: 280px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+input.cX-Marker-Remove,
+input.cX-Marker-Add-Update {
+  float: left;
+  border-radius: var(--cx-border-radius);
+  border: var(--cx-border);
+  position: relative;
+  width: 125px;
+  height: 36px;
+  font-size: medium;
+  cursor: pointer;
+}
+
+input.cX-Marker-Remove {
+  left: 0px;
+}
+
+input.cX-Marker-Add-Update {
+  left: 12px;
+}
+
 /******************
  * Data Table DOE *
  ******************/
@@ -2114,9 +2186,15 @@ tr.cX-DataTable-DOE {
   font-size: var(--cx-font-size) !important;
 }
 
-/****************/
-/*  Data Table  */
-/****************/
+/***********************************/
+/* Data Table / Tooltips / Markers */
+/***********************************/
+
+div.cX-DataTable-Container {
+  max-height: 400px;
+  max-width: 600px;
+  position: inherit;
+}
 
 div.cX-DataTable {
   box-sizing: border-box;
@@ -2130,7 +2208,6 @@ div.cX-DataTable-Header-Viewport {
   box-sizing: border-box;
   position: absolute;
 }
-
 
 div.cX-DataTable-Vertical-Scrollbar,
 div.cX-DataTable-Horizontal-Scrollbar {
@@ -2356,11 +2433,16 @@ div.cX-DataTable-Pagination-Control-Disabled {
 
 /* Data Table Table */
 
-table.cX-DataTable {
+table.cX-DataTable,
+table.cX-DataTable-Tooltip {
   border: none !important;
   color: var(--cx-font-color);
   position: absolute;
   table-layout: fixed;
+}
+
+table.cX-DataTable-Tooltip {
+  position: inherit;
 }
 
 tr.cX-DataTable-Row,
@@ -2515,7 +2597,8 @@ div.cX-DataTable-Cell-Number,
 div.cX-DataTable-Cell-Link,
 div.cX-DataTable-Cell-Active,
 div.cX-DataTable-Cell-Number-Active,
-div.cX-DataTable-Cell-Link-Active {
+div.cX-DataTable-Cell-Link-Active,
+div.cX-DataTable-Cell-Tooltip {
   box-sizing: border-box;
   color: var(--cx-datatable-cell-text-color);
   margin: 0px !important;
@@ -2556,6 +2639,20 @@ div.cX-DataTable-Cell-Link-Active {
 td.cX-DataTable-Cell > div.cX-DataTable-Cell:hover,
 td.cX-DataTable-Cell > div.cX-DataTable-Cell-Number:hover {
   background-color: var(--cx-datatable-cell-hover-background-color);
+}
+
+div.cX-DataTable-Cell-Tooltip {
+  width: 100px;
+  line-height: 32px;
+  /*
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  */
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.cX-DataTable-Upload {
@@ -2639,6 +2736,8 @@ label.cX-Checkbox-Label {
   white-space: nowrap;
   overflow-x: hidden;
   margin: 0 0 0 3px !important;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 input.cX-DataFilter-Search {
