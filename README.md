@@ -179,3 +179,13 @@ cxShinyExample(example = "example1")
 
 There is also a wealth of additional information including full API documentation 
 and extensive R and JavaScript examples at [https://www.canvasxpress.org](https://www.canvasxpress.org).
+
+### Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+- Setting up your development environment
+- Code style and conventions
+- Running tests
+- Submitting pull requests
+
+For bug reports and feature requests, please use the [GitHub Issues](https://github.com/neuhausi/canvasXpress/issues) page.
