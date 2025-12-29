@@ -1904,22 +1904,24 @@ div.CanvasXpressMotionRange {
  *  Toolbar  *
  *************/
 
-div.CanvasXpressToolbarTop {
+div.CanvasXpressToolbarTop,
+div.CanvasXpressToolbarBottom {
   position: absolute;
-  width: auto;
-  top: 0px;
-  left: 0px;
+  width: 100% !important;
+  height: 0;
+  top: 0;
+  left: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
   z-index: 10000;
+  transition: height 0.3s ease, top 0.3s ease;
 }
 
 div.CanvasXpressToolbarTopContainer {
   border: var(--cx-border);
   border-radius: 0 0 8px 8px;
   border-top: none;
-  width: auto;
   padding: 1px;
   background-color: var(--cx-background-widgets-color);
 }
@@ -1927,7 +1929,6 @@ div.CanvasXpressToolbarTopContainer {
 div.CanvasXpressToolbarTopOverContainer {
   border: var(--cx-border);
   border: none;
-  width: auto;
   padding: 1px;
   background-color: var(--cx-background-widgets-color);
 }
@@ -1952,22 +1953,10 @@ div.CanvasXpressToolbarTopContainer svg.CanvasXpressToolbarTopImage {
   margin: 5px 8px 0px 0px;
 }
 
-div.CanvasXpressToolbarBottom {
-  position: absolute;
-  width: auto;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  z-index: 10000;
-}
-
 div.CanvasXpressToolbarBottomContainer {
   border: var(--cx-border);
   border-radius: 8px 8px 0 0;
   border-bottom: none;
-  width: auto;
   padding: 1px;
   background-color: var(--cx-background-widgets-color);
 }
@@ -1985,11 +1974,15 @@ div.CanvasXpressToolbarBottomStripe {
 
 div.CanvasXpressToolbarLeft {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 0;
+  top: 0;
+  left: 0;
   overflow: hidden;
-  align-content: center;
+  justify-content: center;
   z-index: 10000;
+  transition: width 0.3s ease;
 }
 
 div.CanvasXpressToolbarLeftContainer {
@@ -2014,11 +2007,15 @@ div.CanvasXpressToolbarLeftContainer svg.CanvasXpressToolbarLeftImage {
 
 div.CanvasXpressToolbarRight {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  flex-direction: column;
+  width: 0;
+  top: 0;
+  left: 0;
   overflow: hidden;
-  align-content: center;
+  justify-content: center;
   z-index: 10000;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 div.CanvasXpressToolbarRightContainer {
