@@ -3004,7 +3004,7 @@ label.cX-Toggle:hover div.cX-Toggle-Switch:before {
 }
 
 input.cX-Toggle:checked+div.cX-Toggle-Switch {
-  background: var(--cx-background-color);
+  background: var(--cx-toggle-switch-background-color);
 }
 
 input.cX-Toggle:checked+div.cX-Toggle-Switch:before {
@@ -3057,7 +3057,7 @@ div.CanvasXpressRangeSliderInput {
 
 input.CanvasXpressRangeSliderMin,
 input.CanvasXpressRangeSliderMax {
-  color: var(--cx-background-color);
+  color: var(--cx-toggle-switch-background-color);
   border: 1px solid var(--cx-background-widgets-color);
   border-radius: var(--cx-border-radius);
   font: var(--cx-font);
@@ -3097,7 +3097,7 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderTrack {
 }
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderRange {
-  background-color: var(--cx-background-color);
+  background-color: var(--cx-toggle-switch-background-color);
   position: absolute;
   z-index: 10002;
   left: 0%;
@@ -3119,7 +3119,7 @@ div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
 
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbLeft,
 div.CanvasXpressRangeSlider>div.CanvasXpressRangeSliderThumbRight {
-  background-color: var(--cx-background-color);
+  background-color: var(--cx-toggle-switch-background-color);
   box-shadow: 0 0 0 0 var(--cx-background-hover-color);
 }
 
@@ -3155,7 +3155,7 @@ input[type=range].customizerRightItemRangeSelect::-webkit-slider-thumb {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: var(--cx-background-color);
+  background: var(--cx-toggle-switch-background-color);
   cursor: pointer;
 }
 
@@ -3163,7 +3163,7 @@ input[type=range].customizerRightItemRangeSelect::-moz-range-thumb {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: var(--cx-background-color);
+  background: var(--cx-toggle-switch-background-color);
   cursor: pointer;
 }
 
@@ -3208,7 +3208,7 @@ span.CanvasXpressRangeSliderTicks {
   display: flex;
   justify-content: center;
   width: 1px;
-  background: var(--cx-background-color);
+  background: var(--cx-toggle-switch-background-color);
   margin-bottom: 10px;
 }
 
