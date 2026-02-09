@@ -751,10 +751,16 @@ span.cX-bin::selection {
   background: rgb(255, 255, 255);
 }
 
+/*
+.customizerLeftPanelTop > *,
+.customizerLeftPanelBottom > *,
+*/
 .customizerLeftItem:hover > *,
-.customizerLeftItemActive > * {
+.customizerLeftItemActive > *,
+.customizerLeftItemNB > * {
   pointer-events: none;
 }
+
 
 .customizerLeftItemNB:hover svg {
   border-color: var(--cx-background-border-hover-color) !important;
