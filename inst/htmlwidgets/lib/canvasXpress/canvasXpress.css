@@ -751,6 +751,11 @@ span.cX-bin::selection {
   background: rgb(255, 255, 255);
 }
 
+.customizerLeftItem:hover > *,
+.customizerLeftItemActive > * {
+  pointer-events: none;
+}
+
 .customizerLeftItemNB:hover svg {
   border-color: var(--cx-background-border-hover-color) !important;
   background: var(--cx-background-hover-color) !important;
@@ -3556,6 +3561,16 @@ li.CanvasXpressListItemActive {
   text-align: left;
 }
 
+li.CanvasXpressListItemActive > :first-child,
+li.CanvasXpressListItemActive > :first-child svg:first-child {
+  pointer-events: none;
+}
+
+li.CanvasXpressListItemActive > :first-child div:last-child,
+li.CanvasXpressListItemActive > :first-child input:last-child {
+  pointer-events: auto;
+}
+
 li.CanvasXpressListItemScrollTop {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAFCAYAAACw/UeDAAAARUlEQVR42mNkQAMXL178z0Ah0NfXZ0Tmo3BAFkhLS+M1IDw8kmHlyuV41Tx9+hTFIjiDWAtggBSLGMmxgFSLGKkRB4QAAILWJXgE49MrAAAAAElFTkSuQmCC);
   background-repeat: no-repeat;
@@ -3632,7 +3647,7 @@ a.CanvasXpressListItemA {
   border-width: 0px 1px;
   color: var(--cx-font-color);
   cursor: pointer;
-  display: block;
+  display: flex;
   font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
@@ -3651,7 +3666,7 @@ a.CanvasXpressListItemAActive {
   border-width: 0px 1px;
   color: var(--cx-font-color);
   cursor: pointer;
-  display: block;
+  display: flex;
   font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
@@ -3671,7 +3686,7 @@ a.CanvasXpressListItemAArrow {
   border-width: 0px 1px;
   color: var(--cx-font-color);
   cursor: pointer;
-  display: block;
+  display: flex;
   font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
@@ -3691,7 +3706,7 @@ a.CanvasXpressListItemAArrowActive {
   border-width: 0px 1px;
   color: var(--cx-font-color);
   cursor: pointer;
-  display: block;
+  display: flex;
   font: var(--cx-x-large-font);
   line-height: 24px;
   list-style: none;
