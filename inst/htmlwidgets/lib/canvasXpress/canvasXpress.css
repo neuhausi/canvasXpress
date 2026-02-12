@@ -217,6 +217,10 @@ svg.cX-DataFilter-Toolbar-ImageNB {
   margin: 5px 8px 0px 0px !important;
 }
 
+svg > * {
+  pointer-events: none;
+}
+
 /*****************
  *  SVG  Border  *
  *****************/
@@ -812,6 +816,14 @@ span.cX-bin::selection {
   border: 1px var(--cx-border-style) var(--cx-datatable-border-color) !important;
 }
 
+.customizerRightItem * {
+  pointer-events: none;
+}
+
+.customizerRightItem :first-child input:first-child {
+  pointer-events: auto;
+}
+
 .customizerRightItemTop {
   grid-area: 1 / 1 / 2 / 2;
   padding-top: 5px;
@@ -966,6 +978,15 @@ span.cX-bin::selection {
 
 .customizerRightItemLauncher {
   border-top: 1px var(--cx-border-style) var(--cx-datatable-border-color) !important;
+}
+
+.customizerRightItemLauncher *,
+.customizerRightItemLauncherNB * {
+  pointer-events: none;
+}
+
+.customizerRightItemLauncherNB > :last-child input:first-child {
+  pointer-events: auto;
 }
 
 .customizerRightItemLauncherNB {
@@ -2549,6 +2570,7 @@ a.cX-DataTable-Cell-Header-Menu {
   display: flex;
   padding-left: 1px;
   top: 0;
+  right: 8px;
 }
 
 div.cX-DataTable-Cell a.cX-DataTable-Cell-Header-Menu {
@@ -2573,6 +2595,7 @@ div.cX-DataTable-Cell-Header-Filter {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  right: 18px;
 }
 
 div.cX-DataTable-Cell div.cX-DataTable-Cell-Header-Filter {
@@ -2683,6 +2706,8 @@ div.cX-DataTable-Cell-Link-Active {
   text-decoration: underline var(--cx-border);
   text-underline-offset: 2px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 div.cX-DataTable-Cell-Active,
@@ -3568,12 +3593,12 @@ li.CanvasXpressListItemActive {
 }
 
 li.CanvasXpressListItemActive > :first-child,
-li.CanvasXpressListItemActive > :first-child svg:first-child {
+li.CanvasXpressListItemActive > :first-child > svg:first-child {
   pointer-events: none;
 }
 
-li.CanvasXpressListItemActive > :first-child div:last-child,
-li.CanvasXpressListItemActive > :first-child input:last-child {
+li.CanvasXpressListItemActive > :first-child > div:last-child,
+li.CanvasXpressListItemActive > :first-child > input:last-child {
   pointer-events: auto;
 }
 
