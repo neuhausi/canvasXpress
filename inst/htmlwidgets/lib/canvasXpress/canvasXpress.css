@@ -1195,7 +1195,7 @@ span.cX-bin::selection {
 }
 
 .customizerWrangling {
-  height: 102px;
+  height: 204px;
   margin: 0px 0px 10px 10px;
   border-radius: var(--cx-border-radius);
   overflow-y: auto;
@@ -1213,6 +1213,23 @@ span.cX-bin::selection {
 .customizerWrangling:hover {
   border: 1px dashed var(--cx-color-red) !important;
 }
+
+/***************************************************
+/* target items specifically within the customizer *
+ * containers for moving in the wrangling          *
+ ***************************************************/
+
+.customizerNumeric,
+.customizerString,
+.customizerUnique,
+.customizerListNumeric,
+.customizerListString,
+.customizerListUnique {
+  margin-top: 3px !important;
+  display: block;
+}
+
+/***************************************************/
 
 .customizerContainerRaw {
   border: none !important;
