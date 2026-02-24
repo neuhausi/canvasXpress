@@ -231,6 +231,23 @@ svg.cX-code {
   padding: 5px;
 }
 
+/***************
+ *  draggable  *
+ ***************/
+
+.draggable {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 /*****************
  * Loading Timer *
  *****************/
@@ -2154,8 +2171,12 @@ div.cX-Marker-Table-Container {
   position: relative;
   width: 286px;
   left: 8px;
-  top: 2px;
+  top: 8px;
   overflow: hidden;
+}
+
+div.cX-Marker-Table-Container > table > tbody > tr > th.cX-DataTable-Cell-Head {
+  background-color: rgb(255, 255, 255);
 }
 
 textarea.cX-Marker{
@@ -2275,6 +2296,19 @@ div.cX-DataTable-Container {
   max-height: 400px;
   max-width: 600px;
   position: inherit;
+}
+
+div.cX-DataTable-Container > table > tbody > tr > th {
+  background-color: rgb(255, 255, 255);
+  margin: 1px;
+}
+
+div.cX-DataTable-Container > table > tbody > tr > td {
+  margin: 1px;
+}
+
+div.cX-DataTable-Container > table > tbody > tr > td > div {
+  padding-right: 10px;
 }
 
 div.cX-DataTable {
@@ -2575,6 +2609,7 @@ th.cX-DataTable-Cell-Head > div.cX-DataTable-Cell-Number,
 th.cX-DataTable-Cell-Head-Active > div.cX-DataTable-Cell-Number {
   align-content: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 a.cX-DataTable-Cell-Header-Menu {
@@ -2816,6 +2851,10 @@ div.cX-DataFilter-Toolbar-Top-Container {
   background-color: var(--cx-datatable-banner-background-color);
   border-bottom: 1px var(--cx-border-style) var(--cx-datatable-border-color);
   border-radius: var(--cx-border-radius) var(--cx-border-radius) 0px 0px;
+  display: flex;
+  align-items: center;
+  top: 0px;
+  left: 0px;
 }
 
 div.cX-DataFilter-Toolbar-Bottom-Container {
@@ -2823,7 +2862,10 @@ div.cX-DataFilter-Toolbar-Bottom-Container {
   background-color: transparent;
   border: none;
   width: 100%;
-  top: 6px;
+  display: flex;
+  align-items: center;
+  top: 0px;
+  left: 0px;
 }
 
 span.cX-DataFilter-Toolbar-Text,
@@ -2832,7 +2874,7 @@ span.cX-DataFilter-Text-Active {
   left: 8px;
   line-height: 100%;
   position: relative;
-  top: 9px;
+  top: 6px;
   background-repeat: no-repeat;
   background-position: -0px;
 }
@@ -3431,79 +3473,12 @@ div.CanvasXpressLink {
   border-radius: 3px;
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-font);
   line-height: 100%;
   margin: 0px;
   padding: 0px;
   position: absolute;
   -moz-box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
-}
-
-div.CanvasXpressTabMenuConfigurator {
-  box-sizing: border-box;
-  position: relative;
-}
-
-input.CanvasXpressTabMenuConfigurator {
-  display: none;
-}
-
-input:not(:checked).CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator {
-  display: none;
-}
-
-section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
-  float: left;
-}
-
-section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator {
-  float: right;
-  width: 100%;
-  margin: 22 0 0 -100%;
-}
-
-section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator {
-  box-sizing: border-box;
-  padding: 0.5px;
-  border: 1px solid rgb(238, 238, 238);
-  border-radius: 4px;
-  background: rgb(255, 255, 255)
-}
-
-section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0.5px;
-  overflow: hidden;
-  font: var(--cx-font);
-  color: var(--cx-font-color);
-  line-height: 100%;
-}
-
-section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator>label.CanvasXpressTabMenuConfigurator {
-  cursor: pointer;
-  display: block;
-  padding: 5px;
-  border: 1px solid rgb(238, 238, 238);
-  border-bottom: none;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  background: rgb(255, 255, 255)
-}
-
-input:first-child.CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
-  padding-left: 0;
-}
-
-section.CanvasXpressTabMenuConfigurator>div.CanvasXpressTabMenuConfigurator {
-  position: relative;
-  z-index: 1;
-}
-
-input:checked.CanvasXpressTabMenuConfigurator+section.CanvasXpressTabMenuConfigurator>h1.CanvasXpressTabMenuConfigurator {
-  position: relative;
-  z-index: 2;
 }
 
 div.CanvasXpressMenu {
@@ -3513,7 +3488,6 @@ div.CanvasXpressMenu {
   border-radius: 3px;
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-x-large-font);
   line-height: 100%;
   margin: 0px;
@@ -3525,7 +3499,6 @@ div.CanvasXpressMenu {
 ul.CanvasXpressList {
   background: transparent;
   border: 0px none;
-  cursor: default;
   list-style: none;
   margin: 0px;
   overflow: auto;
@@ -3534,7 +3507,6 @@ ul.CanvasXpressList {
 }
 
 li.CanvasXpressListItemSep {
-  cursor: default;
   display: block;
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
@@ -3549,7 +3521,6 @@ li.CanvasXpressListItemSep {
 }
 
 input.CanvasXpressListItem {
-  cursor: default;
   display: block;
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
@@ -3590,6 +3561,7 @@ li.CanvasXpressListItem {
   text-align: left;
 }
 
+li.CanvasXpressListItem:hover,
 li.CanvasXpressListItemActive {
   background: rgba(83, 105, 255, 0.1);
   border-color: rgb(83, 105, 255);
@@ -3815,7 +3787,8 @@ span.CanvasXpressListItemTextShort {
   font: var(--cx-small-font-italic);
   line-height: 24px;
   list-style: none;
-  margin-left: 10px;
+  right: 10px;
+  position: absolute;
   white-space: nowrap;
 }
 
@@ -3823,7 +3796,6 @@ span.CanvasXpressListItemTextSep {
   background-color: rgb(224, 224, 224);
   border-bottom: 1px solid;
   border-bottom-color: rgb(255, 255, 255);
-  cursor: default;
   display: block;
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
@@ -3839,7 +3811,6 @@ table.CanvasXpressListItemTable {
   border: collapse;
   line-height: 20px;
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 24px;
@@ -3851,7 +3822,6 @@ svg.cX-Toolbar-Help {
   background: rgba(0, 0, 0, 0) !important;
   border: 0px none !important;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0) !important;
-  cursor: default;
   float: right;
   margin: 0px 0px 0px 2px !important;
 }
@@ -3863,13 +3833,11 @@ div.cX-Toolbar-Help {
   border: 1px solid rgb(83, 105, 255);
   box-shadow: rgba(154, 154, 154, 0.2) 3px 3px;
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-x-large-font);
   line-height: 24px;
 }
 
 p.cX-Toolbar-Help {
-  cursor: default;
   font: var(--cx-x-large-font);
   color: var(--cx-font-color);
   line-height: 24px;
@@ -3926,7 +3894,6 @@ input.CanvasXpressFormText {
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-x-large-font);
   line-height: 24px;
   padding-left: 3px;
@@ -3936,7 +3903,6 @@ form.CanvasXpressFormForm {
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(83, 105, 255);
   color: var(--cx-font-color);
-  cursor: default;
   font: var(--cx-x-large-font);
   line-height: 24px;
   margin: 8px;
@@ -4205,7 +4171,7 @@ div.CanvasXpressWrapper {
   transition: opacity var(--cx-transition-speed) linear;
 }
 
-.cX-Wrapper.resizing .cX-Resize-Indicator {
+.cX-Resize-Indicator.resizing {
   opacity: 1;
 }
 
