@@ -435,8 +435,7 @@ pre.cX-code-content code::before {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding: 18px;
-  min-height: 146px;
+  min-height: 70px;
   top: var(--base-h);
   left: 0;
 }
@@ -447,125 +446,408 @@ pre.cX-code-content code::before {
 }
 
 div.cX-Chat {
-  border: none;
-  background-color: var(--cx-color-transparent);
-  max-width: 600px;
-  min-height: 100px;
   width: 100%;
-  margin: 10px auto 0 auto;
+  max-width: 900px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--cx-border-radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 2px;
 }
 
-div.cX-Chat-Container {
-  border: none;
-  border-radius: 10px;
-  background-color: var(--cx-color-extra-light-gray);
-  color: var(--cx-font-color);
-  font: var(--cx-x-large-font);
+.cX-Chat-Toolbar-Container {
+  width: 100%;
+  height: 35px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: #475569;
 }
 
-div.cX-Chat-Container-Text {
-  float: left;
-  border: none;
-  background-color: var(--cx-color-transparent);
+.cX-Chat-Toolbar-Container .cX-Chat-Left-Toolbar-Container,
+.cX-Chat-Toolbar-Container .cX-Chat-Right-Toolbar-Container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cX-Chat-Configurator-Container {
+  display: none;
+  width: 100%;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 4px 20px;
+  box-sizing: border-box;
+  font-size: medium;
+  color: #475569;
+  align-items: center;
+  gap: 8px;
+}
+
+.cX-Chat-Configurator {
+  padding-left: 5px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  height: 24px;
+}
+
+.cX-Chat-Text-Container {
+  display: flex;
+  width: 100%;
+  min-height: 100px;
+  background: #ffffff;
+  pointer-events: none;
+}
+
+.cX-Chat-Text-Area-Container {
+  width: calc(100% - 46px);
+  padding: 8px;
+  box-sizing: border-box;
+  position: relative;
+  pointer-events: none;
+}
+
+.cX-Chat-Question {
+  margin: 0;
+  outline: none;
+  font-size: medium;
+  line-height: 1.5;
+  color: #0f172a;
   min-height: 50px;
+  height: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  pointer-events: auto;
 }
 
-p.cX-Chat-Question {
-  border: none;
-  background-color: var(--cx-color-extra-light-gray);
-  margin: 0;
-  display: inline;;
+.cX-Chat-Question[empty]:empty::before {
+  content: "Ask the LLM to generate a chart...";
+  color: #94a3b8;
 }
 
-[contenteditable] {
-  outline: 0px solid transparent;
-}
-
-div.cX-Chat-Container-Icon {
-  float: right;
-  border: none;
-  background-color: var(--cx-color-transparent);
-}
-
-div.cX-Chat-Container-Thumbs {
-  float: left;
-  border: none;
-  background-color: var(--cx-color-transparent);
-  margin: 0;
-}
-
-svg.cX-Chat-Thumbs {
-  background: var(--cx-color-transparent) !important;
-  border: none !important;
-  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
-  cursor: default;
-  float: left;
-}
-
-/****************
- * LLM Examples *
- ****************/
-
-div.cX-LLM-window {
-  position: absolute;
-  border: 1px solid #555555;
-  max-width: 545px;
-  overflow: hidden;
-  border-radius: var(--cx-border-radius);
-  background-color: var(--cx-color-extra-light-gray);
-  z-index: 10000;
-}
-
-a.cX-LLM-window-close {
-  position: sticky;
-  top: 0;
-  left: 500px;
-  font-size: xx-large;
-}
-
-div.cX-LLM-examples {
-  position: relative;
-  overflow: scroll;
-  max-height: 800px;
-}
-
-div.cX-LLM-content {
-  top: 25px;
-  left: 25px;
-  position: absolute;
-}
-
-div.cX-LLM-container {
-  border: 1px solid #d3d3d3;
-  position: relative;
-  border-radius: 4px;
-  background: white;
-  float: left;
-  margin: 5px;
-  max-width: 810px;
-}
-
-div.cX-LLM-title {
-  position: relative;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 4px;
-  font-size: 22px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: center !important;
-  font-weight: bold;
-  border-bottom: 1px solid var(--cx-color-light-gray);
-}
-
-div.cX-LLM-plot {
+.cX-Chat-Icon-Container {
+  width: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 8px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.cX-Chat-Suggestions-Container {
+  display: none;
+  padding: 12px 18px 18px 18px;
+  border-top: 1px solid #e2e8f0;
+  background: #fafafa;
+}
+
+.cX-Chat-Suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 30px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-bottom: 5px;
+}
+
+.cX-Chat-Thumbs-Container {
+  width: 100%;
+  height: 36px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: none;
+  align-items: center;
+  padding: 0 10px;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.cX-Chat-Output {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 5px;
+  min-height: 100px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  font-family: monospace;
+  font-size: 13px;
+  box-sizing: border-box;
+  resize: vertical;
+  display: none;
+}
+
+.cX-Chat-Output {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 5px;
+  min-height: 100px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  font-family: monospace;
+  font-size: 13px;
+  box-sizing: border-box;
+  resize: vertical;
+  display: none;
+}
+
+/*
+ * Chat Output Container (Tabs & Content)
+ */
+div.cX-Chat-Output-Container {
+  position: absolute;
+  width: calc(var(--base-w) + 18px);
+  height: calc(var(--base-h) + 82px);
+  background-color: var(--cx-background-widgets-color);
+  border: var(--cx-border);
+  border-radius: var(--cx-border-radius);
+  z-index: 10005;
+  display: none; /* Toggled by JS */
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: move;
+}
+
+/* Close Button */
+img.cX-Chat-Output-Close,
+svg.cX-Chat-Output-Close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  z-index: 10;
+  background: var(--cx-color-transparent) !important;
+  border: none !important;
+  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+}
+
+/* Tabs */
+button.cX-Chat-Output-Tab {
+  display: inline-block;
+  vertical-align: bottom;
+  background-color: var(--cx-background-hover-color);
+  border: var(--cx-border);
+  border-bottom: none;
+  padding: 5px 10px;
+  margin: 10px 0 0 10px;
+  cursor: pointer;
+  font: var(--cx-large-font);
+  color: var(--cx-font-color);
+  border-radius: var(--cx-border-radius) var(--cx-border-radius) 0 0;
+  outline: none;
+  position: relative;
+  top: 1px; /* Overlaps the content border to look like a real tab */
+  z-index: 1;
+  box-sizing: border-box;
+  line-height: 24px;
+}
+
+/* Adds a small gap between the first and second tab */
+button.cX-Chat-Output-Tab + button.cX-Chat-Output-Tab {
+  margin-left: 4px;
+}
+
+button.cX-Chat-Output-Tab:hover {
+  background-color: var(--cx-background-widgets-color);
+}
+
+button.cX-Chat-Output-Tab.Active {
+  background-color: var(--cx-background-widgets-color);
+  font: var(--cx-large-font-bold);
+  border-bottom: 1px solid var(--cx-background-widgets-color);
+  z-index: 3;
+}
+
+/* Tab Content Containers (Scrollable) */
+div.cX-Chat-Graphical-Output,
+textarea.cX-Chat-Code-Output {
+  display: block;
+  clear: both;
+  width: 100%;
+  height: calc(100% - 46px);
+  /* 500px total - 46px for the tabs area */
+  border: none;
+  border-top: var(--cx-border);
+  background-color: var(--cx-background-widgets-color);
+  color: var(--cx-font-color);
+  overflow: auto;
+  /* Enables scrolling for the tab content */
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.cX-Chat-Graphical-Output {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 50px;
+  /* Pushes the graph div below the absolutely positioned buttons */
+  box-sizing: border-box;
+}
+
+.cX-Chat-Graphical-Output-Graph {
+  width: var(--base-w);
+  height: var(--base-h);
+  margin-top: 20px;
+}
+
+/* Specific styling for the code textarea */
+textarea.cX-Chat-Code-Output {
+  resize: none;
+  outline: none;
+  font-family: monospace;
+  font-size: var(--cx-large-font-size);
+  white-space: pre;
+}
+
+/* Color Coding Classes */
+.hint {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  user-select: none;
+  border: 1px solid transparent;
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+}
+
+.hint.graph {
+  background: #f3e8ff;
+  color: #9333ea;
+  border-color: #e9d5ff;
+}
+
+.hint.graph:hover {
+  background: #9333ea;
+  color: white;
+}
+
+.hint.column {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #dbeafe;
+}
+
+.hint.column:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.hint.map_name {
+  background: #e0e7ff;
+  color: #3730a3;
+  border-color: #c7d2fe;
+}
+
+.hint.data,
+.hint.data_multi {
+  background: #ccfbf1;
+  color: #0d9488;
+  border-color: #99f6e4;
+}
+
+.hint.data:hover,
+.hint.data_multi:hover {
+  background: #0d9488;
+  color: white;
+}
+
+.hint.text {
+  background: #fce7f3;
+  color: #db2777;
+  border-color: #fbcfe8;
+}
+
+.hint.text:hover {
+  background: #db2777;
+  color: white;
+}
+
+.hint.number {
+  background: #fef08a;
+  color: #b45309;
+  border-color: #fde047;
+}
+
+.hint.enum {
+  background: #ffedd5;
+  color: #ea580c;
+  border-color: #fed7aa;
+}
+
+.hint.enum:hover {
+  background: #ea580c;
+  color: white;
+}
+
+.hint.toggle {
+  background: #dcfce7;
+  color: #16a34a;
+  border-color: #bbf7d0;
+}
+
+.hint.toggle:hover {
+  background: #16a34a;
+  color: white;
+}
+
+.hint.filter,
+.hint.sort {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.hint.filter:hover,
+.hint.sort:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.hint.connector {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+.hint.connector:hover {
+  background: #64748b;
+  color: white;
+}
+
+.hint.finish {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.hint.finish:hover {
+  background: #d97706;
+  color: white;
+}
+
+.hint.disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  cursor: default;
 }
 
 /***************
