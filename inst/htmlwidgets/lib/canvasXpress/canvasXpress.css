@@ -248,6 +248,15 @@ svg.cX-code {
   cursor: -webkit-grabbing;
 }
 
+/****************
+* Hover / Active *
+*****************/
+
+.simulate-hover {
+  border-color: var(--cx-background-border-hover-color) !important;
+  background: var(--cx-background-hover-color) !important;
+}
+
 /*****************
  * Loading Timer *
  *****************/
@@ -2216,49 +2225,171 @@ span.CanvasXpressMousePosition {
  * Motion *
  **********/
 
-div.cX-Motion {
-  color: var(--cx-font-color);
-  font: var(--cx-font);
-  overflow-x: hidden;
+.cX-Container-Motion {
+  transition: all var(--cx-transition-speed) ease-in-out;
+}
+
+.cX-Workflow-Wrapper {
+  position: relative;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Repro {
+  flex-direction: row !important;
+  align-items: flex-start;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Repro .cX-Workflow-Widget {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--cx-color-widgets);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+  order: -1;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Repro .cX-Workflow-Timeline-Container {
+  display: block;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Repro .cX-Workflow-Close-Btn {
+  display: flex;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Filter {
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Filter .cX-Workflow-Widget {
+  position: relative;
+  border: none !important;
+  width: 90% !important;
+  left: 5% !important;
+  order: 1;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Filter .cX-Workflow-Timeline-Container {
+  display: none;
+}
+
+.cX-Workflow-Wrapper.cX-Workflow-Mode-Filter .cX-Workflow-Close-Btn {
+  display: none;
+}
+
+/* Animation State: Hidden */
+.cX-Workflow-Wrapper.cX-Workflow-Hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+/* Specific transitions based on layout context */
+.cX-Workflow-Wrapper .cX-Workflow-Mode-Repro {
+    transition: transform var(--cx-transition-speed) ease, opacity var(--cx-transition-speed) ease;
+    transform: translateX(0);
+}
+.cX-Workflow-Wrapper.cX-Workflow-Hidden .cX-Workflow-Mode-Repro {
+    transform: translateX(-20px);
+}
+
+.cX-Workflow-Widget {
+  font-family: var(--cx-font-family);
+}
+
+.cX-Workflow-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cX-Workflow-Close-Btn {
+  cursor: pointer;
+}
+
+.cX-Workflow-Controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 5px;
+}
+
+.cX-Workflow-Play-Btn {
+  cursor: pointer;
+}
+
+.cX-Workflow-Slider-Area {
+  flex-grow: 1;
+  position: relative;
+}
+
+.cX-Workflow-Slider-Track {
+  position: relative;
+  height: 6px;
+  background: var(--cx-color-extra-light-gray);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cX-Workflow-Slider-Fill {
   position: absolute;
+  height: 100%;
+  background: var(--cx-color-widgets);
+  border-radius: 10px;
+  width: 0%;
+}
+
+.cX-Workflow-Slider-Thumb {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  background: var(--cx-color-widgets);
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.cX-Workflow-Timeline-Container {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 10px;
+  padding-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cX-Workflow-Timeline-Item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.cX-Workflow-List-Label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: var(--cx-small-font-size);
+  color: var(--cx-color-dark-gray);
   white-space: nowrap;
 }
 
-img.cX-Motion,
-svg.cX-Motion {
-  margin: 0px !important;
-  background: var(--cx-color-transparent) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
+.cX-Workflow-List-Tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--cx-color-light-gray);
 }
 
-div.cX-Motion-Container {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAF0lEQVR42mNkAAJGNOLChQv/cRNYdAAA0dgUqRX/AM0AAAAASUVORK5CYII=);
-  background-repeat: repeat-x;
-}
-
-div.cX-Motion-Current {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlUlEQVR42mNkgIIDBw78ZyACODg4MCLzGWGa7e3tidHPcPDgQRRDGEGaTc0tidIMA6dPHocbAjZAV9eQJAMuXz5PZQM0NA1IMuDG9QuoBqioqJBkwJ07d1ANkJRWJ8mA509vUtkAUVFFkgx4/fo+qgG8fHIkGfD50yMqGgAiQIaws4oTpfnn75eoSRnGoCgzUQIoNgAAbjRcEcsB8BEAAAAASUVORK5CYII=);
-  background-repeat: no-repeat;
-  float: left;
-  height: 14px;
-  position: relative;
-  width: 14px;
-  z-index: 1000002;
-}
-
-div.cX-Motion-Range {
-  box-sizing: border-box;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAOCAYAAADuQ3ZcAAAAFklEQVR42mNkAAJGNMKxcdd/3AQWHQAD/g7xOirtNAAAAABJRU5ErkJggg==);
-  background-repeat: repeat-x;
-  float: left;
-  height: 14px;
-  left: 0px;
-  top: -1px;
-  position: relative;
-  z-index: 1000001;
+/* Specific active state for the Workflow Timeline List */
+.cX-Workflow-Timeline-Item.active {
+    background-color: var(--cx-background-hover-color) !important;
+    color: var(--cx-color-widgets) !important;
+    border-radius: var(--cx-border-radius) !important;
+    font-weight: bold;
 }
 
 /*************
@@ -3744,6 +3875,7 @@ div.cX-DataFilter-Container-Item::selection {
   position: sticky;
   z-index: 100000;
   background: transparent;
+  height: 0px;
 }
 
 div.CanvasXpressLink {
