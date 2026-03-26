@@ -602,13 +602,13 @@ cXbar10 <- function() {
     graphOrientation="horizontal",
     graphType="Bar",
     maxSmpStringLen=50,
-    motionBy="Year",
     showDataValues=TRUE,
     showLegend=FALSE,
     subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
     subtitleScaleFontFactor=0.6,
     title="Cancer death rate by age group, United States",
     widthFactor=2,
+    workflowBy="Year",
     xAxis=list(1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021),
     xAxisGridMajorShow=FALSE,
     xAxisShow=FALSE
@@ -5358,9 +5358,9 @@ cXmap8 <- function() {
     mapConfig=list(zoom=3),
     mapId="australia",
     markerBy="Category",
-    motionBy="Year",
     title="Cyclones in Australia 1940-2020",
-    topoJSON="https://www.canvasxpress.org/data/maps/AUS.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/AUS.json",
+    workflowBy="Year"
   )
 }
 
@@ -7582,7 +7582,7 @@ cXscatterbubble2d3 <- function() {
     varAnnot=z,
     colorBy="Continent",
     graphType="ScatterBubble2D",
-    motionBy="Year",
+    workflowBy="Year",
     xAxis=list("LifeExpectancy"),
     yAxis=list("GDPPerCapita"),
     yAxisTransform="log2",
