@@ -95,7 +95,7 @@ HTMLWidgets.widget({
                 cp.height = ch;
                 dp.appendChild(cp);
                 td.appendChild(dp);
-                var cx = new CanvasXpress(ds);
+                var cx = new CanvasXpress(ds, false, false, false, false, false, false, false, true);
                 nc++;
               }
             }
@@ -107,7 +107,7 @@ HTMLWidgets.widget({
             if (e == null && p != null) {
               p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
             }
-            var cx = new CanvasXpress(this.checkData(x));
+            var cx = new CanvasXpress(this.checkData(x), false, false, false, false, false, false, false, true);
             this.resize(chart_width, chart_height);
             return cx;
           }

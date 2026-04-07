@@ -98,6 +98,7 @@ gg_cxplot <- function(o, target, ...) {
     renderTo = target,
     data     = data,
     aes      = gg_mapping(o, bld),
+    mappings = as.list(sapply(o$mapping, function(m) is.factor(rlang::eval_tidy(m, o$data)))),
     scales   = gg_scales(o, bld),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
