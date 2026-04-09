@@ -721,6 +721,7 @@ cXbar15 <- function() {
     groupingFactors=list("Subject"),
     objectColorTransparency=0.5,
     smpOverlays=list("Durable"),
+    sortData=list(list("cat", "smp", "Response")),
     swimDurable="Durable",
     swimEnd="end",
     swimHigh="high",
@@ -749,6 +750,7 @@ cXbar16 <- function() {
     smpOverlayProperties=list(Durable=list(position="bottom"), Response=list(position="bottom", thickness=100, type="Bar")),
     smpOverlays=list("Durable", "Response"),
     smpTextRotate=90,
+    sortData=list(list("cat", "smp", "Response")),
     swimDurable="Durable",
     swimEnd="end",
     swimHigh="high",
@@ -1619,7 +1621,7 @@ cXbubble3 <- function() {
     showLegend=FALSE,
     title="Annual CO2 Emmisions in 2018",
     xAxis=list("CO2"),
-    afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
+    afterRender=list(list("modifyLabelCoordinates", list(list("Central America",-100,100,true))), list("modifyLabelCoordinates", list(list("South America",10,-50,true))), list("modifyLabelCoordinates", list(list("North America",10,-50))))
   )
 }
 
@@ -1645,7 +1647,7 @@ cXbubble4 <- function() {
     showLegend=TRUE,
     title="Annual CO2 Emmisions in 2018",
     xAxis=list("CO2"),
-    afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
+    afterRender=list(list("modifyLabelCoordinates", list(list("Central America",-100,100,true))), list("modifyLabelCoordinates", list(list("South America",10,-50,true))), list("modifyLabelCoordinates", list(list("North America",10,-50))))
   )
 }
 
@@ -2079,7 +2081,7 @@ cXcontour1 <- function() {
     subtitle="datasets - volcano",
     title="Topographic Information on Auckland's Maunga Whau Volcano",
     xAxis=list("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20", "V21", "V22", "V23", "V24", "V25", "V26", "V27", "V28", "V29", "V30", "V31", "V32", "V33", "V34", "V35", "V36", "V37", "V38", "V39", "V40", "V41", "V42", "V43", "V44", "V45", "V46", "V47", "V48", "V49", "V50", "V51", "V52", "V53", "V54", "V55", "V56", "V57", "V58", "V59", "V60", "V61"),
-    afterRender=list(list("createContour"))
+    afterRender=list(list("createContour", list()))
   )
 }
 
@@ -2095,7 +2097,7 @@ cXcontour2 <- function() {
     showVariableNames=FALSE,
     title="Basic Contour Plot",
     xAxis=list("v1", "v2", "v3", "v4", "v5"),
-    afterRender=list(list("createContour"))
+    afterRender=list(list("createContour", list()))
   )
 }
 
@@ -2111,7 +2113,7 @@ cXcontour3 <- function() {
     xAxis=list("s1"),
     yAxis=list("s2"),
     zAxis=list("s3"),
-    afterRender=list(list("createContour"))
+    afterRender=list(list("createContour", list()))
   )
 }
 
@@ -2127,7 +2129,7 @@ cXcontour4 <- function() {
     xAxis=list("s1"),
     yAxis=list("s2"),
     zAxis=list("s3"),
-    afterRender=list(list("createContour"))
+    afterRender=list(list("createContour", list()))
   )
 }
 
@@ -2144,7 +2146,7 @@ cXcontour5 <- function() {
     showSampleNames=FALSE,
     showVariableNames=FALSE,
     xAxis=list("v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8"),
-    afterRender=list(list("createContour"))
+    afterRender=list(list("createContour", list()))
   )
 }
 
@@ -2223,7 +2225,7 @@ cXcorrelation4 <- function() {
     graphType="Heatmap",
     title="Heatmap - Correlation",
     xAxis=list("mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb"),
-    afterRender=list(list("createHeatmapCorrelation"), list("clusterVariables"), list("clusterSamples"))
+    afterRender=list(list("createHeatmapCorrelation", list()), list("clusterVariables", list()), list("clusterSamples", list()))
   )
 }
 
@@ -2242,7 +2244,7 @@ cXdashboard1 <- function() {
     summaryType="count",
     theme="lastAirBenderFire",
     xAxis=list("Age"),
-    afterRender=list(list("createHistogram"), list("createDOE"))
+    afterRender=list(list("createHistogram", list()), list("createDOE", list()))
   )
 }
 
@@ -2260,7 +2262,7 @@ cXdashboard2 <- function() {
     histogramType="stacked",
     theme="gameOfThronesStannis",
     xAxis=list("displ", "cyl", "cty", "hwy"),
-    afterRender=list(list("createHistogram"), list("createDOE"))
+    afterRender=list(list("createHistogram", list()), list("createDOE", list()))
   )
 }
 
@@ -2279,7 +2281,7 @@ cXdashboard3 <- function() {
     smpTitle="Smoking Status",
     theme="lastAirBenderWater",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3", "S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
+    afterRender=list(list("groupSamples", list("Smoker")), list("createDOE", list()))
   )
 }
 
@@ -2295,7 +2297,7 @@ cXdashboard4 <- function() {
     showTransition=FALSE,
     xAxis=list("Weight"),
     yAxis=list("Height"),
-    afterRender=list(list("createDOE"))
+    afterRender=list(list("createDOE", list()))
   )
 }
 
@@ -2314,7 +2316,7 @@ cXdashboard5 <- function() {
     theme="gameOfThronesTargaryen",
     xAxis=list("Survival"),
     yAxis=list("Survival-Censor"),
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list("Age")), list("switchSmpToAnnotation", list("Clin2")), list("switchSmpToAnnotation", list("Clin3")), list("addKMPlot", list()), list("createDOE", list()))
   )
 }
 
@@ -2800,7 +2802,7 @@ cXdotplot3 <- function() {
     showErrorBars=FALSE,
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
-    afterRender=list(list("groupSamples", list("Country")))
+    afterRender=list(list("groupSamples", list("groupSamples")))
   )
 }
 
@@ -3485,7 +3487,7 @@ cXfacet5 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
   )
 }
 
@@ -3507,7 +3509,7 @@ cXfacet6 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
   )
 }
 
@@ -3529,7 +3531,7 @@ cXfacet7 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
   )
 }
 
@@ -4051,7 +4053,7 @@ cXheatmap10 <- function() {
     sizeBy="Size",
     sizeByData="data4",
     xAxis=list("V1", "V2", "V3", "V4", "V5"),
-    afterRender=list(list("clusterSamples"))
+    afterRender=list(list("clusterSamples", list()))
   )
 }
 
@@ -4509,7 +4511,7 @@ cXkaplanmeier1 <- function() {
     xAxisTitle="Time",
     yAxis=list("status"),
     yAxisTitle="Survival Probability",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4530,7 +4532,7 @@ cXkaplanmeier2 <- function() {
     xAxisTitle="Time",
     yAxis=list("status"),
     yAxisTitle="Survival Probability",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4553,7 +4555,7 @@ cXkaplanmeier3 <- function() {
     xAxisTitle="Time",
     yAxis=list("status"),
     yAxisTitle="Survival Probability",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4575,7 +4577,7 @@ cXkaplanmeier4 <- function() {
     xAxisTitle="Time",
     yAxis=list("Event"),
     yAxisTitle="Survival Probability",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4598,7 +4600,7 @@ cXkaplanmeier5 <- function() {
     xAxisTitle="Time",
     yAxis=list("Event"),
     yAxisTitle="Survival Probability",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4618,7 +4620,7 @@ cXkaplanmeier6 <- function() {
     xAxis=list("Survival", "Survival-Censor"),
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
-    afterRender=list(list("addKMPlot"))
+    afterRender=list(list("addKMPlot", list()))
   )
 }
 
@@ -4640,7 +4642,7 @@ cXkaplanmeier7 <- function() {
     xAxisTitle="Weeks",
     yAxis=list("Survival-Censor", "Survival2-Censor"),
     yAxisTitle="Probability of Survival",
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list("Age")), list("switchSmpToAnnotation", list("Clin2")), list("switchSmpToAnnotation", list("Clin3")), list("addKMPlot", list()), list("createDOE", list()))
   )
 }
 
@@ -4658,7 +4660,7 @@ cXkaplanmeier8 <- function() {
     xAxis=list("Survival", "Survival-Censor"),
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list("Age")), list("switchSmpToAnnotation", list("Clin2")), list("switchSmpToAnnotation", list("Clin3")), list("addKMPlot", list()), list("createDOE", list()))
   )
 }
 
@@ -4869,7 +4871,7 @@ cXlayout11 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3", "S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("groupSamples", list("Smoker")), list("createDOE"))
+    afterRender=list(list("groupSamples", list("Smoker")), list("createDOE", list()))
   )
 }
 
@@ -4883,7 +4885,7 @@ cXlayout12 <- function() {
     graphType="Scatter2D",
     histogramBins=FALSE,
     xAxis=list("Weight", "Height"),
-    afterRender=list(list("createDOE"))
+    afterRender=list(list("createDOE", list()))
   )
 }
 
@@ -4901,7 +4903,7 @@ cXlayout13 <- function() {
     showDecorations=TRUE,
     showLegend=FALSE,
     xAxis=list("Survival", "Survival-Censor"),
-    afterRender=list(list("switchSmpToAnnotation", list('Age')), list("switchSmpToAnnotation", list('Clin2')), list("switchSmpToAnnotation", list('Clin3')), list("addKMPlot"), list("createDOE"))
+    afterRender=list(list("switchSmpToAnnotation", list("Age")), list("switchSmpToAnnotation", list("Clin2")), list("switchSmpToAnnotation", list("Clin3")), list("addKMPlot", list()), list("createDOE", list()))
   )
 }
 
@@ -5145,7 +5147,7 @@ cXlinearfit1 <- function() {
     title="QQ-Plot",
     xAxis=list("mpg"),
     yAxis=list("mpg"),
-    afterRender=list(list("addQQPlot"))
+    afterRender=list(list("addQQPlot", list()))
   )
 }
 
@@ -5162,7 +5164,7 @@ cXlinearfit2 <- function() {
     title="QQ-Plot colored by cyl",
     xAxis=list("mpg"),
     yAxis=list("mpg"),
-    afterRender=list(list("addQQPlot"))
+    afterRender=list(list("addQQPlot", list()))
   )
 }
 
@@ -6192,7 +6194,7 @@ cXnonlinearfit2 <- function() {
     showLegend=FALSE,
     xAxis=list("X"),
     yAxis=list("Y"),
-    afterRender=list(list("addNormalDistributionLine"))
+    afterRender=list(list("addNormalDistributionLine", list()))
   )
 }
 
