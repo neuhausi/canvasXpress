@@ -98,7 +98,7 @@ gg_cxplot <- function(o, target, ...) {
     renderTo = target,
     data     = data,
     aes      = gg_mapping(o, bld),
-    mappings = as.list(sapply(o$mapping, function(m) is.factor(rlang::eval_tidy(m, o$data)))),
+    mappings = gg_mapping_list(o),
     scales   = gg_scales(o, bld),
     coords   = gg_coordinates(o),
     theme    = gg_theme(o),
@@ -443,7 +443,7 @@ gg_scales <- function(o, b) {
           r$colorLegendTitle <- s$name
         }
         w <- w + 1
-      } else if (s$aesthetics[1] == "colour") {
+      } else if (s$aesthetics[1] == "colour" || s$aesthetics[1] == "color") {
         c <- class(s)[1]
         if (c == "ScaleContinuous") {
           r$colorSpectrum2 <- s$palette(c(0, 0.25, 0.5, 0.75, 1))
@@ -683,7 +683,7 @@ gg_mapping <- function(o, b) {
     o <- ggplot2::last_plot()
   }
   r <- list()
-  m <- c("x", "y", "z", "xmin", "xmax", "xend", "ymin", "ymax", "yend", "zmin", "zmax", "weight", "group", "colour", "fill", "size", "alpha", "linetype", "label", "vjust", "sample", "pattern")
+  m <- c("x", "y", "z", "xmin", "xmax", "xend", "ymin", "ymax", "yend", "zmin", "zmax", "weight", "group", "colour", "color", "fill", "size", "alpha", "linetype", "label", "vjust", "sample", "pattern")
   e <- TRUE
   for (i in m) {
     if (!is.null(o$mapping[[i]])) {
@@ -706,11 +706,69 @@ gg_mapping <- function(o, b) {
   }
 }
 
+gg_mapping_list <- function(o) {
+  if (missing(o)) {
+    o <- ggplot2::last_plot()
+  }
+  # Check only mappings that are not delayed aesthetics
+  result <- list()
+  for (name in names(o$mapping)) {
+    m <- o$mapping[[name]]
+    # Extract the expression from the quosure
+    expr <- rlang::quo_get_expr(m)
+    # Check if it's a call to after_stat() or stat()
+    if (is.call(expr) && as.character(expr[[1]]) %in% c("after_stat", "stat")) {
+      result[[name]] <- FALSE
+    } else {
+      if (name %in% c("colour", "color")) {
+        name <- "color"
+      }
+      result[[name]] <- is.factor(rlang::eval_tidy(m, o$data))
+    }
+  }
+  result
+}
+
 gg_proc_layer <- function(o, idx, bld) {
   l <- o$layers[[idx]]
   r <- list()
   q <- as.vector(NULL)
   d <- as.list(gg_default_aes(class(l$geom)[1]))
+  clean_factor <- function(b) {
+    gsub("factor\\(|\\)|as\\.", "", b)
+  }
+  aes_key <- function(a) {
+    if (a == "colour") {
+      "color"
+    } else {
+      a
+    }
+  }
+  gg_shape_name <- function(n) {
+    shape_map <- c(
+      "square", "circle", "triangle", "plus", "minus", "diamond",
+      "triangle2", "hexagon", "star", "octagon", "pentagon", "mdavid",
+      "drop", "circleOpen", "square", "square", "circle", "triangle",
+      "diamond", "circle", "circle", "circleOpen", "square", "diamond",
+      "triangle", "triangle2"
+    )
+    i <- as.integer(n) + 1L
+    if (!is.na(i) && i >= 1L && i <= length(shape_map)) {
+      shape_map[i]
+    } else {
+      "circle"
+    }
+  }
+  resolve_aes_val <- function(bld_vals, default) {
+    bld_vals <- bld_vals[!is.na(bld_vals)]
+    if (length(bld_vals) == 1) {
+      bld_vals
+    } else if (!is.null(default)) {
+      gsub("\"", "", default)
+    } else {
+      NULL
+    }
+  }
   if (!is.null(l$mapping)) {
     atts <- ls(l$mapping)
     if (length(atts) > 0) {
@@ -736,76 +794,70 @@ gg_proc_layer <- function(o, idx, bld) {
           b[[p[1]]] <- c
           r[[a]] <- b
         } else if (f > 0) {
-          b <- stringr::str_replace(stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", ""), "as\\.", "")
+          b <- clean_factor(b)
           q <- append(q, b)
           if (!(a %in% c("x", "y", "z"))) {
-            if (a == "colour") {
-              r[["color"]] <- b
-            } else {
-              r[[a]] <- b
-            }
+            r[[aes_key(a)]] <- b
           }
         } else {
-          if (a == "colour") {
-            r[["color"]] <- b
-          } else {
-            r[[a]] <- b
-          }
+          r[[aes_key(a)]] <- b
         }
       }
     }
   }
-  prps <- c("aes_params", "geom_params", "stat_params", "position")
-  skip <- c("compute_panel", "preserve", "setup_data", "setup_params", "super", "compute_layer", "orientation", "contour", "distribution", "length")
+  skip <- c("compute_panel", "preserve", "setup_data", "setup_params",
+            "super", "compute_layer", "orientation", "contour",
+            "distribution", "length")
   skip2 <- c("na.rm", "reverse", "vjust")
-  skip_values <- list(
-    na.rm = FALSE,
-    reverse = FALSE,
-    vjust = 1
-  )
-  for (p in prps) {
-    if (!is.null(l[[p]])) {
-      atts <- ls(l[[p]])
-      if (length(atts) > 0) {
-        for (a in atts) {
-          if (a %in% skip) {
-            next
-          }
-          if (a %in% skip2 && (is.null(l[[p]][[a]]) || skip_values[a] == l[[p]][[a]])) {
-            next
-          }
-          b <- l[[p]][[a]]
-          if (!(missing(b)) && is.vector(b)) {
-            f <- regexpr("factor", b)[1]
-            if (is.character(f) && f > 0) {
-              b <- stringr::str_replace(stringr::str_replace(stringr::str_replace(b, "factor\\(", ""), "\\)", ""), "as\\.", "")
-            }
-            if (is.null(r[[a]])) {
-              if (a == "colour") {
-                r[["color"]] <- b
-              } else {
-                r[[a]] <- b
-              }
-            }
-          } else if (class(b)[1] == "formula") {
-            dl <- bld$data[[idx]]
-            r$formula <- list()
-            r$formula$def <- deparse(b)
-            if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
-              r$formula$x <- as.numeric(dl[["x"]])
-              r$formula$y <- as.numeric(dl[["y"]])
-            }
-            if ("ymin" %in% colnames(dl) && "ymax" %in% colnames(dl)) {
-              r$formula$ymin <- as.numeric(dl[["ymin"]])
-              r$formula$ymax <- as.numeric(dl[["ymax"]])
-              max <- bld$layout$panel_scales_y[[1]]$range$range[2]
-              min <- bld$layout$panel_scales_y[[1]]$range$range[1]
-              ext <- (max - min) * 0.05
-              r$formula$minY <- min - ext
-              r$formula$maxY <- max + ext
-            }
-          }
-        }
+  skip_values <- list(na.rm = FALSE, reverse = FALSE, vjust = 1)
+
+  all_params <- c(l$aes_params, l$geom_params, l$stat_params)
+  all_params <- all_params[!names(all_params) %in% skip]
+  for (nm in intersect(names(all_params), skip2)) {
+    if (is.null(all_params[[nm]]) || isTRUE(skip_values[[nm]] == all_params[[nm]])) {
+      all_params[[nm]] <- NULL
+    }
+  }
+  for (a in names(all_params)) {
+    b <- all_params[[a]]
+    k <- aes_key(a)
+    if (is.vector(b)) {
+      f <- regexpr("factor", b)[1]
+      if (is.character(f) && f > 0) {
+        b <- clean_factor(b)
+      }
+      if (is.null(r[[k]])) {
+        r[[k]] <- b
+      }
+    } else if (class(b)[1] == "formula") {
+      dl <- bld$data[[idx]]
+      r$formula <- list()
+      r$formula$def <- deparse(b)
+      if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
+        r$formula$x <- as.numeric(dl[["x"]])
+        r$formula$y <- as.numeric(dl[["y"]])
+      }
+      if ("ymin" %in% colnames(dl) && "ymax" %in% colnames(dl)) {
+        r$formula$ymin <- as.numeric(dl[["ymin"]])
+        r$formula$ymax <- as.numeric(dl[["ymax"]])
+        max <- bld$layout$panel_scales_y[[1]]$range$range[2]
+        min <- bld$layout$panel_scales_y[[1]]$range$range[1]
+        ext <- (max - min) * 0.05
+        r$formula$minY <- min - ext
+        r$formula$maxY <- max + ext
+      }
+    } else if (is.function(b) || is.primitive(b)) {
+      if (is.null(r[[k]])) {
+        fn_name <- tryCatch({
+          pkg <- environmentName(environment(b))
+          ns  <- if (nchar(pkg) > 0) asNamespace(pkg) else baseenv()
+          nms <- ls(ns)
+          found <- nms[vapply(nms, function(nm) {
+            identical(get(nm, envir = ns, inherits = FALSE), b)
+          }, logical(1))]
+          if (length(found) > 0) found[1] else NULL
+        }, error = function(e) NULL)
+        if (!is.null(fn_name)) r[[k]] <- fn_name
       }
     }
   }
@@ -818,8 +870,9 @@ gg_proc_layer <- function(o, idx, bld) {
     r$asVariableFactors <- unique(q)
     r$asSampleFactors <- unique(q)
   }
-  pos <- class(l$position)[1]
-  pos <- ifelse(pos == "PositionJitter", "jitter", ifelse(pos == "PositionFill", "fill", ifelse(pos == "PositionStack", "stack", ifelse(pos == "PositionDodge", "dodge", "normal"))))
+  pos_map <- c(PositionJitter = "jitter", PositionFill = "fill", PositionStack = "stack", PositionDodge = "dodge")
+  pos_name <- class(l$position)[1]
+  pos <- if (!is.na(pos_map[pos_name])) pos_map[[pos_name]] else "normal"
   if (pos != "normal") {
     r$position <- pos
   }
@@ -848,73 +901,21 @@ gg_proc_layer <- function(o, idx, bld) {
       r$data <- as.matrix(nd)
     }
   }
-  prps <- c("colour", "fill", "alpha")
+  prps <- c("colour", "color", "fill", "alpha")
   for (p in prps) {
-    #if ((!(p %in% names(r))) && !is.null(d[[p]])) {
-    if ((!(p %in% names(r))) && !is.null(d[[p]]) && rlang::as_label(o$mapping[[p]]) == "NULL") {
-      if (p == "colour") {
-        if (!("color" %in% names(r))) {
-          r$color <- gsub("\"", "", d[[p]])
+    aes_col <- if (p == "colour") "colour" else p
+    if ((!(p %in% names(r))) && rlang::as_label(o$mapping[[p]]) == "NULL") {
+      bld_vals <- unique(bld$data[[idx]][[aes_col]])
+      val <- resolve_aes_val(bld_vals, d[[p]])
+      if (!is.null(val)) {
+        if (p == "colour") {
+          if (!("color" %in% names(r))) r$color <- val
+        } else {
+          r[[p]] <- val
         }
-      } else {
-        r[[p]] <- gsub("\"", "", d[[p]])
       }
     } else if (p == "shape" && !is.null(d[[p]])) {
-      if (d[[p]] == 0) {
-        r$shape <- "square"
-      } else if (d[[p]] == 1) {
-        r$shape <- "circle"
-      } else if (d[[p]] == 2) {
-        r$shape <- "triangle"
-      } else if (d[[p]] == 3) {
-        r$shape <- "plus"
-      } else if (d[[p]] == 4) {
-        r$shape <- "minus"
-      } else if (d[[p]] == 5) {
-        r$shape <- "diamond"
-      } else if (d[[p]] == 6) {
-        r$shape <- "triangle2"
-      } else if (d[[p]] == 7) {
-        r$shape <- "hexagon"
-      } else if (d[[p]] == 8) {
-        r$shape <- "star"
-      } else if (d[[p]] == 9) {
-        r$shape <- "octagon"
-      } else if (d[[p]] == 10) {
-        r$shape <- "pentagon"
-      } else if (d[[p]] == 11) {
-        r$shape <- "mdavid"
-      } else if (d[[p]] == 12) {
-        r$shape <- "drop"
-      } else if (d[[p]] == 13) {
-        r$shape <- "circleOpen"
-      } else if (d[[p]] == 14) {
-        r$shape <- "square"
-      } else if (d[[p]] == 15) {
-        r$shape <- "square"
-      } else if (d[[p]] == 16) {
-        r$shape <- "circle"
-      } else if (d[[p]] == 17) {
-        r$shape <- "triangle"
-      } else if (d[[p]] == 18) {
-        r$shape <- "diamond"
-      } else if (d[[p]] == 19) {
-        r$shape <- "circle"
-      } else if (d[[p]] == 20) {
-        r$shape <- "circle"
-      } else if (d[[p]] == 21) {
-        r$shape <- "circleOpen"
-      } else if (d[[p]] == 22) {
-        r$shape <- "square"
-      } else if (d[[p]] == 23) {
-        r$shape <- "diamond"
-      } else if (d[[p]] == 24) {
-        r$shape <- "triangle"
-      } else if (d[[p]] == 25) {
-        r$shape <- "triangle2"
-      } else {
-        r$shape <- "circle"
-      }
+      r$shape <- gg_shape_name(d[[p]])
     }
   }
   r
@@ -922,7 +923,7 @@ gg_proc_layer <- function(o, idx, bld) {
 
 data_to_matrix <- function(o, b) {
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
-  m <- c("x", "y", "z", "label", "colour", "fill", "size")
+  m <- c("x", "y", "z", "label", "colour", "color", "fill", "size")
   d <- o$data
   nd <- data.frame(lapply(d, as.character), stringsAsFactors = FALSE, check.names = FALSE)
   k <- length(row.names(nd))
@@ -931,7 +932,7 @@ data_to_matrix <- function(o, b) {
       q <- rlang::as_label(o$mapping[[i]])
       if (q %in% colnames(o$data) || q == "1") {
         ## Nothing to do
-      } else if (i == "label" || i == "colour" || i == "fill") {
+      } else if (i == "label" || i == "colour" || i == "color" || i == "fill") {
         u <- as.character(b$data[[1]][[i]])
         if (length(u) == k) {
           nd[i] <- u
@@ -956,7 +957,7 @@ data_to_matrix <- function(o, b) {
             q <- gsub("\"", "", q)
             if (q %in% colnames(o$data)) {
               ## Nothing to do
-            } else if (j == "label" || j == "colour" || j == "fill") {
+            } else if (j == "label" || j == "colour" || j == "color" || j == "fill") {
               u <- as.character(b$data[[1]][[j]])
               if (length(u) == length((nd[[1]]))) {
                 nd[q] <- u
