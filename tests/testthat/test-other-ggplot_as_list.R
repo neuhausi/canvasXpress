@@ -24,7 +24,7 @@ test_that("ggplot.as.list - ggplot2 GeomPoint", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_true(length(cxplot_list$data) == 33)
     expect_equal(cxplot_list$data[[2]][[1]], "Mazda RX4")
@@ -50,7 +50,7 @@ test_that("ggplot.as.list - ggplot2 GeomBin2d", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_true(length(cxplot_list$data) > 0)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -67,7 +67,7 @@ test_that("ggplot.as.list - ggplot2 GeomBar", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 53941)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -84,7 +84,7 @@ test_that("ggplot.as.list - ggplot2 GeomPath", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 575)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -102,7 +102,7 @@ test_that("ggplot.as.list - ggplot2 StatQq", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 201)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -132,7 +132,7 @@ test_that("ggplot.as.list - ggplot2 point range", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 6)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -227,7 +227,7 @@ test_that("ggplot.as.list - test segments", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -271,7 +271,7 @@ test_that("ggplot.as.list - GeomBracket", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -302,7 +302,7 @@ test_that("ggplot.as.list - ggpattern", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$data[[2]][[1]], "Mazda RX4")
@@ -320,7 +320,7 @@ test_that("ggplot.as.list - ggpattern", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 4)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -352,7 +352,7 @@ test_that("ggplot.as.list - fill scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$scales$colorSpectrum[[1]], "#00204D")
@@ -381,7 +381,7 @@ test_that("ggplot.as.list - fill scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list$scales$colorBreaks[[1]], "4")
 
@@ -406,7 +406,7 @@ test_that("ggplot.as.list - fill scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list$scales$colorBreaks[[1]], 100)
     expect_equal(cxplot_list$scales$colorLimits[[1]], 50)
@@ -436,7 +436,7 @@ test_that("ggplot.as.list - color scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$scales$colorSpectrum[[1]], "#00204D")
@@ -465,7 +465,7 @@ test_that("ggplot.as.list - color scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list$scales$colorBreaks[[1]], "4")
 
@@ -485,7 +485,7 @@ test_that("ggplot.as.list - color scaling", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list$scales$colorBreaks[[1]], 100)
     expect_equal(cxplot_list$scales$colorLimits[[1]], 50)
@@ -507,7 +507,7 @@ test_that("ggplot.as.list - x and y axis properties", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["scales"]][["xAxisSetValues"]][[2]], 100)
     expect_equal(cxplot_list[["scales"]][["xAxisSetMinorValues"]][[2]], 100)
@@ -528,7 +528,7 @@ test_that("ggplot.as.list - x and y axis properties", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["scales"]][["xAxisTransform"]], "log10")
     expect_equal(cxplot_list[["scales"]][["xAxisTitle"]], "Engine Horsepower")
@@ -559,7 +559,7 @@ test_that("ggplot.as.list - pattern scale properties", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["scales"]][["colors"]][[1]], "#F8766D")
 })
@@ -584,7 +584,7 @@ test_that("ggplot.as.list - coordinates", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["coords"]][["setMinX"]], 100)
     expect_equal(cxplot_list[["coords"]][["setMaxX"]], 350)
@@ -613,7 +613,7 @@ test_that("ggplot.as.list - cut functions layer", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["layers"]][["GeomPoint"]][["colour"]][["cut_number"]][["disp"]], "NA")
 })
@@ -637,7 +637,7 @@ test_that("ggplot.as.list - layer with formula", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(cxplot_list[["layers"]][["GeomSmooth"]][["formula"]][["def"]], "y ~ x + I(x^2)")
     expect_equal(length(cxplot_list[["layers"]][["GeomSmooth"]][["formula"]][["x"]]), 80)
@@ -661,7 +661,7 @@ test_that("ggplot.as.list - GeomPoint with transformation", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list[["layers"]][["GeomPoint"]][["color"]]), 11)
     expect_equal(length(cxplot_list[["layers"]][["GeomPoint"]][["fill"]]), 11)
@@ -669,6 +669,17 @@ test_that("ggplot.as.list - GeomPoint with transformation", {
     expect_equal(length(cxplot_list[["layers"]][["GeomPoint"]][["shape"]]), 11)
         expect_equal(length(cxplot_list[["layers"]][["GeomPoint"]][["x"]]), 11)
     expect_equal(length(cxplot_list[["layers"]][["GeomPoint"]][["y"]]), 11)
+
+    gplot <- ggplot(mtcars, aes(x = hp, y = mpg)) +
+        geom_point(data = . %>% filter(cyl == 4),
+                   aes(color = factor(cyl), size = wt) , shape = factor(21),
+                   fill = "white") +
+        theme_minimal()
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+    expect_equal(class(cxplot), "json")
+    expect_equal(length(cxplot_list), 16)
+    expect_true(cxplot_list$isGGPlot)
 })
 
 
@@ -688,7 +699,7 @@ test_that("ggplot.as.list - ggplot2 GeomErrorbar", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 5)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -706,7 +717,7 @@ test_that("ggplot.as.list - ggplot2 facets", {
     cxplot_list <- jsonlite::parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 15)
+    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 235)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -719,4 +730,267 @@ test_that("ggplot.as.list - ggplot2 facets", {
     gplot <- gplot +
         facet_grid(cols = vars(cyl))
     expect_equal(class(suppressWarnings(ggplot.as.list(gplot))), "json")
+})
+
+
+test_that("ggplot.as.list - shape mapping with named shapes", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    gplot <- ggplot(mtcars, aes(x = hp, y = mpg, shape = factor(cyl))) +
+        geom_point(size = 4) +
+        scale_shape_manual(
+            values = c("4" = 1, "6" = 2, "8" = 3),  # square, circle, triangle
+            name = "Cylinders"
+        ) +
+        labs(title = "Shape Mapping Test") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+    expect_equal(length(cxplot_list$data), 33)
+})
+
+
+test_that("ggplot.as.list - edge case shapes and categorical values", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    test_data <- mtcars[1:10, ]
+    # Create a categorical shape variable instead of continuous
+    test_data$shape_var <- factor(c("A", "B", "C", "D", "E", "A", "B", "C", "D", "E"))
+
+    gplot <- ggplot(test_data, aes(x = hp, y = mpg, shape = shape_var)) +
+        geom_point(size = 4) +
+        scale_shape_manual(
+            values = c("A" = 1, "B" = 2, "C" = 3, "D" = 4, "E" = 5)
+        ) +
+        labs(title = "Edge Case Shapes") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+    expect_equal(length(cxplot_list$data), 11)
+})
+
+
+test_that("ggplot.as.list - shape with NA values in factor", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    test_data <- mtcars[1:10, ]
+    # Create factor with explicit NA
+    test_data$shape_var <- factor(
+        c("A", "B", "C", NA, "E", "A", "B", "C", "D", "E"),
+        levels = c("A", "B", "C", "D", "E")
+    )
+
+    gplot <- ggplot(test_data, aes(x = hp, y = mpg, shape = shape_var)) +
+        geom_point(size = 4, na.rm = TRUE) +
+        scale_shape_manual(
+            values = c("A" = 1, "B" = 2, "C" = 3, "D" = 4, "E" = 5)
+        ) +
+        labs(title = "Shapes with NA Values") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+test_that("ggplot.as.list - parameter skipping with na.rm TRUE", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # skip2 parameter filtering
+    gplot <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+        geom_point(na.rm = TRUE, size = 3) +  # na.rm = TRUE (not default FALSE)
+        labs(title = "Point with na.rm") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+
+test_that("ggplot.as.list - parameter skipping with reverse TRUE", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # skip2 parameter filtering for reverse
+    gplot <- ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
+        geom_point(size = 3) +
+        scale_color_manual(
+            values = c("4" = "red", "6" = "green", "8" = "blue"),
+            guide = guide_legend(reverse = TRUE)
+        ) +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+
+test_that("ggplot.as.list - function parameter in geom_text vjust", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # vjust parameter handling
+    test_data <- data.frame(
+        x = 1:5,
+        y = 1:5,
+        label = LETTERS[1:5]
+    )
+
+    gplot <- ggplot(test_data, aes(x = x, y = y, label = label)) +
+        geom_point(size = 3) +
+        geom_text(vjust = -0.5, size = 4) +  # vjust != 1 (default)
+        labs(title = "Text with vjust") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+
+test_that("ggplot.as.list - custom function in layer parameters", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # Function name resolution with environment lookup
+    custom_breaks <- function(x) {
+        seq(min(x), max(x), length.out = 5)
+    }
+
+    gplot <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+        geom_point(size = 3) +
+        scale_x_continuous(breaks = custom_breaks) +
+        labs(title = "Custom Breaks Function") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+
+test_that("ggplot.as.list - show.legend FALSE explicit", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # l$show.legend == FALSE
+    gplot <- ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
+        geom_point(size = 3, show.legend = FALSE) +  # Explicit FALSE
+        labs(title = "No Legend on Geom") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+    # Check that showLegend is set to FALSE in at least one layer
+    has_show_legend_false <- any(sapply(cxplot_list$layers, function(layer) {
+        any(sapply(layer, function(x) {
+            if (is.list(x) && "showLegend" %in% names(x)) {
+                x$showLegend == FALSE
+            } else {
+                FALSE
+            }
+        }))
+    }))
+})
+
+
+test_that("ggplot.as.list - stringVariableFactors with factor color", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # stringVariableFactors assignment
+    test_data       <- mtcars
+    test_data$cyl_f <- factor(mtcars$cyl, labels = c("4cyl", "6cyl", "8cyl"))
+    test_data$am_f  <- factor(mtcars$am, labels = c("Auto", "Manual"))
+
+    gplot <- ggplot(test_data, aes(x = wt, y = mpg, color = cyl_f)) +
+        geom_point(aes(shape = am_f), size = 3) +
+        scale_color_manual(
+            name = "Cylinders",
+            values = c("4cyl" = "red", "6cyl" = "blue", "8cyl" = "green")
+        ) +
+        scale_shape_manual(
+            name = "Transmission",
+            values = c("Auto" = 16, "Manual" = 17)
+        ) +
+        labs(title = "Multiple Factor Variables") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+})
+
+
+test_that("ggplot.as.list - shape names mapping", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # gg_shape_name function with shape values
+    # Testing shapes 0-9 to ensure proper mapping
+    test_data <- data.frame(
+        x = 1:10,
+        y = rnorm(10),
+        shape_val = 0:9  # Different shape values
+    )
+
+    gplot <- ggplot(test_data, aes(x = x, y = y, shape = shape_val)) +
+        geom_point(size = 4, color = "steelblue") +
+        scale_shape_identity() +
+        labs(title = "Various Shape Values", x = "Index", y = "Value") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
+    expect_equal(length(cxplot_list$data), 11)
+})
+
+
+test_that("ggplot.as.list - point with layer-specific data", {
+    skip_if(getRversion() < "4.1.0")
+    skip_if_not_installed("ggplot2")
+
+    # dim check for GeomPoint
+    gplot <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+        geom_point(data = mtcars[1:15, ], aes(color = factor(cyl)), size = 4) +
+        labs(title = "Point with Layer-Specific Data") +
+        theme_minimal()
+
+    cxplot      <- suppressWarnings(ggplot.as.list(gplot))
+    cxplot_list <- jsonlite::parse_json(cxplot)
+
+    expect_equal(class(cxplot), "json")
+    expect_true(cxplot_list$isGGPlot)
 })

@@ -1365,7 +1365,8 @@ cXboxplot15 <- function() {
     colorBy="dose",
     graphOrientation="vertical",
     graphType="Boxplot",
-    groupingFactors=list("dose", "supp"),
+    groupingFactors=list("supp"),
+    pivotBy="dose",
     showLegend=TRUE,
     smpTextRotate=90,
     smpTitle="dose",
@@ -1375,8 +1376,7 @@ cXboxplot15 <- function() {
     xAxis=list("len"),
     xAxis2Show=FALSE,
     xAxisGridMinorShow=FALSE,
-    xAxisTitle="len",
-    afterRender=list(list("pivotX", list("dose")))
+    xAxisTitle="len"
   )
 }
 
@@ -1621,7 +1621,7 @@ cXbubble3 <- function() {
     showLegend=FALSE,
     title="Annual CO2 Emmisions in 2018",
     xAxis=list("CO2"),
-    afterRender=list(list("modifyLabelCoordinates", list(list("Central America",-100,100,true))), list("modifyLabelCoordinates", list(list("South America",10,-50,true))), list("modifyLabelCoordinates", list(list("North America",10,-50))))
+    afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
 }
 
@@ -1647,7 +1647,7 @@ cXbubble4 <- function() {
     showLegend=TRUE,
     title="Annual CO2 Emmisions in 2018",
     xAxis=list("CO2"),
-    afterRender=list(list("modifyLabelCoordinates", list(list("Central America",-100,100,true))), list("modifyLabelCoordinates", list(list("South America",10,-50,true))), list("modifyLabelCoordinates", list(list("North America",10,-50))))
+    afterRender=list(list("modifyLabelCoordinates", list(list("Central America", -100, 100, true))), list("modifyLabelCoordinates", list(list("South America", 10, -50, true))), list("modifyLabelCoordinates", list(list("North America", 10, -50))))
   )
 }
 
@@ -2747,7 +2747,7 @@ cXdotplot1 <- function() {
     graphType="Dotplot",
     lineType="spline",
     showSmpOverlaysLegend=TRUE,
-    smpOverlayProperties=list(Factor4=list(color="blue", showLegend=1, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=1, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=1, thickness=50, type="Bar")),
+    smpOverlayProperties=list(Factor4=list(color="blue", showLegend="True", thickness=50, type="Bar"), Factor5=list(color="grey", showLegend="True", thickness=50, type="Bar"), Factor6=list(color="red", showLegend="True", thickness=50, type="Bar")),
     smpOverlays=list("Factor1", "Factor2", "Factor3", "Factor4", "Factor5", "Factor6"),
     smpTextRotate=45,
     smpTitle="Collection of Samples",
@@ -2802,7 +2802,7 @@ cXdotplot3 <- function() {
     showErrorBars=FALSE,
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
-    afterRender=list(list("groupSamples", list("groupSamples")))
+    afterRender=list(list("groupSamples", list("Country")))
   )
 }
 
@@ -3487,7 +3487,7 @@ cXfacet5 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -3509,7 +3509,7 @@ cXfacet6 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -3531,7 +3531,7 @@ cXfacet7 <- function() {
     title="Floral scent data set",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     yAxis=list("S-Trial 1", "S-Trial 2", "S-Trial 3"),
-    afterRender=list(list("segregateVariables", list(list("Opinion","Sex"))))
+    afterRender=list(list("segregateVariables", list(list("Opinion", "Sex"))))
   )
 }
 
@@ -4086,12 +4086,12 @@ cXheatmap12 <- function() {
     graphType="Heatmap",
     showSmpOverlaysLegend=FALSE,
     showVarOverlaysLegend=FALSE,
-    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=1, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=1, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=1, thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=1, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=1, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=1, thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
+    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend="True", type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend="True", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend="True", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend="True", thickness=50, type="Bar"), PhaseB=list(position="left", showLegend="True", thickness=50, type="Bar"), PhaseC=list(position="left", showLegend="True", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
     smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
     smpTextScaleFontFactor=1.1,
     splitSamplesBy="Discrete",
     splitVariablesBy="Drug",
-    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=1, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=1, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=1, thickness=50, type="Bar"), Female=list(position="top", showLegend=1, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=1, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=1, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=1, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=1, thickness=50, type="BarLine"), Site=list(position="top", showLegend=1, type="Default"), Ugly=list(color="black", position="bottom", showLegend=1, thickness=50, type="Dotplot")),
+    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend="True", thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend="True", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend="True", thickness=30, type="Increase"), Even=list(position="bottom", showLegend="True", thickness=50, type="Bar"), Female=list(position="top", showLegend="True", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend="True", thickness=50, type="StackedPercent"), Male=list(position="top", showLegend="True", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend="True", thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend="True", thickness=50, type="BarLine"), Site=list(position="top", showLegend="True", type="Default"), Ugly=list(color="black", position="bottom", showLegend="True", thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
     varTextRotate=45,
     varTextScaleFontFactor=1.7,
@@ -4117,10 +4117,10 @@ cXheatmap13 <- function() {
     showValueOverlays=FALSE,
     showVarOverlaysLegend=TRUE,
     smpDendrogramPosition="right",
-    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=1, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=1, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=1, type="Default")),
+    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend="True", type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend="True", thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend="True", type="Default")),
     smpOverlays=list("Drug", "-", "Dose", "CellType", "-", "Time"),
     smpTitleLabelPosition="right",
-    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=1, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
+    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend="True", thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
     varOverlays=list("ProteinA", "-", "GeneClass"),
     varTitleLabelPosition="bottom",
     variablesClustered=TRUE,
@@ -4919,7 +4919,7 @@ cXlayout14 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     layoutAdjust=TRUE,
-    layoutConfig=list(list(axisCoordinate=1, graphType="BarLine", showDataValues=1, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=1, legendPosition="bottomLeft", showLegend=1, showLegendTitle=0, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=0, barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutConfig=list(list(axisCoordinate="True", graphType="BarLine", showDataValues="True", xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside="True", legendPosition="bottomLeft", showLegend="True", showLegendTitle="False", xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen="False", barType="lollipop", xAxisTitle="Baseline (mm)")),
     layoutTopology="3X1",
     showLegend=FALSE,
     stripBackgroundBorderColor="rgba(0,0,0,0)",
@@ -5243,7 +5243,7 @@ cXmap1 <- function() {
     mapId="medals",
     theme="tableau",
     title="Total Number of Olympic Medals in Paris - 2024",
-    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
   )
 }
 
@@ -5260,7 +5260,7 @@ cXmap2 <- function() {
     mapId="countries",
     theme="solarized",
     title="CO2 Emmisions During 2018",
-    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
   )
 }
 
@@ -5268,13 +5268,13 @@ cXmap3 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="ISO_A3",
+    colorBy="variable",
     decorations=list(connections=list(list(color="red", source=list(40.7, -74), target=list(37.7, -122), type="spline"), list(color="red", source=list(40.7, -74), target=list(25.7, -80.1), type="spline"), list(color="red", source=list(37.7, -122), target=list(25.7, -80.1), type="splineDashed")), marker=list(list(color="blue", coords=list(40.7, -74), label="New York", shape="teardrop", size=5), list(color="blue", coords=list(37.7, -122), label="San Francisco", shape="teardrop", size=5), list(color="blue", coords=list(25.7, -80.1), label="Miami", shape="teardrop", size=5), list(color="green", coords=list(41.8, -87.6), label="Chicago", shape="circle", size=4), list(color="green", coords=list(36.1, -115.1), label="Las Vegas", shape="circle", size=3), list(color="black", coords=list(42.3, -71), label="Boston", shape="star", size=6))),
     graphType="Map",
     mapConfig=list(center=list(34.7, -96.1), zoom=3.2),
     mapId="colorCountries",
     showLegend=FALSE,
-    topoJSON="https://www.canvasxpress.org/data/json/world.geojson"
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
   )
 }
 
@@ -5292,7 +5292,7 @@ cXmap4 <- function() {
     mapProjection="albers",
     theme="wallStreetJournal",
     title="2000 Presidential Elections",
-    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-states.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
   )
 }
 
@@ -5313,7 +5313,7 @@ cXmap5 <- function() {
     sizeBy="Total",
     theme="wallStreetJournal",
     title="2000 Presidential Elections",
-    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-states.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
   )
 }
 
@@ -5326,7 +5326,7 @@ cXmap6 <- function() {
     legendPosition="bottom",
     mapId="albersCounties",
     title="Mercator Projection",
-    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-counties.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/USA-COUNTIES.json"
   )
 }
 
@@ -5334,22 +5334,20 @@ cXmap7 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    colorBy="state_fips",
+    colorBy="Order",
     graphType="Map",
     legendPosition="bottom",
     mapId="mercatorCounties",
     mapProjection="albers",
     title="Albers Projection",
-    topoJSON="https://www.canvasxpress.org/data/json/usa-albers-counties.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/USA-COUNTIES.json"
   )
 }
 
 cXmap8 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-australia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-australia-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=y,
     smpAnnot=x,
     colorBy="variable",
     colorScheme="Bootstrap",
@@ -5371,14 +5369,13 @@ cXmap9 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-colombia-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    colorBy="Prop1",
+    colorBy="Property1",
     colorSpectrum=list("rgb(247,252,253)", "rgb(229,245,249)", "rgb(204,236,230)", "rgb(153,216,201)", "rgb(102,194,164)", "rgb(65,174,118)", "rgb(35,139,69)", "rgb(0,109,44)", "rgb(0,68,27)"),
     decorations=list(marker=list(list(color="red", coords=list(10.3932, -75.4832), label="Cartagena", shape="teardrop", size=4), list(color="blue", coords=list(12.5769, -81.7051), label="San Andres", shape="teardrop", size=6))),
     graphType="Map",
     legendInside=TRUE,
     legendPosition="bottomLeft",
     mapId="colombia",
-    mapPropertyId="ID_1",
     topoJSON="https://www.canvasxpress.org/data/maps/COL.json"
   )
 }
@@ -5402,9 +5399,8 @@ cXmap11 <- function() {
   library(canvasXpress)
   canvasXpress(
     data=FALSE,
-    background="black",
     graphType="Map",
-    mapColor="black",
+    mapColor="grey",
     mapId="spain",
     mapOutlineColor="white",
     topoJSON="https://www.canvasxpress.org/data/maps/ESP.json"
@@ -5438,7 +5434,7 @@ cXmap13 <- function() {
     mapProjection="orthographic",
     showLegend=FALSE,
     title="Ortographic Projection",
-    topoJSON="https://www.canvasxpress.org/data/json/worldLow.json"
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD-LOW.json"
   )
 }
 
@@ -5456,10 +5452,8 @@ cXmap14 <- function() {
 
 cXmap15 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=y,
     smpAnnot=x,
     graphType="Map",
     mapConfig=list(center=list(40.7, -74), zoom=15),
@@ -5471,10 +5465,8 @@ cXmap15 <- function() {
 
 cXmap16 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=y,
     smpAnnot=x,
     graphType="Map",
     leafletZoomAlphaColor=1,
@@ -5489,10 +5481,8 @@ cXmap16 <- function() {
 
 cXmap17 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-mapdecor2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
-    data=y,
     smpAnnot=x,
     graphType="Map",
     leafletZoomAlphaColor=1,
@@ -6179,8 +6169,8 @@ cXnonlinearfit1 <- function() {
     xAxis=list("Concentration"),
     xAxisTransform="log10",
     xAxisTransformTicks=TRUE,
-    yAxisExact=TRUE,
-    yXis=list("V1")
+    yAxis=list("V1"),
+    yAxisExact=TRUE
   )
 }
 
@@ -6432,6 +6422,25 @@ cXpie2 <- function() {
   )
 }
 
+cXpie3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    graphType="Pie",
+    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    pieBy="Factor1",
+    pieSegmentLabels="inside",
+    pieSegmentPrecision=0,
+    showTransition=FALSE
+  )
+}
+
 cXradar1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -6653,7 +6662,7 @@ cXradar9 <- function() {
     rAxis="radians",
     rAxisPercentShow=FALSE,
     rAxisShow=TRUE,
-    setMaxR=6.28318530717959,
+    setMaxR=6.283185307179586,
     setMaxY=5,
     setMinR=0,
     setMinY=0,
