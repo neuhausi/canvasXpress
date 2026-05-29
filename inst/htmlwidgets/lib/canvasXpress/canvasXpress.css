@@ -2780,6 +2780,8 @@ span.CanvasXpressMousePosition {
 .cX-Workflow-Slider-Area {
   flex-grow: 1;
   position: relative;
+  margin-right: 15px;
+  margin-left: 5px;
 }
 
 .cX-Workflow-Slider-Track {
@@ -2815,7 +2817,7 @@ span.CanvasXpressMousePosition {
   border: 1px var(--cx-border-style) var(--cx-workflow-timeline-border-color);
   border-radius: var(--cx-border-radius);
   margin-top: 10px;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   max-height: 200px;
   overflow-y: auto;
 }
