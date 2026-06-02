@@ -5,6 +5,7 @@
 - Tree plot crash when smpTextColor is changed
 - In charts that uses LLM prompt, we need to put all needed configurations in the prompt text.
 - In charts that uses LLM prompt, if the prompt text is invalid, the plot and table are shown but with the loading circle and browser popup error .
+- Text in the Configurator tool is too big
 
 ---
 
