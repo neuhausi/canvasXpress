@@ -583,7 +583,6 @@ cXbar9 <- function() {
     subtitle=" Estimated number of deaths from different types of cancer per 100,000 people.",
     subtitleScaleFontFactor=0.6,
     title="Cancer crude death rate by type, World, 2021",
-    widthFactor=2,
     xAxis=list("Number of Deaths per 100000 people"),
     xAxisGridMajorShow=FALSE,
     xAxisShow=FALSE
@@ -608,7 +607,6 @@ cXbar10 <- function() {
     subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
     subtitleScaleFontFactor=0.6,
     title="Cancer death rate by age group, United States",
-    widthFactor=2,
     workflowBy="Year",
     xAxis=list(1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021),
     xAxisGridMajorShow=FALSE,
@@ -633,7 +631,6 @@ cXbar11 <- function() {
     summaryType="count",
     theme="ggplot",
     title="Counting the number of cars by class",
-    widthFactor=2,
     xAxis=list("displ")
   )
 }
@@ -657,7 +654,6 @@ cXbar12 <- function() {
     summaryType="sum",
     theme="ggplot",
     title="Total engine displacement for each class",
-    widthFactor=2,
     xAxis=list("displ")
   )
 }
@@ -702,7 +698,6 @@ cXbar14 <- function() {
     subtitle="2014 Census",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
-    widthFactor=4,
     xAxis=list("population")
   )
 }
@@ -857,7 +852,6 @@ cXbar19 <- function() {
     titleAlign="center",
     titleColor="rgb(254,225,60)",
     titleScaleFontFactor=2.5,
-    widthFactor=1.1,
     xAxis=list("Topic"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
@@ -1689,7 +1683,6 @@ cXbullet2 <- function() {
     showDataValues=TRUE,
     smpTextRotate=90,
     stripShow=FALSE,
-    widthFactor=2,
     xAxis=list("V1"),
     xAxisTextScaleFontFactor=0.6
   )
@@ -1727,7 +1720,6 @@ cXbullet3 <- function() {
     titleAlign="center",
     titleColor="rgb(254,225,60)",
     titleScaleFontFactor=2.5,
-    widthFactor=1.1,
     xAxis=list("Topic"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
@@ -1750,7 +1742,6 @@ cXbullet4 <- function() {
     rangeColors=list("#73AFF8", "#ADCFFA", "#E4EFFD"),
     rangeStack=list("Low", "Average", "High"),
     showDataValues=TRUE,
-    widthFactor=2,
     xAxis=list("Value")
   )
 }
@@ -1785,7 +1776,6 @@ cXbullet5 <- function() {
     stripBackgroundColor="#FFFFFF",
     stripTextAlign="left",
     stripTextColor="#000000",
-    widthFactor=15,
     xAxis=list("Value"),
     xAxis2Show=TRUE,
     xAxisGridMajorShow=FALSE,
@@ -5191,13 +5181,16 @@ cXlinearfit3 <- function() {
 cXlollipop1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-lollipop-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-lollipop-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
+    smpAnnot=x,
     barType="lollipop",
     colorScheme="CanvasXpress",
     dataPointSizeScaleFactor=6,
     graphType="Bar",
-    widthFactor=0.6,
+    sizeBy="val",
+    widthFactor=0.2,
     xAxis=list("V1")
   )
 }
@@ -7898,7 +7891,6 @@ cXstackedpercent5 <- function() {
     titleAlign="center",
     titleColor="rgb(252,157,156)",
     titleScaleFontFactor=4.5,
-    widthFactor=1.1,
     xAxis=list("Females-in", "Females-out", "Males-in", "Males-out"),
     xAxis2Show=FALSE,
     xAxisGridMajorShow=FALSE,
@@ -8726,7 +8718,6 @@ cXtreemap3 <- function() {
     subtitle="2014 Census",
     title="Country Population colored by Gross National Income",
     treemapBy=list("ISO3"),
-    widthFactor=4,
     xAxis=list("population"),
     xAxisGridMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
