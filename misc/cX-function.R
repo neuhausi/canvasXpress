@@ -1,3 +1,57 @@
+cX3dplots1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorScheme="CanvasXpress",
+    graphType="Bar",
+    is3DPlot=TRUE,
+    scatterType="bar",
+    widthFactor=2.5,
+    x3DRatio=0.5,
+    xAxis=list("V1", "V2", "V3", "V4"),
+    yAxis=list("data"),
+    zAxis=list("S1", "S2", "S3", "S4", "S5", "S6")
+  )
+}
+
+cX3dplots2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-irist-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    axisTextScaleFontFactor=0.5,
+    axisTitleScaleFontFactor=0.5,
+    colorBy="Species",
+    graphType="Scatter3D",
+    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
+    legendKeyBackgroundColor="rgba(255,255,255,0)",
+    title="Iris Data Set",
+    xAxis=list("Sepal.Length"),
+    yAxis=list("Sepal.Width"),
+    zAxis=list("Petal.Length")
+  )
+}
+
+cX3dplots3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter3D",
+    scatterType="bar",
+    xAxis=list("S1"),
+    yAxis=list("S2"),
+    zAxis=list("S3")
+  )
+}
+
 cXarea1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-area5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -660,27 +714,6 @@ cXbar12 <- function() {
 
 cXbar13 <- function() {
   library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/r/cX-generic-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  z=read.table("https://www.canvasxpress.org/data/r/cX-generic-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    varAnnot=z,
-    colorScheme="CanvasXpress",
-    graphType="Bar",
-    is3DPlot=TRUE,
-    scatterType="bar",
-    widthFactor=2.5,
-    x3DRatio=0.5,
-    xAxis=list("V1", "V2", "V3", "V4"),
-    yAxis=list("data"),
-    zAxis=list("S1", "S2", "S3", "S4", "S5", "S6")
-  )
-}
-
-cXbar14 <- function() {
-  library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-stacked1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -702,64 +735,7 @@ cXbar14 <- function() {
   )
 }
 
-cXbar15 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    barType="swimmer",
-    colorBy="Stage",
-    colorScheme="CanvasXpress",
-    graphOrientation="horizontal",
-    graphType="Bar",
-    groupingFactors=list("Subject"),
-    objectColorTransparency=0.5,
-    smpOverlays=list("Durable"),
-    sortData=list(list("cat", "smp", "Response")),
-    swimDurable="Durable",
-    swimEnd="end",
-    swimHigh="high",
-    swimHighCap="High Cap",
-    swimStart="start",
-    swimStatus="Status",
-    title="Tumor Response with Duration by Stage and Month",
-    xAxis=list("high", "start", "end"),
-    xAxisTitle="Duration of Treatment in Months"
-  )
-}
-
-cXbar16 <- function() {
-  library(canvasXpress)
-  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
-  canvasXpress(
-    data=y,
-    smpAnnot=x,
-    barType="swimmer",
-    colorBy="Stage",
-    graphOrientation="vertical",
-    graphType="Bar",
-    groupingFactors=list("Subject"),
-    objectColorTransparency=0.5,
-    smpOverlayProperties=list(Durable=list(position="bottom"), Response=list(position="bottom", thickness=100, type="Bar")),
-    smpOverlays=list("Durable", "Response"),
-    smpTextRotate=90,
-    sortData=list(list("cat", "smp", "Response")),
-    swimDurable="Durable",
-    swimEnd="end",
-    swimHigh="high",
-    swimHighCap="High Cap",
-    swimStart="start",
-    swimStatus="Status",
-    title="Tumor Response with Duration by Stage and Month",
-    xAxis=list("high", "start", "end"),
-    xAxisTitle="Duration of Treatment in Months"
-  )
-}
-
-cXbar17 <- function() {
+cXbar14 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-audrey2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -786,7 +762,7 @@ cXbar17 <- function() {
   )
 }
 
-cXbar18 <- function() {
+cXbar15 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-animationMovies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
@@ -821,7 +797,7 @@ cXbar18 <- function() {
   )
 }
 
-cXbar19 <- function() {
+cXbar16 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-movies-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   x=read.table("https://www.canvasxpress.org/data/r/cX-movies-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -8249,6 +8225,63 @@ cXsunburst4 <- function() {
     showTransition=FALSE,
     title="Rotated Half Sunburst",
     xAxis=list("Sales")
+  )
+}
+
+cXswimmer1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    barType="swimmer",
+    colorBy="Stage",
+    colorScheme="CanvasXpress",
+    graphOrientation="horizontal",
+    graphType="Bar",
+    groupingFactors=list("Subject"),
+    objectColorTransparency=0.5,
+    smpOverlays=list("Durable"),
+    sortData=list(list("cat", "smp", "Response")),
+    swimDurable="Durable",
+    swimEnd="end",
+    swimHigh="high",
+    swimHighCap="High Cap",
+    swimStart="start",
+    swimStatus="Status",
+    title="Tumor Response with Duration by Stage and Month",
+    xAxis=list("high", "start", "end"),
+    xAxisTitle="Duration of Treatment in Months"
+  )
+}
+
+cXswimmer2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-swimmer-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    barType="swimmer",
+    colorBy="Stage",
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Subject"),
+    objectColorTransparency=0.5,
+    smpOverlayProperties=list(Durable=list(position="bottom"), Response=list(position="bottom", thickness=100, type="Bar")),
+    smpOverlays=list("Durable", "Response"),
+    smpTextRotate=90,
+    sortData=list(list("cat", "smp", "Response")),
+    swimDurable="Durable",
+    swimEnd="end",
+    swimHigh="high",
+    swimHighCap="High Cap",
+    swimStart="start",
+    swimStatus="Status",
+    title="Tumor Response with Duration by Stage and Month",
+    xAxis=list("high", "start", "end"),
+    xAxisTitle="Duration of Treatment in Months"
   )
 }
 
