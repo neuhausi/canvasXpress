@@ -2813,6 +2813,73 @@ span.CanvasXpressMousePosition {
   z-index: 10;
 }
 
+.cX-Workflow-Settings {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 5px;
+  font-size: var(--cx-workflow-list-label-font-size);
+  color: var(--cx-workflow-text-color);
+}
+
+.cX-Workflow-Settings span.cX-Toggle {
+  font-size: var(--cx-workflow-list-label-font-size);
+  color: var(--cx-workflow-text-color);
+}
+
+.cX-Workflow-Duration-Area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+/* Override the generic input[type=range] rules (15-range-slider.css) that
+   render range inputs absolute/invisible with a red square thumb for the
+   dual-thumb slider widget. */
+input[type=range].cX-Workflow-Duration-Slider {
+  position: static;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  flex-grow: 1;
+  min-width: 40px;
+  width: auto;
+  height: 6px;
+  cursor: pointer;
+  background: var(--cx-workflow-slider-track-color);
+  border-radius: 10px;
+}
+
+input[type=range].cX-Workflow-Duration-Slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: all;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cx-workflow-slider-thumb-color);
+  border: 2px solid var(--cx-workflow-slider-thumb-border-color);
+}
+
+input[type=range].cX-Workflow-Duration-Slider::-moz-range-thumb {
+  pointer-events: all;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cx-workflow-slider-thumb-color);
+  border: 2px solid var(--cx-workflow-slider-thumb-border-color);
+}
+
+.cX-Workflow-Duration-Value {
+  min-width: 48px;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--cx-workflow-list-text-color);
+}
+
 .cX-Workflow-Timeline-Container {
   border: 1px var(--cx-border-style) var(--cx-workflow-timeline-border-color);
   border-radius: var(--cx-border-radius);
