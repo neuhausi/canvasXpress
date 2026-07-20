@@ -1760,6 +1760,42 @@ cXbullet5 <- function() {
   )
 }
 
+cXbullet6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bulletProgress-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-bulletProgress-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    background="rgb(20,26,38)",
+    backgroundType="solid",
+    bulletStyle="progress",
+    colorBy="Type",
+    colors=list("rgb(200,150,225)", "rgb(240,170,90)", "rgb(150,160,175)", "rgb(80,160,235)", "rgb(150,160,180)", "rgb(90,200,120)", "rgb(240,120,105)"),
+    dataTextFontStyle="bold",
+    foreground="rgb(235,240,248)",
+    graphOrientation="horizontal",
+    graphType="Bullet",
+    marginTop=40,
+    objectBorderColor="rgba(0,0,0,0)",
+    plotBackgroundColor="rgb(20,26,38)",
+    progressWidthRatio=0.28,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTextColor="rgb(235,240,248)",
+    title="NGS Data Types",
+    titleAlign="left",
+    titleColor="rgb(150,160,180)",
+    titleScaleFontFactor=1.4,
+    xAxis=list("Samples"),
+    xAxis2Show=FALSE,
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE,
+    yAxisGridMajorShow=FALSE
+  )
+}
+
 cXchord1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-chord-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -3821,6 +3857,7 @@ cXheatmap2 <- function() {
     colorSpectrum=list("navy", "white", "firebrick3"),
     graphType="Heatmap",
     heatmapCellBoxColor="rgb(255,255,255)",
+    heatmapCellMarkers=list(list(sample="S3", variable="V1", width=2), list(color="purple", sample="S5", shape="circle", variable="V2", width=2), list(sample="S1", shape="square", size=0.3, variable="V4", width=2)),
     samplesClustered=TRUE,
     title="Clustered data",
     variablesClustered=TRUE,
@@ -5589,6 +5626,194 @@ cXmeter9 <- function() {
     graphType="Meter",
     groupingFactors=list("cyl"),
     meterType="gauge",
+    meterVar="mpg",
+    summaryType="average",
+    xAxis=list("mpg")
+  )
+}
+
+cXmeter10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    background="rgb(13,17,23)",
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterBackgroundColor="rgb(22,27,34)",
+    meterType="card",
+    meterVar="mpg",
+    rangeColors=list("rgb(88,166,255)", "rgb(63,185,80)", "rgb(210,153,34)", "rgb(188,140,255)", "rgb(255,123,114)"),
+    smpTitleColor="rgb(139,148,158)",
+    summaryType="average",
+    xAxis=list("mpg"),
+    xAxisGridMajorColor="rgb(48,54,61)",
+    xAxisTextColor="rgb(139,148,158)"
+  )
+}
+
+cXmeter11 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    background="rgb(13,17,23)",
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterAlign="center",
+    meterBackgroundColor="rgb(22,27,34)",
+    meterType="card",
+    meterVar="mpg",
+    rangeColors=list("rgb(88,166,255)", "rgb(63,185,80)", "rgb(210,153,34)", "rgb(188,140,255)", "rgb(255,123,114)"),
+    smpTitleColor="rgb(139,148,158)",
+    summaryType="average",
+    xAxis=list("mpg"),
+    xAxisGridMajorColor="rgb(48,54,61)",
+    xAxisTextColor="rgb(139,148,158)"
+  )
+}
+
+cXmeter12 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterCard=TRUE,
+    meterType="gauge",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
+  )
+}
+
+cXmeter13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterCard=TRUE,
+    meterType="digital",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
+  )
+}
+
+cXmeter14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterCard=TRUE,
+    meterThickness=0.8,
+    meterType="state",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
+  )
+}
+
+cXmeter15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterCard=TRUE,
+    meterThickness=0.6,
+    meterTitleAlign="start",
+    meterType="horizontal",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
+  )
+}
+
+cXmeter16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Meter",
+    meterCard=TRUE,
+    meterTitleAlign="end",
+    meterType="vertical",
+    setMax=100,
+    setMin=0,
+    xAxis=list("Performance")
+  )
+}
+
+cXmeter17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterCard=TRUE,
+    meterType="gauge",
+    meterVar="mpg",
+    summaryType="average",
+    xAxis=list("mpg")
+  )
+}
+
+cXmeter18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterMargin=20,
+    meterType="card",
+    meterVar="mpg",
+    summaryType="average",
+    xAxis=list("mpg")
+  )
+}
+
+cXmeter19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterCard=TRUE,
+    meterType="number",
+    meterVar="mpg",
+    summaryType="average",
+    xAxis=list("mpg")
+  )
+}
+
+cXmeter20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-meter4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-meter4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Meter",
+    groupingFactors=list("cyl"),
+    meterCard=TRUE,
+    meterThickness=0.7,
+    meterType="horizontal",
     meterVar="mpg",
     summaryType="average",
     xAxis=list("mpg")
