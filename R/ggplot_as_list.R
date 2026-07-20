@@ -3,7 +3,8 @@
 #' @param o   the ggplot object
 #' @param ... additional parameters to the function
 #'
-#' @export
+#' @export ggplot.as.list
+#' @name ggplot.as.list
 ggplot.as.list <- function(o, ...) {
 
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
