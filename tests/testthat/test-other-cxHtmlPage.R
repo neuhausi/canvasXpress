@@ -28,4 +28,6 @@ test_that("scatterplot cxHtmlPage", {
 
     expect_true(!is.null(cxHtmlPage(result, width = "50vw", height = "100%")))
     expect_true(!is.null(cxHtmlPage(result, width = "100px", height = "20vh")))
+    expect_true(!is.null(cxHtmlPage(result, width = 300, height = 600)))
+    expect_true(!is.null(cxHtmlPage(result)))
 })
