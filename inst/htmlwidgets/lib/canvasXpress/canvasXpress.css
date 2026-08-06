@@ -1169,169 +1169,6 @@ textarea.cX-Chat-Code-Output {
 }
 
 /* @category: widget */
-/***************
- *   Bin Data  *
- ***************/
-
-/* Outer widget shell */
-div.cX-Bin {
-  background-color: var(--cx-background-widgets-color);
-  border: 1px var(--cx-border-style) var(--cx-datatable-border-color);
-  border-radius: var(--cx-border-radius);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-  box-sizing: border-box;
-  color: var(--cx-font-color);
-  cursor: move;
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  margin: 2px 3px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-}
-
-/* Title row: Name label left, X button right */
-.cX-Bin-Title-Row {
-  align-items: center;
-  background-color: var(--cx-datatable-toolbar-background-color, var(--cx-background-hover-color));
-  border-radius: var(--cx-border-radius) var(--cx-border-radius) 0 0;
-  cursor: move;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 4px 0px 10px;
-}
-
-.cX-Bin-Title {
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  font-weight: 600;
-  color: var(--cx-datatable-banner-text-color);
-}
-
-/* Body: padding wrapper */
-.cX-Bin-Body {
-  background-color: var(--cx-background-widgets-color);
-  cursor: move;
-  padding: 8px 10px 0 10px;
-}
-
-/* Section: label + content block */
-.cX-Bin-Section {
-  margin-bottom: 8px;
-}
-
-.cX-Bin-Section-Label {
-  color: var(--cx-datatable-banner-text-color);
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-/* Name text input */
-.cX-Bin-Input {
-  background-color: var(--cx-background-widgets-color);
-  border: 1px var(--cx-border-style) var(--cx-datatable-border-color);
-  border-radius: var(--cx-border-radius);
-  box-sizing: border-box;
-  color: var(--cx-font-color);
-  cursor: default;
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  padding: 3px 6px;
-  width: 100%;
-}
-
-.cX-Bin-Input-Center {
-  text-align: center;
-  font-weight: bold;
-}
-
-/* Bin table — sized purely by content, no wrapper needed */
-.cX-Bin-Table {
-  border: 1px var(--cx-border-style) var(--cx-datatable-banner-border-color);
-  border-collapse: separate;
-  border-radius: var(--cx-border-radius);
-  border-spacing: 0;
-  color: var(--cx-datatable-cell-text-color);
-  cursor: default;
-  display: block;
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  max-height: 300px;
-  overflow-y: auto;
-  width: 100%;
-}
-
-.cX-Bin-Th {
-  background-color: var(--cx-datatable-header-background-color, var(--cx-background-hover-color));
-  border-bottom: 2px var(--cx-border-style) var(--cx-datatable-border-color);
-  color: var(--cx-datatable-header-text-color);
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  font-weight: bold;
-  padding: 4px 6px;
-  text-align: center;
-}
-
-.cX-Bin-Td {
-  border-bottom: 1px var(--cx-border-style) var(--cx-datatable-cell-border-color);
-  padding: 3px 4px;
-  vertical-align: middle;
-}
-
-.cX-Bin-Td-Num {
-  font-weight: bold;
-  text-align: center;
-  width: 32px;
-}
-
-.cX-Bin-Row:last-child .cX-Bin-Td {
-  border-bottom: none;
-}
-
-.cX-Bin-Row:nth-child(even) .cX-Bin-Td {
-  background-color: var(--cx-datatable-oddcell-background-color);
-}
-
-.cX-Bin-Row:hover .cX-Bin-Td {
-  background-color: var(--cx-datatable-row-hover-background-color);
-}
-
-/* Footer: Apply + Done */
-.cX-Bin-Footer {
-  border-top: 1px var(--cx-border-style) var(--cx-datatable-banner-border-color);
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  padding: 8px 0;
-}
-
-.cX-Bin-Button {
-  background-color: var(--cx-datatable-accent-color, var(--cx-background-hover-color));
-  border: 1px var(--cx-border-style) var(--cx-datatable-border-color);
-  border-radius: var(--cx-border-radius);
-  color: var(--cx-background-widgets-color);
-  cursor: pointer;
-  flex: 1;
-  font-family: var(--cx-font-family);
-  font-size: var(--cx-font-size);
-  font-weight: bold;
-  padding: 5px 8px;
-}
-
-.cX-Bin-Button:hover {
-  opacity: 0.85;
-}
-
-svg.cX-Bin::selection {
-  background: var(--cx-color-transparent) !important;
-  border: 0px none !important;
-  box-shadow: 0 0 0px var(--cx-color-transparent) !important;
-  color: rgb(0, 0, 0);
-  margin: 0px !important;
-}
-/* @category: widget */
 /* BEGIN OF CUSTOMIZER CSS */
 /* https://cssgrid-generator.netlify.app/ */
 
@@ -1473,6 +1310,66 @@ svg.cX-Bin::selection {
 
 .cX-Customizer-LeftIcon {
   border: 1px var(--cx-border-style) var(--cx-customizer-border-color, var(--cx-datatable-border-color)) !important;
+}
+
+/*
+ * CanvasXpress Customizer Left Items - Compact (Tableau-like) layout.
+ * Scoped to the .cX-Customizer-Compact panel so the classic layout above is
+ * left untouched. Each nav item becomes a horizontal row: small icon on the
+ * left, text label to its right, with a left accent bar marking the active
+ * item (matching the density of the DataTable / DataFilter widgets).
+ */
+
+.cX-Customizer-Compact .cX-Customizer-LeftItem,
+.cX-Customizer-Compact .cX-Customizer-LeftItemActive,
+.cX-Customizer-Compact .cX-Customizer-LeftItemNB {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto !important;
+  margin: 6px 10px;
+  padding: 4px 6px;
+  gap: 6px;
+  border: 1px var(--cx-border-style) var(--cx-customizer-border-color, var(--cx-datatable-border-color)) !important;
+  border-radius: var(--cx-border-radius);
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftItemBottom {
+  order: 0;
+  margin: 0;
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftItemTop {
+  order: 1;
+  margin: 0 !important;
+  text-align: left;
+  font-size: var(--cx-customizer-font-size, var(--cx-font-size));
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftIcon,
+.cX-Customizer-Compact .cX-Customizer-LeftIconNB {
+  padding: 2px;
+  border: none !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftItem:hover,
+.cX-Customizer-Compact .cX-Customizer-LeftItemNB:hover {
+  background: var(--cx-customizer-hover-color, var(--cx-background-hover-color));
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftItemActive {
+  background: var(--cx-customizer-hover-color, var(--cx-background-hover-color));
+  border-left: 3px var(--cx-border-style) var(--cx-color-widgets, var(--cx-customizer-border-color)) !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-LeftItem:hover svg,
+.cX-Customizer-Compact .cX-Customizer-LeftItemActive svg {
+  background: transparent !important;
 }
 
 /*
@@ -1955,6 +1852,64 @@ svg.cX-Bin::selection {
   max-width: 100%;
 }
 
+/* Shelves Filters card: the filter list must drop BELOW the floated funnel
+ * slot group (ContainerRaw floats left), not sit top-aligned beside it; its
+ * width/margins mirror the RightItemTextImagesGroup clamp so both align. */
+.cX-Customizer-ShelfFiltersList {
+  clear: both;
+  width: calc(100% - 2px);
+  margin: 0 1px;
+  box-sizing: border-box;
+}
+
+/* Inside a Filters-shelf field box the box itself draws the frame — flatten the
+   embedded DataFilter widget (border + hover tint + inset search) so the entry
+   reads as ONE card instead of nested boxes. */
+.cX-Customizer-ShelfFilterField .cX-DataFilter-Container-Hoverable {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+.cX-Customizer-ShelfFilterField .cX-DataFilter-Container-Hoverable:hover {
+  background-color: var(--cx-color-transparent);
+}
+
+.cX-Customizer-ShelfFilterField input.cX-DataFilter-Search {
+  width: 100%;
+  margin-left: 0;
+  height: 28px;
+}
+
+.cX-Customizer-ShelfFilterField .cX-DataFilter-Container-Mask,
+.cX-Customizer-ShelfFilterField .cX-DataFilter-Container-Mask-NoOverflow {
+  margin: 5px 0 2px;
+}
+
+/* The checklist labels ship at a fixed 220px (wider than the shelf card) and
+   are RECREATED on every filter click (refreshDataFilters -> loadStringFilter),
+   so the relaxation must live here in CSS, not as build-time inline style —
+   inline-only relaxation broke the rows after the first (de)select. */
+.cX-Customizer-ShelfFilterField label.cX-Checkbox-Label {
+  width: calc(100% - 60px);
+}
+
+/* Numeric filter's Log/Lin toggle: the range slider gives the toggle a
+   50%-wide top-row cell, too narrow inside the shelf card — 'Lin' wrapped
+   onto a clipped second line. Keep the toggle on one line and shrink its
+   labels (cf. .cX-Workflow-Settings span.cX-Toggle). */
+.cX-Customizer-ShelfFilterField label.cX-Toggle {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.cX-Customizer-ShelfFilterField span.cX-Toggle {
+  font-size: var(--cx-x-small-font-size);
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 .cX-Customizer-Mask {
   background: var(--cx-color-transparent) !important;
   border: 0px none !important;
@@ -2311,6 +2266,187 @@ div.CanvasXpressDragLayout {
   filter: alpha(opacity=65);
   background-color: rgba(51, 122, 183, 0.65);
   position: absolute;
+}
+
+/* ==========================================================================
+ * Compact right-panel redesign (Tableau-like).
+ *
+ * Systematic redesign of the right-panel widgets, applied one widget family at
+ * a time and scoped to .cX-Customizer-Compact so the classic panel (dataUIStyle
+ * 'cx' / 'old') stays untouched. The DOM built by customizerWidgets.js is left
+ * as-is; only presentation changes here.
+ *
+ * Family 1 - IO panel (section header + launcher rows). Header becomes a flat
+ * section label with a muted caption; launcher rows become flat menu items
+ * (small icon + label, subtle hover) instead of tinted icon-box tiles.
+ * ========================================================================== */
+
+/* --- Section header (getCustomizerRightItemHeader) --- */
+/* Keep the tinted header background from the classic look, just tighter. */
+.cX-Customizer-Compact .cX-Customizer-RightItemHeader,
+.cX-Customizer-Compact .cX-Customizer-RightItemHeaderNB {
+  background: var(--cx-background-hover-color);
+  padding: 6px 10px !important;
+  border-bottom: 1px solid var(--cx-datatable-border-color) !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemHeaderMain {
+  gap: 6px;
+}
+
+/* Title: compact, bold, slight tracking */
+.cX-Customizer-Compact .cX-Customizer-RightItemHeaderMain > :first-child {
+  height: auto !important;
+  padding: 0 !important;
+  font-size: var(--cx-medium-font-size) !important;
+  letter-spacing: 0.02em;
+}
+
+/* Header icon: small */
+.cX-Customizer-Compact .cX-Customizer-RightItemHeaderMain svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* Help text: muted caption */
+.cX-Customizer-Compact .cX-Customizer-RightItemHeaderMain > :last-child {
+  color: var(--cx-font-color);
+  opacity: 0.55;
+  font-size: var(--cx-x-small-font-size) !important;
+  line-height: 1rem !important;
+}
+
+/* Equalise the section gutters: content is (customizerRightWidth - 20) wide, so
+   a 10px side margin balances the left/right whitespace inside the panel. */
+.cX-Customizer-Compact .cX-Customizer-Container {
+  margin: 6px 10px !important;
+}
+
+/* The full-width section widgets are (customizerRightWidth - 20) wide, the same
+   as the container's content box; with border-box that overflows the container's
+   right border and hides it (the IO launchers already clamp to calc(100% - 2px),
+   but the header / text / combo / images-group widgets did not). Clamp just
+   those so the container border shows on every side, WITHOUT touching narrower
+   widgets that set their own margins (the text-area input, the wrangling list). */
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemHeader,
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemHeaderNB,
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemText,
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-ContainerComboGroup,
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemImagesGroup,
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemTextImagesGroup {
+  width: calc(100% - 2px) !important;
+  margin-left: 1px !important;
+  margin-right: 1px !important;
+  box-sizing: border-box !important;
+}
+
+/* Give the drag-and-drop list even margins inside its section (it ships with
+   margin: 0 0 10px 10px, so its top/right edges crowd the container border). */
+.cX-Customizer-Compact .cX-Customizer-Wrangling {
+  margin: 2px 10px 8px !important;
+  box-sizing: border-box !important;
+  height: 136px !important;
+}
+
+/* Collapse the tall sorter header row (title + A-Z icon) to its content so the
+   list sits close beneath it. */
+.cX-Customizer-Compact .cX-Customizer-RightItemSubHeaderRow,
+.cX-Customizer-Compact .cX-Customizer-RightItemSubHeaderRow > * {
+  height: auto !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemSubHeaderRow {
+  align-items: center;
+  margin: 6px 0 0 10px !important;
+}
+
+/* Smaller A-Z sort icon in the wrangling sorter header rows */
+.cX-Customizer-Compact .cX-Customizer-RightItemSubHeaderRow svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* The X-Axis text input aligns to the section's left padding instead of sitting
+   flush against the border. */
+.cX-Customizer-Compact .cX-Customizer-Container > .cX-Customizer-RightItemTextArea {
+  margin-left: 12px !important;
+}
+
+/* --- Launcher rows (getCustomizerRightItemLauncher) --- */
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncher,
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherNB {
+  grid-template-columns: 28px 1fr !important;
+  min-height: 36px !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+/* Flatten the tinted icon box into a plain icon cell */
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherLeft {
+  background: transparent !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherLeft > * {
+  padding: 2px !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherLeft svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherRight {
+  padding-left: 2px;
+  font-size: var(--cx-customizer-font-size, var(--cx-font-size));
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncher:hover,
+.cX-Customizer-Compact .cX-Customizer-RightItemLauncherNB:hover {
+  background-color: var(--cx-customizer-hover-color) !important;
+}
+
+/* --------------------------------------------------------------------------
+ * Family 2 - Data panel: icon-button grids (Transform / Summary) and the
+ * icon-over-label tiles (Sort). Shrink the oversized grid buttons and make the
+ * Sort tile labels readable instead of truncating.
+ * -------------------------------------------------------------------------- */
+
+/* Icon-button grids (getCustomizerRightImagesGroup): smaller flat buttons */
+.cX-Customizer-Compact .cX-Customizer-RightItemImagesGroup svg {
+  width: 30px !important;
+  height: 30px !important;
+  padding: 3px !important;
+  margin: 4px auto !important;
+}
+
+/* Icon-over-label tiles (Sort - getCustomizerRightItem) */
+.cX-Customizer-Compact .cX-Customizer-RightItem {
+  grid-template-rows: auto auto;
+  margin: 3px !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemTop {
+  padding-top: 4px;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemTop svg {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.cX-Customizer-Compact .cX-Customizer-RightItemBottom {
+  padding: 1px 2px 4px;
+  font-size: var(--cx-x-small-font-size);
+}
+
+/* Show the full tile label (wrap) instead of clipping to an ellipsis */
+.cX-Customizer-Compact .cX-Customizer-RightItemBottom span {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  text-align: center;
+  line-height: 1.05;
+  word-break: break-word;
 }
 
 /* @category: widget */
@@ -3949,7 +4085,7 @@ td.cX-DataTable-Cell > .cX-DataTable-Cell-Number:hover {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 8px;
   padding: 0px 4px;
   top: 0px;
   left: 0px;
@@ -4435,8 +4571,7 @@ div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-button,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-button,
 /*div.cX-DataFilter-Content::-webkit-scrollbar-button,*/
 div.cX-DataFilter-Container-Mask::-webkit-scrollbar-button,
-div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-button,
-div.cX-Bin-Name-Container::-webkit-scrollbar-button {
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-button {
   width: 4px;
   height: 4px;
 }
@@ -4450,8 +4585,7 @@ div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-track {
 }
 
 div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-track,
-div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-track,
-div.cX-Bin-Name-Container::-webkit-scrollbar-track {
+div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-track {
   background-color: var(--cx-background-hover-color);
   border-radius: var(--cx-border-radius);
 }
@@ -4462,8 +4596,7 @@ div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-track:hover,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-track:hover,
 /*div.cX-DataFilter-Content::-webkit-scrollbar-track:hover,*/
 div.cX-DataFilter-Container-Mask::-webkit-scrollbar-track:hover,
-div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-track:hover,
-div.cX-Bin-Name-Container::-webkit-scrollbar-track:hover {
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-track:hover {
   background-color: var(--cx-background-hover-color);
   border-radius: var(--cx-border-radius);
 }
@@ -4479,8 +4612,7 @@ div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar {
 }
 
 div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar,
-div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar,
-div.cX-Bin-Name-Container::-webkit-scrollbar {
+div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 8px;
   background-color: var(--cx-scrollbar-alt-background-color);
@@ -4492,8 +4624,7 @@ div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-thumb,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-thumb,
 /*div.cX-DataFilter-Content::-webkit-scrollbar-thumb,*/
 div.cX-DataFilter-Container-Mask::-webkit-scrollbar-thumb,
-div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-thumb,
-div.cX-Bin-Name-Container::-webkit-scrollbar-thumb {
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-thumb {
   background-color: var(--cx-scrollbar-thumb-color);
   border-radius: var(--cx-border-radius);
   border: none;
@@ -4503,8 +4634,7 @@ div.cX-DataTable-Horizontal-Scrollbar::-webkit-scrollbar-thumb:hover,
 div.cX-DataTable-Vertical-Scrollbar::-webkit-scrollbar-thumb:hover,
 /*div.cX-DataFilter-Content::-webkit-scrollbar-thumb:hover,*/
 div.cX-DataFilter-Container-Mask::-webkit-scrollbar-thumb:hover,
-div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-thumb:hover,
-div.cX-Bin-Name-Container::-webkit-scrollbar-thumb:hover {
+div.cX-DataFilter-Container-Mask-NoOverflow::-webkit-scrollbar-thumb:hover {
   background-color: var(--cx-scrollbar-thumb-hover-color);
 }
 
