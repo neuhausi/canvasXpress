@@ -13,6 +13,37 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ## v1.58.7
 * Updated CanvasXpress JS and CSS libraries to v58.7 
+* Fixed an aesthetic wrapped in factor()/as.factor()/ordered() (e.g. fill = factor(am))
+  being treated as continuous: the wrapper is stripped to the bare column for matching,
+  but the numeric column is now coerced to a real factor so CanvasXpress shows a discrete
+  legend and keeps the values (am 0/1 no longer sorted/labelled as null). A column
+  used BOTH wrapped and bare — e.g. aes(factor(cyl), mpg) with geom_violin(aes(fill =
+  cyl)) — stays numeric, so only columns used exclusively as factor(...) are coerced
+  (a continuous fill is not turned discrete).
+* Fixed the `shape` aesthetic being dropped from the emitted mapping: `aes(shape = g)`
+  now produces `aes$shape` so CanvasXpress maps the point shape per group (and shows a
+  shape legend) instead of drawing every point with the default shape.
+* Fixed `ggplot.as.list()` aborting on a constant aesthetic (e.g. `aes(x = 1)`): a
+  constant mapping is a bare literal, not a quosure, so `quo_get_expr()` errored. Such
+  mappings are now materialised as a single-level factor column (collision-safe name)
+  and mapped to it, so the constant denotes one group (a single bar) as ggplot intends.
+* Fixed a function-call aesthetic such as `y = -log10(pvalue)` (used by EnhancedVolcano)
+  emitting a malformed aes label with the closing paren stripped (`-log10(pvalue`), which no
+  longer matched the materialised column and crashed the renderer. Only `factor(...)` /
+  `as.*(...)` coercion wrappers are unwrapped now; other expressions are left intact so the
+  aes label matches its data column.
+* Fixed plotmath / `bquote()` labels (axis titles, plot title/subtitle, legend titles)
+  such as EnhancedVolcano's `bquote(~-Log[10] ~ italic(P))` emitting the raw
+  `~~Log[10]P`: they are now converted to HTML CanvasXpress renders directly
+  (`-Log<sub>10</sub> <i>P</i>`), with subscripts/superscripts and italic/bold faces.
+* Fixed a discrete colour/fill scale's custom labels being ignored, so the legend
+  showed the factor's raw codes (e.g. EnhancedVolcano's NS / FC / P / FC_P) instead of
+  the scale labels (NS / Log2 FC / p-value / p-value and log2 FC). The labels (plotmath
+  converted to HTML) are now applied to the colour data, colorKey and level order.
+* Improved multi-variable `facet_wrap` (e.g. `facet_wrap(vars(g, h))`): the converter now
+  emits the facet variables as an array so CanvasXpress draws one stacked strip label per
+  variable (like ggplot), instead of a single composite `g_h` strip. The extra composite
+  data column is no longer added.
 
 
 ## v1.57.4

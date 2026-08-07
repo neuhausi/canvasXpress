@@ -1,0 +1,4 @@
+linters: linters_with_defaults(
+    line_length_linter(100L)
+  )
+encoding: "UTF-8"
