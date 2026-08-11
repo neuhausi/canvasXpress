@@ -55,6 +55,8 @@
   --cx-color-bms-hover: rgba(190, 43, 187, 0.1);
   --cx-color-bms2: rgb(89, 84, 84);
   --cx-color-bms2-hover: rgba(89, 84, 84, 0.1);
+  --cx-color-colorful: rgb(106, 27, 154);
+  --cx-color-colorful-hover: rgba(106, 27, 154, 0.1);
   /* Font */
   --cx-x-small-font-size: 11px;
   --cx-small-font-size: 12px;
@@ -984,6 +986,18 @@ button.cX-Chat-Output-Tab.Active {
   z-index: 3;
 }
 
+/* "colorful" style: each output tab carries its own accent (top bar + hover +
+ * active label), set inline as --cx-item-accent / --cx-item-accent-bg. */
+button.cX-Chat-Output-Tab-Accent {
+  border-top: 3px solid var(--cx-item-accent) !important;
+}
+button.cX-Chat-Output-Tab-Accent:hover {
+  background-color: var(--cx-item-accent-bg) !important;
+}
+button.cX-Chat-Output-Tab-Accent.Active {
+  color: var(--cx-item-accent) !important;
+}
+
 /* Tab Content Containers (Scrollable) */
 div.cX-Chat-Graphical-Output,
 textarea.cX-Chat-Code-Output {
@@ -1204,6 +1218,7 @@ textarea.cX-Chat-Code-Output {
 
 .cX-Customizer-LeftPanelItems > div:first-child {
   background: var(--cx-color-widgets);
+  color: var(--cx-customizer-close-text-color, #fff);
 }
 
 .cX-Customizer-RightPanel {
@@ -1373,6 +1388,48 @@ textarea.cX-Chat-Code-Output {
 }
 
 /*
+ * "colorful" style — per-item accent. Each nav item carries its own colour
+ * (set inline as --cx-item-accent / --cx-item-accent-bg): a left accent bar
+ * plus a tinted icon "chip", echoing the multi-colour MOA cards.
+ */
+.cX-Customizer-Compact .cX-Customizer-LeftItemAccent {
+  border-left: 3px var(--cx-border-style) var(--cx-item-accent) !important;
+}
+.cX-Customizer-Compact .cX-Customizer-LeftItemAccent:hover,
+.cX-Customizer-Compact .cX-Customizer-LeftItemAccent.cX-Customizer-LeftItemActive {
+  background: var(--cx-item-accent-bg) !important;
+}
+.cX-Customizer-Compact .cX-Customizer-LeftItemAccent .cX-Customizer-LeftIcon {
+  border: 1px var(--cx-border-style) var(--cx-item-accent) !important;
+  border-radius: var(--cx-border-radius);
+  background: var(--cx-item-accent-bg) !important;
+  box-sizing: content-box;
+}
+
+/* Collapse the compact rail to an icon-only strip when it is narrower than
+   100px: hide the text label and centre the icon. Driven by the panel's own
+   width via a container query (the panel width is set inline in JS). */
+.cX-Customizer-PanelLeft.cX-Customizer-Compact {
+  container-type: inline-size;
+}
+
+@container (max-width: 99px) {
+  .cX-Customizer-Compact .cX-Customizer-LeftItemTop {
+    display: none !important;
+  }
+
+  .cX-Customizer-Compact .cX-Customizer-LeftItem,
+  .cX-Customizer-Compact .cX-Customizer-LeftItemActive,
+  .cX-Customizer-Compact .cX-Customizer-LeftItemNB {
+    justify-content: center !important;
+  }
+
+  .cX-Customizer-Compact .cX-Customizer-LeftItemBottom {
+    margin: auto !important;
+  }
+}
+
+/*
  * CanvasXpress Customizer Right Items
  */
 
@@ -1512,6 +1569,87 @@ textarea.cX-Chat-Code-Output {
   overflow: auto;
   font-size: var(--cx-x-small-font-size);
   color: var(--cx-font-color);
+}
+
+/*
+ * "colorful" style — per-card accent in the right panel. Each card carries its
+ * own colour (set inline as --cx-item-accent / --cx-item-accent-bg): a left
+ * accent bar plus a tinted, accent-titled header, echoing the MOA cards. The
+ * class is only added when dataUIStyle === 'colorful'.
+ */
+.cX-Customizer-CardAccent {
+  border-left: 3px var(--cx-border-style) var(--cx-item-accent) !important;
+  border-radius: var(--cx-border-radius);
+  overflow: hidden;
+}
+.cX-Customizer-CardAccent .cX-Customizer-RightItemHeader,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemHeaderNB {
+  background: var(--cx-item-accent-bg) !important;
+  border-bottom-color: var(--cx-item-accent) !important;
+}
+.cX-Customizer-CardAccent .cX-Customizer-RightItemHeaderTop {
+  color: var(--cx-item-accent) !important;
+}
+/* Standard (non-link) card header title also takes the card's colour. */
+.cX-Customizer-CardAccent .cX-Customizer-RightItemHeaderMain > :first-child {
+  color: var(--cx-item-accent) !important;
+}
+/* Hover inside an accented card follows the card's colour, not the global purple. */
+.cX-Customizer-CardAccent .cX-Customizer-RightItem:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemLauncher:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemLauncherNB:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemSelect > select:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemTextArea > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemTextArea > textarea:hover,
+.cX-Customizer-CardAccent .cX-Customizer-ContainerRaw > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol1 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol2 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol3 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol4 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol5 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemCol6 > svg:hover,
+.cX-Customizer-CardAccent .cX-Customizer-ListNumeric:hover,
+.cX-Customizer-CardAccent .cX-Customizer-ListString:hover,
+.cX-Customizer-CardAccent .cX-Customizer-ListUnique:hover {
+  background: var(--cx-item-accent-bg) !important;
+  background-color: var(--cx-item-accent-bg) !important;
+}
+/* Range sliders inside an accented card follow the card's colour (thumb + fill),
+ * not the global purple. -webkit- and -moz- pseudo-elements must stay in separate
+ * rules or the whole rule is dropped. */
+.cX-Customizer-CardAccent input[type=range]::-webkit-slider-thumb {
+  background: var(--cx-item-accent) !important;
+}
+.cX-Customizer-CardAccent input[type=range]::-moz-range-thumb {
+  background: var(--cx-item-accent) !important;
+}
+.cX-Customizer-CardAccent div.cX-RangeSlider > div.cX-RangeSlider-Range,
+.cX-Customizer-CardAccent div.cX-RangeSlider > div.cX-RangeSlider-Thumb-Left,
+.cX-Customizer-CardAccent div.cX-RangeSlider > div.cX-RangeSlider-Thumb-Right {
+  background-color: var(--cx-item-accent) !important;
+}
+/* Match the filter treatment: the card's field labels take the card's colour.
+ * (Search panel titles included; its inputs/description content stay neutral.) */
+.cX-Customizer-CardAccent .cX-Customizer-RightItemComboBottomRight,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemLauncherRight,
+.cX-Customizer-CardAccent .cX-Customizer-RightItemBottom,
+.cX-Customizer-CardAccent .cX-Customizer-SearchSelect,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCategory,
+.cX-Customizer-CardAccent .cX-Customizer-SearchDescription,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCurrent {
+  color: var(--cx-item-accent) !important;
+}
+/* The Search panel's field labels are drawn via ::before/::after pseudo-elements
+ * (each with its own colour) — colour those to the card accent too. */
+.cX-Customizer-CardAccent .cX-Customizer-SearchSelect:before,
+.cX-Customizer-CardAccent .cX-Customizer-SearchSelect:after,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCategory:before,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCategory:after,
+.cX-Customizer-CardAccent .cX-Customizer-SearchDescription:before,
+.cX-Customizer-CardAccent .cX-Customizer-SearchDescription:after,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCurrent:before,
+.cX-Customizer-CardAccent .cX-Customizer-SearchCurrent:after {
+  color: var(--cx-item-accent) !important;
 }
 
 .cX-Customizer-RightItemHeaderMain {
@@ -2405,6 +2543,12 @@ div.CanvasXpressDragLayout {
   background-color: var(--cx-customizer-hover-color) !important;
 }
 
+/* Accented-card launchers hover in the card's colour (beats the compact rule above). */
+.cX-Customizer-Compact .cX-Customizer-CardAccent .cX-Customizer-RightItemLauncher:hover,
+.cX-Customizer-Compact .cX-Customizer-CardAccent .cX-Customizer-RightItemLauncherNB:hover {
+  background-color: var(--cx-item-accent-bg) !important;
+}
+
 /* --------------------------------------------------------------------------
  * Family 2 - Data panel: icon-button grids (Transform / Summary) and the
  * icon-over-label tiles (Sort). Shrink the oversized grid buttons and make the
@@ -3058,6 +3202,23 @@ input[type=range].cX-Workflow-Duration-Slider::-moz-range-thumb {
   color: var(--cx-workflow-text-color);
   border-radius: var(--cx-border-radius);
   font-weight: bold;
+}
+
+/*
+ * "colorful" style — per-step accent along the timeline. Each step carries its own
+ * colour (set inline as --cx-item-accent / --cx-item-accent-bg): a left accent bar,
+ * a tinted icon chip, and a matching hover/active state. Added only for colorful.
+ */
+.cX-Workflow-Item-Accent {
+  border-left: 3px solid var(--cx-item-accent) !important;
+}
+.cX-Workflow-Item-Accent:hover,
+.cX-Workflow-Item-Accent.cX-Workflow-Active {
+  background: var(--cx-item-accent-bg) !important;
+}
+.cX-Workflow-Item-Accent .cX-Menu-List-Icon {
+  background: var(--cx-item-accent-bg) !important;
+  border-radius: var(--cx-border-radius, 5px);
 }
 
 /* @category: widget */
@@ -3767,6 +3928,16 @@ table.cX-DataTable,
   background-color: var(--cx-datatable-row-hover-background-color)!important;
 }
 
+/* "colorful" style: the selected row is highlighted in amber so it stands out
+ * from the purple header/hover and the light-purple striping. */
+.cX-DataTable-Colorful .cX-DataTable-Row-Active {
+  background-color: rgba(242, 169, 0, 0.22) !important;
+}
+.cX-DataTable-Colorful .cX-DataTable-Row-Active td,
+.cX-DataTable-Colorful .cX-DataTable-Row-Active th {
+  background-color: rgba(242, 169, 0, 0.22) !important;
+}
+
 .cX-DataTable-Row:not(:first-child):hover {
   background-color: var(--cx-datatable-row-hover-background-color) !important;
 }
@@ -4208,6 +4379,42 @@ input[type="search"].cX-DataFilter-Search::-webkit-search-cancel-button {
   border-radius: var(--cx-border-radius);
   margin: 2px;
   margin-bottom: 4px;
+}
+
+/*
+ * "colorful" style — per-filter accent. Each filter carries its own colour
+ * (set inline as --cx-item-accent / --cx-item-accent-bg, hashed from the filter
+ * name so it stays stable across updates): a left accent bar plus a matching
+ * hover. The class is only added when dataUIStyle === 'colorful'.
+ */
+.cX-DataFilter-ItemAccent {
+  border-left: 3px var(--cx-border-style) var(--cx-item-accent) !important;
+}
+.cX-DataFilter-ItemAccent:hover {
+  background-color: var(--cx-item-accent-bg) !important;
+}
+.cX-DataFilter-ItemAccent > :first-child {
+  color: var(--cx-item-accent) !important;
+  font-weight: bold;
+}
+/* The filter's controls (range fill/thumbs, toggle, select, checkbox) follow the
+ * card's colour instead of the global purple. */
+.cX-DataFilter-ItemAccent div.cX-RangeSlider > div.cX-RangeSlider-Range,
+.cX-DataFilter-ItemAccent div.cX-RangeSlider > div.cX-RangeSlider-Thumb-Left,
+.cX-DataFilter-ItemAccent div.cX-RangeSlider > div.cX-RangeSlider-Thumb-Right {
+  background-color: var(--cx-item-accent) !important;
+}
+.cX-DataFilter-ItemAccent input.cX-Toggle:checked + div.cX-Toggle-Switch {
+  background: var(--cx-item-accent) !important;
+}
+.cX-DataFilter-ItemAccent select {
+  border-color: var(--cx-item-accent) !important;
+}
+.cX-DataFilter-ItemAccent select:focus {
+  outline-color: var(--cx-item-accent) !important;
+}
+.cX-DataFilter-ItemAccent input[type=checkbox].cX-Checkbox {
+  accent-color: var(--cx-item-accent) !important;
 }
 
 .cX-DataFilter-Head,
@@ -4751,6 +4958,28 @@ input[type=file] {
 .cX-Menu-Item-Active > :first-child > div:last-child,
 .cX-Menu-Item-Active > :first-child > input:last-child {
   pointer-events: auto;
+}
+
+/*
+ * "colorful" style — per-item accent. Each menu entry carries its own colour
+ * (set inline as --cx-item-accent / --cx-item-accent-bg, hashed from its label):
+ * a left accent bar, a tinted icon chip, and a matching hover/active state.
+ * The class is only added when dataUIStyle === 'colorful'.
+ */
+.cX-Menu-Item-Accent {
+  border-left: 3px solid var(--cx-item-accent) !important;
+}
+.cX-Menu-Item-Accent:hover,
+.cX-Menu-Item-Accent.cX-Menu-Item-Active {
+  background: var(--cx-item-accent-bg) !important;
+  border-color: var(--cx-item-accent) !important;
+}
+.cX-Menu-Item-Accent .cX-Menu-List-Icon {
+  background: var(--cx-item-accent-bg) !important;
+  border-radius: var(--cx-border-radius, 5px);
+}
+.cX-Menu-Item-Accent .cX-Menu-Item-Text {
+  color: var(--cx-item-accent) !important;
 }
 
 .cX-Menu-Item-Scroll-Top {

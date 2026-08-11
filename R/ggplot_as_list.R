@@ -370,6 +370,236 @@ gg_resolve_const_aes <- function(o) {
   o
 }
 
+# gg_lodes_to_alluvia
+#
+# ggalluvial accepts two data shapes. "Alluvia" form is wide -- one column per
+# axis, one row per alluvium, mapped with aes(axis1 = , axis2 = , ...); the
+# converter/JS already render this. "Lodes" form is long -- one row per
+# (alluvium x axis), mapped with aes(x = , stratum = , alluvium = ) -- and does
+# NOT map onto CanvasXpress's column-per-axis sankeyAxes model. This reshapes a
+# lodes-form plot into the equivalent alluvia-form plot (via
+# ggalluvial::to_alluvia_form) so the rest of the pipeline handles it uniformly:
+# each level of `x` becomes its own axis column holding the `stratum` value, the
+# `y` weight is carried per alluvium, and the mapping is rewritten to axis1..axisN.
+# Non-lodes plots (including alluvia-form alluvials) are returned unchanged.
+gg_lodes_to_alluvia <- function(o) {
+  is_alluvial_geom <- function(g) {
+    any(vapply(o$layers, function(ly) {
+      inherits(ly$geom, c("GeomAlluvium", "GeomFlow", "GeomStratum"))
+    }, logical(1)))
+  }
+  if (!requireNamespace("ggalluvial", quietly = TRUE) || !is_alluvial_geom()) {
+    return(o)
+  }
+  # Resolve the x / stratum / alluvium mappings from the plot aes or any layer aes.
+  map_name <- function(name) {
+    if (!is.null(o$mapping[[name]])) {
+      return(rlang::as_label(o$mapping[[name]]))
+    }
+    for (ly in o$layers) {
+      if (!is.null(ly$mapping) && !is.null(ly$mapping[[name]])) {
+        return(rlang::as_label(ly$mapping[[name]]))
+      }
+    }
+    NULL
+  }
+  key <- map_name("x")
+  value <- map_name("stratum")
+  id <- map_name("alluvium")
+  wt <- map_name("y")
+  # Lodes form needs x + stratum + alluvium; if any is absent this is axis form.
+  if (is.null(key) || is.null(value) || is.null(id)) {
+    return(o)
+  }
+  if (!all(c(key, value, id) %in% colnames(o$data))) {
+    return(o)
+  }
+  is_lodes <- tryCatch(
+    ggalluvial::is_lodes_form(o$data, key = !!rlang::sym(key),
+                              value = !!rlang::sym(value),
+                              id = !!rlang::sym(id), silent = TRUE),
+    error = function(e) FALSE)
+  if (!isTRUE(is_lodes)) {
+    return(o)
+  }
+  wide <- tryCatch(
+    ggalluvial::to_alluvia_form(o$data, key = !!rlang::sym(key),
+                                value = !!rlang::sym(value),
+                                id = !!rlang::sym(id), distill = "first"),
+    error = function(e) NULL)
+  if (is.null(wide)) {
+    return(o)
+  }
+  # Axis columns are the x levels, in the x factor / appearance order.
+  axis_cols <- if (is.factor(o$data[[key]])) {
+    levels(droplevels(o$data[[key]]))
+  } else {
+    unique(as.character(o$data[[key]]))
+  }
+  axis_cols <- axis_cols[axis_cols %in% colnames(wide)]
+  if (length(axis_cols) < 2) {
+    return(o)
+  }
+  # Rewrite to an alluvia-form plot: axis1..axisN over the new columns, keep y, and
+  # colour the flows by the first axis (a single-annotation stand-in for the
+  # per-lode stratum colour, which CanvasXpress cannot vary along a ribbon).
+  new_map <- ggplot2::aes()
+  for (i in seq_along(axis_cols)) {
+    new_map[[paste0("axis", i)]] <- rlang::new_quosure(
+      rlang::sym(axis_cols[i]), env = rlang::empty_env())
+  }
+  if (!is.null(wt)) {
+    new_map[["y"]] <- rlang::new_quosure(rlang::sym(wt), env = rlang::empty_env())
+  }
+  new_map[["fill"]] <- rlang::new_quosure(rlang::sym(axis_cols[1]),
+                                          env = rlang::empty_env())
+  o$data <- wide
+  o$mapping <- new_map
+  # Label the (continuous 1..N) alluvial x axis with the actual column names so the
+  # converter emits them as the axis (sankeyAxes) titles instead of 1, 2, 3.
+  o <- o + ggplot2::scale_x_continuous(breaks = seq_along(axis_cols),
+                                       labels = axis_cols,
+                                       expand = ggplot2::expansion(mult = 0.05))
+  # Drop the now-invalid lodes aes from each layer (x/stratum/alluvium on the long
+  # columns); the stats recompute stratum/alluvium from the axis columns.
+  for (i in seq_along(o$layers)) {
+    lm <- o$layers[[i]]$mapping
+    if (is.null(lm)) {
+      next
+    }
+    for (nm in c("x", "stratum", "alluvium")) {
+      lm[[nm]] <- NULL
+    }
+    o$layers[[i]]$mapping <- lm
+  }
+  o
+}
+
+# gg_sankey_to_alluvia
+#
+# ggsankey (davidsjoberg/ggsankey) draws sankeys from a make_long() edge table:
+# columns x / node / next_x / next_node, mapped aes(x=, next_x=, node=,
+# next_node=), where each observation contributes one row per stage transition and
+# the last stage's next_* is NA. Its geoms are generic (GeomPolygon + StatSankeyFlow,
+# GeomRect for labels), so it is detected by the next_x/next_node aes. There is no
+# alluvium id, but make_long preserves observation order (K = number of stages rows
+# per observation), so the original wide table (one column per stage) is
+# reconstructable. This rebuilds that wide table and re-expresses the plot as an
+# ggalluvial axis-form alluvial, which the rest of the pipeline already renders
+# (including the per-(axis,level) node identity). Non-ggsankey plots are unchanged.
+gg_sankey_to_alluvia <- function(o) {
+  map_name <- function(name) {
+    if (!is.null(o$mapping[[name]])) {
+      return(rlang::as_label(o$mapping[[name]]))
+    }
+    for (ly in o$layers) {
+      if (!is.null(ly$mapping) && !is.null(ly$mapping[[name]])) {
+        return(rlang::as_label(ly$mapping[[name]]))
+      }
+    }
+    NULL
+  }
+  x_col <- map_name("x")
+  node_col <- map_name("node")
+  next_x_col <- map_name("next_x")
+  next_node_col <- map_name("next_node")
+  # ggsankey's fill is the node value (e.g. factor(node)); its label is the legend
+  # title. Capture it before the mapping is rewritten to the axis form below.
+  fill_label <- map_name("fill")
+  # ggsankey is identified by the next_x/next_node aes (make_long's signature).
+  if (is.null(next_x_col) || is.null(next_node_col) ||
+        is.null(x_col) || is.null(node_col)) {
+    return(o)
+  }
+  if (!requireNamespace("ggalluvial", quietly = TRUE)) {
+    return(o)
+  }
+  # The replacement ggalluvial layers built below use ggalluvial's stats
+  # ("alluvium"/"stratum"), which ggplot_build resolves by name from the search
+  # path. A ggsankey plot only attaches ggsankey, so attach ggalluvial too.
+  if (!("package:ggalluvial" %in% search())) {
+    suppressWarnings(suppressMessages(
+      tryCatch(attachNamespace("ggalluvial"), error = function(e) NULL)))
+  }
+  if (!all(c(x_col, node_col) %in% colnames(o$data))) {
+    return(o)
+  }
+  d <- o$data
+  stages <- if (is.factor(d[[x_col]])) {
+    levels(droplevels(d[[x_col]]))
+  } else {
+    unique(as.character(d[[x_col]]))
+  }
+  k <- length(stages)
+  if (k < 2 || (nrow(d) %% k) != 0) {
+    return(o)
+  }
+  # make_long is observation-major: K consecutive rows per observation.
+  obs <- rep(seq_len(nrow(d) / k), each = k)
+  xvals <- as.character(d[[x_col]])
+  nodevals <- as.character(d[[node_col]])
+  # ggsankey stacks the strata of every column by the GLOBAL fill = factor(node)
+  # level order (the sorted union of all node values), with the first level at the
+  # bottom. CanvasXpress's sankeyNodeSort = "factor" orders a column by its factor
+  # levels with the first level at the TOP, so give each column those global levels
+  # RESTRICTED to its own values and REVERSED -- then CX's top-down factor order
+  # reproduces ggsankey's bottom-up global order exactly.
+  node_levels <- sort(unique(nodevals[!is.na(nodevals)]))
+  wide <- data.frame(row.names = seq_len(nrow(d) / k))
+  for (st in stages) {
+    col <- rep(NA_character_, nrow(d) / k)
+    sel <- xvals == st
+    col[obs[sel]] <- nodevals[sel]
+    col_levels <- rev(node_levels[node_levels %in% unique(nodevals[sel])])
+    wide[[st]] <- factor(col, levels = col_levels)
+  }
+  # Aggregate identical full paths into one weighted alluvium: ggsankey aggregates
+  # flows (it does not draw one ribbon per observation), and collapsing the raw
+  # make_long rows to unique paths keeps the ribbon count -- and the layout arrays --
+  # bounded on large datasets (per-observation ribbons blow up a 4+ stage layout).
+  wide[["freq"]] <- 1
+  wide <- stats::aggregate(freq ~ ., data = wide, FUN = sum)
+  new_map <- ggplot2::aes()
+  for (i in seq_along(stages)) {
+    new_map[[paste0("axis", i)]] <- rlang::new_quosure(
+      rlang::sym(stages[i]), env = rlang::empty_env())
+  }
+  new_map[["y"]] <- rlang::new_quosure(rlang::sym("freq"), env = rlang::empty_env())
+  new_map[["fill"]] <- rlang::new_quosure(rlang::sym(stages[1]),
+                                          env = rlang::empty_env())
+  o$data <- wide
+  o$mapping <- new_map
+  # Replace ggsankey's layers with the ggalluvial equivalents the converter knows.
+  o$layers <- list(
+    ggalluvial::geom_alluvium(),
+    ggalluvial::geom_stratum(),
+    ggplot2::geom_text(stat = ggalluvial::StatStratum,
+                       mapping = ggplot2::aes(label = ggplot2::after_stat(stratum)))
+  )
+  o <- o + ggplot2::scale_x_continuous(breaks = seq_along(stages),
+                                       labels = stages,
+                                       expand = ggplot2::expansion(mult = 0.05))
+  # ggsankey colours EACH node by its own value (fill = factor(node)) and paints
+  # every ribbon in its SOURCE node's colour -- unlike ggalluvial, which tints the
+  # whole diagram by a single fill aesthetic. The node factor's levels are the
+  # sorted union of all stage values, coloured by ggplot's default hue palette;
+  # emit that exact value -> colour map (R is the oracle) plus a style marker so
+  # the JS side can reproduce the per-node colouring, ribbon-by-source, node gaps
+  # (sankeyType 'normal'), and the factor(node) legend rather than the single-axis
+  # colorBy the ggalluvial path uses.
+  node_colors <- tryCatch(scales::hue_pal()(length(node_levels)),
+                          error = function(e) NULL)
+  attr(o, "cx_sankey_style") <- "ggsankey"
+  if (!is.null(node_colors)) {
+    attr(o, "cx_sankey_node_levels") <- node_levels
+    attr(o, "cx_sankey_node_colors") <- node_colors
+  }
+  if (!is.null(fill_label)) {
+    attr(o, "cx_sankey_legend_title") <- fill_label
+  }
+  o
+}
+
 gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
@@ -377,6 +607,10 @@ gg_cxplot <- function(o, target, ...) {
   o <- gg_resolve_const_aes(o)
 
   o <- gg_resolve_factor_aes(o)
+
+  o <- gg_sankey_to_alluvia(o)
+
+  o <- gg_lodes_to_alluvia(o)
 
   meta <- as.list(sapply(o$data, is.factor))
 
@@ -600,6 +834,10 @@ gg_cxplot <- function(o, target, ...) {
   cx <- gg_apply_scale_labels(o, cx)
   cx <- gg_apply_x_scale_labels(o, cx)
 
+  # Attach the approximate ggplot2 source reconstruction (best-effort; never let
+  # a decompile failure break the conversion).
+  cx$decompiled <- tryCatch(ggplot.decompiled(o), error = function(e) NULL)
+
   cx
 }
 
@@ -735,6 +973,28 @@ gg_order <- function(o, b) {
   }
   if (!is.null(b$layout$panel_params[[1]]$y)) {
     r$yLabels <- as.character(b$layout$panel_params[[1]]$y$get_labels())
+  }
+  # Carry the x position scale's side ("top"/"bottom") so the JS side can place the
+  # alluvial/sankey axis (column) titles accordingly (scale_x_*(position = "top")).
+  sx <- tryCatch(o$scales$get_scales("x"), error = function(e) NULL)
+  if (!is.null(sx) && !is.null(sx$position)) {
+    r$xAxisPosition <- sx$position
+  }
+  # ggsankey marker + per-node colour map, threaded through so the JS Sankey path
+  # can colour each node by its own value and each ribbon by its source node.
+  sankey_style <- attr(o, "cx_sankey_style")
+  if (!is.null(sankey_style)) {
+    r$sankeyStyle <- sankey_style
+    node_levels <- attr(o, "cx_sankey_node_levels")
+    node_colors <- attr(o, "cx_sankey_node_colors")
+    if (!is.null(node_levels) && !is.null(node_colors)) {
+      r$sankeyNodeLevels <- as.character(node_levels)
+      r$sankeyNodeColors <- as.character(node_colors)
+    }
+    legend_title <- attr(o, "cx_sankey_legend_title")
+    if (!is.null(legend_title)) {
+      r$sankeyNodeLegendTitle <- as.character(legend_title)
+    }
   }
   r
 }
