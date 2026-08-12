@@ -1413,7 +1413,7 @@ textarea.cX-Chat-Code-Output {
   container-type: inline-size;
 }
 
-@container (max-width: 99px) {
+@container (max-width: 129px) {
   .cX-Customizer-Compact .cX-Customizer-LeftItemTop {
     display: none !important;
   }
