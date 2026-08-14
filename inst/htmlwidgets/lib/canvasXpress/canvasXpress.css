@@ -1895,7 +1895,7 @@ textarea.cX-Chat-Code-Output {
   border: 1px var(--cx-border-style) var(--cx-datatable-border-color) !important;
 }
 
-.cX-Customizer-RightItemSelect>select:hover,
+.cX-Customizer-RightItemSelect>select,
 .cX-Customizer-RightItemTextArea > textarea {
   overflow: hidden;
   resize: none;
