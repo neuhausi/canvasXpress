@@ -225,6 +225,68 @@ gg_apply_scale_labels <- function(o, cx) {
   cx
 }
 
+gg_all_legends_suppressed <- function(o) {
+  # TRUE when at least one legend-bearing aesthetic (colour/fill/size/shape/linetype/
+  # alpha) is mapped to a variable, and EVERY layer that draws such an aesthetic sets
+  # show.legend = FALSE. That is exactly when ggplot renders no legend, so the single
+  # global CanvasXpress showLegend can safely be turned off. Returns FALSE the moment
+  # any legend-drawing layer leaves show.legend at its default/TRUE (a legend is wanted),
+  # so a plot mixing a suppressed colour with a shown size legend is left untouched.
+  legend_aes <- c("colour", "color", "fill", "size", "shape", "linetype", "alpha")
+  global_map <- names(o$mapping)
+  any_mapped <- FALSE
+  for (layer in o$layers) {
+    layer_map <- names(layer$mapping)
+    inherits_global <- !isFALSE(layer$inherit.aes)
+    uses_legend_aes <- any(legend_aes %in% layer_map) ||
+      (inherits_global && any(legend_aes %in% global_map))
+    if (!uses_legend_aes) {
+      next
+    }
+    any_mapped <- TRUE
+    if (is.na(layer$show.legend) || !identical(layer$show.legend, FALSE)) {
+      return(FALSE)
+    }
+  }
+  any_mapped
+}
+
+gg_axis_labels_text <- function(labels) {
+  # Coerce a scale's break labels to a plain character vector, routing each through
+  # gg_plotmath_to_text so a plotmath/bquote label (e.g. expression labels) becomes the
+  # same HTML text CanvasXpress renders elsewhere.
+  vapply(seq_along(labels),
+         function(k) gg_plotmath_to_text(labels[[k]]),
+         character(1))
+}
+
+gg_axis_labels_relabelled <- function(breaks, labels) {
+  # TRUE when the continuous scale's labels are a genuine RELABEL of the break
+  # positions - any in-range label that is non-numeric, or numeric but not equal to its
+  # break value (e.g. chromosome number "3" placed at cumulative-bp centre 2.5e8). A
+  # plain numeric axis whose labels are just the formatted break values is NOT a relabel
+  # and needs no separate label channel. NA breaks (out of panel range) are ignored for
+  # the decision but stay index-aligned in the emitted arrays.
+  if (is.null(labels) || length(labels) == 0 ||
+        is.null(breaks) || length(breaks) != length(labels)) {
+    return(FALSE)
+  }
+  text <- gg_axis_labels_text(labels)
+  nums <- suppressWarnings(as.numeric(text))
+  for (k in seq_along(text)) {
+    if (is.na(breaks[k])) {
+      next
+    }
+    if (is.na(nums[k])) {
+      return(TRUE)
+    }
+    if (!isTRUE(all.equal(nums[k], as.numeric(breaks[k])))) {
+      return(TRUE)
+    }
+  }
+  FALSE
+}
+
 gg_apply_x_scale_labels <- function(o, cx) {
   # A continuous positional x scale carrying explicit break labels (e.g.
   # scale_x_continuous(breaks = c(1, 2), labels = c("control", "recent"))) used as
@@ -284,6 +346,7 @@ gg_apply_x_scale_labels <- function(o, cx) {
   # does not overlay numeric ticks on the relabelled categories.
   cx$scales$xAxisSetValues <- NULL
   cx$scales$xAxisSetMinorValues <- NULL
+  cx$scales$xAxisSetLabels <- NULL
   cx$scales$xAxisTicks <- NULL
   cx
 }
@@ -736,6 +799,22 @@ gg_cxplot <- function(o, target, ...) {
         if (!is.null(bld$data[[i]]$colour)) {
           p$errorColor <- bld$data[[i]]$colour
         }
+        # Per-error facet scope (row-aligned with errorPos/ymin/ymax): the facet
+        # variable's value for each error's panel. On a free-scale facet the engine
+        # confines each error bar to its own panel by this scope; sourcing it from the
+        # error layer's OWN built data keeps it aligned with the bounds, instead of
+        # cross-indexing the (differently ordered) wrangled data - which mispaired every
+        # non-first dodge group with another panel's value.
+        eb_panel <- bld$data[[i]]$PANEL
+        eb_layout <- bld$layout$layout
+        if (!is.null(eb_panel) && !is.null(eb_layout) && !is.null(eb_layout$PANEL)) {
+          facet_cols <- setdiff(names(eb_layout),
+                                c("PANEL", "ROW", "COL", "SCALE_X", "SCALE_Y"))
+          if (length(facet_cols) >= 1) {
+            row <- match(as.integer(eb_panel), as.integer(eb_layout$PANEL))
+            p$errorScope <- as.character(eb_layout[[facet_cols[1]]])[row]
+          }
+        }
       } else if (l == "GeomVline" || l == "GeomHline" || l == "GeomAbline") {
         if (!("color" %in% names(p))) {
           p$color <- bld$data[[i]]$colour
@@ -801,6 +880,24 @@ gg_cxplot <- function(o, target, ...) {
         p$label <- bld$data[[i]]$label
         p$npcx <- bld$data[[i]]$npcx
         p$npcy <- bld$data[[i]]$npcy
+      } else if (l == "GeomText" || l == "GeomLabel") {
+        # Emit the layer's BUILT positions + label text so CanvasXpress draws each
+        # annotation where ggplot placed it - the resolved (already dodged) category
+        # x, the computed y (e.g. aes(y = mean + se + 0.15)), the label, and the facet
+        # panel. Without these the engine has only the label column name + a y
+        # expression string and falls back to printing the bar VALUES. The dodged x
+        # maps through categoryPixelX and the value is in axis space (preTransformed).
+        p$data <- list(
+          x = as.numeric(bld$data[[i]]$x),
+          y = as.numeric(bld$data[[i]]$y),
+          label = as.character(bld$data[[i]]$label)
+        )
+        if (!is.null(bld$data[[i]]$PANEL)) {
+          p$data$panel <- as.integer(bld$data[[i]]$PANEL)
+        }
+        if (!is.null(bld$data[[i]]$colour)) {
+          p$data$color <- as.character(bld$data[[i]]$colour)
+        }
       }
       p$stat <- proto_stat[i]
       # Each layer is a self-describing element: its geom name travels inside
@@ -833,6 +930,16 @@ gg_cxplot <- function(o, target, ...) {
 
   cx <- gg_apply_scale_labels(o, cx)
   cx <- gg_apply_x_scale_labels(o, cx)
+
+  # ggplot draws a legend for an aesthetic unless EVERY layer drawing it sets
+  # show.legend = FALSE. CanvasXpress has a single global showLegend, so when no
+  # mapped legend aesthetic wants a legend at all (e.g. a Manhattan plot whose only
+  # colour aes is the alternating band, drawn show.legend = FALSE), hoist that
+  # suppression to the whole plot - otherwise the engine keeps its default and draws a
+  # stray legend title. Never override an explicit showLegend passed in config.
+  if (is.null(cx$config$showLegend) && gg_all_legends_suppressed(o)) {
+    cx$config$showLegend <- FALSE
+  }
 
   # Attach the approximate ggplot2 source reconstruction (best-effort; never let
   # a decompile failure break the conversion).
@@ -1356,6 +1463,18 @@ gg_scales <- function(o, b) {
           r$xAxisSetValues <- x_breaks
           r$xAxisSetMinorValues <- x_minor
           r$xAxisTicks <- length(x_breaks)
+          # scale_x_continuous(labels = ...) on a genuinely continuous axis (e.g. a
+          # Manhattan plot's chromosome names/numbers placed at cumulative-bp centres)
+          # carries label TEXT that differs from the break positions. Emit it as a
+          # separate tick-label channel so CanvasXpress shows the labels instead of
+          # formatting the raw break coordinates (billions -> scientific notation). Only
+          # for the non-transformed axis, where breaks and labels stay index-aligned.
+          if (!has_x_trans) {
+            x_labels <- b$layout$panel_params[[1]]$x$get_labels()
+            if (gg_axis_labels_relabelled(x_breaks, x_labels)) {
+              r$xAxisSetLabels <- gg_axis_labels_text(x_labels)
+            }
+          }
         }
         if (has_x_trans) {
           r$xAxisTransform <- stringr::str_replace(x_trans, "-", "")
@@ -1385,6 +1504,14 @@ gg_scales <- function(o, b) {
           r$yAxisSetValues <- y_breaks
           r$yAxisSetMinorValues <- y_minor
           r$yAxisTicks <- length(y_breaks)
+          # See the x branch: carry a scale_y_continuous(labels = ...) relabel as a
+          # separate tick-label channel (non-transformed axis only).
+          if (!has_y_trans) {
+            y_labels <- b$layout$panel_params[[1]]$y$get_labels()
+            if (gg_axis_labels_relabelled(y_breaks, y_labels)) {
+              r$yAxisSetLabels <- gg_axis_labels_text(y_labels)
+            }
+          }
         }
         if (has_y_trans) {
           r$yAxisTransform <- stringr::str_replace(y_trans, "-", "")

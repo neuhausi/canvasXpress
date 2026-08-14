@@ -130,6 +130,36 @@ cx_ggplot_corpus <- function() {
       name = "coord_flip",
       plot = gg(cat_df, aes(cat, val)) + ggplot2::geom_col() +
         ggplot2::coord_flip()
+    ),
+    list(
+      # Manhattan-style parity case, exercising TWO gaps at once:
+      #   (1) scale_x_continuous(labels = ...) RELABELS a genuinely continuous axis
+      #       (chromosome numbers at cumulative-bp centres) - the large break
+      #       positions must render as "1"/"2"/"3", not scientific notation
+      #       (xAxisSetLabels);
+      #   (2) the only colour aes (alternating band) is drawn show.legend = FALSE, so
+      #       no legend must appear (global showLegend hoisted from the layer).
+      name = "x_continuous_labels",
+      plot = gg(data.frame(pos = c(5e7, 1.1e8, 1.5e8, 2.2e8, 2.5e8),
+                           y = c(2, 4, 5, 1, 3),
+                           band = factor(c(0, 0, 1, 1, 0))),
+                aes(pos, y)) +
+        ggplot2::geom_point(aes(colour = band), show.legend = FALSE) +
+        ggplot2::scale_colour_manual(values = c("#D6604D", "#4A6FA5")) +
+        ggplot2::scale_x_continuous(breaks = c(5e7, 1.5e8, 2.5e8),
+                                    labels = c(1, 2, 3))
+    ),
+    list(
+      # Dodged fill bar with error bars: the fill factor is pivoted into coloured
+      # per-series columns (no colorBy), so the error-bar layer must NOT suppress the
+      # fill legend - it is driven by those coloured vars.
+      name = "dodge_bar_errorbar_legend",
+      plot = gg(df, aes(g, y, fill = h)) +
+        ggplot2::geom_col(position = ggplot2::position_dodge(width = 0.8),
+                          width = 0.7) +
+        ggplot2::geom_errorbar(aes(ymin = y - 0.5, ymax = y + 0.5),
+                               position = ggplot2::position_dodge(width = 0.8),
+                               width = 0.2)
     )
   )
 }
