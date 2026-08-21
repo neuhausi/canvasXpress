@@ -22,10 +22,13 @@ shinyServer(function(input, output, session) {
 
     output$genelist_heatmap <- canvasXpress::renderCanvasXpress({
         canvasXpress(
-            data          = t(y),
-            colorSpectrum = list("navy", "white", "firebrick3"),
-            graphType     = "Heatmap",
-            events        = capture_click_ex
+            data                    = t(y),
+            title                   = "CX events heatmap example",
+            subtitle                = "Double click heatmap cell to highlight table cell",
+            subtitleScaleFontFactor = 0.5,
+            colorSpectrum           = list("navy", "white", "firebrick3"),
+            graphType               = "Heatmap",
+            events                  = capture_click_ex
         )
     })
 

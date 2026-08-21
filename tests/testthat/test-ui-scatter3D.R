@@ -25,6 +25,14 @@ test_that("cXscatter3d6", {
     check_ui_test(cXscatter3d6())
 })
 
-test_that("cXscatter3d7", {
-    message("scatter3d - plot function missing")
+test_that("cX3dplots1", {
+    check_ui_test(cX3dplots1())
+})
+
+test_that("cX3dplots2", {
+    check_ui_test(cX3dplots2())
+})
+
+test_that("cX3dplots3", {
+    check_ui_test(cX3dplots3())
 })

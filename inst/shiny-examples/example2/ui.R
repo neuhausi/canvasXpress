@@ -1,4 +1,11 @@
 shinyUI(fluidPage(
+       tags$head(
+        tags$style(HTML("
+            .cX-DOM.fullscreen-mode {
+                z-index: 1000000 !important;
+            }
+        "))
+    ),
     title = "Shiny Example 2",
     fluidRow(
         style = "background-color:#f2f2f2;",
@@ -12,7 +19,6 @@ shinyUI(fluidPage(
         style = "background-color:#f2f2f2;",
         column(width = 4,
                offset = 4,
-               style = "z-index:11000",
                selectizeInput(
                    inputId  = "factorSel",
                    label    = "Primary Plot Factor:",
@@ -33,7 +39,6 @@ shinyUI(fluidPage(
                               width    = "100%",
                               choices  = NULL,
                               multiple = FALSE),
-               tags$head(tags$style(".selectize-control { z-index: 11000; }")),
                htmlOutput("volcano_plot")),
         column(width = 6,
                selectizeInput(inputId  = "genesSel",
@@ -42,7 +47,6 @@ shinyUI(fluidPage(
                               choices  = g_geneChoices,
                               selected = g_geneChoices[1:2],
                               multiple = TRUE),
-               tags$head(tags$style(".selectize-control { z-index: 11000; }")),
                htmlOutput("genes_plot"))
     )
 ))
