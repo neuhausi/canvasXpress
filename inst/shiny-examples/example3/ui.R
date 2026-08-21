@@ -7,6 +7,13 @@ exData <- readRDS("./exData.rds")
 
 shinyUI(
 fluidPage(
+    tags$head(
+        tags$style(HTML("
+            .cX-DOM.fullscreen-mode {
+                z-index: 1000000 !important;
+            }
+        "))
+    ),
     titlePanel("IPF Fibroblast Data"),
     fluidRow(
         column(width = 12,

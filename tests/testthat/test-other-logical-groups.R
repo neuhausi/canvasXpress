@@ -92,8 +92,8 @@ test_that("pre-calculated bar plot values are logical", {
     rownames(precalc_annot) <- c(FALSE, TRUE)
 
     precalc_annot_list <- list(NULL,
-                               select(precalc_annot, NumericVar),
-                               select(precalc_annot, CategoryVar))
+                               dplyr::select(precalc_annot, NumericVar),
+                               dplyr::select(precalc_annot, CategoryVar))
 
     for (i in seq_along(precalc_annot_list)) {
         result <- canvasXpress(
@@ -114,8 +114,8 @@ test_that("histogram values are logical", {
 
     hist_data       <- data.frame("TRUE" = vals, "FALSE" = vals, check.names = FALSE)
     hist_annot_list <- list(NULL,
-                            select(annot_data, NumericVar),
-                            select(annot_data, CategoryVar))
+                            dplyr::select(annot_data, NumericVar),
+                            dplyr::select(annot_data, CategoryVar))
 
     for (i in seq_along(annot_data_list)) {
         result <- canvasXpress(

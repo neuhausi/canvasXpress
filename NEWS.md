@@ -11,6 +11,14 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ---
 
+## v1.65.2
+* Updated CanvasXpress JS and CSS libraries to v65.2
+
+
+## v1.59.5
+* Updated CanvasXpress JS and CSS libraries to v59.5
+
+
 ## v1.58.7
 * Updated CanvasXpress JS and CSS libraries to v58.7 
 * Fixed an aesthetic wrapped in factor()/as.factor()/ordered() (e.g. fill = factor(am))

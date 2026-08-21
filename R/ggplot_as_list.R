@@ -3,7 +3,8 @@
 #' @param o   the ggplot object
 #' @param ... additional parameters to the function
 #'
-#' @export
+#' @export ggplot.as.list
+#' @name ggplot.as.list
 ggplot.as.list <- function(o, ...) { # nolint: object_name_linter.
 
   if (!(requireNamespace("ggplot2", quietly = TRUE))) {
@@ -45,7 +46,7 @@ ggplot.as.list <- function(o, ...) { # nolint: object_name_linter.
     cx$isR <- TRUE
     ## Find the longest in the data frame which will be used to calculate
     ## the margins
-    v <- na.omit(unlist(lapply(d, as.character)))
+    v <- stats::na.omit(unlist(lapply(d, as.character)))
     z <- if (length(v) > 0) v[which.max(nchar(v))] else ""
     cx$longestString <- as.character(unlist(z))
     if (!is.null(c)) {
@@ -57,7 +58,7 @@ ggplot.as.list <- function(o, ...) { # nolint: object_name_linter.
     p <- list()
     for (i in seq_len(l)) {
       t <- paste("canvas", i, sep = "-")
-      p[[i]] <- gg_cxplot(o$plots[[i]]$fn(d, o$plots[[i]]$mapping), t)
+      p[[i]] <- gg_cxplot(o$plots[[i]], t)
       p[[i]]$isGGMatrix <- cx$longestString
     }
     cx$datasets <- p
@@ -120,11 +121,11 @@ gg_plotmath_to_text <- function(x) {
   s <- gsub("[~*]", " ", s)       # spacing / juxtaposition operators -> space
   # plotmath greek names render as their glyphs (e.g. mu -> the micro sign in a
   # unit like "mu g"); map the common ones once the juxtaposition tokens are gone.
-  greek <- c(mu = "μ", alpha = "α", beta = "β", gamma = "γ",
-             delta = "δ", sigma = "σ", lambda = "λ", tau = "τ",
-             theta = "θ", phi = "φ", omega = "ω", pi = "π",
-             rho = "ρ", chi = "χ", eta = "η", kappa = "κ",
-             epsilon = "ε")
+  greek <- c(mu = "\u03bc", alpha = "\u03b1", beta = "\u03b2", gamma = "\u03b3",
+           delta = "\u03b4", sigma = "\u03c3", lambda = "\u03bb", tau = "\u03c4",
+           theta = "\u03b8", phi = "\u03c6", omega = "\u03c9", pi = "\u03c0",
+           rho = "\u03c1", chi = "\u03c7", eta = "\u03b7", kappa = "\u03ba",
+           epsilon = "\u03b5")
   for (nm in names(greek)) {
     s <- gsub(paste0("\\b", nm, "\\b"), greek[[nm]], s)
   }
@@ -225,68 +226,6 @@ gg_apply_scale_labels <- function(o, cx) {
   cx
 }
 
-gg_all_legends_suppressed <- function(o) {
-  # TRUE when at least one legend-bearing aesthetic (colour/fill/size/shape/linetype/
-  # alpha) is mapped to a variable, and EVERY layer that draws such an aesthetic sets
-  # show.legend = FALSE. That is exactly when ggplot renders no legend, so the single
-  # global CanvasXpress showLegend can safely be turned off. Returns FALSE the moment
-  # any legend-drawing layer leaves show.legend at its default/TRUE (a legend is wanted),
-  # so a plot mixing a suppressed colour with a shown size legend is left untouched.
-  legend_aes <- c("colour", "color", "fill", "size", "shape", "linetype", "alpha")
-  global_map <- names(o$mapping)
-  any_mapped <- FALSE
-  for (layer in o$layers) {
-    layer_map <- names(layer$mapping)
-    inherits_global <- !isFALSE(layer$inherit.aes)
-    uses_legend_aes <- any(legend_aes %in% layer_map) ||
-      (inherits_global && any(legend_aes %in% global_map))
-    if (!uses_legend_aes) {
-      next
-    }
-    any_mapped <- TRUE
-    if (is.na(layer$show.legend) || !identical(layer$show.legend, FALSE)) {
-      return(FALSE)
-    }
-  }
-  any_mapped
-}
-
-gg_axis_labels_text <- function(labels) {
-  # Coerce a scale's break labels to a plain character vector, routing each through
-  # gg_plotmath_to_text so a plotmath/bquote label (e.g. expression labels) becomes the
-  # same HTML text CanvasXpress renders elsewhere.
-  vapply(seq_along(labels),
-         function(k) gg_plotmath_to_text(labels[[k]]),
-         character(1))
-}
-
-gg_axis_labels_relabelled <- function(breaks, labels) {
-  # TRUE when the continuous scale's labels are a genuine RELABEL of the break
-  # positions - any in-range label that is non-numeric, or numeric but not equal to its
-  # break value (e.g. chromosome number "3" placed at cumulative-bp centre 2.5e8). A
-  # plain numeric axis whose labels are just the formatted break values is NOT a relabel
-  # and needs no separate label channel. NA breaks (out of panel range) are ignored for
-  # the decision but stay index-aligned in the emitted arrays.
-  if (is.null(labels) || length(labels) == 0 ||
-        is.null(breaks) || length(breaks) != length(labels)) {
-    return(FALSE)
-  }
-  text <- gg_axis_labels_text(labels)
-  nums <- suppressWarnings(as.numeric(text))
-  for (k in seq_along(text)) {
-    if (is.na(breaks[k])) {
-      next
-    }
-    if (is.na(nums[k])) {
-      return(TRUE)
-    }
-    if (!isTRUE(all.equal(nums[k], as.numeric(breaks[k])))) {
-      return(TRUE)
-    }
-  }
-  FALSE
-}
-
 gg_apply_x_scale_labels <- function(o, cx) {
   # A continuous positional x scale carrying explicit break labels (e.g.
   # scale_x_continuous(breaks = c(1, 2), labels = c("control", "recent"))) used as
@@ -346,7 +285,6 @@ gg_apply_x_scale_labels <- function(o, cx) {
   # does not overlay numeric ticks on the relabelled categories.
   cx$scales$xAxisSetValues <- NULL
   cx$scales$xAxisSetMinorValues <- NULL
-  cx$scales$xAxisSetLabels <- NULL
   cx$scales$xAxisTicks <- NULL
   cx
 }
@@ -355,7 +293,7 @@ gg_resolve_factor_aes <- function(o) {
   # An aesthetic wrapped in factor()/as.factor()/ordered() makes a numeric column
   # discrete for the plot (e.g. fill = factor(am)). ggplot.as.list strips the
   # wrapper to the bare column name so the aes matches the data column, but the
-  # raw column stays numeric — so CanvasXpress would treat it as continuous (a
+  # raw column stays numeric - so CanvasXpress would treat it as continuous (a
   # numeric colour legend) and mis-sort its values (am 0 rendered as null).
   # Coerce those columns to real factors up front so meta marks them discrete and
   # their levels/order carry through as they do in ggplot.
@@ -367,8 +305,8 @@ gg_resolve_factor_aes <- function(o) {
     }
   }
   # Columns used BARE (an unwrapped plain symbol) versus WRAPPED in a coercion.
-  # A column used both ways — e.g. aes(factor(cyl), mpg) for the discrete axis and
-  # geom_violin(aes(fill = cyl)) for a continuous fill — must stay numeric: coercing
+  # A column used both ways - e.g. aes(factor(cyl), mpg) for the discrete axis and
+  # geom_violin(aes(fill = cyl)) for a continuous fill - must stay numeric: coercing
   # it would wrongly turn the continuous fill into a discrete one. So only coerce a
   # wrapped column that is never used bare.
   bare <- character(0)
@@ -405,7 +343,7 @@ gg_resolve_const_aes <- function(o) {
   # has no matching data column, so downstream it is dropped and CanvasXpress
   # ends up treating each row as its own sample instead of the single group the
   # constant denotes (one bar). Adding a one-level factor column and pointing the
-  # mapping at it makes the data/aes/order machinery — and the renderer — treat
+  # mapping at it makes the data/aes/order machinery - and the renderer - treat
   # the aesthetic as a single category. The aes name is used for the column when
   # it is free; otherwise a collision-safe unique name is chosen so an existing
   # data column (diamonds already has x/y/z) is never overwritten.
@@ -433,236 +371,6 @@ gg_resolve_const_aes <- function(o) {
   o
 }
 
-# gg_lodes_to_alluvia
-#
-# ggalluvial accepts two data shapes. "Alluvia" form is wide -- one column per
-# axis, one row per alluvium, mapped with aes(axis1 = , axis2 = , ...); the
-# converter/JS already render this. "Lodes" form is long -- one row per
-# (alluvium x axis), mapped with aes(x = , stratum = , alluvium = ) -- and does
-# NOT map onto CanvasXpress's column-per-axis sankeyAxes model. This reshapes a
-# lodes-form plot into the equivalent alluvia-form plot (via
-# ggalluvial::to_alluvia_form) so the rest of the pipeline handles it uniformly:
-# each level of `x` becomes its own axis column holding the `stratum` value, the
-# `y` weight is carried per alluvium, and the mapping is rewritten to axis1..axisN.
-# Non-lodes plots (including alluvia-form alluvials) are returned unchanged.
-gg_lodes_to_alluvia <- function(o) {
-  is_alluvial_geom <- function(g) {
-    any(vapply(o$layers, function(ly) {
-      inherits(ly$geom, c("GeomAlluvium", "GeomFlow", "GeomStratum"))
-    }, logical(1)))
-  }
-  if (!requireNamespace("ggalluvial", quietly = TRUE) || !is_alluvial_geom()) {
-    return(o)
-  }
-  # Resolve the x / stratum / alluvium mappings from the plot aes or any layer aes.
-  map_name <- function(name) {
-    if (!is.null(o$mapping[[name]])) {
-      return(rlang::as_label(o$mapping[[name]]))
-    }
-    for (ly in o$layers) {
-      if (!is.null(ly$mapping) && !is.null(ly$mapping[[name]])) {
-        return(rlang::as_label(ly$mapping[[name]]))
-      }
-    }
-    NULL
-  }
-  key <- map_name("x")
-  value <- map_name("stratum")
-  id <- map_name("alluvium")
-  wt <- map_name("y")
-  # Lodes form needs x + stratum + alluvium; if any is absent this is axis form.
-  if (is.null(key) || is.null(value) || is.null(id)) {
-    return(o)
-  }
-  if (!all(c(key, value, id) %in% colnames(o$data))) {
-    return(o)
-  }
-  is_lodes <- tryCatch(
-    ggalluvial::is_lodes_form(o$data, key = !!rlang::sym(key),
-                              value = !!rlang::sym(value),
-                              id = !!rlang::sym(id), silent = TRUE),
-    error = function(e) FALSE)
-  if (!isTRUE(is_lodes)) {
-    return(o)
-  }
-  wide <- tryCatch(
-    ggalluvial::to_alluvia_form(o$data, key = !!rlang::sym(key),
-                                value = !!rlang::sym(value),
-                                id = !!rlang::sym(id), distill = "first"),
-    error = function(e) NULL)
-  if (is.null(wide)) {
-    return(o)
-  }
-  # Axis columns are the x levels, in the x factor / appearance order.
-  axis_cols <- if (is.factor(o$data[[key]])) {
-    levels(droplevels(o$data[[key]]))
-  } else {
-    unique(as.character(o$data[[key]]))
-  }
-  axis_cols <- axis_cols[axis_cols %in% colnames(wide)]
-  if (length(axis_cols) < 2) {
-    return(o)
-  }
-  # Rewrite to an alluvia-form plot: axis1..axisN over the new columns, keep y, and
-  # colour the flows by the first axis (a single-annotation stand-in for the
-  # per-lode stratum colour, which CanvasXpress cannot vary along a ribbon).
-  new_map <- ggplot2::aes()
-  for (i in seq_along(axis_cols)) {
-    new_map[[paste0("axis", i)]] <- rlang::new_quosure(
-      rlang::sym(axis_cols[i]), env = rlang::empty_env())
-  }
-  if (!is.null(wt)) {
-    new_map[["y"]] <- rlang::new_quosure(rlang::sym(wt), env = rlang::empty_env())
-  }
-  new_map[["fill"]] <- rlang::new_quosure(rlang::sym(axis_cols[1]),
-                                          env = rlang::empty_env())
-  o$data <- wide
-  o$mapping <- new_map
-  # Label the (continuous 1..N) alluvial x axis with the actual column names so the
-  # converter emits them as the axis (sankeyAxes) titles instead of 1, 2, 3.
-  o <- o + ggplot2::scale_x_continuous(breaks = seq_along(axis_cols),
-                                       labels = axis_cols,
-                                       expand = ggplot2::expansion(mult = 0.05))
-  # Drop the now-invalid lodes aes from each layer (x/stratum/alluvium on the long
-  # columns); the stats recompute stratum/alluvium from the axis columns.
-  for (i in seq_along(o$layers)) {
-    lm <- o$layers[[i]]$mapping
-    if (is.null(lm)) {
-      next
-    }
-    for (nm in c("x", "stratum", "alluvium")) {
-      lm[[nm]] <- NULL
-    }
-    o$layers[[i]]$mapping <- lm
-  }
-  o
-}
-
-# gg_sankey_to_alluvia
-#
-# ggsankey (davidsjoberg/ggsankey) draws sankeys from a make_long() edge table:
-# columns x / node / next_x / next_node, mapped aes(x=, next_x=, node=,
-# next_node=), where each observation contributes one row per stage transition and
-# the last stage's next_* is NA. Its geoms are generic (GeomPolygon + StatSankeyFlow,
-# GeomRect for labels), so it is detected by the next_x/next_node aes. There is no
-# alluvium id, but make_long preserves observation order (K = number of stages rows
-# per observation), so the original wide table (one column per stage) is
-# reconstructable. This rebuilds that wide table and re-expresses the plot as an
-# ggalluvial axis-form alluvial, which the rest of the pipeline already renders
-# (including the per-(axis,level) node identity). Non-ggsankey plots are unchanged.
-gg_sankey_to_alluvia <- function(o) {
-  map_name <- function(name) {
-    if (!is.null(o$mapping[[name]])) {
-      return(rlang::as_label(o$mapping[[name]]))
-    }
-    for (ly in o$layers) {
-      if (!is.null(ly$mapping) && !is.null(ly$mapping[[name]])) {
-        return(rlang::as_label(ly$mapping[[name]]))
-      }
-    }
-    NULL
-  }
-  x_col <- map_name("x")
-  node_col <- map_name("node")
-  next_x_col <- map_name("next_x")
-  next_node_col <- map_name("next_node")
-  # ggsankey's fill is the node value (e.g. factor(node)); its label is the legend
-  # title. Capture it before the mapping is rewritten to the axis form below.
-  fill_label <- map_name("fill")
-  # ggsankey is identified by the next_x/next_node aes (make_long's signature).
-  if (is.null(next_x_col) || is.null(next_node_col) ||
-        is.null(x_col) || is.null(node_col)) {
-    return(o)
-  }
-  if (!requireNamespace("ggalluvial", quietly = TRUE)) {
-    return(o)
-  }
-  # The replacement ggalluvial layers built below use ggalluvial's stats
-  # ("alluvium"/"stratum"), which ggplot_build resolves by name from the search
-  # path. A ggsankey plot only attaches ggsankey, so attach ggalluvial too.
-  if (!("package:ggalluvial" %in% search())) {
-    suppressWarnings(suppressMessages(
-      tryCatch(attachNamespace("ggalluvial"), error = function(e) NULL)))
-  }
-  if (!all(c(x_col, node_col) %in% colnames(o$data))) {
-    return(o)
-  }
-  d <- o$data
-  stages <- if (is.factor(d[[x_col]])) {
-    levels(droplevels(d[[x_col]]))
-  } else {
-    unique(as.character(d[[x_col]]))
-  }
-  k <- length(stages)
-  if (k < 2 || (nrow(d) %% k) != 0) {
-    return(o)
-  }
-  # make_long is observation-major: K consecutive rows per observation.
-  obs <- rep(seq_len(nrow(d) / k), each = k)
-  xvals <- as.character(d[[x_col]])
-  nodevals <- as.character(d[[node_col]])
-  # ggsankey stacks the strata of every column by the GLOBAL fill = factor(node)
-  # level order (the sorted union of all node values), with the first level at the
-  # bottom. CanvasXpress's sankeyNodeSort = "factor" orders a column by its factor
-  # levels with the first level at the TOP, so give each column those global levels
-  # RESTRICTED to its own values and REVERSED -- then CX's top-down factor order
-  # reproduces ggsankey's bottom-up global order exactly.
-  node_levels <- sort(unique(nodevals[!is.na(nodevals)]))
-  wide <- data.frame(row.names = seq_len(nrow(d) / k))
-  for (st in stages) {
-    col <- rep(NA_character_, nrow(d) / k)
-    sel <- xvals == st
-    col[obs[sel]] <- nodevals[sel]
-    col_levels <- rev(node_levels[node_levels %in% unique(nodevals[sel])])
-    wide[[st]] <- factor(col, levels = col_levels)
-  }
-  # Aggregate identical full paths into one weighted alluvium: ggsankey aggregates
-  # flows (it does not draw one ribbon per observation), and collapsing the raw
-  # make_long rows to unique paths keeps the ribbon count -- and the layout arrays --
-  # bounded on large datasets (per-observation ribbons blow up a 4+ stage layout).
-  wide[["freq"]] <- 1
-  wide <- stats::aggregate(freq ~ ., data = wide, FUN = sum)
-  new_map <- ggplot2::aes()
-  for (i in seq_along(stages)) {
-    new_map[[paste0("axis", i)]] <- rlang::new_quosure(
-      rlang::sym(stages[i]), env = rlang::empty_env())
-  }
-  new_map[["y"]] <- rlang::new_quosure(rlang::sym("freq"), env = rlang::empty_env())
-  new_map[["fill"]] <- rlang::new_quosure(rlang::sym(stages[1]),
-                                          env = rlang::empty_env())
-  o$data <- wide
-  o$mapping <- new_map
-  # Replace ggsankey's layers with the ggalluvial equivalents the converter knows.
-  o$layers <- list(
-    ggalluvial::geom_alluvium(),
-    ggalluvial::geom_stratum(),
-    ggplot2::geom_text(stat = ggalluvial::StatStratum,
-                       mapping = ggplot2::aes(label = ggplot2::after_stat(stratum)))
-  )
-  o <- o + ggplot2::scale_x_continuous(breaks = seq_along(stages),
-                                       labels = stages,
-                                       expand = ggplot2::expansion(mult = 0.05))
-  # ggsankey colours EACH node by its own value (fill = factor(node)) and paints
-  # every ribbon in its SOURCE node's colour -- unlike ggalluvial, which tints the
-  # whole diagram by a single fill aesthetic. The node factor's levels are the
-  # sorted union of all stage values, coloured by ggplot's default hue palette;
-  # emit that exact value -> colour map (R is the oracle) plus a style marker so
-  # the JS side can reproduce the per-node colouring, ribbon-by-source, node gaps
-  # (sankeyType 'normal'), and the factor(node) legend rather than the single-axis
-  # colorBy the ggalluvial path uses.
-  node_colors <- tryCatch(scales::hue_pal()(length(node_levels)),
-                          error = function(e) NULL)
-  attr(o, "cx_sankey_style") <- "ggsankey"
-  if (!is.null(node_colors)) {
-    attr(o, "cx_sankey_node_levels") <- node_levels
-    attr(o, "cx_sankey_node_colors") <- node_colors
-  }
-  if (!is.null(fill_label)) {
-    attr(o, "cx_sankey_legend_title") <- fill_label
-  }
-  o
-}
-
 gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
@@ -670,10 +378,6 @@ gg_cxplot <- function(o, target, ...) {
   o <- gg_resolve_const_aes(o)
 
   o <- gg_resolve_factor_aes(o)
-
-  o <- gg_sankey_to_alluvia(o)
-
-  o <- gg_lodes_to_alluvia(o)
 
   meta <- as.list(sapply(o$data, is.factor))
 
@@ -799,22 +503,6 @@ gg_cxplot <- function(o, target, ...) {
         if (!is.null(bld$data[[i]]$colour)) {
           p$errorColor <- bld$data[[i]]$colour
         }
-        # Per-error facet scope (row-aligned with errorPos/ymin/ymax): the facet
-        # variable's value for each error's panel. On a free-scale facet the engine
-        # confines each error bar to its own panel by this scope; sourcing it from the
-        # error layer's OWN built data keeps it aligned with the bounds, instead of
-        # cross-indexing the (differently ordered) wrangled data - which mispaired every
-        # non-first dodge group with another panel's value.
-        eb_panel <- bld$data[[i]]$PANEL
-        eb_layout <- bld$layout$layout
-        if (!is.null(eb_panel) && !is.null(eb_layout) && !is.null(eb_layout$PANEL)) {
-          facet_cols <- setdiff(names(eb_layout),
-                                c("PANEL", "ROW", "COL", "SCALE_X", "SCALE_Y"))
-          if (length(facet_cols) >= 1) {
-            row <- match(as.integer(eb_panel), as.integer(eb_layout$PANEL))
-            p$errorScope <- as.character(eb_layout[[facet_cols[1]]])[row]
-          }
-        }
       } else if (l == "GeomVline" || l == "GeomHline" || l == "GeomAbline") {
         if (!("color" %in% names(p))) {
           p$color <- bld$data[[i]]$colour
@@ -880,24 +568,6 @@ gg_cxplot <- function(o, target, ...) {
         p$label <- bld$data[[i]]$label
         p$npcx <- bld$data[[i]]$npcx
         p$npcy <- bld$data[[i]]$npcy
-      } else if (l == "GeomText" || l == "GeomLabel") {
-        # Emit the layer's BUILT positions + label text so CanvasXpress draws each
-        # annotation where ggplot placed it - the resolved (already dodged) category
-        # x, the computed y (e.g. aes(y = mean + se + 0.15)), the label, and the facet
-        # panel. Without these the engine has only the label column name + a y
-        # expression string and falls back to printing the bar VALUES. The dodged x
-        # maps through categoryPixelX and the value is in axis space (preTransformed).
-        p$data <- list(
-          x = as.numeric(bld$data[[i]]$x),
-          y = as.numeric(bld$data[[i]]$y),
-          label = as.character(bld$data[[i]]$label)
-        )
-        if (!is.null(bld$data[[i]]$PANEL)) {
-          p$data$panel <- as.integer(bld$data[[i]]$PANEL)
-        }
-        if (!is.null(bld$data[[i]]$colour)) {
-          p$data$color <- as.character(bld$data[[i]]$colour)
-        }
       }
       p$stat <- proto_stat[i]
       # Each layer is a self-describing element: its geom name travels inside
@@ -930,20 +600,6 @@ gg_cxplot <- function(o, target, ...) {
 
   cx <- gg_apply_scale_labels(o, cx)
   cx <- gg_apply_x_scale_labels(o, cx)
-
-  # ggplot draws a legend for an aesthetic unless EVERY layer drawing it sets
-  # show.legend = FALSE. CanvasXpress has a single global showLegend, so when no
-  # mapped legend aesthetic wants a legend at all (e.g. a Manhattan plot whose only
-  # colour aes is the alternating band, drawn show.legend = FALSE), hoist that
-  # suppression to the whole plot - otherwise the engine keeps its default and draws a
-  # stray legend title. Never override an explicit showLegend passed in config.
-  if (is.null(cx$config$showLegend) && gg_all_legends_suppressed(o)) {
-    cx$config$showLegend <- FALSE
-  }
-
-  # Attach the approximate ggplot2 source reconstruction (best-effort; never let
-  # a decompile failure break the conversion).
-  cx$decompiled <- tryCatch(ggplot.decompiled(o), error = function(e) NULL)
 
   cx
 }
@@ -1215,8 +871,8 @@ gg_facet <- function(o) {
     }
     f <- list(
       # Emit the facet variable(s). For >1 wrap variable this is an ARRAY, which
-      # CanvasXpress renders as one stacked strip label per variable — matching
-      # ggplot's facet_wrap(vars(g, h)) — instead of a single composite "g_h"
+      # CanvasXpress renders as one stacked strip label per variable - matching
+      # ggplot's facet_wrap(vars(g, h)) - instead of a single composite "g_h"
       # strip. A single facet variable stays a scalar (auto-unboxed).
       facet = fvars,
       facetType = "wrap",
@@ -1463,18 +1119,6 @@ gg_scales <- function(o, b) {
           r$xAxisSetValues <- x_breaks
           r$xAxisSetMinorValues <- x_minor
           r$xAxisTicks <- length(x_breaks)
-          # scale_x_continuous(labels = ...) on a genuinely continuous axis (e.g. a
-          # Manhattan plot's chromosome names/numbers placed at cumulative-bp centres)
-          # carries label TEXT that differs from the break positions. Emit it as a
-          # separate tick-label channel so CanvasXpress shows the labels instead of
-          # formatting the raw break coordinates (billions -> scientific notation). Only
-          # for the non-transformed axis, where breaks and labels stay index-aligned.
-          if (!has_x_trans) {
-            x_labels <- b$layout$panel_params[[1]]$x$get_labels()
-            if (gg_axis_labels_relabelled(x_breaks, x_labels)) {
-              r$xAxisSetLabels <- gg_axis_labels_text(x_labels)
-            }
-          }
         }
         if (has_x_trans) {
           r$xAxisTransform <- stringr::str_replace(x_trans, "-", "")
@@ -1504,14 +1148,6 @@ gg_scales <- function(o, b) {
           r$yAxisSetValues <- y_breaks
           r$yAxisSetMinorValues <- y_minor
           r$yAxisTicks <- length(y_breaks)
-          # See the x branch: carry a scale_y_continuous(labels = ...) relabel as a
-          # separate tick-label channel (non-transformed axis only).
-          if (!has_y_trans) {
-            y_labels <- b$layout$panel_params[[1]]$y$get_labels()
-            if (gg_axis_labels_relabelled(y_breaks, y_labels)) {
-              r$yAxisSetLabels <- gg_axis_labels_text(y_labels)
-            }
-          }
         }
         if (has_y_trans) {
           r$yAxisTransform <- stringr::str_replace(y_trans, "-", "")
@@ -1931,44 +1567,46 @@ gg_proc_layer <- function(o, idx, bld) {
       next
     }
     k <- aes_key(a)
-    if (is.vector(b)) {
-      f <- regexpr("factor", b)[1]
-      if (is.character(f) && f > 0) {
-        b <- clean_factor(b)
-      }
-      if (is.null(r[[k]])) {
-        r[[k]] <- b
-      }
-    } else if (class(b)[1] == "formula") {
-      dl <- bld$data[[idx]]
-      r$formula <- list()
-      r$formula$def <- deparse(b)
-      if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
-        r$formula$x <- as.numeric(dl[["x"]])
-        r$formula$y <- as.numeric(dl[["y"]])
-      }
-      if ("ymin" %in% colnames(dl) && "ymax" %in% colnames(dl)) {
-        r$formula$ymin <- as.numeric(dl[["ymin"]])
-        r$formula$ymax <- as.numeric(dl[["ymax"]])
-        max <- bld$layout$panel_scales_y[[1]]$range$range[2]
-        min <- bld$layout$panel_scales_y[[1]]$range$range[1]
-        ext <- (max - min) * 0.05
-        r$formula$minY <- min - ext
-        r$formula$maxY <- max + ext
-      }
-    } else if (is.function(b) || is.primitive(b)) {
-      if (is.null(r[[k]])) {
-        fn_name <- tryCatch({
-          pkg <- environmentName(environment(b))
-          ns  <- if (nchar(pkg) > 0) asNamespace(pkg) else baseenv()
-          nms <- ls(ns)
-          found <- nms[vapply(nms, function(nm) {
-            identical(get(nm, envir = ns, inherits = FALSE), b)
-          }, logical(1))]
-          if (length(found) > 0) found[1] else NULL
-        }, error = function(e) NULL)
-        if (!is.null(fn_name)) r[[k]] <- fn_name
-      }
+    if (!missing(b)) {
+        if (is.vector(b)) {
+            f <- regexpr("factor", b)[1]
+            if (is.character(f) && f > 0) {
+                b <- clean_factor(b)
+            }
+            if (is.null(r[[k]])) {
+                r[[k]] <- b
+            }
+        } else if ("formula" %in% class(b)) {
+            dl <- bld$data[[idx]]
+            r$formula <- list()
+            r$formula$def <- deparse(b)
+            if ("x" %in% colnames(dl) && "y" %in% colnames(dl)) {
+                r$formula$x <- as.numeric(dl[["x"]])
+                r$formula$y <- as.numeric(dl[["y"]])
+            }
+            if ("ymin" %in% colnames(dl) && "ymax" %in% colnames(dl)) {
+                r$formula$ymin <- as.numeric(dl[["ymin"]])
+                r$formula$ymax <- as.numeric(dl[["ymax"]])
+                max <- bld$layout$panel_scales_y[[1]]$range$range[2]
+                min <- bld$layout$panel_scales_y[[1]]$range$range[1]
+                ext <- (max - min) * 0.05
+                r$formula$minY <- min - ext
+                r$formula$maxY <- max + ext
+            }
+        } else if (is.function(b) || is.primitive(b)) {
+            if (is.null(r[[k]])) {
+                fn_name <- tryCatch({
+                    pkg <- environmentName(environment(b))
+                    ns  <- if (nchar(pkg) > 0) asNamespace(pkg) else baseenv()
+                    nms <- ls(ns)
+                    found <- nms[vapply(nms, function(nm) {
+                        identical(get(nm, envir = ns, inherits = FALSE), b)
+                    }, logical(1))]
+                    if (length(found) > 0) found[1] else NULL
+                }, error = function(e) NULL)
+                if (!is.null(fn_name)) r[[k]] <- fn_name
+            }
+        }
     }
   }
   if (!is.na(l$show.legend) && l$show.legend == FALSE) {
@@ -2019,7 +1657,7 @@ gg_proc_layer <- function(o, idx, bld) {
       r$data <- as.matrix(nd)
     }
   }
-  prps <- c("colour", "color", "fill", "alpha")
+  prps <- c("colour", "color", "fill", "alpha", "shape")
   for (p in prps) {
     aes_col <- if (p == "colour") "colour" else p
     if ((!(p %in% names(r))) && rlang::as_label(o$mapping[[p]]) == "NULL") {

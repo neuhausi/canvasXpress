@@ -20,3 +20,7 @@ test_that("cXbullet4", {
 test_that("cXbullet5", {
     check_ui_test(cXbullet5())
 })
+
+test_that("cXbullet6", {
+    check_ui_test(cXbullet6())
+})

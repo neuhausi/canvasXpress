@@ -30,6 +30,10 @@ jobs:
             R -e 'install.packages("covr")'
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
+            R -e 'install.packages("patchwork")'
+            R -e 'install.packages("GGally")'
+            R -e 'install.packages("ggpubr")'
+            R -e 'install.packages("ggpattern")'
 
       - run:
           name: Session information and installed package versions
@@ -84,6 +88,11 @@ jobs:
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
             R -e 'install.packages("S7")'
+            R -e 'install.packages("patchwork")'
+            R -e 'install.packages("GGally")'
+            R -e 'install.packages("ggpubr")'
+            R -e 'install.packages("ggpattern")'
+            R -e 'install.packages("ggh4x")'
 
       - run:
           name: Session information and installed package versions
@@ -135,6 +144,11 @@ jobs:
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
             R -e 'install.packages("S7")'
+            R -e 'install.packages("patchwork")'
+            R -e 'install.packages("GGally")'
+            R -e 'install.packages("ggpubr")'
+            R -e 'install.packages("ggpattern")'
+            R -e 'install.packages("ggh4x")'
 
       - run:
           name: Session information and installed package versions
@@ -186,6 +200,11 @@ jobs:
             R -e 'install.packages("canvasXpress.data")'
             R -e 'install.packages("DT")'
             R -e 'install.packages("S7")'
+            R -e 'install.packages("patchwork")'
+            R -e 'install.packages("GGally")'
+            R -e 'install.packages("ggpubr")'
+            R -e 'install.packages("ggpattern")'
+            R -e 'install.packages("ggh4x")'
 
       - run:
           name: Session information and installed package versions

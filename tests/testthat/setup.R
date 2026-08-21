@@ -7,7 +7,12 @@ try({
     require(canvasXpress.data)
     require(readr)
     require(ggplot2)
+    require(patchwork)
+    require(GGally)
+    library(ggpubr)
+    library(ggpattern)
     require(dplyr)
+    require(tibble)
 }, silent = T)
 
 try({
