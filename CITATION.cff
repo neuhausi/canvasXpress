@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use CanvasXpress, please cite the software (this metadata) and, for the method, the preferred citation below."
+title: "CanvasXpress"
+abstract: "CanvasXpress is a source-available JavaScript library for reproducible, interactive scientific data visualization, with matching R and Python packages that drive the same grammar-of-graphics engine from one portable JSON specification."
+type: software
+authors:
+  - family-names: "Neuhaus"
+    given-names: "Isaac"
+    email: "imnphd@gmail.com"
+  - family-names: "Brett"
+    given-names: "Connie"
+    email: "connie@aggregate-genius.com"
+license: GPL-3.0-only
+repository-code: "https://github.com/neuhausi/canvasXpress"
+url: "https://www.canvasxpress.org"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22287421
+    description: "Concept DOI — always resolves to the latest archived release."
+preferred-citation:
+  type: article
+  title: "Generating Visualizations Conversationally using Guided Autocomplete and LLMs"
+  authors:
+    - family-names: "Smith"
+      given-names: "Andrew K."
+    - family-names: "Neuhaus"
+      given-names: "Isaac"
+  journal: "Journal of Open Source Software"
+  year: 2025
+  volume: 10
+  issue: 114
+  start: 7529
+  doi: 10.21105/joss.07529

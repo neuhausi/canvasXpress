@@ -12,7 +12,8 @@ output:
 [![CRAN_Downloads_Badge](https://cranlogs.r-pkg.org/badges/grand-total/canvasXpress?color=9bc2cf)](https://cran.r-project.org/package=canvasXpress)
 [![CDNJ version](https://img.shields.io/cdnjs/v/canvasXpress.svg)](https://cdnjs.com/libraries/canvasXpress)
 [![Coverage Status](https://img.shields.io/codecov/c/gh/cb4ds/canvasXpress/master.svg)](https://app.codecov.io/gh/cb4ds/canvasXpress?branch=master)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22261680.svg)](https://doi.org/10.5281/zenodo.22261680)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22287421.svg)](https://doi.org/10.5281/zenodo.22287421)
+[![JOSS](https://joss.theoj.org/papers/10.21105/joss.07529/status.svg)](https://doi.org/10.21105/joss.07529)
 <!-- End Badges -->
 
 ***canvasXpress*** was developed as the core visualization component for bioinformatics and systems biology analysis.
