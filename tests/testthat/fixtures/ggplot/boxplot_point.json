@@ -282,5 +282,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = grp, y = val)) +\n  geom_boxplot(stat = 'boxplot', outliers = TRUE, outlier_gp = list(colour = NULL, fill = NULL, shape = NULL, size = NULL, stroke = 0.5,      alpha = NULL), whisker_gp = list(colour = NULL, linetype = NULL, linewidth = NULL), staple_gp = list(colour = NULL, linetype = NULL, linewidth = NULL), median_gp = list(colour = NULL, linetype = NULL, linewidth = NULL), box_gp = list(colour = NULL, linetype = NULL, linewidth = NULL), notch = FALSE, notchwidth = 0.5, staplewidth = 0, varwidth = FALSE, position = 'dodge2') +\n  geom_point()"
 }

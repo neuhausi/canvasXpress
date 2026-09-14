@@ -244,5 +244,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x)) +\n  geom_line(aes(y = y1), colour = 'red', lineend = 'butt', linejoin = 'round', linemitre = 10) +\n  geom_line(aes(y = y2), colour = 'blue', lineend = 'butt', linejoin = 'round', linemitre = 10)"
 }

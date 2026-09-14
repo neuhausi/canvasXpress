@@ -239,6 +239,7 @@
       "color": "black",
       "errorPos": [0.8, 2.2, 2.8, 1.2, 1.8, 3.2],
       "errorColor": ["black", "black", "black", "black", "black", "black"],
+      "errorScope": ["1", "1", "1", "1", "1", "1"],
       "stat": "StatIdentity",
       "geom": "GeomErrorbar"
     }
@@ -252,5 +253,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = g, y = y, fill = h)) +\n  geom_col(width = 0.7, just = 0.5, lineend = 'butt', linejoin = 'mitre', position = 'dodge') +\n  geom_errorbar(aes(ymin = y - 0.5, ymax = y + 0.5), width = 0.2, lineend = 'butt', position = 'dodge')"
 }

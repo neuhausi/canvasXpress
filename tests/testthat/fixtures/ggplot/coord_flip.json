@@ -236,5 +236,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = cat, y = val)) +\n  geom_col(just = 0.5, lineend = 'butt', linejoin = 'mitre', position = 'stack') +\n  coord_flip()"
 }

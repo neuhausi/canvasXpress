@@ -241,5 +241,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y, shape = g)) +\n  geom_point(size = 4)"
 }

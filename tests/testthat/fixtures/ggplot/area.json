@@ -241,5 +241,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y)) +\n  geom_area(stat = 'align', outline.type = 'upper', lineend = 'butt', linejoin = 'round', linemitre = 10, position = 'stack')"
 }

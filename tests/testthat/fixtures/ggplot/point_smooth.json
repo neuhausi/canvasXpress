@@ -256,5 +256,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y)) +\n  geom_point() +\n  geom_smooth(stat = 'smooth', se = FALSE, method = 'lm', formula = y ~ x)"
 }

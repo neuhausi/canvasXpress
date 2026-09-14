@@ -243,5 +243,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y, fill = g, colour = h)) +\n  geom_col(just = 0.5, lineend = 'butt', linejoin = 'mitre', position = 'stack') +\n  ggplot2::scale_fill_manual(values = c('red', 'green', 'blue')) +\n  ggplot2::scale_colour_manual(values = c('black', 'grey'))"
 }

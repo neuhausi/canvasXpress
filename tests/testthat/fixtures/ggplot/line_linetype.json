@@ -244,5 +244,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y, linetype = g, group = g)) +\n  geom_line(lineend = 'butt', linejoin = 'round', linemitre = 10)"
 }

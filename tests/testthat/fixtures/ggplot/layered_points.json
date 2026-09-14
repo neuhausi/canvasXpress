@@ -247,5 +247,6 @@
   },
   "isGGPlot": true,
   "config": [],
-  "isR": true
+  "isR": true,
+  "decompiled": "ggplot(dat, aes(x = x, y = y)) +\n  geom_point(colour = 'red', size = 6) +\n  geom_point(colour = 'blue', size = 2)"
 }
