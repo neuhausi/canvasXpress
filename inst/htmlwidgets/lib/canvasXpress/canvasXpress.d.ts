@@ -122,7 +122,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1686 keys). String enums become open literal
+ * config schema (1687 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -9976,6 +9976,15 @@ export interface CXConfig {
    */
   yRotate?: number | boolean;
   /**
+   * Flag to keep the page responsive on very large charts: the cold render yields to the
+   * browser after data ingestion and paints the recorded objects in short
+   * requestAnimationFrame slices instead of one long task. Rendering becomes asynchronous;
+   * CanvasXpress.ready and the afterRendering flag signal completion. Default false keeps
+   * rendering fully synchronous (identical pixels either way)
+   * @default false
+   */
+  yieldingRender?: boolean;
+  /**
    * Value between 0 - 1 for adjusting the 3D of the Z Axis
    * @graphTypes Bar, Network, Scatter3D
    * @default 1
@@ -11039,7 +11048,8 @@ export type CXKeysGanttCharts =
 /** Config keys in the "General" category. */
 export type CXKeysGeneral =
   | "graphType"
-  | "theme";
+  | "theme"
+  | "yieldingRender";
 /** Config keys in the "General Attributes" category. */
 export type CXKeysGeneralAttributes =
   | "images"

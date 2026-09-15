@@ -1,7 +1,7 @@
 {
- "x-cx-version": "68.9",
+ "x-cx-version": "69",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1686,
+ "count": 1687,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -12396,6 +12396,12 @@
    "type": "number|boolean",
    "default": 0,
    "description": "Starting number of degrees to rotate graph arround the Y axis"
+  },
+  {
+   "parameter": "yieldingRender",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to keep the page responsive on very large charts: the cold render yields to the browser after data ingestion and paints the recorded objects in short requestAnimationFrame slices instead of one long task. Rendering becomes asynchronous; CanvasXpress.ready and the afterRendering flag signal completion. Default false keeps rendering fully synchronous (identical pixels either way)"
   },
   {
    "parameter": "z3DRatio",
