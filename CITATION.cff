@@ -15,7 +15,7 @@ repository-code: "https://github.com/neuhausi/canvasXpress"
 url: "https://www.canvasxpress.org"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22287421
+    value: 10.5281/zenodo.22261679
     description: "Concept DOI — always resolves to the latest archived release."
 preferred-citation:
   type: article
