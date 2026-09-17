@@ -1,7 +1,7 @@
 {
- "x-cx-version": "69.1",
+ "x-cx-version": "69.2",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1687,
+ "count": 1691,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -5466,6 +5466,12 @@
    "description": "Lines decorations in the line graphs"
   },
   {
+   "parameter": "lineEdgeBy",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Name of the attribute to set the line style (solid, dashed, dotted, etc.) of the edges"
+  },
+  {
    "parameter": "lineErrorType",
    "type": "string|boolean",
    "default": "bar",
@@ -5475,6 +5481,12 @@
     false
    ],
    "description": "Line error type in the line graphs. The line type must be spline for the area error type."
+  },
+  {
+   "parameter": "lineKey",
+   "type": "object|boolean",
+   "default": false,
+   "description": "Object to assign custom line styles (solid, dashed, dotted, dotdash, longdash, twodash) to the levels of a Network edge attribute used with lineEdgeBy. The key of the object is a value of the attribute; a default line style will be assigned to any value not included in the object"
   },
   {
    "parameter": "linePatterns",
@@ -9019,6 +9031,12 @@
    "description": "Flag to show/hide the the legend title"
   },
   {
+   "parameter": "showLineEdgeLegend",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show/hide the legend edge line style"
+  },
+  {
    "parameter": "showLineLegend",
    "type": "boolean",
    "default": true,
@@ -10951,6 +10969,12 @@
    "type": "string|boolean",
    "default": "rgb(153,153,153)",
    "description": "Color for the bars in end of the waterfall plot"
+  },
+  {
+   "parameter": "weightBy",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Name of a sample annotation (data.x) or variable (data.y.vars) whose per-sample value weighs that sample in count-type summaries: Meter count/countTotal, the meterProgress ring (selected/total by weight) and pieBy slices. Default false weighs every sample 1, a plain count. The dual of grouping: it expands one sample into many without materializing them (R count(wt=), ggplot aes(weight=))"
   },
   {
    "parameter": "widgetsAccentColor",
