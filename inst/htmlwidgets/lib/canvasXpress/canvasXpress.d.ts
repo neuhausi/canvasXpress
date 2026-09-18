@@ -44,9 +44,10 @@ export interface CXEvents {
 export type CXAfterRender = Array<[string, ...unknown[]]>;
 
 /**
- * Every accepted `graphType` (70 values, aliases included —
- * e.g. "Volcano" renders as "Scatter2D"). This union is CLOSED so a misspelled
- * graph type fails to type-check.
+ * Every accepted `graphType` (70 values, aliases and internal
+ * render targets included — e.g. "Volcano" renders as "Scatter2D"), so this count
+ * exceeds the ~40+ distinct user-facing chart types quoted on the website. This
+ * union is CLOSED so a misspelled graph type fails to type-check.
  */
 export type CXGraphType =
   | "Alluvial"
