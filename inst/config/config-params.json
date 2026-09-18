@@ -1,7 +1,7 @@
 {
- "x-cx-version": "69.4",
+ "x-cx-version": "69.5",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1691,
+ "count": 1692,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -2067,6 +2067,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Factor used to adjust the size of the dataPointSize"
+  },
+  {
+   "parameter": "dataSelection",
+   "type": "object|array|boolean|string|number",
+   "default": false,
+   "description": "Declarative, serializable data selection layer authored on top of the DataFilters engine (an authoring sugar that de-sugars into filterSmpBy / filterVarBy / filterDataBy — not a second filter engine). A single object, or an ARRAY of named { name, active, ... } blocks (the active/first is applied; switch at runtime with applyNamedDataSelection). A block has keys samples / variables / values; each is { any: [...] } (OR) or { all: [...] } (AND), and a leaf is { annotation, op, value } where op uses friendly vocab (min, max, exact, like, not like, between, different). Example: { samples: { all: [ { annotation: \"Treatment\", op: \"exact\", value: [\"Control\"] } ] } }"
   },
   {
    "parameter": "dataTableAccentColor",
@@ -6405,7 +6411,7 @@
    "parameter": "nodeColor",
    "type": "string|boolean",
    "default": "rgb(245,245,245)",
-   "description": "Color for the nodes"
+   "description": "Color for the text in node"
   },
   {
    "parameter": "nodeFontSize",
@@ -9154,7 +9160,7 @@
    "parameter": "showSampleLegend",
    "type": "boolean",
    "default": true,
-   "description": "Flag to show/hide the legend sample. Not implemented!!!!!"
+   "description": "Flag to show/hide the legend sample"
   },
   {
    "parameter": "showSampleNames",
