@@ -24,9 +24,13 @@ Imports:
     htmltools,
     httr,
     jsonlite,
-    stats
+    stats,
+    utils
 RoxygenNote: 7.3.3
 Suggests:
+    repr,
+    scales,
+    ggalluvial,
     shiny (>= 1.1.0),
     canvasXpress.data,
     dplyr,

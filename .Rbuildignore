@@ -16,3 +16,5 @@
 ^\.github
 ^test-results$
 ^\.lintr$
+^\.git$
+^CITATION\.cff$

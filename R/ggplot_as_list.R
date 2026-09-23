@@ -1,3 +1,10 @@
+# `stratum` is supplied by ggalluvial's stat at plot-build time and is referenced
+# non-standardly inside aes(after_stat(stratum)) when a ggsankey plot is rebuilt
+# with ggalluvial layers. Declaring it keeps R CMD check from reporting it as an
+# undefined global.
+utils::globalVariables("stratum")
+
+
 #' Converts a ggplot object to a list that can be used by CanvasXpress.
 #'
 #' @param o   the ggplot object
