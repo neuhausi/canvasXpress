@@ -695,6 +695,34 @@ gg_sankey_to_alluvia <- function(o) {
   o
 }
 
+## autoplot(forecast(...)) builds ggplot() with no plot data: the observed series
+## and the forecast each arrive as layer data, so the converter would emit an empty
+## data frame. Promote the first data-carrying non-forecast layer's data and mapping
+## to the plot; that layer then inherits the identical data, so ggplot_build is
+## unchanged. The layer is cloned first (ggproto layers are reference objects, so
+## editing it in place would mutate the caller's plot). Scoped to GeomForecast plots.
+gg_forecast_hoist_data <- function(o) {
+  classes <- vapply(o$layers, function(l) class(l$geom)[1], character(1))
+  if (!("GeomForecast" %in% classes) || (is.data.frame(o$data) && nrow(o$data) > 0)) {
+    return(o)
+  }
+  for (i in seq_along(o$layers)) {
+    l <- o$layers[[i]]
+    if (classes[i] != "GeomForecast" && is.data.frame(l$data) && nrow(l$data) > 0) {
+      o$data <- l$data
+      m <- o$mapping
+      for (n in names(l$mapping)) {
+        m[[n]] <- l$mapping[[n]]
+      }
+      o$mapping <- m
+      o$layers[[i]] <- ggplot2::ggproto(NULL, l)
+      o$layers[[i]]$data <- ggplot2::waiver()
+      return(o)
+    }
+  }
+  o
+}
+
 gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
@@ -706,6 +734,8 @@ gg_cxplot <- function(o, target, ...) {
   o <- gg_sankey_to_alluvia(o)
 
   o <- gg_lodes_to_alluvia(o)
+
+  o <- gg_forecast_hoist_data(o)
 
   meta <- as.list(sapply(o$data, is.factor))
 
@@ -2053,6 +2083,14 @@ gg_proc_layer <- function(o, idx, bld) {
       r$data <- as.matrix(nd)
     }
   }
+  if (class(l$geom)[1] == "GeomForecast") {
+    ## forecast::geom_forecast / autoplot(forecast(...)): the forecast is computed
+    ## IN R (any model -- ets, arima, HoltWinters), so emit R's built rows and
+    ## CanvasXpress draws R's numbers rather than refitting (R is the oracle). The
+    ## generic layer data above keeps only x/y/label/colour/..., dropping the
+    ## interval columns, and emits nothing for a StatForecast layer (inherited data).
+    r$data <- gg_forecast_layer_data(bld$data[[idx]], bld)
+  }
   prps <- c("colour", "color", "fill", "alpha", "shape")
   for (p in prps) {
     aes_col <- if (p == "colour") "colour" else p
@@ -2071,6 +2109,98 @@ gg_proc_layer <- function(o, idx, bld) {
     }
   }
   r
+}
+
+## The built rows of a GeomForecast layer: one point-forecast row per step
+## (level NA, y set) plus one row per step and interval level (ymin/ymax set).
+## levelColors replicates forecast's GeomForecastInterval shading: each level
+## maps to a grey from 8/15 (lowest level) to 8/15 + 0.2 (highest) that
+## blendHex mixes into the line colour, so the bands match exactly. Built rows are
+## in transformed scale space (scale_y_reverse stores -y, scale_y_log10 log10(y)),
+## while CanvasXpress applies the axis transform itself to the plot data, so the
+## positions are mapped back to data space through each row's panel scale.
+gg_forecast_layer_data <- function(dl, bld) {
+  num <- function(k) if (k %in% colnames(dl)) as.numeric(dl[[k]]) else rep(NA_real_, nrow(dl))
+  r <- list(x = num("x"), y = num("y"), level = num("level"),
+            ymin = num("ymin"), ymax = num("ymax"))
+  inverse <- function(scale) {
+    tr <- if (!is.null(scale$get_transformation)) scale$get_transformation() else scale$trans
+    if (is.null(tr) || is.null(tr$inverse)) function(v) v else tr$inverse
+  }
+  panels <- if ("PANEL" %in% colnames(dl)) as.integer(dl[["PANEL"]]) else rep(1L, nrow(dl))
+  layout <- bld$layout$layout
+  for (p in unique(panels)) {
+    rows <- which(panels == p)
+    lrow <- layout[layout$PANEL == p, , drop = FALSE]
+    x_inv <- inverse(bld$layout$panel_scales_x[[lrow$SCALE_X[1]]])
+    y_inv <- inverse(bld$layout$panel_scales_y[[lrow$SCALE_Y[1]]])
+    r$x[rows] <- x_inv(r$x[rows])
+    for (k in c("y", "ymin", "ymax")) {
+      r[[k]][rows] <- y_inv(r[[k]][rows])
+    }
+  }
+  if ("PANEL" %in% colnames(dl)) {
+    r$panel <- as.numeric(dl[["PANEL"]])
+  }
+  if ("group" %in% colnames(dl)) {
+    r$group <- as.numeric(dl[["group"]])
+  }
+  if ("colour" %in% colnames(dl)) {
+    r$color <- as.character(dl[["colour"]])
+  }
+  levels <- sort(unique(r$level[!is.na(r$level)]))
+  if (length(levels) > 0) {
+    spread <- diff(range(levels))
+    if (spread == 0) {
+      spread <- 1
+    }
+    line_colour <- r$color[!is.na(r$color)][1]
+    r$levelColors <- list()
+    for (lv in levels) {
+      shade <- (lv - min(levels)) / spread * 0.2 + 8 / 15
+      r$levelColors[[as.character(lv)]] <- gg_blend_hex(line_colour, grDevices::rgb(shade, shade, shade), 0.7)
+    }
+  }
+  r
+}
+
+## Base-R port of forecast's (unexported) blendHex: take the hue of `mix`, the
+## lightness of `seq` and a saturation blend, in HLS. forecast builds a colorspace
+## linear-RGB object from the sRGB values and hex() re-applies sRGB gamma, so the
+## result is gamma-encoded here too (matches forecast:::blendHex on 60/60 cases).
+gg_rgb_to_hls <- function(v) {
+  mx <- max(v)
+  mn <- min(v)
+  l <- (mx + mn) / 2
+  d <- mx - mn
+  if (d == 0) {
+    return(c(0, l, 0))
+  }
+  s <- if (l < 0.5) d / (mx + mn) else d / (2 - mx - mn)
+  h <- if (mx == v[1]) ((v[2] - v[3]) / d) %% 6 else if (mx == v[2]) (v[3] - v[1]) / d + 2 else (v[1] - v[2]) / d + 4
+  c(h * 60, l, s)
+}
+
+gg_hls_to_rgb <- function(h, l, s) {
+  if (s == 0) {
+    return(c(l, l, l))
+  }
+  q <- if (l < 0.5) l * (1 + s) else l + s - l * s
+  p <- 2 * l - q
+  channel <- function(t) {
+    t <- t %% 1
+    if (t < 1 / 6) p + (q - p) * 6 * t else if (t < 1 / 2) q else if (t < 2 / 3) p + (q - p) * (2 / 3 - t) * 6 else p
+  }
+  c(channel(h / 360 + 1 / 3), channel(h / 360), channel(h / 360 - 1 / 3))
+}
+
+gg_blend_hex <- function(mix, seq, alpha) {
+  a <- gg_rgb_to_hls(grDevices::col2rgb(mix)[, 1] / 255)
+  b <- gg_rgb_to_hls(grDevices::col2rgb(seq)[, 1] / 255)
+  v <- gg_hls_to_rgb(a[1], b[2], alpha * a[3] + (1 - alpha) * b[3])
+  v <- ifelse(v <= 0.0031308, 12.92 * v, 1.055 * v^(1 / 2.4) - 0.055)
+  v <- pmin(pmax(v, 0), 1)
+  grDevices::rgb(v[1], v[2], v[3])
 }
 
 data_to_matrix <- function(o, b) {

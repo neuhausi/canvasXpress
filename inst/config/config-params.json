@@ -1,7 +1,7 @@
 {
- "x-cx-version": "70.1",
+ "x-cx-version": "70.2",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1692,
+ "count": 1701,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -3882,6 +3882,49 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "External Fonts"
+  },
+  {
+   "parameter": "forecastHorizon",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of future steps to forecast. 0 uses the forecast package default: 10, or two seasons when forecastSeasonLength is greater than 1"
+  },
+  {
+   "parameter": "forecastLevel",
+   "type": "number|boolean",
+   "default": 0.95,
+   "description": "Level of the forecast prediction interval (e.g. 0.8 or 0.95)"
+  },
+  {
+   "parameter": "forecastLineType",
+   "type": "string|boolean",
+   "default": "dashed",
+   "options": [
+    "dashed",
+    "solid",
+    "dotted",
+    false
+   ],
+   "description": "Line type for the projected forecast line"
+  },
+  {
+   "parameter": "forecastMethod",
+   "type": "string|boolean",
+   "default": "auto",
+   "options": [
+    "auto",
+    "ses",
+    "holt",
+    "hw",
+    false
+   ],
+   "description": "Forecast method. ses : simple exponential smoothing (level), holt : level and trend, hw : Holt-Winters (level, trend and additive seasonality). auto uses hw when forecastSeasonLength is greater than 1, holt otherwise. Short series fall back hw to holt to ses"
+  },
+  {
+   "parameter": "forecastSeasonLength",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of observations per season (e.g. 12 for monthly data with a yearly cycle, 7 for daily data with a weekly cycle). 0 or 1 disables seasonality"
   },
   {
    "parameter": "foreground",
@@ -8947,6 +8990,18 @@
    "description": "Flag to show/hide the filled histogram path"
   },
   {
+   "parameter": "showForecast",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Name of a variable annotation, or set to true, to display a forecast (projected line and prediction interval) in Scatter plots. The x values must be regularly spaced (numbers or dates)"
+  },
+  {
+   "parameter": "showForecastInterval",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show/hide the forecast prediction interval"
+  },
+  {
    "parameter": "showHeatmapIndicator",
    "type": "boolean",
    "default": true,
@@ -9687,6 +9742,22 @@
    "type": "number|boolean",
    "default": 270,
    "description": "Starting degrees for pie sectors. 0 is equivalent to 3:00 oclock"
+  },
+  {
+   "parameter": "streamEvict",
+   "type": "string|boolean",
+   "default": "drop-oldest",
+   "options": [
+    "drop-oldest",
+    false
+   ],
+   "description": "Eviction policy applied by pushData() once the sample count exceeds streamWindow. Currently only drop-oldest (remove the oldest samples first) is supported"
+  },
+  {
+   "parameter": "streamWindow",
+   "type": "integer|boolean",
+   "default": null,
+   "description": "Maximum number of samples to retain when live-streaming via pushData(). When set, each pushData() call appends the incoming samples and evicts the oldest ones beyond this window so the matrix stays bounded for real-time updates. Null keeps every sample (no eviction)"
   },
   {
    "parameter": "stringEdgeAttributes",
