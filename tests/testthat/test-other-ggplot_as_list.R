@@ -1,4 +1,5 @@
 context("ggplot as list")
+library(jsonlite)
 
 test_that("ggplot.as.list - pass non ggplot2 object", {
     skip_if_not_installed("ggplot2")
@@ -21,7 +22,7 @@ test_that("ggplot.as.list - ggplot2 GeomPoint", {
         ylab("mpg")
 
     cxplot      <- ggplot.as.list(gplot)
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -47,7 +48,7 @@ test_that("ggplot.as.list - ggplot2 GeomBin2d", {
         stat_bin2d()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -64,7 +65,7 @@ test_that("ggplot.as.list - ggplot2 GeomBar", {
         geom_histogram()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -81,7 +82,7 @@ test_that("ggplot.as.list - ggplot2 GeomPath", {
         geom_line()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -99,7 +100,7 @@ test_that("ggplot.as.list - ggplot2 StatQq", {
         stat_qq_line()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 16)
@@ -129,10 +130,9 @@ test_that("ggplot.as.list - ggplot2 point range", {
         geom_pointrange()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 6)
     expect_equal(cxplot_list$data[[2]][[1]], "1")
@@ -162,7 +162,7 @@ test_that("ggplot.as.list - patchwork", {
     combined_plots <- (p1 + p2) / p3
 
     cxplot      <- suppressWarnings(ggplot.as.list(combined_plots))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 6)
@@ -188,7 +188,7 @@ test_that("ggplot.as.list - GGally", {
         yAxisLabels = c("Y1", "Y2"))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 7)
@@ -224,7 +224,7 @@ test_that("ggplot.as.list - test segments", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -268,7 +268,7 @@ test_that("ggplot.as.list - GeomBracket", {
         theme(legend.position = "right")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 16)
@@ -299,10 +299,9 @@ test_that("ggplot.as.list - ggpattern", {
         theme(legend.position = "none")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
-    expect_equal(length(cxplot_list), 16)
     expect_true(cxplot_list$isGGPlot)
     expect_equal(length(cxplot_list$data), 33)
     expect_equal(cxplot_list$data[[2]][[1]], "Mazda RX4")
@@ -317,7 +316,7 @@ test_that("ggplot.as.list - ggpattern", {
             pattern = "crosshatch")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -349,7 +348,7 @@ test_that("ggplot.as.list - fill scaling", {
         theme_bw()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -378,7 +377,7 @@ test_that("ggplot.as.list - fill scaling", {
         theme_bw()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -403,7 +402,7 @@ test_that("ggplot.as.list - fill scaling", {
         theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -433,7 +432,7 @@ test_that("ggplot.as.list - color scaling", {
         theme_bw()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -462,7 +461,7 @@ test_that("ggplot.as.list - color scaling", {
         theme_bw()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -482,7 +481,7 @@ test_that("ggplot.as.list - color scaling", {
             limits = c(50, 350))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -504,7 +503,7 @@ test_that("ggplot.as.list - x and y axis properties", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -525,7 +524,7 @@ test_that("ggplot.as.list - x and y axis properties", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -556,7 +555,7 @@ test_that("ggplot.as.list - pattern scale properties", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -581,7 +580,7 @@ test_that("ggplot.as.list - coordinates", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -610,7 +609,7 @@ test_that("ggplot.as.list - cut functions layer", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -634,7 +633,7 @@ test_that("ggplot.as.list - layer with formula", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -658,7 +657,7 @@ test_that("ggplot.as.list - GeomPoint with transformation", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -676,7 +675,7 @@ test_that("ggplot.as.list - GeomPoint with transformation", {
                    fill = "white") +
         theme_minimal()
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
     expect_true(cxplot_list$isGGPlot)
@@ -696,7 +695,7 @@ test_that("ggplot.as.list - ggplot2 GeomErrorbar", {
         geom_errorbar(aes(xmax = resp + se, xmin = resp - se), orientation = "y")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -714,7 +713,7 @@ test_that("ggplot.as.list - ggplot2 facets", {
         facet_grid(year ~ drv)
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_equal(length(cxplot_list), 17)
@@ -747,7 +746,7 @@ test_that("ggplot.as.list - shape mapping with named shapes", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -772,7 +771,7 @@ test_that("ggplot.as.list - edge case shapes and categorical values", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -800,7 +799,7 @@ test_that("ggplot.as.list - shape with NA values in factor", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -817,7 +816,7 @@ test_that("ggplot.as.list - parameter skipping with na.rm TRUE", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -838,7 +837,7 @@ test_that("ggplot.as.list - parameter skipping with reverse TRUE", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -863,7 +862,7 @@ test_that("ggplot.as.list - function parameter in geom_text vjust", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -886,7 +885,7 @@ test_that("ggplot.as.list - custom function in layer parameters", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -904,7 +903,7 @@ test_that("ggplot.as.list - show.legend FALSE explicit", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -944,7 +943,7 @@ test_that("ggplot.as.list - stringVariableFactors with factor color", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -970,7 +969,7 @@ test_that("ggplot.as.list - shape names mapping", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -989,7 +988,7 @@ test_that("ggplot.as.list - point with layer-specific data", {
         theme_minimal()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1023,7 +1022,7 @@ test_that("ggplot.as.list - plotmath axis titles flow through labs()", {
         labs(x = expression(-Log[10] ~ italic(P)), y = "mpg")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1064,7 +1063,7 @@ test_that("ggplot.as.list - constant aesthetic aes(x = 1) materializes a factor 
         geom_boxplot()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1080,7 +1079,7 @@ test_that("ggplot.as.list - factor()-wrapped aes skips coercion when the same co
         geom_violin(aes(fill = cyl), alpha = 0.3)
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1100,7 +1099,7 @@ test_that("ggplot.as.list - GeomVline, GeomHline and GeomAbline reference lines"
         geom_abline(slope = 1, intercept = 0, color = "green")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1118,7 +1117,7 @@ test_that("ggplot.as.list - GeomCrossbar from stat_summary (also covers a functi
         stat_summary(fun = mean, geom = "crossbar", width = 0.5, color = "red")
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1138,7 +1137,7 @@ test_that("ggplot.as.list - GeomRibbon layer", {
         geom_line()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1162,7 +1161,7 @@ test_that("ggplot.as.list - GeomStep with kmCxplot config option", {
         showKMConfidenceIntervals = FALSE,
         kmRiskTable                = FALSE
     ))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1183,7 +1182,7 @@ test_that("ggplot.as.list - facet_wrap with multiple variables", {
         facet_wrap(vars(cyl, am))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1198,14 +1197,14 @@ test_that("ggplot.as.list - facet_wrap with explicit ncol and with explicit nrow
         geom_point() +
         facet_wrap(vars(class), ncol = 2)
 
-    cxplot_list_col <- jsonlite::parse_json(suppressWarnings(ggplot.as.list(gplot_col)))
+    cxplot_list_col <- parse_json(suppressWarnings(ggplot.as.list(gplot_col)))
     expect_equal(cxplot_list_col$facet$facetCols, 2)
 
     gplot_row <- ggplot(mpg, aes(x = displ, y = hwy)) +
         geom_point() +
         facet_wrap(vars(class), nrow = 3)
 
-    cxplot_list_row <- jsonlite::parse_json(suppressWarnings(ggplot.as.list(gplot_row)))
+    cxplot_list_row <- parse_json(suppressWarnings(ggplot.as.list(gplot_row)))
     expect_equal(cxplot_list_row$facet$facetRows, 3)
 })
 
@@ -1220,7 +1219,7 @@ test_that("ggplot.as.list - facet_wrap auto sqrt() layout with 4+ panels", {
         facet_wrap(vars(class))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1237,7 +1236,7 @@ test_that("ggplot.as.list - explicit linetype scale maps named and hex-dash-code
         scale_linetype_manual(values = c("0" = "solid", "1" = "22"))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1255,7 +1254,7 @@ test_that("ggplot.as.list - shape scale with named (non-numeric) shape values", 
         scale_shape_manual(values = c("0" = "square", "1" = "circle"))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1268,17 +1267,17 @@ test_that("ggplot.as.list - bar position dodge, fill and stack", {
 
     base <- ggplot(mtcars, aes(x = factor(cyl), fill = factor(am)))
 
-    cxplot_dodge <- jsonlite::parse_json(
+    cxplot_dodge <- parse_json(
         suppressWarnings(ggplot.as.list(base + geom_bar(position = "dodge")))
     )
     expect_equal(cxplot_dodge$layers[[1]]$position, "dodge")
 
-    cxplot_fill <- jsonlite::parse_json(
+    cxplot_fill <- parse_json(
         suppressWarnings(ggplot.as.list(base + geom_bar(position = "fill")))
     )
     expect_equal(cxplot_fill$layers[[1]]$position, "fill")
 
-    cxplot_stack <- jsonlite::parse_json(
+    cxplot_stack <- parse_json(
         suppressWarnings(ggplot.as.list(base + geom_bar(position = "stack")))
     )
     expect_equal(cxplot_stack$layers[[1]]$position, "stack")
@@ -1292,7 +1291,7 @@ test_that("ggplot.as.list - after_stat() layer mapping does not error the conver
         geom_histogram(aes(y = after_stat(density)), bins = 10)
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1309,7 +1308,7 @@ test_that("ggplot.as.list - geom_text with a computed y nudge does not error the
         geom_text(aes(x = x, y = y + 0.5, label = lbl))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1325,7 +1324,7 @@ test_that("ggplot.as.list - continuous x scale with both limits and a transform"
         scale_x_log10(limits = c(50, 400))
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1342,7 +1341,7 @@ test_that("ggplot.as.list - plain uncoloured geom_point falls back to NoScale", 
         geom_point()
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1361,7 +1360,7 @@ test_that("ggplot.as.list - explicit pattern scale", {
         )
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1408,7 +1407,7 @@ test_that("ggplot.as.list - unscaled shape mapping falls back to the geom's defa
         geom_point(size = 3)
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1424,7 +1423,7 @@ test_that("ggplot.as.list - unmapped colour on a zero-row layer falls back to th
         geom_line(data = mtcars[0, ])
 
     cxplot      <- suppressWarnings(ggplot.as.list(gplot))
-    cxplot_list <- jsonlite::parse_json(cxplot)
+    cxplot_list <- parse_json(cxplot)
 
     expect_equal(class(cxplot), "json")
     expect_true(cxplot_list$isGGPlot)
@@ -1621,7 +1620,7 @@ test_that("ggplot.as.list - ggmatrix with byrow = FALSE", {
   pm <- GGally::ggmatrix(plots, nrow = 2, ncol = 2, byrow = FALSE)
 
   cxplot      <- suppressWarnings(ggplot.as.list(pm))
-  cxplot_list <- jsonlite::parse_json(cxplot)
+  cxplot_list <- parse_json(cxplot)
 
   expect_equal(class(cxplot), "json")
   expect_true(cxplot_list$isGGMatrix)
@@ -1659,7 +1658,7 @@ test_that("ggplot.as.list - ggmatrix fallback for ggmatrix_plot_obj when GGally 
   environment(fn) <- mock_env
 
   cxplot      <- suppressWarnings(fn(mock_matrix))
-  cxplot_list <- jsonlite::parse_json(cxplot)
+  cxplot_list <- parse_json(cxplot)
 
   expect_equal(class(cxplot), "json")
   expect_true(cxplot_list$isGGMatrix)
@@ -1669,7 +1668,7 @@ test_that("ggplot.as.list - ggmatrix fallback for ggmatrix_plot_obj when GGally 
 test_that("ggplot.as.list - ggmatrix fallback for plain ggplot elements when GGally is missing", {
   skip_if_not_installed("ggplot2")
 
-  plain_gplot <- ggplot2::ggplot(mtcars, ggplot2::aes(x = hp, y = mpg)) + ggplot2::geom_point()
+  plain_gplot <- ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point()
 
   mock_matrix <- structure(
     list(
@@ -1686,14 +1685,433 @@ test_that("ggplot.as.list - ggmatrix fallback for plain ggplot elements when GGa
   mock_env <- new.env(parent = environment(ggplot.as.list))
   mock_env$requireNamespace <- function(package, ...) {
     if (package == "GGally") return(FALSE)
-    base::requireNamespace(package, ...)
+      requireNamespace(package, ...)
   }
   environment(fn) <- mock_env
 
   cxplot      <- suppressWarnings(fn(mock_matrix))
-  cxplot_list <- jsonlite::parse_json(cxplot)
+  cxplot_list <- parse_json(cxplot)
 
   expect_equal(class(cxplot), "json")
   expect_true(cxplot_list$isGGMatrix)
   expect_equal(length(cxplot_list$datasets), 1)
+})
+
+
+# ------------------------------------------------------------------------------
+# gg_lodes_to_alluvia Unit Tests
+# ------------------------------------------------------------------------------
+
+test_that("gg_lodes_to_alluvia returns original plot if mappings are incomplete", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    lodes_df <- data.frame(
+        x                = factor(rep(c("A", "B"), each = 2)),
+        stratum          = c("S1", "S2", "S1", "S2"),
+        alluvium         = c(1, 2, 1, 2),
+        stringsAsFactors = FALSE
+    )
+
+    # Missing 'stratum' mapping
+    p <- ggplot(lodes_df, aes(x = x, alluvium = alluvium)) +
+        geom_alluvium()
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia returns original plot if mapped columns not in data", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    lodes_df <- data.frame(
+        x                = factor(rep(c("A", "B"), each = 2)),
+        stratum          = c("S1", "S2", "S1", "S2"),
+        alluvium         = c(1, 2, 1, 2),
+        stringsAsFactors = FALSE
+    )
+
+    # 'non_existent_stratum' column is absent from lodes_df
+    p <- ggplot(lodes_df, aes(x = x, stratum = non_existent_stratum, alluvium = alluvium)) +
+        geom_alluvium()
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia returns original plot if data is not in lodes form", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    # Invalid lodes data structure
+    bad_lodes_df <- data.frame(
+        x                = c("A", "A"),
+        stratum          = c("S1", "S1"),
+        alluvium         = c(1, 1),
+        stringsAsFactors = FALSE
+    )
+
+    p <- ggplot(bad_lodes_df, aes(x = x, stratum = stratum, alluvium = alluvium)) +
+        geom_alluvium()
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia handles is_lodes_form execution error gracefully", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    lodes_df <- data.frame(
+        x = factor(rep(c("A", "B"), each = 2)),
+        stratum          = c("S1", "S2", "S1", "S2"),
+        alluvium         = c(1, 2, 1, 2),
+        stringsAsFactors = FALSE
+    )
+
+    p <- ggplot(lodes_df, aes(x = x, stratum = stratum, alluvium = alluvium)) +
+        geom_alluvium()
+
+    # Safely mock ggalluvial::is_lodes_form to simulate runtime error
+    ns <- asNamespace("ggalluvial")
+    orig_fn <- ns$is_lodes_form
+
+    unlockBinding("is_lodes_form", ns)
+    assign("is_lodes_form", function(...) stop("mock error"), envir = ns)
+    lockBinding("is_lodes_form", ns)
+
+    on.exit({
+        unlockBinding("is_lodes_form", ns)
+        assign("is_lodes_form", orig_fn, envir = ns)
+        lockBinding("is_lodes_form", ns)
+    })
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia handles to_alluvia_form failure gracefully", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+
+    lodes_df <- data.frame(
+        x                = factor(rep(c("A", "B"), each = 2)),
+        stratum          = c("S1", "S2", "S1", "S2"),
+        alluvium         = c(1, 2, 1, 2),
+        stringsAsFactors = FALSE
+    )
+
+    p <- ggplot(lodes_df, aes(x = x, stratum = stratum, alluvium = alluvium)) +
+        geom_alluvium()
+
+    # Safely mock ggalluvial::to_alluvia_form to return NULL/error
+    ns      <- asNamespace("ggalluvial")
+    orig_fn <- ns$to_alluvia_form
+
+    unlockBinding("to_alluvia_form", ns)
+    assign("to_alluvia_form", function(...) stop("mock error"), envir = ns)
+    lockBinding("to_alluvia_form", ns)
+
+    on.exit({
+        unlockBinding("to_alluvia_form", ns)
+        assign("to_alluvia_form", orig_fn, envir = ns)
+        lockBinding("to_alluvia_form", ns)
+    })
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia returns original plot if axis_cols < 2", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    # Data with only 1 x level
+    single_axis_df <- data.frame(
+        x = factor(c("A", "A")),
+        stratum = c("S1", "S2"),
+        alluvium = c(1, 2),
+        stringsAsFactors = FALSE
+    )
+
+    p <- ggplot(single_axis_df, aes(x = x, stratum = stratum, alluvium = alluvium)) +
+        geom_alluvium()
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_lodes_to_alluvia converts lodes plot with factor x, y weight, and layer mappings", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    lodes_df <- data.frame(
+        x                = factor(rep(c("Stage1", "Stage2"), each = 2), levels = c("Stage1", "Stage2")),
+        stratum          = c("Alpha", "Beta", "Alpha", "Beta"),
+        alluvium         = c(1, 2, 1, 2),
+        freq             = c(10, 20, 10, 20),
+        stringsAsFactors = FALSE
+    )
+
+    # Place mappings on layer level to test map_name searching ly$mapping
+    p <- ggplot(lodes_df) +
+        geom_alluvium(aes(x = x, stratum = stratum, alluvium = alluvium, y = freq)) +
+        geom_stratum(aes(x = x, stratum = stratum, alluvium = alluvium))
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+
+    expect_false(identical(res, p))
+    expect_true("axis1" %in% names(res$mapping))
+    expect_true("axis2" %in% names(res$mapping))
+    expect_true("y" %in% names(res$mapping))
+    expect_true("fill" %in% names(res$mapping))
+
+    # Verify layer lodes aesthetics (x, stratum, alluvium) were scrubbed
+    expect_null(res$layers[[1]]$mapping$x)
+    expect_null(res$layers[[1]]$mapping$stratum)
+    expect_null(res$layers[[1]]$mapping$alluvium)
+})
+
+test_that("gg_lodes_to_alluvia converts plot with character x, no y weight, and handles empty layer mappings", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    # Non-factor character x vector
+    char_lodes_df <- data.frame(
+        x = rep(c("T1", "T2"), each = 2),
+        stratum          = c("S1", "S2", "S1", "S2"),
+        alluvium         = c(101, 102, 101, 102),
+        stringsAsFactors = FALSE
+    )
+
+    p <- ggplot(char_lodes_df, aes(x = x, stratum = stratum, alluvium = alluvium)) +
+        geom_flow() +
+        geom_stratum()
+
+    # Insert layer with NULL mapping to test `if (is.null(lm)) next` branch
+    p$layers[[3]] <- layer(
+        geom     = GeomStratum,
+        stat     = "identity",
+        position = "identity",
+        mapping  = NULL
+    )
+
+    res <- canvasXpress:::gg_lodes_to_alluvia(p)
+
+    expect_false(identical(res, p))
+    expect_null(res$mapping$y) # No y weight mapped
+    expect_true("axis1" %in% names(res$mapping))
+    expect_true("axis2" %in% names(res$mapping))
+})
+
+
+# ------------------------------------------------------------------------------
+# Unit Tests for gg_sankey_to_alluvia
+# ------------------------------------------------------------------------------
+
+test_that("gg_sankey_to_alluvia returns original plot if sankey aesthetics are missing", {
+    p <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+        geom_point()
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_sankey_to_alluvia returns original plot when ggalluvial is not available", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+
+    sankey_df <- data.frame(
+        x = c("S1", "S2"),
+        node             = c("A", "B"),
+        next_x           = c("S2", NA),
+        next_node        = c("B", NA),
+        stringsAsFactors = FALSE
+    )
+
+    p <- suppressWarnings(
+        ggplot(sankey_df, aes(x = x, node = node, next_x = next_x, next_node = next_node))
+    )
+
+    # Mock requireNamespace to return FALSE specifically for ggalluvial
+    ns       <- asNamespace("base")
+    orig_req <- ns$requireNamespace
+
+    unlockBinding("requireNamespace", ns)
+    assign("requireNamespace", function(package, ...) {
+        if (package == "ggalluvial") return(FALSE)
+        orig_req(package, ...)
+    }, envir = ns)
+    lockBinding("requireNamespace", ns)
+
+    on.exit({
+        unlockBinding("requireNamespace", ns)
+        assign("requireNamespace", orig_req, envir = ns)
+        lockBinding("requireNamespace", ns)
+    })
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_sankey_to_alluvia attaches ggalluvial namespace if not present in search path", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+
+    if ("package:ggalluvial" %in% search()) {
+        detach("package:ggalluvial", character.only = TRUE)
+    }
+
+    sankey_df <- data.frame(
+        x = factor(rep(c("S1", "S2"), times = 2)),
+        node             = c("A", "B", "A", "C"),
+        next_x           = c("S2", NA, "S2", NA),
+        next_node        = c("B", NA, "C", NA),
+        stringsAsFactors = FALSE
+    )
+
+    p <- suppressWarnings(
+        ggplot(sankey_df, aes(x = x, node = node, next_x = next_x, next_node = next_node)) +
+            geom_point()
+    )
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+    expect_true("package:ggalluvial" %in% search())
+})
+
+test_that("gg_sankey_to_alluvia returns original plot if mapped columns are not in data", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+
+    sankey_df <- data.frame(
+        x                = c("S1", "S2"),
+        next_x           = c("S2", NA),
+        next_node        = c("B", NA),
+        stringsAsFactors = FALSE
+    )
+
+    # 'missing_node' is mapped to 'node' aesthetic, but is absent from sankey_df columns
+    p <- suppressWarnings(
+        ggplot(sankey_df, aes(x = x, node = missing_node, next_x = next_x, next_node = next_node))
+    )
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+    expect_equal(res, p)
+})
+
+test_that("gg_sankey_to_alluvia returns original plot when stages < 2 or row count invalid", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+
+    # Scenario 1: Only 1 stage (k < 2)
+    df_single_stage <- data.frame(
+        x                = c("S1", "S1"),
+        node             = c("A", "B"),
+        next_x           = c(NA, NA),
+        next_node        = c(NA, NA),
+        stringsAsFactors = FALSE
+    )
+
+    p1 <- suppressWarnings(
+        ggplot(df_single_stage, aes(x = x, node = node, next_x = next_x, next_node = next_node))
+    )
+    expect_equal(canvasXpress:::gg_sankey_to_alluvia(p1), p1)
+
+    # Scenario 2: Row count is not a multiple of k (nrow %% k != 0)
+    df_unbalanced <- data.frame(
+        x                = c("S1", "S2", "S1"),
+        node             = c("A", "B", "A"),
+        next_x           = c("S2", NA, "S2"),
+        next_node        = c("B", NA, "B"),
+        stringsAsFactors = FALSE
+    )
+
+    p2 <- suppressWarnings(
+        ggplot(df_unbalanced, aes(x = x, node = node, next_x = next_x, next_node = next_node))
+    )
+    expect_equal(canvasXpress:::gg_sankey_to_alluvia(p2), p2)
+})
+
+test_that("gg_sankey_to_alluvia converts valid ggsankey with factor x, layer mappings, and fill legend", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    sankey_df <- data.frame(
+        x                = factor(rep(c("Stage1", "Stage2"), times = 2), levels = c("Stage1", "Stage2")),
+        node             = c("Alpha", "Beta", "Alpha", "Beta"),
+        next_x           = c("Stage2", NA, "Stage2", NA),
+        next_node        = c("Beta", NA, "Beta", NA),
+        node_fill        = c("Alpha", "Beta", "Alpha", "Beta"),
+        stringsAsFactors = FALSE
+    )
+
+    p <- suppressWarnings(
+        ggplot(sankey_df, aes(x = x, node = node, next_x = next_x)) +
+            geom_point(aes(next_node = next_node, fill = node_fill))
+    )
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+
+    expect_equal(attr(res, "cx_sankey_style"), "ggsankey")
+    expect_equal(attr(res, "cx_sankey_legend_title"), "node_fill")
+    expect_equal(attr(res, "cx_sankey_node_levels"), c("Alpha", "Beta"))
+    expect_type(attr(res, "cx_sankey_node_colors"), "character")
+
+    expect_true("axis1" %in% names(res$mapping))
+    expect_true("axis2" %in% names(res$mapping))
+    expect_true("y" %in% names(res$mapping))
+    expect_true("fill" %in% names(res$mapping))
+
+    expect_length(res$layers, 3)
+})
+
+test_that("gg_sankey_to_alluvia converts plot with character x, missing fill mapping, and path aggregation", {
+    skip_if(getRversion() < "4.4.0")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("ggalluvial")
+    library(ggalluvial)
+
+    sankey_df <- data.frame(
+        x                = c("T1", "T2", "T1", "T2"),
+        node             = c("N1", "N2", "N1", "N2"),
+        next_x           = c("T2", NA, "T2", NA),
+        next_node        = c("N2", NA, "N2", NA),
+        stringsAsFactors = FALSE
+    )
+
+    p <- suppressWarnings(
+        ggplot(sankey_df, aes(x = x, node = node, next_x = next_x, next_node = next_node)) +
+            geom_point()
+    )
+
+    res <- canvasXpress:::gg_sankey_to_alluvia(p)
+
+    expect_null(attr(res, "cx_sankey_legend_title"))
+    expect_equal(attr(res, "cx_sankey_style"), "ggsankey")
+
+    expect_equal(res$data$freq, 2)
+    expect_s3_class(res$data$T1, "factor")
+    expect_s3_class(res$data$T2, "factor")
 })

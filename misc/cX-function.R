@@ -4323,6 +4323,47 @@ cXheatmap17 <- function() {
   )
 }
 
+cXheatmap18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap18-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmap18-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmap18-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorSpectrum=list("navy", "white", "firebrick3"),
+    graphType="Heatmap",
+    heatmapIndicatorPosition="right",
+    samplesClustered=TRUE,
+    showSmpDendrogram=TRUE,
+    showVarDendrogram=TRUE,
+    subtitle="150 genes x 80 samples = 12,000 expression values",
+    title="Interactive heatmap at scale",
+    variablesClustered=TRUE
+  )
+}
+
+cXheatmap19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap19-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmap19-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmap19-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorSpectrum=list("#2166ac", "#f7f7f7", "#b2182b"),
+    graphType="Heatmap",
+    samplesClustered=TRUE,
+    showSmpDendrogram=TRUE,
+    showVarDendrogram=TRUE,
+    subtitle="assay (40 genes x 30 samples) + rowData + colData",
+    title="From SummarizedExperiment to interactive visualization",
+    variablesClustered=TRUE
+  )
+}
+
 cXhexplotbinplot1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4769,6 +4810,31 @@ cXkaplanmeier8 <- function() {
     xAxisTitle="Weeks",
     yAxisTitle="Probability of Survival",
     afterRender=list(list("switchSmpToAnnotation", list("Age")), list("switchSmpToAnnotation", list("Clin2")), list("switchSmpToAnnotation", list("Clin3")), list("addKMPlot", list()), list("createDOE", list()))
+  )
+}
+
+cXkaplanmeier9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-kaplanmeier9-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="Drug",
+    graphType="KaplanMeier",
+    invertCensored=TRUE,
+    legendBackgroundColor="rgb(255,255,255)",
+    legendBox=TRUE,
+    panelBackgroundColor="rgb(245,245,245)",
+    showKMConfidenceIntervals=FALSE,
+    subtitle="Overall survival by treatment arm (n = 361)",
+    title="Reproducible Kaplan-Meier survival analysis",
+    xAxis=list("Survival", "Survival-Censor"),
+    xAxisGridMajorColor="rgb(255,255,255)",
+    xAxisTitle="Time (weeks)",
+    yAxisGridMajorColor="rgb(255,255,255)",
+    yAxisTitle="Probability of survival"
   )
 }
 
@@ -6524,6 +6590,27 @@ cXnetwork35 <- function() {
   )
 }
 
+cXnetwork36 <- function() {
+  library(canvasXpress)
+  nodes=read.table("https://www.canvasxpress.org/data/r/cX-network36-nodes.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  edges=read.table("https://www.canvasxpress.org/data/r/cX-network36-edges.txt", header=TRUE, sep="\t", quote="", fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    nodeData=nodes,
+    edgeData=edges,
+    colorEdgeBy="sign",
+    colorKey=list(sign=list(activation="#2c7fb8", repression="#d95f0e")),
+    edgeThickness=2,
+    graphType="Network",
+    lineEdgeBy="evidence",
+    lineKey=list(evidence=list(chipseq="solid", eqtl="dashed")),
+    networkLayoutType="forceDirected",
+    nodeFontColor="rgb(30,30,30)",
+    showAnimation=TRUE,
+    sizeEdgeBy="coef",
+    title="Gene Regulatory Network - Edge Line Style by Evidence"
+  )
+}
+
 cXnonlinearfit1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-nonlinearfit-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -6803,6 +6890,34 @@ cXoncoprint10 <- function() {
     oncoprintPresorted=TRUE,
     overlaysThickness=100,
     showHeatmapOncoprint=TRUE
+  )
+}
+
+cXoptionswall1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-optionswall1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="OptionsWall",
+    optionsWallChain=list(call=list(iv=list("None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "0.2457", "0.2541", "0.2573", "0.2688", "0.2623", "0.2648", "0.2715", "0.2863", "0.2915", "0.2841", "0.3023", "0.315", "0.3222", "0.3403", "0.3805", "0.3632", "0.4644", "0.4144", "0.4884", "0.4706", "0.4781", "0.4652", "0.5891", "0.4584"), premium=list(38.1, 29.2, 29.2, 27.51, 24.5, 20.08, 23.02, 18.18, 15.2, 13.63, 12.95, 8.64, 7.35, 6.1, 4.9, 4.05, 3.24, 2.73, 2.0, 1.55, 1.25, 1.11, 0.89, 0.6, 0.43, 0.29, 0.18, 0.14, 0.17, 0.07, 0.25, 0.07, 0.16, 0.08, 0.06, 0.03, 0.16, 0.01), volume=list(307.0, 313.0, 0.0, 717.0, 0.0, 671.0, 1.0, 3763.0, 1.0, 937.0, 35.0, 5354.0, 99.0, 1715.0, 88.0, 2555.0, 183.0, 1210.0, 162.0, 4460.0, 85.0, 1914.0, 217.0, 4602.0, 1192.0, 4783.0, 686.0, 4317.0, 2913.0, 2208.0, 306.0, 6066.0, 348.0, 1285.0, 221.0, 2651.0, 463.0, 1379.0)), expiry="2026-09-18", put=list(iv=list("0.3521", "0.3353", "0.3507", "0.3262", "0.3119", "0.3073", "0.2977", "0.3025", "0.3349", "0.2971", "0.3", "0.3098", "0.3067", "0.318", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"), premium=list(0.17, 0.28, 0.5, 0.51, 0.6, 0.8, 1.0, 1.44, 2.45, 2.43, 3.2, 4.26, 5.2, 6.6, 7.5, 9.44, 11.14, 13.87, 11.9, 17.92, 20.15, 21.18, 24.8, 25.0, 28.75, 36.99, 39.48, 41.3, 50.46, 54.27, 62.62, 64.27, 86.77, 74.46, 79.48, 82.2, 87.22, 111.55), volume=list(3652.0, 2019.0, 19.0, 2399.0, 37.0, 2047.0, 74.0, 3454.0, 46.0, 1717.0, 45.0, 3788.0, 44.0, 832.0, 141.0, 2310.0, 7.0, 217.0, 3.0, 2441.0, 0.0, 135.0, 0.0, 820.0, 485.0, 761.0, 99.0, 440.0, 9.0, 56.0, 5.0, 88.0, 3.0, 13.0, 0.0, 2.0, 0.0, 0.0)), strikes=list(200.0, 205.0, 207.5, 210.0, 212.5, 215.0, 217.5, 220.0, 222.5, 225.0, 227.5, 230.0, 232.5, 235.0, 237.5, 240.0, 242.5, 245.0, 247.5, 250.0, 252.5, 255.0, 257.5, 260.0, 265.0, 270.0, 275.0, 280.0, 285.0, 290.0, 295.0, 300.0, 305.0, 310.0, 315.0, 320.0, 325.0, 330.0)),
+    optionsWallExpiry="2026-09-18",
+    optionsWallFlankMetric="iv",
+    optionsWallSpot=235.59,
+    title="OptionsWall: IBM implied-volatility wall (real)"
+  )
+}
+
+cXoptionswall2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-optionswall2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="OptionsWall",
+    optionsWallChain=list(call=list(iv=list("None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "0.2457", "0.2541", "0.2573", "0.2688", "0.2623", "0.2648", "0.2715", "0.2863", "0.2915", "0.2841", "0.3023", "0.315", "0.3222", "0.3403", "0.3805", "0.3632", "0.4644", "0.4144", "0.4884", "0.4706", "0.4781", "0.4652", "0.5891", "0.4584"), premium=list(38.1, 29.2, 29.2, 27.51, 24.5, 20.08, 23.02, 18.18, 15.2, 13.63, 12.95, 8.64, 7.35, 6.1, 4.9, 4.05, 3.24, 2.73, 2.0, 1.55, 1.25, 1.11, 0.89, 0.6, 0.43, 0.29, 0.18, 0.14, 0.17, 0.07, 0.25, 0.07, 0.16, 0.08, 0.06, 0.03, 0.16, 0.01), volume=list(307.0, 313.0, 0.0, 717.0, 0.0, 671.0, 1.0, 3763.0, 1.0, 937.0, 35.0, 5354.0, 99.0, 1715.0, 88.0, 2555.0, 183.0, 1210.0, 162.0, 4460.0, 85.0, 1914.0, 217.0, 4602.0, 1192.0, 4783.0, 686.0, 4317.0, 2913.0, 2208.0, 306.0, 6066.0, 348.0, 1285.0, 221.0, 2651.0, 463.0, 1379.0)), expiry="2026-09-18", put=list(iv=list("0.3521", "0.3353", "0.3507", "0.3262", "0.3119", "0.3073", "0.2977", "0.3025", "0.3349", "0.2971", "0.3", "0.3098", "0.3067", "0.318", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None", "None"), premium=list(0.17, 0.28, 0.5, 0.51, 0.6, 0.8, 1.0, 1.44, 2.45, 2.43, 3.2, 4.26, 5.2, 6.6, 7.5, 9.44, 11.14, 13.87, 11.9, 17.92, 20.15, 21.18, 24.8, 25.0, 28.75, 36.99, 39.48, 41.3, 50.46, 54.27, 62.62, 64.27, 86.77, 74.46, 79.48, 82.2, 87.22, 111.55), volume=list(3652.0, 2019.0, 19.0, 2399.0, 37.0, 2047.0, 74.0, 3454.0, 46.0, 1717.0, 45.0, 3788.0, 44.0, 832.0, 141.0, 2310.0, 7.0, 217.0, 3.0, 2441.0, 0.0, 135.0, 0.0, 820.0, 485.0, 761.0, 99.0, 440.0, 9.0, 56.0, 5.0, 88.0, 3.0, 13.0, 0.0, 2.0, 0.0, 0.0)), strikes=list(200.0, 205.0, 207.5, 210.0, 212.5, 215.0, 217.5, 220.0, 222.5, 225.0, 227.5, 230.0, 232.5, 235.0, 237.5, 240.0, 242.5, 245.0, 247.5, 250.0, 252.5, 255.0, 257.5, 260.0, 265.0, 270.0, 275.0, 280.0, 285.0, 290.0, 295.0, 300.0, 305.0, 310.0, 315.0, 320.0, 325.0, 330.0)),
+    optionsWallExpiry="2026-09-18",
+    optionsWallFlankMetric="premium",
+    optionsWallSpot=235.59,
+    title="OptionsWall: IBM premium wall (real)"
   )
 }
 
@@ -8188,6 +8303,68 @@ cXscatter2d18 <- function() {
     graphType="Bump",
     lineBy="group",
     theme="GGPlot"
+  )
+}
+
+cXscatter2d19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d19-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d19-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    backgroundType="panel",
+    colorBy="Group",
+    colorKey=list(Group=list(Decreased="rgba(33,102,172,0.75)", Increased="rgba(197,27,38,0.75)", NoChange="rgba(150,150,150,0.35)")),
+    decorations=list(line=list(list(color="rgba(120,120,120,0.8)", width=1, x=1), list(color="rgba(120,120,120,0.8)", width=1, x=-1), list(color="rgba(120,120,120,0.8)", width=1, y=1.301))),
+    graphType="Scatter2D",
+    hoverTemplate="Gene: {vars}<br/>log2FC: {logFC}<br/>-log10 p: {-log-pVal}<br/>Regulation: {Group}<br/>Fold change: {FC}",
+    labelBy="vars",
+    labelSelect=list("AND", list("y", ">", 2), list("OR", list("x", "<", "-1"), list("x", ">", "1"))),
+    labelSize=11,
+    legendBackgroundColor="rgb(255,255,255)",
+    legendBox=TRUE,
+    panelBackgroundColor="rgb(245,245,245)",
+    setMaxX=2.8,
+    setMaxY=4.2,
+    setMinX=-3,
+    showDecorations=TRUE,
+    sizeBy="FC",
+    sizes=list(3, 6, 9, 12, 15),
+    subtitle="Differential expression: 1,000 genes",
+    title="Publication-ready volcano plot",
+    xAxis=list("logFC"),
+    xAxisGridMajorColor="rgb(255,255,255)",
+    xAxisTitle="log2 fold change",
+    yAxis=list("-log-pVal"),
+    yAxisGridMajorColor="rgb(255,255,255)",
+    yAxisTitle="-log10 p-value"
+  )
+}
+
+cXscatter2d20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d20-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    axisTickScaleFontFactor=0.8,
+    backgroundType="panel",
+    colorBy="CellType",
+    dataPointSize=4,
+    graphType="Scatter2D",
+    legendBackgroundColor="rgb(255,255,255)",
+    legendBox=TRUE,
+    panelBackgroundColor="rgb(245,245,245)",
+    subtitle="3,000 cells, 8 annotated cell types",
+    title="Single-cell UMAP explorer",
+    xAxis=list("UMAP-1"),
+    xAxisGridMajorColor="rgb(255,255,255)",
+    xAxisTitle="UMAP-1",
+    yAxis=list("UMAP-2"),
+    yAxisGridMajorColor="rgb(255,255,255)",
+    yAxisTitle="UMAP-2"
   )
 }
 

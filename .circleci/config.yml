@@ -115,6 +115,8 @@ jobs:
             # Install suggested packages
             R -e 'install.packages("png")'
             # Perform package check
+            export _R_CHECK_FORCE_SUGGESTS_=FALSE
+            export _R_CHECK_SUGGESTS_ONLY_=TRUE
             R CMD check *tar.gz
 
   Build-for-r4_4_3:
@@ -149,6 +151,8 @@ jobs:
             R -e 'install.packages("ggpubr")'
             R -e 'install.packages("ggpattern")'
             R -e 'install.packages("ggh4x")'
+            R -e 'install.packages("ggalluvial")'
+            R -e 'install.packages("repr")'
 
       - run:
           name: Session information and installed package versions
@@ -205,6 +209,8 @@ jobs:
             R -e 'install.packages("ggpubr")'
             R -e 'install.packages("ggpattern")'
             R -e 'install.packages("ggh4x")'
+            R -e 'install.packages("ggalluvial")'
+            R -e 'install.packages("repr")'
 
       - run:
           name: Session information and installed package versions

@@ -11,20 +11,9 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ---
 
-## Unreleased
-
-* Restored `ggplot.as.list` conversion blocks lost in the 2026-08-21 CRAN merge-back: text/label layers again carry their built (dodged) positions, labels and facet panel; error bars carry `errorScope`; ggalluvial lodes/sankey reshaping, the all-layers `show.legend = FALSE` hoist, `scale_*_continuous(labels=)` relabels and the `decompiled` source reconstruction are back.
-
-
-## v1.66.7
-* Fixed `canvasXpress()` on a GGally `ggmatrix`/`ggpairs()` object erroring with
-  "no applicable method for 'ggplot_build' applied to an object of class
-  'ggmatrix_plot_obj'": current GGally stores each matrix cell as a lazy
-  `ggmatrix_plot_obj` rather than a built ggplot, so `ggplot.as.list()` now builds
-  every cell first (via `GGally::getPlot()`, with a fallback to the cell fn) before
-  conversion. The resulting spec matches the patchwork path (a `datasets` grid) and
-  renders the same way.
-
+## v1.70.3
+* Updated CanvasXpress JS and CSS libraries to v70.3
+* New chart types supported
 
 ## v1.65.2
 * Updated CanvasXpress JS and CSS libraries to v65.2
