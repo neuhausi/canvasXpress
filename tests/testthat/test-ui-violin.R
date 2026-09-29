@@ -68,3 +68,51 @@ test_that("cXviolin16", {
 test_that("cXviolin17", {
     check_ui_test(cXviolin17())
 })
+
+test_that("cXviolin18", {
+    check_ui_test(cXviolin18())
+})
+
+test_that("cXviolin19", {
+    check_ui_test(cXviolin19())
+})
+
+test_that("cXviolin20", {
+    check_ui_test(cXviolin20())
+})
+
+test_that("cXviolin21", {
+    check_ui_test(cXviolin21())
+})
+
+test_that("cXviolin22", {
+    check_ui_test(cXviolin22())
+})
+
+test_that("cXviolin23", {
+    check_ui_test(cXviolin23())
+})
+
+test_that("cXviolin24", {
+    check_ui_test(cXviolin24())
+})
+
+test_that("cXviolin25", {
+    check_ui_test(cXviolin25())
+})
+
+test_that("cXviolin26", {
+    check_ui_test(cXviolin26())
+})
+
+test_that("cXviolin27", {
+    check_ui_test(cXviolin27())
+})
+
+test_that("cXviolin28", {
+    check_ui_test(cXviolin28())
+})
+
+test_that("cXviolin29", {
+    check_ui_test(cXviolin29())
+})

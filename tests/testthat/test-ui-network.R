@@ -141,6 +141,10 @@ if (interactive()) {
     test_that("cXnetwork35", {
         check_ui_test(cXnetwork35())
     })
+
+    test_that("cXnetwork36", {
+        check_ui_test(cXnetwork36())
+    })
 } else {
     message("Non-interactive ui-network tests skipped")
 }

@@ -13,6 +13,7 @@ try({
     library(ggpattern)
     require(dplyr)
     require(tibble)
+    require(jsonlite)
 }, silent = T)
 
 try({

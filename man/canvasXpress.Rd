@@ -16,6 +16,7 @@ canvasXpress(
   width = 600,
   height = 400,
   destroy = FALSE,
+  validate = FALSE,
   ...
 )
 }
@@ -41,6 +42,10 @@ canvasXpress(
 \item{height}{plot height (valid CSS units) - default = 400px}
 
 \item{destroy}{used to indicate removal of a plot - default = FALSE}
+
+\item{validate}{if TRUE, check the config parameters against the CanvasXpress
+parameter catalog and warn on unknown parameters or invalid enumerated values
+(see \code{\link{cxValidateConfig}}) - default = FALSE}
 
 \item{...}{additional parameters passed to canvasXpress}
 }

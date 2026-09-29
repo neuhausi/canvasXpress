@@ -14,3 +14,7 @@
 ^CRAN-SUBMISSION$
 ^_ARCHIVE
 ^\.github
+^test-results$
+^\.lintr$
+^\.git$
+^CITATION\.cff$

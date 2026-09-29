@@ -31,3 +31,27 @@ test_that("cXoncoprint4", {
         message("Non-interactive oncoprint-4 test skipped")
     }
 })
+
+test_that("cXoncoprint5", {
+    check_ui_test(cXoncoprint5())
+})
+
+test_that("cXoncoprint6", {
+    check_ui_test(cXoncoprint6())
+})
+
+test_that("cXoncoprint7", {
+    check_ui_test(cXoncoprint7())
+})
+
+test_that("cXoncoprint8", {
+    check_ui_test(cXoncoprint8())
+})
+
+test_that("cXoncoprint9", {
+    check_ui_test(cXoncoprint9())
+})
+
+test_that("cXoncoprint10", {
+    check_ui_test(cXoncoprint10())
+})

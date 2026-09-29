@@ -1,6 +1,6 @@
 ## Comments from Maintainer
 
-- This is an update to underlying JS library (canvasXpress) 
+- This is an update to underlying JS library (canvasXpress) with support for new charts
 
 ---  
 
@@ -27,9 +27,8 @@ WinBuilder
 RHub (v2)
 
 rhub::rhub_check(branch    = "cran", 
-                 platforms = c("ubuntu-next", "ubuntu-release", "nosuggests",  # linux platforms
-                               "linux", "macos-arm64", "windows"))             # other platforms
-
+                 platforms = c("ubuntu-next", "ubuntu-release", "atlas", 
+                               "linux", "macos-arm64", "windows"))
 
 ---  
 

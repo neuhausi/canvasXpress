@@ -84,3 +84,7 @@ test_that("cXboxplot20", {
 test_that("cXboxplot21", {
     check_ui_test(cXboxplot21())
 })
+
+test_that("cXboxplot22", {
+    check_ui_test(cXboxplot22())
+})

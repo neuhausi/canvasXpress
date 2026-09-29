@@ -32,6 +32,9 @@
 #' @param width plot width (valid CSS units) - default = 600px
 #' @param height plot height (valid CSS units) - default = 400px
 #' @param destroy used to indicate removal of a plot - default = FALSE
+#' @param validate if TRUE, check the config parameters against the CanvasXpress
+#'   parameter catalog and warn on unknown parameters or invalid enumerated values
+#'   (see \code{\link{cxValidateConfig}}) - default = FALSE
 #' @param ... additional parameters passed to canvasXpress
 #'
 #' @section Piping Support:
@@ -56,12 +59,17 @@ canvasXpress <- function(data        = NULL,
                          width       = 600,
                          height      = 400,
                          destroy     = FALSE,
+                         validate    = FALSE,
                          ...) {
     if (destroy) {
         return(htmlwidgets::createWidget("canvasXpress", list()))
     }
 
     config <- list(graphType = graphType, isR = TRUE, ...)
+
+    if (isTRUE(validate)) {
+        cxValidateConfig(config)
+    }
 
     if (is.null(data) || !(any(c("canvasXpress", "ggplot", "ggsurvplot", "ggmatrix") %in% class(data)))) {
         assertDataCorrectness(data, graphType, config)

@@ -27,3 +27,16 @@ test_that("cXkaplanmeier5", {
 test_that("cXkaplanmeier6", {
     check_ui_test(cXkaplanmeier6())
 })
+
+
+test_that("cXkaplanmeier7", {
+    check_ui_test(cXkaplanmeier7())
+})
+
+test_that("cXkaplanmeier8", {
+    check_ui_test(cXkaplanmeier8())
+})
+
+test_that("cXkaplanmeier9", {
+    check_ui_test(cXkaplanmeier9())
+})

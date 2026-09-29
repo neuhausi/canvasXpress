@@ -59,46 +59,29 @@ HTMLWidgets.widget({
           if (x instanceof Object && (x.hasOwnProperty('isPatchwork') || x.hasOwnProperty('isGGMatrix'))) {
             var type = x.hasOwnProperty('isPatchwork') ? 'patchwork' : 'ggmatrix';
             console.log('---> ' + type + ' ' + c.id);
+            // Delegate the grid to the core engine. new CanvasXpress(<matrix spec>)
+            // dispatches to CanvasXpress.matrixHost, which builds the cols x rows grid,
+            // assigns perimeter-only axes (y-axis on the left column, x-axis on the
+            // bottom row) and aligns the panel bodies. This replaces the former
+            // hand-built <table> that created one blank-axis chart per cell.
+            var oldHost = CanvasXpress.getObject(c.id);
+            if (oldHost && oldHost.isMatrixHost) {
+              oldHost.destroy();
+            }
             if (p.firstChild && p.firstChild.tagName && p.firstChild.tagName.toLowerCase() == 'canvas') {
               p.removeChild(p.firstChild);
             }
-            if (x.cols) {
-              x.rows = Math.ceil(x.length / x.cols);
-            } else if (x.rows) {
-              x.cols = Math.ceil(x.length / x.rows);
-            } else {
-              x.cols = x.length;
-              x.rows = 1;
+            // matrixHost locates its container via the target element; recreate a
+            // placeholder canvas if a previous render replaced it with the grid table.
+            if (document.getElementById(c.id) == null && p != null) {
+              var ph = document.createElement('canvas');
+              ph.id = c.id;
+              p.appendChild(ph);
             }
-            var cw = Math.floor(chart_width / x.cols);
-            var ch = Math.floor(chart_height / x.rows);
-            var nc = 0;
-            var dt = document.createElement('table');
-            dt.style.borderCollapse = 'collapse';
-            dt.setAttribute('cols', x.cols);
-            dt.setAttribute('rows', x.rows);
-            p.appendChild(dt);
-            for (var i = 0; i < x.rows; i++) {
-              var tr = document.createElement('tr');
-              dt.appendChild(tr);
-              for (var j = 0; j < x.cols; j++) {
-                var td = document.createElement('td');
-                td.style.padding = '0px';
-                tr.appendChild(td);
-                var dp = document.createElement('div');
-                var cp = document.createElement('canvas');
-                var ds = x.datasets[nc];
-                cp.id = c.id + '-p' + nc;
-                ds.renderTo = cp.id;
-                cp.className = 'CanvasXpress';
-                cp.width = cw;
-                cp.height = ch;
-                dp.appendChild(cp);
-                td.appendChild(dp);
-                var cx = new CanvasXpress(ds);
-                nc++;
-              }
-            }
+            x.renderTo = c.id;
+            x.width = chart_width;
+            x.height = chart_height;
+            var cx = new CanvasXpress(x, false, false, false, false, false, false, false, true);
             this.resize(chart_width, chart_height);
           } else {
             console.log('---> regular ggplot ' + c.id);
@@ -107,7 +90,7 @@ HTMLWidgets.widget({
             if (e == null && p != null) {
               p.appendChild(document.createElement('canvas')).setAttribute('id', c.id);
             }
-            var cx = new CanvasXpress(this.checkData(x));
+            var cx = new CanvasXpress(this.checkData(x), false, false, false, false, false, false, false, true);
             this.resize(chart_width, chart_height);
             return cx;
           }
@@ -197,6 +180,10 @@ HTMLWidgets.widget({
 
       getImage: function () {
         var cx = CanvasXpress.getObject(c.id);
+        // A native multi-panel matrix composites all its cells into one image.
+        if (cx && cx.isMatrixHost && typeof cx.getImage === 'function') {
+          return cx.getImage();
+        }
         if (cx && cx.meta && cx.meta.base64) {
           return cx.meta.base64;
         } else {

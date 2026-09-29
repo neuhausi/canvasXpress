@@ -11,6 +11,10 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ---
 
+## v1.70.3
+* Updated CanvasXpress JS and CSS libraries to v70.3
+* New chart types supported
+
 ## v1.65.2
 * Updated CanvasXpress JS and CSS libraries to v65.2
 

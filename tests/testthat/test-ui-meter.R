@@ -80,3 +80,19 @@ test_that("cXmeter19", {
 test_that("cXmeter20", {
     check_ui_test(cXmeter20())
 })
+
+test_that("cXmeter21", {
+    check_ui_test(cXmeter21())
+})
+
+test_that("cXmeter22", {
+    check_ui_test(cXmeter22())
+})
+
+test_that("cXmeter23", {
+    check_ui_test(cXmeter23())
+})
+
+test_that("cXmeter24", {
+    check_ui_test(cXmeter24())
+})
