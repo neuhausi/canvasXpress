@@ -1,7 +1,7 @@
 {
- "x-cx-version": "70.5",
+ "x-cx-version": "70.6",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1701,
+ "count": 1702,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -11136,6 +11136,19 @@
    "type": "string|boolean",
    "default": "rgba(83, 105, 255, 0.05)",
    "description": "Color for the stripe elements in the data table"
+  },
+  {
+   "parameter": "widgetsTheme",
+   "type": "string|boolean",
+   "default": "theme",
+   "options": [
+    "theme",
+    "light",
+    "dark",
+    "auto",
+    false
+   ],
+   "description": "Light or dark UI widgets (toolbar, menus, Customizer, data table and filters, dialogs). theme follows the chart theme (cxdark and cxblue are dark, auto follows the OS) and otherwise the page container, e.g. a dark dashboard; auto follows the OS appearance"
   },
   {
    "parameter": "widthFactor",
