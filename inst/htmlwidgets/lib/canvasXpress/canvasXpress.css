@@ -188,38 +188,15 @@
   --cx-color-gray: rgb(128, 128, 128);
   --cx-color-black: rgb(0, 0, 0);
   --cx-color-transparent: rgba(0, 0, 0, 0);
-  /* Greys. DEPRECATED (unused by CanvasXpress; removed in a future version): extra-dark,
-     dark and medium gray -- use the --cx-color-gray-* scale in 00-tokens-primitive.css */
-  --cx-color-extra-dark-gray: rgb(34, 34, 34);
-  --cx-color-dark-gray: rgb(64, 64, 64);
-  --cx-color-medium-gray: rgb(180, 180, 180);
+  /* Greys (extra-dark, dark and medium gray were removed in 70.7: use the --cx-color-gray-*
+     scale in 00-tokens-primitive.css) */
   --cx-color-light-gray: rgb(204, 204, 204);
   --cx-color-extra-light-gray: rgb(238, 238, 238);
-  /* Icons. DEPRECATED (never used: icon colours come from dataUIStyle via
-     changeSVGIconColors; removed in a future version) */
-  --cx-icon-class-a: #5369ff;
-  --cx-icon-class-b: #292929;
-  --cx-icon-class-c: #999999;
-  --cx-icon-class-r: #ff0000;
   /* Coding colors: the --cx-ui-code-* roles (light and dark). --cx-code-key / -value / -string /
      -boolean / -comment are read as override hooks in 03-code.css; -number and -null were never used. */
   /* Favorite UI colors */
   --cx-color-ui-background: rgb(255, 255, 255);
   --cx-color-ui-font: rgb(34, 34, 34);
-  /* Favorite UI Styles. DEPRECATED (never used: a preset's colours come from
-     CanvasXpress.styleDef as --cx-ui-* roles; removed in a future version) */
-  --cx-color-modern: rgb(83, 105, 255);
-  --cx-color-modern-hover: rgba(83, 105, 255, 0.1) ;
-  --cx-color-stripped: rgb(230, 230, 230) ;
-  --cx-color-stripped-hover: rgba(180, 180, 180, 0.3);
-  --cx-color-old: linear-gradient(rgb(240, 240, 240), rgb(230, 230, 230));
-  --cx-color-old-hover: rgba(230,230,230,0.1);
-  --cx-color-bms: rgb(190, 43, 187);
-  --cx-color-bms-hover: rgba(190, 43, 187, 0.1);
-  --cx-color-bms2: rgb(89, 84, 84);
-  --cx-color-bms2-hover: rgba(89, 84, 84, 0.1);
-  --cx-color-colorful: rgb(106, 27, 154);
-  --cx-color-colorful-hover: rgba(106, 27, 154, 0.1);
   /* Font */
   --cx-x-small-font-size: 11px;
   --cx-small-font-size: 12px;
@@ -276,6 +253,16 @@
 
 :where([data-cx-ui-scope]) input[type="color"]::-webkit-color-swatch {
   border: none;
+}
+
+/*
+ * Native controls (select, textarea, color input) follow the CHART's UI theme, not the host page:
+ * a dark page (e.g. Bootstrap data-bs-theme="dark") sets color-scheme: dark on <html>, which painted
+ * the light Customizer's selects dark. Zero specificity and ahead of 01b-theme-dark.css, so a dark
+ * or auto chart (or a dark container) still switches them to dark.
+ */
+:where([data-cx-ui-scope]) {
+  color-scheme: light;
 }
 
 :where([data-cx-ui-scope], [data-cx-ui-scope] *).unselectable,
@@ -352,6 +339,17 @@ div.cX-Toolbar-Help {
   --cx-callout-border-color: var(--cx-color-widgets, var(--cx-ui-accent));
 }
 
+/*
+ * "colorful" per-item accents in the dark theme (per-style dark accents plan, P3): setItemAccent
+ * writes each item's palette pair and its dark counterpart inline and marks the item; a dark
+ * subtree swaps the pair, so every rule reading --cx-item-accent follows. !important is the only
+ * thing that beats the inline pair.
+ */
+[data-cx-ui-theme="dark"] [data-cx-item-accent] {
+  --cx-item-accent: var(--cx-item-dark-accent) !important;
+  --cx-item-accent-bg: var(--cx-item-dark-accent-bg) !important;
+}
+
 /* GEN:legacy-defaults -- generated from tools/ui-consistency/presets-runtime.json (the default
    dataUIStyle, modern) by gen-token-css.mjs; do not edit. Outside any chart only: each chart
    writes its own preset on its cX-DOM root. */
@@ -376,6 +374,15 @@ div.cX-Toolbar-Help {
  * Do not edit by hand: change tokens.json and regenerate.
  * Spec: docs/architecture/widgets/ui-design-tokens.md
  */
+
+/* The default dark accents, read by setUIColors as the contrast targets for each chart's own
+   dark accent (--cx-ui-dark-accent*, tokens.json darkAccent). */
+:root {
+  --cx-ui-dark-ref-surface: var(--cx-color-gray-900);
+  --cx-ui-dark-ref-accent: var(--cx-color-indigo-400);
+  --cx-ui-dark-ref-accent-strong: var(--cx-color-indigo-300);
+  --cx-ui-dark-ref-accent-tint: var(--cx-color-indigo-dark-a20);
+}
 
 /* A light container re-establishes the light roles for its own chrome, e.g. a light dashboard
    on a page that is dark. (A chart root keeps its preset: its inline roles win here.) */
@@ -498,14 +505,14 @@ div.cX-Toolbar-Help {
   --cx-ui-border: var(--cx-color-gray-700) !important;
   --cx-ui-border-subtle: var(--cx-color-gray-800) !important;
   --cx-ui-divider: var(--cx-color-gray-800) !important;
-  --cx-ui-border-accent: var(--cx-color-indigo-400) !important;
-  --cx-ui-accent: var(--cx-color-indigo-400) !important;
-  --cx-ui-accent-strong: var(--cx-color-indigo-300) !important;
-  --cx-ui-accent-hover: var(--cx-color-indigo-400) !important;
-  --cx-ui-accent-tint: var(--cx-color-indigo-dark-a20) !important;
-  --cx-ui-accent-tint-subtle: var(--cx-color-indigo-dark-a20) !important;
+  --cx-ui-border-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+  --cx-ui-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+  --cx-ui-accent-strong: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
+  --cx-ui-accent-hover: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+  --cx-ui-accent-tint: var(--cx-ui-dark-accent-tint, var(--cx-color-indigo-dark-a20)) !important;
+  --cx-ui-accent-tint-subtle: var(--cx-ui-dark-accent-tint, var(--cx-color-indigo-dark-a20)) !important;
   --cx-ui-on-accent: var(--cx-color-gray-950) !important;
-  --cx-ui-focus: var(--cx-color-indigo-300) !important;
+  --cx-ui-focus: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
   --cx-ui-info: var(--cx-color-blue-400) !important;
   --cx-ui-info-strong: var(--cx-color-blue-300) !important;
   --cx-ui-info-tint: var(--cx-color-blue-a15) !important;
@@ -521,8 +528,8 @@ div.cX-Toolbar-Help {
   --cx-ui-scrollbar-track-alt: var(--cx-color-gray-850) !important;
   --cx-ui-scrollbar-thumb: var(--cx-color-gray-700) !important;
   --cx-ui-scrollbar-thumb-hover: var(--cx-color-gray-500) !important;
-  --cx-ui-control-on: var(--cx-color-indigo-400) !important;
-  --cx-ui-active-cell: var(--cx-color-indigo-400) !important;
+  --cx-ui-control-on: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+  --cx-ui-active-cell: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
   --cx-ui-code-key: #ff7b72 !important;
   --cx-ui-code-value: #79c0ff !important;
   --cx-ui-code-string: #ffa657 !important;
@@ -549,14 +556,14 @@ div.cX-Toolbar-Help {
     --cx-ui-border: var(--cx-color-gray-700) !important;
     --cx-ui-border-subtle: var(--cx-color-gray-800) !important;
     --cx-ui-divider: var(--cx-color-gray-800) !important;
-    --cx-ui-border-accent: var(--cx-color-indigo-400) !important;
-    --cx-ui-accent: var(--cx-color-indigo-400) !important;
-    --cx-ui-accent-strong: var(--cx-color-indigo-300) !important;
-    --cx-ui-accent-hover: var(--cx-color-indigo-400) !important;
-    --cx-ui-accent-tint: var(--cx-color-indigo-dark-a20) !important;
-    --cx-ui-accent-tint-subtle: var(--cx-color-indigo-dark-a20) !important;
+    --cx-ui-border-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+    --cx-ui-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+    --cx-ui-accent-strong: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
+    --cx-ui-accent-hover: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+    --cx-ui-accent-tint: var(--cx-ui-dark-accent-tint, var(--cx-color-indigo-dark-a20)) !important;
+    --cx-ui-accent-tint-subtle: var(--cx-ui-dark-accent-tint, var(--cx-color-indigo-dark-a20)) !important;
     --cx-ui-on-accent: var(--cx-color-gray-950) !important;
-    --cx-ui-focus: var(--cx-color-indigo-300) !important;
+    --cx-ui-focus: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
     --cx-ui-info: var(--cx-color-blue-400) !important;
     --cx-ui-info-strong: var(--cx-color-blue-300) !important;
     --cx-ui-info-tint: var(--cx-color-blue-a15) !important;
@@ -572,8 +579,8 @@ div.cX-Toolbar-Help {
     --cx-ui-scrollbar-track-alt: var(--cx-color-gray-850) !important;
     --cx-ui-scrollbar-thumb: var(--cx-color-gray-700) !important;
     --cx-ui-scrollbar-thumb-hover: var(--cx-color-gray-500) !important;
-    --cx-ui-control-on: var(--cx-color-indigo-400) !important;
-    --cx-ui-active-cell: var(--cx-color-indigo-400) !important;
+    --cx-ui-control-on: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+    --cx-ui-active-cell: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
     --cx-ui-code-key: #ff7b72 !important;
     --cx-ui-code-value: #79c0ff !important;
     --cx-ui-code-string: #ffa657 !important;
@@ -687,6 +694,16 @@ svg.cX-code {
   }
 }
 
+/* Dark theme: the loader and its spinner take the chart's dark accent (the light theme keeps the
+   literals above; per-style dark accents plan, P3) */
+[data-cx-ui-theme="dark"] .cX-Loader {
+  color: var(--cx-ui-accent);
+}
+
+[data-cx-ui-theme="dark"] .cX-Loader-Spinner {
+  border-top-color: var(--cx-ui-accent);
+}
+
 /*
  * Dark theme (P7): the icon colour classes carry light literals (icons.js, and the dataUIStyle's
  * via changeSVGIconColors, written into each icon's <style>), so a dark subtree re-points the UI
@@ -747,6 +764,48 @@ svg.cX-code {
   fill: var(--cx-ui-surface);
 }
 
+/*
+ * Glyph icons (letters, #, +/-: font size/style buttons, Columns, spinners) use text classes that
+ * set only a font, so <text> falls back to its default black fill and vanishes on a dark surface.
+ * Give them the text role. cxtbw100 is deliberately white and is left alone.
+ */
+[data-cx-ui-theme="dark"] .cxtb100,
+[data-cx-ui-theme="dark"] .cxtn10,
+[data-cx-ui-theme="dark"] .cxtn20,
+[data-cx-ui-theme="dark"] .cxtn30,
+[data-cx-ui-theme="dark"] .cxtn40,
+[data-cx-ui-theme="dark"] .cxtn50,
+[data-cx-ui-theme="dark"] .cxtn60,
+[data-cx-ui-theme="dark"] .cxtn70,
+[data-cx-ui-theme="dark"] .cxtn80,
+[data-cx-ui-theme="dark"] .cxtn90,
+[data-cx-ui-theme="dark"] .cxtn100,
+[data-cx-ui-theme="dark"] .cxtn120,
+[data-cx-ui-theme="dark"] .cxtn140,
+[data-cx-ui-theme="dark"] .cxtn160,
+[data-cx-ui-theme="dark"] .cxtn180,
+[data-cx-ui-theme="dark"] .cxti85,
+[data-cx-ui-theme="dark"] .cxti100,
+[data-cx-ui-theme="dark"] .cxts60,
+[data-cx-ui-theme="dark"] .cxts70,
+[data-cx-ui-theme="dark"] .cxts80,
+[data-cx-ui-theme="dark"] .cxts90,
+[data-cx-ui-theme="dark"] .cxts100,
+[data-cx-ui-theme="dark"] .cxts150,
+[data-cx-ui-theme="dark"] .cxts200 {
+  fill: var(--cx-ui-text);
+}
+
+/* The muted #999 grey (e.g. the margin grid) is too dim on a dark surface: use the muted text role. */
+[data-cx-ui-theme="dark"] .cxc {
+  stroke: var(--cx-ui-text-muted);
+}
+
+[data-cx-ui-theme="dark"] .cxcc {
+  stroke: var(--cx-ui-text-muted);
+  fill: var(--cx-ui-text-muted);
+}
+
 @media (prefers-color-scheme: dark) {
   [data-cx-ui-theme="auto"] .cxa,
   [data-cx-ui-theme="auto"] .cxa1,
@@ -799,6 +858,42 @@ svg.cX-code {
   [data-cx-ui-theme="auto"] .cxbw {
     stroke: var(--cx-ui-text);
     fill: var(--cx-ui-surface);
+  }
+
+  [data-cx-ui-theme="auto"] .cxtb100,
+  [data-cx-ui-theme="auto"] .cxtn10,
+  [data-cx-ui-theme="auto"] .cxtn20,
+  [data-cx-ui-theme="auto"] .cxtn30,
+  [data-cx-ui-theme="auto"] .cxtn40,
+  [data-cx-ui-theme="auto"] .cxtn50,
+  [data-cx-ui-theme="auto"] .cxtn60,
+  [data-cx-ui-theme="auto"] .cxtn70,
+  [data-cx-ui-theme="auto"] .cxtn80,
+  [data-cx-ui-theme="auto"] .cxtn90,
+  [data-cx-ui-theme="auto"] .cxtn100,
+  [data-cx-ui-theme="auto"] .cxtn120,
+  [data-cx-ui-theme="auto"] .cxtn140,
+  [data-cx-ui-theme="auto"] .cxtn160,
+  [data-cx-ui-theme="auto"] .cxtn180,
+  [data-cx-ui-theme="auto"] .cxti85,
+  [data-cx-ui-theme="auto"] .cxti100,
+  [data-cx-ui-theme="auto"] .cxts60,
+  [data-cx-ui-theme="auto"] .cxts70,
+  [data-cx-ui-theme="auto"] .cxts80,
+  [data-cx-ui-theme="auto"] .cxts90,
+  [data-cx-ui-theme="auto"] .cxts100,
+  [data-cx-ui-theme="auto"] .cxts150,
+  [data-cx-ui-theme="auto"] .cxts200 {
+    fill: var(--cx-ui-text);
+  }
+
+  [data-cx-ui-theme="auto"] .cxc {
+    stroke: var(--cx-ui-text-muted);
+  }
+
+  [data-cx-ui-theme="auto"] .cxcc {
+    stroke: var(--cx-ui-text-muted);
+    fill: var(--cx-ui-text-muted);
   }
 }
 /* @category: widget */
@@ -1621,6 +1716,10 @@ textarea.cX-Chat-Code-Output {
   cursor: default;
 }
 
+/* Dark theme: the left toolbar links take the chart's dark accent text (the light theme keeps the browser link colour; per-style dark accents plan, P3) */
+[data-cx-ui-theme="dark"] [id$="-cX-ChatInterfaceLeftToolbar"] > a {
+  color: var(--cx-ui-accent-strong);
+}
 /* @category: shared */
 
 /*
@@ -2568,7 +2667,6 @@ input[type="search"].cX-DataFilter-Search::-webkit-search-cancel-button {
 .cX-Customizer-CardAccent .cX-Customizer-RightItem:hover,
 .cX-Customizer-CardAccent .cX-Customizer-RightItemLauncher:hover,
 .cX-Customizer-CardAccent .cX-Customizer-RightItemLauncherNB:hover,
-.cX-Customizer-CardAccent .cX-Customizer-RightItemSelect > select:hover,
 .cX-Customizer-CardAccent .cX-Customizer-RightItemTextArea > svg:hover,
 .cX-Customizer-CardAccent .cX-Customizer-RightItemTextArea > textarea:hover,
 .cX-Customizer-CardAccent .cX-Customizer-ContainerRaw > svg:hover,
@@ -2583,6 +2681,10 @@ input[type="search"].cX-DataFilter-Search::-webkit-search-cancel-button {
 .cX-Customizer-CardAccent .cX-Customizer-ListUnique:hover {
   background: var(--cx-item-accent-bg) !important;
   background-color: var(--cx-item-accent-bg) !important;
+}
+/* Selects take only the colour: the background shorthand above would also wipe their chevron. */
+.cX-Customizer-CardAccent .cX-Customizer-RightItemSelect > select:hover {
+  background-color: var(--cx-item-accent-bg);
 }
 /* Range sliders inside an accented card follow the card's colour (thumb + fill),
  * not the global purple. -webkit- and -moz- pseudo-elements must stay in separate
@@ -2856,6 +2958,19 @@ input[type="search"].cX-DataFilter-Search::-webkit-search-cancel-button {
   height: 26px !important;
 }
 
+/*
+ * Integer spinner (-, value, +): push the buttons outward into the empty outer columns for more
+ * separation from the value box. A transform leaves the box (and its fixed-width input) untouched,
+ * and moves the click target with the icon.
+ */
+.cX-Customizer-RightItemInt .cX-Customizer-RightItemCol2 {
+  transform: translateX(-6px);
+}
+
+.cX-Customizer-RightItemInt .cX-Customizer-RightItemCol5 {
+  transform: translateX(6px);
+}
+
 .cX-Customizer-RightItemColMid {
   grid-area: 1 / 3 / 2 / 5;
   display: flex;
@@ -2876,6 +2991,38 @@ input[type="search"].cX-DataFilter-Search::-webkit-search-cancel-button {
   padding-top: 0;
   padding-bottom: 0;
   line-height: normal;
+}
+
+/*
+ * Select boxes draw their own chevron instead of the native arrow: the browser pins that against
+ * the right border and padding cannot move it. Two thin diagonals in currentColor form the V, so it
+ * follows the text colour in light and dark themes. padding-left keeps the value where the native
+ * control put it; padding-right keeps long values clear of the chevron.
+ */
+.cX-Customizer-RightItemSelect > select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 4px;
+  padding-right: 20px;
+  background-image:
+    linear-gradient(45deg, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%);
+  background-position:
+    calc(100% - 13px) 50%,
+    calc(100% - 8px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* High-contrast (forced colours) mode drops background images: fall back to the native arrow. */
+@media (forced-colors: active) {
+  .cX-Customizer-RightItemSelect > select {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background-image: none;
+  }
 }
 
 .cX-Customizer-RightItemTextArea>svg:hover,
@@ -3169,7 +3316,10 @@ input.cX-Customizer-Search:not([type="color"]) {
 .cX-Customizer-RightPanel .cX-Customizer-String,
 .cX-Customizer-RightPanel .cX-Customizer-Unique,
 .cX-Customizer-RightPanel .cX-Customizer-Wrangling {
-  border-color: var(--cx-datatable-banner-border-color, var(--cx-ui-chrome-border)) !important;
+  /* The solid accent border every widget frame shares (DataTable, DataFilter cards). This used the
+     light chrome border, so in stripped/old/bms/colorful/ngs360 the Customizer cards were fainter
+     than the DataFilter cards next to them. */
+  border-color: var(--cx-datatable-border-color, var(--cx-ui-border-accent)) !important;
   border-radius: var(--cx-border-radius) !important;
 }
 
@@ -3556,6 +3706,11 @@ div.CanvasXpressDragLayout {
   word-break: break-word;
 }
 
+/* Dark theme: the header links (e.g. Title / Text) are plain <a>, drawn in the browser's dark link
+   colour; they take the chart's dark accent text instead (the light theme keeps the browser link colour; per-style dark accents plan, P3) */
+[data-cx-ui-theme="dark"] .cX-Customizer-RightItemHeaderBottom > a {
+  color: var(--cx-ui-accent-strong);
+}
 /* @category: widget */
 /***********
  * Tooltip *
@@ -4607,9 +4762,11 @@ tr.cX-DataTable-DOE {
   background-color: var(--cx-background-widgets-color, var(--cx-ui-surface));
 }
 
+/* Outer frame: the solid accent border shared by every widget frame (DataFilter cards,
+ * Customizer cards); the light chrome border is kept for the table's internal dividers. */
 .cX-DataTable {
   background-color: transparent;
-  border: 1px var(--cx-border-style) var(--cx-datatable-banner-border-color, var(--cx-ui-chrome-border));
+  border: 1px var(--cx-border-style) var(--cx-datatable-border-color, var(--cx-ui-border-accent));
   border-radius: var(--cx-border-radius);
   clear: both;
   color: var(--cx-font-color, var(--cx-ui-text));
@@ -4635,7 +4792,7 @@ tr.cX-DataTable-DOE {
 
 input.cX-DataTable-Search {
   background-color: var(--cx-datatable-background-color, var(--cx-ui-surface));
-  border: 1px var(--cx-border-style) var(--cx-datatable-banner-border-color, var(--cx-ui-chrome-border));
+  border: 1px var(--cx-border-style) var(--cx-datatable-border-color, var(--cx-ui-border-accent));
   border-radius: var(--cx-border-radius);
   color: var(--cx-datatable-banner-text-color, var(--cx-ui-on-chrome));
   margin-right: 10px;
@@ -4887,7 +5044,7 @@ table.cX-DataTable,
 }
 
 /* "colorful" style: the selected row is highlighted in amber so it stands out
- * from the purple header/hover and the light-purple striping. */
+ * from the blue header/hover and the light-blue striping. */
 .cX-DataTable-Colorful .cX-DataTable-Row-Active {
   background-color: rgba(242, 169, 0, 0.22) !important;
 }
@@ -5151,6 +5308,10 @@ td.cX-DataTable-Cell > .cX-DataTable-Cell-Number:hover {
   width: 120px;
 }
 
+/* Dark theme: the column menu link takes the chart's dark accent text (the light theme keeps the browser link colour; per-style dark accents plan, P3) */
+[data-cx-ui-theme="dark"] .cX-DataTable-Cell-Header-Menu {
+  color: var(--cx-ui-accent-strong);
+}
 /* @category: widget */
 /***************/
 /* Data Filter */
@@ -5233,12 +5394,15 @@ td.cX-DataTable-Cell > .cX-DataTable-Cell-Number:hover {
   font-size: var(--cx-datafilter-font-size, var(--cx-font-size));
 }
 
+/* Sits on the chrome-coloured bar, so it takes the text colour readable on it: white on modern's
+ * accent bar, dark on the white/grey bars, light in the dark UI theme. */
 .cX-DataFilter-Toolbar-Text {
   flex: 1;
   top: 0px;
   left: 0px;
   padding-left: 8px;
   font-size: var(--cx-font-size);
+  color: var(--cx-ui-on-chrome);
 }
 
 svg.cX-DataFilter-Toolbar-Image,
@@ -5247,9 +5411,11 @@ svg.cX-DataFilter-Toolbar-ImageNB {
   cursor: pointer;
 }
 
+/* Left of the icon row: takes the free space, the icons stay right, long counts ellipsize */
 .cX-DataFilter-Summary {
-  width: 100%;
-  padding: 2px 8px 4px 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 4px;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -6170,6 +6336,13 @@ span.cX-Menu-Item-Text {
   opacity: 1;
 }
 
+/* Dark theme: the chart's dark accent, with the dark text that reads on it (the light theme keeps
+   the literal above; per-style dark accents plan, P3) */
+[data-cx-ui-theme="dark"] .cX-Resize-Indicator {
+  background: var(--cx-ui-accent);
+  color: var(--cx-ui-on-accent);
+}
+
 /* 8-POINT RESIZER STYLES */
 .cX-Resizer {
   position: absolute;
@@ -6406,6 +6579,7 @@ body.has-fullscreen {
   border-radius: 10px;
   padding: 8px;
   background: var(--cx-ui-surface);
+  color: var(--cx-font-color, var(--cx-ui-text));
   opacity: 0;
   z-index: var(--cx-z-toolbar-edge);
   transition: all var(--cx-transition-speed) ease;

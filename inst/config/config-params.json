@@ -1,5 +1,5 @@
 {
- "x-cx-version": "70.6",
+ "x-cx-version": "70.7",
  "generatedBy": "tools/schema/generate-rd.js",
  "count": 1702,
  "parameters": [
@@ -8945,7 +8945,7 @@
    "parameter": "showDataValues",
    "type": "boolean",
    "default": false,
-   "description": "Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots and line graphs"
+   "description": "Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots, line graphs and Sankey node labels"
   },
   {
    "parameter": "showDecorations",
