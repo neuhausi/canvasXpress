@@ -123,7 +123,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1702 keys). String enums become open literal
+ * config schema (1732 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -135,6 +135,13 @@ export interface CXConfig {
    * @default {}
    */
   Rdataset?: Record<string, unknown> | boolean;
+  /**
+   * Author-written text alternative (alt text) for screen readers. When set it replaces the
+   * generated chart summary in the canvas aria-label and is added to SVG exports as their
+   * title and description
+   * @default false
+   */
+  a11yDescription?: string | boolean;
   /**
    * Flag to ensure the heatmap indicator scales appropriately when the graph is rendered or
    * the user manually resizes the graph, the adjustAspectRatio flag must be set to true for
@@ -689,6 +696,11 @@ export interface CXConfig {
    */
   bulletWidthRatio?: number | boolean;
   /**
+   * Author or organization credit shown in the chart footer, e.g. "Chart: Jane Doe"
+   * @default false
+   */
+  byline?: string | boolean;
+  /**
    * Flag to cache image in meta data as Base64
    * @default false
    */
@@ -1011,6 +1023,13 @@ export interface CXConfig {
    */
   colorLabelBy?: string | boolean;
   /**
+   * Numeric colour legend for binned colouring: equal draws one equal-width swatch per class
+   * with every class edge labelled (stepped legend); proportional sizes swatches by their
+   * value range; auto is equal with a colorSpectrumBreaksMethod, else proportional
+   * @default "auto"
+   */
+  colorLegendSteps?: "auto" | "proportional" | "equal" | false | (string & {});
+  /**
    * Title for the color legend
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
@@ -1052,6 +1071,13 @@ export interface CXConfig {
    * @default []
    */
   colorSpectrumBreaks?: unknown[] | boolean | string | number;
+  /**
+   * Classify the colorBy values into one colour class per colorSpectrum colour (a classed
+   * choropleth): jenks (natural breaks), quantile (equal count) or equalWidth. Computes the
+   * colorSpectrumBreaks and turns on binned colouring
+   * @default false
+   */
+  colorSpectrumBreaksMethod?: string | boolean;
   /**
    * Color spectrum by factor in heatmaps. The first key represents the name of the factor
    * within the x/z data object. The subsequent keys correspond to each level of that factor.
@@ -1427,6 +1453,15 @@ export interface CXConfig {
    */
   dataLabelBackgroundColor?: string | boolean;
   /**
+   * Number format for the data values drawn on the chart (showDataValues and data labels).
+   * Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound,
+   * yen, compact), a sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  dataLabelNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * A declarative dplyr/tidyr data-grammar recipe applied over the tidy substrate BEFORE the
    * chart wrangle. An ordered array of ops: {op:"filter", col, cmp (one of
    * ==,!=,>,>=,<,<=,in), value}; {op:"mutate", col, fn} where fn is a transform name
@@ -1612,8 +1647,9 @@ export interface CXConfig {
    */
   dataTableColAlignment?: Record<string, unknown> | boolean;
   /**
-   * Format for the cols in the data table. Key is the sample name and the value is the format
-   * string using sprintf notation
+   * Format for the cols in the data table. Key is the sample name and the value is a sprintf
+   * format string, a number-format preset (comma, percent, dollar, euro, pound, yen, compact)
+   * or a number-format object {locale, style, currency, decimals}
    * @default {}
    */
   dataTableColFormat?: Record<string, unknown> | boolean;
@@ -1641,6 +1677,15 @@ export interface CXConfig {
    */
   dataTableColProperties?: Record<string, unknown> | boolean;
   /**
+   * In-cell graphics per column of the data table. Key is the column name and the value is bar
+   * (a bar behind the value scaled to the column, from zero when the column has negatives),
+   * {type: bar, color}, or {type: sparkline, columns: [...], color, width, height, showValue}
+   * (a small line of the row values across those columns, replacing the value unless
+   * showValue)
+   * @default {}
+   */
+  dataTableColRenderer?: Record<string, unknown> | boolean;
+  /**
    * Number of pixels for the width of cells in the data table
    * @default 180
    */
@@ -1656,6 +1701,18 @@ export interface CXConfig {
    */
   dataTableColored?: boolean;
   /**
+   * Flag to shrink the data table to the height of its rows when they do not fill the space
+   * (no empty area under the last row); a longer table still scrolls
+   * @default false
+   */
+  dataTableFitHeight?: boolean;
+  /**
+   * Flag to narrow the data table to the width of its columns when they do not fill the space
+   * (no empty area after the last column); a wider table still scrolls
+   * @default false
+   */
+  dataTableFitWidth?: boolean;
+  /**
    * Flag to group rows in the data table based on metadata
    * @default false
    */
@@ -1665,6 +1722,13 @@ export interface CXConfig {
    * @default "rgb(255, 255, 255)"
    */
   dataTableHeaderBackgroundColor?: string | boolean;
+  /**
+   * When the data table header cells show their menu, filter and resize icons: always, only
+   * while the header cell is hovered, or auto (on hover with the minimal dataUIStyle, always
+   * otherwise). Sorting arrows and the filter of a filtered column always show
+   * @default "auto"
+   */
+  dataTableHeaderIcons?: "auto" | "always" | "hover" | false | (string & {});
   /**
    * HTML string to use as template for the data table header info
    * @default false
@@ -2033,7 +2097,7 @@ export interface CXConfig {
    * Style for the UI
    * @default "modern"
    */
-  dataUIStyle?: "cx" | "stripped" | "modern" | "old" | "bms" | "colorful" | "rdc" | "ngs360" | false | (string & {});
+  dataUIStyle?: "cx" | "stripped" | "minimal" | "modern" | "old" | "bms" | "colorful" | "rdc" | "ngs360" | false | (string & {});
   /**
    * Frequency for the data values in line graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -2373,6 +2437,13 @@ export interface CXConfig {
    * @default "normal"
    */
   dotplotType?: "arrow" | "bullet" | "cleveland" | "connected" | "line" | "lineConnected" | "normal" | "stacked" | "transition" | false | (string & {});
+  /**
+   * Direction of the arrows in arrow dumbbells (dumbbellType arrow): value points each arrow
+   * at the smaller value; order points from the first variable to the next (before to after)
+   * @graphTypes Boxplot, Cleveland, DotLine, Dotplot, Dumbbell, Violin
+   * @default "value"
+   */
+  dumbbellArrowDirection?: "value" | "order" | false | (string & {});
   /**
    * Style for the dumbbell plot
    * @graphTypes Boxplot, Cleveland, DotLine, Dotplot, Dumbbell, Violin
@@ -2779,6 +2850,12 @@ export interface CXConfig {
    * @default []
    */
   fontsExternal?: unknown[] | boolean | string | number;
+  /**
+   * Horizontal alignment for the structured chart footer (notes, source, byline, data
+   * download)
+   * @default "left"
+   */
+  footerAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Number of future steps to forecast. 0 uses the forecast package default: 10, or two
    * seasons when forecastSeasonLength is greater than 1
@@ -3943,6 +4020,15 @@ export interface CXConfig {
    */
   legendMax?: number | boolean;
   /**
+   * Number format for numeric values displayed in legends (continuous color ramps and size-by
+   * bins). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro,
+   * pound, yen, compact), a sprintf format string, or an object, i.e. {"locale": "en-US",
+   * "style": "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping":
+   * true, "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  legendNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Object to specify custom order for the levels in the legends. The key of the object is the
    * name of a valid sample or variable annotation included in the data object. The value for
    * element is an array with the levels for the corresponding factor
@@ -4335,6 +4421,13 @@ export interface CXConfig {
    */
   manhattanRangeStart?: string | boolean;
   /**
+   * Color for the region bubbles on maps (sizeBy a sample: a circle per region sized by its
+   * value); the size legend uses it too
+   * @graphTypes Map
+   * @default "rgba(255,0,0,0.6)"
+   */
+  mapBubbleColor?: string | boolean;
+  /**
    * Map Latitude Of Origin in degrees. (Applicable to Albers projection only). Default adjusts
    * to USA maps
    * @graphTypes Map
@@ -4377,6 +4470,20 @@ export interface CXConfig {
    * @default false
    */
   mapId?: string | boolean;
+  /**
+   * Color for the region labels on maps. Defaults to black or white, whichever contrasts with
+   * the region fill
+   * @graphTypes Map
+   * @default false
+   */
+  mapLabelColor?: string | boolean;
+  /**
+   * Map feature property used as the region label (defaults to name, then NAME, then the
+   * region key)
+   * @graphTypes Map
+   * @default false
+   */
+  mapLabelProperty?: string | boolean;
   /**
    * Map Latitude Of Origin in degrees. (Applicable to Albers projection only). Default adjusts
    * to USA maps
@@ -4963,6 +5070,21 @@ export interface CXConfig {
    */
   nodeSizeScaleFactor?: number | boolean;
   /**
+   * Footer notes drawn above the source line at the bottom of the chart. Newlines split into
+   * multiple lines
+   * @default false
+   */
+  notes?: string | boolean;
+  /**
+   * Default number format for values displayed in axis ticks, tooltips, legends and data
+   * labels. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a
+   * sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  numberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Sort group keys numerically (type-aware: plain integers, range labels, composite keys)
    * instead of lexicographically
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -5432,11 +5554,19 @@ export interface CXConfig {
    */
   pieSegmentSeparation?: number | boolean;
   /**
-   * Position for the pices of the pie
+   * Shape of the pie: a full circle, or a half circle (semicircle, e.g. an election donut with
+   * pieInnerRadius)
+   * @graphTypes Pie
+   * @default "full"
+   */
+  pieShape?: "full" | "half" | false | (string & {});
+  /**
+   * Position for the pices of the pie. parliament draws one dot per seat on a hemicycle (the
+   * values are seat counts), grouped by party from left to right
    * @graphTypes Pie
    * @default "separated"
    */
-  pieType?: "separated" | "solid" | false | (string & {});
+  pieType?: "separated" | "solid" | "parliament" | false | (string & {});
   /**
    * Utility to pivot data with a sample annotation
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -5664,6 +5794,16 @@ export interface CXConfig {
    * @default 1
    */
   rAxisLogTicksWidth?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the R axis. Overrides numberFormat for
+   * this axis; an explicit rAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact", "currency":
+   * "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Circular
+   * @default false
+   */
+  rAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Flag to show on not the percent in each segment in the R axis
    * @graphTypes Circular
@@ -6003,6 +6143,15 @@ export interface CXConfig {
    * @default true
    */
   resizableY?: boolean;
+  /**
+   * Width-based config overrides applied on render/resize, i.e. [{"maxWidth": 480, "config":
+   * {"legendPosition": "bottom", "fontScaleFontFactor": 0.8}}]. A rule matches when the canvas
+   * width is <= maxWidth and >= minWidth (either bound optional); later rules win on
+   * conflicting keys. Overrides revert automatically when the width stops matching and are
+   * never saved into the configuration
+   * @default []
+   */
+  responsiveRules?: unknown[] | boolean | string | number;
   /**
    * Name of a sample annotation(s) to create a ribbon of each variable in scatter plots. If a
    * single annotation is passed then it will be used as a standard deviation. If two
@@ -7050,6 +7199,12 @@ export interface CXConfig {
    */
   showContourLevel?: boolean;
   /**
+   * Flag to show a "Get the data" link in the chart footer which downloads the current data as
+   * CSV
+   * @default false
+   */
+  showDataDownload?: boolean;
+  /**
    * Flag to show/hide the data labels in scatter plots
    * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
    * @default false
@@ -7217,6 +7372,13 @@ export interface CXConfig {
    */
   showLineEdgeLegend?: boolean;
   /**
+   * Flag to show/hide the series name at the end of each line in line graphs, in the series
+   * color, replacing the legend (direct labeling). Overlapping labels are nudged apart
+   * @graphTypes Area, AreaLine, BarLine, DotLine, Line, ParallelCoordinates … (9 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  showLineEndLabels?: boolean;
+  /**
    * Flag to show/hide the legend line
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default true
@@ -7229,6 +7391,13 @@ export interface CXConfig {
    * @default false
    */
   showLoessFit?: string | boolean;
+  /**
+   * Flag to show/hide the region labels on maps (only labels that fit inside their region
+   * without overlapping another label are drawn, largest regions first)
+   * @graphTypes Map
+   * @default false
+   */
+  showMapLabels?: boolean;
   /**
    * Flag to show/hide the the overlays name
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
@@ -7791,6 +7960,18 @@ export interface CXConfig {
    */
   sortOnGrouping?: string | boolean;
   /**
+   * Data source name shown in the chart footer as "Source: ...". Combine with sourceUrl to
+   * make it a link
+   * @default false
+   */
+  source?: string | boolean;
+  /**
+   * URL for the footer data source. When set with source, the "Source: ..." footer text
+   * becomes a clickable link (exports still include the text)
+   * @default false
+   */
+  sourceUrl?: string | boolean;
+  /**
    * Factor (in the x data object) used to split the samples ala split in a complex heatmap.
    * Unlike segregateSamplesBy, the split keeps a single full-width plot and only inserts a
    * thin gap (splitSeparation) at each group boundary
@@ -8215,6 +8396,15 @@ export interface CXConfig {
    * @default false
    */
   tooltipFontColor?: string | boolean;
+  /**
+   * Number format for values displayed in tooltips. Overrides numberFormat. It could be a
+   * preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string,
+   * or an object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}. Uses
+   * Intl.NumberFormat when available
+   * @default false
+   */
+  tooltipNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Transparency for the tooltip
    * @default null
@@ -9146,6 +9336,17 @@ export interface CXConfig {
    */
   xAxis2?: unknown[] | boolean | string | number;
   /**
+   * Locale-aware number format for the tick values in the second X axis. Overrides
+   * numberFormat for this axis; an explicit xAxis2TickFormat takes precedence over it. It
+   * could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf
+   * format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  xAxis2NumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Flag to rotate 180 degrees the direction of the X axis on the top
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
@@ -9383,6 +9584,16 @@ export interface CXConfig {
    * @default 2
    */
   xAxisMinorTicks?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the X axis. Overrides numberFormat for
+   * this axis; an explicit xAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact", "currency":
+   * "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  xAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Size in pixels for the data rug in the X axis
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -9854,6 +10065,16 @@ export interface CXConfig {
    */
   yAxisMinorTicks?: number | boolean;
   /**
+   * Locale-aware number format for the tick values in the Y axis. Overrides numberFormat for
+   * this axis; an explicit yAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact", "currency":
+   * "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Bin, Binplot, CDF, Contour, Density, Distribution … (21 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  yAxisNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Size in pixels for the data rug in the Y axis
    * @graphTypes Bin, Binplot, CDF, Contour, Density, Distribution … (21 types; see CXGraphTypeKeys)
    * @default 15
@@ -10242,6 +10463,16 @@ export interface CXConfig {
    * @default 1
    */
   zAxisLogTicksWidth?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the Z axis. Overrides numberFormat for
+   * this axis; an explicit zAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact", "currency":
+   * "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes ScatterBubble2D, Scatter3D
+   * @default false
+   */
+  zAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Set the tick labels paired one-to-one with zAxisSetValues in the Z axis
    * @graphTypes ScatterBubble2D, Scatter3D
@@ -10640,6 +10871,7 @@ export type CXKeysCircularGraphs =
   | "circularType";
 /** Config keys in the "Citations or References" category. */
 export type CXKeysCitationsorReferences =
+  | "byline"
   | "citation"
   | "citationAlign"
   | "citationBaseline"
@@ -10648,7 +10880,12 @@ export type CXKeysCitationsorReferences =
   | "citationFontStyle"
   | "citationMargin"
   | "citationRotate"
-  | "citationScaleFontFactor";
+  | "citationScaleFontFactor"
+  | "footerAlign"
+  | "notes"
+  | "showDataDownload"
+  | "source"
+  | "sourceUrl";
 /** Config keys in the "Clustering" category. */
 export type CXKeysClustering =
   | "clusterAxis"
@@ -10665,10 +10902,12 @@ export type CXKeysClustering =
 /** Config keys in the "Colors" category. */
 export type CXKeysColors =
   | "blindnessType"
+  | "colorLegendSteps"
   | "colorScheme"
   | "colorSpectrum"
   | "colorSpectrumBinned"
   | "colorSpectrumBreaks"
+  | "colorSpectrumBreaksMethod"
   | "colorSpectrumByFactor"
   | "colorSpectrumByObject"
   | "colorSpectrumZeroValue"
@@ -10920,11 +11159,15 @@ export type CXKeysDataTable =
   | "dataTableColOrder"
   | "dataTableColPin"
   | "dataTableColProperties"
+  | "dataTableColRenderer"
   | "dataTableColWidth"
   | "dataTableColorTransparency"
   | "dataTableColored"
+  | "dataTableFitHeight"
+  | "dataTableFitWidth"
   | "dataTableGrouped"
   | "dataTableHeaderBackgroundColor"
+  | "dataTableHeaderIcons"
   | "dataTableHeaderTemplate"
   | "dataTableHeaderTextAlign"
   | "dataTableHeaderTextBaseline"
@@ -11079,6 +11322,7 @@ export type CXKeysDotplotGraphs =
   | "dotplotType";
 /** Config keys in the "Dumbbell Graphs" category. */
 export type CXKeysDumbbellGraphs =
+  | "dumbbellArrowDirection"
   | "dumbbellType";
 /** Config keys in the "Error Bars" category. */
 export type CXKeysErrorBars =
@@ -11482,6 +11726,7 @@ export type CXKeysLineGraphs =
   | "lineDecoration"
   | "lineErrorType"
   | "lineType"
+  | "showLineEndLabels"
   | "tension"
   | "tensionSegments";
 /** Config keys in the "Lines" category. */
@@ -11530,16 +11775,20 @@ export type CXKeysManhattanPlots =
 /** Config keys in the "Maps" category. */
 export type CXKeysMaps =
   | "hiddenMapFeatures"
+  | "mapBubbleColor"
   | "mapColor"
   | "mapConfig"
   | "mapConfigFeatures"
   | "mapId"
+  | "mapLabelColor"
+  | "mapLabelProperty"
   | "mapMarkerShape"
   | "mapMarkerShapeScaleFactor"
   | "mapOutlineColor"
   | "mapProjection"
   | "mapSmps"
   | "mapZipCodeIds"
+  | "showMapLabels"
   | "topoJSON"
   | "visibleMapFeatures";
 /** Config keys in the "Maps Albers" category. */
@@ -11772,6 +12021,7 @@ export type CXKeysPieCharts =
   | "pieSegmentLabels"
   | "pieSegmentPrecision"
   | "pieSegmentSeparation"
+  | "pieShape"
   | "pieType"
   | "showPieSampleLabel"
   | "showPieValues"
@@ -11807,7 +12057,8 @@ export type CXKeysPlotDataType =
   | "isCxplot"
   | "isDataFrame"
   | "isGGMatrix"
-  | "isR";
+  | "isR"
+  | "responsiveRules";
 /** Config keys in the "Plot Mode" category. */
 export type CXKeysPlotMode =
   | "isEditable"
@@ -11874,6 +12125,7 @@ export type CXKeysRAxis =
   | "rAxisLogTicksShow"
   | "rAxisLogTicksTransparency"
   | "rAxisLogTicksWidth"
+  | "rAxisNumberFormat"
   | "rAxisPercentShow"
   | "rAxisSetLabels"
   | "rAxisSetMinorValues"
@@ -12078,6 +12330,7 @@ export type CXKeysText =
   | "align"
   | "autoScaleFont"
   | "baseline"
+  | "dataLabelNumberFormat"
   | "fontColor"
   | "fontName"
   | "fontScaleFontFactor"
@@ -12085,8 +12338,11 @@ export type CXKeysText =
   | "fontStyle"
   | "fonts"
   | "fontsExternal"
+  | "legendNumberFormat"
   | "maxTextSize"
-  | "minTextSize";
+  | "minTextSize"
+  | "numberFormat"
+  | "tooltipNumberFormat";
 /** Config keys in the "Text Placement" category. */
 export type CXKeysTextPlacement =
   | "optimizeTextPosition"
@@ -12096,6 +12352,7 @@ export type CXKeysTextPlacement =
   | "optimizeTextPositionTemperature";
 /** Config keys in the "Titles and Subtitles" category. */
 export type CXKeysTitlesandSubtitles =
+  | "a11yDescription"
   | "subtitle"
   | "subtitleAlign"
   | "subtitleBaseline"
@@ -12247,6 +12504,7 @@ export type CXKeysXAxis =
   | "setPanningMinX"
   | "xAxis"
   | "xAxis2"
+  | "xAxis2NumberFormat"
   | "xAxis2Rotate"
   | "xAxis2Show"
   | "xAxis2TickFormat"
@@ -12286,6 +12544,7 @@ export type CXKeysXAxis =
   | "xAxisLogTicksTransparency"
   | "xAxisLogTicksWidth"
   | "xAxisMinorTicks"
+  | "xAxisNumberFormat"
   | "xAxisRugHeight"
   | "xAxisRugPosition"
   | "xAxisRugShow"
@@ -12367,6 +12626,7 @@ export type CXKeysYAxis =
   | "yAxisLogTicksTransparency"
   | "yAxisLogTicksWidth"
   | "yAxisMinorTicks"
+  | "yAxisNumberFormat"
   | "yAxisRugHeight"
   | "yAxisRugPosition"
   | "yAxisRugShow"
@@ -12431,6 +12691,7 @@ export type CXKeysZAxis =
   | "zAxisLogTicksShow"
   | "zAxisLogTicksTransparency"
   | "zAxisLogTicksWidth"
+  | "zAxisNumberFormat"
   | "zAxisSetLabels"
   | "zAxisSetMinorValues"
   | "zAxisSetValues"

@@ -505,7 +505,7 @@ div.cX-Toolbar-Help {
   --cx-ui-border: var(--cx-color-gray-700) !important;
   --cx-ui-border-subtle: var(--cx-color-gray-800) !important;
   --cx-ui-divider: var(--cx-color-gray-800) !important;
-  --cx-ui-border-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+  --cx-ui-border-accent: var(--cx-ui-dark-border-accent, var(--cx-color-indigo-400)) !important;
   --cx-ui-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
   --cx-ui-accent-strong: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
   --cx-ui-accent-hover: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
@@ -556,7 +556,7 @@ div.cX-Toolbar-Help {
     --cx-ui-border: var(--cx-color-gray-700) !important;
     --cx-ui-border-subtle: var(--cx-color-gray-800) !important;
     --cx-ui-divider: var(--cx-color-gray-800) !important;
-    --cx-ui-border-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
+    --cx-ui-border-accent: var(--cx-ui-dark-border-accent, var(--cx-color-indigo-400)) !important;
     --cx-ui-accent: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
     --cx-ui-accent-strong: var(--cx-ui-dark-accent-strong, var(--cx-color-indigo-300)) !important;
     --cx-ui-accent-hover: var(--cx-ui-dark-accent, var(--cx-color-indigo-400)) !important;
@@ -5174,6 +5174,25 @@ table.cX-DataTable,
   top: 35%;
   width: 3px;
   height: 30%;
+}
+
+/* dataTableHeaderIcons "hover" (auto with the minimal dataUIStyle): the header menu, filter and
+   resize handle appear while the header cell is hovered or has keyboard focus. Opacity, not
+   display, so the resize handle stays grabbable; sorting and an active filter stay visible. */
+.cX-DataTable-HeaderIconsHover .cX-DataTable-Cell-Header-Menu,
+.cX-DataTable-HeaderIconsHover .cX-DataTable-Cell-Header-Filter:not(.cX-DataTable-Cell-Header-Filter-Active),
+.cX-DataTable-HeaderIconsHover .cX-DataTable-Cell-Header-Resize {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.cX-DataTable-HeaderIconsHover :is(td, th):hover .cX-DataTable-Cell-Header-Menu,
+.cX-DataTable-HeaderIconsHover :is(td, th):hover .cX-DataTable-Cell-Header-Filter,
+.cX-DataTable-HeaderIconsHover :is(td, th):hover .cX-DataTable-Cell-Header-Resize,
+.cX-DataTable-HeaderIconsHover :is(td, th):focus-within .cX-DataTable-Cell-Header-Menu,
+.cX-DataTable-HeaderIconsHover :is(td, th):focus-within .cX-DataTable-Cell-Header-Filter,
+.cX-DataTable-HeaderIconsHover :is(td, th):focus-within .cX-DataTable-Cell-Header-Resize {
+  opacity: 1;
 }
 
 .cX-DataTable-Cell-Head-Text {

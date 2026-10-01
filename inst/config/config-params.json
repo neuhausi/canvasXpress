@@ -1,13 +1,19 @@
 {
- "x-cx-version": "70.7",
+ "x-cx-version": "70.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1702,
+ "count": 1732,
  "parameters": [
   {
    "parameter": "Rdataset",
    "type": "object|boolean",
    "default": {},
    "description": "Object to hold the info for the R dataset loaded"
+  },
+  {
+   "parameter": "a11yDescription",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Author-written text alternative (alt text) for screen readers. When set it replaces the generated chart summary in the canvas aria-label and is added to SVG exports as their title and description"
   },
   {
    "parameter": "adjustAspectRatioHeatmapIndicator",
@@ -861,6 +867,12 @@
    "description": "A number between 0.1 and 1 to adjust the width of the bullet"
   },
   {
+   "parameter": "byline",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Author or organization credit shown in the chart footer, e.g. \"Chart: Jane Doe\""
+  },
+  {
    "parameter": "cacheBase64",
    "type": "boolean",
    "default": false,
@@ -1263,6 +1275,18 @@
    "description": "Name of the variable annotation to color the labels in Scatter2D plots"
   },
   {
+   "parameter": "colorLegendSteps",
+   "type": "string|boolean",
+   "default": "auto",
+   "options": [
+    "auto",
+    "proportional",
+    "equal",
+    false
+   ],
+   "description": "Numeric colour legend for binned colouring: equal draws one equal-width swatch per class with every class edge labelled (stepped legend); proportional sizes swatches by their value range; auto is equal with a colorSpectrumBreaksMethod, else proportional"
+  },
+  {
    "parameter": "colorLegendTitle",
    "type": "string|boolean",
    "default": false,
@@ -1459,6 +1483,12 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "An array with numbers in ascending order for the color spectrum to create discontinuous spectra. It must have the same length of the colorSpectrum array for example [0, 0.3, 1]"
+  },
+  {
+   "parameter": "colorSpectrumBreaksMethod",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Classify the colorBy values into one colour class per colorSpectrum colour (a classed choropleth): jenks (natural breaks), quantile (equal count) or equalWidth. Computes the colorSpectrumBreaks and turns on binned colouring"
   },
   {
    "parameter": "colorSpectrumByFactor",
@@ -2051,6 +2081,12 @@
    "description": "Color for the data labels background"
   },
   {
+   "parameter": "dataLabelNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for the data values drawn on the chart (showDataValues and data labels). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "dataPipeline",
    "type": "array|boolean|string|number",
    "default": [],
@@ -2297,7 +2333,7 @@
    "parameter": "dataTableColFormat",
    "type": "object|boolean",
    "default": {},
-   "description": "Format for the cols in the data table. Key is the sample name and the value is the format string using sprintf notation"
+   "description": "Format for the cols in the data table. Key is the sample name and the value is a sprintf format string, a number-format preset (comma, percent, dollar, euro, pound, yen, compact) or a number-format object {locale, style, currency, decimals}"
   },
   {
    "parameter": "dataTableColHide",
@@ -2324,6 +2360,12 @@
    "description": "Properties for the cols in the data table. Key is the sample name and the value is the width in pixels"
   },
   {
+   "parameter": "dataTableColRenderer",
+   "type": "object|boolean",
+   "default": {},
+   "description": "In-cell graphics per column of the data table. Key is the column name and the value is bar (a bar behind the value scaled to the column, from zero when the column has negatives), {type: bar, color}, or {type: sparkline, columns: [...], color, width, height, showValue} (a small line of the row values across those columns, replacing the value unless showValue)"
+  },
+  {
    "parameter": "dataTableColWidth",
    "type": "integer|boolean",
    "default": 180,
@@ -2342,6 +2384,18 @@
    "description": "Flag to color the data table"
   },
   {
+   "parameter": "dataTableFitHeight",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to shrink the data table to the height of its rows when they do not fill the space (no empty area under the last row); a longer table still scrolls"
+  },
+  {
+   "parameter": "dataTableFitWidth",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to narrow the data table to the width of its columns when they do not fill the space (no empty area after the last column); a wider table still scrolls"
+  },
+  {
    "parameter": "dataTableGrouped",
    "type": "boolean",
    "default": false,
@@ -2352,6 +2406,18 @@
    "type": "string|boolean",
    "default": "rgb(255, 255, 255)",
    "description": "Color for the background of the data table headers"
+  },
+  {
+   "parameter": "dataTableHeaderIcons",
+   "type": "string|boolean",
+   "default": "auto",
+   "options": [
+    "auto",
+    "always",
+    "hover",
+    false
+   ],
+   "description": "When the data table header cells show their menu, filter and resize icons: always, only while the header cell is hovered, or auto (on hover with the minimal dataUIStyle, always otherwise). Sorting arrows and the filter of a filtered column always show"
   },
   {
    "parameter": "dataTableHeaderTemplate",
@@ -2883,6 +2949,7 @@
    "options": [
     "cx",
     "stripped",
+    "minimal",
     "modern",
     "old",
     "bms",
@@ -3330,6 +3397,17 @@
     false
    ],
    "description": "Style for the dotplot. Transition plot are only applicable when data is grouped"
+  },
+  {
+   "parameter": "dumbbellArrowDirection",
+   "type": "string|boolean",
+   "default": "value",
+   "options": [
+    "value",
+    "order",
+    false
+   ],
+   "description": "Direction of the arrows in arrow dumbbells (dumbbellType arrow): value points each arrow at the smaller value; order points from the first variable to the next (before to after)"
   },
   {
    "parameter": "dumbbellType",
@@ -3882,6 +3960,18 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "External Fonts"
+  },
+  {
+   "parameter": "footerAlign",
+   "type": "string|boolean",
+   "default": "left",
+   "options": [
+    "left",
+    "center",
+    "right",
+    false
+   ],
+   "description": "Horizontal alignment for the structured chart footer (notes, source, byline, data download)"
   },
   {
    "parameter": "forecastHorizon",
@@ -5322,6 +5412,12 @@
    "description": "Maximum number of items in the variable legends. If there are more items the legend will be hidden"
   },
   {
+   "parameter": "legendNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for numeric values displayed in legends (continuous color ramps and size-by bins). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "legendOrder",
    "type": "object|boolean",
    "default": false,
@@ -5818,6 +5914,12 @@
    "description": "Sample name included in the data.y.smps object used to map the start position"
   },
   {
+   "parameter": "mapBubbleColor",
+   "type": "string|boolean",
+   "default": "rgba(255,0,0,0.6)",
+   "description": "Color for the region bubbles on maps (sizeBy a sample: a circle per region sized by its value); the size legend uses it too"
+  },
+  {
    "parameter": "mapCentralMeridian",
    "type": "number|boolean",
    "default": -96,
@@ -5863,6 +5965,18 @@
    "type": "string|boolean",
    "default": false,
    "description": "Map Id for the map div in the DOM"
+  },
+  {
+   "parameter": "mapLabelColor",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Color for the region labels on maps. Defaults to black or white, whichever contrasts with the region fill"
+  },
+  {
+   "parameter": "mapLabelProperty",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Map feature property used as the region label (defaults to name, then NAME, then the region key)"
   },
   {
    "parameter": "mapLatitudeOrigin",
@@ -6506,6 +6620,18 @@
    "description": "Scaling factor for increasing size of all nodes in the network"
   },
   {
+   "parameter": "notes",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Footer notes drawn above the source line at the bottom of the chart. Newlines split into multiple lines"
+  },
+  {
+   "parameter": "numberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Default number format for values displayed in axis ticks, tooltips, legends and data labels. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "numericGroupSort",
    "type": "boolean",
    "default": false,
@@ -7069,15 +7195,27 @@
    "description": "Length in pixels for the separation of the pieces of the pie charts"
   },
   {
+   "parameter": "pieShape",
+   "type": "string|boolean",
+   "default": "full",
+   "options": [
+    "full",
+    "half",
+    false
+   ],
+   "description": "Shape of the pie: a full circle, or a half circle (semicircle, e.g. an election donut with pieInnerRadius)"
+  },
+  {
    "parameter": "pieType",
    "type": "string|boolean",
    "default": "separated",
    "options": [
     "separated",
     "solid",
+    "parliament",
     false
    ],
-   "description": "Position for the pices of the pie"
+   "description": "Position for the pices of the pie. parliament draws one dot per seat on a hemicycle (the values are seat counts), grouped by party from left to right"
   },
   {
    "parameter": "pivotBy",
@@ -7378,6 +7516,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Width for the log tick lines in the R axis"
+  },
+  {
+   "parameter": "rAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the R axis. Overrides numberFormat for this axis; an explicit rAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "rAxisPercentShow",
@@ -7783,6 +7927,12 @@
    "type": "boolean",
    "default": true,
    "description": "Flag to disable resizing the height of canvas by dragging the mouse over the edges"
+  },
+  {
+   "parameter": "responsiveRules",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Width-based config overrides applied on render/resize, i.e. [{\"maxWidth\": 480, \"config\": {\"legendPosition\": \"bottom\", \"fontScaleFontFactor\": 0.8}}]. A rule matches when the canvas width is <= maxWidth and >= minWidth (either bound optional); later rules win on conflicting keys. Overrides revert automatically when the width stops matching and are never saved into the configuration"
   },
   {
    "parameter": "ribbonBy",
@@ -8936,6 +9086,12 @@
    "description": "Flag to show/hide the levels in contours"
   },
   {
+   "parameter": "showDataDownload",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show a \"Get the data\" link in the chart footer which downloads the current data as CSV"
+  },
+  {
    "parameter": "showDataLabels",
    "type": "boolean",
    "default": false,
@@ -9098,6 +9254,12 @@
    "description": "Flag to show/hide the legend edge line style"
   },
   {
+   "parameter": "showLineEndLabels",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the series name at the end of each line in line graphs, in the series color, replacing the legend (direct labeling). Overlapping labels are nudged apart"
+  },
+  {
    "parameter": "showLineLegend",
    "type": "boolean",
    "default": true,
@@ -9108,6 +9270,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Name of a variable annotation, or set to true, to display a loess smoothing curve in Scatter plots"
+  },
+  {
+   "parameter": "showMapLabels",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the region labels on maps (only labels that fit inside their region without overlapping another label are drawn, largest regions first)"
   },
   {
    "parameter": "showNameOverlays",
@@ -9703,6 +9871,18 @@
    "description": "Sort the name of the groups after sample grouping."
   },
   {
+   "parameter": "source",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Data source name shown in the chart footer as \"Source: ...\". Combine with sourceUrl to make it a link"
+  },
+  {
+   "parameter": "sourceUrl",
+   "type": "string|boolean",
+   "default": false,
+   "description": "URL for the footer data source. When set with source, the \"Source: ...\" footer text becomes a clickable link (exports still include the text)"
+  },
+  {
    "parameter": "splitSamplesBy",
    "type": "string|boolean",
    "default": false,
@@ -10254,6 +10434,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Color for the Color for the tooltip text if specified"
+  },
+  {
+   "parameter": "tooltipNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for values displayed in tooltips. Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
   },
   {
    "parameter": "tooltipTransparency",
@@ -11368,6 +11554,12 @@
    "description": "Name of the samples, groups or variables to be displayed in the second X axis"
   },
   {
+   "parameter": "xAxis2NumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the second X axis. Overrides numberFormat for this axis; an explicit xAxis2TickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
+  },
+  {
    "parameter": "xAxis2Rotate",
    "type": "boolean",
    "default": false,
@@ -11655,6 +11847,12 @@
    "type": "integer|boolean",
    "default": 2,
    "description": "Number of minor ticks between major ticks in the X axis"
+  },
+  {
+   "parameter": "xAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the X axis. Overrides numberFormat for this axis; an explicit xAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "xAxisRugHeight",
@@ -12229,6 +12427,12 @@
    "description": "Number of minor ticks between major ticks in the Y axis"
   },
   {
+   "parameter": "yAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the Y axis. Overrides numberFormat for this axis; an explicit yAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
+  },
+  {
    "parameter": "yAxisRugHeight",
    "type": "integer|boolean",
    "default": 15,
@@ -12693,6 +12897,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Width for the log tick lines in the Z axis"
+  },
+  {
+   "parameter": "zAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the Z axis. Overrides numberFormat for this axis; an explicit zAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "zAxisSetLabels",
