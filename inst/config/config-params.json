@@ -1,7 +1,7 @@
 {
  "x-cx-version": "70.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1732,
+ "count": 1734,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -1303,6 +1303,7 @@
    "type": "string|boolean",
    "default": "User",
    "options": [
+    "User",
     "AAAS",
     "Accent",
     "BMS",
@@ -2972,6 +2973,12 @@
     false
    ],
    "description": "Frequency for the data values in line graphs"
+  },
+  {
+   "parameter": "dataValuesHideOverlap",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to hide a data value label that does not fit inside its stacked bar segment (showDataValues in Stacked graphs), instead of drawing it over the neighbouring segments"
   },
   {
    "parameter": "dataValuesPosition",
@@ -5359,6 +5366,17 @@
    "description": "Flag to position the legend inside the graphs"
   },
   {
+   "parameter": "legendJustifyTo",
+   "type": "string|boolean",
+   "default": "panel",
+   "options": [
+    "panel",
+    "plot",
+    false
+   ],
+   "description": "What a left/right-justified top or bottom legend (legendHorizontalJustification 0 or 1) aligns to: the panel (plot area) edge or the whole plot (canvas) edge, like titleAlign plot::0"
+  },
+  {
    "parameter": "legendKeyBackgroundBorderColor",
    "type": "string|boolean",
    "default": "rgba(255,255,255,0)",
@@ -6784,7 +6802,7 @@
   },
   {
    "parameter": "optionsWallChain",
-   "type": "string|boolean",
+   "type": "object|boolean",
    "default": false,
    "description": "Option chain object for one expiry: {strikes, expiry, call:{premium,iv,volume}, put:{premium,iv,volume}}"
   },
@@ -7936,7 +7954,7 @@
   },
   {
    "parameter": "ribbonBy",
-   "type": "string|boolean",
+   "type": "string|array|boolean|number",
    "default": false,
    "description": "Name of a sample annotation(s) to create a ribbon of each variable in scatter plots. If a single annotation is passed then it will be used as a standard deviation. If two annotations are passed then, it will be used as upper and lower confidence intervals. Alternatively it could be a pair of arrays witht the actual data. Works in coordination with the lineBy parameter"
   },

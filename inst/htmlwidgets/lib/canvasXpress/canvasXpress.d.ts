@@ -123,7 +123,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1732 keys). String enums become open literal
+ * config schema (1734 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1047,7 +1047,7 @@ export interface CXConfig {
    * a different color is needed in a particular visualization
    * @default "User"
    */
-  colorScheme?: "AAAS" | "Accent" | "BMS" | "BMSBackground" | "BMSBlue" | "BMSBrown" | "BMSGreen" | "BMSPink" | "BMSPrimary" | "BMSSecondary" | "BMSTertiary" | "BMSTertiaryDark" | "BMSTertiaryLight" | "BMSWheat" | "Basic" | "Behance" | "BehancePair" | "BehanceQuartet" | "BehanceTrio" | "Black" | "BlackAndWhite" | "BlueGrey" | "BlueRedGrey" | "Blues" | "BluesDark" | "Bootstrap" | "BrBG" | "Brand" | "Brooklyn99Dark" | "Brooklyn99Regular" | "BuGn" | "BuPu" | "CanvasXpress" | "CanvasXpressOLD" | "CanvasXpressTraditional" | "Cividis" | "ColorBlind" | "ColorSpectrum" | "Colorful" | "ColorfulAlt" | "Complementary" | "Dark2" | "Default" | "Diverging" | "DivergingAlt" | "Economist" | "EconomistBG" | "Excel" | "Excel2" | "Excel3" | "Favorite" | "GGBlanket" | "GGPlot" | "GameOfThronesArryn" | "GameOfThronesGreyjoy" | "GameOfThronesLannister" | "GameOfThronesManderly" | "GameOfThronesMartell" | "GameOfThronesStannis" | "GameOfThronesStark" | "GameOfThronesTargaryen" | "GameOfThronesTully" | "GameOfThronesTyrell" | "GnBu" | "GravityFalls" | "Greens" | "Grey" | "GreyHC" | "Greys" | "Heat" | "Highcharts" | "Inferno" | "JCO" | "Jama" | "KimPossible" | "Lancet" | "LastAirBenderAir" | "LastAirBenderEarth" | "LastAirBenderFire" | "LastAirBenderWater" | "Light" | "Magma" | "Matlab" | "NEJM" | "NPG" | "OrRd" | "Oranges" | "PRGn" | "Paired" | "ParksAndRecreation" | "Parula" | "PaulTol" | "PiYG" | "Plasma" | "Prism" | "PrismPair" | "PrismTrio" | "PuBu" | "PuBuGn" | "PuOr" | "PuRd" | "Purples" | "Rainbow" | "RdBu" | "RdGy" | "RdPu" | "RdYlBu" | "RdYlGn" | "Reds" | "RickyAndMorty" | "Simpsons" | "Solarized" | "SolarizedBase" | "Spectral" | "SpongeBob" | "Stata" | "Stata2" | "Stata3" | "StataMono" | "Tableau" | "TableauBlueRed" | "TableauColorBlind" | "TableauCyclic" | "TableauGreenOrange" | "TableauGrey" | "TableauLight" | "TableauMedium" | "TableauPairSequential" | "TableauPurpleGrey" | "TableauTrafficLight" | "TableauTripleDiverging" | "Viridis" | "ViridisInv" | "WHO" | "WallStreetJournal" | "WallStreetJournal2" | "WallStreetJournal3" | "WallStreetJournalBlackGreen" | "WallStreetJournalDemRep" | "WallStreetJournalRedGreen" | "White" | "YlGn" | "YlGnBu" | "YlOrBr" | "YlOrRd" | false | (string & {});
+  colorScheme?: "User" | "AAAS" | "Accent" | "BMS" | "BMSBackground" | "BMSBlue" | "BMSBrown" | "BMSGreen" | "BMSPink" | "BMSPrimary" | "BMSSecondary" | "BMSTertiary" | "BMSTertiaryDark" | "BMSTertiaryLight" | "BMSWheat" | "Basic" | "Behance" | "BehancePair" | "BehanceQuartet" | "BehanceTrio" | "Black" | "BlackAndWhite" | "BlueGrey" | "BlueRedGrey" | "Blues" | "BluesDark" | "Bootstrap" | "BrBG" | "Brand" | "Brooklyn99Dark" | "Brooklyn99Regular" | "BuGn" | "BuPu" | "CanvasXpress" | "CanvasXpressOLD" | "CanvasXpressTraditional" | "Cividis" | "ColorBlind" | "ColorSpectrum" | "Colorful" | "ColorfulAlt" | "Complementary" | "Dark2" | "Default" | "Diverging" | "DivergingAlt" | "Economist" | "EconomistBG" | "Excel" | "Excel2" | "Excel3" | "Favorite" | "GGBlanket" | "GGPlot" | "GameOfThronesArryn" | "GameOfThronesGreyjoy" | "GameOfThronesLannister" | "GameOfThronesManderly" | "GameOfThronesMartell" | "GameOfThronesStannis" | "GameOfThronesStark" | "GameOfThronesTargaryen" | "GameOfThronesTully" | "GameOfThronesTyrell" | "GnBu" | "GravityFalls" | "Greens" | "Grey" | "GreyHC" | "Greys" | "Heat" | "Highcharts" | "Inferno" | "JCO" | "Jama" | "KimPossible" | "Lancet" | "LastAirBenderAir" | "LastAirBenderEarth" | "LastAirBenderFire" | "LastAirBenderWater" | "Light" | "Magma" | "Matlab" | "NEJM" | "NPG" | "OrRd" | "Oranges" | "PRGn" | "Paired" | "ParksAndRecreation" | "Parula" | "PaulTol" | "PiYG" | "Plasma" | "Prism" | "PrismPair" | "PrismTrio" | "PuBu" | "PuBuGn" | "PuOr" | "PuRd" | "Purples" | "Rainbow" | "RdBu" | "RdGy" | "RdPu" | "RdYlBu" | "RdYlGn" | "Reds" | "RickyAndMorty" | "Simpsons" | "Solarized" | "SolarizedBase" | "Spectral" | "SpongeBob" | "Stata" | "Stata2" | "Stata3" | "StataMono" | "Tableau" | "TableauBlueRed" | "TableauColorBlind" | "TableauCyclic" | "TableauGreenOrange" | "TableauGrey" | "TableauLight" | "TableauMedium" | "TableauPairSequential" | "TableauPurpleGrey" | "TableauTrafficLight" | "TableauTripleDiverging" | "Viridis" | "ViridisInv" | "WHO" | "WallStreetJournal" | "WallStreetJournal2" | "WallStreetJournal3" | "WallStreetJournalBlackGreen" | "WallStreetJournalDemRep" | "WallStreetJournalRedGreen" | "White" | "YlGn" | "YlGnBu" | "YlOrBr" | "YlOrRd" | false | (string & {});
   /**
    * Name of metadata annotation to color the sample (row) dendrogram
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Circular … (21 types; see CXGraphTypeKeys)
@@ -2104,6 +2104,13 @@ export interface CXConfig {
    * @default "ends"
    */
   dataValuesFrequency?: "all" | "first" | "last" | "ends" | false | (string & {});
+  /**
+   * Flag to hide a data value label that does not fit inside its stacked bar segment
+   * (showDataValues in Stacked graphs), instead of drawing it over the neighbouring segments
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  dataValuesHideOverlap?: boolean;
   /**
    * Position for the data values in line graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -3977,6 +3984,14 @@ export interface CXConfig {
    */
   legendInside?: boolean;
   /**
+   * What a left/right-justified top or bottom legend (legendHorizontalJustification 0 or 1)
+   * aligns to: the panel (plot area) edge or the whole plot (canvas) edge, like titleAlign
+   * plot::0
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default "panel"
+   */
+  legendJustifyTo?: "panel" | "plot" | false | (string & {});
+  /**
    * Color for the border in legend key background
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default "rgba(255,255,255,0)"
@@ -5234,7 +5249,7 @@ export interface CXConfig {
    * @graphTypes OptionsWall
    * @default false
    */
-  optionsWallChain?: string | boolean;
+  optionsWallChain?: Record<string, unknown> | boolean;
   /**
    * Expiry label shown in the flank panel titles (e.g. "2026-10-17")
    * @graphTypes OptionsWall
@@ -6161,7 +6176,7 @@ export interface CXConfig {
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
    */
-  ribbonBy?: string | boolean;
+  ribbonBy?: string | unknown[] | boolean | number;
   /**
    * Type of ribbon to create
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -11670,6 +11685,7 @@ export type CXKeysLegends =
   | "legendDirection"
   | "legendHorizontalJustification"
   | "legendInside"
+  | "legendJustifyTo"
   | "legendKeyBackgroundBorderColor"
   | "legendKeyBackgroundBorderLineType"
   | "legendKeyBackgroundBorderSize"
@@ -12032,6 +12048,7 @@ export type CXKeysPlotArea =
   | "binned"
   | "blockContrast"
   | "dataValuesFrequency"
+  | "dataValuesHideOverlap"
   | "dataValuesPosition"
   | "dotplotOutlineThreshold"
   | "guideStyle"
