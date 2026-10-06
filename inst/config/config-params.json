@@ -1,7 +1,7 @@
 {
- "x-cx-version": "70.9",
+ "x-cx-version": "71",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1736,
+ "count": 1772,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -56,6 +56,18 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "Array containing additional data files to append to networks. Useful for loading KEGG and Wikipatways to decorate the nodes and the edges"
+  },
+  {
+   "parameter": "areaColumnWidth",
+   "type": "number|boolean",
+   "default": 0.6,
+   "description": "Width of the column marks drawn when areaShowColumns is true, as a fraction (0..1) of the per-category slot"
+  },
+  {
+   "parameter": "areaShowColumns",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Draw a solid bar/column mark at each category on top of the stacked area band (a TrendPlot: stacked bars with a semi-transparent stacked area behind them). Composes with any areaType/areaStyle"
   },
   {
    "parameter": "areaStyle",
@@ -1230,6 +1242,84 @@
     false
    ],
    "description": "Distance metric to use when clustering data"
+  },
+  {
+   "parameter": "clustreeArrowSize",
+   "type": "number|boolean",
+   "default": 9,
+   "description": "Length (pixels) of the clustree edge arrowhead"
+  },
+  {
+   "parameter": "clustreeEdgeArrows",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to draw a directed arrowhead at the child (finer-resolution) end of each clustree transition edge"
+  },
+  {
+   "parameter": "clustreeEdgeMinAlpha",
+   "type": "number|boolean",
+   "default": 0.15,
+   "description": "Minimum edge opacity (0..1) so very small transitions stay faintly visible; opacity scales with the incoming proportion up to 1"
+  },
+  {
+   "parameter": "clustreeEdgePalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Ordered hex color stops (low to high transition count) for the clustree edge colour gradient. Defaults to a Spectral ramp"
+  },
+  {
+   "parameter": "clustreeEdgeWidth",
+   "type": "number|boolean",
+   "default": 1.5,
+   "description": "Constant rendered width (pixels) of clustree transition edges (count is shown by colour, incoming proportion by opacity, as in the clustree package)"
+  },
+  {
+   "parameter": "clustreeFlip",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to orient a clustree plot left-to-right (resolution on the x-axis) instead of top-to-bottom"
+  },
+  {
+   "parameter": "clustreeNodeLabels",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to draw the cluster-id label centered on each clustree node"
+  },
+  {
+   "parameter": "clustreeNodePalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Qualitative hex colours used to colour clustree nodes by resolution level (one per level, cycled). Defaults to ColorBrewer Paired"
+  },
+  {
+   "parameter": "clustreeNodeTextSize",
+   "type": "number|boolean",
+   "default": 9,
+   "description": "Font size (pixels) of the cluster-id label drawn on each clustree node"
+  },
+  {
+   "parameter": "clustreePrefix",
+   "type": "string|boolean",
+   "default": false,
+   "description": "When deriving a clustree from a cluster-label matrix, use only the columns whose name starts with this prefix (one column per clustering resolution). When unset, every column is treated as a resolution level. Also used as the resolution-axis title"
+  },
+  {
+   "parameter": "clustreeShowAxes",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show the raw numeric layout coordinate axes and grid in a clustree plot (debug). By default only the labelled resolution axis (one tick per clustering level) is shown and the order axis + grid are hidden"
+  },
+  {
+   "parameter": "clustreeShowEdgeLegend",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the clustree edge legends (transition Count colour ramp and In Prop opacity ramp)"
+  },
+  {
+   "parameter": "clustreeSweeps",
+   "type": "integer|boolean",
+   "default": 4,
+   "description": "Number of barycenter ordering sweeps used to reduce edge crossings in the layered clustree layout"
   },
   {
    "parameter": "codeType",
@@ -9970,6 +10060,30 @@
    "description": "Maximum number of samples to retain when live-streaming via pushData(). When set, each pushData() call appends the incoming samples and evicts the oldest ones beyond this window so the matrix stays bounded for real-time updates. Null keeps every sample (no eviction)"
   },
   {
+   "parameter": "streamlineColor",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Fixed color for streamlines (stream mode). When unset (or \"magnitude\") streamlines are colored by velocity magnitude"
+  },
+  {
+   "parameter": "streamlineSeedStride",
+   "type": "integer|boolean",
+   "default": 2,
+   "description": "Seed a streamline every N grid cells (stream mode); larger values draw fewer streamlines"
+  },
+  {
+   "parameter": "streamlineStepSize",
+   "type": "number|boolean",
+   "default": 0.5,
+   "description": "RK4 step size as a fraction of the grid cell size (stream mode)"
+  },
+  {
+   "parameter": "streamlineSteps",
+   "type": "integer|boolean",
+   "default": 160,
+   "description": "Maximum RK4 integration steps per streamline (stream mode)"
+  },
+  {
    "parameter": "stringEdgeAttributes",
    "type": "array|boolean|string|number",
    "default": [],
@@ -11116,6 +11230,114 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to k-mean variables"
+  },
+  {
+   "parameter": "vectorArrowSize",
+   "type": "number|boolean",
+   "default": 7,
+   "description": "Length (pixels) of the arrowhead drawn at each vector tip / streamline midpoint"
+  },
+  {
+   "parameter": "vectorColorByMagnitude",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to color raw arrows by velocity magnitude (gradient) instead of by the group annotation. Grid arrows and streamlines are always colored by magnitude unless streamlineColor is set"
+  },
+  {
+   "parameter": "vectorColorValueColor",
+   "type": "string|boolean",
+   "default": "rgb(55,126,184)",
+   "description": "Color for the Fixed arrow color used in raw mode when there is no group annotation and vectorColorByMagnitude is off"
+  },
+  {
+   "parameter": "vectorDensity",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Fraction (0..1) of samples to draw in raw mode (subsampling for dense embeddings). 1 draws every sample"
+  },
+  {
+   "parameter": "vectorFieldMode",
+   "type": "string|boolean",
+   "default": "raw",
+   "options": [
+    "raw",
+    "grid",
+    "stream",
+    false
+   ],
+   "description": "Vector-field rendering mode: raw draws one arrow per sample, grid averages the field onto a regular grid and draws one arrow per cell (quiver), stream draws integrated streamlines (streamplot)"
+  },
+  {
+   "parameter": "vectorGridSize",
+   "type": "integer|boolean",
+   "default": 20,
+   "description": "Number of cells per axis when averaging the field onto a grid (grid mode) or sampling it for streamlines (stream mode)"
+  },
+  {
+   "parameter": "vectorGroupBy",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Column (sample) name holding a group label used to color raw arrows"
+  },
+  {
+   "parameter": "vectorGroupPalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Qualitative hex colors used to color raw arrows by group (one per group, cycled). Defaults to ColorBrewer Set1"
+  },
+  {
+   "parameter": "vectorLineWidth",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Rendered width (pixels) of the arrow shafts and streamlines"
+  },
+  {
+   "parameter": "vectorMinMagnitude",
+   "type": "number|boolean",
+   "default": false,
+   "description": "Velocity magnitude below which streamline integration stops (stream mode). Defaults to 1% of the maximum magnitude"
+  },
+  {
+   "parameter": "vectorPalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Ordered hex color stops (low to high magnitude) for the vector / streamline magnitude gradient. Defaults to a blue-white-red ramp"
+  },
+  {
+   "parameter": "vectorScale",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Multiplier applied to the auto arrow length (raw / grid modes). Larger values draw longer arrows"
+  },
+  {
+   "parameter": "vectorShowLegend",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the vector-field legend (magnitude color ramp, or the group legend in raw mode)"
+  },
+  {
+   "parameter": "vectorUBy",
+   "type": "string|boolean",
+   "default": "vx",
+   "description": "Column (sample) name holding the x velocity component when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorVBy",
+   "type": "string|boolean",
+   "default": "vy",
+   "description": "Column (sample) name holding the y velocity component when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorXBy",
+   "type": "string|boolean",
+   "default": "x",
+   "description": "Column (sample) name holding the x position when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorYBy",
+   "type": "string|boolean",
+   "default": "y",
+   "description": "Column (sample) name holding the y position when the input is a standard Scatter2D matrix"
   },
   {
    "parameter": "vennColors",
