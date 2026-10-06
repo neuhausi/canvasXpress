@@ -123,7 +123,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1734 keys). String enums become open literal
+ * config schema (1736 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -2444,6 +2444,22 @@ export interface CXConfig {
    * @default "normal"
    */
   dotplotType?: "arrow" | "bullet" | "cleveland" | "connected" | "line" | "lineConnected" | "normal" | "stacked" | "transition" | false | (string & {});
+  /**
+   * Flag to show the drill-down breadcrumb strip in the viewport when a drillHierarchy is
+   * active and the chart has been drilled. Set false for API-only drill control
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  drillBreadcrumb?: boolean;
+  /**
+   * An array of sample annotation names, coarse to fine (e.g. ["Region","State","City"]),
+   * defining a drill-down hierarchy. When set, clicking a mark filters to the clicked level
+   * value and regroups by the next finer annotation; a breadcrumb walks back. Each entry must
+   * be a category in the data.x object
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default []
+   */
+  drillHierarchy?: unknown[] | boolean | string | number;
   /**
    * Direction of the arrows in arrow dumbbells (dumbbellType arrow): value points each arrow
    * at the smaller value; order points from the first variable to the next (before to after)
@@ -11012,6 +11028,8 @@ export type CXKeysData =
   | "dataTextMargin"
   | "dataTextRotate"
   | "dataTextScaleFontFactor"
+  | "drillBreadcrumb"
+  | "drillHierarchy"
   | "groupingFactorLevelsOrder"
   | "groupingFactors"
   | "groupingFactorsLabelsHide"

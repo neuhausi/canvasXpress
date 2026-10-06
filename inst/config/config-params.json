@@ -1,7 +1,7 @@
 {
- "x-cx-version": "70.8",
+ "x-cx-version": "70.9",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1734,
+ "count": 1736,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -3404,6 +3404,18 @@
     false
    ],
    "description": "Style for the dotplot. Transition plot are only applicable when data is grouped"
+  },
+  {
+   "parameter": "drillBreadcrumb",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the drill-down breadcrumb strip in the viewport when a drillHierarchy is active and the chart has been drilled. Set false for API-only drill control"
+  },
+  {
+   "parameter": "drillHierarchy",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "An array of sample annotation names, coarse to fine (e.g. [\"Region\",\"State\",\"City\"]), defining a drill-down hierarchy. When set, clicking a mark filters to the clicked level value and regroups by the next finer annotation; a breadcrumb walks back. Each entry must be a category in the data.x object"
   },
   {
    "parameter": "dumbbellArrowDirection",

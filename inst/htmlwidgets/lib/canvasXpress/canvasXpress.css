@@ -101,6 +101,7 @@
   --cx-z-raised: 10;
   --cx-z-toolbar: 1000;
   --cx-z-toolbar-edge: 1001;
+  --cx-z-footer-link: 1002;
   --cx-z-resizer: 2000;
   --cx-z-fullscreen: 9999;
   --cx-z-panel: 10000;
@@ -5633,6 +5634,62 @@ input.cX-DataFilter-Container-Input-Right {
   background-color: var(--cx-datafilter-background-color, var(--cx-ui-surface));
 }
 
+/* @category: widget */
+/*********************/
+/* Drill breadcrumb  */
+/*********************/
+
+/* HTML strip overlaid at the top-left of the chart viewport while a drillHierarchy
+   has been drilled into. Not drawn on the canvas, so exports/pixel baselines are
+   untouched. Consumes the shared --cx-ui-* tokens so light/dark mode come for free. */
+.cX-Drill-Breadcrumb {
+  box-sizing: border-box;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: var(--cx-z-panel);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: calc(100% - 8px);
+  padding: 2px 6px;
+  font-family: var(--cx-font-family);
+  font-size: var(--cx-large-font-size, var(--cx-x-large-font-size));
+  line-height: 1.4;
+  color: var(--cx-font-color, var(--cx-ui-text));
+  background-color: var(--cx-datafilter-toolbar-background-color, var(--cx-ui-chrome));
+  border: 1px var(--cx-border-style) var(--cx-datafilter-border-color, var(--cx-ui-border-accent));
+  border-radius: var(--cx-border-radius);
+}
+
+.cX-Drill-Crumb {
+  cursor: pointer;
+  padding: 0px 2px;
+  border-radius: var(--cx-border-radius);
+  text-decoration: none;
+  color: var(--cx-ui-accent, var(--cx-font-color, var(--cx-ui-text)));
+}
+
+.cX-Drill-Crumb:hover,
+.cX-Drill-Crumb:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+.cX-Drill-Sep {
+  opacity: 0.6;
+  padding: 0px 1px;
+  cursor: default;
+}
+
+/* The deepest crumb is the current level: plain text, not a link. */
+.cX-Drill-Current {
+  cursor: default;
+  font-weight: 600;
+  color: var(--cx-font-color, var(--cx-ui-text));
+  text-decoration: none;
+}
 /* @category: widget */
 /***************/
 /*   Toggle    */
