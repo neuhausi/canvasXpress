@@ -1,0 +1,56 @@
+name: Issue triage
+
+# Prototype: when an issue is opened (or reopened), ask Claude whether it is a
+# well-defined, meritorious issue. If not, post a comment asking for the missing
+# detail and label it `needs-more-info`. If it is, assign it to @neuhausi and
+# label it `bug` or `enhancement`.
+#
+# Requires repo secret ANTHROPIC_API_KEY. GITHUB_TOKEN is provided automatically.
+
+on:
+  issues:
+    types: [opened, reopened]
+
+# Least-privilege: we only read repo contents and write to the issue.
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  # One triage per issue at a time; a reopen supersedes an in-flight run.
+  group: issue-triage-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    # Never triage pull requests (they also surface as "issues" in some events).
+    if: ${{ github.event.issue.pull_request == null }}
+    steps:
+      - name: Checkout (for the triage script)
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the Anthropic SDK
+        run: pip install --quiet "anthropic>=0.40"
+
+      - name: Triage the issue
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          # Override per-repo if desired; defaults are sensible.
+          ASSIGNEE: neuhausi
+          TRIAGE_MODEL: claude-sonnet-5-5
+          # One-line description of THIS repo so Claude judges merit in context.
+          REPO_CONTEXT: >-
+            canvasXpress is the core CanvasXpress library: the JavaScript charting engine and its R (htmlwidgets) package for interactive, self-contained, reproducible data visualizations.
+        run: python .github/scripts/triage_issue.py
