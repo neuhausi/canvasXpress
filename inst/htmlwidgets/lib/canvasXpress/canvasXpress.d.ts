@@ -2199,10 +2199,16 @@ export interface CXConfig {
    */
   dataTextScaleFontFactor?: number | boolean;
   /**
-   * Style for the UI
+   * Border density of the UI widgets (data table, filters, Customizer, menus): default, or
+   * minimal (every border softened to the look's faint colour). It composes with any theme
+   * (theme: "ocean", dataUIStyle: "minimal"). The colour looks cx, modern, bms, colorful, rdc
+   * and ngs360 are styles of the theme parameter (theme: "bms", or theme: ["economist", "bms"]
+   * for a chart theme plus a widgets look); naming one here still works and fills that widgets
+   * slot. Legacy values: stripped turns the data table row stripes off (see dataTableStriped),
+   * old is a grey look
    * @default "modern"
    */
-  dataUIStyle?: "cx" | "stripped" | "minimal" | "modern" | "old" | "bms" | "colorful" | "rdc" | "ngs360" | false | (string & {});
+  dataUIStyle?: "default" | "minimal" | "cx" | "modern" | "bms" | "colorful" | "rdc" | "ngs360" | "stripped" | "old" | false | (string & {});
   /**
    * Frequency for the data values in line graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -9429,8 +9435,10 @@ export interface CXConfig {
   widgetsStripedColor?: string | boolean;
   /**
    * Light or dark UI widgets (toolbar, menus, Customizer, data table and filters, dialogs).
-   * theme follows the chart theme (cxdark and cxblue are dark, auto follows the OS) and
-   * otherwise the page container, e.g. a dark dashboard; auto follows the OS appearance
+   * theme follows the chart theme (cxdark and cxblue are dark; the
+   * paper/slate/mono/sunrise/ocean/midnight/graphite/forest themes give the widgets that same
+   * style; auto follows the OS) and otherwise the page container, e.g. a dark dashboard; auto
+   * follows the OS appearance
    * @default "theme"
    */
   widgetsTheme?: "theme" | "light" | "dark" | "auto" | false | (string & {});
