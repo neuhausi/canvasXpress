@@ -5624,7 +5624,7 @@ cXmap14 <- function() {
     graphType="Map",
     mapConfig=list(center=list(40.7, -74), zoom=15),
     showLegend=FALSE,
-    useLeaflet=TRUE
+    showTiles=TRUE
   )
 }
 
@@ -5637,7 +5637,7 @@ cXmap15 <- function() {
     mapConfig=list(center=list(40.7, -74), zoom=15),
     markerBy="shape",
     showLegend=FALSE,
-    useLeaflet=TRUE
+    showTiles=TRUE
   )
 }
 
@@ -5647,13 +5647,13 @@ cXmap16 <- function() {
   canvasXpress(
     smpAnnot=x,
     graphType="Map",
-    leafletZoomAlphaColor=1,
+    tileZoomAlphaColor=1,
     mapConfig=list(center=list(37.6, -99), zoom=4),
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.5,
     markerBy="State",
     showLegend=FALSE,
-    useLeaflet=TRUE
+    showTiles=TRUE
   )
 }
 
@@ -5663,14 +5663,14 @@ cXmap17 <- function() {
   canvasXpress(
     smpAnnot=x,
     graphType="Map",
-    leafletZoomAlphaColor=1,
+    tileZoomAlphaColor=1,
     mapConfig=list(center=list(37.6, -99), zoom=4),
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.75,
     markerBy="State",
     showLegend=FALSE,
     sizeBy="Population",
-    useLeaflet=TRUE
+    showTiles=TRUE
   )
 }
 

@@ -1,7 +1,7 @@
 {
- "x-cx-version": "71.2",
+ "x-cx-version": "71.3",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1772,
+ "count": 1779,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -154,6 +154,17 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "Array containing sample names. Numeric sample data (in columns) to be treated as a variable factor (move from y to z object). This parameter accomplishes the same as the function switchSmpToAnnotation at load time. It can be used in conjunction with the parameter stringVariableFactors to be treated as a string. TO DO: write example"
+  },
+  {
+   "parameter": "aspect3D",
+   "type": "string|boolean",
+   "default": "cube",
+   "options": [
+    "cube",
+    "data",
+    false
+   ],
+   "description": "3D aspect mode. cube (default) draws all three axes at equal length so each fills its own range; data scales the X/Y/Z box proportions to the real per-axis data spans so the surface keeps true data proportions (like Plotly aspectmode:data)"
   },
   {
    "parameter": "attractiveForceFunction",
@@ -4148,6 +4159,12 @@
    "description": "Color for the function plots"
   },
   {
+   "parameter": "fxSamples",
+   "type": "integer|boolean",
+   "default": 25,
+   "description": "Number of grid subdivisions per axis when plotting a function (fx) as a 3D surface. Higher values give smoother surfaces and finer color detail; the grid has fxSamples+1 points per axis"
+  },
+  {
    "parameter": "ganttCompletion",
    "type": "string|boolean",
    "default": false,
@@ -5305,31 +5322,6 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to load canvas only if shown in viewport"
-  },
-  {
-   "parameter": "leafletAlpha",
-   "type": "number|boolean",
-   "default": 0.7,
-   "description": "Transparency for leaflet layers"
-  },
-  {
-   "parameter": "leafletTileType",
-   "type": "string|boolean",
-   "default": "street",
-   "options": [
-    "street",
-    "terrain",
-    "labels",
-    "satellite",
-    false
-   ],
-   "description": "Leaflet tile type"
-  },
-  {
-   "parameter": "leafletZoomAlphaColor",
-   "type": "number|boolean",
-   "default": 6,
-   "description": "Zoom level before turning transparent the leaflet layers"
   },
   {
    "parameter": "leftMarginalText",
@@ -8606,7 +8598,7 @@
    "parameter": "scatterType",
    "type": "string|boolean",
    "default": false,
-   "description": "Type of scatter plot"
+   "description": "Type of scatter plot. On a Scatter3D, density builds a kernel-density (kde2d) surface from 2D scattered points and renders it as a rotatable surface."
   },
   {
    "parameter": "scrollbarAltBackgroundColor",
@@ -9123,6 +9115,12 @@
    "description": "Flag to show/hide the X,Y,Z grid in 3D plots"
   },
   {
+   "parameter": "show3DMinorGrid",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the minor (unlabeled) grid lines in 3D plots. Off by default for a cleaner surface; the per-axis xAxisGridMinorShow/yAxisGridMinorShow/zAxisGridMinorShow still hide individual axes when this is on"
+  },
+  {
    "parameter": "showAnimation",
    "type": "boolean",
    "default": true,
@@ -9591,6 +9589,12 @@
    "description": "Flag to show/hide the shadows in text in the canvas. It will be forced to false if the browser is IE"
   },
   {
+   "parameter": "showTiles",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw an XYZ raster tile basemap behind the map"
+  },
+  {
    "parameter": "showTransition",
    "type": "boolean",
    "default": false,
@@ -9727,6 +9731,12 @@
     48
    ],
    "description": "Array with sizes used invisualizations. The order will dictate the utilization in the visualization"
+  },
+  {
+   "parameter": "smoothSurface",
+   "type": "boolean",
+   "default": true,
+   "description": "Soften a 3D surface by stroking each facet with its own fill colour so adjacent facets blend seamlessly (no facet wireframe or seams). On by default for a soft look; combine with a higher fxSamples for the smoothest result. Set false to show the facet edges (outline3DColor)"
   },
   {
    "parameter": "smpDendrogramHang",
@@ -10404,6 +10414,31 @@
    "description": "The style for the plot or theme will control all the non-data elements of the plot including titles, legends, axes, panel and plot background colors and other stylistic elements"
   },
   {
+   "parameter": "tileAlpha",
+   "type": "number|boolean",
+   "default": 0.7,
+   "description": "Transparency for the map fill drawn over the tile basemap"
+  },
+  {
+   "parameter": "tileType",
+   "type": "string|boolean",
+   "default": "street",
+   "options": [
+    "street",
+    "terrain",
+    "labels",
+    "satellite",
+    false
+   ],
+   "description": "Tile basemap style"
+  },
+  {
+   "parameter": "tileZoomAlphaColor",
+   "type": "number|boolean",
+   "default": 6,
+   "description": "Zoom level before turning the map fill transparent over the tiles"
+  },
+  {
    "parameter": "timeFormat",
    "type": "string|boolean",
    "default": "isoDate",
@@ -10991,12 +11026,6 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to use Barnes-Hut simulation"
-  },
-  {
-   "parameter": "useLeaflet",
-   "type": "boolean",
-   "default": false,
-   "description": "Flag to use leaflet"
   },
   {
    "parameter": "useRoundRectangles",
@@ -11843,6 +11872,12 @@
    "description": "X axis2 title on the top"
   },
   {
+   "parameter": "xAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D X axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
+  },
+  {
    "parameter": "xAxisCeilValue",
    "type": "number|boolean",
    "default": null,
@@ -12421,6 +12456,12 @@
    "description": "Y axis2 title on the right"
   },
   {
+   "parameter": "yAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D Y (value) axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
+  },
+  {
    "parameter": "yAxisCeilValue",
    "type": "number|boolean",
    "default": null,
@@ -12991,6 +13032,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Z axis2 title"
+  },
+  {
+   "parameter": "zAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D Z axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
   },
   {
    "parameter": "zAxisCeilValue",
