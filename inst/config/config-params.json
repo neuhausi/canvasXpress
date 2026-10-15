@@ -1,7 +1,7 @@
 {
- "x-cx-version": "71.6",
+ "x-cx-version": "71.7",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1779,
+ "count": 1780,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -8196,6 +8196,12 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to colour each Sankey node by its own value (level) rather than by a single colorBy annotation, and to paint every flow ribbon in its source node's colour. Set on the ggsankey (davidsjoberg/ggsankey) path, where fill = factor(node) colours the whole diagram per node"
+  },
+  {
+   "parameter": "sankeyHide",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Name of a sample annotation that flags a link (row) to be hidden from the Sankey/alluvial diagram. A truthy value (true/1/\"yes\") suppresses that flow ribbon WITHOUT removing it from the data, so the node values, box heights and the showDataValues number still count it. Use it to drop a noise branch visually while keeping each node total correct (issue #320)"
   },
   {
    "parameter": "sankeyLinkLineWidth",

@@ -123,7 +123,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1779 keys). String enums become open literal
+ * config schema (1780 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -6424,6 +6424,16 @@ export interface CXConfig {
    */
   sankeyColorNodesByValue?: boolean;
   /**
+   * Name of a sample annotation that flags a link (row) to be hidden from the Sankey/alluvial
+   * diagram. A truthy value (true/1/"yes") suppresses that flow ribbon WITHOUT removing it
+   * from the data, so the node values, box heights and the showDataValues number still count
+   * it. Use it to drop a noise branch visually while keeping each node total correct (issue
+   * #320)
+   * @graphTypes Sankey
+   * @default false
+   */
+  sankeyHide?: string | boolean;
+  /**
    * Outline width (px) for the Sankey/alluvial flow ribbons. Left null the ribbons use the
    * default outlineWidth, which inflates a thin (low-value) flow into a solid ~1px line in its
    * fill colour; a small value (e.g. 0.25) lets thin flows render at their true width so many
@@ -12590,6 +12600,7 @@ export type CXKeysSankeyDiagrams =
   | "sankeyAxes"
   | "sankeyAxesOrder"
   | "sankeyColorNodesByValue"
+  | "sankeyHide"
   | "sankeyLinkLineWidth"
   | "sankeyLinkOrder"
   | "sankeyLinksColor"
