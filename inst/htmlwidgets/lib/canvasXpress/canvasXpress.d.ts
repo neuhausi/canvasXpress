@@ -31,12 +31,34 @@ export interface CXData {
   [key: string]: unknown;
 }
 
-/** The four supported event hooks. `o` is the resolved data object under the cursor. */
+/**
+ * User-event hooks fired by the engine. Each handler is called with
+ * `this` bound to the chart instance and three arguments: `o` (the resolved
+ * data object under the cursor, or null off any element), `e` (the native DOM
+ * event) and `t` (the chart instance — prefer this over `this`).
+ */
 export interface CXEvents {
+  /** A data element is clicked. */
   click?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** A legend item is clicked. */
+  clicklegend?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** A data element is double-clicked. */
   dblclick?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Fired continuously during a drag operation. */
+  drag?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Network graphs: a node drag has finished. */
+  enddragnode?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Fired once after rendering completes. */
+  enddraw?: (o: any, e: Event, t: CanvasXpressInstance) => void;
   mousemove?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
   mouseout?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  mouseover?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  mouseup?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** The chart was updated by a remote source. */
+  remoteupdate?: (o: any, e: Event, t: CanvasXpressInstance) => void;
+  /** Fired after a selection of data points has been made. */
+  select?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  wheel?: (o: any, e: WheelEvent, t: CanvasXpressInstance) => void;
   [key: string]: ((o: any, e: any, t: CanvasXpressInstance) => void) | undefined;
 }
 
@@ -123,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1780 keys). String enums become open literal
+ * config schema (1782 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1587,10 +1609,13 @@ export interface CXConfig {
   dataPipeline?: unknown[] | boolean | string | number;
   /**
    * Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The
-   * size will be adjusted according to the dimensions of the graph
+   * size will be adjusted according to the dimensions of the graph. Boxplots and dotplots
+   * default to 15 (to match ggplot2 geom_point) unless set explicitly. Set to the string
+   * "auto" to size scatter points from the plot area, damped by the number of points (larger
+   * dots on sparse/large panels, smaller on dense ones)
    * @default 10
    */
-  dataPointSize?: number | boolean;
+  dataPointSize?: number | boolean | "auto";
   /**
    * Factor used to adjust the size of the dataPointSize
    * @default 1
@@ -6818,6 +6843,14 @@ export interface CXConfig {
    */
   segregateVariablesBy?: unknown[] | boolean | string | number;
   /**
+   * Flag to make fit lines and confidence areas (regression, loess, forecast, Kaplan-Meier
+   * curves/bands, area/ribbon) clickable: a click selects and broadcasts the data the
+   * fit/curve was computed over (e.g. a KM arm selects its whole cohort)
+   * @graphTypes Scatter2D
+   * @default true
+   */
+  selectableFits?: boolean;
+  /**
    * Variable / Sample names of data points (in the data object) to initially select
    * @default []
    */
@@ -8022,6 +8055,14 @@ export interface CXConfig {
    * @default 0
    */
   smpTextRotate?: number | boolean;
+  /**
+   * Flag to automatically keep the sample (or grouping-factor) labels of vertical
+   * one-dimensional plots horizontal when the longest label fits its band, falling back to
+   * smpTextRotate otherwise. Re-evaluated on resize
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  smpTextRotateAuto?: boolean;
   /**
    * Scaling factor used to increase or decrease the sample labels font size in the canvas
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -11326,6 +11367,7 @@ export type CXKeysConfidenceIntervals =
   | "confidenceIntervalColorCoordinate"
   | "confidenceIntervalsMax"
   | "confidenceLevel"
+  | "selectableFits"
   | "showConfidenceIntervals";
 /** Config keys in the "Context Menu" category. */
 export type CXKeysContextMenu =
@@ -12585,6 +12627,7 @@ export type CXKeysSamples =
   | "smpTextFontStyle"
   | "smpTextMargin"
   | "smpTextRotate"
+  | "smpTextRotateAuto"
   | "smpTextScaleFontFactor"
   | "smpTitle"
   | "smpTitleAlign"

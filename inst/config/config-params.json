@@ -1,7 +1,7 @@
 {
- "x-cx-version": "71.7",
+ "x-cx-version": "71.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1780,
+ "count": 1782,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -2196,9 +2196,12 @@
   },
   {
    "parameter": "dataPointSize",
-   "type": "integer|boolean",
+   "type": "integer|boolean|string",
    "default": 10,
-   "description": "Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The size will be adjusted according to the dimensions of the graph"
+   "options": [
+    "auto"
+   ],
+   "description": "Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The size will be adjusted according to the dimensions of the graph. Boxplots and dotplots default to 15 (to match ggplot2 geom_point) unless set explicitly. Set to the string \"auto\" to size scatter points from the plot area, damped by the number of points (larger dots on sparse/large panels, smaller on dense ones)"
   },
   {
    "parameter": "dataPointSizeScaleFactor",
@@ -8643,6 +8646,12 @@
    "description": "An array that holds the annotation(s) used to segregate the variables ala Facet way in R. It must be categories in the data.z object"
   },
   {
+   "parameter": "selectableFits",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to make fit lines and confidence areas (regression, loess, forecast, Kaplan-Meier curves/bands, area/ribbon) clickable: a click selects and broadcasts the data the fit/curve was computed over (e.g. a KM arm selects its whole cohort)"
+  },
+  {
    "parameter": "selectedDataPoints",
    "type": "array|boolean|string|number",
    "default": [],
@@ -9881,6 +9890,12 @@
    "type": "integer|boolean",
    "default": 0,
    "description": "Rotation in degrees for the sample labels"
+  },
+  {
+   "parameter": "smpTextRotateAuto",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to automatically keep the sample (or grouping-factor) labels of vertical one-dimensional plots horizontal when the longest label fits its band, falling back to smpTextRotate otherwise. Re-evaluated on resize"
   },
   {
    "parameter": "smpTextScaleFontFactor",
