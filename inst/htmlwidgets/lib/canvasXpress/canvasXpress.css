@@ -50,6 +50,12 @@
   --cx-color-amber-800: #92400e;
   --cx-color-black-a35: rgba(0, 0, 0, 0.35);
   --cx-color-black-a55: rgba(0, 0, 0, 0.55);
+  --cx-color-brand-add: #00b4df;
+  --cx-color-brand-interact: #ffaa4f;
+  --cx-color-brand-data: #eb0000;
+  --cx-color-brand-add-a14: rgba(0, 180, 223, 0.14);
+  --cx-color-brand-interact-a18: rgba(255, 170, 79, 0.18);
+  --cx-color-brand-data-a12: rgba(235, 0, 0, 0.12);
   /* radius */
   --cx-radius-none: 0;
   --cx-radius-sm: 4px;

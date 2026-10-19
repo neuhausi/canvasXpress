@@ -1,7 +1,7 @@
 {
- "x-cx-version": "71.8",
+ "x-cx-version": "71.9",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1782,
+ "count": 1785,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -4276,10 +4276,10 @@
   {
    "parameter": "graphOrientation",
    "type": "string|boolean",
-   "default": "horizontal",
+   "default": "vertical",
    "options": [
-    "horizontal",
     "vertical",
+    "horizontal",
     false
    ],
    "description": "Specifies the orientation of one-dimensional graphs"
@@ -9598,6 +9598,12 @@
    "description": "Flag to show/hide the sample overlay legends"
   },
   {
+   "parameter": "showStatInference",
+   "type": "boolean",
+   "default": false,
+   "description": "Opt-in flag to render the statInference block (pairwise significance brackets + p-value/stars) on one-dimensional group charts (Boxplot, Violin, Bar). Off by default so non-stat charts are unaffected."
+  },
+  {
    "parameter": "showTextShadow",
    "type": "boolean",
    "default": false,
@@ -10074,6 +10080,12 @@
    "type": "number|boolean",
    "default": 270,
    "description": "Starting degrees for pie sectors. 0 is equivalent to 3:00 oclock"
+  },
+  {
+   "parameter": "statInference",
+   "type": "object|array|boolean|string|number",
+   "default": false,
+   "description": "Renderer-first inference layer. An object with a comparisons array, each item {groups: [a, b] (category names or 1-based positions), p: rawPValue, optional padj, value (bracket height on the value axis), label, color}. Optional correction {method: \"BH\"|\"bonferroni\"|\"BY\"|\"holm\"|\"hochberg\"|\"none\"} applies native multiple-testing correction when padj is not supplied, and annotate (\"p\"|\"padj\"|\"stars\") selects what each bracket prints. Optional fdrThreshold (number) draws no bracket for a comparison whose corrected p (raw p when no correction applies) is above it. Test statistics are computed upstream (R/Python); only correction and star derivation run in the engine. Requires showStatInference:true."
   },
   {
    "parameter": "streamEvict",
@@ -11517,6 +11529,12 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to disallow panning in visium plots. Dragging will always zoom"
+  },
+  {
+   "parameter": "volcano",
+   "type": "object|boolean",
+   "default": false,
+   "description": "Promotes a Volcano chart (Scatter2D of log2 fold-change vs -log10 p-value) by auto-seeding significance cut-off lines: {foldChange: <log2 FC cutoff>, fdr: <p/FDR cutoff on the raw scale>, foldChangeColor, fdrColor, width}. Draws vertical rules at +/- foldChange and a horizontal rule at -log10(fdr) using the scatter decoration path. Omit to keep the plain Volcano alias."
   },
   {
    "parameter": "waterfallDecreaseColor",

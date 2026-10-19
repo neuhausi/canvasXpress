@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1782 keys). String enums become open literal
+ * config schema (1785 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -3178,9 +3178,9 @@ export interface CXConfig {
   /**
    * Specifies the orientation of one-dimensional graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
-   * @default "horizontal"
+   * @default "vertical"
    */
-  graphOrientation?: "horizontal" | "vertical" | false | (string & {});
+  graphOrientation?: "vertical" | "horizontal" | false | (string & {});
   /**
    * Specifies the type of graph to be rendered
    * @default "Bar"
@@ -7782,6 +7782,14 @@ export interface CXConfig {
    */
   showSmpOverlaysLegend?: boolean;
   /**
+   * Opt-in flag to render the statInference block (pairwise significance brackets +
+   * p-value/stars) on one-dimensional group charts (Boxplot, Violin, Bar). Off by default so
+   * non-stat charts are unaffected.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  showStatInference?: boolean;
+  /**
    * Flag to show/hide the shadows in text in the canvas. It will be forced to false if the
    * browser is IE
    * @default false
@@ -8225,6 +8233,20 @@ export interface CXConfig {
    * @default 270
    */
   startPieSectors?: number | boolean;
+  /**
+   * Renderer-first inference layer. An object with a comparisons array, each item {groups: [a,
+   * b] (category names or 1-based positions), p: rawPValue, optional padj, value (bracket
+   * height on the value axis), label, color}. Optional correction {method:
+   * "BH"|"bonferroni"|"BY"|"holm"|"hochberg"|"none"} applies native multiple-testing
+   * correction when padj is not supplied, and annotate ("p"|"padj"|"stars") selects what each
+   * bracket prints. Optional fdrThreshold (number) draws no bracket for a comparison whose
+   * corrected p (raw p when no correction applies) is above it. Test statistics are computed
+   * upstream (R/Python); only correction and star derivation run in the engine. Requires
+   * showStatInference:true.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  statInference?: Record<string, unknown> | unknown[] | boolean | string | number;
   /**
    * Eviction policy applied by pushData() once the sample count exceeds streamWindow.
    * Currently only drop-oldest (remove the oldest samples first) is supported
@@ -9413,6 +9435,16 @@ export interface CXConfig {
    * @default false
    */
   visiumPanning?: boolean;
+  /**
+   * Promotes a Volcano chart (Scatter2D of log2 fold-change vs -log10 p-value) by auto-seeding
+   * significance cut-off lines: {foldChange: <log2 FC cutoff>, fdr: <p/FDR cutoff on the raw
+   * scale>, foldChangeColor, fdrColor, width}. Draws vertical rules at +/- foldChange and a
+   * horizontal rule at -log10(fdr) using the scatter decoration path. Omit to keep the plain
+   * Volcano alias.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  volcano?: Record<string, unknown> | boolean;
   /**
    * Color for the bars decreasing in the waterfall plot
    * @graphTypes Bar
@@ -11713,7 +11745,10 @@ export type CXKeysDecorations =
   | "decorationsWidth"
   | "showDecorations"
   | "showDecorationsBorder"
-  | "showDecorationsLegend";
+  | "showDecorationsLegend"
+  | "showStatInference"
+  | "statInference"
+  | "volcano";
 /** Config keys in the "Dendrograms" category. */
 export type CXKeysDendrograms =
   | "colorSmpDendrogramBy"
