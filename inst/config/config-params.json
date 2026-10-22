@@ -1,7 +1,7 @@
 {
- "x-cx-version": "72.3",
+ "x-cx-version": "72.4",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1785,
+ "count": 1787,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -2017,7 +2017,7 @@
    "parameter": "customLegend",
    "type": "array|boolean|string|number",
    "default": [],
-   "description": "Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [], lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title : string }]"
+   "description": "Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [], lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title : string, paddingX : number, paddingY : number }]. When legendInside is true, paddingX / paddingY (default 0) inset the legend box from the x,y plotting panel edges so it stays inside for any legendPosition; an explicit x / y pins the legend instead and ignores the padding"
   },
   {
    "parameter": "customizerBackgroundColor",
@@ -4526,6 +4526,18 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "Array of per-cell shape overlays drawn on top of standard heatmap cells. Each entry is an object with a *variable* and *sample* name identifying the cell, plus optional *shape*, *color*, and *size* (fraction of the cell, 0..1). Example: [{variable: \"V1\", sample: \"S3\", shape: \"pch4\"}] to cross out a cell with an X. Common shapes: pch4 (X), pch3 (plus), pch1 (open circle), pch0 (open square), pch5 (open diamond), pch16 (filled circle), circle, square, diamond"
+  },
+  {
+   "parameter": "heatmapCellText",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Array of per-cell text labels drawn centered on top of standard heatmap cells, like Plotly's text matrix. Each entry is an object with a *variable* and *sample* name identifying the cell plus a *text* string, with optional *color*. Example: [{variable: \"V1\", sample: \"S3\", text: \"0.87*\"}] to show a correlation value with a significance asterisk. Unlike showDataValues (which draws every raw cell value), this lets you supply arbitrary strings so you can append markers such as \"*\" for p < 0.05 (issue #322)"
+  },
+  {
+   "parameter": "heatmapCellTextColorColor",
+   "type": "string|boolean",
+   "default": "rgb(0,0,0)",
+   "description": "Color for the default color for heatmap cell text when an entry in heatmapCellText omits its own color"
   },
   {
    "parameter": "heatmapCollapse",

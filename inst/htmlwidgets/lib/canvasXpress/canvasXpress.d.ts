@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1785 keys). String enums become open literal
+ * config schema (1787 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1455,7 +1455,10 @@ export interface CXConfig {
   /**
    * Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [],
    * lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title :
-   * string }]
+   * string, paddingX : number, paddingY : number }]. When legendInside is true, paddingX /
+   * paddingY (default 0) inset the legend box from the x,y plotting panel edges so it stays
+   * inside for any legendPosition; an explicit x / y pins the legend instead and ignores the
+   * padding
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default []
    */
@@ -3340,6 +3343,24 @@ export interface CXConfig {
    * @default []
    */
   heatmapCellMarkers?: unknown[] | boolean | string | number;
+  /**
+   * Array of per-cell text labels drawn centered on top of standard heatmap cells, like
+   * Plotly's text matrix. Each entry is an object with a *variable* and *sample* name
+   * identifying the cell plus a *text* string, with optional *color*. Example: [{variable:
+   * "V1", sample: "S3", text: "0.87*"}] to show a correlation value with a significance
+   * asterisk. Unlike showDataValues (which draws every raw cell value), this lets you supply
+   * arbitrary strings so you can append markers such as "*" for p < 0.05 (issue #322)
+   * @graphTypes Heatmap
+   * @default []
+   */
+  heatmapCellText?: unknown[] | boolean | string | number;
+  /**
+   * Color for the default color for heatmap cell text when an entry in heatmapCellText omits
+   * its own color
+   * @graphTypes Heatmap
+   * @default "rgb(0,0,0)"
+   */
+  heatmapCellTextColorColor?: string | boolean;
   /**
    * Flag to collapse cells in heatmaps of type circle or hexagon. If true cells are ploted
    * without outline otherwise the outline is the foreground color
@@ -12021,6 +12042,8 @@ export type CXKeysHeatmapGraphs =
   | "heatmapCellMarkerSize"
   | "heatmapCellMarkerWidth"
   | "heatmapCellMarkers"
+  | "heatmapCellText"
+  | "heatmapCellTextColorColor"
   | "heatmapCollapse"
   | "heatmapHighlightByRowCol"
   | "heatmapHighlightByRowColIntersectionColor"
