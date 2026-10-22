@@ -97,7 +97,98 @@ ggplot.as.list <- function(o, ...) { # nolint: object_name_linter.
     cx <- gg_cxplot(o, "canvas", ...)
   }
 
-  jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE)
+  gg_serialize(cx)
+}
+
+## Row count above which the single-plot data matrix is written compactly
+## (numeric columns unquoted, no pretty-print whitespace). At or below it the
+## historical pretty output is kept byte-for-byte.
+gg_compact_rows <- 10000L
+
+## A cell that is already a legal JSON number. Leading zeros, "NA", "Inf", a
+## leading "+" and a bare "." are deliberately excluded so they stay strings.
+gg_json_number <- "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$"
+
+## Serialize the ggplot list. Large single-plot data matrices (one row per
+## observation) are the bulk of the payload, and as a pretty-printed character
+## matrix they cost both R and the browser: every number becomes a quoted string
+## with whitespace around it. Those are written compactly instead; everything
+## else is serialized exactly as before.
+gg_serialize <- function(cx) {
+  m <- cx$data
+  big <- is.matrix(m) && is.character(m) && nrow(m) - 1L > gg_compact_rows
+  data_json <- if (big) gg_matrix_to_json(m) else NULL
+  if (is.null(data_json)) {
+    return(jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE))
+  }
+  placeholder <- "__CX_COMPACT_DATA__"
+  cx$data <- placeholder
+  txt <- as.character(jsonlite::toJSON(cx, pretty = TRUE, auto_unbox = TRUE))
+  hit <- regexpr(paste0("\"", placeholder, "\""), txt, fixed = TRUE)
+  stopifnot(hit > 0L)
+  txt <- paste0(substr(txt, 1L, hit - 1L), data_json,
+                substr(txt, hit + attr(hit, "match.length"), nchar(txt)))
+  structure(txt, class = "json")
+}
+
+## JSON text for the data matrix produced by data_to_matrix(): a character
+## matrix whose first row is the header and whose first column is the Id.
+## Columns after the Id whose every non-NA cell is a legal JSON number are
+## emitted unquoted -- the same digits the engine would have parsed from the
+## quoted string, so the values are unchanged. Returns NULL (caller falls back
+## to the standard path) if a quoted cell holds a control character that the
+## cheap escaping below does not cover.
+gg_matrix_to_json <- function(m) {
+  quote_cells <- function(v) {
+    out <- rep("null", length(v))
+    ok <- !is.na(v)
+    s <- v[ok]
+    # One scan finds any backslash, quote or control character; the common case
+    # (none) needs no escaping at all.
+    if (any(grepl("[\\\\\"\\x01-\\x1f]", s, perl = TRUE))) {
+      s <- gsub("\\", "\\\\", s, fixed = TRUE)
+      s <- gsub("\"", "\\\"", s, fixed = TRUE)
+      s <- gsub("\n", "\\n", s, fixed = TRUE)
+      s <- gsub("\r", "\\r", s, fixed = TRUE)
+      s <- gsub("\t", "\\t", s, fixed = TRUE)
+      if (any(grepl("[\\x01-\\x1f]", s, perl = TRUE))) {
+        return(NULL)
+      }
+    }
+    out[ok] <- paste0("\"", s, "\"")
+    out
+  }
+  cols <- vector("list", ncol(m))
+  for (j in seq_len(ncol(m))) {
+    v <- m[, j]
+    body <- v[-1L]
+    vals <- body[!is.na(body)]
+    numeric_col <- j > 1L && length(vals) > 0L &&
+      all(grepl(gg_json_number, vals, perl = TRUE))
+    if (numeric_col) {
+      cell <- body
+      cell[is.na(cell)] <- "null"
+      header <- quote_cells(v[1L])
+      if (is.null(header)) {
+        return(NULL)
+      }
+      cols[[j]] <- c(header, cell)
+    } else {
+      cell <- quote_cells(v)
+      if (is.null(cell)) {
+        return(NULL)
+      }
+      cols[[j]] <- cell
+    }
+  }
+  # One paste0 pass builds every row body (c1,c2,...); rows are joined by "],["
+  # and the outer brackets are added once.
+  pieces <- list()
+  for (j in seq_along(cols)) {
+    pieces <- c(pieces, if (j > 1L) list(","), list(cols[[j]]))
+  }
+  rows <- do.call(paste0, c(pieces, list(collapse = "],[")))
+  paste0("[[", rows, "]]")
 }
 
 # nolint start: commented_code_linter.

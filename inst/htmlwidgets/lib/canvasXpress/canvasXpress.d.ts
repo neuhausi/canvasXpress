@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1787 keys). String enums become open literal
+ * config schema (1789 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1157,6 +1157,14 @@ export interface CXConfig {
    * @default false
    */
   colorLabelBy?: string | boolean;
+  /**
+   * Class names for a stepped colour legend (see colorLegendSteps): one label per colour
+   * class, lowest class first, drawn beside its swatch in place of the numeric class edges,
+   * for example ["a", "b", "c", "d", "e"]. Ignored unless the legend is stepped and the array
+   * has exactly one entry per class
+   * @default []
+   */
+  colorLegendLabels?: unknown[] | boolean | string | number;
   /**
    * Numeric colour legend for binned colouring: equal draws one equal-width swatch per class
    * with every class edge labelled (stepped legend); proportional sizes swatches by their
@@ -3344,6 +3352,14 @@ export interface CXConfig {
    */
   heatmapCellMarkers?: unknown[] | boolean | string | number;
   /**
+   * Pixels of empty space (gap) left around each heatmap cell so it renders as a separate
+   * padded tile instead of a contiguous block; 0 (default) keeps cells edge-to-edge. Combine
+   * with colorSpectrumBinned for a discrete-colour tiled heatmap, or use heatmapType "tiled"
+   * @graphTypes Heatmap
+   * @default 0
+   */
+  heatmapCellSpace?: number | boolean;
+  /**
    * Array of per-cell text labels drawn centered on top of standard heatmap cells, like
    * Plotly's text matrix. Each entry is an object with a *variable* and *sample* name
    * identifying the cell plus a *text* string, with optional *color*. Example: [{variable:
@@ -3426,11 +3442,12 @@ export interface CXConfig {
   heatmapIndicatorWidth?: number | boolean;
   /**
    * Type of Heatmap used to overlay a layer on top of an image. Special for spatial
-   * transcriptomics and UpSet plots
+   * transcriptomics and UpSet plots. "tiled" is a preset for a discrete-colour, padded-cell
+   * heatmap (binned colours + heatmapCellSpace, no cell box)
    * @graphTypes Heatmap
    * @default "normal"
    */
-  heatmapType?: "normal" | "circle" | "hexagon" | "upset" | "correlation" | "split" | false | (string & {});
+  heatmapType?: "normal" | "circle" | "hexagon" | "upset" | "correlation" | "split" | "tiled" | false | (string & {});
   /**
    * Hidden Map features
    * @graphTypes Map
@@ -11373,6 +11390,7 @@ export type CXKeysClustreePlots =
 /** Config keys in the "Colors" category. */
 export type CXKeysColors =
   | "blindnessType"
+  | "colorLegendLabels"
   | "colorLegendSteps"
   | "colorScheme"
   | "colorSpectrum"
@@ -12042,6 +12060,7 @@ export type CXKeysHeatmapGraphs =
   | "heatmapCellMarkerSize"
   | "heatmapCellMarkerWidth"
   | "heatmapCellMarkers"
+  | "heatmapCellSpace"
   | "heatmapCellText"
   | "heatmapCellTextColorColor"
   | "heatmapCollapse"
