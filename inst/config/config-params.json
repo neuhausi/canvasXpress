@@ -1,7 +1,7 @@
 {
- "x-cx-version": "72.7",
+ "x-cx-version": "72.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1789,
+ "count": 1792,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -3306,6 +3306,24 @@
    "type": "integer|boolean",
    "default": 20,
    "description": "Length in pixels of the width for the decorations. Only applicable to Network graphs."
+  },
+  {
+   "parameter": "demo",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Declarative storyboard of semantic steps (toolbar/customizer/marker/point/legend/caption/wait/raw) the ghost cursor performs for a demo video; see playDemo"
+  },
+  {
+   "parameter": "demoAutoPlay",
+   "type": "boolean",
+   "default": true,
+   "description": "When a demo storyboard is set, play it automatically once after the first render"
+  },
+  {
+   "parameter": "demoSpeed",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Demo playback speed multiplier (1 = human pace, 2 = twice as fast)"
   },
   {
    "parameter": "dendrogramColor",

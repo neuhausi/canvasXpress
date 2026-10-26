@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1789 keys). String enums become open literal
+ * config schema (1792 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -2438,6 +2438,23 @@ export interface CXConfig {
    * @default 20
    */
   decorationsWidth?: number | boolean;
+  /**
+   * Declarative storyboard of semantic steps
+   * (toolbar/customizer/marker/point/legend/caption/wait/raw) the ghost cursor performs for a
+   * demo video; see playDemo
+   * @default []
+   */
+  demo?: unknown[] | boolean | string | number;
+  /**
+   * When a demo storyboard is set, play it automatically once after the first render
+   * @default true
+   */
+  demoAutoPlay?: boolean;
+  /**
+   * Demo playback speed multiplier (1 = human pace, 2 = twice as fast)
+   * @default 1
+   */
+  demoSpeed?: number | boolean;
   /**
    * Color for the dendrograms
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Circular … (21 types; see CXGraphTypeKeys)
@@ -12561,6 +12578,9 @@ export type CXKeysPlotDataType =
   | "responsiveRules";
 /** Config keys in the "Plot Mode" category. */
 export type CXKeysPlotMode =
+  | "demo"
+  | "demoAutoPlay"
+  | "demoSpeed"
   | "isEditable"
   | "isReproducibleResearch"
   | "reproduceTime"

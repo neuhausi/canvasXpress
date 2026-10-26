@@ -11,6 +11,10 @@ For detailed information on changes to the stand-alone JavaScript CanvasXpress l
 
 ---
 
+## v1.72.6
+* Updated CanvasXpress JS and CSS libraries to v72.6
+* Documented `workflowBy` keyframe animation (with `workflowLoop` / `workflowFrameDuration`) and added a gganimate-style example to the additional-examples vignette
+
 ## v1.70.3
 * Updated CanvasXpress JS and CSS libraries to v70.3
 * New chart types supported

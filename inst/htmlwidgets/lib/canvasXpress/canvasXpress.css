@@ -7454,6 +7454,12 @@ input[type=range].cX-Workflow-Duration-Slider::-moz-range-thumb {
  *  Toolbar  *
  *************/
 
+/* Video-mode toolbar reveal: start the toolbar hidden so the fade-in (transition set
+   inline in workflow.js, with a cursor-matched duration) looks like the cursor reveals it. */
+.cX-Toolbar-DemoFadeIn {
+  opacity: 0;
+}
+
 .cX-Toolbar-Image {
   background: var(--cx-color-transparent) !important;
   border: 0px none !important;
