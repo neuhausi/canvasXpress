@@ -2064,7 +2064,12 @@ gg_proc_layer <- function(o, idx, bld) {
   }
   skip <- c("compute_panel", "preserve", "setup_data", "setup_params",
             "super", "compute_layer", "orientation", "contour",
-            "distribution", "length")
+            "distribution", "length",
+            # ggplot2 >= 4.0.3.9000 (NEWS #6551) adds a band_gp geom_param to
+            # GeomSmooth holding the confidence band's colour/linetype/linewidth.
+            # CanvasXpress styles the band its own way and never read this, so
+            # drop it - otherwise it leaks into the emitted JSON (issue #331).
+            "band_gp")
   skip2 <- c("na.rm", "reverse", "vjust")
   skip_values <- list(na.rm = FALSE, reverse = FALSE, vjust = 1)
 
