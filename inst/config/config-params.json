@@ -1,7 +1,7 @@
 {
- "x-cx-version": "72.9",
+ "x-cx-version": "73",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1792,
+ "count": 1793,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -2134,6 +2134,12 @@
    "type": "integer|boolean",
    "default": 12,
    "description": "Maximum number of items in the data filter before it becomes a scroll box"
+  },
+  {
+   "parameter": "dataFilterNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for the tick labels of the numeric range sliders in the data filters (and the html range widget). Overrides numberFormat. A compact format keeps large values short, i.e. 20M. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
   },
   {
    "parameter": "dataFilterTextColor",

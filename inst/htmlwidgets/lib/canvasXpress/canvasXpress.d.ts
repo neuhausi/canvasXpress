@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1792 keys). String enums become open literal
+ * config schema (1793 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1559,6 +1559,16 @@ export interface CXConfig {
    * @default 12
    */
   dataFilterMaxItems?: number | boolean;
+  /**
+   * Number format for the tick labels of the numeric range sliders in the data filters (and
+   * the html range widget). Overrides numberFormat. A compact format keeps large values short,
+   * i.e. 20M. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a
+   * sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  dataFilterNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Color for the Text color for the data filter panel
    * @default "#555b62"
@@ -12852,6 +12862,7 @@ export type CXKeysText =
   | "align"
   | "autoScaleFont"
   | "baseline"
+  | "dataFilterNumberFormat"
   | "dataLabelNumberFormat"
   | "fontColor"
   | "fontName"
