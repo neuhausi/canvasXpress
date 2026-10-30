@@ -8919,6 +8919,33 @@ input.cX-RangeSlider-Max {
   width: calc(50% - 6px);
 }
 
+/* dataFilterNumberFormat: a short form (10M) drawn over the min/max boxes until they are edited. */
+div.cX-RangeSlider-Short input.cX-RangeSlider-Min:not(:focus),
+div.cX-RangeSlider-Short input.cX-RangeSlider-Max:not(:focus) {
+  color: transparent;
+}
+
+span.cX-RangeSlider-Shown {
+  position: absolute;
+  top: 4px;
+  height: 32px;
+  width: calc(50% - 6px);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font: var(--cx-font);
+  color: var(--cx-font-color, var(--cx-ui-text));
+}
+
+span.cX-RangeSlider-Shown-Min {
+  left: 1px;
+}
+
+span.cX-RangeSlider-Shown-Max {
+  right: 1px;
+  justify-content: flex-end;
+}
+
 input.cX-RangeSlider-Min {
   margin-left: 1px;
 }
