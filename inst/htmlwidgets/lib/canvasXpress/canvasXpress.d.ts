@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1793 keys). String enums become open literal
+ * config schema (1794 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -9186,6 +9186,14 @@ export interface CXConfig {
    */
   varTextRotate?: number | boolean;
   /**
+   * Flag to automatically keep the variable labels along the bottom of a horizontal heatmap
+   * horizontal when the longest label fits its column band, falling back to varTextRotate
+   * otherwise. Re-evaluated on resize
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  varTextRotateAuto?: boolean;
+  /**
    * Scaling factor used to increase or decrease the variable text font size in the canvas
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default 1
@@ -12744,7 +12752,8 @@ export type CXKeysSamples =
   | "smpTitleFontStyle"
   | "smpTitleMargin"
   | "smpTitleRotate"
-  | "smpTitleScaleFontFactor";
+  | "smpTitleScaleFontFactor"
+  | "varTextRotateAuto";
 /** Config keys in the "Sankey Diagrams" category. */
 export type CXKeysSankeyDiagrams =
   | "sankeyAxes"
