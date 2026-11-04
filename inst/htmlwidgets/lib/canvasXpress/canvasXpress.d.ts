@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1794 keys). String enums become open literal
+ * config schema (1798 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -4658,6 +4658,21 @@ export interface CXConfig {
    */
   mapBubbleColor?: string | boolean;
   /**
+   * Scaling for the non-contiguous cartogram (mapType cartogram). area: each region is scaled
+   * relative to its own area. olson: the densest region keeps its size and every other shrinks
+   * proportionally (classic Olson)
+   * @graphTypes Map
+   * @default "area"
+   */
+  mapCartogramScale?: "area" | "olson" | false | (string & {});
+  /**
+   * For the non-contiguous cartogram (mapType cartogram), draw each region full-size
+   * silhouette in grey behind the scaled shape so the two can be compared
+   * @graphTypes Map
+   * @default true
+   */
+  mapCartogramSilhouette?: boolean;
+  /**
    * Map Latitude Of Origin in degrees. (Applicable to Albers projection only). Default adjusts
    * to USA maps
    * @graphTypes Map
@@ -4765,6 +4780,16 @@ export interface CXConfig {
    * @default 45.5
    */
   mapStandardParallel2?: number | boolean;
+  /**
+   * Map distortion. region: a normal map (default). The other three are cartograms driven by
+   * sizeBy: dorling draws one non-overlapping circle per region sized by value; cartogram
+   * keeps each region shape and scales it about its own centre (non-contiguous); contiguous
+   * deforms the borders so regions stay joined while their areas match the value (Dougenik
+   * rubber-sheet)
+   * @graphTypes Map
+   * @default "region"
+   */
+  mapType?: "region" | "dorling" | "cartogram" | "contiguous" | false | (string & {});
   /**
    * Array of properties in the map topoJSON features to use as zip code ids
    * @graphTypes Map
@@ -7972,6 +7997,15 @@ export interface CXConfig {
    * @default false
    */
   sizeLabelBy?: string | boolean;
+  /**
+   * Flag to draw the size legend as nested (concentric) bubbles sharing a common bottom edge,
+   * with a dashed leader line from each circle to its value label, instead of a column of
+   * separate size keys. Applies to proportional-circle size legends (e.g. a sizeBy bubble map
+   * or Dorling cartogram)
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  sizeLegendNested?: boolean;
   /**
    * Title for the size legend
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -12253,7 +12287,8 @@ export type CXKeysLegends =
   | "showSizeLabelLegend"
   | "showSizeLegend"
   | "showSizeNodeLegend"
-  | "showVariableLegend";
+  | "showVariableLegend"
+  | "sizeLegendNested";
 /** Config keys in the "Line Graphs" category. */
 export type CXKeysLineGraphs =
   | "coordinateLineColor"
@@ -12310,6 +12345,8 @@ export type CXKeysManhattanPlots =
 export type CXKeysMaps =
   | "hiddenMapFeatures"
   | "mapBubbleColor"
+  | "mapCartogramScale"
+  | "mapCartogramSilhouette"
   | "mapColor"
   | "mapConfig"
   | "mapConfigFeatures"
@@ -12321,6 +12358,7 @@ export type CXKeysMaps =
   | "mapOutlineColor"
   | "mapProjection"
   | "mapSmps"
+  | "mapType"
   | "mapZipCodeIds"
   | "showMapLabels"
   | "topoJSON"

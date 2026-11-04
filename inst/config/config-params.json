@@ -1,7 +1,7 @@
 {
- "x-cx-version": "73.5",
+ "x-cx-version": "73.6",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1794,
+ "count": 1798,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -6085,6 +6085,23 @@
    "description": "Color for the region bubbles on maps (sizeBy a sample: a circle per region sized by its value); the size legend uses it too"
   },
   {
+   "parameter": "mapCartogramScale",
+   "type": "string|boolean",
+   "default": "area",
+   "options": [
+    "area",
+    "olson",
+    false
+   ],
+   "description": "Scaling for the non-contiguous cartogram (mapType cartogram). area: each region is scaled relative to its own area. olson: the densest region keeps its size and every other shrinks proportionally (classic Olson)"
+  },
+  {
+   "parameter": "mapCartogramSilhouette",
+   "type": "boolean",
+   "default": true,
+   "description": "For the non-contiguous cartogram (mapType cartogram), draw each region full-size silhouette in grey behind the scaled shape so the two can be compared"
+  },
+  {
    "parameter": "mapCentralMeridian",
    "type": "number|boolean",
    "default": -96,
@@ -6209,6 +6226,19 @@
    "type": "number|boolean",
    "default": 45.5,
    "description": "Map Standard Parallel 2 in degrees. (Applicable to Albers projection only). Default adjusts to USA maps"
+  },
+  {
+   "parameter": "mapType",
+   "type": "string|boolean",
+   "default": "region",
+   "options": [
+    "region",
+    "dorling",
+    "cartogram",
+    "contiguous",
+    false
+   ],
+   "description": "Map distortion. region: a normal map (default). The other three are cartograms driven by sizeBy: dorling draws one non-overlapping circle per region sized by value; cartogram keeps each region shape and scales it about its own centre (non-contiguous); contiguous deforms the borders so regions stay joined while their areas match the value (Dougenik rubber-sheet)"
   },
   {
    "parameter": "mapZipCodeIds",
@@ -9765,6 +9795,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Name of the variable annotation to size the labels in Scatter2D plots"
+  },
+  {
+   "parameter": "sizeLegendNested",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw the size legend as nested (concentric) bubbles sharing a common bottom edge, with a dashed leader line from each circle to its value label, instead of a column of separate size keys. Applies to proportional-circle size legends (e.g. a sizeBy bubble map or Dorling cartogram)"
   },
   {
    "parameter": "sizeLegendTitle",
