@@ -28,7 +28,8 @@
     "colors": [
       "white"
     ],
-    "sizes": 6
+    "sizes": 6,
+    "sizeRange": [1.5, 1.5]
   },
   "coords": [],
   "theme": {

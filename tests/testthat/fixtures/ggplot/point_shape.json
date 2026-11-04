@@ -25,7 +25,8 @@
     "colors": [
       "black"
     ],
-    "sizes": 12
+    "sizes": 12,
+    "sizeRange": [4, 4]
   },
   "coords": [],
   "theme": {

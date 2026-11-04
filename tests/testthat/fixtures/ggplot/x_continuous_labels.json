@@ -23,7 +23,8 @@
     "xAxisSetLabels": ["1", "2", "3"],
     "colors": ["#D6604D", "#4A6FA5"],
     "colorScale": "ScaleDiscrete",
-    "sizes": 6
+    "sizes": 6,
+    "sizeRange": [1.5, 1.5]
   },
   "coords": [],
   "theme": {

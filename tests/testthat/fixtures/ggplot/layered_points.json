@@ -22,7 +22,8 @@
     "colors": [
       "red"
     ],
-    "sizes": 18
+    "sizes": 18,
+    "sizeRange": [6, 6]
   },
   "coords": [],
   "theme": {

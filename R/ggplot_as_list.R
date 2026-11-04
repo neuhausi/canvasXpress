@@ -522,6 +522,44 @@ gg_resolve_factor_aes <- function(o) {
   o
 }
 
+gg_resolve_bar_count_x <- function(o) {
+  # geom_bar() + stat_count draws ONE bar per unique x value (a discrete count).
+  # When x is a bare numeric column, CanvasXpress otherwise treats each data row as
+  # its own sample (a wall of patterned bars), so coerce that x to a factor -- the
+  # bars collapse to one per level, as ggplot draws them. Scoped to a GeomBar layer
+  # whose stat is StatCount (geom_col is StatIdentity, geom_histogram is StatBin, so
+  # both are left numeric/continuous).
+  has_bar_count <- FALSE
+  for (ly in o$layers) {
+    if (inherits(ly$geom, "GeomBar") && inherits(ly$stat, "StatCount")) {
+      has_bar_count <- TRUE
+      break
+    }
+  }
+  if (!has_bar_count) {
+    return(o)
+  }
+  qx <- o$mapping[["x"]]
+  if (is.null(qx)) {
+    for (ly in o$layers) {
+      if (!is.null(ly$mapping[["x"]])) {
+        qx <- ly$mapping[["x"]]
+        break
+      }
+    }
+  }
+  if (!rlang::is_quosure(qx)) {
+    return(o)
+  }
+  # A bare NUMERIC x is no longer coerced to a factor here: factoring collapses the
+  # bars to one per level but draws them EQUALLY spaced, where ggplot keeps the true
+  # continuous x spacing (e.g. 2.9/3.1 close, 4.5 far). The GeomBar + StatCount branch
+  # in the layer loop instead emits the built bars' continuous xmin/xmax bounds and
+  # draws them through the geom_rect path. (Left as a no-op for the numeric case so the
+  # detection/scoping comment above stays accurate.)
+  o
+}
+
 gg_resolve_const_aes <- function(o) {
   # Materialise constant aesthetics (e.g. aes(x = 1)) as real single-level factor
   # columns. A constant mapping is stored as a bare literal, not a quosure, and
@@ -551,6 +589,223 @@ gg_resolve_const_aes <- function(o) {
       o$data[[col]] <- factor(rep(as.character(m), nrow(o$data)))
       o$mapping[[name]] <- rlang::new_quosure(rlang::sym(col),
                                               env = rlang::empty_env())
+    }
+  }
+  o
+}
+
+gg_resolve_expr_aes <- function(o) {
+  # Materialise COMPUTED aes expressions into real data columns so the rest of the
+  # pipeline (name-based aes resolution, ggplot_build, CanvasXpress) sees a plain
+  # column. ggplot evaluates aes against the data (then the plot environment); the
+  # converter otherwise only matches bare column names, so expressions silently
+  # fail to map and the geom renders empty/wrong. Covers:
+  #   * a call on columns -- aes(x = round_any(x, 0.5)), aes(y = HR / AB)
+  #   * a coercion wrapping a non-bare call -- aes(x = factor(round_any(x, .5)))
+  #   * a bare symbol that is NOT a data column but resolves in the plot env
+  #     (e.g. data.frame(x <- rchisq(...)) mangles the column name while aes(x)
+  #      picks up the environment variable x)
+  # A bare column symbol and a plain factor(col) are left untouched -- those are
+  # handled by gg_resolve_factor_aes and normal name resolution. The original
+  # expression text is preserved as the aes label so axis/legend titles still read
+  # like ggplot's (e.g. "HR/AB"), not the synthesised column name.
+  coercions <- c("factor", "as.factor", "ordered", "as.ordered")
+  is_bare_col <- function(expr, data) {
+    is.symbol(expr) && (as.character(expr) %in% colnames(data))
+  }
+  is_factor_of_bare_col <- function(expr, data) {
+    is.call(expr) && length(expr) >= 2 &&
+      (as.character(expr[[1]])[1] %in% coercions) && is_bare_col(expr[[2]], data)
+  }
+  safe_name <- function(base, data) {
+    nm <- gsub("[^A-Za-z0-9]+", "_", base)
+    nm <- gsub("^_+|_+$", "", nm)
+    if (!nzchar(nm)) {
+      nm <- "expr"
+    }
+    out <- nm
+    i <- 1L
+    while (out %in% colnames(data)) {
+      out <- paste0(nm, "_", i)
+      i <- i + 1L
+    }
+    out
+  }
+  # Only the positional / scale aesthetics are resolved by bare name downstream, so
+  # only those are materialised. Bound aesthetics (ymin/ymax/xmin/xmax/yend/xend)
+  # and the like are already computed through ggplot_build and have their own
+  # handling -- materialising them would perturb e.g. geom_errorbar.
+  process_aes <- c("x", "y", "fill", "colour", "color", "group",
+                   "size", "shape", "alpha", "weight")
+  resolve_map <- function(data, mapping) {
+    labels <- list()
+    if (is.null(mapping)) {
+      return(list(data = data, mapping = mapping, labels = labels))
+    }
+    for (name in names(mapping)) {
+      if (!(name %in% process_aes)) {
+        next
+      }
+      q <- mapping[[name]]
+      if (!rlang::is_quosure(q)) {
+        next
+      }
+      expr <- rlang::quo_get_expr(q)
+      if (is_bare_col(expr, data) || is_factor_of_bare_col(expr, data)) {
+        next
+      }
+      # The cut family (cut/cut_number/cut_width/cut_interval), possibly wrapped in
+      # a coercion, has its own converter handling; materialising it here does not
+      # fix the render and only changes that output, so leave it untouched.
+      cuts <- c("cut", "cut_number", "cut_width", "cut_interval")
+      head_fn <- if (is.call(expr)) as.character(expr[[1]])[1] else ""
+      inner_fn <- if (is.call(expr) && length(expr) >= 2 && is.call(expr[[2]])) {
+        as.character(expr[[2]][[1]])[1]
+      } else {
+        ""
+      }
+      if ((head_fn %in% cuts) || (inner_fn %in% cuts)) {
+        next
+      }
+      val <- tryCatch(rlang::eval_tidy(q, data = data), error = function(e) NULL)
+      if (is.null(val) || length(val) != nrow(data)) {
+        next
+      }
+      orig_label <- rlang::as_label(expr)
+      col <- safe_name(orig_label, data)
+      data[[col]] <- val
+      mapping[[name]] <- rlang::new_quosure(rlang::sym(col), env = rlang::empty_env())
+      labels[[name]] <- orig_label
+    }
+    list(data = data, mapping = mapping, labels = labels)
+  }
+  apply_labels <- function(o, labels) {
+    for (name in names(labels)) {
+      if (is.null(o$labels[[name]])) {
+        o$labels[[name]] <- labels[[name]]
+      }
+    }
+    o
+  }
+  r <- resolve_map(o$data, o$mapping)
+  o$data <- r$data
+  o$mapping <- r$mapping
+  o <- apply_labels(o, r$labels)
+  for (i in seq_along(o$layers)) {
+    ly <- o$layers[[i]]
+    if (is.null(ly$mapping)) {
+      next
+    }
+    has_layer_data <- is.data.frame(ly$data) && nrow(ly$data) > 0
+    d <- if (has_layer_data) ly$data else o$data
+    r <- resolve_map(d, ly$mapping)
+    # Nothing materialised -> leave this layer untouched. A Layer is a ggproto
+    # (reference semantics) shared with the caller's plot, so only touch it when
+    # we must, and then on a CLONE -- mutating it in place would corrupt the user's
+    # ggplot object (its aes would point at columns that live only in this copy).
+    if (length(r$labels) == 0) {
+      next
+    }
+    o$layers[[i]] <- unserialize(serialize(ly, NULL))
+    if (has_layer_data) {
+      o$layers[[i]]$data <- r$data
+    } else {
+      o$data <- r$data
+    }
+    o$layers[[i]]$mapping <- r$mapping
+    o <- apply_labels(o, r$labels)
+  }
+  # Facet expressions: facet_wrap(~factor(region, levels = ...)) /
+  # facet_grid(rows/cols) with a computed variable deparse to "factor(...)" as the
+  # facet name, so the panel column is never found (facetLevels empty, one panel).
+  # Materialise each computed facet expression into a column and point the facet at
+  # it; a factor() wrapper keeps its custom level order, so panels order as ggplot's.
+  # Returns list(quosures, changed). `changed` is TRUE only when a facet quosure
+  # was rewritten to a materialised column (coercing a bare numeric facet to a
+  # factor only touches o$data, which is value-semantic, so it is NOT a change that
+  # needs the facet ggproto cloned).
+  resolve_facet_quosures <- function(qs) {
+    if (is.null(qs) || !length(qs)) {
+      return(list(quosures = qs, changed = FALSE))
+    }
+    new <- qs
+    changed <- FALSE
+    for (i in seq_along(qs)) {
+      q <- qs[[i]]
+      if (!rlang::is_quosure(q)) {
+        next
+      }
+      expr <- rlang::quo_get_expr(q)
+      if (is_bare_col(expr, o$data)) {
+        # A bare facet column: ggplot facets are discrete (one panel per value),
+        # so coerce a numeric facet variable to a factor; otherwise CanvasXpress
+        # treats it as continuous and the panels bin/interpolate (empty strips).
+        col <- as.character(expr)
+        if (is.numeric(o$data[[col]])) {
+          o$data[[col]] <<- factor(o$data[[col]])
+        }
+        next
+      }
+      val <- tryCatch(rlang::eval_tidy(q, data = o$data), error = function(e) NULL)
+      if (is.null(val) || length(val) != nrow(o$data)) {
+        next
+      }
+      if (is.numeric(val)) {
+        val <- factor(val)
+      }
+      col <- safe_name(rlang::as_label(expr), o$data)
+      o$data[[col]] <<- val
+      new[[i]] <- rlang::new_quosure(rlang::sym(col), env = rlang::empty_env())
+      # gg_facet reads the facet variable from the quosure NAME (ls()), which
+      # ggplot set to the deparsed expression -- rename it to the materialised
+      # column so the panel column and its levels resolve.
+      nm <- names(new)
+      if (is.null(nm)) {
+        nm <- rep("", length(new))
+      }
+      nm[i] <- col
+      names(new) <- nm
+      changed <- TRUE
+    }
+    list(quosures = new, changed = changed)
+  }
+  if (!is.null(o$facet) && !is.null(o$facet$params)) {
+    facet_changed <- FALSE
+    new_facets <- NULL
+    new_rows <- NULL
+    new_cols <- NULL
+    if (!is.null(o$facet$params$facets)) {
+      res <- resolve_facet_quosures(o$facet$params$facets)
+      new_facets <- res$quosures
+      facet_changed <- facet_changed || res$changed
+    }
+    if (!is.null(o$facet$params$rows)) {
+      res <- resolve_facet_quosures(o$facet$params$rows)
+      new_rows <- res$quosures
+      facet_changed <- facet_changed || res$changed
+    }
+    if (!is.null(o$facet$params$cols)) {
+      res <- resolve_facet_quosures(o$facet$params$cols)
+      new_cols <- res$quosures
+      facet_changed <- facet_changed || res$changed
+    }
+    # A Facet is a ggproto shared with the caller's plot; only when a quosure was
+    # actually rewritten do we clone it and set the materialised vars on the clone,
+    # so ggplot.as.list() never mutates the user's ggplot (which would leave its
+    # facet pointing at a column that exists only in this converter copy).
+    if (facet_changed) {
+      o$facet <- unserialize(serialize(o$facet, NULL))
+      np <- o$facet$params
+      if (!is.null(new_facets)) {
+        np$facets <- new_facets
+      }
+      if (!is.null(new_rows)) {
+        np$rows <- new_rows
+      }
+      if (!is.null(new_cols)) {
+        np$cols <- new_cols
+      }
+      o$facet$params <- np
     }
   }
   o
@@ -818,6 +1073,10 @@ gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
 
+  o <- gg_resolve_expr_aes(o)
+
+  o <- gg_resolve_bar_count_x(o)
+
   o <- gg_resolve_const_aes(o)
 
   o <- gg_resolve_factor_aes(o)
@@ -869,6 +1128,73 @@ gg_cxplot <- function(o, target, ...) {
         l <- "GeomJitter"
       } else if ((l == "GeomBar") && (proto_stat[i] == "StatBin")) {
         l <- "GeomHistogram"
+        # A histogram with its OWN layer data (several overlaid
+        # geom_histogram(data = subset(...)) layers) cannot be binned by the
+        # shared-data histogram path; emit each bin's bounds + fill so the engine
+        # draws it as filled bars through the geom_rect path, like geom_tile.
+        # The same precomputed-bounds path draws a position = "identity" fill-grouped
+        # histogram: ggplot has already placed every group's bins from a shared
+        # baseline (overlapping, not stacked), so emitting those bounds + per-bin fill
+        # reproduces ggplot's overlapping alpha-blended histograms instead of the
+        # engine's default stack.
+        is_identity_overlap <- !is.null(o$layers[[i]]$position) &&
+          class(o$layers[[i]]$position)[1] == "PositionIdentity" &&
+          !is.null(bld$data[[i]]$fill) &&
+          length(unique(bld$data[[i]]$fill)) > 1
+        if ((is.data.frame(o$layers[[i]]$data) && nrow(o$layers[[i]]$data) > 0) ||
+            is_identity_overlap) {
+          p$xmin <- bld$data[[i]]$xmin
+          p$xmax <- bld$data[[i]]$xmax
+          p$ymin <- bld$data[[i]]$ymin
+          p$ymax <- bld$data[[i]]$ymax
+          p$col <- bld$data[[i]]$fill
+          p$panel <- bld$data[[i]]$PANEL
+          # For the fill-grouped overlap, name the fill column so the engine builds a
+          # per-level colour legend (the a/b subtype key) from the per-bin colours.
+          if (is_identity_overlap) {
+            fill_aes <- NULL
+            if (!is.null(o$layers[[i]]$mapping[["fill"]])) {
+              fill_aes <- rlang::as_label(o$layers[[i]]$mapping[["fill"]])
+            } else if (!is.null(o$mapping[["fill"]])) {
+              fill_aes <- rlang::as_label(o$mapping[["fill"]])
+            }
+            if (!is.null(fill_aes) && fill_aes %in% colnames(o$data)) {
+              p$fill <- fill_aes
+            }
+          }
+        }
+      } else if ((l == "GeomBar") && (proto_stat[i] == "StatCount")) {
+        # geom_bar(stat = "count") over a bare NUMERIC x: ggplot keeps the TRUE
+        # continuous x spacing (2.9/3.1 close, 4.5 far), not one equal-width bar per
+        # level. Emit the built bars' continuous bounds and draw them through the
+        # geom_rect path (as GeomHistogram does); a factor/discrete x keeps the normal
+        # categorical bar path below.
+        bar_x <- o$mapping[["x"]]
+        if (is.null(bar_x) && !is.null(o$layers[[i]]$mapping[["x"]])) {
+          bar_x <- o$layers[[i]]$mapping[["x"]]
+        }
+        bar_x_numeric <- FALSE
+        if (rlang::is_quosure(bar_x)) {
+          bx_expr <- rlang::quo_get_expr(bar_x)
+          if (is.symbol(bx_expr)) {
+            bx_col <- as.character(bx_expr)
+            bar_x_numeric <- (bx_col %in% colnames(o$data)) && is.numeric(o$data[[bx_col]])
+          }
+        }
+        if (bar_x_numeric && !is.null(bld$data[[i]]$xmin)) {
+          l <- "GeomHistogram"
+          p$xmin <- bld$data[[i]]$xmin
+          p$xmax <- bld$data[[i]]$xmax
+          p$ymin <- bld$data[[i]]$ymin
+          p$ymax <- bld$data[[i]]$ymax
+          p$col <- bld$data[[i]]$fill
+          p$panel <- bld$data[[i]]$PANEL
+        }
+      } else if ((l == "GeomPolygon") && (proto_stat[i] == "StatContour")) {
+        # stat_contour(geom = "polygon") draws FILLED contour bands (fill = level), not
+        # raw data polygons; route it to the filled-contour renderer so the engine
+        # builds the bands from the z grid instead of treating the columns as categories.
+        l <- "GeomContourFilled"
       } else if ((l == "GeomPath") && (proto_stat[i] == "StatQqLine")) {
         l <- "GeomQqLine"
       } else if ((l == "GeomPoint") && (proto_stat[i] == "StatQq")) {
@@ -979,13 +1305,46 @@ gg_cxplot <- function(o, target, ...) {
           p$linetype <- bld$data[[i]]$linetype
         }
       } else if (l == "GeomPoint") {
-        if (dim(bld$data[[i]])[1] != dim(o$data)[1]) {
+        # stat_summary aggregates y per category; let the raw data + fun reach the
+        # engine (which aggregates via geom_group, like geom_bar+count) rather than
+        # emitting precomputed x/y here -- the precomputed positions otherwise fight
+        # the engine's own grouping and leave the raw rows plotted.
+        if (proto_stat[i] != "StatSummary" && dim(bld$data[[i]])[1] != dim(o$data)[1]) {
           p$x <- bld$data[[i]]$x
           p$y <- bld$data[[i]]$y
           p$color <- bld$data[[i]]$colour
           p$fill <- bld$data[[i]]$fill
           p$size <- bld$data[[i]]$size
           p$shape <- bld$data[[i]]$shape
+        }
+      } else if (l == "GeomLine" &&
+                   (!is.null(o$layers[[i]]$mapping[["y"]]) ||
+                      (is.data.frame(o$layers[[i]]$data) && nrow(o$layers[[i]]$data) > 0))) {
+        # A geom_line whose y is overridden (geom_line(aes(y = pred))) or that
+        # draws from its OWN data frame (an overlay such as a theoretical curve)
+        # cannot share the main plot's y. Emit its own computed points as segments
+        # -- consecutive points within each group -- and draw them through the
+        # geom_segment decoration path (keeps the base layers intact).
+        cd <- bld$data[[i]]
+        if (!is.null(cd) && nrow(cd) >= 2 && all(c("x", "y") %in% names(cd))) {
+          grp <- if (!is.null(cd$group)) cd$group else rep(1L, nrow(cd))
+          ord <- order(grp, cd$x)
+          cd <- cd[ord, , drop = FALSE]
+          grp <- grp[ord]
+          nrw <- nrow(cd)
+          same <- grp[-nrw] == grp[-1]
+          if (any(same)) {
+            p$x <- as.numeric(cd$x[-nrw][same])
+            p$y <- as.numeric(cd$y[-nrw][same])
+            p$xend <- as.numeric(cd$x[-1][same])
+            p$yend <- as.numeric(cd$y[-1][same])
+            if (!is.null(cd$colour)) {
+              p$col <- as.character(cd$colour[-1][same])
+            }
+            if (!is.null(cd$linewidth)) {
+              p$linewidth <- as.numeric(cd$linewidth[-1][same])
+            }
+          }
         }
       } else if (l == "GeomSmooth") {
         p$dataColor = unique(bld$data[[i]]$colour)
@@ -1006,7 +1365,10 @@ gg_cxplot <- function(o, target, ...) {
         }
       } else if (l == "GeomDensityRidges") {
         p$bandwidthAdjust <- bld$data[[i]]$x[2] - bld$data[[i]]$x[1]
-      } else if (l == "GeomRect" || l == "GeomTile") {
+      } else if (l == "GeomRect" || l == "GeomTile" || l == "GeomRaster") {
+        # geom_raster is a filled grid just like geom_tile; emit each cell's
+        # xmin/xmax/ymin/ymax + fill so the engine can draw it through the same
+        # geom_rect path (ggplot_build gives a raster these bounds).
         p$xmin <- bld$data[[i]]$xmin
         p$xmax <- bld$data[[i]]$xmax
         p$ymin <- bld$data[[i]]$ymin
@@ -1234,11 +1596,17 @@ gg_order <- function(o, b) {
   if (!is.null(b$layout$panel_params[[1]]$y)) {
     r$yLabels <- as.character(b$layout$panel_params[[1]]$y$get_labels())
   }
-  # Carry the x position scale's side ("top"/"bottom") so the JS side can place the
-  # alluvial/sankey axis (column) titles accordingly (scale_x_*(position = "top")).
+  # Carry each position scale's side so the JS side can place the axis on the
+  # requested edge: scale_x_*(position = "top") lifts the x-axis to the top,
+  # scale_y_*(position = "right") moves the y-axis to the right (and the
+  # alluvial/sankey column titles follow the x side).
   sx <- tryCatch(o$scales$get_scales("x"), error = function(e) NULL)
   if (!is.null(sx) && !is.null(sx$position)) {
     r$xAxisPosition <- sx$position
+  }
+  sy <- tryCatch(o$scales$get_scales("y"), error = function(e) NULL)
+  if (!is.null(sy) && !is.null(sy$position)) {
+    r$yAxisPosition <- sy$position
   }
   # ggsankey marker + per-node colour map, threaded through so the JS Sankey path
   # can colour each node by its own value and each ribbon by its source node.
@@ -1523,6 +1891,16 @@ gg_scales <- function(o, b) {
         ts <- gg_trained_scale(b, "fill")
         if (c == "ScaleContinuous") {
           r$colorSpectrum <- s$palette(c(0, 0.25, 0.5, 0.75, 1))
+          ## A transformed continuous fill (scale_fill_gradient(trans="log10") etc.)
+          ## maps the colour in the TRANSFORMED space, so the engine must spread the
+          ## colour spectrum logarithmically (otherwise a skewed, wide range washes
+          ## almost every cell to the low end). Carry the transform name.
+          fill_trans <- gg_scale_transform_name(s)
+          if (!is.null(fill_trans) && !is.na(fill_trans) && fill_trans != "identity") {
+            ## ggplot names the log transforms "log-10"/"log-2"; the engine's
+            ## transformValue expects "log10"/"log2".
+            r$colorSpectrumTransform <- gsub("^log-", "log", fill_trans)
+          }
           k <- TRUE
         } else if (c == "ScaleDiscrete") {
           p <- s$palette(1)
@@ -1593,10 +1971,17 @@ gg_scales <- function(o, b) {
       } else if (s$aesthetics[1] == "x") {
         x_trans <- gg_scale_transform_name(s)
         has_x_trans <- !is.null(x_trans) && x_trans != "identity"
+        # See the y branch below: limits and explicit breaks/labels can both be
+        # set, so emit min/max from the limits but still fall through to the
+        # break/label channel when the user supplied custom breaks or labels.
+        x_has_breaks <- !is.null(s$breaks) && !inherits(s$breaks, "waiver")
+        x_has_labels <- !is.null(s$labels) && !inherits(s$labels, "waiver") &&
+          !is.function(s$labels)
         if (!is.null(s$limits)) {
           r$setMinX <- s$limits[1]
           r$setMaxX <- s$limits[2]
-        } else {
+        }
+        if (is.null(s$limits) || x_has_breaks || x_has_labels) {
           x_breaks <- b$layout$panel_params[[1]]$x$breaks
           x_minor  <- b$layout$panel_params[[1]]$x$minor_breaks
           # When the scale is transformed, ggplot's panel breaks live in
@@ -1638,10 +2023,20 @@ gg_scales <- function(o, b) {
       } else if (s$aesthetics[1] == "y") {
         y_trans <- gg_scale_transform_name(s)
         has_y_trans <- !is.null(y_trans) && y_trans != "identity"
+        # A scale can carry BOTH limits and explicit breaks/labels (e.g.
+        # scale_y_continuous(limits = c(0, 45), breaks = ..., labels = ...)).
+        # Emit the min/max from the limits, but still fall through to the
+        # break/label channel when the user set custom breaks or labels - the
+        # two are not mutually exclusive (previously limits alone suppressed the
+        # custom ticks, dropping scale_y_continuous(labels = ...)).
+        y_has_breaks <- !is.null(s$breaks) && !inherits(s$breaks, "waiver")
+        y_has_labels <- !is.null(s$labels) && !inherits(s$labels, "waiver") &&
+          !is.function(s$labels)
         if (!is.null(s$limits)) {
           r$setMinY <- s$limits[1]
           r$setMaxY <- s$limits[2]
-        } else {
+        }
+        if (is.null(s$limits) || y_has_breaks || y_has_labels) {
           y_breaks <- b$layout$panel_params[[1]]$y$breaks
           y_minor  <- b$layout$panel_params[[1]]$y$minor_breaks
           # See the x branch above: invert transformed breaks so the untransformed
@@ -1824,6 +2219,10 @@ gg_scales <- function(o, b) {
   for (i in 1:n) {
     if (!is.null(b$data[[i]]$shape) && !is.null(b$data[[i]]$size)) {
       r$sizes <- floor(unique(ceiling(sort(b$data[[i]]$size)) * 3))
+      ## The authoritative ggplot size range in mm (range of the layer's computed
+      ## point sizes). The engine uses this to drive an area-proportional ramp for
+      ## a wide scale_size(range = ...) instead of the default binned pixel sizes.
+      r$sizeRange <- range(b$data[[i]]$size, na.rm = TRUE)
       break
     }
   }
