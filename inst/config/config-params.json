@@ -1,7 +1,7 @@
 {
- "x-cx-version": "73.7",
+ "x-cx-version": "73.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1798,
+ "count": 1799,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -6239,6 +6239,12 @@
     false
    ],
    "description": "Map distortion. region: a normal map (default). The other three are cartograms driven by sizeBy: dorling draws one non-overlapping circle per region sized by value; cartogram keeps each region shape and scales it about its own centre (non-contiguous); contiguous deforms the borders so regions stay joined while their areas match the value (Dougenik rubber-sheet)"
+  },
+  {
+   "parameter": "mapVectorField",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw a vector-field overlay (raw arrows / gridded quiver / integrated streamlines) on a Map. Positions are read from the lat / lng marker columns of data.x and the velocity components from vectorUBy / vectorVBy (defaulting to vx eastward / vy northward)"
   },
   {
    "parameter": "mapZipCodeIds",
