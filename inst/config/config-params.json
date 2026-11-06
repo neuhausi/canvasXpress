@@ -1,7 +1,7 @@
 {
- "x-cx-version": "73.9",
+ "x-cx-version": "74",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1799,
+ "count": 1800,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -11132,6 +11132,12 @@
    "type": "string|boolean",
    "default": "rgb(59,59,59)",
    "description": "Color for the set bar plot"
+  },
+  {
+   "parameter": "upsetSetsBarRatio",
+   "type": "number|boolean",
+   "default": 0.2,
+   "description": "Ratio of the canvas width used by the set size bar plot on the left"
   },
   {
    "parameter": "upsetShadeAlpha",
