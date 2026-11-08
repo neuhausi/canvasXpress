@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1800 keys). String enums become open literal
+ * config schema (1802 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -1405,6 +1405,14 @@ export interface CXConfig {
    */
   contourLevels?: unknown[] | boolean | string | number;
   /**
+   * Number of grid points in each direction for the two dimensional kernel density estimate
+   * underlying the scatter plot contours, as the n argument of the kde2d function in the R
+   * package MASS and of stat_density_2d in ggplot2
+   * @graphTypes Pareto, Heatmap, Scatter2D
+   * @default 100
+   */
+  contourPoints?: number | boolean;
+  /**
    * Contour density type
    * @graphTypes Pareto, Heatmap, Scatter2D
    * @default "density"
@@ -2483,6 +2491,13 @@ export interface CXConfig {
    * @default "gaussian"
    */
   densityKernel?: "gaussian" | "rectangular" | "triangular" | "epanechnikov" | "quartic" | "biweight" | "cosine" | "optcosine" | false | (string & {});
+  /**
+   * Number of equally spaced points at which the density is estimated, as the n argument of
+   * the density function in R. Values above 512 are rounded up to a power of two as in R
+   * @graphTypes Density, Distribution, Histogram, Ridgeline, Violin
+   * @default 512
+   */
+  densityPoints?: number | boolean;
   /**
    * Histogram density position
    * @graphTypes Density, Distribution, Histogram, Ridgeline, Violin
@@ -11540,6 +11555,7 @@ export type CXKeysContours =
   | "contourLevelNumber"
   | "contourLevelWidth"
   | "contourLevels"
+  | "contourPoints"
   | "contourStat"
   | "contourType"
   | "isContour"
@@ -11893,6 +11909,7 @@ export type CXKeysDensityPlots =
   | "bandwidthCut"
   | "bandwidthRule"
   | "densityKernel"
+  | "densityPoints"
   | "densityPosition"
   | "showScatterDensity";
 /** Config keys in the "Dotplot Graphs" category. */

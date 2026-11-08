@@ -1,7 +1,7 @@
 {
- "x-cx-version": "74",
+ "x-cx-version": "74.1",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1800,
+ "count": 1802,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -1944,6 +1944,12 @@
    "description": "Numeric vector to set the contour levels. It is automatically calculated if not defined using the axisAlgorithm setting and the contourLevelNumber"
   },
   {
+   "parameter": "contourPoints",
+   "type": "integer|boolean",
+   "default": 100,
+   "description": "Number of grid points in each direction for the two dimensional kernel density estimate underlying the scatter plot contours, as the n argument of the kde2d function in the R package MASS and of stat_density_2d in ggplot2"
+  },
+  {
    "parameter": "contourStat",
    "type": "string|boolean",
    "default": "density",
@@ -3359,6 +3365,12 @@
     false
    ],
    "description": "Histogram density kernels"
+  },
+  {
+   "parameter": "densityPoints",
+   "type": "integer|boolean",
+   "default": 512,
+   "description": "Number of equally spaced points at which the density is estimated, as the n argument of the density function in R. Values above 512 are rounded up to a power of two as in R"
   },
   {
    "parameter": "densityPosition",

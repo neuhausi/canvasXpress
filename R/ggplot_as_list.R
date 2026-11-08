@@ -642,6 +642,13 @@ gg_resolve_expr_aes <- function(o) {
     if (is.null(mapping)) {
       return(list(data = data, mapping = mapping, labels = labels))
     }
+    # A ggmatrix (GGally::ggpairs) subplot, or any layer that inherited no real
+    # data frame, arrives here with `data` a waiver/non-frame, so nrow(data) is
+    # NULL and `length(val) != nrow(data)` below collapses to NA -> if() crash.
+    # Nothing can be materialised against a non-frame, so return it untouched.
+    if (!is.data.frame(data) || nrow(data) == 0) {
+      return(list(data = data, mapping = mapping, labels = labels))
+    }
     for (name in names(mapping)) {
       if (!(name %in% process_aes)) {
         next
@@ -1069,6 +1076,100 @@ gg_forecast_hoist_data <- function(o) {
   o
 }
 
+gg_hoist_layer_data <- function(o) {
+  # A bare ggplot() (no plot-level data) whose geoms each carry their own data
+  # frame -- e.g. geom_step(data = d) + geom_point(data = d) -- leaves o$data a
+  # waiver, so the top-level data matrix comes out empty and nothing draws. When
+  # there is no plot-level data, hoist the FIRST data-bearing layer's data +
+  # mapping to the plot level (and clear that layer's data so it inherits), giving
+  # ggplot_build a shared data frame to build the data matrix from. Other layers
+  # keep their own data. Mirrors gg_forecast_hoist_data.
+  if (is.data.frame(o$data) && nrow(o$data) > 0) {
+    return(o)
+  }
+  for (i in seq_along(o$layers)) {
+    l <- o$layers[[i]]
+    if (is.data.frame(l$data) && nrow(l$data) > 0) {
+      o$data <- l$data
+      m <- o$mapping
+      for (n in names(l$mapping)) {
+        m[[n]] <- l$mapping[[n]]
+      }
+      o$mapping <- m
+      # Keep this layer's own data (unlike the forecast hoist): a geom whose step/
+      # line/point rendering reads the per-layer data block (e.g. geom_step) would
+      # otherwise lose it and fall back to a plain connected line. Plot-level data is
+      # a copy of the same frame, so ggplot_build and the data matrix stay correct.
+      return(o)
+    }
+  }
+  o
+}
+
+## Build a native CanvasXpress Treemap from a treemapify geom_treemap layer.
+## treemapify lays rectangles out at draw time (no xmin/xmax in ggplot_build), so
+## we hand CanvasXpress the leaf list and let its own Treemap engine do the layout:
+## samples = labels, a single `area` variable drives rectangle size (config$xAxis),
+## the fill aesthetic becomes a sample annotation + colorBy with the exact ggplot
+## hues installed as a User scheme, and any subgroup aesthetics become treemapBy
+## hierarchy levels. Returns the finished cx list (no isGGPlot: it is a native config).
+gg_treemap_cx <- function(o, bld, layerIndex, target, config) {
+  ld <- bld$data[[layerIndex]]
+  nRect <- nrow(ld)
+  labels <- if (!is.null(ld$label)) as.character(ld$label) else as.character(seq_len(nRect))
+  areas <- as.numeric(ld$area)
+  fills <- if (!is.null(ld$fill)) as.character(ld$fill) else rep("rgb(70,130,180)", nRect)
+  # The fill aesthetic's source expression names the annotation + legend title.
+  fillVar <- if (!is.null(o$mapping$fill)) {
+    rlang::as_label(rlang::quo_get_expr(o$mapping$fill))
+  } else {
+    "fill"
+  }
+  # Rectangle labels can repeat; CanvasXpress sample ids must be unique, so keep the
+  # drawn label as an annotation and give each rectangle a unique sample id.
+  smps <- make.unique(labels, sep = " ")
+  # Sample annotations: the fill grouping (drives colorBy) plus each subgroup level.
+  xAnno <- list()
+  xAnno[[fillVar]] <- as.list(labels)
+  treemapBy <- list()
+  for (sg in c("subgroup", "subgroup2", "subgroup3")) {
+    if (!is.null(ld[[sg]])) {
+      xAnno[[sg]] <- as.list(as.character(ld[[sg]]))
+      treemapBy[[length(treemapBy) + 1]] <- sg
+    }
+  }
+  # colorBy categories are built in first-appearance order of the fill annotation;
+  # the matching exact ggplot hue for each category keeps fills pixel-faithful.
+  seenCat <- character(0)
+  catColors <- character(0)
+  for (i in seq_len(nRect)) {
+    cat_i <- labels[i]
+    if (!(cat_i %in% seenCat)) {
+      seenCat <- c(seenCat, cat_i)
+      catColors <- c(catColors, fills[i])
+    }
+  }
+  dataBlock <- list(
+    y = list(vars = list("area"), smps = as.list(smps), data = list(as.list(areas))),
+    x = xAnno
+  )
+  tmConfig <- config
+  tmConfig$graphType <- "Treemap"
+  tmConfig$xAxis <- list("area")
+  tmConfig$colorBy <- fillVar
+  tmConfig$colors <- as.list(catColors)
+  tmConfig$colorScheme <- "User"
+  if (length(treemapBy) > 0) {
+    tmConfig$treemapBy <- treemapBy
+  }
+  list(
+    renderTo = target,
+    data     = dataBlock,
+    config   = tmConfig,
+    isR      = TRUE
+  )
+}
+
 gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
@@ -1086,6 +1187,8 @@ gg_cxplot <- function(o, target, ...) {
   o <- gg_lodes_to_alluvia(o)
 
   o <- gg_forecast_hoist_data(o)
+
+  o <- gg_hoist_layer_data(o)
 
   meta <- as.list(sapply(o$data, is.factor))
 
@@ -1113,6 +1216,15 @@ gg_cxplot <- function(o, target, ...) {
   )
 
   layers <- sapply(o$layers, function(x) class(x$geom)[1])
+
+  # treemapify::geom_treemap has no ggplot2 Geom proto, so the generic per-layer
+  # dispatch below errors ("object 'GeomTreemap' not found"). Route it to the
+  # native CanvasXpress Treemap instead: one rectangle per built row, sized by the
+  # resolved `area`, filled by the fill aesthetic (exact ggplot hues preserved),
+  # labelled by `label`. Hierarchical subgroup/subgroup2 become treemapBy levels.
+  if ("GeomTreemap" %in% layers) {
+    return(gg_treemap_cx(o, bld, which(layers == "GeomTreemap")[1], target, config))
+  }
 
   proto_stat <- sapply(sapply(o$layers, "[[", "stat"),
                        function(x) class(x)[[1]][1])
@@ -1309,7 +1421,13 @@ gg_cxplot <- function(o, target, ...) {
         # engine (which aggregates via geom_group, like geom_bar+count) rather than
         # emitting precomputed x/y here -- the precomputed positions otherwise fight
         # the engine's own grouping and leave the raw rows plotted.
-        if (proto_stat[i] != "StatSummary" && dim(bld$data[[i]])[1] != dim(o$data)[1]) {
+        # A bare ggplot() (no plot-level data) makes o$data a waiver, so dim() is
+        # NULL and the row-count comparison would be NA -> if() crash: with no shared
+        # default data the "built rows differ from plot rows" heuristic is moot (each
+        # layer carries its own data), so treat the baseline row count as the layer's
+        # own and take the normal point path.
+        o_nrow <- if (is.data.frame(o$data)) nrow(o$data) else nrow(bld$data[[i]])
+        if (proto_stat[i] != "StatSummary" && nrow(bld$data[[i]]) != o_nrow) {
           p$x <- bld$data[[i]]$x
           p$y <- bld$data[[i]]$y
           p$color <- bld$data[[i]]$colour
@@ -1870,6 +1988,25 @@ gg_theme <- function(o) {
           t[[a]] <- gsub("points", "", v)
         }
       }
+    }
+  }
+  # G7: the legend key panel fill lives on the theme by inheritance, so the loop
+  # above (which only reads directly-set element slots) never emits it and the
+  # engine falls back to a transparent key. Resolve it with calc_element so the
+  # default theme_grey key renders grey (#EBEBEB, matching the panel) while
+  # theme_bw/minimal/void keep their white/blank key. Only fill a slot the plot's
+  # own theme did not already set.
+  if (is.null(t[["legend.key.fill"]])) {
+    key_fill <- tryCatch({
+      ke <- ggplot2::calc_element("legend.key", e)
+      if (!is.null(ke) && !("element_blank" %in% class(ke)) && !is.null(ke$fill)) {
+        ke$fill
+      } else {
+        NULL
+      }
+    }, error = function(err) NULL)
+    if (!is.null(key_fill) && length(key_fill) == 1 && nzchar(as.character(key_fill))) {
+      t[["legend.key.fill"]] <- as.character(key_fill)
     }
   }
   t
