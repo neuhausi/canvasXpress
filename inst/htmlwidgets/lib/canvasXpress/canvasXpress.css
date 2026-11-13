@@ -9815,14 +9815,16 @@ body.has-fullscreen {
  * paints its root with the dark surface: the HTML widgets, primitives and translucent tints around
  * the canvas would otherwise sit on the host page (usually white). Only the chart's OWN theme does
  * this; inside a dark container (a dark dashboard) the container provides the backdrop.
+ * The fill is the chart's own background (--cx-chart-bg, set at draw) so no strip of a second
+ * colour shows beside the canvas, and a transparent chart background lets the host page through.
  */
 .cX-DOM[data-cx-ui-theme="dark"] {
-  background-color: var(--cx-ui-surface);
+  background-color: var(--cx-chart-bg, var(--cx-ui-surface));
 }
 
 @media (prefers-color-scheme: dark) {
   .cX-DOM[data-cx-ui-theme="auto"] {
-    background-color: var(--cx-ui-surface);
+    background-color: var(--cx-chart-bg, var(--cx-ui-surface));
   }
 }
 

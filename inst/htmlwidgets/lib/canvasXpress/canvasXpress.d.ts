@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1802 keys). String enums become open literal
+ * config schema (1807 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -412,6 +412,24 @@ export interface CXConfig {
    * @default "center"
    */
   binAlignment?: "left" | "center" | "right" | false | (string & {});
+  /**
+   * How binned data points are grouped into stacks. dotdensity is the Wilkinson algorithm R
+   * geom_dotplot uses (a bin starts at the first value that does not fit the previous one, and
+   * every dot in it is drawn at the bin centre); histodot uses fixed-width bins from the data
+   * minimum; exact stacks only values that are strictly equal, leaving every dot on its own
+   * value
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default "dotdensity"
+   */
+  binMethod?: "dotdensity" | "histodot" | "exact" | false | (string & {});
+  /**
+   * Width of a bin, in data units, when binned data points are grouped with binMethod
+   * dotdensity or histodot. Zero (the default) derives it from the data as the R geom_dotplot
+   * default does: the value range divided by 30
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default 0
+   */
+  binWidth?: number | boolean;
   /**
    * Flag to bin the data points in dotplots and boxplots
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -4094,6 +4112,15 @@ export interface CXConfig {
    */
   layoutRemoveEmpty?: boolean;
   /**
+   * Flag to give each facet of a single-column layout a height proportional to the data it
+   * holds, the way ggplot2 facet_grid(space = "free") sizes its panels, instead of splitting
+   * the canvas into equal rows. A facet whose values span a small range is drawn short and a
+   * busy one tall, so no facet wastes empty space. Ignored when the layout has more than one
+   * column, and for heatmap, DOE and scatter-plot-matrix layouts
+   * @default false
+   */
+  layoutSpaceFree?: boolean;
+  /**
    * Spacing between layout graphs
    * @default 8
    */
@@ -4202,7 +4229,9 @@ export interface CXConfig {
    */
   legendDirection?: "vertical" | "horizontal" | false | (string & {});
   /**
-   * Horizontal justification for legends when legend are in top or bottom positions
+   * Horizontal justification (0 left, 0.5 centre, 1 right) for a legend in the top or bottom
+   * position. A corner legendPosition supplies its own justification and ignores this. The
+   * edge it is measured from is set by legendJustifyTo
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default 0.5
    */
@@ -4214,9 +4243,9 @@ export interface CXConfig {
    */
   legendInside?: boolean;
   /**
-   * What a left/right-justified top or bottom legend (legendHorizontalJustification 0 or 1)
-   * aligns to: the panel (plot area) edge or the whole plot (canvas) edge, like titleAlign
-   * plot::0
+   * What a justified legend aligns to: the panel (plot area) edge or the whole plot (canvas)
+   * edge, like titleAlign plot::0. Applies to every justification of a top or bottom legend,
+   * centred included, and to the corner positions
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default "panel"
    */
@@ -4288,11 +4317,26 @@ export interface CXConfig {
    */
   legendOrderByCols?: boolean;
   /**
-   * Position for the the legend
+   * Position for the legend. All eight positions work whether the legend is inside or outside
+   * the plot. Inside, a corner anchors the legend to that corner of the plotting panel.
+   * Outside, the legend gets one band or one column, so a corner is the top or bottom band
+   * flush with that side: topLeft / bottomLeft are justified left and topRight / bottomRight
+   * right, overriding legendHorizontalJustification; left and right are a column justified by
+   * legendVerticalJustification
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default "right"
    */
   legendPosition?: "topRight" | "right" | "bottomRight" | "bottom" | "bottomLeft" | "left" | "topLeft" | "top" | false | (string & {});
+  /**
+   * Flag to automatically select the legend position (top or right) that maximizes the area
+   * available for the plot. When true the legend dimensions are computed for both candidates
+   * and the one that leaves the larger plotting area wins. Ignored when legendPosition is set
+   * explicitly in the configuration, when legendInside is true, for a faceted (layout) chart
+   * or for cxplot / ggplot specifications
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  legendPositionAuto?: boolean;
   /**
    * Number of rows in legends
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
@@ -4406,7 +4450,9 @@ export interface CXConfig {
    */
   legendTitleScaleFontFactor?: number | boolean;
   /**
-   * Vertical justification for legends when legend are in left or right positions
+   * Vertical justification (0 top, 0.5 middle, 1 bottom) for a legend in the left or right
+   * position, down the column the legend reserves. The mirror of legendHorizontalJustification
+   * for a side legend
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default 0.5
    */
@@ -6943,6 +6989,16 @@ export interface CXConfig {
    * @default "#aaaaaa"
    */
   scrollbarThumbHoverColor?: string | boolean;
+  /**
+   * Object giving the explicit order of the facet levels, keyed by the annotation used in
+   * segregateSamplesBy / segregateVariablesBy, i.e. {"parameter": ["depicted", "speech",
+   * "thought", "narrative"]}. The facets are drawn in the order the array lists, the way an
+   * ordered factor fixes the panel order in R; a level the array omits keeps its natural order
+   * after the listed ones. Without it the levels are sorted (numerically when they are
+   * numbers, otherwise alphabetically)
+   * @default false
+   */
+  segregateLevelOrder?: Record<string, unknown> | boolean;
   /**
    * An array that holds the annotation(s) used to segregate the samples ala Facet way in R. It
    * must be categories in the data.x object
@@ -11617,6 +11673,8 @@ export type CXKeysDataCustomizer =
   | "maxDataCustomizerEntries";
 /** Config keys in the "Data Faceting" category. */
 export type CXKeysDataFaceting =
+  | "layoutSpaceFree"
+  | "segregateLevelOrder"
   | "segregateSamplesBy"
   | "segregateVariablesBy"
   | "splitSamplesBy"
@@ -12279,6 +12337,7 @@ export type CXKeysLegends =
   | "legendOrder"
   | "legendOrderByCols"
   | "legendPosition"
+  | "legendPositionAuto"
   | "legendRows"
   | "legendStyleGgplot"
   | "legendTextAlign"
@@ -12632,6 +12691,8 @@ export type CXKeysPieCharts =
 /** Config keys in the "Plot Area" category. */
 export type CXKeysPlotArea =
   | "binAlignment"
+  | "binMethod"
+  | "binWidth"
   | "binned"
   | "blockContrast"
   | "dataValuesFrequency"
