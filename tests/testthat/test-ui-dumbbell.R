@@ -48,9 +48,9 @@ test_that("cXdumbbell10", {
     check_ui_test(cXdumbbell10())
 })
 
-# test_that("cXdumbbell11", {
-#     check_ui_test(cXdumbbell11())
-# })
+test_that("cXdumbbell11", {
+    check_ui_test(cXdumbbell11())
+})
 
 test_that("cXdumbbell12", {
     check_ui_test(cXdumbbell2())
