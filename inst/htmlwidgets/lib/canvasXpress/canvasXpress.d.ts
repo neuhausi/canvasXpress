@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1807 keys). String enums become open literal
+ * config schema (1806 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -8835,11 +8835,6 @@ export interface CXConfig {
    */
   toolbarSize?: number | boolean;
   /**
-   * Toolbar type
-   * @default "under"
-   */
-  toolbarType?: "over" | "under" | "fixed" | false | (string & {});
-  /**
    * Color for the Background color for the tooltip if specified
    * @default false
    */
@@ -12028,8 +12023,7 @@ export type CXKeysEvents =
   | "toolbarFonts"
   | "toolbarItems"
   | "toolbarSchemes"
-  | "toolbarSize"
-  | "toolbarType";
+  | "toolbarSize";
 /** Config keys in the "Fish Graphs" category. */
 export type CXKeysFishGraphs =
   | "fishAxis"

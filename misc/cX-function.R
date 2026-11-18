@@ -9263,7 +9263,6 @@ cXtcga1 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
@@ -9292,7 +9291,6 @@ cXtcga2 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
@@ -9318,7 +9316,6 @@ cXtcga3 <- function() {
     legendTextScaleFontFactor=1.5,
     plotStyle="open",
     smpTextRotate=90,
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
@@ -9349,7 +9346,6 @@ cXtcga4 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
@@ -9381,7 +9377,6 @@ cXtcga5 <- function() {
     smpTextRotate=90,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1")
   )
 }
@@ -9409,7 +9404,6 @@ cXtcga6 <- function() {
     showHistogramBars=TRUE,
     showHistogramDensity=TRUE,
     showHistogramMedian=FALSE,
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
@@ -9445,7 +9439,6 @@ cXtcga7 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=FALSE,
     xAxisTitle="Expression",
@@ -9481,7 +9474,6 @@ cXtcga8 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    toolbarType="over",
     xAxis=list("GATA3", "PTEN", "XBP1"),
     xAxisRugShow=TRUE,
     xAxisTitle="Expression",

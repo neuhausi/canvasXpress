@@ -212,7 +212,8 @@
     "text.vjust": "0.5",
     "title.fontweight": null,
     "title.fontwidth": null,
-    "title.italic": null
+    "title.italic": null,
+    "legend.key.fill": "#EBEBEBFF"
   },
   "labels": [],
   "facet": {},

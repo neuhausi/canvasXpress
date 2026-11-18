@@ -1170,6 +1170,32 @@ gg_treemap_cx <- function(o, bld, layerIndex, target, config) {
   )
 }
 
+# TRUE when a geom_line layer's y cannot be named as a column of the SHARED plot
+# data, so the layer has to be drawn through the geom_segment decoration path.
+#
+# Two cases need it: the layer draws from its own data frame (an overlay such as
+# a theoretical curve), or it maps y to something that is not a column of the
+# plot data (a computed/stage() value).
+#
+# A layer that maps y to a column which DOES live in the plot data is the
+# per-layer-y case -- geom_line(aes(y = y1)) + geom_line(aes(y = y2)) -- and must
+# stay on the per-layer pipeline: the engine matches each layer to its y variable
+# BY NAME (see layer.y === yVar in canvasXpress.cxplot.js), so replacing that name
+# with computed segment values silently drops every layer after the first. That is
+# what turned the per_layer_y fixture into a single x-vs-x line.
+gg_line_needs_segments <- function(o, idx) {
+  ly <- o$layers[[idx]]
+  if (is.data.frame(ly$data) && nrow(ly$data) > 0) {
+    return(TRUE)
+  }
+  ymap <- ly$mapping[["y"]]
+  if (is.null(ymap)) {
+    return(FALSE)
+  }
+  label <- tryCatch(rlang::as_label(ymap), error = function(e) "")
+  !(is.data.frame(o$data) && label %in% names(o$data))
+}
+
 gg_cxplot <- function(o, target, ...) {
 
   config <- list(...)
@@ -1435,9 +1461,7 @@ gg_cxplot <- function(o, target, ...) {
           p$size <- bld$data[[i]]$size
           p$shape <- bld$data[[i]]$shape
         }
-      } else if (l == "GeomLine" &&
-                   (!is.null(o$layers[[i]]$mapping[["y"]]) ||
-                      (is.data.frame(o$layers[[i]]$data) && nrow(o$layers[[i]]$data) > 0))) {
+      } else if (l == "GeomLine" && gg_line_needs_segments(o, i)) {
         # A geom_line whose y is overridden (geom_line(aes(y = pred))) or that
         # draws from its OWN data frame (an overlay such as a theoretical curve)
         # cannot share the main plot's y. Emit its own computed points as segments

@@ -425,8 +425,7 @@ test_that("piping - layout chart", {
     check_ui_test(obj1)
 
     result <- obj1 %>% canvasXpress(
-        title       = "fixed toolbar and resizable FALSE",
-        toolbarType = "fixed",
+        title       = "resizable FALSE",
         resizable   = FALSE)
 
     check_ui_test(result)

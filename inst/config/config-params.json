@@ -1,7 +1,7 @@
 {
- "x-cx-version": "74.3",
+ "x-cx-version": "74.4",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1807,
+ "count": 1806,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -10756,18 +10756,6 @@
    "type": "integer|boolean",
    "default": 36,
    "description": "Height for the toolbar in graphs"
-  },
-  {
-   "parameter": "toolbarType",
-   "type": "string|boolean",
-   "default": "under",
-   "options": [
-    "over",
-    "under",
-    "fixed",
-    false
-   ],
-   "description": "Toolbar type"
   },
   {
    "parameter": "tooltipBackgroundColor",
