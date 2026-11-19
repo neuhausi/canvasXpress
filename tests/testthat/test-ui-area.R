@@ -68,3 +68,23 @@ test_that("cXarea15", {
 test_that("cXarea16", {
     check_ui_test(cXarea16())
 })
+
+test_that("cXarea17", {
+    check_ui_test(cXarea17())
+})
+
+test_that("cXarea18", {
+    check_ui_test(cXarea18())
+})
+
+test_that("cXarea19", {
+    check_ui_test(cXarea19())
+})
+
+test_that("cXarea20", {
+    check_ui_test(cXarea20())
+})
+
+test_that("cXarea21", {
+    check_ui_test(cXarea21())
+})

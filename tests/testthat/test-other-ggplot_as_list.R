@@ -1369,7 +1369,7 @@ test_that("ggplot.as.list - explicit pattern scale", {
 
 test_that("ggplot.as.list - errors when the ggplot2 namespace is unavailable", {
     skip_if_not_installed("ggplot2")
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
 
     # Fix: Direct testthat to mock requireNamespace inside the base package
     local_mocked_bindings(
@@ -1385,7 +1385,7 @@ test_that("ggplot.as.list - errors when the ggplot2 namespace is unavailable", {
 
 test_that("ggplot.as.list - a layer conversion failure raises a canvasXpress-prefixed error", {
     skip_if_not_installed("ggplot2")
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
 
     local_mocked_bindings(
         gg_default_aes = function(...) stop("simulated layer failure")

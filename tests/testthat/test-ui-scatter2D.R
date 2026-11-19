@@ -86,3 +86,79 @@ test_that("cXscatter2d19", {
 test_that("cXscatter2d20", {
     check_ui_test(cXscatter2d20())
 })
+
+test_that("cXscatter2d21", {
+    check_ui_test(cXscatter2d21())
+})
+
+test_that("cXscatter2d22", {
+    check_ui_test(cXscatter2d22())
+})
+
+test_that("cXscatter2d23", {
+    check_ui_test(cXscatter2d23())
+})
+
+test_that("cXscatter2d24", {
+    check_ui_test(cXscatter2d24())
+})
+
+test_that("cXscatter2d25", {
+    check_ui_test(cXscatter2d25())
+})
+
+test_that("cXscatter2d26", {
+    check_ui_test(cXscatter2d26())
+})
+
+test_that("cXscatter2d27", {
+    check_ui_test(cXscatter2d27())
+})
+
+test_that("cXscatter2d28", {
+    check_ui_test(cXscatter2d28())
+})
+
+test_that("cXscatter2d29", {
+    check_ui_test(cXscatter2d29())
+})
+
+test_that("cXscatter2d30", {
+    check_ui_test(cXscatter2d30())
+})
+
+test_that("cXscatter2d31", {
+    check_ui_test(cXscatter2d31())
+})
+
+test_that("cXscatter2d32", {
+    check_ui_test(cXscatter2d32())
+})
+
+test_that("cXscatter2d33", {
+    check_ui_test(cXscatter2d33())
+})
+
+test_that("cXscatter2d34", {
+    check_ui_test(cXscatter2d34())
+})
+
+test_that("cXscatter2d35", {
+    check_ui_test(cXscatter2d35())
+})
+
+test_that("cXscatter2d36", {
+    check_ui_test(cXscatter2d36())
+})
+
+test_that("cXscatter2d37", {
+    check_ui_test(cXscatter2d37())
+})
+
+test_that("cXscatter2d38", {
+    check_ui_test(cXscatter2d38())
+})
+
+test_that("cXscatter2d39", {
+    check_ui_test(cXscatter2d39())
+})

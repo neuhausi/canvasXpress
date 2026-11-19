@@ -25,6 +25,18 @@ test_that("cXscatter3d6", {
     check_ui_test(cXscatter3d6())
 })
 
+test_that("cXscatter3d8", {
+    check_ui_test(cXscatter3d8())
+})
+
+test_that("cXscatter3d9", {
+    check_ui_test(cXscatter3d9())
+})
+
+test_that("cXscatter3d10", {
+    check_ui_test(cXscatter3d10())
+})
+
 test_that("cX3dplots1", {
     check_ui_test(cX3dplots1())
 })

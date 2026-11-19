@@ -12,3 +12,7 @@ test_that("cXtreemap2", {
 test_that("cXtreemap3", {
     check_ui_test(cXtreemap3())
 })
+
+test_that("cXtreemap4", {
+    check_ui_test(cXtreemap4())
+})

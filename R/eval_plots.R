@@ -101,7 +101,7 @@ cx_roc <- function(data, truth, score, positive = NULL, title = NULL, ...) {
     if (is.null(sw)) stop("cx_roc: truth must contain both classes")
     fpr <- sw$fp / sw$N
     tpr <- sw$tp / sw$P
-    auc <- sum(diff(fpr) * (head(tpr, -1) + tail(tpr, -1)) / 2)
+    auc <- sum(diff(fpr) * (utils::head(tpr, -1) + utils::tail(tpr, -1)) / 2)
     if (is.null(title)) title <- sprintf("ROC curve (AUC = %.3f)", auc)
     mat <- matrix(c(fpr, tpr), ncol = 2,
                   dimnames = list(paste0("t", seq_along(fpr) - 1), c("FPR", "TPR")))

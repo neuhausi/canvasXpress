@@ -8,6 +8,7 @@ cX3dplots1 <- function() {
     smpAnnot=x,
     varAnnot=z,
     colorScheme="CanvasXpress",
+    graphOrientation="horizontal",
     graphType="Bar",
     is3DPlot=TRUE,
     scatterType="bar",
@@ -46,6 +47,7 @@ cX3dplots3 <- function() {
     data=y,
     graphType="Scatter3D",
     scatterType="bar",
+    widthFactor=3,
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
@@ -198,6 +200,7 @@ cXarea8 <- function() {
     varAnnot=z,
     colorBy="Series",
     colorScheme="GameOfThronesStannis",
+    graphOrientation="horizontal",
     graphType="Area",
     legendColumns=3,
     legendPosition="top",
@@ -222,6 +225,7 @@ cXarea9 <- function() {
     colorBy="Series",
     colorScheme="GameOfThronesStannis",
     filterData=list(list("guess", "Series", "not like", list("Series A"))),
+    graphOrientation="horizontal",
     graphType="Area",
     legendColumns=3,
     legendPosition="top",
@@ -347,6 +351,7 @@ cXarea15 <- function() {
     varAnnot=z,
     colorBy="g",
     colorScheme="GGPlot",
+    graphOrientation="horizontal",
     graphType="Area",
     theme="GGPlot",
     xAxis=list("x"),
@@ -365,6 +370,7 @@ cXarea16 <- function() {
     colorBy="country",
     colors=list("rgb(0,63,92)", "rgb(47,75,124)", "rgb(102,81,145)", "rgb(160,81,149)", "rgb(212,80,135)", "rgb(249,93,106)", "rgb(255,124,67)", "rgb(255,166,0)"),
     dataPointSizeScaleFactor=0,
+    graphOrientation="horizontal",
     graphType="Area",
     legendColumns=3,
     legendPosition="bottom",
@@ -373,6 +379,126 @@ cXarea16 <- function() {
     xAxisGridMinorShow=FALSE,
     yAxis=list("total_wealth"),
     yAxisGridMinorShow=FALSE
+  )
+}
+
+cXarea17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area17-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    byline="Chart: CanvasXpress",
+    graphOrientation="vertical",
+    graphType="Area",
+    legendPosition="right",
+    responsiveRules=list(list(config=list(fontScaleFontFactor=0.85, legendPosition="bottom"), maxWidth=480)),
+    source="IEA",
+    subtitle="Percent of total, last eight quarters",
+    theme="editorial",
+    title="Generation share"
+  )
+}
+
+cXarea18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area18-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="percent",
+    colorScheme="User",
+    colors=list("#EE7733", "#0077BB", "#009988", "#CC3311", "#BBBBBB"),
+    decorations=list(marker=list(list(sample=12, text="Solid food\nintroduced", type="arrow", variable="Firmicutes", x=0.397, y=0.0538))),
+    graphOrientation="vertical",
+    graphType="Area",
+    legendColumns=5,
+    legendPosition="top",
+    lineType="spline",
+    objectColorTransparency=0.8,
+    showLegend=TRUE,
+    smpLabelInterval=3,
+    smpTextRotate=90,
+    smpTitle="Age (months)",
+    source="Synthetic data for illustration",
+    theme="ggplot",
+    title="Gut microbiome composition in the first three years",
+    xAxis=list("Actinobacteria", "Bacteroidetes", "Firmicutes", "Proteobacteria", "Other"),
+    xAxisTitle="Relative abundance (%)"
+  )
+}
+
+cXarea19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area19-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaColumnWidth=0.6,
+    areaShowColumns=TRUE,
+    areaStyle="translucent",
+    areaType="stacked",
+    colorScheme="CanvasXpress",
+    graphOrientation="vertical",
+    graphType="Area",
+    smpTitle="Month",
+    subtitle="Stacked bars with a semi-transparent stacked area behind them",
+    title="TrendPlot: sessions by platform",
+    xAxis=list("Mobile", "Desktop", "Tablet"),
+    xAxisTitle="Sessions (thousands)"
+  )
+}
+
+cXarea20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaColumnWidth=0.62,
+    areaShowColumns=TRUE,
+    areaStyle="translucent",
+    areaType="percent",
+    colorScheme="Tableau",
+    graphOrientation="vertical",
+    graphType="Area",
+    smpTitle="Year",
+    subtitle="Percent-stacked bars with a stacked area trend (scale_y = TRUE)",
+    title="TrendPlot: browser market share",
+    xAxis=list("Chrome", "Safari", "Edge", "Firefox"),
+    xAxisTitle="Share (%)"
+  )
+}
+
+cXarea21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-area21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-area21-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    background="white",
+    colorScheme="Prism",
+    customLegend=list(list(line=list(TRUE, TRUE), lineColor=list("#5b9bd5", "#6c757d"), lineType=list("solid", "solid"), lineWidth=list(2, 2), paddingX=10, paddingY=10, text=list("ROC curve", "Random Guess (AUC = 0.5)"), title="")),
+    decorations=list(line=list(list(color="#6c757d", id="roc-grafico-decoration-line-0", label="Random Guess (AUC = 0.5)", width=2, x=0, x2=1, y=0, y2=1))),
+    graphOrientation="horizontal",
+    graphType="Area",
+    legendBackgroundBorderColor="#999999",
+    legendBackgroundBorderSize=1,
+    legendBackgroundColor="rgba(255,255,255,0.9)",
+    legendInside=TRUE,
+    legendPosition="topLeft",
+    objectColorTransparency=0.2,
+    setMaxX=1,
+    setMaxY=1,
+    setMinX=0,
+    setMinY=0,
+    showLegend=TRUE,
+    showLegendBorder=TRUE,
+    showTransition=FALSE,
+    subtitle="Area under the curve (AUC) = 0.56",
+    title="ROC Curve",
+    xAxis=list("False Positive Rate (1 - Specificity)"),
+    xAxisTitle="False Positive Rate (1 - Specificity)",
+    yAxis=list("True Positive Rate (Sensitivity)"),
+    yAxisTitle="True Positive Rate (Sensitivity)"
   )
 }
 
@@ -611,6 +737,7 @@ cXbar8 <- function() {
     decorations=list(line=list(list(align="left", color="rgb(255,0,0)", label="Cutoff", value=50, width=2))),
     graphOrientation="vertical",
     graphType="Bar",
+    showNameOverlays=FALSE,
     smpOverlays=list("Drug Sensitivity"),
     smpTextRotate=90,
     smpTitle="Cell Lines",
@@ -658,7 +785,7 @@ cXbar10 <- function() {
     maxSmpStringLen=50,
     showDataValues=TRUE,
     showLegend=FALSE,
-    subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\nThis is shown as a rate per 100,000 people in each age group.",
+    subtitle="The reported annual death rate from malignant cancers, based on the underlying cause listed on death certificates.\\nThis is shown as a rate per 100,000 people in each age group.",
     subtitleScaleFontFactor=0.6,
     title="Cancer death rate by age group, United States",
     workflowBy="Year",
@@ -744,6 +871,7 @@ cXbar14 <- function() {
     smpAnnot=x,
     colorBy="Result",
     colorScheme="Greens",
+    graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("Award"),
     legendColumns=2,
@@ -752,6 +880,7 @@ cXbar14 <- function() {
     maxSmpStringLen=50,
     objectBorderColor="rgb(0,0,0)",
     showLegendTitle=FALSE,
+    smpTextRotate=45,
     smpTextScaleFontFactor=1.5,
     stackBy="Result",
     summaryType="count",
@@ -811,6 +940,7 @@ cXbar16 <- function() {
     colors=list("rgb(250,165,44)", "rgb(254,225,60)", "rgb(253,243,169)"),
     fontName="Waltograph",
     fontsExternal=list(list(name="Waltograph", url="https://www.canvasxpress.org/assets/fonts/waltograph42.otf")),
+    graphOrientation="horizontal",
     graphType="Bar",
     marginBottom=50,
     marginLeft=50,
@@ -846,7 +976,7 @@ cXbar17 <- function() {
     colorKey=list("06h"="#4292C6", "12h"="#F4D03F", "24h"="#08519C", Mock="#9ECAE1"),
     colorScheme="User",
     colors=list("rgb(158,202,225)", "rgb(66,146,198)", "rgb(244,208,63)", "rgb(8,81,156)"),
-    decorations=list(error=list(list(cat="False", color="black", isIndex="False", level="False", max=1.0279, min=0.913, pos=0.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0756, min=0.8718, pos=1.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.3317, min=0.2824, pos=2.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.5007, min=1.9811, pos=3.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3883, min=1.6801, pos=0.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0381, min=1.6795, pos=1.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.8704, min=3.1253, pos=2.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.9059, min=2.0856, pos=3.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.9155, min=0.7301, pos=1.1, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0307, min=0.7274, pos=2.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5967, min=1.2414, pos=3.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.458, min=1.0301, pos=4.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.8268, min=0.7254, pos=1.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.6576, min=1.1685, pos=2.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3352, min=1.119, pos=3.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0087, min=1.517, pos=4.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.9355, min=2.2084, pos=0.7, sample="Cold", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2957, min=1.0744, pos=1.7, sample="Cold", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.9488, min=1.6557, pos=2.7, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.174, min=1.0201, pos=3.7, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5368, min=1.0976, pos=0.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4922, min=1.1093, pos=1.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.9864, min=1.5705, pos=2.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3871, min=1.6877, pos=3.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.8107, min=1.9953, pos=1.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.8543, min=0.7484, pos=2.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.674, min=1.1673, pos=3.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.7894, min=0.5918, pos=4.1, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.28, min=1.0877, pos=1.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.2184, min=2.4956, pos=2.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.1495, min=2.73, pos=3.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5249, min=1.1608, pos=4.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.8682, min=2.16, pos=0.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5885, min=1.1446, pos=1.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.6883, min=1.9725, pos=2.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.5675, min=2.1208, pos=3.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.8836, min=1.3289, pos=0.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.6048, min=1.1787, pos=1.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0443, min=0.7939, pos=2.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3143, min=1.1668, pos=3.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0823, min=1.8637, pos=1.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.7222, min=0.6416, pos=2.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.4796, min=0.3704, pos=3.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.1254, min=1.8428, pos=4.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.9586, min=0.6909, pos=1.3, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4819, min=1.1755, pos=2.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2524, min=1.8359, pos=3.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.1408, min=1.6274, pos=4.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.918, min=1.5369, pos=0.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.8714, min=0.7528, pos=1.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0778, min=0.7835, pos=2.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3049, min=1.7538, pos=3.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2954, min=0.9692, pos=0.9, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2421, min=1.6853, pos=1.9, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4023, min=1.2222, pos=2.9, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0663, min=1.6932, pos=3.9, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.0898, min=2.5888, pos=1.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.567, min=2.5027, pos=2.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.187, min=1.0559, pos=3.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4961, min=1.1949, pos=4.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5026, min=1.2129, pos=1.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.85, min=0.7318, pos=2.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2024, min=1.7668, pos=3.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.5468, min=0.4372, pos=4.3, sample="Salt", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.7488, min=2.2183, pos=0.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3196, min=1.8444, pos=1.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.134, min=0.9961, pos=2.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3954, min=1.1637, pos=3.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.8305, min=1.5033, pos=0.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.58, min=1.2621, pos=1.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.6777, min=0.5604, pos=2.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.8593, min=1.4611, pos=3.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.062, min=1.6363, pos=1.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2014, min=1.774, pos=2.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.7806, min=1.5443, pos=3.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.7173, min=0.5414, pos=4.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.6183, min=1.2852, pos=1.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2788, min=1.1565, pos=2.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.1321, min=0.9143, pos=3.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.9793, min=2.788, pos=4.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2541, min=1.76, pos=0.7, sample="ABA", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0787, min=1.6807, pos=1.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4446, min=1.0138, pos=2.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.1852, min=0.9781, pos=3.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.7858, min=0.579, pos=0.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0018, min=0.7963, pos=1.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.6648, min=1.3545, pos=2.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.4555, min=2.1616, pos=3.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.6862, min=0.5291, pos=1.1, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3763, min=1.9516, pos=2.1, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.9954, min=1.5941, pos=3.1, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2962, min=1.0395, pos=4.1, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3317, min=1.0047, pos=1.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.6173, min=1.8794, pos=2.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.5999, min=0.474, pos=3.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.507, min=2.0417, pos=4.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.1822, min=1.5458, pos=0.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.4401, min=1.9042, pos=1.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4157, min=1.2326, pos=2.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.9754, min=1.7197, pos=3.7, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.6754, min=1.5115, pos=0.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.585, min=0.4883, pos=1.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3935, min=1.233, pos=2.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.3639, min=0.9994, pos=3.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.7096, min=1.4436, pos=1.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.825, min=1.5795, pos=2.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.5809, min=1.4296, pos=3.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2524, min=0.8809, pos=4.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2346, min=0.9147, pos=1.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0393, min=0.908, pos=2.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.8668, min=0.6277, pos=3.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.8429, min=2.0568, pos=4.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.2752, min=1.0864, pos=0.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.3234, min=1.7696, pos=1.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0218, min=0.8905, pos=2.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0585, min=0.8056, pos=3.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2283, min=1.5735, pos=0.9, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.0921, min=2.3309, pos=1.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.7055, min=1.2068, pos=2.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.2072, min=1.6443, pos=3.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.4808, min=2.0093, pos=1.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.1096, min=2.774, pos=2.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.4535, min=1.1716, pos=3.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.0864, min=1.5655, pos=4.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.9465, min=0.8223, pos=1.3, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.1936, min=1.0735, pos=2.3, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.869, min=3.4506, pos=3.3, sample="PEG", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.7237, min=0.5367, pos=4.3, sample="PEG", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.9342, min=0.7977, pos=0.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.7144, min=1.1983, pos=1.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.6543, min=0.4639, pos=2.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.5094, min=0.4392, pos=3.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.502, min=1.0456, pos=0.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.7552, min=1.2789, pos=1.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.1516, min=0.8356, pos=2.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.6854, min=2.3969, pos=3.9, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.246, min=1.8464, pos=1.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.0954, min=0.8339, pos=2.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.8024, min=2.3684, pos=3.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=0.5445, min=0.4441, pos=4.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=3.9426, min=2.8525, pos=1.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=2.035, min=1.4374, pos=2.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.661, min=1.2996, pos=3.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat="False", color="black", isIndex="False", level="False", max=1.1102, min=0.8736, pos=4.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25)), text=list(list(catX=0.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.1779), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.2256), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=0.4817), list(catX=3.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=2.6507), list(catX=0.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=2.5383), list(catX=1.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=2.1881), list(catX=2.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=4.0204), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=3.0559), list(catX=1.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.0655), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.1807), list(catX=3.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.7467), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.608), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=0.9768), list(catX=2.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.8076), list(catX=3.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=1.4852), list(catX=4.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed="True", value=2.1587), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=3.0855), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.4457), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=2.0988), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.324), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.6868), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.6422), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=2.1364), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=2.5371), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=2.9607), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.0043), list(catX=3.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.824), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=0.9394), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.43), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=3.3684), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=3.2995), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed="True", value=1.6749), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=3.0182), list(catX=1.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.7385), list(catX=2.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.8383), list(catX=3.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.7175), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.0336), list(catX=1.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.7548), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.1943), list(catX=3.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.4643), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.2323), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=0.8722), list(catX=3.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=0.6296), list(catX=4.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.2754), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.1086), list(catX=2.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=1.6319), list(catX=3.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.4024), list(catX=4.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed="True", value=2.2908), list(catX=0.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=2.068), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.0214), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.2278), list(catX=3.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=2.4549), list(catX=0.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.4454), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=2.3921), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.5523), list(catX=3.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=2.2163), list(catX=1.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=3.2398), list(catX=2.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=3.717), list(catX=3.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.337), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.6461), list(catX=1.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1.6526), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=1), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=2.3524), list(catX=4.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed="True", value=0.6968), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=2.8988), list(catX=1.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=2.4696), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.284), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.5454), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.9805), list(catX=1.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.73), list(catX=2.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=0.8277), list(catX=3.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=2.0093), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=2.212), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=2.3514), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.9306), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=0.8673), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.7683), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.4288), list(catX=3.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=1.2821), list(catX=4.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed="True", value=4.1293), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.4041), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.2287), list(catX=2.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.5946), list(catX=3.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.3352), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=0.9358), list(catX=1.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.1518), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.8148), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.6055), list(catX=1.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=0.8362), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.5263), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.1454), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.4462), list(catX=1.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=1.4817), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.7673), list(catX=3.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=0.7499), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed="True", value=2.657), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=2.3322), list(catX=1.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=2.5901), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.5657), list(catX=3.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=2.1254), list(catX=0.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.8254), list(catX=1.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=0.735), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.5435), list(catX=3.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.5139), list(catX=1.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.8596), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.975), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.7309), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.4024), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.3846), list(catX=2.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.1893), list(catX=3.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=1.0168), list(catX=4.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed="True", value=2.9929), list(catX=0.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.4252), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=2.4734), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.1718), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.2085), list(catX=0.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=2.3783), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=3.2421), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.8555), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=2.3572), list(catX=1.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=2.6308), list(catX=2.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=3.2596), list(catX=3.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.6035), list(catX=4.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=2.2364), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.0965), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=1.3436), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=4.019), list(catX=4.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed="True", value=0.8737), list(catX=0.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.0842), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.8644), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=0.8043), list(catX=3.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=0.6594), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.652), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.9052), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.3016), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=2.8354), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=2.396), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.2454), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=2.9524), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=0.6945), list(catX=1.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=4.0926), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=2.185), list(catX=3.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.811), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed="True", value=1.2602))),
+    decorations=list(error=list(list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0279, min=0.913, pos=0.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0756, min=0.8718, pos=1.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.3317, min=0.2824, pos=2.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.5007, min=1.9811, pos=3.7, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3883, min=1.6801, pos=0.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0381, min=1.6795, pos=1.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.8704, min=3.1253, pos=2.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.9059, min=2.0856, pos=3.9, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.9155, min=0.7301, pos=1.1, sample="ABA", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0307, min=0.7274, pos=2.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5967, min=1.2414, pos=3.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.458, min=1.0301, pos=4.1, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.8268, min=0.7254, pos=1.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.6576, min=1.1685, pos=2.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3352, min=1.119, pos=3.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0087, min=1.517, pos=4.3, sample="Cold", scope="HvHvOSCA1.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.9355, min=2.2084, pos=0.7, sample="Cold", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2957, min=1.0744, pos=1.7, sample="Cold", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.9488, min=1.6557, pos=2.7, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.174, min=1.0201, pos=3.7, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5368, min=1.0976, pos=0.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4922, min=1.1093, pos=1.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.9864, min=1.5705, pos=2.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3871, min=1.6877, pos=3.9, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.8107, min=1.9953, pos=1.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.8543, min=0.7484, pos=2.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.674, min=1.1673, pos=3.1, sample="PEG", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.7894, min=0.5918, pos=4.1, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.28, min=1.0877, pos=1.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.2184, min=2.4956, pos=2.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.1495, min=2.73, pos=3.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5249, min=1.1608, pos=4.3, sample="Salt", scope="HvHvOSCA1.3_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.8682, min=2.16, pos=0.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5885, min=1.1446, pos=1.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.6883, min=1.9725, pos=2.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.5675, min=2.1208, pos=3.7, sample="Salt", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.8836, min=1.3289, pos=0.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.6048, min=1.1787, pos=1.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0443, min=0.7939, pos=2.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3143, min=1.1668, pos=3.9, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0823, min=1.8637, pos=1.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.7222, min=0.6416, pos=2.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.4796, min=0.3704, pos=3.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.1254, min=1.8428, pos=4.1, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.9586, min=0.6909, pos=1.3, sample="ABA", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4819, min=1.1755, pos=2.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2524, min=1.8359, pos=3.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.1408, min=1.6274, pos=4.3, sample="Cold", scope="HvHvOSCA1.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.918, min=1.5369, pos=0.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.8714, min=0.7528, pos=1.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0778, min=0.7835, pos=2.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3049, min=1.7538, pos=3.7, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2954, min=0.9692, pos=0.9, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2421, min=1.6853, pos=1.9, sample="Cold", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4023, min=1.2222, pos=2.9, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0663, min=1.6932, pos=3.9, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.0898, min=2.5888, pos=1.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.567, min=2.5027, pos=2.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.187, min=1.0559, pos=3.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4961, min=1.1949, pos=4.1, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5026, min=1.2129, pos=1.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.85, min=0.7318, pos=2.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2024, min=1.7668, pos=3.3, sample="PEG", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.5468, min=0.4372, pos=4.3, sample="Salt", scope="HvHvOSCA2.1_1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.7488, min=2.2183, pos=0.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3196, min=1.8444, pos=1.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.134, min=0.9961, pos=2.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3954, min=1.1637, pos=3.7, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.8305, min=1.5033, pos=0.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.58, min=1.2621, pos=1.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.6777, min=0.5604, pos=2.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.8593, min=1.4611, pos=3.9, sample="Salt", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.062, min=1.6363, pos=1.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2014, min=1.774, pos=2.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.7806, min=1.5443, pos=3.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.7173, min=0.5414, pos=4.1, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.6183, min=1.2852, pos=1.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2788, min=1.1565, pos=2.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.1321, min=0.9143, pos=3.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.9793, min=2.788, pos=4.3, sample="ABA", scope="HvHvOSCA2.1_2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2541, min=1.76, pos=0.7, sample="ABA", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0787, min=1.6807, pos=1.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4446, min=1.0138, pos=2.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.1852, min=0.9781, pos=3.7, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.7858, min=0.579, pos=0.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0018, min=0.7963, pos=1.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.6648, min=1.3545, pos=2.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.4555, min=2.1616, pos=3.9, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.6862, min=0.5291, pos=1.1, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3763, min=1.9516, pos=2.1, sample="Cold", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.9954, min=1.5941, pos=3.1, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2962, min=1.0395, pos=4.1, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3317, min=1.0047, pos=1.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.6173, min=1.8794, pos=2.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.5999, min=0.474, pos=3.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.507, min=2.0417, pos=4.3, sample="PEG", scope="HvHvOSCA2.2", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.1822, min=1.5458, pos=0.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.4401, min=1.9042, pos=1.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4157, min=1.2326, pos=2.7, sample="PEG", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.9754, min=1.7197, pos=3.7, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.6754, min=1.5115, pos=0.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.585, min=0.4883, pos=1.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3935, min=1.233, pos=2.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.3639, min=0.9994, pos=3.9, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.7096, min=1.4436, pos=1.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.825, min=1.5795, pos=2.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.5809, min=1.4296, pos=3.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2524, min=0.8809, pos=4.1, sample="Salt", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2346, min=0.9147, pos=1.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0393, min=0.908, pos=2.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.8668, min=0.6277, pos=3.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.8429, min=2.0568, pos=4.3, sample="ABA", scope="HvHvOSCA2.4", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.2752, min=1.0864, pos=0.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.3234, min=1.7696, pos=1.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0218, min=0.8905, pos=2.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0585, min=0.8056, pos=3.7, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2283, min=1.5735, pos=0.9, sample="ABA", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.0921, min=2.3309, pos=1.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.7055, min=1.2068, pos=2.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.2072, min=1.6443, pos=3.9, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.4808, min=2.0093, pos=1.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.1096, min=2.774, pos=2.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.4535, min=1.1716, pos=3.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.0864, min=1.5655, pos=4.1, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.9465, min=0.8223, pos=1.3, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.1936, min=1.0735, pos=2.3, sample="Cold", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.869, min=3.4506, pos=3.3, sample="PEG", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.7237, min=0.5367, pos=4.3, sample="PEG", scope="HvHvOSCA3.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.9342, min=0.7977, pos=0.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.7144, min=1.1983, pos=1.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.6543, min=0.4639, pos=2.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.5094, min=0.4392, pos=3.7, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.502, min=1.0456, pos=0.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.7552, min=1.2789, pos=1.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.1516, min=0.8356, pos=2.9, sample="PEG", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.6854, min=2.3969, pos=3.9, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.246, min=1.8464, pos=1.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.0954, min=0.8339, pos=2.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.8024, min=2.3684, pos=3.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=0.5445, min=0.4441, pos=4.1, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=3.9426, min=2.8525, pos=1.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=2.035, min=1.4374, pos=2.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.661, min=1.2996, pos=3.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25), list(cat=FALSE, color="black", isIndex=FALSE, level=FALSE, max=1.1102, min=0.8736, pos=4.3, sample="Salt", scope="HvHvOSCA4.1", size=1, type="line", width=0.25)), text=list(list(catX=0.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.1779), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.2256), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=0.4817), list(catX=3.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=2.6507), list(catX=0.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=2.5383), list(catX=1.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=2.1881), list(catX=2.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=4.0204), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=3.0559), list(catX=1.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.0655), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.1807), list(catX=3.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.7467), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.608), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=0.9768), list(catX=2.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.8076), list(catX=3.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=1.4852), list(catX=4.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=1, preTransformed=TRUE, value=2.1587), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=3.0855), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.4457), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=2.0988), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.324), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.6868), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.6422), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=2.1364), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=2.5371), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=2.9607), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.0043), list(catX=3.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.824), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=0.9394), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.43), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=3.3684), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=3.2995), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=2, preTransformed=TRUE, value=1.6749), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=3.0182), list(catX=1.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.7385), list(catX=2.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.8383), list(catX=3.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.7175), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.0336), list(catX=1.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.7548), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.1943), list(catX=3.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.4643), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.2323), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=0.8722), list(catX=3.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=0.6296), list(catX=4.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.2754), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.1086), list(catX=2.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=1.6319), list(catX=3.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.4024), list(catX=4.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=3, preTransformed=TRUE, value=2.2908), list(catX=0.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=2.068), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.0214), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.2278), list(catX=3.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=2.4549), list(catX=0.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.4454), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=2.3921), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.5523), list(catX=3.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=2.2163), list(catX=1.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=3.2398), list(catX=2.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=3.717), list(catX=3.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.337), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.6461), list(catX=1.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1.6526), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=1), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=2.3524), list(catX=4.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=4, preTransformed=TRUE, value=0.6968), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=2.8988), list(catX=1.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=2.4696), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.284), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.5454), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.9805), list(catX=1.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.73), list(catX=2.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=0.8277), list(catX=3.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=2.0093), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=2.212), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=2.3514), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.9306), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=0.8673), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.7683), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.4288), list(catX=3.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=1.2821), list(catX=4.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=5, preTransformed=TRUE, value=4.1293), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.4041), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.2287), list(catX=2.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.5946), list(catX=3.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.3352), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=0.9358), list(catX=1.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.1518), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.8148), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.6055), list(catX=1.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=0.8362), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.5263), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.1454), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.4462), list(catX=1.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=1.4817), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.7673), list(catX=3.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=0.7499), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=6, preTransformed=TRUE, value=2.657), list(catX=0.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=2.3322), list(catX=1.7, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=2.5901), list(catX=2.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.5657), list(catX=3.7, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=2.1254), list(catX=0.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.8254), list(catX=1.9, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=0.735), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.5435), list(catX=3.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.5139), list(catX=1.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.8596), list(catX=2.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.975), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.7309), list(catX=4.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.4024), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.3846), list(catX=2.3, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.1893), list(catX=3.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=1.0168), list(catX=4.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=7, preTransformed=TRUE, value=2.9929), list(catX=0.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.4252), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=2.4734), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.1718), list(catX=3.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.2085), list(catX=0.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=2.3783), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=3.2421), list(catX=2.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.8555), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=2.3572), list(catX=1.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=2.6308), list(catX=2.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=3.2596), list(catX=3.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.6035), list(catX=4.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=2.2364), list(catX=1.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.0965), list(catX=2.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=1.3436), list(catX=3.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=4.019), list(catX=4.3, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=8, preTransformed=TRUE, value=0.8737), list(catX=0.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.0842), list(catX=1.7, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.8644), list(catX=2.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=0.8043), list(catX=3.7, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=0.6594), list(catX=0.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.652), list(catX=1.9, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.9052), list(catX=2.9, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.3016), list(catX=3.9, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=2.8354), list(catX=1.1, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=2.396), list(catX=2.1, color="rgb(0,0,0)", label="c", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.2454), list(catX=3.1, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=2.9524), list(catX=4.1, color="rgb(0,0,0)", label="bc", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=0.6945), list(catX=1.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=4.0926), list(catX=2.3, color="rgb(0,0,0)", label="a", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=2.185), list(catX=3.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.811), list(catX=4.3, color="rgb(0,0,0)", label="ab", labelScaleFontFactor=0.55, panel=9, preTransformed=TRUE, value=1.2602))),
     graphOrientation="vertical",
     graphType="Bar",
     groupingFactors=list("stress"),
@@ -861,7 +991,7 @@ cXbar17 <- function() {
     legendPosition="top",
     legendStyleGgplot=TRUE,
     legendTextScaleFontFactor=0.7,
-    metaData=list(gene="True", letter="False", mean="False", se="False", stress="True", time="True"),
+    metaData=list(gene=TRUE, letter=FALSE, mean=FALSE, se=FALSE, stress=TRUE, time=TRUE),
     objectBorderColor="rgb(0,0,0)",
     panelBackgroundBorderColor="rgb(0,0,0)",
     panelBackgroundColor="rgb(255,255,255)",
@@ -890,6 +1020,158 @@ cXbar17 <- function() {
     xAxisTicksColor="rgb(0,0,0)",
     xAxisTicksLength=0.75,
     xAxisTitle="Relative abundance"
+  )
+}
+
+cXbar18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="numberFormat: currency axis, compact data labels",
+    dataLabelNumberFormat="compact",
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendShow=FALSE,
+    numberFormat=list(currency="USD", decimals=0, style="currency"),
+    showDataValues=TRUE,
+    title="Annual revenue by region"
+  )
+}
+
+cXbar19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar22-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataTableColFormat=list(Population="compact"),
+    dataTableColHide=list(2019, 2020, 2021, 2022),
+    dataTableColRenderer=list("2023"="bar", Trend=list(columns=list(2019, 2020, 2021, 2022, 2023), type="sparkline")),
+    dataTableColWidth=120,
+    dataTableFitHeight=TRUE,
+    dataTableFitWidth=TRUE,
+    dataTableRowNumbersShow=FALSE,
+    graphOrientation="horizontal",
+    graphType="Bar",
+    title="GDP per capita (thousand USD)",
+    view="table"
+  )
+}
+
+cXbar20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-bar23-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorScheme="User",
+    colors=list("#2E6F95", "#9E2A2B", "#7A9E3B"),
+    graphOrientation="horizontal",
+    graphType="Bar",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    sampleSpaceFactor=0.35,
+    segregateVariablesBy=list("Field"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    subtitle="Age of principal investigators at first major grant (count of awardees per age bin). Illustrative data.",
+    subtitleAlign="plot::0",
+    theme="minimal",
+    title="Ecologists land big grants later, astrophysicists earlier",
+    titleAlign="plot::0",
+    xAxis=list("Structural biology", "Astrophysics", "Ecology"),
+    xAxisShow=FALSE
+  )
+}
+
+cXbar21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-bar24-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Trend",
+    colorSpectrum=list("#B5651D", "#E9B96E", "#F6D9A0", "#4FB3A0", "#1B7F74", "#003D3B"),
+    colorSpectrumZeroValue=0,
+    dataTextColor="#ffffff",
+    dataTextScaleFontFactor=0.8,
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Bar",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    sampleSpaceFactor=0.25,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTitle="",
+    subtitle="Change in sea-surface temperature trend, °C per decade, 2000–2016 versus 1960–2000 (illustrative).",
+    subtitleAlign="plot::0",
+    theme="paulTol",
+    title="Ocean regions where warming trends diverge most",
+    titleAlign="plot::0",
+    xAxis=list("Trend"),
+    xAxisTitle=""
+  )
+}
+
+cXbar22 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar25-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#4477aa"),
+    dataLabelNumberFormat=list(decimals=0, style="decimal", suffix="%"),
+    graphOrientation="horizontal",
+    graphType="Bar",
+    notes="Survey of 2,400 adults, March 2026. May not sum to 100.",
+    responsiveRules=list(list(config=list(fontScaleFontFactor=0.85, legendPosition="bottom"), maxWidth=480)),
+    setMaxX=46,
+    showDataDownload=FALSE,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTitle="",
+    source="ONS Opinions and Lifestyle Survey",
+    subtitle="Share of employed adults by usual work location, %",
+    theme="editorial",
+    title="Most people are back on site at least part of the week",
+    xAxisGridMajorShow=FALSE,
+    xAxisShow=FALSE
+  )
+}
+
+cXbar23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar26-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-bar26-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorScheme="CanvasXpress",
+    drillHierarchy=list("Region", "State", "City"),
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Region"),
+    showLegend=FALSE,
+    summaryType="sum"
+  )
+}
+
+cXbar24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bar27-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphOrientation="horizontal",
+    graphType="Bar",
+    showLegend=FALSE,
+    showTransition=FALSE,
+    smpTitle="Feature",
+    title="Feature importance — diabetes model",
+    xAxisTitle="Importance"
   )
 }
 
@@ -1599,7 +1881,7 @@ cXboxplot22 <- function() {
     connectBy="isolate",
     connectByPointColor=TRUE,
     connectByWidth=1,
-    decorations=list(text=list(list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=1, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=11, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=2, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=3, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=8, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=9, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="**", labelScaleFontFactor=0.8, panel=10, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=12, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=5, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="***", labelScaleFontFactor=0.8, panel=7, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="*", labelScaleFontFactor=0.8, panel=4, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=6, preTransformed="True", smpCenter="True", value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=13, preTransformed="True", smpCenter="True", value=3.2))),
+    decorations=list(text=list(list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=1, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=11, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=2, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=3, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=8, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=9, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="**", labelScaleFontFactor=0.8, panel=10, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=12, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=5, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="***", labelScaleFontFactor=0.8, panel=7, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="*", labelScaleFontFactor=0.8, panel=4, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="ns", labelScaleFontFactor=0.8, panel=6, preTransformed=TRUE, smpCenter=TRUE, value=3.2), list(color="rgb(0,0,0)", label="****", labelScaleFontFactor=0.8, panel=13, preTransformed=TRUE, smpCenter=TRUE, value=3.2))),
     graphOrientation="vertical",
     graphType="Boxplot",
     groupingFactors=list("xpos"),
@@ -1630,6 +1912,72 @@ cXboxplot22 <- function() {
     xAxisTicksLength=0.75,
     xAxisTitle="Minimum inhibitory concentration (μ g ml<sup>-1</sup>)",
     xAxisTransformTicks=TRUE
+  )
+}
+
+cXboxplot23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-boxplot23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-boxplot23-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    boxplotColor="#00AFBB",
+    decorations=list(marker=list(list(color="black", group=0, group2=1, text="<0.0001", type="pwc", variable="Sepal.Width", ymax=4.97, ymin=4.85), list(color="black", group=0, group2=2, text="<0.0001", type="pwc", variable="Sepal.Width", ymax=5.42, ymin=5.3), list(color="black", group=1, group2=2, text=0.0018, type="pwc", variable="Sepal.Width", ymax=5.87, ymin=5.75))),
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("Species"),
+    smpTitle="Sepal.Width",
+    theme="GGPlot",
+    title="Pairwise comparisons (geom_pwc) on a boxplot",
+    xAxis=list("Sepal.Width")
+  )
+}
+
+cXboxplot24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-boxplot24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-boxplot24-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="updown",
+    colorKey=list(updown=list(down="rgb(58,102,160)", up="rgb(224,130,20)")),
+    connectBy="Patient",
+    connectByPointColor=TRUE,
+    connectByWidth=1,
+    decorations=list(text=list(list(color="rgb(0,0,0)", label="p<0.0001", labelScaleFontFactor=0.9, panel=1, preTransformed=TRUE, smpCenter=TRUE, value=11.5), list(color="rgb(0,0,0)", label="p=0.022", labelScaleFontFactor=0.9, panel=2, preTransformed=TRUE, smpCenter=TRUE, value=11.5))),
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("Condition"),
+    layoutTopology="1X2",
+    segregateSamplesBy=list("Cohort"),
+    showBoxplotOriginalData=TRUE,
+    showLegend=TRUE,
+    smpTitle="Biomarker",
+    theme="GGPlot",
+    title="Paired boxplots with per-patient connections",
+    xAxis=list("Biomarker"),
+    xAxisTitle="Biomarker level"
+  )
+}
+
+cXboxplot25 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-boxplot25-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-boxplot25-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list(list("group")),
+    showBoxplotIfViolin=TRUE,
+    showStatInference=TRUE,
+    smpTitle="group",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list("Control", "DoseA"), p=0.00258746), list(groups=list("Control", "DoseB"), p=4.7e-07), list(groups=list("DoseA", "DoseB"), p=0.00116248), list(groups=list("Control", "DoseC"), p=0.53069114)), correction=list(method="BH", scope="panel")),
+    title="Tooth growth by dose with pairwise significance (Welch t-test, BH-adjusted)",
+    xAxisTitle="value"
   )
 }
 
@@ -1897,6 +2245,30 @@ cXbullet6 <- function() {
     xAxisGridMinorShow=FALSE,
     xAxisShow=FALSE,
     yAxisGridMajorShow=FALSE
+  )
+}
+
+cXbullet7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-bullet7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    bulletTargetVarName="Guideline",
+    colorScheme="User",
+    colors=list("#222222"),
+    dataTextColor="#FFFFFF",
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Bullet",
+    rangeColors=list("#4477AA", "#99BBDD", "#DDE8F5"),
+    rangeStack=list("Good", "Moderate", "High"),
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    subtitle="Annual mean PM2.5 (µg/m³) against guideline (tick) and bands (synthetic)",
+    theme="bw",
+    title="Which cities exceed the air-quality guideline?",
+    xAxis=list("PM2.5"),
+    xAxisTitle="PM2.5 (µg/m³)"
   )
 }
 
@@ -2768,6 +3140,52 @@ cXdonnut2 <- function() {
   )
 }
 
+cXdonnut3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-donnut3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#0072B2", "#E69F00", "#999999"),
+    graphType="Pie",
+    legendPosition="top",
+    pieInnerRadius=0.5,
+    pieSegmentLabels="outside",
+    pieSegmentPrecision=0,
+    pieSegmentSeparation=0,
+    showPieGrid=FALSE,
+    showPieSampleLabel=TRUE,
+    showTransition=FALSE,
+    subtitle="Share of residues by structure class (synthetic)",
+    theme="minimal",
+    title="Protein secondary structure across six proteomes",
+    xAxis=list("E. coli", "Yeast", "Fruit fly", "Mouse", "Arabidopsis", "Rice")
+  )
+}
+
+cXdonnut4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-donnut4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#4477AA", "#66CCEE", "#228833", "#CCBB44", "#EE6677", "#BBBBBB"),
+    graphType="Pie",
+    legendPosition="left",
+    pieInnerRadius=0.5,
+    pieSegmentLabels="inside",
+    pieSegmentPrecision=0,
+    pieSegmentSeparation=0,
+    showPieGrid=FALSE,
+    showPieSampleLabel=TRUE,
+    showTransition=FALSE,
+    subtitle="Share of mass by element, %, synthetic round numbers",
+    theme="paulTol",
+    title="The Sun is hydrogen; the crust is oxygen and silicon",
+    xAxis=list("Earth crust", "Sun")
+  )
+}
+
 cXdotline1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -2855,7 +3273,7 @@ cXdotplot1 <- function() {
     graphType="Dotplot",
     lineType="spline",
     showSmpOverlaysLegend=TRUE,
-    smpOverlayProperties=list(Factor4=list(color="blue", showLegend="True", thickness=50, type="Bar"), Factor5=list(color="grey", showLegend="True", thickness=50, type="Bar"), Factor6=list(color="red", showLegend="True", thickness=50, type="Bar")),
+    smpOverlayProperties=list(Factor4=list(color="blue", showLegend=TRUE, thickness=50, type="Bar"), Factor5=list(color="grey", showLegend=TRUE, thickness=50, type="Bar"), Factor6=list(color="red", showLegend=TRUE, thickness=50, type="Bar")),
     smpOverlays=list("Factor1", "Factor2", "Factor3", "Factor4", "Factor5", "Factor6"),
     smpTextRotate=45,
     smpTitle="Collection of Samples",
@@ -2902,11 +3320,12 @@ cXdotplot3 <- function() {
     smpAnnot=x,
     citation="Henderson, H. V. and Velleman, P. F. (1981), Building Regression Models Interactively. Biometrics, 37, 391-411.",
     citationFontStyle="italic",
+    dataPointSizeScaleFactor=0.6,
+    graphOrientation="horizontal",
     graphType="Dotplot",
     jitter=TRUE,
-    legendColumns=2,
-    legendInside=TRUE,
-    legendPosition="bottomRight",
+    legendColumns=3,
+    legendPosition="top",
     showErrorBars=FALSE,
     title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
@@ -2920,9 +3339,10 @@ cXdotplot4 <- function() {
   canvasXpress(
     data=y,
     axisAlgorithm="wilkinson",
-    dataPointSizeScaleFactor=3,
+    dataPointSizeScaleFactor=2,
     dataTextScaleFontFactor=0.6,
     dotplotType="stacked",
+    graphOrientation="horizontal",
     graphType="Dotplot",
     plotStyle="open",
     showDataValues=TRUE,
@@ -3279,6 +3699,7 @@ cXdotplot14 <- function() {
     smpAnnot=x,
     colorBy="Result",
     colorScheme="Greens",
+    graphOrientation="horizontal",
     graphType="Dotplot",
     groupingFactors=list("Award"),
     jitter=FALSE,
@@ -3327,12 +3748,34 @@ cXdotplot15 <- function() {
   )
 }
 
+cXdotplot16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dotplot16-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-dotplot16-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Feature value",
+    colorSpectrum=list("#2166ac", "#f7f7f7", "#b2182b"),
+    graphOrientation="horizontal",
+    graphType="Dotplot",
+    groupingFactors=list("Feature"),
+    jitter=TRUE,
+    showLegend=TRUE,
+    showTransition=FALSE,
+    title="SHAP summary — feature impact",
+    xAxis=list("SHAP value"),
+    xAxisTitle="SHAP value (impact on model output)"
+  )
+}
+
 cXdumbbell1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
     colors=list("grey", "blue", "pink"),
+    graphOrientation="horizontal",
     graphType="Dumbbell",
     legendColumns=2,
     legendPosition="bottom",
@@ -3351,7 +3794,7 @@ cXdumbbell2 <- function() {
   canvasXpress(
     data=y,
     colors=list("grey", "blue", "pink"),
-    dataPointSizeScaleFactor=3.5,
+    dataPointSizeScaleFactor=2.2,
     dataTextScaleFontFactor=0.6,
     graphOrientation="vertical",
     graphType="Dumbbell",
@@ -3375,7 +3818,7 @@ cXdumbbell3 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    dataPointSizeScaleFactor=3,
+    dataPointSizeScaleFactor=2,
     dataTextScaleFontFactor=0.5,
     dumbbellType="connected",
     graphOrientation="horizontal",
@@ -3417,7 +3860,7 @@ cXdumbbell5 <- function() {
   y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
   canvasXpress(
     data=y,
-    dataPointSizeScaleFactor=3,
+    dataPointSizeScaleFactor=2,
     dataTextScaleFontFactor=0.5,
     dumbbellType="bullet",
     graphOrientation="horizontal",
@@ -3441,6 +3884,7 @@ cXdumbbell6 <- function() {
     data=y,
     colors=list("grey", "blue", "pink"),
     dumbbellType="arrow",
+    graphOrientation="horizontal",
     graphType="Dumbbell",
     legendColumns=2,
     legendPosition="bottom",
@@ -3460,6 +3904,7 @@ cXdumbbell7 <- function() {
     data=y,
     colors=list("grey", "blue", "pink"),
     dumbbellType="line",
+    graphOrientation="horizontal",
     graphType="Dumbbell",
     legendColumns=2,
     legendPosition="bottom",
@@ -3479,7 +3924,7 @@ cXdumbbell8 <- function() {
     data=y,
     colors=list("grey", "blue", "pink"),
     connectByColor="#ffffff",
-    dataPointSizeScaleFactor=3,
+    dataPointSizeScaleFactor=2,
     dumbbellType="lineConnected",
     graphOrientation="vertical",
     graphType="Dumbbell",
@@ -3491,6 +3936,247 @@ cXdumbbell8 <- function() {
     title="Age Range by Gender",
     xAxis=list("Female", "Male"),
     xAxisTitle="Age"
+  )
+}
+
+cXdumbbell9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dumbbellArrowDirection="order",
+    dumbbellType="arrow",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendPosition="bottom",
+    source="World Bank",
+    title="Life expectancy, 2014 to 2024"
+  )
+}
+
+cXdumbbell10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell10-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#56B4E9", "#555555", "#E69F00"),
+    dataPointSizeScaleFactor=2.2,
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendPosition="top",
+    smpTitleFontStyle="bold",
+    sortBy="Maximum (CTmax)",
+    sortDir="ascending",
+    subtitle="Thermal limits and optimum of twelve reef fish species, in °C",
+    theme="classic",
+    title="Reef fish tolerate a narrower warm range than a cold one",
+    xAxis=list("Minimum (CTmin)", "Optimum", "Maximum (CTmax)"),
+    xAxisTitle="Temperature (°C)"
+  )
+}
+
+cXdumbbell11 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell11-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#bdbdbd", "#bdbdbd", "#009E73"),
+    dataPointSizeScaleFactor=2,
+    decorations=list(range=list(list(color="rgba(0,158,115,0.12)", tooltip="Normal fasting range", value=3.9, value2=5.6)), text=list(list(color="#009E73", label="◀ Normal fasting range", labelScaleFontFactor=0.9, panel=1, smpId=0, value=6.1))),
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    layoutTopology="2X1",
+    segregateSamplesBy=list("Wave"),
+    showLegend=FALSE,
+    smpLabelInterval=1,
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    subtitle="Mean and 95% interval (mmol/L) before and after a 12-week high-fat diet",
+    theme="minimal",
+    title="Fasting glucose by age group",
+    xAxis=list("Lower 95%", "Upper 95%", "Mean"),
+    xAxisTitle="Fasting glucose (mmol/L)"
+  )
+}
+
+cXdumbbell12 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell12-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#0072B2", "#0072B2"),
+    dataPointSizeScaleFactor=2.2,
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    setMaxX=260,
+    setMinX=0,
+    showLegend=FALSE,
+    sortDir="ascending",
+    subtitle="Lowest and highest frequency each animal can hear, in kHz",
+    theme="stata",
+    title="Hearing range of eight species",
+    xAxis=list("Lowest audible (kHz)", "Highest audible (kHz)"),
+    xAxisTitle="Frequency (kHz)"
+  )
+}
+
+cXdumbbell13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell13-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#332288", "#332288"),
+    dataPointSizeScaleFactor=2.2,
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    setMaxX=2040,
+    setMinX=1860,
+    showLegend=FALSE,
+    sortDir="ascending",
+    subtitle="Year the cause of ten diseases was identified and the year a vaccine against it was licensed",
+    theme="paulTol",
+    title="From pathogen to vaccine",
+    xAxis=list("Pathogen identified", "Vaccine licensed"),
+    xAxisTickFormat="%.0f",
+    xAxisTitle="Year"
+  )
+}
+
+cXdumbbell14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell14-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#0072B2", "#009E73"),
+    dataPointSizeScaleFactor=1,
+    dumbbellType="connected",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendPosition="top",
+    smpLabelInterval=1,
+    smpTextScaleFontFactor=0.7,
+    sortBy="Summer maximum",
+    sortDir="ascending",
+    subtitle="Annual minimum and maximum sea-surface temperature at 40 monitoring sites (°C)",
+    theme="ggplot",
+    title="How hot are the reefs?",
+    xAxis=list("Winter minimum", "Summer maximum"),
+    xAxisTitle="Temperature (°C)"
+  )
+}
+
+cXdumbbell15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell15-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell15-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#0072B2", "#0072B2"),
+    connectByColor="#0072B2",
+    connectByWidth=3,
+    dataPointSizeScaleFactor=0.8,
+    decorations=list(range=list(list(color="rgba(0,158,115,0.14)", scope="1. High productivity", tooltip="Typical high-productivity band", value=540, value2=640), list(color="rgba(230,159,0,0.16)", scope="2. Moderate productivity", tooltip="Typical moderate-productivity band", value=500, value2=550), list(color="rgba(213,94,0,0.14)", scope="3. Low productivity", tooltip="Typical low-productivity band", value=390, value2=470)), text=list(list(color="#009E73", label="Typical range ▶", labelScaleFontFactor=0.9, panel=1, smpId=0, value=510), list(color="#B07C00", label="◀ Typical range", labelScaleFontFactor=0.9, panel=2, smpId=0, value=582), list(color="#D55E00", label="◀ Typical range", labelScaleFontFactor=0.9, panel=3, smpId=0, value=502))),
+    dumbbellArrowDirection="order",
+    dumbbellType="arrow",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    layoutTopology="3X1",
+    segregateSamplesBy=list("Group"),
+    setMaxX=660,
+    setMinX=380,
+    showLegend=FALSE,
+    smpLabelInterval=1,
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    subtitle="Index of net carbon uptake per ecosystem, 2000s to 2020s; shaded: the typical band of each class",
+    theme="bw",
+    title="Carbon-uptake index by ecosystem class",
+    xAxis=list("2000s", "2020s"),
+    xAxisTitle="Uptake index"
+  )
+}
+
+cXdumbbell16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell16-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell16-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    citation="Source: synthetic data for illustration",
+    colorScheme="User",
+    colors=list("#6b6b6b", "#009E73"),
+    connectByColor="#009E73",
+    connectByWidth=3,
+    dataPointSizeScaleFactor=0.7,
+    decorations=list(range=list(list(color="rgba(0,158,115,0.10)", tooltip="Majority open access", value=50, value2=70)), text=list(list(color="#009E73", label="Over 50% open access ▶", labelScaleFontFactor=0.8, panel=3, smpId=4, value=38))),
+    dumbbellArrowDirection="order",
+    dumbbellType="arrow",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    layoutTopology="4X1",
+    segregateSamplesBy=list("Domain"),
+    setMaxX=70,
+    setMinX=0,
+    showLegend=FALSE,
+    smpLabelInterval=1,
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    subtitle="Share of papers published open access, grey 2014 to green 2024 (%); shaded: majority open access",
+    theme="classic",
+    title="Open-access share of papers by field",
+    xAxis=list(2014, 2024),
+    xAxisTitle="Share open access (%)"
+  )
+}
+
+cXdumbbell17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-dumbbell17-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    arrowHeadSize=8,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#bbbbbb", "#228833"),
+    dumbbellArrowDirection="order",
+    dumbbellType="arrow",
+    graphOrientation="horizontal",
+    graphType="Dumbbell",
+    legendColumns=2,
+    legendPosition="bottom",
+    notes="Wind, solar, hydro and bioenergy. 2024 preliminary.",
+    numberFormat=list(decimals=0, style="decimal", suffix="%"),
+    responsiveRules=list(list(config=list(arrowHeadSize=5, connectByWidth=1, fontScaleFontFactor=0.85, legendPosition="bottom"), maxWidth=480)),
+    showDataDownload=TRUE,
+    smpTextScaleFontFactor=1.3,
+    source="Ember",
+    sourceUrl="https://ember-climate.org",
+    subtitle="Renewable share of electricity generation, 2014 → 2024, %",
+    theme="editorial",
+    title="Renewables have doubled their share in a decade",
+    xAxisTicks=4,
+    xAxisTitle=""
   )
 }
 
@@ -3696,7 +4382,7 @@ cXfish2 <- function() {
     colorSpectrum=list("bisque", "darkgoldenrod1", "darkorange3"),
     colors=list("rgb(136,136,136)", "rgb(239,0,0)", "rgb(255,96,0)", "rgb(255,207,0)", "rgb(191,255,64)", "rgb(80,255,175)", "rgb(0,223,255)", "rgb(0,112,255)", "rgb(0,0,255)", "rgb(0,0,143)"),
     fishAxis=list(0, 423),
-    fishCloneLabels=list("DNMT3A,FLT3", "NPM1", "MET", "ETV6,WNK1-WAC,\nMYO18B"),
+    fishCloneLabels=list("DNMT3A,FLT3", "NPM1", "MET", "ETV6,WNK1-WAC,\\nMYO18B"),
     fishParents=list(0, 1, 1, 3),
     fishShape="spline",
     fishTimepoints=list(0, 30, 200, 423),
@@ -4193,17 +4879,16 @@ cXheatmap12 <- function() {
     smpAnnot=x,
     varAnnot=z,
     graphType="Heatmap",
+    overlayTextScaleFontFactor=0.6,
     segregateSamplesBy=list("Treatment"),
     segregateVariablesBy=list("Lab"),
     showSmpOverlaysLegend=FALSE,
     showVarOverlaysLegend=FALSE,
-    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend="True", type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend="True", spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend="True", thickness=30, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend="True", thickness=50, type="Bar"), PhaseB=list(position="left", showLegend="True", thickness=50, type="Bar"), PhaseC=list(position="left", showLegend="True", thickness=50, type="Bar"), Temp=list(position="right", spectrum=list("blue", "white", "red"), thickness=100, type="Heatmap")),
-    smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
-    smpTextScaleFontFactor=1.1,
-    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend="True", thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend="True", thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend="True", thickness=30, type="Increase"), Even=list(position="bottom", showLegend="True", thickness=50, type="Bar"), Female=list(position="top", showLegend="True", thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend="True", thickness=50, type="StackedPercent"), Male=list(position="top", showLegend="True", thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend="True", thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend="True", thickness=50, type="BarLine"), Site=list(position="top", showLegend="True", type="Default"), Ugly=list(color="black", position="bottom", showLegend="True", thickness=50, type="Dotplot")),
+    smpOverlayProperties=list(Binary=list(position="left", scheme="BlackAndWhite", showLegend=TRUE, type="Default"), Boolean=list(position="left"), Continuous=list(position="left", showLegend=TRUE, spectrum=list("green", "white"), type="Heatmap"), Discrete=list(position="left", showLegend=TRUE, thickness=40, type="Default"), Early=list(color="blue", position="right", thickness=50, type="Line"), Late=list(color="red", position="right", thickness=50, type="Line"), OnTime=list(color="green", position="right", thickness=50, type="Line"), PhaseA=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseB=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), PhaseC=list(position="left", showLegend=TRUE, thickness=50, type="Bar"), Temp=list(hideName=TRUE, position="right", spectrum=list("blue", "white", "red"), thickness=50, type="Heatmap")),
+    smpOverlays=list("PhaseA", "PhaseB", "PhaseC", "-", "-", "Binary", "Boolean", "Continuous", "-", "-", "Discrete", "-", "-", "Temp", "-", "-", "Early", "OnTime", "Late"),
+    varOverlayProperties=list(Cold=list(color="blue", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Conc=list(position="top", showLegend=TRUE, thickness=40, type="Bar"), Desc=list(position="bottom", type="Text"), Drug=list(position="top", showLegend=TRUE, thickness=30, type="Increase"), Even=list(position="bottom", showLegend=TRUE, thickness=50, type="Bar"), Female=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Hot=list(color="red", position="bottom", showLegend=TRUE, thickness=50, type="StackedPercent"), Male=list(position="top", showLegend=TRUE, thickness=50, type="Pie"), Nice=list(color="green", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot"), Odd=list(position="bottom", showLegend=TRUE, thickness=50, type="BarLine"), Site=list(position="top", showLegend=TRUE, type="Default"), Ugly=list(color="black", position="bottom", showLegend=TRUE, thickness=50, type="Dotplot")),
     varOverlays=list("Drug", "-", "Male", "Female", "-", "Site", "-", "Conc", "-", "Desc", "-", "Even", "Odd", "-", "-", "Nice", "Ugly", "-", "-", "Cold", "Hot"),
-    varTextRotate=45,
-    varTextScaleFontFactor=1.7,
+    varTextScaleFontFactor=1.5,
     xAxis=list("V1", "V2", "V3", "V4", "V5", "V6")
   )
 }
@@ -4221,15 +4906,16 @@ cXheatmap13 <- function() {
     heatmapIndicatorPosition="right",
     overlayFontStyle="bold",
     overlayScaleFontFactor=2,
+    overlaysLegendPosition="right",
     samplesClustered=TRUE,
     showSmpOverlaysLegend=TRUE,
     showValueOverlays=FALSE,
     showVarOverlaysLegend=TRUE,
     smpDendrogramPosition="right",
-    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend="True", type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend="True", thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend="True", type="Default")),
+    smpOverlayProperties=list(CellType=list(position="right", scheme="Matlab", showLegend=TRUE, type="Default"), Dose=list(color="blue", position="left", thickness=80, type="Bar"), Drug=list(position="left", scheme="Lancet", showLegend=TRUE, thickness=30, type="Increase"), Time=list(position="right", scheme="Greens", showLegend=TRUE, type="Default")),
     smpOverlays=list("Drug", "-", "Dose", "CellType", "-", "Time"),
     smpTitleLabelPosition="right",
-    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend="True", thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
+    varOverlayProperties=list(GeneClass=list(position="top", scheme="GGPlot", showLegend=TRUE, thickness=20, type="Default"), ProteinA=list(color="green", position="top", thickness=45, type="Line")),
     varOverlays=list("ProteinA", "-", "GeneClass"),
     varTitleLabelPosition="bottom",
     variablesClustered=TRUE,
@@ -4364,6 +5050,100 @@ cXheatmap19 <- function() {
   )
 }
 
+cXheatmap20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-heatmap20-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-heatmap20-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorSpectrum=list("blue", "white", "red"),
+    graphType="Heatmap",
+    samplesClustered=TRUE,
+    showSmpDendrogram=TRUE,
+    showVarDendrogram=TRUE,
+    smpOverlayProperties=list(rows=list(position="left", showLegend=TRUE, thickness=20, type="Default"), rp_a=list(hideName=TRUE, position="right", showLegend=TRUE, thickness=50, type="Pie"), rp_b=list(hideName=TRUE, position="right", showLegend=TRUE, thickness=50, type="Pie"), rp_c=list(hideName=TRUE, position="right", showLegend=TRUE, thickness=50, type="Pie"), rv_01=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_02=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_03=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_04=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_05=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_06=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_07=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_08=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_09=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_10=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_11=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin"), rv_12=list(color="rgb(49,130,189)", hideName=TRUE, position="right", thickness=80, type="Violin")),
+    smpOverlays=list("rows", "-", "rp_a", "rp_b", "rp_c", "-", "rv_01", "rv_02", "rv_03", "rv_04", "rv_05", "rv_06", "rv_07", "rv_08", "rv_09", "rv_10", "rv_11", "rv_12"),
+    title="Heatmap with violin, pie, bar and categorical annotation tracks",
+    varOverlayProperties=list(F1_01=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_02=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_03=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_04=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_05=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_06=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_07=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_08=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_09=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_10=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_11=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_12=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_13=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_14=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_15=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), F1_16=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=90, type="Violin"), c=list(position="top", showLegend=TRUE, thickness=20, type="Default"), p1_a=list(hideName=TRUE, position="top", showLegend=TRUE, thickness=50, type="Pie"), p1_b=list(hideName=TRUE, position="top", showLegend=TRUE, thickness=50, type="Pie"), p1_c=list(hideName=TRUE, position="top", showLegend=TRUE, thickness=50, type="Pie"), p1_d=list(hideName=TRUE, position="top", showLegend=TRUE, thickness=50, type="Pie"), p2=list(color="rgb(49,130,189)", hideName=TRUE, position="top", thickness=40, type="Bar")),
+    varOverlays=list("c", "-", "p1_a", "p1_b", "p1_c", "p1_d", "-", "p2", "-", "F1_01", "F1_02", "F1_03", "F1_04", "F1_05", "F1_06", "F1_07", "F1_08", "F1_09", "F1_10", "F1_11", "F1_12", "F1_13", "F1_14", "F1_15", "F1_16"),
+    variablesClustered=TRUE
+  )
+}
+
+cXheatmap21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorSpectrum=list("#2166ac", "#67a9cf", "#f7f7f7", "#ef8a62", "#b2182b"),
+    colorSpectrumZeroValue=0,
+    graphType="Heatmap",
+    heatmapCellText=list(list(sample="Height", text=1.00, variable="Height"), list(sample="Height", text="0.82**", variable="Weight"), list(sample="Height", text=0.05, variable="Age"), list(sample="Height", text=0.21, variable="BMI"), list(sample="Height", text=-0.12, variable="SBP"), list(sample="Height", text=0.08, variable="Glucose"), list(sample="Weight", text="0.82**", variable="Height"), list(sample="Weight", text=1.00, variable="Weight"), list(sample="Weight", text=0.18, variable="Age"), list(sample="Weight", text="0.77**", variable="BMI"), list(sample="Weight", text=0.31, variable="SBP"), list(sample="Weight", text="0.44*", variable="Glucose"), list(sample="Age", text=0.05, variable="Height"), list(sample="Age", text=0.18, variable="Weight"), list(sample="Age", text=1.00, variable="Age"), list(sample="Age", text=0.22, variable="BMI"), list(sample="Age", text="0.58*", variable="SBP"), list(sample="Age", text="0.49*", variable="Glucose"), list(sample="BMI", text=0.21, variable="Height"), list(sample="BMI", text="0.77**", variable="Weight"), list(sample="BMI", text=0.22, variable="Age"), list(sample="BMI", text=1.00, variable="BMI"), list(sample="BMI", text="0.46*", variable="SBP"), list(sample="BMI", text="0.63*", variable="Glucose"), list(sample="SBP", text=-0.12, variable="Height"), list(sample="SBP", text=0.31, variable="Weight"), list(sample="SBP", text="0.58*", variable="Age"), list(sample="SBP", text="0.46*", variable="BMI"), list(sample="SBP", text=1.00, variable="SBP"), list(sample="SBP", text="0.52*", variable="Glucose"), list(sample="Glucose", text=0.08, variable="Height"), list(sample="Glucose", text="0.44*", variable="Weight"), list(sample="Glucose", text="0.49*", variable="Age"), list(sample="Glucose", text="0.63*", variable="BMI"), list(sample="Glucose", text="0.52*", variable="SBP"), list(sample="Glucose", text=1.00, variable="Glucose")),
+    heatmapCellTextColor="rgb(30,30,30)",
+    setMax=1,
+    setMin=-1,
+    showSmpDendrogram=FALSE,
+    showVarDendrogram=FALSE,
+    title="Correlation matrix with significance markers"
+  )
+}
+
+cXheatmap22 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap22-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorLegendLabels=list("a", "b", "c", "d", "e"),
+    colorLegendSteps="equal",
+    colorSpectrum=list("#2166ac", "#67a9cf", "#f7f7f7", "#ef8a62", "#b2182b"),
+    colorSpectrumBinned=TRUE,
+    colorSpectrumBreaks=list(-5, -3, -1, 1, 3),
+    graphType="Heatmap",
+    heatmapCellSpace=8,
+    heatmapType="tiled",
+    smpLabelScaleFontFactor=0.9,
+    title="Tiled discrete heatmap",
+    varLabelRotate=90,
+    varLabelScaleFontFactor=0.9
+  )
+}
+
+cXheatmap23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorSpectrum=list("#2166ac", "#67a9cf", "#f7f7f7", "#ef8a62", "#b2182b"),
+    graphType="Heatmap",
+    heatmapCellBox=FALSE,
+    heatmapCellSpace=8,
+    smpLabelScaleFontFactor=0.9,
+    title="Heatmap with cell spacing",
+    varLabelRotate=90,
+    varLabelScaleFontFactor=0.9
+  )
+}
+
+cXheatmap24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-heatmap24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorSpectrum=list("#f7fbff", "#6baed6", "#08306b"),
+    graphType="Heatmap",
+    heatmapCellBox=TRUE,
+    heatmapCellText=list(list(sample="Pred setosa", text=50, variable="Actual setosa"), list(sample="Pred versicolor", text=0, variable="Actual setosa"), list(sample="Pred virginica", text=0, variable="Actual setosa"), list(sample="Pred setosa", text=0, variable="Actual versicolor"), list(sample="Pred versicolor", text=47, variable="Actual versicolor"), list(sample="Pred virginica", text=3, variable="Actual versicolor"), list(sample="Pred setosa", text=0, variable="Actual virginica"), list(sample="Pred versicolor", text=5, variable="Actual virginica"), list(sample="Pred virginica", text=45, variable="Actual virginica")),
+    showHeatmapIndicator=TRUE,
+    showTransition=FALSE,
+    smpTitle="Predicted",
+    title="Confusion matrix — iris classifier",
+    varTitle="Actual"
+  )
+}
+
 cXhexplotbinplot1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-dsmall-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -4462,7 +5242,7 @@ cXhistogram1 <- function() {
     histogramBins=10,
     showHistogram=TRUE,
     showTransition=FALSE,
-    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    title="Patients with advanced cancers of the stomach,\\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
@@ -4481,7 +5261,7 @@ cXhistogram2 <- function() {
     graphType="Scatter2D",
     histogramBins=20,
     showHistogram=TRUE,
-    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    title="Patients with advanced cancers of the stomach,\\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
@@ -4503,7 +5283,7 @@ cXhistogram3 <- function() {
     showFilledHistogramPath=TRUE,
     showHistogram=TRUE,
     showHistogramPath=TRUE,
-    title="Patients with advanced cancers of the stomach,\nbronchus, colon, ovary or breast treated with ascorbate.",
+    title="Patients with advanced cancers of the stomach,\\nbronchus, colon, ovary or breast treated with ascorbate.",
     xAxis=list("Survival"),
     xAxisTitle="Survival (days)",
     yAxisTitle="Number of Subjects"
@@ -4519,7 +5299,7 @@ cXhistogram4 <- function() {
     graphType="Scatter2D",
     histogramBins=5,
     showHistogram=TRUE,
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    title="Average weekly household spending, in British pounds, on tobacco products\\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
@@ -4536,7 +5316,7 @@ cXhistogram5 <- function() {
     histogramBins=5,
     histogramType="staggered",
     showHistogram=TRUE,
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    title="Average weekly household spending, in British pounds, on tobacco products\\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
@@ -4553,7 +5333,7 @@ cXhistogram6 <- function() {
     histogramBins=5,
     histogramType="stacked",
     showHistogram=TRUE,
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    title="Average weekly household spending, in British pounds, on tobacco products\\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Tobacco", "Alcohol"),
     xAxisTitle="Pounds Spent",
     yAxisTitle="Frequency"
@@ -4849,7 +5629,9 @@ cXlayout1 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -4866,7 +5648,9 @@ cXlayout2 <- function() {
     confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
+    showLegendTitle=FALSE,
     showRegressionFit="Species",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
@@ -4883,7 +5667,9 @@ cXlayout3 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
+    showLegendTitle=FALSE,
     showRegressionFit=TRUE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
@@ -4900,7 +5686,9 @@ cXlayout4 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=FALSE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -4917,8 +5705,10 @@ cXlayout5 <- function() {
     confidenceIntervalColorCoordinate=TRUE,
     graphType="Scatter2D",
     layoutAdjust=FALSE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
+    showLegendTitle=FALSE,
     showRegressionFit="Species",
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
@@ -4965,7 +5755,7 @@ cXlayout7 <- function() {
     showTransition=FALSE,
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    title="Measurements on 38 1978-79 model automobiles.\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
+    title="Measurements on 38 1978-79 model automobiles.\\nThe gas mileage in miles per gallon as measured by Consumers Union on a test track.",
     xAxis=list("MPG", "Weight", "Drive_Ratio", "Horsepower", "Displacement", "Cylinders"),
     afterRender=list(list("groupSamples", list("Country")), list("segregateSamples", list("Country")))
   )
@@ -5093,7 +5883,7 @@ cXlayout14 <- function() {
     graphOrientation="vertical",
     graphType="Bar",
     layoutAdjust=TRUE,
-    layoutConfig=list(list(axisCoordinate="True", graphType="BarLine", showDataValues="True", xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside="True", legendPosition="bottomLeft", showLegend="True", showLegendTitle="False", xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen="False", barType="lollipop", xAxisTitle="Baseline (mm)")),
+    layoutConfig=list(list(axisCoordinate=TRUE, graphType="BarLine", showDataValues=TRUE, xAxis=list("Duration"), xAxis2=list("Discontinued"), xAxisTitle="Duration of Treatment"), list(colorBy="Drug", legendColumns=5, legendInside=TRUE, legendPosition="bottomLeft", showLegend=TRUE, showLegendTitle=FALSE, xAxisTitle="Change from Baseline (%)"), list(barLollipopFactor=1.5, barLollipopOpen=FALSE, barType="lollipop", xAxisTitle="Baseline (mm)")),
     layoutTopology="3X1",
     showLegend=FALSE,
     stripBackgroundBorderColor="rgba(0,0,0,0)",
@@ -5142,7 +5932,8 @@ cXlayout16 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    xAxis=list("x", "y")
+    xAxis=list("x"),
+    yAxis=list("y")
   )
 }
 
@@ -5179,7 +5970,8 @@ cXlayout18 <- function() {
     stripBackgroundBorderColor="rgb(0,0,0)",
     stripBackgroundColor="rgba(0,0,0,0)",
     stripTextColor="rgb(0,0,0)",
-    xAxis=list("x", "y")
+    xAxis=list("x"),
+    yAxis=list("y")
   )
 }
 
@@ -5310,6 +6102,60 @@ cXline6 <- function() {
   )
 }
 
+cXline7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-line7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    a11yDescription="GDP per capita fell in all four countries in 2019 and had recovered by 2021. Germany stays highest (42.2 thousand USD in 2021) and Spain lowest (25.1).",
+    byline="Chart: CanvasXpress",
+    decorations=list(marker=list(list(sample="Y2019", text="COVID-19 drop", type="curved", variable="Germany", x=0.42, y=0.12))),
+    graphOrientation="vertical",
+    graphType="Line",
+    showLineEndLabels=TRUE,
+    source="Eurostat",
+    title="GDP per capita (thousand USD)"
+  )
+}
+
+cXline8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-line8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("#C1C1C1", "#FF8C00"),
+    dataPointSize=20,
+    decorations=list(text=list(list(color="rgb(220,0,0)", label="✕", smp="D01", var="Replication01"), list(color="rgb(220,0,0)", label="✕", smp="I01", var="Replication02"), list(color="rgb(220,0,0)", label="✕", smp="O01", var="Replication02"))),
+    graphOrientation="vertical",
+    graphType="Line",
+    lineDecoration="dot",
+    lineThickness=2,
+    lineType="spline",
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showSampleNames=TRUE,
+    smpTextRotate=45,
+    smpTitle="Wells",
+    tension=0.2,
+    title="Excluded Controls (Outliers Flagged)",
+    xAxisTitle="Control value"
+  )
+}
+
+cXline9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-line9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Line",
+    showLegend=TRUE,
+    showTransition=FALSE,
+    smpTitle="Training set size",
+    title="Learning curve — training vs validation",
+    yAxisTitle="Score"
+  )
+}
+
 cXlinearfit1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-mtcars-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -5370,7 +6216,8 @@ cXlollipop1 <- function() {
     smpAnnot=x,
     barType="lollipop",
     colorScheme="CanvasXpress",
-    dataPointSizeScaleFactor=6,
+    dataPointSizeScaleFactor=16,
+    graphOrientation="horizontal",
     graphType="Bar",
     sizeBy="val",
     widthFactor=0.2,
@@ -5390,6 +6237,7 @@ cXlollipop2 <- function() {
     colorBy="Color",
     colorScheme="GGPlot",
     dataPointSizeScaleFactor=7,
+    graphOrientation="horizontal",
     graphType="Bar",
     marginBottom=50,
     marginLeft=50,
@@ -5503,6 +6351,7 @@ cXmap6 <- function() {
     graphType="Map",
     legendPosition="bottom",
     mapId="albersCounties",
+    showLegendTitle=FALSE,
     title="Mercator Projection",
     topoJSON="https://www.canvasxpress.org/data/maps/USA-COUNTIES.json"
   )
@@ -5514,9 +6363,11 @@ cXmap7 <- function() {
     data=FALSE,
     colorBy="Order",
     graphType="Map",
-    legendPosition="bottom",
+    legendInside=TRUE,
+    legendPosition="topLeft",
     mapId="mercatorCounties",
     mapProjection="albers",
+    showLegendTitle=FALSE,
     title="Albers Projection",
     topoJSON="https://www.canvasxpress.org/data/maps/USA-COUNTIES.json"
   )
@@ -5591,9 +6442,9 @@ cXmap12 <- function() {
     data=FALSE,
     colorBy="Order",
     graphType="Map",
-    mapConfig=list(zoom=3.2),
-    mapConfigFeatures=list("1"=list(scale=list(0.5, 0.8), translate=list(-100, -30)), "11"=list(scale=list(1.5, 1.5), translate=list(85, -5))),
+    legendPosition="top",
     mapId="customUSA",
+    showLegendTitle=FALSE,
     topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
   )
 }
@@ -5647,13 +6498,13 @@ cXmap16 <- function() {
   canvasXpress(
     smpAnnot=x,
     graphType="Map",
-    tileZoomAlphaColor=1,
     mapConfig=list(center=list(37.6, -99), zoom=4),
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.5,
     markerBy="State",
     showLegend=FALSE,
-    showTiles=TRUE
+    showTiles=TRUE,
+    tileZoomAlphaColor=1
   )
 }
 
@@ -5663,14 +6514,367 @@ cXmap17 <- function() {
   canvasXpress(
     smpAnnot=x,
     graphType="Map",
-    tileZoomAlphaColor=1,
     mapConfig=list(center=list(37.6, -99), zoom=4),
     mapMarkerShape="circle",
     mapMarkerShapeScaleFactor=0.75,
     markerBy="State",
     showLegend=FALSE,
+    showTiles=TRUE,
     sizeBy="Population",
-    showTiles=TRUE
+    tileZoomAlphaColor=1
+  )
+}
+
+cXmap18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map19-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Total",
+    colorSpectrum=list("#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"),
+    colorSpectrumBreaksMethod="jenks",
+    graphType="Map",
+    legendPosition="bottom",
+    mapId="medalsClassed",
+    showMapLabels=TRUE,
+    source="IOC",
+    title="Olympic medals, Paris 2024 (natural breaks)",
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
+  )
+}
+
+cXmap19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Map",
+    legendColumns=4,
+    legendPosition="bottom",
+    mapBubbleColor="rgba(8,81,156,0.6)",
+    mapColor="#e5e7eb",
+    mapId="medalsBubbles",
+    mapOutlineColor="#ffffff",
+    sizeBy="Total",
+    source="IOC",
+    title="Olympic medals, Paris 2024 (bubbles)",
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
+  )
+}
+
+cXmap20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Unemployment",
+    colorSpectrum=list("#fde725", "#35b779", "#31688e", "#440154"),
+    graphType="Map",
+    legendNumberFormat=list(decimals=1, style="decimal", suffix="%"),
+    legendPosition="topRight",
+    mapAlbersInsets=TRUE,
+    mapId="albersStates",
+    mapProjection="albers",
+    showLegendTitle=FALSE,
+    showMapLabels=TRUE,
+    source="Synthetic data for illustration",
+    subtitle="Percent of labour force, synthetic data",
+    theme="classic",
+    title="Unemployment rate, illustrative",
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
+  )
+}
+
+cXmap21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map22-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Wellbeing index",
+    colorSpectrum=list("#c51b7d", "#f7f7f7", "#4d9221"),
+    colorSpectrumZeroValue=51,
+    decorations=list(marker=list(list(color="#276419", coords=list(9.9, -84.1), label="Costa Rica (68.3)", shape="sphere", size=1.6))),
+    graphType="Map",
+    legendInside=TRUE,
+    legendPosition="bottomLeft",
+    mapColor="#dddddd",
+    mapId="worldHpi",
+    showLegendTitle=TRUE,
+    subtitle="Synthetic wellbeing-efficiency index by country (34 = low, 68 = high). Synthetic data for illustration",
+    theme="paulTol",
+    title="How well does the planet live?",
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
+  )
+}
+
+cXmap22 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Cumulative CO2 (Gt)",
+    colorSpectrum=list("#2166ac", "#92c5de", "#f7f7f7", "#f4a582", "#b2182b"),
+    colorSpectrumBreaksMethod="quantile",
+    decorations=list(marker=list(list(coords=list(37, -98), fontSize=12, shape="none", text="The U.S. has emitted\n1.75x as much CO2\nas China since 1750", type="curved", x=0.13, y=0.66))),
+    graphType="Map",
+    legendInside=TRUE,
+    legendPosition="bottomLeft",
+    mapColor="#e0e0e0",
+    mapId="worldCo2",
+    showLegendTitle=TRUE,
+    subtitle="Illustrative cumulative emissions, gigatonnes. Synthetic data for illustration",
+    theme="stata",
+    title="Who has emitted the most CO2?",
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
+  )
+}
+
+cXmap23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Rainfall (mm)",
+    colorScheme="User",
+    colorSpectrum=list("#dfc27d", "#a6b37a", "#35978f", "#01665e"),
+    graphType="Map",
+    legendPosition="topRight",
+    mapConfig=list(center=list(-22.9, 18.5), zoom=5.6),
+    mapId="namibia",
+    mapOutlineColor="#ffffff",
+    showLegendTitle=TRUE,
+    showMapLabels=TRUE,
+    source="Synthetic data for illustration",
+    subtitle="Regional mean of total yearly rainfall in mm (synthetic)",
+    theme="bw",
+    title="Annual rainfall per region",
+    topoJSON="https://www.canvasxpress.org/data/maps/NAM.json"
+  )
+}
+
+cXmap24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map25-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-map25-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Group",
+    colorScheme="User",
+    colors=list("#cc6677", "#332288", "#44aa99", "#ddcc77", "#dddddd"),
+    graphType="Map",
+    legendInside=TRUE,
+    legendOrder=list(Group=list("Care-home residents", "Essential workers", "Health-care staff", "Campaign planned", "Not yet available")),
+    legendPosition="topRight",
+    mapId="europeGroups",
+    source="Synthetic data for illustration",
+    subtitle="Invented priority groups by country",
+    theme="minimal",
+    title="Who gets the first dose?",
+    topoJSON="https://www.canvasxpress.org/data/maps/EUROPE.json"
+  )
+}
+
+cXmap25 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map26-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Spring month",
+    colorLegendSteps="equal",
+    colorSpectrum=list("#00441b", "#41ae76", "#b2e2a8", "#e5f5e0"),
+    colorSpectrumBreaksMethod="equalWidth",
+    decorations=list(marker=list(list(align="left", coords=list(68.4, 22.6), fontSize=12, lineColor="#999999", shape="none", text="May 1", textCoords=list(68.4, 25.5), type="line"), list(align="left", coords=list(65.7, 22.4), fontSize=12, lineColor="#999999", shape="none", text="April 15", textCoords=list(65.7, 25.5), type="line"), list(align="left", coords=list(62.4, 17.6), fontSize=12, lineColor="#999999", shape="none", text="April 1", textCoords=list(62.4, 25.5), type="line"), list(align="left", coords=list(58.7, 17.2), fontSize=12, lineColor="#999999", shape="none", text="March 15", textCoords=list(58.7, 25.5), type="line"), list(align="left", coords=list(56.1, 14.6), fontSize=12, lineColor="#999999", shape="none", text="March 1", textCoords=list(56.1, 25.5), type="line"), list(align="left", coords=list(55.45, 13.1), fontSize=12, lineColor="#999999", shape="none", text="February 15", textCoords=list(55.45, 25.5), type="line"))),
+    graphType="Map",
+    legendInside=TRUE,
+    legendPosition="topLeft",
+    mapId="sweden",
+    showLegendTitle=TRUE,
+    source="Synthetic data for illustration",
+    subtitle="Month the 7-day mean passes 0 °C (synthetic)",
+    theme="ggplot",
+    title="When does spring arrive?",
+    topoJSON="https://www.canvasxpress.org/data/maps/SWE.json"
+  )
+}
+
+cXmap26 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map27-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(marker=list(list(color="rgba(51,34,136,0.8)", coords=list(39, -98), label=120, shape="square", size=54.772255750516614), list(color="rgba(51,34,136,0.8)", coords=list(35, 104), label=150, shape="square", size=61.23724356957945), list(color="rgba(51,34,136,0.8)", coords=list(36, 138), label=32, shape="square", size=28.284271247461902), list(color="rgba(51,34,136,0.8)", coords=list(51, 10), label=28, shape="square", size=26.457513110645905), list(color="rgba(51,34,136,0.8)", coords=list(46.5, 2.5), label=24, shape="square", size=24.49489742783178), list(color="rgba(51,34,136,0.8)", coords=list(54, -2), label=20, shape="square", size=22.360679774997898), list(color="rgba(51,34,136,0.8)", coords=list(42.8, 12.5), label="", shape="square", size=17.32050807568877), list(color="rgba(51,34,136,0.8)", coords=list(57, -100), label="", shape="square", size=15.811388300841898), list(color="rgba(51,34,136,0.8)", coords=list(36.5, 127.8), label="", shape="square", size=15.811388300841898), list(color="rgba(51,34,136,0.8)", coords=list(52.2, 5.3), label="", shape="square", size=14.142135623730951), list(color="rgba(51,34,136,0.8)", coords=list(-10, -52), label="", shape="square", size=14.142135623730951), list(color="rgba(51,34,136,0.8)", coords=list(22, 79), label="", shape="square", size=14.142135623730951), list(color="rgba(51,34,136,0.8)", coords=list(-25, 134), label="", shape="square", size=12.24744871391589), list(color="rgba(51,34,136,0.8)", coords=list(24, 45), label="", shape="square", size=14.142135623730951), list(color="rgba(51,34,136,0.8)", coords=list(60, 95), label="", shape="square", size=12.24744871391589), list(color="rgba(51,34,136,0.8)", coords=list(40, -3.5), label="", shape="square", size=13.228756555322953), list(color="rgba(51,34,136,0.8)", coords=list(46.8, 8.2), label="", shape="square", size=12.24744871391589), list(color="rgba(51,34,136,0.8)", coords=list(62, 15), label="", shape="square", size=12.24744871391589), list(color="rgba(51,34,136,0.8)", coords=list(64, 26), label="", shape="square", size=11.180339887498949), list(color="rgba(51,34,136,0.8)", coords=list(61, 9), label="", shape="square", size=11.180339887498949), list(color="rgba(51,34,136,0.8)", coords=list(52, 19), label="", shape="square", size=10), list(color="rgba(51,34,136,0.8)", coords=list(1.35, 103.8), label="", shape="square", size=10), list(color="rgba(51,34,136,0.8)", coords=list(-29, 24), label="", shape="square", size=8.660254037844386), list(color="rgba(51,34,136,0.8)", coords=list(24, 54), label="", shape="square", size=11.180339887498949), list(color="rgba(51,34,136,0.8)", coords=list(23.7, 121), label="", shape="square", size=10), list(color="rgba(51,34,136,0.8)", coords=list(23.5, -102), label="", shape="square", size=8.660254037844386), list(color="rgba(51,34,136,0.8)", coords=list(49.8, 15.5), label="", shape="square", size=8.660254037844386), list(color="rgba(51,34,136,0.8)", coords=list(47.5, 14.5), label="", shape="square", size=8.660254037844386), list(coords=list(39, -98), fontSize=12, shape="none", text="The USA has\n120 systems", type="curved", x=0.09, y=0.52), list(coords=list(35, 104), fontSize=12, shape="none", text="China has the largest\nnumber of systems: 150", type="curved", x=0.6, y=0.8), list(coords=list(36, 138), fontSize=12, shape="none", text="Japan: 32 systems", type="curved", x=0.86, y=0.3))),
+    graphType="Map",
+    mapColor="#ececec",
+    mapId="worldSymbols",
+    mapOutlineColor="#ffffff",
+    showLegend=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Synthetic count of systems per country, square area proportional to count",
+    theme="classic",
+    title="Where are the big computers?",
+    topoJSON="https://www.canvasxpress.org/data/maps/WORLD.json"
+  )
+}
+
+cXmap27 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map28-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(marker=list(list(color="rgba(0,119,187,0.7)", coords=list(39.65, -79), shape="sphere", size=3.5), list(color="rgba(0,119,187,0.7)", coords=list(39.7, -76.1), shape="sphere", size=2), list(color="rgba(0,119,187,0.7)", coords=list(39.5, -76.4), shape="sphere", size=3), list(color="rgba(0,119,187,0.7)", coords=list(39.4, -76.9), shape="sphere", size=3.1), list(color="rgba(0,119,187,0.7)", coords=list(39.35, -76.5), shape="sphere", size=3.4), list(color="rgba(0,119,187,0.7)", coords=list(39, -76.9), shape="sphere", size=2.4), list(color="rgba(0,119,187,0.7)", coords=list(39.3, -77.6), shape="sphere", size=1.9), list(color="rgba(0,119,187,0.7)", coords=list(39.55, -77), shape="sphere", size=2.3), list(color="rgba(0,119,187,0.7)", coords=list(39.45, -77.4), shape="sphere", size=1.6), list(color="rgba(0,119,187,0.7)", coords=list(39.2, -76.6), shape="sphere", size=4.1), list(color="rgba(0,119,187,0.7)", coords=list(39, -76.5), shape="sphere", size=2.8), list(color="rgba(0,119,187,0.7)", coords=list(38.9, -77), shape="sphere", size=3.9), list(color="rgba(0,119,187,0.7)", coords=list(38.4, -76.4), shape="sphere", size=2.9), list(color="rgba(0,119,187,0.7)", coords=list(38.6, -76.9), shape="sphere", size=2.7), list(color="rgba(0,119,187,0.7)", coords=list(38.35, -76.55), shape="sphere", size=1.4), list(color="rgba(0,119,187,0.7)", coords=list(38.2, -75.8), shape="sphere", size=3.7), list(color="rgba(0,119,187,0.7)", coords=list(38.35, -75.5), shape="sphere", size=3.5), list(color="rgba(0,119,187,0.7)", coords=list(38.6, -75.4), shape="sphere", size=3.1), list(color="rgba(0,119,187,0.7)", coords=list(38.4, -75.2), shape="sphere", size=2.6), list(color="rgba(0,119,187,0.7)", coords=list(39.1, -75.9), shape="sphere", size=2.6), list(color="rgba(0,119,187,0.7)", coords=list(38.55, -76.1), shape="sphere", size=1.8), list(color="rgba(0,119,187,0.7)", coords=list(38, -76.2), shape="sphere", size=2.8), list(color="rgba(0,119,187,0.7)", coords=list(38.1, -76), shape="sphere", size=3.9), list(color="rgba(0,119,187,0.7)", coords=list(38.4, -76.8), shape="sphere", size=1.5), list(color="rgba(0,119,187,0.7)", coords=list(38.3, -77), shape="sphere", size=1.8), list(color="rgba(0,119,187,0.7)", coords=list(38.5, -77.2), shape="sphere", size=3.1), list(color="rgba(0,119,187,0.7)", coords=list(39.6, -77.7), shape="sphere", size=1.7), list(color="rgba(0,119,187,0.7)", coords=list(39.4, -78.5), shape="sphere", size=3.6), list(color="rgba(0,119,187,0.7)", coords=list(39.3, -76.2), shape="sphere", size=3.9), list(color="rgba(0,119,187,0.7)", coords=list(38.75, -75.9), shape="sphere", size=3.5), list(color="rgba(0,119,187,0.7)", coords=list(38.05, -75.6), shape="sphere", size=4.2), list(color="rgba(0,119,187,0.7)", coords=list(39.5, -75.8), shape="sphere", size=1.6), list(color="rgba(0,119,187,0.7)", coords=list(39.25, -75.95), shape="sphere", size=4.3), list(color="rgba(0,119,187,0.7)", coords=list(38.15, -75.9), shape="sphere", size=1.9), list(color="rgba(0,119,187,0.7)", coords=list(38.9, -76.1), shape="sphere", size=1.4), list(color="rgba(0,119,187,0.7)", coords=list(39.75, -76.7), shape="sphere", size=4.4), list(color="rgba(0,119,187,0.7)", coords=list(39.7, -77.2), shape="sphere", size=1.4), list(color="rgba(0,119,187,0.7)", coords=list(38.65, -76.6), shape="sphere", size=2.6))),
+    graphType="Map",
+    mapColor="#ececec",
+    mapId="maryland",
+    mapOutlineColor="#9a9a9a",
+    showLegend=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Synthetic violation points per system, circle area proportional to points",
+    theme="bw",
+    title="Where do water systems rack up violations?",
+    topoJSON="https://www.canvasxpress.org/data/maps/MD.json"
+  )
+}
+
+cXmap28 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map29-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Population",
+    colorSpectrum=list("#fde725", "#35b779", "#31688e", "#440154"),
+    graphType="Map",
+    height=560,
+    legendInside=FALSE,
+    legendNumberFormat=list(decimals=1, style="decimal", suffix="M"),
+    legendPosition="bottom",
+    mapAlbersInsets=TRUE,
+    mapId="albersStates",
+    mapProjection="albers",
+    mapType="dorling",
+    showMapLabels=FALSE,
+    sizeBy="Population",
+    sizeLegendNested=TRUE,
+    sizes=list(6, 18, 30, 42, 54, 66, 78, 90, 102, 114, 126),
+    source="US Census 2020 (resident population, millions)",
+    subtitle="One non-overlapping circle per state, sized and coloured by population",
+    theme="classic",
+    title="Dorling cartogram — US population",
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json",
+    width=900
+  )
+}
+
+cXmap29 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map30-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Population",
+    colorSpectrum=list("#fde725", "#35b779", "#31688e", "#440154"),
+    graphType="Map",
+    legendInside=TRUE,
+    legendNumberFormat=list(decimals=1, style="decimal", suffix="M"),
+    legendPosition="topLeft",
+    mapAlbersInsets=TRUE,
+    mapCartogramScale="olson",
+    mapCartogramSilhouette=TRUE,
+    mapId="albersStates",
+    mapProjection="albers",
+    mapType="cartogram",
+    showMapLabels=TRUE,
+    sizeBy="Population",
+    source="US Census 2020 (resident population, millions)",
+    subtitle="Each state keeps its shape, scaled by population over its grey full-size silhouette",
+    theme="classic",
+    title="Non-contiguous cartogram — US population",
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
+  )
+}
+
+cXmap30 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map31-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Population",
+    colorSpectrum=list("#fde725", "#35b779", "#31688e", "#440154"),
+    graphType="Map",
+    legendInside=TRUE,
+    legendNumberFormat=list(decimals=1, style="decimal", suffix="M"),
+    legendPosition="topLeft",
+    mapAlbersInsets=TRUE,
+    mapId="albersStates",
+    mapProjection="albers",
+    mapType="contiguous",
+    showMapLabels=TRUE,
+    sizeBy="Population",
+    source="US Census 2020 (resident population, millions)",
+    subtitle="Borders deform so each state area matches its population (Dougenik rubber-sheet)",
+    theme="classic",
+    title="Contiguous cartogram — US population",
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json"
+  )
+}
+
+cXmap31 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map32-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-map32-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    mapConfig=list(center=list(39, -96), zoom=4),
+    mapVectorField=TRUE,
+    showLegend=TRUE,
+    showTiles=TRUE,
+    streamlineSeedStride=2,
+    title="Jet-stream flow (streamplot)",
+    vectorFieldMode="stream",
+    vectorGridSize=28,
+    vectorLineWidth=1.5
+  )
+}
+
+cXmap32 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map33-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-map33-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    mapConfig=list(center=list(39, -96), zoom=4),
+    mapVectorField=TRUE,
+    showLegend=TRUE,
+    showTiles=TRUE,
+    title="Jet-stream flow (quiver)",
+    vectorArrowSize=7,
+    vectorColorByMagnitude=TRUE,
+    vectorFieldMode="raw",
+    vectorScale=1.2
+  )
+}
+
+cXmap33 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-map34-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-map34-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    graphType="Map",
+    mapColor="rgba(242,242,242,1)",
+    mapOutlineColor="rgba(150,150,150,1)",
+    mapProjection="albers",
+    mapVectorField=TRUE,
+    showLegend=TRUE,
+    streamlineSeedStride=2,
+    topoJSON="https://www.canvasxpress.org/data/maps/USA.json",
+    vectorFieldMode="stream",
+    vectorGridSize=28,
+    vectorLineWidth=1.5
   )
 }
 
@@ -7020,6 +8224,38 @@ cXpie3 <- function() {
   )
 }
 
+cXpie4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-pie4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("#e3000f", "#1f1f1f", "#46962b", "#e6c700", "#009ee0", "#be3075"),
+    graphType="Pie",
+    legendColumns=3,
+    legendPosition="bottom",
+    pieType="parliament",
+    source="Bundeswahlleiterin",
+    title="Seats in parliament"
+  )
+}
+
+cXpie5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-pie5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("#e3000f", "#1f1f1f", "#46962b", "#e6c700", "#009ee0", "#be3075"),
+    graphType="Pie",
+    legendColumns=3,
+    legendPosition="bottom",
+    pieInnerRadius=0.55,
+    pieLabelType="value",
+    pieShape="half",
+    source="Bundeswahlleiterin",
+    title="Election result (seats)"
+  )
+}
+
 cXradar1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-generic-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -7400,8 +8636,10 @@ cXsplom1 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="both",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7417,8 +8655,10 @@ cXsplom2 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="upper",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7434,8 +8674,10 @@ cXsplom3 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="bottom",
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="lower",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7451,8 +8693,10 @@ cXsplom4 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="bottom",
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlation",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7468,8 +8712,10 @@ cXsplom5 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="bottom",
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationHistogram",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7485,8 +8731,10 @@ cXsplom6 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="bottom",
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="correlationDensity",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7502,8 +8750,10 @@ cXsplom7 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="bottom",
     scatterPlotMatrix="Species",
     scatterPlotMatrixType="all",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7519,8 +8769,10 @@ cXsplom8 <- function() {
     colorBy="Species",
     graphType="Scatter2D",
     layoutAdjust=TRUE,
+    legendPosition="top",
     scatterPlotMatrix=TRUE,
     scatterPlotMatrixType="first",
+    showLegendTitle=FALSE,
     xAxis=list("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
   )
 }
@@ -7919,7 +9171,7 @@ cXscatter2d1 <- function() {
     decorations=list(marker=list(list(sample=list("Alcohol", "Tobacco"), text="Maybe an Outlier?", variable="Northern Ireland", x=0.45, y=0.18))),
     graphType="Scatter2D",
     showTransition=FALSE,
-    title="Average weekly household spending, in British pounds, on tobacco products\nand alcoholic beverages for each of the 11 regions of Great Britain.",
+    title="Average weekly household spending, in British pounds, on tobacco products\\nand alcoholic beverages for each of the 11 regions of Great Britain.",
     xAxis=list("Alcohol"),
     yAxis=list("Tobacco")
   )
@@ -7935,7 +9187,6 @@ cXscatter2d2 <- function() {
     colorBy="Response",
     graphType="Scatter2D",
     legendBox=TRUE,
-    legendInside=TRUE,
     legendPosition="topRight",
     lineBy="Subject",
     title="Tumor Response by Week",
@@ -7978,7 +9229,7 @@ cXscatter2d4 <- function() {
     showHistogramBars=TRUE,
     showTransition=FALSE,
     sizeBy="Age",
-    title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
+    title="Data on the time subjects required to complete a pencil and paper maze\\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     xAxisExact=TRUE,
     xAxisHistogramShow=TRUE,
@@ -8044,7 +9295,7 @@ cXscatter2d7 <- function() {
     shapeBy="Smoker",
     showHistogramBars=TRUE,
     sizeBy="Age",
-    title="Data on the time subjects required to complete a pencil and paper maze\nwhen they were smelling a floral scent and when they were not.",
+    title="Data on the time subjects required to complete a pencil and paper maze\\nwhen they were smelling a floral scent and when they were not.",
     xAxis=list("U-Trial 1", "U-Trial 2", "U-Trial 3"),
     xAxisExact=TRUE,
     xAxisHistogramShow=TRUE,
@@ -8075,7 +9326,7 @@ cXscatter2d9 <- function() {
   canvasXpress(
     data=y,
     backgroundType="panel",
-    citation="Velleman, P. F. and Hoaglin, D. C. (1981).\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA :  Wadsworth, Inc., pp. 127-134.",
+    citation="Velleman, P. F. and Hoaglin, D. C. (1981).\\nApplications, Basics, and Computing of Exploratory Data Analysis. Belmont. CA :  Wadsworth, Inc., pp. 127-134.",
     colors=list("rgba(64,64,64,0.5)"),
     decorationsBackgroundColor="rgb(238,238,238)",
     decorationsBorderColor="rgb(0,0,0)",
@@ -8130,13 +9381,14 @@ cXscatter2d11 <- function() {
     legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
     legendInside=TRUE,
-    legendPosition="bottomRight",
+    legendPosition="bottomLeft",
     panelBackgroundColor="rgb(238,238,238)",
     showConfidenceIntervals=FALSE,
     showDecorations=TRUE,
     showLoessFit=TRUE,
     showTransition=FALSE,
     sizeBy="FC",
+    sizeLegendNested=TRUE,
     sizes=list(4, 12, 14, 15, 16, 17, 18),
     title="Profile plot",
     xAxis=list("AveExpr"),
@@ -8190,7 +9442,6 @@ cXscatter2d13 <- function() {
     legendBackgroundColor="rgb(238,238,238)",
     legendBox=TRUE,
     legendBoxColor="rgb(0,0,0)",
-    legendInside=TRUE,
     legendPosition="bottomRight",
     panelBackgroundColor="rgb(238,238,238)",
     showDecorations=TRUE,
@@ -8368,6 +9619,572 @@ cXscatter2d20 <- function() {
   )
 }
 
+cXscatter2d21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fitLineColor="#0000AA",
+    forecastSeasonLength=12,
+    graphType="Scatter2D",
+    scatterType="line",
+    showForecast=TRUE,
+    subtitle="Holt-Winters forecast, 24 months, 95% interval",
+    title="Monthly airline passengers (AirPassengers)",
+    xAxis=list("Year"),
+    yAxis=list("Passengers")
+  )
+}
+
+cXscatter2d22 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d22-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d22-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Carrier",
+    forecastSeasonLength=12,
+    graphType="Scatter2D",
+    lineBy="Carrier",
+    scatterType="line",
+    showForecast="Carrier",
+    subtitle="showForecast: \"Carrier\"",
+    title="Two carriers, one forecast each",
+    xAxis=list("Year"),
+    yAxis=list("Passengers")
+  )
+}
+
+cXscatter2d23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    fitLineColor="#0000AA",
+    forecastHorizon=12,
+    forecastLevel=0.8,
+    forecastLineType="dashed",
+    forecastSeasonLength=12,
+    graphType="Scatter2D",
+    scatterType="line",
+    showForecast=TRUE,
+    subtitle="Holt-Winters on a date axis, 80% interval",
+    title="US accidental deaths (USAccDeaths)",
+    xAxis=list("Month"),
+    xAxisTime=TRUE,
+    yAxis=list("Deaths")
+  )
+}
+
+cXscatter2d24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d24-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    citation="legendNumberFormat: compact population bins",
+    graphType="Scatter2D",
+    legendNumberFormat="compact",
+    sizeBy="Population",
+    title="Income vs life expectancy",
+    tooltipNumberFormat="comma",
+    xAxis=list("GDP per capita"),
+    xAxisNumberFormat=list(currency="USD", decimals=0, style="currency"),
+    yAxis=list("Life expectancy")
+  )
+}
+
+cXscatter2d25 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d25-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d25-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    citation="Data: Gapminder (CC BY 4.0), 2007.",
+    colorBy="Continent",
+    graphType="Scatter2D",
+    objectBorderColor="rgb(255,255,255)",
+    sizeBy="Population",
+    sizeScale="area",
+    title="Gapminder 2007",
+    xAxis=list("GDP per capita"),
+    xAxisTransform="log10",
+    xAxisTransformLinearTicks=FALSE,
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Life expectancy")
+  )
+}
+
+cXscatter2d26 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d26-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d26-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    citation="Data: Gapminder (CC BY 4.0), 2007.",
+    colorBy="Continent",
+    graphType="Scatter2D",
+    objectBorderColor="rgb(255,255,255)",
+    sizeBy="GDP per capita",
+    sizeMax=28,
+    sizeScale="area",
+    title="Gapminder 2007",
+    xAxis=list("Population"),
+    xAxisNumberFormat="compact",
+    xAxisTransform="log10",
+    xAxisTransformLinearTicks=FALSE,
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Life expectancy")
+  )
+}
+
+cXscatter2d27 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d27-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d27-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    citation="Data: Gapminder (CC BY 4.0), 2007.",
+    colorBy="Continent",
+    graphType="Scatter2D",
+    objectBorderColor="rgb(255,255,255)",
+    sizeBy="Population",
+    title="Gapminder 2007",
+    xAxis=list("GDP per capita"),
+    xAxisTransform="log10",
+    xAxisTransformLinearTicks=FALSE,
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Life expectancy")
+  )
+}
+
+cXscatter2d28 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d28-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d28-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Diet",
+    colorScheme="User",
+    colors=list("rgba(26,152,103,0.7)", "rgba(150,150,150,0.55)"),
+    decorations=list(marker=list(list(align="left", offsetX=14, offsetY=0, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Shrews", type="text", variable="Etruscan shrew"), list(align="left", offsetX=14, offsetY=0, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Small rodents", type="text", variable="House mouse"), list(align="left", fontStyle="bold", offsetX=22, offsetY=-22, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Humans", type="text", variable="Human"), list(align="center", offsetX=8, offsetY=-30, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Elephants", type="text", variable="African elephant"), list(align="center", offsetX=0, offsetY=26, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Livestock", type="text", variable="Horse"), list(align="right", offsetX=-24, offsetY=-24, sample=list("Body mass (kg)", "Resting heart rate (bpm)"), text="Whales", type="text", variable="Blue whale"))),
+    graphType="Scatter2D",
+    legendColumns=2,
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    setMaxX=4.3,
+    setMaxY=900,
+    setMinX=-3,
+    setMinY=0,
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showSizeLegend=FALSE,
+    sizeBy="Lifespan (years)",
+    sizeMax=40,
+    sizeScale="area",
+    subtitle="Resting heart rate vs body mass in mammals (bubble size = lifespan)",
+    subtitleAlign="plot::0",
+    theme="classic",
+    title="Large and herbivorous mammals have slow hearts",
+    titleAlign="plot::0",
+    xAxis=list("Body mass (kg)"),
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle="Body weight (kg), logarithmic scale",
+    xAxisTransform="log10",
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Resting heart rate (bpm)"),
+    yAxisGridMajorShow=TRUE,
+    yAxisTitle="Resting heart rate (beats per minute)"
+  )
+}
+
+cXscatter2d29 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d29-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d29-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Group",
+    colorScheme="User",
+    colors=list("#EE6677", "rgba(190,190,190,0.5)"),
+    decorations=list(line=list(list(align="left", color="#555", label="Median area: 5,800 ha", width=1, x=3.7634279935629373), list(align="right", color="#555", label="Median load: 3.2 kg P/ha/yr", width=1, y=0.505149978319906)), marker=list(list(align="center", offsetX=0, offsetY=38, sample=list("Surface area (ha)", "Phosphorus load (kg P / ha / yr)"), text="Alder", type="text", variable="Lake Alder"), list(align="center", offsetX=0, offsetY=24, sample=list("Surface area (ha)", "Phosphorus load (kg P / ha / yr)"), text="Brant", type="text", variable="Lake Brant"), list(align="center", offsetX=0, offsetY=-22, sample=list("Surface area (ha)", "Phosphorus load (kg P / ha / yr)"), text="Corvin", type="text", variable="Lake Corvin"), list(align="center", offsetX=0, offsetY=18, sample=list("Surface area (ha)", "Phosphorus load (kg P / ha / yr)"), text="Dunmore", type="text", variable="Lake Dunmore"))),
+    graphType="Scatter2D",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    setMaxX=5.7,
+    setMaxY=3,
+    setMinX=2,
+    setMinY=-1,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    showSizeLegend=FALSE,
+    sizeBy="Mean depth (m)",
+    sizeMax=40,
+    sizeScale="area",
+    subtitleAlign="plot::0",
+    theme="paulTol",
+    title="Lake size and nutrient loading",
+    titleAlign="plot::0",
+    xAxis=list("Surface area (ha)"),
+    xAxisTitle="Surface area (hectares)",
+    xAxisTransform="log10",
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Phosphorus load (kg P / ha / yr)"),
+    yAxisTitle="Phosphorus load (kg P per ha per year)",
+    yAxisTransform="log10",
+    yAxisTransformTicks=TRUE
+  )
+}
+
+cXscatter2d30 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d30-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d30-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Group",
+    colorScheme="User",
+    colors=list("rgba(245,222,160,0.9)", "#C6191A"),
+    decorations=list(marker=list(list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Lysozyme", type="text", variable="Lysozyme"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Catalase", type="text", variable="Catalase"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Pepsin", type="text", variable="Pepsin"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Papain", type="text", variable="Papain"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Taq pol.", type="text", variable="Taq pol."), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Cellulase", type="text", variable="Cellulase"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Invertase", type="text", variable="Invertase"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Renin", type="text", variable="Renin"), list(align="center", offsetX=0, offsetY=26, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="Ligase", type="text", variable="Ligase"), list(color="rgb(140,140,140)", fontSize=20, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="↑ More active", type="text", variable="Lysozyme", x=0.2, y=0.06), list(color="rgb(140,140,140)", fontSize=20, sample=list("Melting temperature Tm (°C)", "Specific activity (relative units)"), text="More stable →", type="text", variable="Lysozyme", x=0.86, y=0.94))),
+    graphType="Scatter2D",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    setMaxX=100,
+    setMaxY=2.6,
+    setMinX=35,
+    setMinY=0,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    showSizeLegend=FALSE,
+    sizeBy="Mass (kDa)",
+    sizeMax=40,
+    sizeScale="area",
+    subtitleAlign="plot::0",
+    theme="minimal",
+    title="Thermal Stability vs. Catalytic Activity",
+    titleAlign="plot::0",
+    xAxis=list("Melting temperature Tm (°C)"),
+    xAxisGridMajorColor="rgb(225,225,225)",
+    xAxisTitle="Melting temperature Tm (°C)",
+    yAxis=list("Specific activity (relative units)"),
+    yAxisGridMajorColor="rgb(225,225,225)",
+    yAxisTitle="Specific activity (relative units)"
+  )
+}
+
+cXscatter2d31 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d31-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d31-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Season",
+    colorScheme="User",
+    colors=list("#B22030", "#F7B500", "#2E8B00", "#6699FF"),
+    decorations=list(line=list(list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=0.77, y=0, y2=-21.2), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=-0.09, y=0, y2=-13.09), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=-1.18, y=0, y2=32.6), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=0.96, y=0, y2=-4.72), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=0.46, y=0, y2=-10.03), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=0.84, y=0, y2=11.74), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=0.24, y=0, y2=14.76), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=1.42, y=0, y2=45.5), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=1.28, y=0, y2=-25.88), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=0.91, y=0, y2=-29), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=0.2, y=0, y2=-5.23), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.09, y=0, y2=15.02), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=0.53, y=0, y2=7.05), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=0.42, y=0, y2=-35.04), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=1.23, y=0, y2=6.23), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.48, y=0, y2=47.73), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=0.7, y=0, y2=30.28), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=1.28, y=0, y2=-11.12), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=0.72, y=0, y2=-22.01), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=-0.1, y=0, y2=6.23), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=1.43, y=0, y2=-8.61), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=2.63, y=0, y2=-6.24), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=0.58, y=0, y2=-13.96), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.33, y=0, y2=22.55), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=1.68, y=0, y2=37.06), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=0.38, y=0, y2=-7.47), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=2.46, y=0, y2=-7.87), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.25, y=0, y2=20.49), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=2.24, y=0, y2=21.98), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=1.8, y=0, y2=-16.65), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=1.91, y=0, y2=20.43), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.12, y=0, y2=15.55), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=1.15, y=0, y2=-1.17), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=1.92, y=0, y2=-41.57), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=1.64, y=0, y2=-2.33), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.27, y=0, y2=26.65), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=2.4, y=0, y2=-17.49), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=1.72, y=0, y2=-11.81), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=1.21, y=0, y2=-13.37), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=2.5, y=0, y2=9.46), list(color="rgba(240,180,0,0.35)", width=2, x=0, x2=2.07, y=0, y2=22.33), list(color="rgba(60,140,0,0.35)", width=2, x=0, x2=2.11, y=0, y2=-40.88), list(color="rgba(170,30,40,0.35)", width=2, x=0, x2=2.66, y=0, y2=-22.57), list(color="rgba(90,140,255,0.35)", width=2, x=0, x2=4.91, y=0, y2=12.42), list(color="#222", width=1, x=0), list(color="#222", width=1, y=0)), marker=list(list(color="rgb(140,140,140)", fontSize=14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Colder & wetter", type="text", variable="Summer 2019", x=0.1, y=0.04), list(color="rgb(140,140,140)", fontSize=14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Hotter & wetter", type="text", variable="Summer 2019", x=0.9, y=0.04), list(color="rgb(140,140,140)", fontSize=14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Colder & drier", type="text", variable="Summer 2019", x=0.1, y=0.96), list(color="rgb(140,140,140)", fontSize=14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Hotter & drier", type="text", variable="Summer 2019", x=0.9, y=0.96), list(align="right", offsetX=-12, offsetY=-14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Winter 2020", type="text", variable="Winter 2020"), list(align="center", offsetX=0, offsetY=-14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Winter 2013", type="text", variable="Winter 2013"), list(align="center", offsetX=0, offsetY=16, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Summer 2018", type="text", variable="Summer 2018"), list(align="center", offsetX=0, offsetY=-14, sample=list("Temperature anomaly (°C)", "Precipitation anomaly (%)"), text="Autumn 2010", type="text", variable="Autumn 2010"))),
+    graphType="Scatter2D",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    setMaxX=5,
+    setMaxY=60,
+    setMinX=-2,
+    setMinY=-60,
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showSizeLegend=FALSE,
+    sizes=list(8),
+    subtitle="Colors indicate the seasons: spring, summer, autumn, winter",
+    subtitleAlign="plot::0",
+    theme="bw",
+    title="How much hotter & drier was each season since 2010?",
+    titleAlign="plot::0",
+    xAxis=list("Temperature anomaly (°C)"),
+    xAxisTitle="Temperature anomaly (°C)",
+    yAxis=list("Precipitation anomaly (%)"),
+    yAxisTitle="Precipitation anomaly (%)"
+  )
+}
+
+cXscatter2d32 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d32-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d32-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Class",
+    colorScheme="User",
+    colors=list("#76B7B2", "#9C755F", "#E15759", "#4E79A7"),
+    decorations=list(marker=list(list(align="right", offsetX=-22, offsetY=0, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Ceres", type="text", variable="Ceres"), list(align="left", offsetX=20, offsetY=0, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Vesta", type="text", variable="Vesta"), list(align="center", offsetX=0, offsetY=-16, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Hygiea", type="text", variable="Hygiea"), list(align="center", offsetX=0, offsetY=-14, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Eros", type="text", variable="Eros"), list(align="center", offsetX=0, offsetY=-14, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Apophis", type="text", variable="Apophis"), list(align="left", offsetX=14, offsetY=12, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Chiron", type="text", variable="Chiron"), list(align="left", offsetX=14, offsetY=2, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Chariklo", type="text", variable="Chariklo"), list(align="left", offsetX=14, offsetY=-8, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Pholus", type="text", variable="Pholus"), list(align="center", offsetX=0, offsetY=-34, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Eris", type="text", variable="Eris"), list(align="right", offsetX=-32, offsetY=0, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Pluto", type="text", variable="Pluto"), list(align="left", offsetX=22, offsetY=14, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Makemake", type="text", variable="Makemake"), list(align="left", offsetX=28, offsetY=0, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Sedna", type="text", variable="Sedna"), list(color="rgb(140,140,140)", fontSize=14, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Asteroid belt", type="text", variable="Ceres", x=0.88, y=0.72), list(color="rgb(140,140,140)", fontSize=14, sample=list("Mean surface temperature (K)", "Semi-major axis (AU)"), text="Kuiper belt", type="text", variable="Ceres", x=0.88, y=0.36)), range=list(list(color="rgba(240,120,100,0.22)", y=0.3222192947339193, y2=0.5185139398778874), list(color="rgba(240,120,100,0.22)", y=1.4771212547196624, y2=1.6989700043360187))),
+    graphType="Scatter2D",
+    legendBackgroundBorderColor="rgba(255,255,255,0)",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    setMaxX=320,
+    setMaxY=2.9,
+    setMinX=0,
+    setMinY=-0.3,
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showSizeLegend=FALSE,
+    sizeBy="Diameter (km)",
+    sizeMax=34,
+    sizeScale="area",
+    subtitle="Distance from the Sun vs. temperature; size = diameter",
+    subtitleAlign="plot::0",
+    theme="stata",
+    title="Where are the small bodies of the Solar System?",
+    titleAlign="plot::0",
+    xAxis=list("Mean surface temperature (K)"),
+    xAxisGridMajorColor="rgb(200,212,214)",
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle="Mean surface temperature (K)",
+    xAxisTransform=FALSE,
+    yAxis=list("Semi-major axis (AU)"),
+    yAxisGridMajorColor="rgb(200,212,214)",
+    yAxisGridMajorShow=TRUE,
+    yAxisTitle="Distance from the Sun (AU, log scale)",
+    yAxisTransform="log10",
+    yAxisTransformTicks=TRUE
+  )
+}
+
+cXscatter2d33 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d33-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d33-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="State",
+    colorScheme="User",
+    colors=list("#66CCEE", "#228833", "#EE6677", "#CCBB44"),
+    dataPointSize=34,
+    decorations=list(marker=list(list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="H", type="text", variable="H"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="He", type="text", variable="He"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="N", type="text", variable="N"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="O", type="text", variable="O"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Br", type="text", variable="Br"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Hg", type="text", variable="Hg"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Tc", type="text", variable="Tc"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Fe", type="text", variable="Fe"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Au", type="text", variable="Au"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Xe", type="text", variable="Xe"), list(align="center", offsetX=0, offsetY=-28, sample=list("Group", "Period"), text="Rn", type="text", variable="Rn"))),
+    graphType="Scatter2D",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    setMaxX=19,
+    setMaxY=7,
+    setMinX=0,
+    setMinY=0,
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showLegendTitle=FALSE,
+    subtitleAlign="plot::0",
+    theme="paulTol",
+    title="Which elements are gases, liquids or solids?",
+    titleAlign="plot::0",
+    xAxis=list("Group"),
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE,
+    xAxisTitle="",
+    yAxis=list("Period"),
+    yAxisGridMajorShow=FALSE,
+    yAxisGridMinorShow=FALSE,
+    yAxisShow=FALSE,
+    yAxisTitle=""
+  )
+}
+
+cXscatter2d34 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d34-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d34-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    colorBy="Class",
+    colorScheme="User",
+    colors=list("#009E73", "#999999", "#E69F00", "#D55E00", "#0072B2"),
+    decorations=list(marker=list(list(align="left", fontStyle="bold", offsetX=18, offsetY=0, sample=list("Surface temperature (K)", "Luminosity (solar units)"), text="Sun", type="text", variable="Sun"), list(align="center", offsetX=0, offsetY=44, sample=list("Surface temperature (K)", "Luminosity (solar units)"), text="Cool supergiant", type="text", variable="Betelgeuse-like"), list(align="center", offsetX=0, offsetY=14, sample=list("Surface temperature (K)", "Luminosity (solar units)"), text="White dwarf", type="text", variable="Sirius B-like"))),
+    graphType="Scatter2D",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    setMaxX=4.6,
+    setMaxY=6.4,
+    setMinX=3.3,
+    setMinY=-4,
+    showDecorations=TRUE,
+    showLegend=TRUE,
+    showSizeLegend=FALSE,
+    sizeBy="Radius (solar radii)",
+    sizeMax=40,
+    sizeScale="area",
+    subtitle="Bubble size shows stellar radius.",
+    subtitleAlign="plot::0",
+    theme="ggplot",
+    title="Hertzsprung-Russell diagram",
+    titleAlign="plot::0",
+    xAxis=list("Surface temperature (K)"),
+    xAxisTitle="Surface temperature (K)",
+    xAxisTransform="log10",
+    xAxisTransformTicks=TRUE,
+    yAxis=list("Luminosity (solar units)"),
+    yAxisTitle="Luminosity (L☉)",
+    yAxisTransform="log10",
+    yAxisTransformTicks=TRUE
+  )
+}
+
+cXscatter2d35 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d35-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    clustreePrefix="p",
+    graphType="Scatter2D",
+    legendPosition="right",
+    scatterType="clustree",
+    title="Clustree (clustree package example data, prefix p)"
+  )
+}
+
+cXscatter2d36 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d36-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    clustreeFlip=TRUE,
+    clustreePrefix="p",
+    graphType="Scatter2D",
+    legendPosition="right",
+    scatterType="clustree",
+    title="Clustree oriented left-to-right (flip = TRUE)"
+  )
+}
+
+cXscatter2d37 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d37-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter2D",
+    scatterType="vectorfield",
+    title="Vector field (quiver)",
+    vectorFieldMode="grid",
+    vectorGridSize=22,
+    xAxisTitle="x",
+    yAxisTitle="y"
+  )
+}
+
+cXscatter2d38 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d38-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    graphType="Scatter2D",
+    scatterType="vectorfield",
+    streamlineSeedStride=2,
+    title="Streamplot",
+    vectorFieldMode="stream",
+    vectorGridSize=30,
+    xAxisTitle="x",
+    yAxisTitle="y"
+  )
+}
+
+cXscatter2d39 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d39-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d39-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    graphType="Scatter2D",
+    scatterType="vectorfield",
+    title="RNA velocity (embedding)",
+    vectorFieldMode="raw",
+    vectorGroupBy="Cluster",
+    vectorScale=1.4,
+    xAxisTitle="UMAP-1",
+    yAxisTitle="UMAP-2"
+  )
+}
+
+cXscatter2d40 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d40-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colors=list("#2f6df0"),
+    decorations=list(line=list(list(color="#999999", label="Perfect", type="dashed", width=1, x=0, x2=1, y=0, y2=1))),
+    graphType="Scatter2D",
+    scatterType="line",
+    setMaxX=1,
+    setMaxY=1,
+    setMinX=0,
+    setMinY=0,
+    showLoessFit=FALSE,
+    showTransition=FALSE,
+    title="Calibration — probability estimates",
+    xAxis=list("Predicted"),
+    xAxisTitle="Mean predicted probability",
+    yAxis=list("Observed"),
+    yAxisTitle="Observed frequency"
+  )
+}
+
+cXscatter2d41 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d41-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(line=list(list(color="#999999", label="Chance", type="dashed", width=1, x=0, x2=1, y=0, y2=1))),
+    graphType="Scatter2D",
+    scatterType="line",
+    setMaxX=1,
+    setMaxY=1,
+    setMinX=0,
+    setMinY=0,
+    showLoessFit=FALSE,
+    showTransition=FALSE,
+    title="ROC curve — binary classifier",
+    xAxis=list("FPR"),
+    xAxisTitle="False positive rate",
+    yAxis=list("TPR"),
+    yAxisTitle="True positive rate"
+  )
+}
+
+cXscatter2d42 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter2d42-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    decorations=list(line=list(list(color="#999999", label="No skill", type="dashed", width=1, x=0, x2=1, y=0.5666666666666667, y2=0.5666666666666667))),
+    graphType="Scatter2D",
+    scatterType="line",
+    setMaxX=1,
+    setMaxY=1,
+    setMinX=0,
+    setMinY=0,
+    showLoessFit=FALSE,
+    showTransition=FALSE,
+    title="Precision-Recall — binary classifier",
+    xAxis=list("Recall"),
+    xAxisTitle="Recall",
+    yAxis=list("Precision"),
+    yAxisTitle="Precision"
+  )
+}
+
 cXscatter3d1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-irist-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -8446,6 +10263,7 @@ cXscatter3d5 <- function() {
     data=y,
     graphType="Scatter3D",
     scatterType="bar",
+    widthFactor=3,
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
@@ -8470,6 +10288,59 @@ cXscatter3d6 <- function() {
     xAxis=list("S1"),
     yAxis=list("S2"),
     zAxis=list("S3")
+  )
+}
+
+cXscatter3d8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Y",
+    colorSpectrum=list("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"),
+    fxSamples=60,
+    graphType="Scatter3D",
+    outline3DColor="rgba(0,0,0,0)",
+    scatterType="density",
+    smoothSurface=TRUE,
+    title="2D Kernel Density Surface (Scatter3D)",
+    xAxis=list("eruptions"),
+    yAxis=list("waiting")
+  )
+}
+
+cXscatter3d9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Y",
+    colorScheme="Viridis",
+    graphType="Scatter3D",
+    outline3DColor="rgba(0,0,0,0.12)",
+    scatterType="density",
+    smoothSurface=FALSE,
+    title="Correlated Bivariate Density (Scatter3D)",
+    xAxis=list("height"),
+    yAxis=list("weight")
+  )
+}
+
+cXscatter3d10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-scatter3d10-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorBy="Y",
+    colorSpectrum=list("#440154", "#3b528b", "#21918c", "#5ec962", "#fde725"),
+    fxSamples=60,
+    graphType="Scatter3D",
+    outline3DColor="rgba(0,0,0,0)",
+    scatterType="density",
+    smoothSurface=TRUE,
+    title="Trimodal Density Surface (Scatter3D)",
+    xAxis=list("dim1"),
+    yAxis=list("dim2")
   )
 }
 
@@ -8557,7 +10428,6 @@ cXstacked2 <- function() {
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
     sampleSpaceFactor=1,
     showDataValues=TRUE,
     smpTextScaleFontFactor=0.8,
@@ -8580,7 +10450,7 @@ cXstacked3 <- function() {
     gradient=TRUE,
     graphOrientation="vertical",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor="rgba(255, 255, 255, 0)",
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -8600,9 +10470,7 @@ cXstacked4 <- function() {
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="Stacked",
-    legendBackgroundColor=FALSE,
     segregateSamplesBy=list("Factor3"),
-    showDataValues=TRUE,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
     smpTitleFontStyle="italic",
@@ -8629,6 +10497,79 @@ cXstacked5 <- function() {
     title="Diverging Stacked Graph",
     xAxis=list("Pants on Fire", "False", "Mostly False", "Half True", "Mostly True", "True"),
     xAxisTickFormat="%s%%"
+  )
+}
+
+cXstacked6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    graphOrientation="vertical",
+    graphType="Stacked",
+    legendPosition="bottom",
+    notes="Shares of gross generation. 2024 values preliminary.",
+    showDataDownload=TRUE,
+    source="IEA",
+    sourceUrl="https://www.iea.org",
+    title="Electricity mix (%)"
+  )
+}
+
+cXstacked7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#B8A08C", "#FEE29B", "#F5A23D", "#2FA4B9"),
+    graphOrientation="horizontal",
+    graphType="Stacked",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    sampleSpaceFactor=0.35,
+    showLegend=TRUE,
+    smpTitle="",
+    subtitle="Kilograms of CO2-equivalent per kilogram of material, split by life-cycle stage (illustrative values).",
+    subtitleAlign="plot::0",
+    theme="paulTol",
+    title="Embodied carbon across the building-material life cycle",
+    titleAlign="plot::0",
+    xAxis=list("Extraction", "Manufacturing", "Transport", "Installation & waste"),
+    xAxisTitle="kg CO2e per kg"
+  )
+}
+
+cXstacked8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-stacked8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#6A0000", "#FF6A55", "#FFE29B", "#B8E0E2", "#D9D9D9"),
+    dataLabelNumberFormat="%.1f",
+    dataTextColor="auto",
+    dataTextScaleFontFactor=0.8,
+    dataValuesHideOverlap=TRUE,
+    dataValuesPosition="inside",
+    graphOrientation="horizontal",
+    graphType="Stacked",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    sampleSpaceFactor=0.3,
+    showDataValues=TRUE,
+    showLegend=TRUE,
+    smpTitle="",
+    subtitle="Grams per 100 g of food. Illustrative values, not nutrition data.",
+    subtitleAlign="plot::0",
+    theme="bw",
+    title="Five essential amino acids in fourteen protein foods",
+    titleAlign="plot::0",
+    xAxis=list("Leucine", "Lysine", "Valine", "Threonine", "Other essential"),
+    xAxisTitle=""
   )
 }
 
@@ -8668,7 +10609,6 @@ cXstackedline2 <- function() {
     coordinateLineColor=TRUE,
     graphOrientation="horizontal",
     graphType="StackedLine",
-    legendInside=TRUE,
     legendPosition="topRight",
     lineThickness=3,
     lineType="spline",
@@ -8692,7 +10632,6 @@ cXstackedpercent1 <- function() {
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
     sampleSpaceFactor=1,
     showDataValues=TRUE,
     showTransition=FALSE,
@@ -8716,7 +10655,7 @@ cXstackedpercent2 <- function() {
     gradient=TRUE,
     graphOrientation="vertical",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
+    legendBackgroundColor="rgba(255, 255, 255, 0)",
     showDataValues=TRUE,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -8737,7 +10676,6 @@ cXstackedpercent3 <- function() {
     varAnnot=z,
     graphOrientation="horizontal",
     graphType="StackedPercent",
-    legendBackgroundColor=FALSE,
     sampleSpaceFactor=1.5,
     smpTextScaleFontFactor=0.8,
     smpTitle="Collection of Samples",
@@ -8870,6 +10808,278 @@ cXstackedpercentline2 <- function() {
     title="Stacked-Line Graphs",
     xAxis=list("V1", "V2"),
     xAxis2=list("V3", "V4")
+  )
+}
+
+cXstatistics1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics1-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="group",
+    colorScheme="Tableau",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("group"),
+    jitter=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="group",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="p", comparisons=list(list(groups=list("trt1", "trt2"), p=0.00929840471726985, value=7.0))),
+    title="PlantGrowth: dried weight by treatment (Welch t-test)",
+    xAxis=list("weight"),
+    xAxisTitle="weight"
+  )
+}
+
+cXstatistics2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics2-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="dose",
+    colorScheme="GGPlot",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("dose"),
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="dose",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list(0.5, 1), p=1.26830072017385e-07), list(groups=list(1, 2), p=1.9064295136718e-05), list(groups=list(0.5, 2), p=4.39752495936323e-14)), correction=list(method="BH")),
+    title="Tooth growth by dose (Welch t-test, BH-adjusted)",
+    xAxis=list("len"),
+    xAxisTitle="len"
+  )
+}
+
+cXstatistics3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics3-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="Species",
+    colorScheme="Pastel",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("Species"),
+    showBoxplotIfViolin=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    showViolinBoxplot=TRUE,
+    smpTextRotate=0,
+    smpTitle="Species",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="padj", comparisons=list(list(groups=list("setosa", "versicolor"), p=8.34582714594074e-14), list(groups=list("versicolor", "virginica"), p=5.8690064106642e-07), list(groups=list("setosa", "virginica"), p=6.39669906939659e-17)), correction=list(method="bonferroni")),
+    title="Iris sepal length by species (Wilcoxon, Bonferroni-adjusted)",
+    xAxis=list("Sepal.Length"),
+    xAxisTitle="Sepal.Length"
+  )
+}
+
+cXstatistics4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="feed",
+    colorScheme="Set2",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("feed"),
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="feed",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list("casein", "horsebean"), p=7.21024958119126e-07), list(groups=list("casein", "linseed"), p=0.000260621659714803), list(groups=list("casein", "soybean"), p=0.00352126345222498), list(groups=list("casein", "sunflower"), p=0.821511771366324), list(groups=list("casein", "meatmeal"), p=0.0986622155842758)), correction=list(method="holm"), fdrThreshold=0.05),
+    title="Chick weight by feed vs casein (Holm, FDR cutoff 0.05)",
+    xAxis=list("weight"),
+    xAxisTitle="weight"
+  )
+}
+
+cXstatistics5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics5-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="Month",
+    colorScheme="Spectral",
+    graphOrientation="vertical",
+    graphType="Bar",
+    groupingFactors=list("Month"),
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTitle="Month",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="padj", comparisons=list(list(groups=list("05 May", "07 July"), p=3.06771407295436e-17, value=94), list(groups=list("06 June", "08 August"), p=0.00548628827689725, value=108), list(groups=list("07 July", "09 September"), p=0.00018344796628755, value=122)), correction=list(method="BH")),
+    summaryType="mean",
+    title="New York monthly temperature (Welch t-test, BH-adjusted)",
+    xAxis=list("Temp"),
+    xAxisTitle="Mean temperature (F)"
+  )
+}
+
+cXstatistics6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics6-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="group",
+    colorScheme="Dark2",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("group"),
+    showBoxplotIfViolin=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    showViolinBoxplot=TRUE,
+    smpTextRotate=0,
+    smpTitle="group",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="p", comparisons=list(list(groups=list(1, 2), label="paired t = -4.06, p = 0.0028", p=0.00283289019738427))),
+    title="Extra sleep by drug (paired t-test)",
+    xAxis=list("extra"),
+    xAxisTitle="extra"
+  )
+}
+
+cXstatistics7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics7-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="cyl",
+    colorScheme="Dark2",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("cyl"),
+    jitter=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="cyl",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="padj", comparisons=list(list(color="#1b9e77", groups=list(4, 6), p=0.000665814784145945), list(color="#d95f02", groups=list(6, 8), p=0.00101304468807941), list(color="#7570b3", groups=list(4, 8), p=2.77471487941046e-05)), correction=list(method="BY")),
+    title="Fuel economy by cylinders (Wilcoxon, BY-adjusted)",
+    xAxis=list("mpg"),
+    xAxisTitle="mpg"
+  )
+}
+
+cXstatistics8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics8-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="tension",
+    colorScheme="Set1",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("tension"),
+    jitter=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="tension",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list("1 Low", "2 Medium"), p=0.0325248132736696), list(groups=list("2 Medium", "3 High"), p=0.114557102318147), list(groups=list("1 Low", "3 High"), p=0.0023267944377645)), correction=list(method="holm")),
+    title="Wool breaks by tension (Welch t-test, Holm-adjusted)",
+    xAxis=list("breaks"),
+    xAxisTitle="breaks"
+  )
+}
+
+cXstatistics9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics9-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="Species",
+    colorScheme="Paired",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("Species"),
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="Species",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list("setosa", "versicolor"), p=5.65101158429015e-18), list(groups=list("versicolor", "virginica"), p=9.13354472766832e-17), list(groups=list("setosa", "virginica"), label="Kruskal-Wallis p = 4.8e-29")), correction=list(method="BH")),
+    title="Iris petal length (Wilcoxon pairs and Kruskal-Wallis)",
+    xAxis=list("Petal.Length"),
+    xAxisTitle="Petal.Length"
+  )
+}
+
+cXstatistics10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-statistics10-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-statistics10-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    axisAlgorithm="rPretty",
+    axisTitleFontStyle="bold",
+    colorBy="Month",
+    colorScheme="Spectral",
+    graphOrientation="vertical",
+    graphType="Boxplot",
+    groupingFactors=list("Month"),
+    jitter=TRUE,
+    showBoxplotOriginalData=TRUE,
+    showLegend=FALSE,
+    showStatInference=TRUE,
+    smpTextRotate=0,
+    smpTitle="Month",
+    smpTitleFontStyle="bold",
+    statInference=list(annotate="stars", comparisons=list(list(groups=list("05 May", "06 June"), p=0.446096757136698), list(groups=list("05 May", "07 July"), p=2.6466786037185e-05), list(groups=list("05 May", "08 August"), p=0.000216856559192423), list(groups=list("05 May", "09 September"), p=0.215801553720382), list(groups=list("06 June", "07 July"), p=0.00218168499591115), list(groups=list("06 June", "08 August"), p=0.00426931828252099), list(groups=list("06 June", "09 September"), p=0.793655482852686), list(groups=list("07 July", "08 August"), p=0.932603292528488), list(groups=list("07 July", "09 September"), p=0.00073610319564773), list(groups=list("08 August", "09 September"), p=0.00286828992103208)), correction=list(method="BH"), fdrThreshold=0.01),
+    title="Ozone by month, all pairs (BH, FDR cutoff 0.01)",
+    xAxis=list("Ozone"),
+    xAxisTitle="Ozone"
   )
 }
 
@@ -9053,11 +11263,13 @@ cXstreamgraph7 <- function() {
     colorBy="char_costume",
     colorKey=list(char_costume=list("Gambit (casual)   "="rgb(142,3,142)", "Gambit (costumed)   "="rgb(213,5,213)", "Magneto (casual)   "="rgb(194,0,8)", "Magneto (costumed)   "="rgb(255,2,13)", "Nightcrawler (casual)   "="rgb(19,175,239)", "Nightcrawler (costumed)   "="rgb(78,195,243)", "Storm (casual)"="rgb(89,90,82)", "Storm (costumed)"="rgb(115,117,106)", "Wolverine (casual)   "="rgb(255,180,0)", "Wolverine (costumed)   "="rgb(255,199,64)")),
     dataPointSizeScaleFactor=0,
-    decorations=list(image=list(list(height=64, scope="depicted", src="https://www.canvasxpress.org/assets/images/uncannyxmen.png", width=100, x=305, y=-500)), label=list(list(align="left", background="rgb(255,255,255)", color="rgb(142,3,142)", justify=50, label="**Gambit** was introduced for the first time inissue #266 called Gambit => Out of the Frying Pan nevertheless, he is the **4 most popular X-Men character**!", scope="depicted", x=250, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(255,180,0)", justify=50, label="**Wolverine is the most popular X-Men** and has a regular presence in the X-Men comics between 1975 and 1991.", scope="depicted", x=65, y=70), list(align="left", background="rgb(255,255,255)", color="rgb(194,0,8)", justify=50, label="**Magneto** was ranked by IGN as the *Greatest Comic Book Villain of All Time*. And even though he only appears from time to time he **ranks 2nd **—4 ranks higher than his friend and opponent Professor X!", scope="narrative", x=215, y=-90), list(align="left", background="rgb(255,255,255)", color="rgb(19,175,239)", justify=50, label="The **3rd most popular X-men character Nightcrawler** gets injured during the 'Mutant Massacre' and fell into a coma after an attack from Riptide in issue #211", scope="speech", x=211, y=-110), list(align="left", background="rgb(255,255,255)", color="rgb(89,90,82)", justify=50, label="**Storm** is by far the most thoughtful of the five most popular X-Men characters, especially in issues #220, #223 and #265. Storm **ranks 5th**", scope="thought", x=220, y=-73)), text=list(list(align="left", color="rgb(0,0,0)", label="Depicted", scope="depicted", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Narrative\nStatements", scope="narrative", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Speech\nBubbles", scope="speech", x=85, y=-50), list(align="left", color="rgb(0,0,0)", label="Thought\nBubbles", scope="thought", x=85, y=-50))),
+    decorations=list(image=list(list(height=64, scope="depicted", src="https://www.canvasxpress.org/assets/images/uncannyxmen.png", width=100, x=316, y=110)), label=list(list(align="left", background="rgb(255,255,255)", color="rgb(142,3,142)", justify=40, label="**Gambit** was introduced for the first time inissue #266 called Gambit => Out of the Frying Pan nevertheless, he is the **4 most popular X-Men character**!", scope="depicted", x=231.7, y=-72.1), list(align="left", background="rgb(255,255,255)", color="rgb(255,180,0)", justify=60, label="**Wolverine is the most popular X-Men** and has a regular presence in the X-Men comics between 1975 and 1991.", scope="depicted", x=79.5, y=-88.1), list(align="left", background="rgb(255,255,255)", color="rgb(194,0,8)", justify=40, label="**Magneto** was ranked by IGN as the *Greatest Comic Book Villain of All Time*. And even though he only appears from time to time he **ranks 2nd **—4 ranks higher than his friend and opponent Professor X!", scope="speech", x=169.6, y=64), list(align="left", background="rgb(255,255,255)", color="rgb(19,175,239)", justify=40, label="The **3rd most popular X-men character Nightcrawler** gets injured during the 'Mutant Massacre' and fell into a coma after an attack from Riptide in issue #211", scope="speech", x=175.6, y=-85.4), list(align="left", background="rgb(255,255,255)", color="rgb(89,90,82)", justify=40, label="**Storm** is by far the most thoughtful of the five most popular X-Men characters, especially in issues #220, #223 and #265. Storm **ranks 5th**", scope="thought", x=189.8, y=-52.6)), text=list(list(align="left", color="rgb(0,0,0)", label="Depicted", scope="depicted", x=78, y=-63.5), list(align="left", color="rgb(0,0,0)", label="Narrative\nStatements", scope="narrative", x=78, y=-10), list(align="left", color="rgb(0,0,0)", label="Speech\nBubbles", scope="speech", x=78, y=-52.5), list(align="left", color="rgb(0,0,0)", label="Thought\nBubbles", scope="thought", x=78, y=-21.1))),
     decorationsClipped=FALSE,
     decorationsTextScaleFontFactor=0.45,
     fontName="Trebuchet MS",
     graphType="Scatter2D",
+    layoutAdjust=TRUE,
+    layoutSpaceFree=TRUE,
     layoutTopology="4X1",
     layoutType="rows",
     legendBackgroundBorderColor="rgb(0,0,0)",
@@ -9074,6 +11286,7 @@ cXstreamgraph7 <- function() {
     scatterStreamExtraSpan=0.1,
     scatterStreamWiggles=list("Wolverine (casual)   ", "Wolverine (costumed)   ", "Magneto (casual)   ", "Magneto (costumed)   ", "Nightcrawler (casual)   ", "Nightcrawler (costumed)   ", "Gambit (casual)   ", "Gambit (costumed)   ", "Storm (casual)", "Storm (costumed)"),
     scatterType="stream",
+    segregateLevelOrder=list(parameter=list("depicted", "speech", "thought", "narrative")),
     segregateVariablesBy=list("parameter"),
     setMaxX=325,
     setMinX=75,
@@ -9539,6 +11752,842 @@ cXtagcloud1 <- function() {
   )
 }
 
+cXtimeseries1 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries1-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries1-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Decade",
+    colorScheme="User",
+    colors=list("#d8b365", "#e08214", "#b2182b", "#67001f"),
+    decorations=list(marker=list(list(color="#67001f", sample=list("Years", "CH4"), text="2015–2024", type="text", variable="p359", x=0.915, y=0.1), list(color="#b2182b", sample=list("Years", "CH4"), text="2005–2014", type="text", variable="p239", x=0.915, y=0.38), list(color="#e08214", sample=list("Years", "CH4"), text="1995–2004", type="text", variable="p119", x=0.915, y=0.55), list(color="#a6761d", sample=list("Years", "CH4"), text="1985–1994", type="text", variable="p0", x=0.915, y=0.86))),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    lineBy="Decade",
+    linePatterns=list("solid", "solid", "solid", "solid"),
+    lineThickness=2.5,
+    notes="* ppb = molecules of CH4 per billion molecules of dry air.",
+    ribbonBy=list("Hi", "Lo"),
+    ribbonByType="area",
+    setMaxX=12.6,
+    setMaxY=1950,
+    setMinX=0,
+    setMinY=1620,
+    showDataDownload=FALSE,
+    showDecorations=TRUE,
+    showLegend=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Each line is one decade of monthly means. Methane is reported in parts per billion (ppb) of dry air.",
+    theme="classic",
+    title="Four Decades of Atmospheric Methane",
+    xAxis=list("Years"),
+    xAxisGridMajorColor="#dcdcdc",
+    xAxisGridMajorShow=TRUE,
+    xAxisMinorTicks=FALSE,
+    xAxisTicks=10,
+    xAxisTitle="Years into decade",
+    yAxis=list("CH4"),
+    yAxisGridMajorColor="#dcdcdc",
+    yAxisGridMajorShow=TRUE,
+    yAxisTitle="CH4 (ppb)"
+  )
+}
+
+cXtimeseries2 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries2-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries2-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Series",
+    colorScheme="User",
+    colors=list("#e0e0e0", "#0b3954"),
+    decorations=list(marker=list(list(color="#0b3954", sample=list("Year", "Anomaly"), text="2024:\n+1.3 °C", type="text", variable="p170", x=0.9, y=0.12), list(color="#777777", sample=list("Year", "Anomaly"), text="95% confidence interval", type="text", variable="p60", x=0.2, y=0.88), list(color="#555555", sample=list("Year", "Anomaly"), text="Reference period\n1961–1990", type="text", variable="p100", x=0.61, y=0.82))),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    lineBy="Series",
+    lineDecoration="pattern",
+    linePatterns=list("solid", "solid"),
+    lineThickness=2,
+    ribbonBy=list("Upper", "Lower"),
+    ribbonByType="area",
+    setMaxX=2030,
+    setMaxY=1.8,
+    setMinX=1840,
+    setMinY=-1.2,
+    showDataDownload=FALSE,
+    showLegend=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Annual mean relative to the 1961–1990 average, with 95% confidence interval",
+    theme="minimal",
+    title="Global sea-surface temperature anomaly, 1850–2024",
+    xAxis=list("Year"),
+    xAxisTicks=8,
+    xAxisTitle="",
+    yAxis=list("Anomaly"),
+    yAxisTitle="Anomaly (°C)"
+  )
+}
+
+cXtimeseries3 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries3-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries3-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Series",
+    colorScheme="User",
+    colors=list("#4477aa", "#cc3311"),
+    decorations=list(marker=list(list(color="#cc3311", sample=list("Year", "Emissions"), text="To stay within the budget,\nemissions have to reach\nnet-zero by 2055, falling\nabout 3% every year.", type="text", variable="p80", x=0.3, y=0.78))),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    lineBy="Series",
+    lineDecoration="pattern",
+    linePatterns=list("solid", "dashed"),
+    lineThickness=2.5,
+    notes="Billion tonnes CO2 per year (illustrative)",
+    ribbonBy=list("Upper", "Lower"),
+    ribbonByType="area",
+    setMaxX=2060,
+    setMinX=1950,
+    setMinY=0,
+    showDataDownload=FALSE,
+    showLegend=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    theme="classic",
+    title="Required emission pathway for a 2 °C-consistent budget",
+    xAxis=list("Year"),
+    xAxisGridMajorColor="#dcdcdc",
+    xAxisGridMajorShow=TRUE,
+    xAxisTicks=11,
+    xAxisTitle="",
+    yAxis=list("Emissions"),
+    yAxisGridMajorColor="#dcdcdc",
+    yAxisGridMajorShow=TRUE,
+    yAxisTitle=""
+  )
+}
+
+cXtimeseries4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries4-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Arm",
+    colorScheme="User",
+    colors=list("#004488", "#bb5566"),
+    decorations=list(marker=list(list(color="#004488", sample=list("Day", "Incidence"), text="Placebo group", type="text", variable="p300", x=0.42, y=0.3), list(color="#bb5566", sample=list("Day", "Incidence"), text="Treated group", type="text", variable="p100", x=0.55, y=0.88))),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    lineBy="Arm",
+    lineThickness=2.5,
+    ribbonBy=list("Hi", "Lo"),
+    ribbonByType="area",
+    setMaxX=120,
+    setMaxY=2.4,
+    setMinX=-2,
+    setMinY=0,
+    showDataDownload=FALSE,
+    showLegend=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Participants were randomised 1:1 to treatment or placebo\nand followed for 112 days after the first dose.",
+    theme="stata",
+    title="Cumulative incidence of confirmed infection by trial arm",
+    xAxis=list("Day"),
+    xAxisTicks=8,
+    xAxisTitle="Days after first dose",
+    yAxis=list("Incidence"),
+    yAxisTitle="Cumulative incidence (%)"
+  )
+}
+
+cXtimeseries5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries5-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Series",
+    colorScheme="User",
+    colors=list("#cc3311", "#ee7733", "#ee9988", "#0077bb"),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    legendPosition="top",
+    lineBy="Series",
+    lineDecoration="pattern",
+    linePatterns=list("solid", "dashed", "solid", "solid"),
+    lineThickness=3,
+    ribbonBy=list("Upper", "Lower"),
+    ribbonByType="area",
+    setMaxX=372,
+    setMaxY=20,
+    setMinX=-5,
+    setMinY=0,
+    showDataDownload=FALSE,
+    showLegend=TRUE,
+    showLegendTitle=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Daily extent of sea ice (million km²) against the 1981–2010 median and its 90% range.",
+    theme="paulTol",
+    title="Antarctic sea ice is far below its long-term range",
+    xAxis=list("Day"),
+    xAxisTicks=8,
+    xAxisTitle="Day of year",
+    yAxis=list("Extent"),
+    yAxisTitle="Million km²"
+  )
+}
+
+cXtimeseries6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries6-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorBy="Series",
+    colorScheme="User",
+    colors=list("#5d82a6", "#d9d9d9", "#d9d9d9", "#e66100"),
+    decorations=list(marker=list(list(color="#e66100", sample=list("Year", "Days"), text="In the last ten years there were on average\na whole month more summer days\nthan in the 1950s…", type="text", variable="p100", x=0.5, y=0.1), list(color="#3b6a98", sample=list("Year", "Days"), text="…and three weeks fewer frost days.", type="text", variable="p110", x=0.5, y=0.93))),
+    graphOrientation="vertical",
+    graphType="Scatter2D",
+    lineBy="Series",
+    lineDecoration="pattern",
+    linePatterns=list("solid", "solid", "solid", "solid"),
+    lineThickness=2.5,
+    ribbonBy=list("Hi", "Lo"),
+    ribbonByType="area",
+    setMaxX=2026,
+    setMaxY=180,
+    setMinX=1946,
+    setMinY=0,
+    showDataDownload=FALSE,
+    showLegend=FALSE,
+    showTransition=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Days per year at a lowland weather station, 1950–2022",
+    theme="bw",
+    title="Hot days are becoming more frequent at the expense of frost days",
+    xAxis=list("Year"),
+    xAxisTicks=8,
+    xAxisTitle="",
+    yAxis=list("Days"),
+    yAxisTitle="Days per year"
+  )
+}
+
+cXtimeseries7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries7-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d6007b", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d6007b", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d6007b", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d4d4d4", "#d6007b"),
+    graphOrientation="vertical",
+    graphType="Line",
+    layoutSpacing=28,
+    layoutTopology="1X4",
+    lineThickness=3,
+    segregateVariablesBy=list("Panel"),
+    showDataDownload=FALSE,
+    showLegend=FALSE,
+    smpLabelInterval=28,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=0.9,
+    smpTitle="",
+    source="Synthetic data for illustration",
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    stripTextColor="#111111",
+    stripTextFontStyle="bold",
+    subtitle="Average height (cm) of men by birth-year cohort in four countries (colour) against 14 other countries (grey)",
+    subtitleAlign="plot::0",
+    theme="classic",
+    title="People everywhere are getting taller, at different rates",
+    titleAlign="plot::0",
+    xAxisGridMajorColor="#e6e6e6",
+    xAxisGridMajorShow=TRUE,
+    xAxisShow=TRUE,
+    xAxisTitle=""
+  )
+}
+
+cXtimeseries8 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries8-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    colorScheme="User",
+    colors=list("#4477AA", "#CCBB44", "#228833", "#EE6677", "#BBBBBB", "#66CCEE"),
+    decorations=list(marker=list(list(sample=1997 , text="Kyoto\nprotocol", type="arrow", variable="Total", x=0.2493, y=0.19), list(sample=2015 , text="Paris\nAgreement", type="arrow", variable="Total", x=0.8698, y=0.2659))),
+    graphOrientation="vertical",
+    graphType="AreaLine",
+    legendColumns=6,
+    legendPosition="top",
+    lineThickness=3,
+    objectColorTransparency=0.6,
+    setMinX=0,
+    showLegend=TRUE,
+    smpLabelInterval=5,
+    smpTextRotate=90,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Million tonnes CH4 per year, synthetic regional series",
+    theme="paulTol",
+    title="Global methane emissions",
+    xAxis=list("Asia-Pacific", "Africa", "Americas", "Europe", "Rest of world"),
+    xAxis2=list("Total"),
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries9 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries9-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    colorScheme="User",
+    colors=list("#A93226", "#4F7F9A", "#E9A45B", "#F5CC7A", "#FBE9B8"),
+    decorations=list(range=list(list(color="rgba(150,150,150,0.22)", smp=2012 , smp2=2024 )), text=list(list(catX=15, color="#555555", label="Deposited since 2012", labelScaleFontFactor=0.9, value=64000), list(catX=22, color="#FFFFFF", label="Bacteria", labelScaleFontFactor=0.85, value=8000), list(catX=22, color="#FFFFFF", label="Eukaryotes", labelScaleFontFactor=0.85, value=25000))),
+    graphOrientation="vertical",
+    graphType="Area",
+    legendColumns=5,
+    legendPosition="top",
+    numberFormat="comma",
+    objectColorTransparency=0.85,
+    showLegend=TRUE,
+    smpLabelInterval=4,
+    smpTextRotate=90,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Genome assemblies deposited per year, by taxon; most arrived after 2012",
+    theme="classic",
+    title="Most genome assemblies were deposited after 2012",
+    xAxis=list("Bacteria", "Eukaryotes", "Viruses", "Archaea", "Organelles"),
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries10 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries10-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="stacked",
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#082B45", "#06456B", "#CDD5DE"),
+    graphOrientation="vertical",
+    graphType="Area",
+    legendColumns=3,
+    legendPosition="top",
+    notes="Not all objects are catalogued. Size classes are inferred from absolute magnitude.\nValues are cumulative discoveries (synthetic).",
+    objectColorTransparency=1,
+    showLegend=TRUE,
+    smpLabelInterval=5,
+    smpTextRotate=90,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    theme="bw",
+    title="Catalogued near-Earth objects",
+    xAxis=list("Small (<140 m)", "Medium (140 m-1 km)", "Large (>1 km)"),
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries11 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries11-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#8FB3C2"),
+    decorations=list(line=list(list(align="left", color="#1B7F9E", label="Present-day level", type="dotted", value=10.5, width=3)), marker=list(list(sample="7.5 ka", text="Shorelines mapped\nduring the humid period", type="arrow", variable="Lake level above present (m)", x=0.52, y=0.32), list(color="#9A6A1A", sample="7.5 ka", text="African Humid Period", type="text", variable="Lake level above present (m)", x=0.4, y=0.17)), range=list(list(color="rgba(240,160,60,0.22)", smp="9.5 ka", smp2="5.5 ka"))),
+    graphOrientation="vertical",
+    graphType="Area",
+    lineType="spline",
+    marginRight=22,
+    objectColorTransparency=0.6,
+    setMaxX=36,
+    setMinX=0,
+    showLegend=FALSE,
+    smpLabelInterval=4,
+    smpTextRotate=90,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Lake surface elevation, meters above the present level",
+    theme="minimal",
+    title="Rising and falling lake levels in the Chad basin",
+    xAxis=list("Lake level above present (m)"),
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries12 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries12-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    areaType="overlapping",
+    colorScheme="User",
+    colors=list("#C8CBCE", "#1E81A0"),
+    decorations=list(marker=list(list(color="rgb(255,255,255)", sample=2022 , text="83% of all\npapers", type="text", variable="Since 2010", x=0.88, y=0.7))),
+    graphOrientation="vertical",
+    graphType="Area",
+    objectColorTransparency=0.85,
+    showLegend=FALSE,
+    smpLabelInterval=5,
+    smpTextRotate=90,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    subtitle="Articles per year (synthetic)",
+    theme="stata",
+    title="Most microbiome papers appeared since 2010",
+    xAxis=list("All years", "Since 2010"),
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries13 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries13-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries13-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    blockSeparation=2,
+    colorScheme="User",
+    colors=list("#B9BEC6", "#3F4756", "#B9BEC6", "#3F4756", "#B9BEC6", "#3F4756", "#B9BEC6", "#3F4756", "#B9BEC6", "#3F4756", "#E8A5A5", "#C0392B"),
+    dataLabelNumberFormat=list(suffix="%"),
+    dataValuesFrequency="ends",
+    decorations=list(text=list(list(catX=5.6, color="#6b7280", label="-41 pt cover", labelScaleFontFactor=0.9, panel=1, value=97), list(catX=5.6, color="#6b7280", label="-19 pt cover", labelScaleFontFactor=0.9, panel=2, value=97), list(catX=5.6, color="#6b7280", label="-21 pt cover", labelScaleFontFactor=0.9, panel=3, value=97), list(catX=5.6, color="#6b7280", label="-30 pt cover", labelScaleFontFactor=0.9, panel=4, value=97), list(catX=5.6, color="#6b7280", label="-4 pt cover", labelScaleFontFactor=0.9, panel=5, value=97), list(catX=5.6, color="#6b7280", label="+22 pt cover", labelScaleFontFactor=0.9, panel=6, value=97))),
+    graphOrientation="vertical",
+    graphType="Stacked",
+    layoutSpacing=22,
+    layoutTopology="1X6",
+    segregateVariablesBy=list("Site"),
+    setMaxX=100,
+    setMinX=0,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpLabelInterval=11,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=0.85,
+    smpTitle=FALSE,
+    source="Synthetic data for illustration",
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    stripTextFontStyle="bold",
+    theme="minimal",
+    title="Live coral cover, 2012-2023",
+    titleFontStyle="bold",
+    titleScaleFontFactor=1.3,
+    xAxis=list("Reef A", "Reef A ", "Reef B", "Reef B ", "Reef C", "Reef C ", "Reef D", "Reef D ", "Reef E", "Reef E ", "Reef F", "Reef F "),
+    xAxisGridMajorShow=FALSE,
+    xAxisGridMinorShow=FALSE,
+    xAxisShow=FALSE,
+    xAxisTitle=FALSE
+  )
+}
+
+cXtimeseries14 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries14-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#0B2B45"),
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    sampleSpaceFactor=0.4,
+    showLegend=FALSE,
+    smpLabelInterval=5,
+    smpTextRotate=90,
+    smpTitle="",
+    subtitle="Number of X-class flares per year, 2000–2023. Several quiet years record none.",
+    subtitleAlign="plot::0",
+    theme="stata",
+    title="Strong solar flares recorded by the Meridian Observatory",
+    titleAlign="plot::0",
+    xAxis=list("Events"),
+    xAxisGridMajorColor="rgb(200,212,214)",
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle=""
+  )
+}
+
+cXtimeseries15 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries15-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#56B4E9", "#E1785B", "#8A8A8A"),
+    decorations=list(line=list(list(align="right", color="#B5503C", label="Pre-outbreak clinic baseline", type="dotted", value=45, width=2.5)), marker=list(list(sample="Aug. 1855", text="Clean-water\nintervention begins", type="curved", variable="Cholera", x=0.5, y=0.45))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    legendPosition="top",
+    showLegend=TRUE,
+    smpLabelInterval=6,
+    smpTextRotate=90,
+    smpTitle="",
+    subtitle="Clinic cases per month in a fictional river town, by cause. Illustrative data.",
+    subtitleAlign="plot::0",
+    theme="ggplot",
+    title="A cholera outbreak and the effect of a clean-water intervention",
+    titleAlign="plot::0",
+    xAxis=list("Cholera", "Typhoid", "Other"),
+    xAxisTitle="Cases per month"
+  )
+}
+
+cXtimeseries16 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries16-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#C8442E"),
+    graphOrientation="vertical",
+    graphType="Bar",
+    legendHorizontalJustification=0,
+    legendJustifyTo="plot",
+    sampleSpaceFactor=0.7,
+    showLegend=FALSE,
+    smpTextRotate=90,
+    smpTitle="",
+    subtitle="Annual wetland area drained in the fictional Aldermere basin, in hectares.",
+    subtitleAlign="plot::0",
+    theme="classic",
+    title="In 7 years, 620,000 hectares of wetland drained",
+    titleAlign="plot::0",
+    xAxis=list("Hectares"),
+    xAxisGridMajorShow=TRUE,
+    xAxisNumberFormat="compact",
+    xAxisTitle=""
+  )
+}
+
+cXtimeseries17 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries17-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#56B4E9", "#D55E00"),
+    dataPointSize=22,
+    graphOrientation="vertical",
+    graphType="BarLine",
+    legendPosition="top",
+    lineDecoration="symbol",
+    lineThickness=3,
+    lineType="spline",
+    smpTextRotate=90,
+    smpTitle="Month",
+    subtitle="Monthly rainfall and mean air temperature at a synthetic temperate station",
+    theme="classic",
+    title="Wet winters, mild summers",
+    xAxis=list("Rainfall (mm)"),
+    xAxis2=list("Mean temperature (°C)"),
+    xAxis2Show=TRUE,
+    xAxis2Title="Temperature (°C)",
+    xAxisTitle="Rainfall (mm)"
+  )
+}
+
+cXtimeseries18 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries18-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    colorScheme="User",
+    colors=list("#BB5566", "#004488"),
+    dataPointSize=16,
+    graphOrientation="vertical",
+    graphType="AreaLine",
+    legendPosition="top",
+    lineDecoration="symbol",
+    lineThickness=3,
+    objectColorTransparency=0.35,
+    setMaxX=9,
+    setMaxX2=450,
+    setMinX=0,
+    setMinX2=300,
+    smpLabelInterval=5,
+    smpTextRotate=90,
+    smpTitle="Year",
+    subtitle="Atmospheric CO2 and Arctic sea-ice extent, synthetic series",
+    theme="paulTol",
+    title="Rising CO2, shrinking ice",
+    xAxis=list("Sea-ice extent (million km²)"),
+    xAxis2=list("CO2 (ppm)"),
+    xAxis2Show=TRUE,
+    xAxis2Title="CO2 (ppm)",
+    xAxisShow=TRUE,
+    xAxisTitle="Sea-ice extent (million km²)"
+  )
+}
+
+cXtimeseries19 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries19-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-timeseries19-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries19-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    varAnnot=z,
+    colorBy="Period",
+    colorScheme="User",
+    colors=list("#9ec9d9", "#0072B2"),
+    decorations=list(line=list(list(align="left", color="#444444", label="25-YEAR AVERAGE", position="under", type="dashed", value=100, width=1.5)), text=list(list(catX=16.5, color="#0072B2", label="Wettest years\nin a while", labelScaleFontFactor=1.15, panel=1, value=28), list(catX=16, color="#0072B2", label="2024 was\nparticularly cloudy", labelScaleFontFactor=1.15, panel=2, value=28))),
+    graphOrientation="vertical",
+    graphType="Bar",
+    segregateVariablesBy=list("Panel"),
+    showLegend=FALSE,
+    smpLabelInterval=5,
+    smpTextRotate=0,
+    stripBackgroundBorderColor="rgba(255,255,255,0)",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    stripTextFontStyle="bold",
+    subtitle="Yearly totals as % of the 25-year average, 2000-2024 (synthetic)",
+    subtitleAlign="plot::0",
+    theme="ggplot",
+    title="Weather at a synthetic station is usually quite predictable",
+    titleAlign="plot::0",
+    xAxis=list("Rainfall (% of mean)", "Sunshine (% of mean)"),
+    xAxisTitle="% of 25-year mean"
+  )
+}
+
+cXtimeseries20 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries20-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#4477aa", "#ee6677", "#ccbb44", "#228833"),
+    dataTextScaleFontFactor=0.8,
+    decorations=list(marker=list(list(sample=2020 , text="Pandemic spike", type="curved", variable="Spain", x=0.62, y=0.18))),
+    graphOrientation="vertical",
+    graphType="Line",
+    notes="Annual averages; 2024 provisional.",
+    numberFormat=list(decimals=0, style="decimal", suffix="%"),
+    responsiveRules=list(list(config=list(fontScaleFontFactor=0.85, legendPosition="bottom"), maxWidth=480)),
+    showDataDownload=TRUE,
+    showLegend=FALSE,
+    showLineEndLabels=TRUE,
+    source="Eurostat",
+    sourceUrl="https://ec.europa.eu/eurostat",
+    subtitle="Unemployment rate, % of labour force, annual average",
+    theme="editorial",
+    title="Unemployment keeps falling in southern Europe",
+    tooltipNumberFormat=list(decimals=1, style="decimal", suffix="%"),
+    xAxisTitle="",
+    yAxisTitle=""
+  )
+}
+
+cXtimeseries21 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries21-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#bbbbbb", "#bbbbbb", "#bbbbbb", "#bbbbbb", "#ee6677"),
+    dataTextScaleFontFactor=0.8,
+    graphOrientation="vertical",
+    graphType="Line",
+    numberFormat=list(decimals=0, style="decimal"),
+    responsiveRules=list(list(config=list(fontScaleFontFactor=0.85, legendPosition="bottom"), maxWidth=480)),
+    showDataDownload=TRUE,
+    showLegend=FALSE,
+    showLineEndLabels=TRUE,
+    source="OECD",
+    subtitle="Equivalised median disposable income, thousand USD (PPP)",
+    theme="editorial",
+    title="Japan is the only G7 economy where median income fell",
+    xAxisTitle="",
+    yAxisTitle=""
+  )
+}
+
+cXtimeseries22 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries22-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#555555", "#bbbbbb", "#ccbb44", "#228833"),
+    graphOrientation="vertical",
+    graphType="Stacked",
+    legendColumns=4,
+    legendPosition="bottom",
+    notes="Other sources (oil, hydrogen) omitted; shares renormalised.",
+    numberFormat=list(decimals=0, style="decimal", suffix="%"),
+    responsiveRules=list(list(config=list(fontScaleFontFactor=0.85, legendColumns=2, legendPosition="bottom"), maxWidth=480)),
+    showDataDownload=TRUE,
+    smpTitle="",
+    source="IEA World Energy Outlook",
+    sourceUrl="https://www.iea.org",
+    subtitle="World electricity generation by source, % of total",
+    theme="editorial",
+    title="Renewables are eating into coal and nuclear",
+    xAxisTitle=""
+  )
+}
+
+cXtimeseries23 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries23-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  z=read.table("https://www.canvasxpress.org/data/r/cX-timeseries23-var.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    varAnnot=z,
+    byline="Chart: CanvasXpress",
+    colorScheme="User",
+    colors=list("#4477aa", "#4477aa", "#4477aa", "#4477aa", "#4477aa", "#4477aa", "#4477aa", "#4477aa", "#c4c4c4", "#4477aa", "#4477aa", "#4477aa", "#4477aa", "#4477aa"),
+    dataLabelNumberFormat=list(currency="GBP", decimals=0, locale="en-GB", style="currency"),
+    dataTextScaleFontFactor=0.7,
+    dataValuesFrequency="auto",
+    graphOrientation="vertical",
+    graphType="Area",
+    isGraphTime=TRUE,
+    layoutTopology="5X3",
+    layoutType="wrap",
+    numberFormat=list(decimals=0, prefix="£", style="compact"),
+    segregateVariablesBy=list("Region"),
+    showDataDownload=TRUE,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpLabelInterval=8,
+    smpTextScaleFontFactor=0.8,
+    smpTitle="",
+    source="U.K. Government",
+    sourceUrl="https://www.gov.uk/government/collections/uk-house-price-index-reports",
+    stripBackgroundColor="rgba(255,255,255,0)",
+    stripTextAlign="left",
+    stripTextColor="#374151",
+    subtitle="Average prices of residential properties in Scotland, Wales, Northern Ireland, and the nine regions of England.",
+    theme="editorial",
+    timeFormat="year",
+    title="House prices in the U.K.",
+    tooltipNumberFormat=list(currency="GBP", decimals=0, locale="en-GB", style="currency"),
+    xAxisTextScaleFontFactor=0.8,
+    xAxisTicks=3,
+    xAxisTitle=""
+  )
+}
+
+cXtimeseries24 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries24-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: CanvasXpress",
+    citationScaleFontFactor=0.62,
+    colorScheme="User",
+    colors=list("#7f5349", "#bcbcbc"),
+    decorations=list(marker=list(list(color="#0b4a60", sample="9:20 pm", text="AC switched on,\nroom cooled\ndown by 6 °C", type="text", variable="Room temperature (°C)", x=0.76, y=0.13), list(color="#6b7280", lineColor="#6b7280", sample="7:40 pm", text="The weather changed and made\noutside temperature drop", type="curved", variable="Room temperature (°C)", x=0.5, y=0.57)), range=list(list(color="rgba(115,200,229,0.2)", label="", smp="9:10 pm", smp2="3 am​"))),
+    graphOrientation="vertical",
+    graphType="Line",
+    legendColumns=2,
+    legendPosition="top",
+    legendTextScaleFontFactor=0.9,
+    notes="Room temperature measured by a local sensor.\nOutside temperature as recorded by German weather service.",
+    numberFormat=list(decimals=0, style="decimal", suffix="°C"),
+    showDataDownload=TRUE,
+    showLegend=TRUE,
+    showLineEndLabels=FALSE,
+    smpLabelInterval=18,
+    smpTextRotate=90,
+    smpTitle="",
+    source="Deutscher Wetterdienst (DWD)",
+    theme="editorial",
+    title="Night temperatures lowered with AC and then bounced back",
+    titleFontStyle="bold",
+    tooltipNumberFormat=list(decimals=1, style="decimal", suffix="°C"),
+    xAxisTextScaleFontFactor=0.85,
+    yAxisTextScaleFontFactor=0.85,
+    yAxisTitle=""
+  )
+}
+
+cXtimeseries25 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-timeseries25-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    byline="Chart: Synergia Consultores en base a INDEC",
+    citationScaleFontFactor=0.62,
+    colorScheme="User",
+    colors=list("#0c5871", "#e6322e"),
+    dataPointSize=0,
+    decorations=list(marker=list(list(color="#0c5871", lineColor="#0c5871", sample="1° Trim 18", text=7.4, type="text", variable="Gran Catamarca", x=0.0139, y=0.4854), list(color="#0c5871", lineColor="#0c5871", sample="2° Trim 20", text=9.1, type="text", variable="Gran Catamarca", x=0.3365, y=0.3646), list(color="#0c5871", lineColor="#0c5871", sample="1° Trim 22", text=3.2, type="text", variable="Gran Catamarca", x=0.495, y=0.8211), list(color="#0c5871", lineColor="#0c5871", sample="3° Trim 22", text=7.3, type="text", variable="Gran Catamarca", x=0.5506, y=0.4555), list(color="#0c5871", lineColor="#0c5871", sample="3° Trim 24", text=2.3, type="text", variable="Gran Catamarca", x=0.773, y=0.8851), list(color="#0c5871", lineColor="#0c5871", sample="2° Trim 26", text=6.4, type="text", variable="Gran Catamarca", x=1.0147, y=0.5959), list(color="#e6322e", lineColor="#e6322e", sample="1° Trim 18", text=9.1, type="text", variable="Total nacional", x=0.0139, y=0.3646), list(color="#e6322e", lineColor="#e6322e", sample="2° Trim 20", text=13.1, type="text", variable="Total nacional", x=0.2642, y=0.0802), list(color="#e6322e", lineColor="#e6322e", sample="4° Trim 21", text=7.0, type="text", variable="Total nacional", x=0.431, y=0.5139), list(color="#e6322e", lineColor="#e6322e", sample="1° Trim 24", text=7.7, type="text", variable="Total nacional", x=0.7174, y=0.4271), list(color="#e6322e", lineColor="#e6322e", sample="2° Trim 26", text=7.9, type="text", variable="Total nacional", x=1.0147, y=0.4893))),
+    graphOrientation="vertical",
+    graphType="Line",
+    lineThickness=3,
+    numberFormat=list(decimals=0, style="decimal"),
+    setMaxX=14,
+    setMinX=0,
+    showDataDownload=TRUE,
+    showLegend=FALSE,
+    showLineEndLabels=TRUE,
+    smpLabelInterval=6,
+    smpTextRotate=90,
+    smpTextScaleFontFactor=0.8,
+    smpTitle="",
+    subtitle="Evolución de las tasas de desocupación del Gran Catamarca y del total nacional. Período 2018-2026.\nEn porcentajes sobre la población activa.",
+    subtitleColor="#6b7280",
+    subtitleFontStyle="bold",
+    subtitleScaleFontFactor=1.6,
+    theme="editorial",
+    title="Mercado laboral del Gran Catamarca",
+    titleColor="#000000",
+    titleFontStyle="bold",
+    tooltipNumberFormat=list(decimals=1, style="decimal", suffix="%"),
+    xAxisTextScaleFontFactor=0.85,
+    yAxisTextScaleFontFactor=0.85,
+    yAxisTitle=""
+  )
+}
+
 cXtree1 <- function() {
   library(canvasXpress)
   y=read.table("https://www.canvasxpress.org/data/r/cX-tree-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
@@ -9546,6 +12595,7 @@ cXtree1 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
@@ -9562,6 +12612,7 @@ cXtree2 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Level1", "Level2"),
     showTransition=TRUE,
@@ -9578,6 +12629,7 @@ cXtree3 <- function() {
     data=y,
     smpAnnot=x,
     colorBy="Annot1",
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
@@ -9597,6 +12649,7 @@ cXtree4 <- function() {
     data=y,
     smpAnnot=x,
     colorBy="Annot2",
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
@@ -9613,6 +12666,7 @@ cXtree5 <- function() {
     data=y,
     smpAnnot=x,
     colorBy="Annot2",
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Level1", "Level2", "Level3"),
     showTransition=TRUE,
@@ -9629,6 +12683,7 @@ cXtree6 <- function() {
   canvasXpress(
     data=y,
     smpAnnot=x,
+    graphOrientation="horizontal",
     graphType="Tree",
     hierarchy=list("Final", "Semifinal", "4th", "8th"),
     showTransition=FALSE,
@@ -9697,6 +12752,41 @@ cXtreemap3 <- function() {
     xAxis=list("population"),
     xAxisGridMinorShow=FALSE,
     afterRender=list(list("groupSamples", list("continent")))
+  )
+}
+
+cXtreemap4 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-treemap4-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-treemap4-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorScheme="CanvasXpress",
+    drillHierarchy=list("Region", "State", "City"),
+    graphType="Treemap",
+    groupingFactors=list("Region"),
+    summaryType="sum"
+  )
+}
+
+cXtreemap5 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-treemap5-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  x=read.table("https://www.canvasxpress.org/data/r/cX-treemap5-smp.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    smpAnnot=x,
+    colorBy="Region",
+    colorKey=list(Region=list(Africa="#c79bd3", America="#f59c8d", Asia="#a2d46e", Europe="#a9c8e6")),
+    graphType="Treemap",
+    groupingFactors=list("Region"),
+    showLegend=FALSE,
+    subtitle="Countries sized by trade volume, grouped and colored by region",
+    title="Market trade volume",
+    treemapBorderColor="rgb(255,255,255)",
+    treemapBorderWidth=4,
+    xAxis=list("Trade")
   )
 }
 
@@ -10875,12 +13965,10 @@ cXwaterfall3 <- function() {
     colorScheme="NEJM",
     graphOrientation="vertical",
     graphType="Bar",
-    legendInside=TRUE,
-    legendKeyBackgroundBorderColor="rgba(255,255,255,0)",
-    legendKeyBackgroundColor="rgba(255,255,255,0)",
-    legendPosition="topRight",
+    legendJustifyTo="plot",
+    legendPosition="topLeft",
     showSampleNames=FALSE,
-    smpOverlayProperties=list(Status=list(position="bottom", scheme="White")),
+    smpOverlayProperties=list(Status=list(hideName=TRUE, position="bottom", scheme="White")),
     smpOverlays=list("Status"),
     title="Clinical Trial",
     xAxis=list("Shrinkage"),
@@ -10917,6 +14005,55 @@ cXwaterfall5 <- function() {
     title="Traditional Waterfall",
     xAxis=list("V1", "V2"),
     xAxisTitle="Value"
+  )
+}
+
+cXwaterfall6 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall6-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataValuesPosition="outside",
+    graphOrientation="vertical",
+    graphType="Waterfall",
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTextRotate=45,
+    smpTextScaleFontFactor=0.8,
+    subtitle="Annual carbon budget in Gt C per year, synthetic round numbers",
+    theme="paulTol",
+    title="Oceans and land absorb about half of fossil CO2",
+    waterfallDecreaseColor="#228833",
+    waterfallIncreaseColor="#EE6677",
+    waterfallNetColor="#4477AA",
+    xAxis=list("Gt C per year"),
+    xAxisTitle="Gt C per year"
+  )
+}
+
+cXwaterfall7 <- function() {
+  library(canvasXpress)
+  y=read.table("https://www.canvasxpress.org/data/r/cX-waterfall7-dat.txt", header=TRUE, sep="\t", quote="", row.names=1, fill=TRUE, check.names=FALSE, stringsAsFactors=FALSE)
+  canvasXpress(
+    data=y,
+    dataValuesPosition="outside",
+    graphOrientation="vertical",
+    graphType="Waterfall",
+    setMaxX=320,
+    setMinX=0,
+    showDataValues=TRUE,
+    showLegend=FALSE,
+    smpTextRotate=0,
+    subtitle="Cells at each step of one passage, in millions (synthetic)",
+    theme="stata",
+    title="A cell culture gains far more than it loses",
+    waterfallDecreaseColor="#E69F00",
+    waterfallIncreaseColor="#0072B2",
+    waterfallNetColor="#777777",
+    xAxis=list("Million cells"),
+    xAxisGridMajorColor="rgb(200,212,214)",
+    xAxisGridMajorShow=TRUE,
+    xAxisTitle="Million cells"
   )
 }
 

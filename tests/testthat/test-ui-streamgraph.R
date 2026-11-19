@@ -24,3 +24,7 @@ test_that("cXstreamgraph5", {
 test_that("cXstreamgraph6", {
     check_ui_test(cXstreamgraph6())
 })
+
+test_that("cXstreamgraph7", {
+    check_ui_test(cXstreamgraph7())
+})

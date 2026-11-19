@@ -1,15 +1,5 @@
 context("config-params")
 
-
-# Reset session cache before and after running tests
-setup({
-    .cx_config_params_cache$df <- NULL
-})
-
-teardown({
-    .cx_config_params_cache$df <- NULL
-})
-
 # ------------------------------------------------------------------------------
 # 1. Internal Helper: .cx_scalar_or_na
 # ------------------------------------------------------------------------------
@@ -34,7 +24,7 @@ test_that(".cx_scalar_or_na handles NULL, vectors, lists, and scalars correctly"
 # 2. cxConfigParams()
 # ------------------------------------------------------------------------------
 test_that("cxConfigParams reads parameters, constructs data frame, and uses cache", {
-    .cx_config_params_cache$df <- NULL
+    on.exit(.cx_config_params_cache$df <- NULL)
 
     # Test fetching actual catalog
     params <- cxConfigParams()
@@ -42,26 +32,23 @@ test_that("cxConfigParams reads parameters, constructs data frame, and uses cach
     expect_named(params, c("parameter", "type", "default", "description", "options"))
 
     # Test session caching hit
-    dummy_df                   <- data.frame(parameter = "cachedParam", stringsAsFactors = FALSE)
+    dummy_df <- data.frame(parameter = "cachedParam", stringsAsFactors = FALSE)
     .cx_config_params_cache$df <- dummy_df
     expect_identical(cxConfigParams(), dummy_df)
-
-    .cx_config_params_cache$df <- NULL
 })
 
 test_that("cxConfigParams throws error when config file is missing or invalid path", {
-    .cx_config_params_cache$df <- NULL
+    on.exit({
+        environment(cxConfigParams) <- orig_env
+        .cx_config_params_cache$df <- NULL
+    })
 
     # Intercept system.file call via lexical environment scoping
     mock_env             <- new.env(parent = asNamespace("canvasXpress"))
     mock_env$system.file <- function(...) ""
 
-    orig_env                    <- environment(cxConfigParams)
+    orig_env <- environment(cxConfigParams)
     environment(cxConfigParams) <- mock_env
-    on.exit({
-        environment(cxConfigParams) <- orig_env
-        .cx_config_params_cache$df  <- NULL
-    })
 
     expect_error(
         cxConfigParams(),
@@ -70,8 +57,9 @@ test_that("cxConfigParams throws error when config file is missing or invalid pa
 })
 
 test_that("cxConfigParams handles null descriptions and null options in JSON catalog", {
+  skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
     skip_if(getRversion() < "4.1.0")
-    .cx_config_params_cache$df <- NULL
+    on.exit(.cx_config_params_cache$df <- NULL)
 
     mock_catalog <- list(
         parameters = list(
@@ -92,20 +80,18 @@ test_that("cxConfigParams handles null descriptions and null options in JSON cat
         )
     )
 
-    with_mocked_bindings(
-        fromJSON = function(...) mock_catalog,
-        .package = "jsonlite",
-        {
-            res <- cxConfigParams()
-            expect_equal(nrow(res), 2)
-            expect_true(is.na(res$description[1]))
-            expect_equal(res$description[2], "Some description")
-            expect_equal(res$options[[1]], c("val1", "val2"))
-            expect_null(res$options[[2]])
-        }
-    )
-
-    .cx_config_params_cache$df <- NULL
+    local({
+        local_mocked_bindings(
+            fromJSON = function(...) mock_catalog,
+            .package = "jsonlite"
+        )
+        res <- cxConfigParams()
+        expect_equal(nrow(res), 2)
+        expect_true(is.na(res$description[1]))
+        expect_equal(res$description[2], "Some description")
+        expect_equal(res$options[[1]], c("val1", "val2"))
+        expect_null(res$options[[2]])
+    })
 })
 
 # ------------------------------------------------------------------------------
@@ -127,7 +113,7 @@ test_that("cxValidateConfig validates input structures", {
 })
 
 test_that("cxValidateConfig detects unknown parameters and bad enumerated options", {
-    .cx_config_params_cache$df <- NULL
+    on.exit(.cx_config_params_cache$df <- NULL)
 
     mock_params <- data.frame(
         parameter        = c("graphType", "colorScheme"),
@@ -173,6 +159,4 @@ test_that("cxValidateConfig detects unknown parameters and bad enumerated option
         ),
         "Unknown parameter\\(s\\): unknownParam.*'graphType' = 'InvalidType' is not an allowed value"
     )
-
-    .cx_config_params_cache$df <- NULL
 })
