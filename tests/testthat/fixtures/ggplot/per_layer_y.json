@@ -206,7 +206,8 @@
     "text.vjust": "0.5",
     "title.fontweight": null,
     "title.fontwidth": null,
-    "title.italic": null
+    "title.italic": null,
+    "legend.key.fill": "#EBEBEBFF"
   },
   "labels": [],
   "facet": {},
@@ -216,22 +217,32 @@
   },
   "layers": [
     {
-      "y": "y1",
+      "y": [1, 2, 3, 4],
       "color": "red",
       "lineend": "butt",
       "linejoin": "round",
       "linemitre": 10,
       "na.rm": false,
+      "x": [1, 2, 3, 4],
+      "xend": [2, 3, 4, 5],
+      "yend": [2, 3, 4, 5],
+      "col": ["red", "red", "red", "red"],
+      "linewidth": [0.5, 0.5, 0.5, 0.5],
       "stat": "StatIdentity",
       "geom": "GeomLine"
     },
     {
-      "y": "y2",
+      "y": [11, 12, 13, 14],
       "color": "blue",
       "lineend": "butt",
       "linejoin": "round",
       "linemitre": 10,
       "na.rm": false,
+      "x": [1, 2, 3, 4],
+      "xend": [2, 3, 4, 5],
+      "yend": [12, 13, 14, 15],
+      "col": ["blue", "blue", "blue", "blue"],
+      "linewidth": [0.5, 0.5, 0.5, 0.5],
       "stat": "StatIdentity",
       "geom": "GeomLine"
     }

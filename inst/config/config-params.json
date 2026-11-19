@@ -1,13 +1,19 @@
 {
- "x-cx-version": "70.3",
+ "x-cx-version": "74.3",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1701,
+ "count": 1807,
  "parameters": [
   {
    "parameter": "Rdataset",
    "type": "object|boolean",
    "default": {},
    "description": "Object to hold the info for the R dataset loaded"
+  },
+  {
+   "parameter": "a11yDescription",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Author-written text alternative (alt text) for screen readers. When set it replaces the generated chart summary in the canvas aria-label and is added to SVG exports as their title and description"
   },
   {
    "parameter": "adjustAspectRatioHeatmapIndicator",
@@ -50,6 +56,18 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "Array containing additional data files to append to networks. Useful for loading KEGG and Wikipatways to decorate the nodes and the edges"
+  },
+  {
+   "parameter": "areaColumnWidth",
+   "type": "number|boolean",
+   "default": 0.6,
+   "description": "Width of the column marks drawn when areaShowColumns is true, as a fraction (0..1) of the per-category slot"
+  },
+  {
+   "parameter": "areaShowColumns",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Draw a solid bar/column mark at each category on top of the stacked area band (a TrendPlot: stacked bars with a semi-transparent stacked area behind them). Composes with any areaType/areaStyle"
   },
   {
    "parameter": "areaStyle",
@@ -136,6 +154,17 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "Array containing sample names. Numeric sample data (in columns) to be treated as a variable factor (move from y to z object). This parameter accomplishes the same as the function switchSmpToAnnotation at load time. It can be used in conjunction with the parameter stringVariableFactors to be treated as a string. TO DO: write example"
+  },
+  {
+   "parameter": "aspect3D",
+   "type": "string|boolean",
+   "default": "cube",
+   "options": [
+    "cube",
+    "data",
+    false
+   ],
+   "description": "3D aspect mode. cube (default) draws all three axes at equal length so each fills its own range; data scales the X/Y/Z box proportions to the real per-axis data spans so the surface keeps true data proportions (like Plotly aspectmode:data)"
   },
   {
    "parameter": "attractiveForceFunction",
@@ -297,6 +326,24 @@
     false
    ],
    "description": "Alignment for the data points when binned"
+  },
+  {
+   "parameter": "binMethod",
+   "type": "string|boolean",
+   "default": "dotdensity",
+   "options": [
+    "dotdensity",
+    "histodot",
+    "exact",
+    false
+   ],
+   "description": "How binned data points are grouped into stacks. dotdensity is the Wilkinson algorithm R geom_dotplot uses (a bin starts at the first value that does not fit the previous one, and every dot in it is drawn at the bin centre); histodot uses fixed-width bins from the data minimum; exact stacks only values that are strictly equal, leaving every dot on its own value"
+  },
+  {
+   "parameter": "binWidth",
+   "type": "number|boolean",
+   "default": 0,
+   "description": "Width of a bin, in data units, when binned data points are grouped with binMethod dotdensity or histodot. Zero (the default) derives it from the data as the R geom_dotplot default does: the value range divided by 30"
   },
   {
    "parameter": "binned",
@@ -861,6 +908,12 @@
    "description": "A number between 0.1 and 1 to adjust the width of the bullet"
   },
   {
+   "parameter": "byline",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Author or organization credit shown in the chart footer, e.g. \"Chart: Jane Doe\""
+  },
+  {
    "parameter": "cacheBase64",
    "type": "boolean",
    "default": false,
@@ -1220,6 +1273,84 @@
    "description": "Distance metric to use when clustering data"
   },
   {
+   "parameter": "clustreeArrowSize",
+   "type": "number|boolean",
+   "default": 9,
+   "description": "Length (pixels) of the clustree edge arrowhead"
+  },
+  {
+   "parameter": "clustreeEdgeArrows",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to draw a directed arrowhead at the child (finer-resolution) end of each clustree transition edge"
+  },
+  {
+   "parameter": "clustreeEdgeMinAlpha",
+   "type": "number|boolean",
+   "default": 0.15,
+   "description": "Minimum edge opacity (0..1) so very small transitions stay faintly visible; opacity scales with the incoming proportion up to 1"
+  },
+  {
+   "parameter": "clustreeEdgePalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Ordered hex color stops (low to high transition count) for the clustree edge colour gradient. Defaults to a Spectral ramp"
+  },
+  {
+   "parameter": "clustreeEdgeWidth",
+   "type": "number|boolean",
+   "default": 1.5,
+   "description": "Constant rendered width (pixels) of clustree transition edges (count is shown by colour, incoming proportion by opacity, as in the clustree package)"
+  },
+  {
+   "parameter": "clustreeFlip",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to orient a clustree plot left-to-right (resolution on the x-axis) instead of top-to-bottom"
+  },
+  {
+   "parameter": "clustreeNodeLabels",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to draw the cluster-id label centered on each clustree node"
+  },
+  {
+   "parameter": "clustreeNodePalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Qualitative hex colours used to colour clustree nodes by resolution level (one per level, cycled). Defaults to ColorBrewer Paired"
+  },
+  {
+   "parameter": "clustreeNodeTextSize",
+   "type": "number|boolean",
+   "default": 9,
+   "description": "Font size (pixels) of the cluster-id label drawn on each clustree node"
+  },
+  {
+   "parameter": "clustreePrefix",
+   "type": "string|boolean",
+   "default": false,
+   "description": "When deriving a clustree from a cluster-label matrix, use only the columns whose name starts with this prefix (one column per clustering resolution). When unset, every column is treated as a resolution level. Also used as the resolution-axis title"
+  },
+  {
+   "parameter": "clustreeShowAxes",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show the raw numeric layout coordinate axes and grid in a clustree plot (debug). By default only the labelled resolution axis (one tick per clustering level) is shown and the order axis + grid are hidden"
+  },
+  {
+   "parameter": "clustreeShowEdgeLegend",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the clustree edge legends (transition Count colour ramp and In Prop opacity ramp)"
+  },
+  {
+   "parameter": "clustreeSweeps",
+   "type": "integer|boolean",
+   "default": 4,
+   "description": "Number of barycenter ordering sweeps used to reduce edge crossings in the layered clustree layout"
+  },
+  {
    "parameter": "codeType",
    "type": "string|boolean",
    "default": "params",
@@ -1263,6 +1394,24 @@
    "description": "Name of the variable annotation to color the labels in Scatter2D plots"
   },
   {
+   "parameter": "colorLegendLabels",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Class names for a stepped colour legend (see colorLegendSteps): one label per colour class, lowest class first, drawn beside its swatch in place of the numeric class edges, for example [\"a\", \"b\", \"c\", \"d\", \"e\"]. Ignored unless the legend is stepped and the array has exactly one entry per class"
+  },
+  {
+   "parameter": "colorLegendSteps",
+   "type": "string|boolean",
+   "default": "auto",
+   "options": [
+    "auto",
+    "proportional",
+    "equal",
+    false
+   ],
+   "description": "Numeric colour legend for binned colouring: equal draws one equal-width swatch per class with every class edge labelled (stepped legend); proportional sizes swatches by their value range; auto is equal with a colorSpectrumBreaksMethod, else proportional"
+  },
+  {
    "parameter": "colorLegendTitle",
    "type": "string|boolean",
    "default": false,
@@ -1279,6 +1428,7 @@
    "type": "string|boolean",
    "default": "User",
    "options": [
+    "User",
     "AAAS",
     "Accent",
     "BMS",
@@ -1459,6 +1609,12 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "An array with numbers in ascending order for the color spectrum to create discontinuous spectra. It must have the same length of the colorSpectrum array for example [0, 0.3, 1]"
+  },
+  {
+   "parameter": "colorSpectrumBreaksMethod",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Classify the colorBy values into one colour class per colorSpectrum colour (a classed choropleth): jenks (natural breaks), quantile (equal count) or equalWidth. Computes the colorSpectrumBreaks and turns on binned colouring"
   },
   {
    "parameter": "colorSpectrumByFactor",
@@ -1806,6 +1962,12 @@
    "description": "Numeric vector to set the contour levels. It is automatically calculated if not defined using the axisAlgorithm setting and the contourLevelNumber"
   },
   {
+   "parameter": "contourPoints",
+   "type": "integer|boolean",
+   "default": 100,
+   "description": "Number of grid points in each direction for the two dimensional kernel density estimate underlying the scatter plot contours, as the n argument of the kde2d function in the R package MASS and of stat_density_2d in ggplot2"
+  },
+  {
    "parameter": "contourStat",
    "type": "string|boolean",
    "default": "density",
@@ -1885,7 +2047,7 @@
    "parameter": "customLegend",
    "type": "array|boolean|string|number",
    "default": [],
-   "description": "Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [], lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title : string }]"
+   "description": "Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [], lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title : string, paddingX : number, paddingY : number }]. When legendInside is true, paddingX / paddingY (default 0) inset the legend box from the x,y plotting panel edges so it stays inside for any legendPosition; an explicit x / y pins the legend instead and ignores the padding"
   },
   {
    "parameter": "customizerBackgroundColor",
@@ -1998,6 +2160,12 @@
    "description": "Maximum number of items in the data filter before it becomes a scroll box"
   },
   {
+   "parameter": "dataFilterNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for the tick labels of the numeric range sliders in the data filters (and the html range widget). Overrides numberFormat. A compact format keeps large values short, i.e. 20M. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "dataFilterTextColor",
    "type": "string|boolean",
    "default": "#555b62",
@@ -2051,6 +2219,12 @@
    "description": "Color for the data labels background"
   },
   {
+   "parameter": "dataLabelNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for the data values drawn on the chart (showDataValues and data labels). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "dataPipeline",
    "type": "array|boolean|string|number",
    "default": [],
@@ -2058,9 +2232,12 @@
   },
   {
    "parameter": "dataPointSize",
-   "type": "integer|boolean",
+   "type": "integer|boolean|string",
    "default": 10,
-   "description": "Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The size will be adjusted according to the dimensions of the graph"
+   "options": [
+    "auto"
+   ],
+   "description": "Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The size will be adjusted according to the dimensions of the graph. Boxplots and dotplots default to 15 (to match ggplot2 geom_point) unless set explicitly. Set to the string \"auto\" to size scatter points from the plot area, damped by the number of points (larger dots on sparse/large panels, smaller on dense ones)"
   },
   {
    "parameter": "dataPointSizeScaleFactor",
@@ -2297,7 +2474,7 @@
    "parameter": "dataTableColFormat",
    "type": "object|boolean",
    "default": {},
-   "description": "Format for the cols in the data table. Key is the sample name and the value is the format string using sprintf notation"
+   "description": "Format for the cols in the data table. Key is the sample name and the value is a sprintf format string, a number-format preset (comma, percent, dollar, euro, pound, yen, compact) or a number-format object {locale, style, currency, decimals}"
   },
   {
    "parameter": "dataTableColHide",
@@ -2324,6 +2501,12 @@
    "description": "Properties for the cols in the data table. Key is the sample name and the value is the width in pixels"
   },
   {
+   "parameter": "dataTableColRenderer",
+   "type": "object|boolean",
+   "default": {},
+   "description": "In-cell graphics per column of the data table. Key is the column name and the value is bar (a bar behind the value scaled to the column, from zero when the column has negatives), {type: bar, color}, or {type: sparkline, columns: [...], color, width, height, showValue} (a small line of the row values across those columns, replacing the value unless showValue)"
+  },
+  {
    "parameter": "dataTableColWidth",
    "type": "integer|boolean",
    "default": 180,
@@ -2342,6 +2525,18 @@
    "description": "Flag to color the data table"
   },
   {
+   "parameter": "dataTableFitHeight",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to shrink the data table to the height of its rows when they do not fill the space (no empty area under the last row); a longer table still scrolls"
+  },
+  {
+   "parameter": "dataTableFitWidth",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to narrow the data table to the width of its columns when they do not fill the space (no empty area after the last column); a wider table still scrolls"
+  },
+  {
    "parameter": "dataTableGrouped",
    "type": "boolean",
    "default": false,
@@ -2352,6 +2547,18 @@
    "type": "string|boolean",
    "default": "rgb(255, 255, 255)",
    "description": "Color for the background of the data table headers"
+  },
+  {
+   "parameter": "dataTableHeaderIcons",
+   "type": "string|boolean",
+   "default": "auto",
+   "options": [
+    "auto",
+    "always",
+    "hover",
+    false
+   ],
+   "description": "When the data table header cells show their menu, filter and resize icons: always, only while the header cell is hovered, or auto (on hover with the minimal dataUIStyle, always otherwise). Sorting arrows and the filter of a filtered column always show"
   },
   {
    "parameter": "dataTableHeaderTemplate",
@@ -2881,17 +3088,19 @@
    "type": "string|boolean",
    "default": "modern",
    "options": [
+    "default",
+    "minimal",
     "cx",
-    "stripped",
     "modern",
-    "old",
     "bms",
     "colorful",
     "rdc",
     "ngs360",
+    "stripped",
+    "old",
     false
    ],
-   "description": "Style for the UI"
+   "description": "Border density of the UI widgets (data table, filters, Customizer, menus): default, or minimal (every border softened to the look's faint colour). It composes with any theme (theme: \"ocean\", dataUIStyle: \"minimal\"). The colour looks cx, modern, bms, colorful, rdc and ngs360 are styles of the theme parameter (theme: \"bms\", or theme: [\"economist\", \"bms\"] for a chart theme plus a widgets look); naming one here still works and fills that widgets slot. Legacy values: stripped turns the data table row stripes off (see dataTableStriped), old is a grey look"
   },
   {
    "parameter": "dataValuesFrequency",
@@ -2905,6 +3114,12 @@
     false
    ],
    "description": "Frequency for the data values in line graphs"
+  },
+  {
+   "parameter": "dataValuesHideOverlap",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to hide a data value label that does not fit inside its stacked bar segment (showDataValues in Stacked graphs), instead of drawing it over the neighbouring segments"
   },
   {
    "parameter": "dataValuesPosition",
@@ -3123,6 +3338,24 @@
    "description": "Length in pixels of the width for the decorations. Only applicable to Network graphs."
   },
   {
+   "parameter": "demo",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Declarative storyboard of semantic steps (toolbar/customizer/marker/point/legend/caption/wait/raw) the ghost cursor performs for a demo video; see playDemo"
+  },
+  {
+   "parameter": "demoAutoPlay",
+   "type": "boolean",
+   "default": true,
+   "description": "When a demo storyboard is set, play it automatically once after the first render"
+  },
+  {
+   "parameter": "demoSpeed",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Demo playback speed multiplier (1 = human pace, 2 = twice as fast)"
+  },
+  {
    "parameter": "dendrogramColor",
    "type": "string|boolean",
    "default": "rgb(0,0,0)",
@@ -3150,6 +3383,12 @@
     false
    ],
    "description": "Histogram density kernels"
+  },
+  {
+   "parameter": "densityPoints",
+   "type": "integer|boolean",
+   "default": 512,
+   "description": "Number of equally spaced points at which the density is estimated, as the n argument of the density function in R. Values above 512 are rounded up to a power of two as in R"
   },
   {
    "parameter": "densityPosition",
@@ -3330,6 +3569,29 @@
     false
    ],
    "description": "Style for the dotplot. Transition plot are only applicable when data is grouped"
+  },
+  {
+   "parameter": "drillBreadcrumb",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the drill-down breadcrumb strip in the viewport when a drillHierarchy is active and the chart has been drilled. Set false for API-only drill control"
+  },
+  {
+   "parameter": "drillHierarchy",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "An array of sample annotation names, coarse to fine (e.g. [\"Region\",\"State\",\"City\"]), defining a drill-down hierarchy. When set, clicking a mark filters to the clicked level value and regroups by the next finer annotation; a breadcrumb walks back. Each entry must be a category in the data.x object"
+  },
+  {
+   "parameter": "dumbbellArrowDirection",
+   "type": "string|boolean",
+   "default": "value",
+   "options": [
+    "value",
+    "order",
+    false
+   ],
+   "description": "Direction of the arrows in arrow dumbbells (dumbbellType arrow): value points each arrow at the smaller value; order points from the first variable to the next (before to after)"
   },
   {
    "parameter": "dumbbellType",
@@ -3884,6 +4146,18 @@
    "description": "External Fonts"
   },
   {
+   "parameter": "footerAlign",
+   "type": "string|boolean",
+   "default": "left",
+   "options": [
+    "left",
+    "center",
+    "right",
+    false
+   ],
+   "description": "Horizontal alignment for the structured chart footer (notes, source, byline, data download)"
+  },
+  {
    "parameter": "forecastHorizon",
    "type": "integer|boolean",
    "default": 0,
@@ -3946,6 +4220,12 @@
    "type": "string|boolean",
    "default": "rgb(0,0,0)",
    "description": "Color for the function plots"
+  },
+  {
+   "parameter": "fxSamples",
+   "type": "integer|boolean",
+   "default": 25,
+   "description": "Number of grid subdivisions per axis when plotting a function (fx) as a 3D surface. Higher values give smoother surfaces and finer color detail; the grid has fxSamples+1 points per axis"
   },
   {
    "parameter": "ganttCompletion",
@@ -4056,10 +4336,10 @@
   {
    "parameter": "graphOrientation",
    "type": "string|boolean",
-   "default": "horizontal",
+   "default": "vertical",
    "options": [
-    "horizontal",
     "vertical",
+    "horizontal",
     false
    ],
    "description": "Specifies the orientation of one-dimensional graphs"
@@ -4308,6 +4588,24 @@
    "description": "Array of per-cell shape overlays drawn on top of standard heatmap cells. Each entry is an object with a *variable* and *sample* name identifying the cell, plus optional *shape*, *color*, and *size* (fraction of the cell, 0..1). Example: [{variable: \"V1\", sample: \"S3\", shape: \"pch4\"}] to cross out a cell with an X. Common shapes: pch4 (X), pch3 (plus), pch1 (open circle), pch0 (open square), pch5 (open diamond), pch16 (filled circle), circle, square, diamond"
   },
   {
+   "parameter": "heatmapCellSpace",
+   "type": "number|boolean",
+   "default": 0,
+   "description": "Pixels of empty space (gap) left around each heatmap cell so it renders as a separate padded tile instead of a contiguous block; 0 (default) keeps cells edge-to-edge. Combine with colorSpectrumBinned for a discrete-colour tiled heatmap, or use heatmapType \"tiled\""
+  },
+  {
+   "parameter": "heatmapCellText",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Array of per-cell text labels drawn centered on top of standard heatmap cells, like Plotly's text matrix. Each entry is an object with a *variable* and *sample* name identifying the cell plus a *text* string, with optional *color*. Example: [{variable: \"V1\", sample: \"S3\", text: \"0.87*\"}] to show a correlation value with a significance asterisk. Unlike showDataValues (which draws every raw cell value), this lets you supply arbitrary strings so you can append markers such as \"*\" for p < 0.05 (issue #322)"
+  },
+  {
+   "parameter": "heatmapCellTextColorColor",
+   "type": "string|boolean",
+   "default": "rgb(0,0,0)",
+   "description": "Color for the default color for heatmap cell text when an entry in heatmapCellText omits its own color"
+  },
+  {
    "parameter": "heatmapCollapse",
    "type": "boolean",
    "default": false,
@@ -4385,9 +4683,10 @@
     "upset",
     "correlation",
     "split",
+    "tiled",
     false
    ],
-   "description": "Type of Heatmap used to overlay a layer on top of an image. Special for spatial transcriptomics and UpSet plots"
+   "description": "Type of Heatmap used to overlay a layer on top of an image. Special for spatial transcriptomics and UpSet plots. \"tiled\" is a preset for a discrete-colour, padded-cell heatmap (binned colours + heatmapCellSpace, no cell box)"
   },
   {
    "parameter": "hiddenMapFeatures",
@@ -5077,6 +5376,12 @@
    "description": "Flag to remove empty combinations in segregated layouts"
   },
   {
+   "parameter": "layoutSpaceFree",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to give each facet of a single-column layout a height proportional to the data it holds, the way ggplot2 facet_grid(space = \"free\") sizes its panels, instead of splitting the canvas into equal rows. A facet whose values span a small range is drawn short and a busy one tall, so no facet wastes empty space. Ignored when the layout has more than one column, and for heatmap, DOE and scatter-plot-matrix layouts"
+  },
+  {
    "parameter": "layoutSpacing",
    "type": "integer|boolean",
    "default": 8,
@@ -5105,31 +5410,6 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to load canvas only if shown in viewport"
-  },
-  {
-   "parameter": "leafletAlpha",
-   "type": "number|boolean",
-   "default": 0.7,
-   "description": "Transparency for leaflet layers"
-  },
-  {
-   "parameter": "leafletTileType",
-   "type": "string|boolean",
-   "default": "street",
-   "options": [
-    "street",
-    "terrain",
-    "labels",
-    "satellite",
-    false
-   ],
-   "description": "Leaflet tile type"
-  },
-  {
-   "parameter": "leafletZoomAlphaColor",
-   "type": "number|boolean",
-   "default": 6,
-   "description": "Zoom level before turning transparent the leaflet layers"
   },
   {
    "parameter": "leftMarginalText",
@@ -5260,13 +5540,24 @@
    "parameter": "legendHorizontalJustification",
    "type": "number|boolean",
    "default": 0.5,
-   "description": "Horizontal justification for legends when legend are in top or bottom positions"
+   "description": "Horizontal justification (0 left, 0.5 centre, 1 right) for a legend in the top or bottom position. A corner legendPosition supplies its own justification and ignores this. The edge it is measured from is set by legendJustifyTo"
   },
   {
    "parameter": "legendInside",
    "type": "boolean",
    "default": false,
    "description": "Flag to position the legend inside the graphs"
+  },
+  {
+   "parameter": "legendJustifyTo",
+   "type": "string|boolean",
+   "default": "panel",
+   "options": [
+    "panel",
+    "plot",
+    false
+   ],
+   "description": "What a justified legend aligns to: the panel (plot area) edge or the whole plot (canvas) edge, like titleAlign plot::0. Applies to every justification of a top or bottom legend, centred included, and to the corner positions"
   },
   {
    "parameter": "legendKeyBackgroundBorderColor",
@@ -5322,6 +5613,12 @@
    "description": "Maximum number of items in the variable legends. If there are more items the legend will be hidden"
   },
   {
+   "parameter": "legendNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for numeric values displayed in legends (continuous color ramps and size-by bins). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "legendOrder",
    "type": "object|boolean",
    "default": false,
@@ -5348,7 +5645,13 @@
     "top",
     false
    ],
-   "description": "Position for the the legend"
+   "description": "Position for the legend. All eight positions work whether the legend is inside or outside the plot. Inside, a corner anchors the legend to that corner of the plotting panel. Outside, the legend gets one band or one column, so a corner is the top or bottom band flush with that side: topLeft / bottomLeft are justified left and topRight / bottomRight right, overriding legendHorizontalJustification; left and right are a column justified by legendVerticalJustification"
+  },
+  {
+   "parameter": "legendPositionAuto",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to automatically select the legend position (top or right) that maximizes the area available for the plot. When true the legend dimensions are computed for both candidates and the one that leaves the larger plotting area wins. Ignored when legendPosition is set explicitly in the configuration, when legendInside is true, for a faceted (layout) chart or for cxplot / ggplot specifications"
   },
   {
    "parameter": "legendRows",
@@ -5500,7 +5803,7 @@
    "parameter": "legendVerticalJustification",
    "type": "number|boolean",
    "default": 0.5,
-   "description": "Vertical justification for legends when legend are in left or right positions"
+   "description": "Vertical justification (0 top, 0.5 middle, 1 bottom) for a legend in the left or right position, down the column the legend reserves. The mirror of legendHorizontalJustification for a side legend"
   },
   {
    "parameter": "lineBy",
@@ -5818,6 +6121,29 @@
    "description": "Sample name included in the data.y.smps object used to map the start position"
   },
   {
+   "parameter": "mapBubbleColor",
+   "type": "string|boolean",
+   "default": "rgba(255,0,0,0.6)",
+   "description": "Color for the region bubbles on maps (sizeBy a sample: a circle per region sized by its value); the size legend uses it too"
+  },
+  {
+   "parameter": "mapCartogramScale",
+   "type": "string|boolean",
+   "default": "area",
+   "options": [
+    "area",
+    "olson",
+    false
+   ],
+   "description": "Scaling for the non-contiguous cartogram (mapType cartogram). area: each region is scaled relative to its own area. olson: the densest region keeps its size and every other shrinks proportionally (classic Olson)"
+  },
+  {
+   "parameter": "mapCartogramSilhouette",
+   "type": "boolean",
+   "default": true,
+   "description": "For the non-contiguous cartogram (mapType cartogram), draw each region full-size silhouette in grey behind the scaled shape so the two can be compared"
+  },
+  {
    "parameter": "mapCentralMeridian",
    "type": "number|boolean",
    "default": -96,
@@ -5863,6 +6189,18 @@
    "type": "string|boolean",
    "default": false,
    "description": "Map Id for the map div in the DOM"
+  },
+  {
+   "parameter": "mapLabelColor",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Color for the region labels on maps. Defaults to black or white, whichever contrasts with the region fill"
+  },
+  {
+   "parameter": "mapLabelProperty",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Map feature property used as the region label (defaults to name, then NAME, then the region key)"
   },
   {
    "parameter": "mapLatitudeOrigin",
@@ -5930,6 +6268,25 @@
    "type": "number|boolean",
    "default": 45.5,
    "description": "Map Standard Parallel 2 in degrees. (Applicable to Albers projection only). Default adjusts to USA maps"
+  },
+  {
+   "parameter": "mapType",
+   "type": "string|boolean",
+   "default": "region",
+   "options": [
+    "region",
+    "dorling",
+    "cartogram",
+    "contiguous",
+    false
+   ],
+   "description": "Map distortion. region: a normal map (default). The other three are cartograms driven by sizeBy: dorling draws one non-overlapping circle per region sized by value; cartogram keeps each region shape and scales it about its own centre (non-contiguous); contiguous deforms the borders so regions stay joined while their areas match the value (Dougenik rubber-sheet)"
+  },
+  {
+   "parameter": "mapVectorField",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw a vector-field overlay (raw arrows / gridded quiver / integrated streamlines) on a Map. Positions are read from the lat / lng marker columns of data.x and the velocity components from vectorUBy / vectorVBy (defaulting to vx eastward / vy northward)"
   },
   {
    "parameter": "mapZipCodeIds",
@@ -6506,6 +6863,18 @@
    "description": "Scaling factor for increasing size of all nodes in the network"
   },
   {
+   "parameter": "notes",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Footer notes drawn above the source line at the bottom of the chart. Newlines split into multiple lines"
+  },
+  {
+   "parameter": "numberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Default number format for values displayed in axis ticks, tooltips, legends and data labels. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
+  },
+  {
    "parameter": "numericGroupSort",
    "type": "boolean",
    "default": false,
@@ -6658,7 +7027,7 @@
   },
   {
    "parameter": "optionsWallChain",
-   "type": "string|boolean",
+   "type": "object|boolean",
    "default": false,
    "description": "Option chain object for one expiry: {strikes, expiry, call:{premium,iv,volume}, put:{premium,iv,volume}}"
   },
@@ -7069,15 +7438,27 @@
    "description": "Length in pixels for the separation of the pieces of the pie charts"
   },
   {
+   "parameter": "pieShape",
+   "type": "string|boolean",
+   "default": "full",
+   "options": [
+    "full",
+    "half",
+    false
+   ],
+   "description": "Shape of the pie: a full circle, or a half circle (semicircle, e.g. an election donut with pieInnerRadius)"
+  },
+  {
    "parameter": "pieType",
    "type": "string|boolean",
    "default": "separated",
    "options": [
     "separated",
     "solid",
+    "parliament",
     false
    ],
-   "description": "Position for the pices of the pie"
+   "description": "Position for the pices of the pie. parliament draws one dot per seat on a hemicycle (the values are seat counts), grouped by party from left to right"
   },
   {
    "parameter": "pivotBy",
@@ -7378,6 +7759,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Width for the log tick lines in the R axis"
+  },
+  {
+   "parameter": "rAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the R axis. Overrides numberFormat for this axis; an explicit rAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact|auto\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "rAxisPercentShow",
@@ -7785,8 +8172,14 @@
    "description": "Flag to disable resizing the height of canvas by dragging the mouse over the edges"
   },
   {
+   "parameter": "responsiveRules",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Width-based config overrides applied on render/resize, i.e. [{\"maxWidth\": 480, \"config\": {\"legendPosition\": \"bottom\", \"fontScaleFontFactor\": 0.8}}]. A rule matches when the canvas width is <= maxWidth and >= minWidth (either bound optional); later rules win on conflicting keys. Overrides revert automatically when the width stops matching and are never saved into the configuration"
+  },
+  {
    "parameter": "ribbonBy",
-   "type": "string|boolean",
+   "type": "string|array|boolean|number",
    "default": false,
    "description": "Name of a sample annotation(s) to create a ribbon of each variable in scatter plots. If a single annotation is passed then it will be used as a standard deviation. If two annotations are passed then, it will be used as upper and lower confidence intervals. Alternatively it could be a pair of arrays witht the actual data. Works in coordination with the lineBy parameter"
   },
@@ -7933,6 +8326,12 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to colour each Sankey node by its own value (level) rather than by a single colorBy annotation, and to paint every flow ribbon in its source node's colour. Set on the ggsankey (davidsjoberg/ggsankey) path, where fill = factor(node) colours the whole diagram per node"
+  },
+  {
+   "parameter": "sankeyHide",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Name of a sample annotation that flags a link (row) to be hidden from the Sankey/alluvial diagram. A truthy value (true/1/\"yes\") suppresses that flow ribbon WITHOUT removing it from the data, so the node values, box heights and the showDataValues number still count it. Use it to drop a noise branch visually while keeping each node total correct (issue #320)"
   },
   {
    "parameter": "sankeyLinkLineWidth",
@@ -8335,7 +8734,7 @@
    "parameter": "scatterType",
    "type": "string|boolean",
    "default": false,
-   "description": "Type of scatter plot"
+   "description": "Type of scatter plot. On a Scatter3D, density builds a kernel-density (kde2d) surface from 2D scattered points and renders it as a rotatable surface."
   },
   {
    "parameter": "scrollbarAltBackgroundColor",
@@ -8362,6 +8761,12 @@
    "description": "Color for the Thumb hover color for custom scrollbars"
   },
   {
+   "parameter": "segregateLevelOrder",
+   "type": "object|boolean",
+   "default": false,
+   "description": "Object giving the explicit order of the facet levels, keyed by the annotation used in segregateSamplesBy / segregateVariablesBy, i.e. {\"parameter\": [\"depicted\", \"speech\", \"thought\", \"narrative\"]}. The facets are drawn in the order the array lists, the way an ordered factor fixes the panel order in R; a level the array omits keeps its natural order after the listed ones. Without it the levels are sorted (numerically when they are numbers, otherwise alphabetically)"
+  },
+  {
    "parameter": "segregateSamplesBy",
    "type": "array|boolean|string|number",
    "default": [],
@@ -8372,6 +8777,12 @@
    "type": "array|boolean|string|number",
    "default": [],
    "description": "An array that holds the annotation(s) used to segregate the variables ala Facet way in R. It must be categories in the data.z object"
+  },
+  {
+   "parameter": "selectableFits",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to make fit lines and confidence areas (regression, loess, forecast, Kaplan-Meier curves/bands, area/ribbon) clickable: a click selects and broadcasts the data the fit/curve was computed over (e.g. a KM arm selects its whole cohort)"
   },
   {
    "parameter": "selectedDataPoints",
@@ -8852,6 +9263,12 @@
    "description": "Flag to show/hide the X,Y,Z grid in 3D plots"
   },
   {
+   "parameter": "show3DMinorGrid",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the minor (unlabeled) grid lines in 3D plots. Off by default for a cleaner surface; the per-axis xAxisGridMinorShow/yAxisGridMinorShow/zAxisGridMinorShow still hide individual axes when this is on"
+  },
+  {
    "parameter": "showAnimation",
    "type": "boolean",
    "default": true,
@@ -8936,6 +9353,12 @@
    "description": "Flag to show/hide the levels in contours"
   },
   {
+   "parameter": "showDataDownload",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show a \"Get the data\" link in the chart footer which downloads the current data as CSV"
+  },
+  {
    "parameter": "showDataLabels",
    "type": "boolean",
    "default": false,
@@ -8945,7 +9368,7 @@
    "parameter": "showDataValues",
    "type": "boolean",
    "default": false,
-   "description": "Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots and line graphs"
+   "description": "Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots, line graphs and Sankey node labels"
   },
   {
    "parameter": "showDecorations",
@@ -9098,6 +9521,12 @@
    "description": "Flag to show/hide the legend edge line style"
   },
   {
+   "parameter": "showLineEndLabels",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the series name at the end of each line in line graphs, in the series color, replacing the legend (direct labeling). Overlapping labels are nudged apart"
+  },
+  {
    "parameter": "showLineLegend",
    "type": "boolean",
    "default": true,
@@ -9108,6 +9537,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Name of a variable annotation, or set to true, to display a loess smoothing curve in Scatter plots"
+  },
+  {
+   "parameter": "showMapLabels",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to show/hide the region labels on maps (only labels that fit inside their region without overlapping another label are drawn, largest regions first)"
   },
   {
    "parameter": "showNameOverlays",
@@ -9296,10 +9731,22 @@
    "description": "Flag to show/hide the sample overlay legends"
   },
   {
+   "parameter": "showStatInference",
+   "type": "boolean",
+   "default": false,
+   "description": "Opt-in flag to render the statInference block (pairwise significance brackets + p-value/stars) on one-dimensional group charts (Boxplot, Violin, Bar). Off by default so non-stat charts are unaffected."
+  },
+  {
    "parameter": "showTextShadow",
    "type": "boolean",
    "default": false,
    "description": "Flag to show/hide the shadows in text in the canvas. It will be forced to false if the browser is IE"
+  },
+  {
+   "parameter": "showTiles",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw an XYZ raster tile basemap behind the map"
   },
   {
    "parameter": "showTransition",
@@ -9404,6 +9851,12 @@
    "description": "Name of the variable annotation to size the labels in Scatter2D plots"
   },
   {
+   "parameter": "sizeLegendNested",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to draw the size legend as nested (concentric) bubbles sharing a common bottom edge, with a dashed leader line from each circle to its value label, instead of a column of separate size keys. Applies to proportional-circle size legends (e.g. a sizeBy bubble map or Dorling cartogram)"
+  },
+  {
    "parameter": "sizeLegendTitle",
    "type": "string|boolean",
    "default": false,
@@ -9438,6 +9891,12 @@
     48
    ],
    "description": "Array with sizes used invisualizations. The order will dictate the utilization in the visualization"
+  },
+  {
+   "parameter": "smoothSurface",
+   "type": "boolean",
+   "default": true,
+   "description": "Soften a 3D surface by stroking each facet with its own fill colour so adjacent facets blend seamlessly (no facet wireframe or seams). On by default for a soft look; combine with a higher fxSamples for the smoothest result. Set false to show the facet edges (outline3DColor)"
   },
   {
    "parameter": "smpDendrogramHang",
@@ -9578,6 +10037,12 @@
    "description": "Rotation in degrees for the sample labels"
   },
   {
+   "parameter": "smpTextRotateAuto",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to automatically keep the sample (or grouping-factor) labels of vertical one-dimensional plots horizontal when the longest label fits its band, falling back to smpTextRotate otherwise. Re-evaluated on resize"
+  },
+  {
    "parameter": "smpTextScaleFontFactor",
    "type": "number|boolean",
    "default": 1,
@@ -9703,6 +10168,18 @@
    "description": "Sort the name of the groups after sample grouping."
   },
   {
+   "parameter": "source",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Data source name shown in the chart footer as \"Source: ...\". Combine with sourceUrl to make it a link"
+  },
+  {
+   "parameter": "sourceUrl",
+   "type": "string|boolean",
+   "default": false,
+   "description": "URL for the footer data source. When set with source, the \"Source: ...\" footer text becomes a clickable link (exports still include the text)"
+  },
+  {
    "parameter": "splitSamplesBy",
    "type": "string|boolean",
    "default": false,
@@ -9744,6 +10221,12 @@
    "description": "Starting degrees for pie sectors. 0 is equivalent to 3:00 oclock"
   },
   {
+   "parameter": "statInference",
+   "type": "object|array|boolean|string|number",
+   "default": false,
+   "description": "Renderer-first inference layer. An object with a comparisons array, each item {groups: [a, b] (category names or 1-based positions), p: rawPValue, optional padj, value (bracket height on the value axis), label, color}. Optional correction {method: \"BH\"|\"bonferroni\"|\"BY\"|\"holm\"|\"hochberg\"|\"none\"} applies native multiple-testing correction when padj is not supplied, and annotate (\"p\"|\"padj\"|\"stars\") selects what each bracket prints. Optional fdrThreshold (number) draws no bracket for a comparison whose corrected p (raw p when no correction applies) is above it. Test statistics are computed upstream (R/Python); only correction and star derivation run in the engine. Requires showStatInference:true."
+  },
+  {
    "parameter": "streamEvict",
    "type": "string|boolean",
    "default": "drop-oldest",
@@ -9758,6 +10241,30 @@
    "type": "integer|boolean",
    "default": null,
    "description": "Maximum number of samples to retain when live-streaming via pushData(). When set, each pushData() call appends the incoming samples and evicts the oldest ones beyond this window so the matrix stays bounded for real-time updates. Null keeps every sample (no eviction)"
+  },
+  {
+   "parameter": "streamlineColor",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Fixed color for streamlines (stream mode). When unset (or \"magnitude\") streamlines are colored by velocity magnitude"
+  },
+  {
+   "parameter": "streamlineSeedStride",
+   "type": "integer|boolean",
+   "default": 2,
+   "description": "Seed a streamline every N grid cells (stream mode); larger values draw fewer streamlines"
+  },
+  {
+   "parameter": "streamlineStepSize",
+   "type": "number|boolean",
+   "default": 0.5,
+   "description": "RK4 step size as a fraction of the grid cell size (stream mode)"
+  },
+  {
+   "parameter": "streamlineSteps",
+   "type": "integer|boolean",
+   "default": 160,
+   "description": "Maximum RK4 integration steps per streamline (stream mode)"
   },
   {
    "parameter": "stringEdgeAttributes",
@@ -10079,6 +10586,31 @@
    "description": "The style for the plot or theme will control all the non-data elements of the plot including titles, legends, axes, panel and plot background colors and other stylistic elements"
   },
   {
+   "parameter": "tileAlpha",
+   "type": "number|boolean",
+   "default": 0.7,
+   "description": "Transparency for the map fill drawn over the tile basemap"
+  },
+  {
+   "parameter": "tileType",
+   "type": "string|boolean",
+   "default": "street",
+   "options": [
+    "street",
+    "terrain",
+    "labels",
+    "satellite",
+    false
+   ],
+   "description": "Tile basemap style"
+  },
+  {
+   "parameter": "tileZoomAlphaColor",
+   "type": "number|boolean",
+   "default": 6,
+   "description": "Zoom level before turning the map fill transparent over the tiles"
+  },
+  {
    "parameter": "timeFormat",
    "type": "string|boolean",
    "default": "isoDate",
@@ -10254,6 +10786,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Color for the Color for the tooltip text if specified"
+  },
+  {
+   "parameter": "tooltipNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Number format for values displayed in tooltips. Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}. Uses Intl.NumberFormat when available"
   },
   {
    "parameter": "tooltipTransparency",
@@ -10644,6 +11182,12 @@
    "description": "Color for the set bar plot"
   },
   {
+   "parameter": "upsetSetsBarRatio",
+   "type": "number|boolean",
+   "default": 0.2,
+   "description": "Ratio of the canvas width used by the set size bar plot on the left"
+  },
+  {
    "parameter": "upsetShadeAlpha",
    "type": "number|boolean",
    "default": 0.1,
@@ -10660,12 +11204,6 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to use Barnes-Hut simulation"
-  },
-  {
-   "parameter": "useLeaflet",
-   "type": "boolean",
-   "default": false,
-   "description": "Flag to use leaflet"
   },
   {
    "parameter": "useRoundRectangles",
@@ -10794,6 +11332,12 @@
    "description": "Rotation in degrees for the variable text"
   },
   {
+   "parameter": "varTextRotateAuto",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to automatically keep the variable labels along the bottom of a horizontal heatmap horizontal when the longest label fits its column band, falling back to varTextRotate otherwise. Re-evaluated on resize"
+  },
+  {
    "parameter": "varTextScaleFontFactor",
    "type": "number|boolean",
    "default": 1,
@@ -10900,6 +11444,114 @@
    "type": "boolean",
    "default": false,
    "description": "Flag to k-mean variables"
+  },
+  {
+   "parameter": "vectorArrowSize",
+   "type": "number|boolean",
+   "default": 7,
+   "description": "Length (pixels) of the arrowhead drawn at each vector tip / streamline midpoint"
+  },
+  {
+   "parameter": "vectorColorByMagnitude",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to color raw arrows by velocity magnitude (gradient) instead of by the group annotation. Grid arrows and streamlines are always colored by magnitude unless streamlineColor is set"
+  },
+  {
+   "parameter": "vectorColorValueColor",
+   "type": "string|boolean",
+   "default": "rgb(55,126,184)",
+   "description": "Color for the Fixed arrow color used in raw mode when there is no group annotation and vectorColorByMagnitude is off"
+  },
+  {
+   "parameter": "vectorDensity",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Fraction (0..1) of samples to draw in raw mode (subsampling for dense embeddings). 1 draws every sample"
+  },
+  {
+   "parameter": "vectorFieldMode",
+   "type": "string|boolean",
+   "default": "raw",
+   "options": [
+    "raw",
+    "grid",
+    "stream",
+    false
+   ],
+   "description": "Vector-field rendering mode: raw draws one arrow per sample, grid averages the field onto a regular grid and draws one arrow per cell (quiver), stream draws integrated streamlines (streamplot)"
+  },
+  {
+   "parameter": "vectorGridSize",
+   "type": "integer|boolean",
+   "default": 20,
+   "description": "Number of cells per axis when averaging the field onto a grid (grid mode) or sampling it for streamlines (stream mode)"
+  },
+  {
+   "parameter": "vectorGroupBy",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Column (sample) name holding a group label used to color raw arrows"
+  },
+  {
+   "parameter": "vectorGroupPalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Qualitative hex colors used to color raw arrows by group (one per group, cycled). Defaults to ColorBrewer Set1"
+  },
+  {
+   "parameter": "vectorLineWidth",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Rendered width (pixels) of the arrow shafts and streamlines"
+  },
+  {
+   "parameter": "vectorMinMagnitude",
+   "type": "number|boolean",
+   "default": false,
+   "description": "Velocity magnitude below which streamline integration stops (stream mode). Defaults to 1% of the maximum magnitude"
+  },
+  {
+   "parameter": "vectorPalette",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Ordered hex color stops (low to high magnitude) for the vector / streamline magnitude gradient. Defaults to a blue-white-red ramp"
+  },
+  {
+   "parameter": "vectorScale",
+   "type": "number|boolean",
+   "default": 1,
+   "description": "Multiplier applied to the auto arrow length (raw / grid modes). Larger values draw longer arrows"
+  },
+  {
+   "parameter": "vectorShowLegend",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to show the vector-field legend (magnitude color ramp, or the group legend in raw mode)"
+  },
+  {
+   "parameter": "vectorUBy",
+   "type": "string|boolean",
+   "default": "vx",
+   "description": "Column (sample) name holding the x velocity component when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorVBy",
+   "type": "string|boolean",
+   "default": "vy",
+   "description": "Column (sample) name holding the y velocity component when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorXBy",
+   "type": "string|boolean",
+   "default": "x",
+   "description": "Column (sample) name holding the x position when the input is a standard Scatter2D matrix"
+  },
+  {
+   "parameter": "vectorYBy",
+   "type": "string|boolean",
+   "default": "y",
+   "description": "Column (sample) name holding the y position when the input is a standard Scatter2D matrix"
   },
   {
    "parameter": "vennColors",
@@ -11030,6 +11682,12 @@
    "description": "Flag to disallow panning in visium plots. Dragging will always zoom"
   },
   {
+   "parameter": "volcano",
+   "type": "object|boolean",
+   "default": false,
+   "description": "Promotes a Volcano chart (Scatter2D of log2 fold-change vs -log10 p-value) by auto-seeding significance cut-off lines: {foldChange: <log2 FC cutoff>, fdr: <p/FDR cutoff on the raw scale>, foldChangeColor, fdrColor, width}. Draws vertical rules at +/- foldChange and a horizontal rule at -log10(fdr) using the scatter decoration path. Omit to keep the plain Volcano alias."
+  },
+  {
    "parameter": "waterfallDecreaseColor",
    "type": "string|boolean",
    "default": "rgb(254, 105, 105)",
@@ -11136,6 +11794,19 @@
    "type": "string|boolean",
    "default": "rgba(83, 105, 255, 0.05)",
    "description": "Color for the stripe elements in the data table"
+  },
+  {
+   "parameter": "widgetsTheme",
+   "type": "string|boolean",
+   "default": "theme",
+   "options": [
+    "theme",
+    "light",
+    "dark",
+    "auto",
+    false
+   ],
+   "description": "Light or dark UI widgets (toolbar, menus, Customizer, data table and filters, dialogs). theme follows the chart theme (cxdark and cxblue are dark; the paper/slate/mono/sunrise/ocean/midnight/graphite/forest themes give the widgets that same style; auto follows the OS) and otherwise the page container, e.g. a dark dashboard; auto follows the OS appearance"
   },
   {
    "parameter": "widthFactor",
@@ -11355,6 +12026,12 @@
    "description": "Name of the samples, groups or variables to be displayed in the second X axis"
   },
   {
+   "parameter": "xAxis2NumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the second X axis. Overrides numberFormat for this axis; an explicit xAxis2TickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
+  },
+  {
    "parameter": "xAxis2Rotate",
    "type": "boolean",
    "default": false,
@@ -11383,6 +12060,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "X axis2 title on the top"
+  },
+  {
+   "parameter": "xAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D X axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
   },
   {
    "parameter": "xAxisCeilValue",
@@ -11642,6 +12325,12 @@
    "type": "integer|boolean",
    "default": 2,
    "description": "Number of minor ticks between major ticks in the X axis"
+  },
+  {
+   "parameter": "xAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the X axis. Overrides numberFormat for this axis; an explicit xAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact|auto\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "xAxisRugHeight",
@@ -11957,6 +12646,12 @@
    "description": "Y axis2 title on the right"
   },
   {
+   "parameter": "yAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D Y (value) axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
+  },
+  {
    "parameter": "yAxisCeilValue",
    "type": "number|boolean",
    "default": null,
@@ -12214,6 +12909,12 @@
    "type": "integer|boolean",
    "default": 2,
    "description": "Number of minor ticks between major ticks in the Y axis"
+  },
+  {
+   "parameter": "yAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the Y axis. Overrides numberFormat for this axis; an explicit yAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact|auto\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "yAxisRugHeight",
@@ -12523,6 +13224,12 @@
    "description": "Z axis2 title"
   },
   {
+   "parameter": "zAxis3DTicks",
+   "type": "integer|boolean",
+   "default": 0,
+   "description": "Number of major ticks on the 3D Z axis. When false (default) the count is chosen automatically from the data range (nice numbers, bounded 4-10); set a positive integer to force an exact count"
+  },
+  {
    "parameter": "zAxisCeilValue",
    "type": "number|boolean",
    "default": null,
@@ -12680,6 +13387,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Width for the log tick lines in the Z axis"
+  },
+  {
+   "parameter": "zAxisNumberFormat",
+   "type": "string|object|boolean",
+   "default": false,
+   "description": "Locale-aware number format for the tick values in the Z axis. Overrides numberFormat for this axis; an explicit zAxisTickFormat takes precedence over it. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an object, i.e. {\"locale\": \"en-US\", \"style\": \"decimal|percent|currency|compact|auto\", \"currency\": \"USD\", \"decimals\": 1, \"grouping\": true, \"prefix\": \"\", \"suffix\": \"\"}"
   },
   {
    "parameter": "zAxisSetLabels",

@@ -20,3 +20,12 @@ test_that("cXwaterfall4", {
 test_that("cXwaterfall5", {
     check_ui_test(cXwaterfall5())
 })
+
+test_that("cXwaterfall6", {
+    check_ui_test(cXwaterfall6())
+})
+
+
+test_that("cXwaterfall7", {
+    check_ui_test(cXwaterfall7())
+})

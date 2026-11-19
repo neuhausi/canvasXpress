@@ -1,6 +1,7 @@
 library(testthat)
 library(canvasXpress)
-require(canvasXpress.data)
+library(htmlwidgets)
+library(canvasXpress.data)
 
 test_check("canvasXpress")
 

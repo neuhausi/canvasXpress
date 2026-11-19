@@ -12,7 +12,7 @@ test_that("Barplot customEvents", {
         skip('Unable to read data files')
     })
 
-    events <- JS("{ 'mousemove' : function(o, e, t) {
+    events <- htmlwidgets::JS("{ 'mousemove' : function(o, e, t) {
                                     if (o) {
                                         if (o.objectType == null) {
                                             t.showInfoSpan(e, '<b>' + o.y.vars[0] + '</b><br/>' +

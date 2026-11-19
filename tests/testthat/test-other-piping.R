@@ -29,7 +29,7 @@ test_that("piping - change events", {
     obj1 <- cXscatter2d13()
     check_ui_test(obj1)
 
-    events <- JS("{ 'mousemove' : function(o, e, t) {
+    events <- htmlwidgets::JS("{ 'mousemove' : function(o, e, t) {
                                     if (o) {
                                         if (o.objectType == null) {
                                             t.showInfoSpan(e, '<b>' + o.y.vars[0] + '</b><br/>' +

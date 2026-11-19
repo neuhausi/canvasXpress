@@ -20,3 +20,22 @@ test_that("cXstacked4", {
 test_that("cXstacked5", {
     check_ui_test(cXstacked5())
 })
+
+
+test_that("cXstacked6", {
+    check_ui_test(cXstacked6())
+})
+
+
+test_that("cXstacked7", {
+    check_ui_test(cXstacked7())
+})
+
+test_that("cXstacked8", {
+    check_ui_test(cXstacked8())
+})
+
+
+test_that("cXstacked5", {
+    check_ui_test(cXstacked5())
+})

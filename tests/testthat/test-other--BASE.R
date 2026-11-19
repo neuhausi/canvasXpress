@@ -17,7 +17,7 @@ test_that("Object Structure Tests", {
 
     expect_equal(testobj$width, 600)
     expect_equal(testobj$height, 400)
-    expect_equivalent(class(testobj), c("canvasXpress", "htmlwidget"))
+    expect_equal(class(testobj), c("canvasXpress", "htmlwidget"))
 
     expect_true("data"      %in% names(testobj$x))
     expect_true("config"    %in% names(testobj$x))
@@ -38,7 +38,7 @@ test_that("Correct Data Types", {
 
 test_that("destroy", {
     testobj <- canvasXpress(destroy = TRUE)
-    expect_equivalent(class(testobj), c("canvasXpress", "htmlwidget"))
+    expect_equal(class(testobj), c("canvasXpress", "htmlwidget"))
     expect_true(is.null(testobj$width))
     expect_true(is.null(testobj$height))
 })
@@ -99,7 +99,7 @@ test_that("piping - missing original cx", {
 test_that("piping - missing graph type", {
     cxobj <- canvasXpress(iris)
     cxobj <- cxobj %>% canvasXpress(graphType = NULL)
-    expect_equivalent(class(cxobj), c("canvasXpress", "htmlwidget"))
+    expect_equal(class(cxobj), c("canvasXpress", "htmlwidget"))
 })
 
 
@@ -136,7 +136,7 @@ test_that("canvasXpressOutput", {
 # json function
 test_that("canvasXpress.json - destroy ", {
     cx_output <- canvasXpress.json(json = NULL, destroy = TRUE)
-    expect_equivalent(class(cx_output), c("canvasXpress", "htmlwidget"))
+    expect_equal(class(cx_output), c("canvasXpress", "htmlwidget"))
     expect_true(is.null(cx_output$width))
     expect_true(is.null(cx_output$height))
 })
@@ -153,5 +153,5 @@ test_that("canvasXpress.json - valid json ", {
                               "data": [[85]] }},
               "config": { "graphType": "Meter",
                           "meterType": "gauge" }}'
-    expect_equivalent(class(canvasXpress.json(json = my_json)), c("canvasXpress", "htmlwidget"))
+    expect_equal(class(canvasXpress.json(json = my_json)), c("canvasXpress", "htmlwidget"))
 })

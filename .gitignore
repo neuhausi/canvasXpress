@@ -11,3 +11,4 @@ Meta
 revdep/*
 !revdep/run_job.R
 tests/testthat/Rplots.pdf
+tests/testthat/html_chart_obj*

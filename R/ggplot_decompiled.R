@@ -137,7 +137,9 @@ ggplot.decompiled <- function(o, data_name = "dat") { # nolint: object_name_lint
       v <- all_params[[k]]
       (k %in% c("na.rm", "orientation") &&
          (isFALSE(v) || (length(v) == 1 && is.na(v)))) ||
-        (k == "fun.args" && is.list(v) && length(v) == 0)
+        (k == "fun.args" && is.list(v) && length(v) == 0) ||
+        # ggplot2 >= 4.0.3.9000 band_gp geom_param (issue #331); not consumed.
+        (k == "band_gp")
     }, logical(1))
     args <- c(args, fmt_params(all_params[!drop_noise]))
 

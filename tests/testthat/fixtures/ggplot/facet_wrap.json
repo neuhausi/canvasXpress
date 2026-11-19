@@ -22,7 +22,8 @@
     "colors": [
       "black"
     ],
-    "sizes": 6
+    "sizes": 6,
+    "sizeRange": [1.5, 1.5]
   },
   "coords": [],
   "theme": {
@@ -210,7 +211,8 @@
     "text.vjust": "0.5",
     "title.fontweight": null,
     "title.fontwidth": null,
-    "title.italic": null
+    "title.italic": null,
+    "legend.key.fill": "#EBEBEBFF"
   },
   "labels": [],
   "facet": {

@@ -24,3 +24,11 @@ test_that("cXline5", {
 test_that("cXline6", {
     check_ui_test(cXline6())
 })
+
+test_that("cXline7", {
+    check_ui_test(cXline7())
+})
+
+test_that("cXline8", {
+    check_ui_test(cXline8())
+})

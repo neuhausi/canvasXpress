@@ -31,12 +31,34 @@ export interface CXData {
   [key: string]: unknown;
 }
 
-/** The four supported event hooks. `o` is the resolved data object under the cursor. */
+/**
+ * User-event hooks fired by the engine. Each handler is called with
+ * `this` bound to the chart instance and three arguments: `o` (the resolved
+ * data object under the cursor, or null off any element), `e` (the native DOM
+ * event) and `t` (the chart instance — prefer this over `this`).
+ */
 export interface CXEvents {
+  /** A data element is clicked. */
   click?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** A legend item is clicked. */
+  clicklegend?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** A data element is double-clicked. */
   dblclick?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Fired continuously during a drag operation. */
+  drag?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Network graphs: a node drag has finished. */
+  enddragnode?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** Fired once after rendering completes. */
+  enddraw?: (o: any, e: Event, t: CanvasXpressInstance) => void;
   mousemove?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
   mouseout?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  mouseover?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  mouseup?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  /** The chart was updated by a remote source. */
+  remoteupdate?: (o: any, e: Event, t: CanvasXpressInstance) => void;
+  /** Fired after a selection of data points has been made. */
+  select?: (o: any, e: MouseEvent, t: CanvasXpressInstance) => void;
+  wheel?: (o: any, e: WheelEvent, t: CanvasXpressInstance) => void;
   [key: string]: ((o: any, e: any, t: CanvasXpressInstance) => void) | undefined;
 }
 
@@ -123,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1701 keys). String enums become open literal
+ * config schema (1807 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -135,6 +157,13 @@ export interface CXConfig {
    * @default {}
    */
   Rdataset?: Record<string, unknown> | boolean;
+  /**
+   * Author-written text alternative (alt text) for screen readers. When set it replaces the
+   * generated chart summary in the canvas aria-label and is added to SVG exports as their
+   * title and description
+   * @default false
+   */
+  a11yDescription?: string | boolean;
   /**
    * Flag to ensure the heatmap indicator scales appropriately when the graph is rendered or
    * the user manually resizes the graph, the adjustAspectRatio flag must be set to true for
@@ -176,6 +205,21 @@ export interface CXConfig {
    * @default []
    */
   appendNetworkData?: unknown[] | boolean | string | number;
+  /**
+   * Width of the column marks drawn when areaShowColumns is true, as a fraction (0..1) of the
+   * per-category slot
+   * @graphTypes Area, AreaLine
+   * @default 0.6
+   */
+  areaColumnWidth?: number | boolean;
+  /**
+   * Draw a solid bar/column mark at each category on top of the stacked area band (a
+   * TrendPlot: stacked bars with a semi-transparent stacked area behind them). Composes with
+   * any areaType/areaStyle
+   * @graphTypes Area, AreaLine
+   * @default false
+   */
+  areaShowColumns?: string | boolean;
   /**
    * Style for area graphs. The options include solid which is the default, translucent, and
    * outlined
@@ -246,6 +290,14 @@ export interface CXConfig {
    * @default []
    */
   asVariableFactors?: unknown[] | boolean | string | number;
+  /**
+   * 3D aspect mode. cube (default) draws all three axes at equal length so each fills its own
+   * range; data scales the X/Y/Z box proportions to the real per-axis data spans so the
+   * surface keeps true data proportions (like Plotly aspectmode:data)
+   * @graphTypes Bar, Network, Scatter3D
+   * @default "cube"
+   */
+  aspect3D?: "cube" | "data" | false | (string & {});
   /**
    * Type of function to apply when calculating attractive force in forceDirected network
    * layouts. Fruchterman-Reingold uses square while Eades uses log
@@ -360,6 +412,24 @@ export interface CXConfig {
    * @default "center"
    */
   binAlignment?: "left" | "center" | "right" | false | (string & {});
+  /**
+   * How binned data points are grouped into stacks. dotdensity is the Wilkinson algorithm R
+   * geom_dotplot uses (a bin starts at the first value that does not fit the previous one, and
+   * every dot in it is drawn at the bin centre); histodot uses fixed-width bins from the data
+   * minimum; exact stacks only values that are strictly equal, leaving every dot on its own
+   * value
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default "dotdensity"
+   */
+  binMethod?: "dotdensity" | "histodot" | "exact" | false | (string & {});
+  /**
+   * Width of a bin, in data units, when binned data points are grouped with binMethod
+   * dotdensity or histodot. Zero (the default) derives it from the data as the R geom_dotplot
+   * default does: the value range divided by 30
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default 0
+   */
+  binWidth?: number | boolean;
   /**
    * Flag to bin the data points in dotplots and boxplots
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -689,6 +759,11 @@ export interface CXConfig {
    */
   bulletWidthRatio?: number | boolean;
   /**
+   * Author or organization credit shown in the chart footer, e.g. "Chart: Jane Doe"
+   * @default false
+   */
+  byline?: string | boolean;
+  /**
    * Flag to cache image in meta data as Base64
    * @default false
    */
@@ -965,6 +1040,96 @@ export interface CXConfig {
    */
   clusteringDistance?: "euclidianDistance" | "manhattanDistance" | "maxDistance" | false | (string & {});
   /**
+   * Length (pixels) of the clustree edge arrowhead
+   * @graphTypes Scatter2D
+   * @default 9
+   */
+  clustreeArrowSize?: number | boolean;
+  /**
+   * Flag to draw a directed arrowhead at the child (finer-resolution) end of each clustree
+   * transition edge
+   * @graphTypes Scatter2D
+   * @default true
+   */
+  clustreeEdgeArrows?: boolean;
+  /**
+   * Minimum edge opacity (0..1) so very small transitions stay faintly visible; opacity scales
+   * with the incoming proportion up to 1
+   * @graphTypes Scatter2D
+   * @default 0.15
+   */
+  clustreeEdgeMinAlpha?: number | boolean;
+  /**
+   * Ordered hex color stops (low to high transition count) for the clustree edge colour
+   * gradient. Defaults to a Spectral ramp
+   * @graphTypes Scatter2D
+   * @default []
+   */
+  clustreeEdgePalette?: unknown[] | boolean | string | number;
+  /**
+   * Constant rendered width (pixels) of clustree transition edges (count is shown by colour,
+   * incoming proportion by opacity, as in the clustree package)
+   * @graphTypes Scatter2D
+   * @default 1.5
+   */
+  clustreeEdgeWidth?: number | boolean;
+  /**
+   * Flag to orient a clustree plot left-to-right (resolution on the x-axis) instead of
+   * top-to-bottom
+   * @graphTypes Scatter2D
+   * @default false
+   */
+  clustreeFlip?: boolean;
+  /**
+   * Flag to draw the cluster-id label centered on each clustree node
+   * @graphTypes Scatter2D
+   * @default true
+   */
+  clustreeNodeLabels?: boolean;
+  /**
+   * Qualitative hex colours used to colour clustree nodes by resolution level (one per level,
+   * cycled). Defaults to ColorBrewer Paired
+   * @graphTypes Scatter2D
+   * @default []
+   */
+  clustreeNodePalette?: unknown[] | boolean | string | number;
+  /**
+   * Font size (pixels) of the cluster-id label drawn on each clustree node
+   * @graphTypes Scatter2D
+   * @default 9
+   */
+  clustreeNodeTextSize?: number | boolean;
+  /**
+   * When deriving a clustree from a cluster-label matrix, use only the columns whose name
+   * starts with this prefix (one column per clustering resolution). When unset, every column
+   * is treated as a resolution level. Also used as the resolution-axis title
+   * @graphTypes Scatter2D
+   * @default false
+   */
+  clustreePrefix?: string | boolean;
+  /**
+   * Flag to show the raw numeric layout coordinate axes and grid in a clustree plot (debug).
+   * By default only the labelled resolution axis (one tick per clustering level) is shown and
+   * the order axis + grid are hidden
+   * @graphTypes Scatter2D
+   * @default false
+   */
+  clustreeShowAxes?: boolean;
+  /**
+   * Flag to show the clustree edge legends (transition Count colour ramp and In Prop opacity
+   * ramp)
+   * @graphTypes Scatter2D
+   * @default true
+   */
+  clustreeShowEdgeLegend?: boolean;
+  /**
+   * Number of barycenter ordering sweeps used to reduce edge crossings in the layered clustree
+   * layout
+   * @graphTypes Scatter2D
+   * @default 4
+   */
+  clustreeSweeps?: number | boolean;
+  /**
    * Output type for the JSON code
    * @default "params"
    */
@@ -1011,6 +1176,21 @@ export interface CXConfig {
    */
   colorLabelBy?: string | boolean;
   /**
+   * Class names for a stepped colour legend (see colorLegendSteps): one label per colour
+   * class, lowest class first, drawn beside its swatch in place of the numeric class edges,
+   * for example ["a", "b", "c", "d", "e"]. Ignored unless the legend is stepped and the array
+   * has exactly one entry per class
+   * @default []
+   */
+  colorLegendLabels?: unknown[] | boolean | string | number;
+  /**
+   * Numeric colour legend for binned colouring: equal draws one equal-width swatch per class
+   * with every class edge labelled (stepped legend); proportional sizes swatches by their
+   * value range; auto is equal with a colorSpectrumBreaksMethod, else proportional
+   * @default "auto"
+   */
+  colorLegendSteps?: "auto" | "proportional" | "equal" | false | (string & {});
+  /**
    * Title for the color legend
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
@@ -1028,7 +1208,7 @@ export interface CXConfig {
    * a different color is needed in a particular visualization
    * @default "User"
    */
-  colorScheme?: "AAAS" | "Accent" | "BMS" | "BMSBackground" | "BMSBlue" | "BMSBrown" | "BMSGreen" | "BMSPink" | "BMSPrimary" | "BMSSecondary" | "BMSTertiary" | "BMSTertiaryDark" | "BMSTertiaryLight" | "BMSWheat" | "Basic" | "Behance" | "BehancePair" | "BehanceQuartet" | "BehanceTrio" | "Black" | "BlackAndWhite" | "BlueGrey" | "BlueRedGrey" | "Blues" | "BluesDark" | "Bootstrap" | "BrBG" | "Brand" | "Brooklyn99Dark" | "Brooklyn99Regular" | "BuGn" | "BuPu" | "CanvasXpress" | "CanvasXpressOLD" | "CanvasXpressTraditional" | "Cividis" | "ColorBlind" | "ColorSpectrum" | "Colorful" | "ColorfulAlt" | "Complementary" | "Dark2" | "Default" | "Diverging" | "DivergingAlt" | "Economist" | "EconomistBG" | "Excel" | "Excel2" | "Excel3" | "Favorite" | "GGBlanket" | "GGPlot" | "GameOfThronesArryn" | "GameOfThronesGreyjoy" | "GameOfThronesLannister" | "GameOfThronesManderly" | "GameOfThronesMartell" | "GameOfThronesStannis" | "GameOfThronesStark" | "GameOfThronesTargaryen" | "GameOfThronesTully" | "GameOfThronesTyrell" | "GnBu" | "GravityFalls" | "Greens" | "Grey" | "GreyHC" | "Greys" | "Heat" | "Highcharts" | "Inferno" | "JCO" | "Jama" | "KimPossible" | "Lancet" | "LastAirBenderAir" | "LastAirBenderEarth" | "LastAirBenderFire" | "LastAirBenderWater" | "Light" | "Magma" | "Matlab" | "NEJM" | "NPG" | "OrRd" | "Oranges" | "PRGn" | "Paired" | "ParksAndRecreation" | "Parula" | "PaulTol" | "PiYG" | "Plasma" | "Prism" | "PrismPair" | "PrismTrio" | "PuBu" | "PuBuGn" | "PuOr" | "PuRd" | "Purples" | "Rainbow" | "RdBu" | "RdGy" | "RdPu" | "RdYlBu" | "RdYlGn" | "Reds" | "RickyAndMorty" | "Simpsons" | "Solarized" | "SolarizedBase" | "Spectral" | "SpongeBob" | "Stata" | "Stata2" | "Stata3" | "StataMono" | "Tableau" | "TableauBlueRed" | "TableauColorBlind" | "TableauCyclic" | "TableauGreenOrange" | "TableauGrey" | "TableauLight" | "TableauMedium" | "TableauPairSequential" | "TableauPurpleGrey" | "TableauTrafficLight" | "TableauTripleDiverging" | "Viridis" | "ViridisInv" | "WHO" | "WallStreetJournal" | "WallStreetJournal2" | "WallStreetJournal3" | "WallStreetJournalBlackGreen" | "WallStreetJournalDemRep" | "WallStreetJournalRedGreen" | "White" | "YlGn" | "YlGnBu" | "YlOrBr" | "YlOrRd" | false | (string & {});
+  colorScheme?: "User" | "AAAS" | "Accent" | "BMS" | "BMSBackground" | "BMSBlue" | "BMSBrown" | "BMSGreen" | "BMSPink" | "BMSPrimary" | "BMSSecondary" | "BMSTertiary" | "BMSTertiaryDark" | "BMSTertiaryLight" | "BMSWheat" | "Basic" | "Behance" | "BehancePair" | "BehanceQuartet" | "BehanceTrio" | "Black" | "BlackAndWhite" | "BlueGrey" | "BlueRedGrey" | "Blues" | "BluesDark" | "Bootstrap" | "BrBG" | "Brand" | "Brooklyn99Dark" | "Brooklyn99Regular" | "BuGn" | "BuPu" | "CanvasXpress" | "CanvasXpressOLD" | "CanvasXpressTraditional" | "Cividis" | "ColorBlind" | "ColorSpectrum" | "Colorful" | "ColorfulAlt" | "Complementary" | "Dark2" | "Default" | "Diverging" | "DivergingAlt" | "Economist" | "EconomistBG" | "Excel" | "Excel2" | "Excel3" | "Favorite" | "GGBlanket" | "GGPlot" | "GameOfThronesArryn" | "GameOfThronesGreyjoy" | "GameOfThronesLannister" | "GameOfThronesManderly" | "GameOfThronesMartell" | "GameOfThronesStannis" | "GameOfThronesStark" | "GameOfThronesTargaryen" | "GameOfThronesTully" | "GameOfThronesTyrell" | "GnBu" | "GravityFalls" | "Greens" | "Grey" | "GreyHC" | "Greys" | "Heat" | "Highcharts" | "Inferno" | "JCO" | "Jama" | "KimPossible" | "Lancet" | "LastAirBenderAir" | "LastAirBenderEarth" | "LastAirBenderFire" | "LastAirBenderWater" | "Light" | "Magma" | "Matlab" | "NEJM" | "NPG" | "OrRd" | "Oranges" | "PRGn" | "Paired" | "ParksAndRecreation" | "Parula" | "PaulTol" | "PiYG" | "Plasma" | "Prism" | "PrismPair" | "PrismTrio" | "PuBu" | "PuBuGn" | "PuOr" | "PuRd" | "Purples" | "Rainbow" | "RdBu" | "RdGy" | "RdPu" | "RdYlBu" | "RdYlGn" | "Reds" | "RickyAndMorty" | "Simpsons" | "Solarized" | "SolarizedBase" | "Spectral" | "SpongeBob" | "Stata" | "Stata2" | "Stata3" | "StataMono" | "Tableau" | "TableauBlueRed" | "TableauColorBlind" | "TableauCyclic" | "TableauGreenOrange" | "TableauGrey" | "TableauLight" | "TableauMedium" | "TableauPairSequential" | "TableauPurpleGrey" | "TableauTrafficLight" | "TableauTripleDiverging" | "Viridis" | "ViridisInv" | "WHO" | "WallStreetJournal" | "WallStreetJournal2" | "WallStreetJournal3" | "WallStreetJournalBlackGreen" | "WallStreetJournalDemRep" | "WallStreetJournalRedGreen" | "White" | "YlGn" | "YlGnBu" | "YlOrBr" | "YlOrRd" | false | (string & {});
   /**
    * Name of metadata annotation to color the sample (row) dendrogram
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Circular … (21 types; see CXGraphTypeKeys)
@@ -1052,6 +1232,13 @@ export interface CXConfig {
    * @default []
    */
   colorSpectrumBreaks?: unknown[] | boolean | string | number;
+  /**
+   * Classify the colorBy values into one colour class per colorSpectrum colour (a classed
+   * choropleth): jenks (natural breaks), quantile (equal count) or equalWidth. Computes the
+   * colorSpectrumBreaks and turns on binned colouring
+   * @default false
+   */
+  colorSpectrumBreaksMethod?: string | boolean;
   /**
    * Color spectrum by factor in heatmaps. The first key represents the name of the factor
    * within the x/z data object. The subsequent keys correspond to each level of that factor.
@@ -1236,6 +1423,14 @@ export interface CXConfig {
    */
   contourLevels?: unknown[] | boolean | string | number;
   /**
+   * Number of grid points in each direction for the two dimensional kernel density estimate
+   * underlying the scatter plot contours, as the n argument of the kde2d function in the R
+   * package MASS and of stat_density_2d in ggplot2
+   * @graphTypes Pareto, Heatmap, Scatter2D
+   * @default 100
+   */
+  contourPoints?: number | boolean;
+  /**
    * Contour density type
    * @graphTypes Pareto, Heatmap, Scatter2D
    * @default "density"
@@ -1294,7 +1489,10 @@ export interface CXConfig {
   /**
    * Custom legends : Array of objects [{ size : [], shape : [], shapeColor : [], line : [],
    * lineColor : [], lineStart : [], lineEnd : [], text : [], x : number, y : number, title :
-   * string }]
+   * string, paddingX : number, paddingY : number }]. When legendInside is true, paddingX /
+   * paddingY (default 0) inset the legend box from the x,y plotting panel edges so it stays
+   * inside for any legendPosition; an explicit x / y pins the legend instead and ignores the
+   * padding
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default []
    */
@@ -1388,6 +1586,16 @@ export interface CXConfig {
    */
   dataFilterMaxItems?: number | boolean;
   /**
+   * Number format for the tick labels of the numeric range sliders in the data filters (and
+   * the html range widget). Overrides numberFormat. A compact format keeps large values short,
+   * i.e. 20M. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a
+   * sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  dataFilterNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Color for the Text color for the data filter panel
    * @default "#555b62"
    */
@@ -1427,6 +1635,15 @@ export interface CXConfig {
    */
   dataLabelBackgroundColor?: string | boolean;
   /**
+   * Number format for the data values drawn on the chart (showDataValues and data labels).
+   * Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro, pound,
+   * yen, compact), a sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  dataLabelNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * A declarative dplyr/tidyr data-grammar recipe applied over the tidy substrate BEFORE the
    * chart wrangle. An ordered array of ops: {op:"filter", col, cmp (one of
    * ==,!=,>,>=,<,<=,in), value}; {op:"mutate", col, fn} where fn is a transform name
@@ -1439,10 +1656,13 @@ export interface CXConfig {
   dataPipeline?: unknown[] | boolean | string | number;
   /**
    * Approximate pixel size for the data points in scatter plots, dotplots and boxplots. The
-   * size will be adjusted according to the dimensions of the graph
+   * size will be adjusted according to the dimensions of the graph. Boxplots and dotplots
+   * default to 15 (to match ggplot2 geom_point) unless set explicitly. Set to the string
+   * "auto" to size scatter points from the plot area, damped by the number of points (larger
+   * dots on sparse/large panels, smaller on dense ones)
    * @default 10
    */
-  dataPointSize?: number | boolean;
+  dataPointSize?: number | boolean | "auto";
   /**
    * Factor used to adjust the size of the dataPointSize
    * @default 1
@@ -1612,8 +1832,9 @@ export interface CXConfig {
    */
   dataTableColAlignment?: Record<string, unknown> | boolean;
   /**
-   * Format for the cols in the data table. Key is the sample name and the value is the format
-   * string using sprintf notation
+   * Format for the cols in the data table. Key is the sample name and the value is a sprintf
+   * format string, a number-format preset (comma, percent, dollar, euro, pound, yen, compact)
+   * or a number-format object {locale, style, currency, decimals}
    * @default {}
    */
   dataTableColFormat?: Record<string, unknown> | boolean;
@@ -1641,6 +1862,15 @@ export interface CXConfig {
    */
   dataTableColProperties?: Record<string, unknown> | boolean;
   /**
+   * In-cell graphics per column of the data table. Key is the column name and the value is bar
+   * (a bar behind the value scaled to the column, from zero when the column has negatives),
+   * {type: bar, color}, or {type: sparkline, columns: [...], color, width, height, showValue}
+   * (a small line of the row values across those columns, replacing the value unless
+   * showValue)
+   * @default {}
+   */
+  dataTableColRenderer?: Record<string, unknown> | boolean;
+  /**
    * Number of pixels for the width of cells in the data table
    * @default 180
    */
@@ -1656,6 +1886,18 @@ export interface CXConfig {
    */
   dataTableColored?: boolean;
   /**
+   * Flag to shrink the data table to the height of its rows when they do not fill the space
+   * (no empty area under the last row); a longer table still scrolls
+   * @default false
+   */
+  dataTableFitHeight?: boolean;
+  /**
+   * Flag to narrow the data table to the width of its columns when they do not fill the space
+   * (no empty area after the last column); a wider table still scrolls
+   * @default false
+   */
+  dataTableFitWidth?: boolean;
+  /**
    * Flag to group rows in the data table based on metadata
    * @default false
    */
@@ -1665,6 +1907,13 @@ export interface CXConfig {
    * @default "rgb(255, 255, 255)"
    */
   dataTableHeaderBackgroundColor?: string | boolean;
+  /**
+   * When the data table header cells show their menu, filter and resize icons: always, only
+   * while the header cell is hovered, or auto (on hover with the minimal dataUIStyle, always
+   * otherwise). Sorting arrows and the filter of a filtered column always show
+   * @default "auto"
+   */
+  dataTableHeaderIcons?: "auto" | "always" | "hover" | false | (string & {});
   /**
    * HTML string to use as template for the data table header info
    * @default false
@@ -2030,16 +2279,29 @@ export interface CXConfig {
    */
   dataTextScaleFontFactor?: number | boolean;
   /**
-   * Style for the UI
+   * Border density of the UI widgets (data table, filters, Customizer, menus): default, or
+   * minimal (every border softened to the look's faint colour). It composes with any theme
+   * (theme: "ocean", dataUIStyle: "minimal"). The colour looks cx, modern, bms, colorful, rdc
+   * and ngs360 are styles of the theme parameter (theme: "bms", or theme: ["economist", "bms"]
+   * for a chart theme plus a widgets look); naming one here still works and fills that widgets
+   * slot. Legacy values: stripped turns the data table row stripes off (see dataTableStriped),
+   * old is a grey look
    * @default "modern"
    */
-  dataUIStyle?: "cx" | "stripped" | "modern" | "old" | "bms" | "colorful" | "rdc" | "ngs360" | false | (string & {});
+  dataUIStyle?: "default" | "minimal" | "cx" | "modern" | "bms" | "colorful" | "rdc" | "ngs360" | "stripped" | "old" | false | (string & {});
   /**
    * Frequency for the data values in line graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
    * @default "ends"
    */
   dataValuesFrequency?: "all" | "first" | "last" | "ends" | false | (string & {});
+  /**
+   * Flag to hide a data value label that does not fit inside its stacked bar segment
+   * (showDataValues in Stacked graphs), instead of drawing it over the neighbouring segments
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  dataValuesHideOverlap?: boolean;
   /**
    * Position for the data values in line graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -2213,6 +2475,23 @@ export interface CXConfig {
    */
   decorationsWidth?: number | boolean;
   /**
+   * Declarative storyboard of semantic steps
+   * (toolbar/customizer/marker/point/legend/caption/wait/raw) the ghost cursor performs for a
+   * demo video; see playDemo
+   * @default []
+   */
+  demo?: unknown[] | boolean | string | number;
+  /**
+   * When a demo storyboard is set, play it automatically once after the first render
+   * @default true
+   */
+  demoAutoPlay?: boolean;
+  /**
+   * Demo playback speed multiplier (1 = human pace, 2 = twice as fast)
+   * @default 1
+   */
+  demoSpeed?: number | boolean;
+  /**
    * Color for the dendrograms
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Circular … (21 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
@@ -2230,6 +2509,13 @@ export interface CXConfig {
    * @default "gaussian"
    */
   densityKernel?: "gaussian" | "rectangular" | "triangular" | "epanechnikov" | "quartic" | "biweight" | "cosine" | "optcosine" | false | (string & {});
+  /**
+   * Number of equally spaced points at which the density is estimated, as the n argument of
+   * the density function in R. Values above 512 are rounded up to a power of two as in R
+   * @graphTypes Density, Distribution, Histogram, Ridgeline, Violin
+   * @default 512
+   */
+  densityPoints?: number | boolean;
   /**
    * Histogram density position
    * @graphTypes Density, Distribution, Histogram, Ridgeline, Violin
@@ -2373,6 +2659,29 @@ export interface CXConfig {
    * @default "normal"
    */
   dotplotType?: "arrow" | "bullet" | "cleveland" | "connected" | "line" | "lineConnected" | "normal" | "stacked" | "transition" | false | (string & {});
+  /**
+   * Flag to show the drill-down breadcrumb strip in the viewport when a drillHierarchy is
+   * active and the chart has been drilled. Set false for API-only drill control
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  drillBreadcrumb?: boolean;
+  /**
+   * An array of sample annotation names, coarse to fine (e.g. ["Region","State","City"]),
+   * defining a drill-down hierarchy. When set, clicking a mark filters to the clicked level
+   * value and regroups by the next finer annotation; a breadcrumb walks back. Each entry must
+   * be a category in the data.x object
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default []
+   */
+  drillHierarchy?: unknown[] | boolean | string | number;
+  /**
+   * Direction of the arrows in arrow dumbbells (dumbbellType arrow): value points each arrow
+   * at the smaller value; order points from the first variable to the next (before to after)
+   * @graphTypes Boxplot, Cleveland, DotLine, Dotplot, Dumbbell, Violin
+   * @default "value"
+   */
+  dumbbellArrowDirection?: "value" | "order" | false | (string & {});
   /**
    * Style for the dumbbell plot
    * @graphTypes Boxplot, Cleveland, DotLine, Dotplot, Dumbbell, Violin
@@ -2780,6 +3089,12 @@ export interface CXConfig {
    */
   fontsExternal?: unknown[] | boolean | string | number;
   /**
+   * Horizontal alignment for the structured chart footer (notes, source, byline, data
+   * download)
+   * @default "left"
+   */
+  footerAlign?: "left" | "center" | "right" | false | (string & {});
+  /**
    * Number of future steps to forecast. 0 uses the forecast package default: 10, or two
    * seasons when forecastSeasonLength is greater than 1
    * @graphTypes Scatter2D
@@ -2831,6 +3146,14 @@ export interface CXConfig {
    * @default "rgb(0,0,0)"
    */
   functionColor?: string | boolean;
+  /**
+   * Number of grid subdivisions per axis when plotting a function (fx) as a 3D surface. Higher
+   * values give smoother surfaces and finer color detail; the grid has fxSamples+1 points per
+   * axis
+   * @graphTypes Bar, Network, Scatter3D
+   * @default 25
+   */
+  fxSamples?: number | boolean;
   /**
    * Variable annotation in the x object to use in Gantt plots as completion percentage. Must
    * be a value between 0 and 1
@@ -2926,9 +3249,9 @@ export interface CXConfig {
   /**
    * Specifies the orientation of one-dimensional graphs
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
-   * @default "horizontal"
+   * @default "vertical"
    */
-  graphOrientation?: "horizontal" | "vertical" | false | (string & {});
+  graphOrientation?: "vertical" | "horizontal" | false | (string & {});
   /**
    * Specifies the type of graph to be rendered
    * @default "Bar"
@@ -3089,6 +3412,32 @@ export interface CXConfig {
    */
   heatmapCellMarkers?: unknown[] | boolean | string | number;
   /**
+   * Pixels of empty space (gap) left around each heatmap cell so it renders as a separate
+   * padded tile instead of a contiguous block; 0 (default) keeps cells edge-to-edge. Combine
+   * with colorSpectrumBinned for a discrete-colour tiled heatmap, or use heatmapType "tiled"
+   * @graphTypes Heatmap
+   * @default 0
+   */
+  heatmapCellSpace?: number | boolean;
+  /**
+   * Array of per-cell text labels drawn centered on top of standard heatmap cells, like
+   * Plotly's text matrix. Each entry is an object with a *variable* and *sample* name
+   * identifying the cell plus a *text* string, with optional *color*. Example: [{variable:
+   * "V1", sample: "S3", text: "0.87*"}] to show a correlation value with a significance
+   * asterisk. Unlike showDataValues (which draws every raw cell value), this lets you supply
+   * arbitrary strings so you can append markers such as "*" for p < 0.05 (issue #322)
+   * @graphTypes Heatmap
+   * @default []
+   */
+  heatmapCellText?: unknown[] | boolean | string | number;
+  /**
+   * Color for the default color for heatmap cell text when an entry in heatmapCellText omits
+   * its own color
+   * @graphTypes Heatmap
+   * @default "rgb(0,0,0)"
+   */
+  heatmapCellTextColorColor?: string | boolean;
+  /**
    * Flag to collapse cells in heatmaps of type circle or hexagon. If true cells are ploted
    * without outline otherwise the outline is the foreground color
    * @graphTypes Heatmap
@@ -3153,11 +3502,12 @@ export interface CXConfig {
   heatmapIndicatorWidth?: number | boolean;
   /**
    * Type of Heatmap used to overlay a layer on top of an image. Special for spatial
-   * transcriptomics and UpSet plots
+   * transcriptomics and UpSet plots. "tiled" is a preset for a discrete-colour, padded-cell
+   * heatmap (binned colours + heatmapCellSpace, no cell box)
    * @graphTypes Heatmap
    * @default "normal"
    */
-  heatmapType?: "normal" | "circle" | "hexagon" | "upset" | "correlation" | "split" | false | (string & {});
+  heatmapType?: "normal" | "circle" | "hexagon" | "upset" | "correlation" | "split" | "tiled" | false | (string & {});
   /**
    * Hidden Map features
    * @graphTypes Map
@@ -3762,6 +4112,15 @@ export interface CXConfig {
    */
   layoutRemoveEmpty?: boolean;
   /**
+   * Flag to give each facet of a single-column layout a height proportional to the data it
+   * holds, the way ggplot2 facet_grid(space = "free") sizes its panels, instead of splitting
+   * the canvas into equal rows. A facet whose values span a small range is drawn short and a
+   * busy one tall, so no facet wastes empty space. Ignored when the layout has more than one
+   * column, and for heatmap, DOE and scatter-plot-matrix layouts
+   * @default false
+   */
+  layoutSpaceFree?: boolean;
+  /**
    * Spacing between layout graphs
    * @default 8
    */
@@ -3786,24 +4145,6 @@ export interface CXConfig {
    * @default false
    */
   lazyLoad?: boolean;
-  /**
-   * Transparency for leaflet layers
-   * @graphTypes Map
-   * @default 0.7
-   */
-  leafletAlpha?: number | boolean;
-  /**
-   * Leaflet tile type
-   * @graphTypes Map
-   * @default "street"
-   */
-  leafletTileType?: "street" | "terrain" | "labels" | "satellite" | false | (string & {});
-  /**
-   * Zoom level before turning transparent the leaflet layers
-   * @graphTypes Map
-   * @default 6
-   */
-  leafletZoomAlphaColor?: number | boolean;
   /**
    * Text to include at the left of the graph in the left margin
    * @default false
@@ -3888,7 +4229,9 @@ export interface CXConfig {
    */
   legendDirection?: "vertical" | "horizontal" | false | (string & {});
   /**
-   * Horizontal justification for legends when legend are in top or bottom positions
+   * Horizontal justification (0 left, 0.5 centre, 1 right) for a legend in the top or bottom
+   * position. A corner legendPosition supplies its own justification and ignores this. The
+   * edge it is measured from is set by legendJustifyTo
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default 0.5
    */
@@ -3899,6 +4242,14 @@ export interface CXConfig {
    * @default false
    */
   legendInside?: boolean;
+  /**
+   * What a justified legend aligns to: the panel (plot area) edge or the whole plot (canvas)
+   * edge, like titleAlign plot::0. Applies to every justification of a top or bottom legend,
+   * centred included, and to the corner positions
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default "panel"
+   */
+  legendJustifyTo?: "panel" | "plot" | false | (string & {});
   /**
    * Color for the border in legend key background
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
@@ -3943,6 +4294,15 @@ export interface CXConfig {
    */
   legendMax?: number | boolean;
   /**
+   * Number format for numeric values displayed in legends (continuous color ramps and size-by
+   * bins). Overrides numberFormat. It could be a preset name (comma, percent, dollar, euro,
+   * pound, yen, compact), a sprintf format string, or an object, i.e. {"locale": "en-US",
+   * "style": "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping":
+   * true, "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  legendNumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Object to specify custom order for the levels in the legends. The key of the object is the
    * name of a valid sample or variable annotation included in the data object. The value for
    * element is an array with the levels for the corresponding factor
@@ -3957,11 +4317,26 @@ export interface CXConfig {
    */
   legendOrderByCols?: boolean;
   /**
-   * Position for the the legend
+   * Position for the legend. All eight positions work whether the legend is inside or outside
+   * the plot. Inside, a corner anchors the legend to that corner of the plotting panel.
+   * Outside, the legend gets one band or one column, so a corner is the top or bottom band
+   * flush with that side: topLeft / bottomLeft are justified left and topRight / bottomRight
+   * right, overriding legendHorizontalJustification; left and right are a column justified by
+   * legendVerticalJustification
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default "right"
    */
   legendPosition?: "topRight" | "right" | "bottomRight" | "bottom" | "bottomLeft" | "left" | "topLeft" | "top" | false | (string & {});
+  /**
+   * Flag to automatically select the legend position (top or right) that maximizes the area
+   * available for the plot. When true the legend dimensions are computed for both candidates
+   * and the one that leaves the larger plotting area wins. Ignored when legendPosition is set
+   * explicitly in the configuration, when legendInside is true, for a faceted (layout) chart
+   * or for cxplot / ggplot specifications
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  legendPositionAuto?: boolean;
   /**
    * Number of rows in legends
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
@@ -4075,7 +4450,9 @@ export interface CXConfig {
    */
   legendTitleScaleFontFactor?: number | boolean;
   /**
-   * Vertical justification for legends when legend are in left or right positions
+   * Vertical justification (0 top, 0.5 middle, 1 bottom) for a legend in the left or right
+   * position, down the column the legend reserves. The mirror of legendHorizontalJustification
+   * for a side legend
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default 0.5
    */
@@ -4335,6 +4712,28 @@ export interface CXConfig {
    */
   manhattanRangeStart?: string | boolean;
   /**
+   * Color for the region bubbles on maps (sizeBy a sample: a circle per region sized by its
+   * value); the size legend uses it too
+   * @graphTypes Map
+   * @default "rgba(255,0,0,0.6)"
+   */
+  mapBubbleColor?: string | boolean;
+  /**
+   * Scaling for the non-contiguous cartogram (mapType cartogram). area: each region is scaled
+   * relative to its own area. olson: the densest region keeps its size and every other shrinks
+   * proportionally (classic Olson)
+   * @graphTypes Map
+   * @default "area"
+   */
+  mapCartogramScale?: "area" | "olson" | false | (string & {});
+  /**
+   * For the non-contiguous cartogram (mapType cartogram), draw each region full-size
+   * silhouette in grey behind the scaled shape so the two can be compared
+   * @graphTypes Map
+   * @default true
+   */
+  mapCartogramSilhouette?: boolean;
+  /**
    * Map Latitude Of Origin in degrees. (Applicable to Albers projection only). Default adjusts
    * to USA maps
    * @graphTypes Map
@@ -4377,6 +4776,20 @@ export interface CXConfig {
    * @default false
    */
   mapId?: string | boolean;
+  /**
+   * Color for the region labels on maps. Defaults to black or white, whichever contrasts with
+   * the region fill
+   * @graphTypes Map
+   * @default false
+   */
+  mapLabelColor?: string | boolean;
+  /**
+   * Map feature property used as the region label (defaults to name, then NAME, then the
+   * region key)
+   * @graphTypes Map
+   * @default false
+   */
+  mapLabelProperty?: string | boolean;
   /**
    * Map Latitude Of Origin in degrees. (Applicable to Albers projection only). Default adjusts
    * to USA maps
@@ -4428,6 +4841,24 @@ export interface CXConfig {
    * @default 45.5
    */
   mapStandardParallel2?: number | boolean;
+  /**
+   * Map distortion. region: a normal map (default). The other three are cartograms driven by
+   * sizeBy: dorling draws one non-overlapping circle per region sized by value; cartogram
+   * keeps each region shape and scales it about its own centre (non-contiguous); contiguous
+   * deforms the borders so regions stay joined while their areas match the value (Dougenik
+   * rubber-sheet)
+   * @graphTypes Map
+   * @default "region"
+   */
+  mapType?: "region" | "dorling" | "cartogram" | "contiguous" | false | (string & {});
+  /**
+   * Flag to draw a vector-field overlay (raw arrows / gridded quiver / integrated streamlines)
+   * on a Map. Positions are read from the lat / lng marker columns of data.x and the velocity
+   * components from vectorUBy / vectorVBy (defaulting to vx eastward / vy northward)
+   * @graphTypes Scatter2D, Map
+   * @default false
+   */
+  mapVectorField?: boolean;
   /**
    * Array of properties in the map topoJSON features to use as zip code ids
    * @graphTypes Map
@@ -4963,6 +5394,21 @@ export interface CXConfig {
    */
   nodeSizeScaleFactor?: number | boolean;
   /**
+   * Footer notes drawn above the source line at the bottom of the chart. Newlines split into
+   * multiple lines
+   * @default false
+   */
+  notes?: string | boolean;
+  /**
+   * Default number format for values displayed in axis ticks, tooltips, legends and data
+   * labels. It could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a
+   * sprintf format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}. Uses Intl.NumberFormat when available
+   * @default false
+   */
+  numberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Sort group keys numerically (type-aware: plain integers, range labels, composite keys)
    * instead of lexicographically
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -5112,7 +5558,7 @@ export interface CXConfig {
    * @graphTypes OptionsWall
    * @default false
    */
-  optionsWallChain?: string | boolean;
+  optionsWallChain?: Record<string, unknown> | boolean;
   /**
    * Expiry label shown in the flank panel titles (e.g. "2026-10-17")
    * @graphTypes OptionsWall
@@ -5432,11 +5878,19 @@ export interface CXConfig {
    */
   pieSegmentSeparation?: number | boolean;
   /**
-   * Position for the pices of the pie
+   * Shape of the pie: a full circle, or a half circle (semicircle, e.g. an election donut with
+   * pieInnerRadius)
+   * @graphTypes Pie
+   * @default "full"
+   */
+  pieShape?: "full" | "half" | false | (string & {});
+  /**
+   * Position for the pices of the pie. parliament draws one dot per seat on a hemicycle (the
+   * values are seat counts), grouped by party from left to right
    * @graphTypes Pie
    * @default "separated"
    */
-  pieType?: "separated" | "solid" | false | (string & {});
+  pieType?: "separated" | "solid" | "parliament" | false | (string & {});
   /**
    * Utility to pivot data with a sample annotation
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -5664,6 +6118,16 @@ export interface CXConfig {
    * @default 1
    */
   rAxisLogTicksWidth?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the R axis. Overrides numberFormat for
+   * this axis; an explicit rAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact|auto",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Circular
+   * @default false
+   */
+  rAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Flag to show on not the percent in each segment in the R axis
    * @graphTypes Circular
@@ -6004,6 +6468,15 @@ export interface CXConfig {
    */
   resizableY?: boolean;
   /**
+   * Width-based config overrides applied on render/resize, i.e. [{"maxWidth": 480, "config":
+   * {"legendPosition": "bottom", "fontScaleFontFactor": 0.8}}]. A rule matches when the canvas
+   * width is <= maxWidth and >= minWidth (either bound optional); later rules win on
+   * conflicting keys. Overrides revert automatically when the width stops matching and are
+   * never saved into the configuration
+   * @default []
+   */
+  responsiveRules?: unknown[] | boolean | string | number;
+  /**
    * Name of a sample annotation(s) to create a ribbon of each variable in scatter plots. If a
    * single annotation is passed then it will be used as a standard deviation. If two
    * annotations are passed then, it will be used as upper and lower confidence intervals.
@@ -6012,7 +6485,7 @@ export interface CXConfig {
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
    */
-  ribbonBy?: string | boolean;
+  ribbonBy?: string | unknown[] | boolean | number;
   /**
    * Type of ribbon to create
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -6134,6 +6607,16 @@ export interface CXConfig {
    * @default false
    */
   sankeyColorNodesByValue?: boolean;
+  /**
+   * Name of a sample annotation that flags a link (row) to be hidden from the Sankey/alluvial
+   * diagram. A truthy value (true/1/"yes") suppresses that flow ribbon WITHOUT removing it
+   * from the data, so the node values, box heights and the showDataValues number still count
+   * it. Use it to drop a noise branch visually while keeping each node total correct (issue
+   * #320)
+   * @graphTypes Sankey
+   * @default false
+   */
+  sankeyHide?: string | boolean;
   /**
    * Outline width (px) for the Sankey/alluvial flow ribbons. Left null the ribbons use the
    * default outlineWidth, which inflates a thin (low-value) flow into a solid ~1px line in its
@@ -6480,7 +6963,8 @@ export interface CXConfig {
    */
   scatterStreamWiggles?: unknown[] | boolean | string | number;
   /**
-   * Type of scatter plot
+   * Type of scatter plot. On a Scatter3D, density builds a kernel-density (kde2d) surface from
+   * 2D scattered points and renders it as a rotatable surface.
    * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
    * @default false
    */
@@ -6506,6 +6990,16 @@ export interface CXConfig {
    */
   scrollbarThumbHoverColor?: string | boolean;
   /**
+   * Object giving the explicit order of the facet levels, keyed by the annotation used in
+   * segregateSamplesBy / segregateVariablesBy, i.e. {"parameter": ["depicted", "speech",
+   * "thought", "narrative"]}. The facets are drawn in the order the array lists, the way an
+   * ordered factor fixes the panel order in R; a level the array omits keeps its natural order
+   * after the listed ones. Without it the levels are sorted (numerically when they are
+   * numbers, otherwise alphabetically)
+   * @default false
+   */
+  segregateLevelOrder?: Record<string, unknown> | boolean;
+  /**
    * An array that holds the annotation(s) used to segregate the samples ala Facet way in R. It
    * must be categories in the data.x object
    * @default []
@@ -6517,6 +7011,14 @@ export interface CXConfig {
    * @default []
    */
   segregateVariablesBy?: unknown[] | boolean | string | number;
+  /**
+   * Flag to make fit lines and confidence areas (regression, loess, forecast, Kaplan-Meier
+   * curves/bands, area/ribbon) clickable: a click selects and broadcasts the data the
+   * fit/curve was computed over (e.g. a KM arm selects its whole cohort)
+   * @graphTypes Scatter2D
+   * @default true
+   */
+  selectableFits?: boolean;
   /**
    * Variable / Sample names of data points (in the data object) to initially select
    * @default []
@@ -6966,6 +7468,14 @@ export interface CXConfig {
    */
   show3DGrid?: boolean;
   /**
+   * Flag to show/hide the minor (unlabeled) grid lines in 3D plots. Off by default for a
+   * cleaner surface; the per-axis xAxisGridMinorShow/yAxisGridMinorShow/zAxisGridMinorShow
+   * still hide individual axes when this is on
+   * @graphTypes Bar, Network, Scatter3D
+   * @default false
+   */
+  show3DMinorGrid?: boolean;
+  /**
    * Flag to show/hide the animation for the graphs
    * @default true
    */
@@ -7050,14 +7560,20 @@ export interface CXConfig {
    */
   showContourLevel?: boolean;
   /**
+   * Flag to show a "Get the data" link in the chart footer which downloads the current data as
+   * CSV
+   * @default false
+   */
+  showDataDownload?: boolean;
+  /**
    * Flag to show/hide the data labels in scatter plots
    * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
    * @default false
    */
   showDataLabels?: boolean;
   /**
-   * Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots and line
-   * graphs
+   * Flag to show/hide the data values in the bar graphs, stacked graphs, dotplots, line graphs
+   * and Sankey node labels
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
    * @default false
    */
@@ -7217,6 +7733,13 @@ export interface CXConfig {
    */
   showLineEdgeLegend?: boolean;
   /**
+   * Flag to show/hide the series name at the end of each line in line graphs, in the series
+   * color, replacing the legend (direct labeling). Overlapping labels are nudged apart
+   * @graphTypes Area, AreaLine, BarLine, DotLine, Line, ParallelCoordinates … (9 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  showLineEndLabels?: boolean;
+  /**
    * Flag to show/hide the legend line
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
    * @default true
@@ -7229,6 +7752,13 @@ export interface CXConfig {
    * @default false
    */
   showLoessFit?: string | boolean;
+  /**
+   * Flag to show/hide the region labels on maps (only labels that fit inside their region
+   * without overlapping another label are drawn, largest regions first)
+   * @graphTypes Map
+   * @default false
+   */
+  showMapLabels?: boolean;
   /**
    * Flag to show/hide the the overlays name
    * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
@@ -7421,11 +7951,25 @@ export interface CXConfig {
    */
   showSmpOverlaysLegend?: boolean;
   /**
+   * Opt-in flag to render the statInference block (pairwise significance brackets +
+   * p-value/stars) on one-dimensional group charts (Boxplot, Violin, Bar). Off by default so
+   * non-stat charts are unaffected.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  showStatInference?: boolean;
+  /**
    * Flag to show/hide the shadows in text in the canvas. It will be forced to false if the
    * browser is IE
    * @default false
    */
   showTextShadow?: boolean;
+  /**
+   * Flag to draw an XYZ raster tile basemap behind the map
+   * @graphTypes Map
+   * @default false
+   */
+  showTiles?: boolean;
   /**
    * Flag to show/hide the transitions for the graphs
    * @default false
@@ -7533,6 +8077,15 @@ export interface CXConfig {
    */
   sizeLabelBy?: string | boolean;
   /**
+   * Flag to draw the size legend as nested (concentric) bubbles sharing a common bottom edge,
+   * with a dashed leader line from each circle to its value label, instead of a column of
+   * separate size keys. Applies to proportional-circle size legends (e.g. a sizeBy bubble map
+   * or Dorling cartogram)
+   * @graphTypes Bar, BarLine, Boxplot, Bullet, Cleveland, DotLine … (19 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  sizeLegendNested?: boolean;
+  /**
    * Title for the size legend
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
@@ -7555,6 +8108,15 @@ export interface CXConfig {
    * @default [8,12,16,20,24,28,32,36,40,44,48]
    */
   sizes?: unknown[] | boolean | string | number;
+  /**
+   * Soften a 3D surface by stroking each facet with its own fill colour so adjacent facets
+   * blend seamlessly (no facet wireframe or seams). On by default for a soft look; combine
+   * with a higher fxSamples for the smoothest result. Set false to show the facet edges
+   * (outline3DColor)
+   * @graphTypes Bar, Network, Scatter3D
+   * @default true
+   */
+  smoothSurface?: boolean;
   /**
    * Flag to use extend the lines to the end of the terminal nodes when the newick is provided
    * for the sample (row) dendrogram
@@ -7680,6 +8242,14 @@ export interface CXConfig {
    */
   smpTextRotate?: number | boolean;
   /**
+   * Flag to automatically keep the sample (or grouping-factor) labels of vertical
+   * one-dimensional plots horizontal when the longest label fits its band, falling back to
+   * smpTextRotate otherwise. Re-evaluated on resize
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  smpTextRotateAuto?: boolean;
+  /**
    * Scaling factor used to increase or decrease the sample labels font size in the canvas
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default 1
@@ -7791,6 +8361,18 @@ export interface CXConfig {
    */
   sortOnGrouping?: string | boolean;
   /**
+   * Data source name shown in the chart footer as "Source: ...". Combine with sourceUrl to
+   * make it a link
+   * @default false
+   */
+  source?: string | boolean;
+  /**
+   * URL for the footer data source. When set with source, the "Source: ..." footer text
+   * becomes a clickable link (exports still include the text)
+   * @default false
+   */
+  sourceUrl?: string | boolean;
+  /**
    * Factor (in the x data object) used to split the samples ala split in a complex heatmap.
    * Unlike segregateSamplesBy, the split keeps a single full-width plot and only inserts a
    * thin gap (splitSeparation) at each group boundary
@@ -7830,6 +8412,20 @@ export interface CXConfig {
    */
   startPieSectors?: number | boolean;
   /**
+   * Renderer-first inference layer. An object with a comparisons array, each item {groups: [a,
+   * b] (category names or 1-based positions), p: rawPValue, optional padj, value (bracket
+   * height on the value axis), label, color}. Optional correction {method:
+   * "BH"|"bonferroni"|"BY"|"holm"|"hochberg"|"none"} applies native multiple-testing
+   * correction when padj is not supplied, and annotate ("p"|"padj"|"stars") selects what each
+   * bracket prints. Optional fdrThreshold (number) draws no bracket for a comparison whose
+   * corrected p (raw p when no correction applies) is above it. Test statistics are computed
+   * upstream (R/Python); only correction and star derivation run in the engine. Requires
+   * showStatInference:true.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  statInference?: Record<string, unknown> | unknown[] | boolean | string | number;
+  /**
    * Eviction policy applied by pushData() once the sample count exceeds streamWindow.
    * Currently only drop-oldest (remove the oldest samples first) is supported
    * @default "drop-oldest"
@@ -7842,6 +8438,31 @@ export interface CXConfig {
    * @default null
    */
   streamWindow?: number | boolean;
+  /**
+   * Fixed color for streamlines (stream mode). When unset (or "magnitude") streamlines are
+   * colored by velocity magnitude
+   * @graphTypes Scatter2D, Map
+   * @default false
+   */
+  streamlineColor?: string | boolean;
+  /**
+   * Seed a streamline every N grid cells (stream mode); larger values draw fewer streamlines
+   * @graphTypes Scatter2D, Map
+   * @default 2
+   */
+  streamlineSeedStride?: number | boolean;
+  /**
+   * RK4 step size as a fraction of the grid cell size (stream mode)
+   * @graphTypes Scatter2D, Map
+   * @default 0.5
+   */
+  streamlineStepSize?: number | boolean;
+  /**
+   * Maximum RK4 integration steps per streamline (stream mode)
+   * @graphTypes Scatter2D, Map
+   * @default 160
+   */
+  streamlineSteps?: number | boolean;
   /**
    * Array containing edge attributes. The numeric edge attributes will be treated as strings.
    * This parameter accomplishes the same as the function switchNumericToString for edges at
@@ -8108,6 +8729,24 @@ export interface CXConfig {
    */
   theme?: string | boolean;
   /**
+   * Transparency for the map fill drawn over the tile basemap
+   * @graphTypes Map
+   * @default 0.7
+   */
+  tileAlpha?: number | boolean;
+  /**
+   * Tile basemap style
+   * @graphTypes Map
+   * @default "street"
+   */
+  tileType?: "street" | "terrain" | "labels" | "satellite" | false | (string & {});
+  /**
+   * Zoom level before turning the map fill transparent over the tiles
+   * @graphTypes Map
+   * @default 6
+   */
+  tileZoomAlphaColor?: number | boolean;
+  /**
    * Time Format according to date.format.js Steven Levithan <stevenlevithan.com>
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default "isoDate"
@@ -8215,6 +8854,15 @@ export interface CXConfig {
    * @default false
    */
   tooltipFontColor?: string | boolean;
+  /**
+   * Number format for values displayed in tooltips. Overrides numberFormat. It could be a
+   * preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf format string,
+   * or an object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}. Uses
+   * Intl.NumberFormat when available
+   * @default false
+   */
+  tooltipNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Transparency for the tooltip
    * @default null
@@ -8523,6 +9171,12 @@ export interface CXConfig {
    */
   upsetSetsBarColor?: string | boolean;
   /**
+   * Ratio of the canvas width used by the set size bar plot on the left
+   * @graphTypes Heatmap
+   * @default 0.2
+   */
+  upsetSetsBarRatio?: number | boolean;
+  /**
    * Transparency of shading in matrix
    * @graphTypes Heatmap
    * @default 0.1
@@ -8540,12 +9194,6 @@ export interface CXConfig {
    * @default false
    */
   useBarnesHutSimulation?: boolean;
-  /**
-   * Flag to use leaflet
-   * @graphTypes Map
-   * @default false
-   */
-  useLeaflet?: boolean;
   /**
    * Flag to use round rectangles in bar graphs, stacked graphs and boxplots
    * @default false
@@ -8657,6 +9305,14 @@ export interface CXConfig {
    */
   varTextRotate?: number | boolean;
   /**
+   * Flag to automatically keep the variable labels along the bottom of a horizontal heatmap
+   * horizontal when the longest label fits its column band, falling back to varTextRotate
+   * otherwise. Re-evaluated on resize
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default true
+   */
+  varTextRotateAuto?: boolean;
+  /**
    * Scaling factor used to increase or decrease the variable text font size in the canvas
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default 1
@@ -8741,6 +9397,122 @@ export interface CXConfig {
    * @default false
    */
   variablesKmeaned?: boolean;
+  /**
+   * Length (pixels) of the arrowhead drawn at each vector tip / streamline midpoint
+   * @graphTypes Scatter2D, Map
+   * @default 7
+   */
+  vectorArrowSize?: number | boolean;
+  /**
+   * Flag to color raw arrows by velocity magnitude (gradient) instead of by the group
+   * annotation. Grid arrows and streamlines are always colored by magnitude unless
+   * streamlineColor is set
+   * @graphTypes Scatter2D, Map
+   * @default false
+   */
+  vectorColorByMagnitude?: boolean;
+  /**
+   * Color for the Fixed arrow color used in raw mode when there is no group annotation and
+   * vectorColorByMagnitude is off
+   * @graphTypes Scatter2D, Map
+   * @default "rgb(55,126,184)"
+   */
+  vectorColorValueColor?: string | boolean;
+  /**
+   * Fraction (0..1) of samples to draw in raw mode (subsampling for dense embeddings). 1 draws
+   * every sample
+   * @graphTypes Scatter2D, Map
+   * @default 1
+   */
+  vectorDensity?: number | boolean;
+  /**
+   * Vector-field rendering mode: raw draws one arrow per sample, grid averages the field onto
+   * a regular grid and draws one arrow per cell (quiver), stream draws integrated streamlines
+   * (streamplot)
+   * @graphTypes Scatter2D, Map
+   * @default "raw"
+   */
+  vectorFieldMode?: "raw" | "grid" | "stream" | false | (string & {});
+  /**
+   * Number of cells per axis when averaging the field onto a grid (grid mode) or sampling it
+   * for streamlines (stream mode)
+   * @graphTypes Scatter2D, Map
+   * @default 20
+   */
+  vectorGridSize?: number | boolean;
+  /**
+   * Column (sample) name holding a group label used to color raw arrows
+   * @graphTypes Scatter2D, Map
+   * @default false
+   */
+  vectorGroupBy?: string | boolean;
+  /**
+   * Qualitative hex colors used to color raw arrows by group (one per group, cycled). Defaults
+   * to ColorBrewer Set1
+   * @graphTypes Scatter2D, Map
+   * @default []
+   */
+  vectorGroupPalette?: unknown[] | boolean | string | number;
+  /**
+   * Rendered width (pixels) of the arrow shafts and streamlines
+   * @graphTypes Scatter2D, Map
+   * @default 1
+   */
+  vectorLineWidth?: number | boolean;
+  /**
+   * Velocity magnitude below which streamline integration stops (stream mode). Defaults to 1%
+   * of the maximum magnitude
+   * @graphTypes Scatter2D, Map
+   * @default false
+   */
+  vectorMinMagnitude?: number | boolean;
+  /**
+   * Ordered hex color stops (low to high magnitude) for the vector / streamline magnitude
+   * gradient. Defaults to a blue-white-red ramp
+   * @graphTypes Scatter2D, Map
+   * @default []
+   */
+  vectorPalette?: unknown[] | boolean | string | number;
+  /**
+   * Multiplier applied to the auto arrow length (raw / grid modes). Larger values draw longer
+   * arrows
+   * @graphTypes Scatter2D, Map
+   * @default 1
+   */
+  vectorScale?: number | boolean;
+  /**
+   * Flag to show the vector-field legend (magnitude color ramp, or the group legend in raw
+   * mode)
+   * @graphTypes Scatter2D, Map
+   * @default true
+   */
+  vectorShowLegend?: boolean;
+  /**
+   * Column (sample) name holding the x velocity component when the input is a standard
+   * Scatter2D matrix
+   * @graphTypes Scatter2D, Map
+   * @default "vx"
+   */
+  vectorUBy?: string | boolean;
+  /**
+   * Column (sample) name holding the y velocity component when the input is a standard
+   * Scatter2D matrix
+   * @graphTypes Scatter2D, Map
+   * @default "vy"
+   */
+  vectorVBy?: string | boolean;
+  /**
+   * Column (sample) name holding the x position when the input is a standard Scatter2D matrix
+   * @graphTypes Scatter2D, Map
+   * @default "x"
+   */
+  vectorXBy?: string | boolean;
+  /**
+   * Column (sample) name holding the y position when the input is a standard Scatter2D matrix
+   * @graphTypes Scatter2D, Map
+   * @default "y"
+   */
+  vectorYBy?: string | boolean;
   /**
    * Colors for the Venn bubles. If not specified the colors will be chosen from the colors
    * array. Colors in this array need to be at least the same number of groups in the Venn
@@ -8856,6 +9628,16 @@ export interface CXConfig {
    */
   visiumPanning?: boolean;
   /**
+   * Promotes a Volcano chart (Scatter2D of log2 fold-change vs -log10 p-value) by auto-seeding
+   * significance cut-off lines: {foldChange: <log2 FC cutoff>, fdr: <p/FDR cutoff on the raw
+   * scale>, foldChangeColor, fdrColor, width}. Draws vertical rules at +/- foldChange and a
+   * horizontal rule at -log10(fdr) using the scatter decoration path. Omit to keep the plain
+   * Volcano alias.
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  volcano?: Record<string, unknown> | boolean;
+  /**
    * Color for the bars decreasing in the waterfall plot
    * @graphTypes Bar
    * @default "rgb(254, 105, 105)"
@@ -8960,6 +9742,15 @@ export interface CXConfig {
    * @default "rgba(83, 105, 255, 0.05)"
    */
   widgetsStripedColor?: string | boolean;
+  /**
+   * Light or dark UI widgets (toolbar, menus, Customizer, data table and filters, dialogs).
+   * theme follows the chart theme (cxdark and cxblue are dark; the
+   * paper/slate/mono/sunrise/ocean/midnight/graphite/forest themes give the widgets that same
+   * style; auto follows the OS) and otherwise the page container, e.g. a dark dashboard; auto
+   * follows the OS appearance
+   * @default "theme"
+   */
+  widgetsTheme?: "theme" | "light" | "dark" | "auto" | false | (string & {});
   /**
    * Factor to adjust the width of the graph elements in one-dimensional and three-dimensional
    * plots. The greater the number, the wider the elements
@@ -9139,6 +9930,17 @@ export interface CXConfig {
    */
   xAxis2?: unknown[] | boolean | string | number;
   /**
+   * Locale-aware number format for the tick values in the second X axis. Overrides
+   * numberFormat for this axis; an explicit xAxis2TickFormat takes precedence over it. It
+   * could be a preset name (comma, percent, dollar, euro, pound, yen, compact), a sprintf
+   * format string, or an object, i.e. {"locale": "en-US", "style":
+   * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
+   * "prefix": "", "suffix": ""}
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  xAxis2NumberFormat?: string | Record<string, unknown> | boolean;
+  /**
    * Flag to rotate 180 degrees the direction of the X axis on the top
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
    * @default false
@@ -9171,6 +9973,14 @@ export interface CXConfig {
    * @default false
    */
   xAxis2Title?: string | boolean;
+  /**
+   * Number of major ticks on the 3D X axis. When false (default) the count is chosen
+   * automatically from the data range (nice numbers, bounded 4-10); set a positive integer to
+   * force an exact count
+   * @graphTypes Bar, Network, Scatter3D
+   * @default 0
+   */
+  xAxis3DTicks?: number | boolean;
   /**
    * Value to ceil the data in the X axis
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -9376,6 +10186,16 @@ export interface CXConfig {
    * @default 2
    */
   xAxisMinorTicks?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the X axis. Overrides numberFormat for
+   * this axis; an explicit xAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact|auto",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  xAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Size in pixels for the data rug in the X axis
    * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
@@ -9642,6 +10462,14 @@ export interface CXConfig {
    */
   yAxis2Title?: string | boolean;
   /**
+   * Number of major ticks on the 3D Y (value) axis. When false (default) the count is chosen
+   * automatically from the data range (nice numbers, bounded 4-10); set a positive integer to
+   * force an exact count
+   * @graphTypes Bar, Network, Scatter3D
+   * @default 0
+   */
+  yAxis3DTicks?: number | boolean;
+  /**
    * Value to ceil the data in the Y axis
    * @graphTypes Bin, Binplot, CDF, Contour, Density, Distribution … (21 types; see CXGraphTypeKeys)
    * @default null
@@ -9846,6 +10674,16 @@ export interface CXConfig {
    * @default 2
    */
   yAxisMinorTicks?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the Y axis. Overrides numberFormat for
+   * this axis; an explicit yAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact|auto",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes Bin, Binplot, CDF, Contour, Density, Distribution … (21 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  yAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Size in pixels for the data rug in the Y axis
    * @graphTypes Bin, Binplot, CDF, Contour, Density, Distribution … (21 types; see CXGraphTypeKeys)
@@ -10109,6 +10947,14 @@ export interface CXConfig {
    */
   zAxis2Title?: string | boolean;
   /**
+   * Number of major ticks on the 3D Z axis. When false (default) the count is chosen
+   * automatically from the data range (nice numbers, bounded 4-10); set a positive integer to
+   * force an exact count
+   * @graphTypes Bar, Network, Scatter3D
+   * @default 0
+   */
+  zAxis3DTicks?: number | boolean;
+  /**
    * Value to ceil the data in the Z axis
    * @graphTypes ScatterBubble2D, Scatter3D
    * @default null
@@ -10235,6 +11081,16 @@ export interface CXConfig {
    * @default 1
    */
   zAxisLogTicksWidth?: number | boolean;
+  /**
+   * Locale-aware number format for the tick values in the Z axis. Overrides numberFormat for
+   * this axis; an explicit zAxisTickFormat takes precedence over it. It could be a preset name
+   * (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an
+   * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact|auto",
+   * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
+   * @graphTypes ScatterBubble2D, Scatter3D
+   * @default false
+   */
+  zAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Set the tick labels paired one-to-one with zAxisSetValues in the Z axis
    * @graphTypes ScatterBubble2D, Scatter3D
@@ -10499,15 +11355,22 @@ export interface CXConfig {
 // ---- Per-graph-type key sets (generated from x-cx-graphtypes) ----------
 /** Config keys in the "3D Attributes" category. */
 export type CXKeys3DAttributes =
+  | "aspect3D"
+  | "fxSamples"
   | "outline3DColor"
   | "perspectiveFactor"
   | "rotationSensitivity"
   | "show3DGrid"
+  | "show3DMinorGrid"
+  | "smoothSurface"
   | "x3DRatio"
+  | "xAxis3DTicks"
   | "xRotate"
   | "y3DRatio"
+  | "yAxis3DTicks"
   | "yRotate"
   | "z3DRatio"
+  | "zAxis3DTicks"
   | "zRotate";
 /** Config keys in the "Animations and Visualization Transitions" category. */
 export type CXKeysAnimationsandVisualizationTransitions =
@@ -10520,6 +11383,8 @@ export type CXKeysAnimationsandVisualizationTransitions =
   | "transitionType";
 /** Config keys in the "Area Graphs" category. */
 export type CXKeysAreaGraphs =
+  | "areaColumnWidth"
+  | "areaShowColumns"
   | "areaStyle"
   | "areaType";
 /** Config keys in the "Aspect Ratio, Space and Width" category. */
@@ -10633,6 +11498,7 @@ export type CXKeysCircularGraphs =
   | "circularType";
 /** Config keys in the "Citations or References" category. */
 export type CXKeysCitationsorReferences =
+  | "byline"
   | "citation"
   | "citationAlign"
   | "citationBaseline"
@@ -10641,7 +11507,12 @@ export type CXKeysCitationsorReferences =
   | "citationFontStyle"
   | "citationMargin"
   | "citationRotate"
-  | "citationScaleFontFactor";
+  | "citationScaleFontFactor"
+  | "footerAlign"
+  | "notes"
+  | "showDataDownload"
+  | "source"
+  | "sourceUrl";
 /** Config keys in the "Clustering" category. */
 export type CXKeysClustering =
   | "clusterAxis"
@@ -10655,13 +11526,31 @@ export type CXKeysClustering =
   | "samplesKmeaned"
   | "variablesClustered"
   | "variablesKmeaned";
+/** Config keys in the "Clustree Plots" category. */
+export type CXKeysClustreePlots =
+  | "clustreeArrowSize"
+  | "clustreeEdgeArrows"
+  | "clustreeEdgeMinAlpha"
+  | "clustreeEdgePalette"
+  | "clustreeEdgeWidth"
+  | "clustreeFlip"
+  | "clustreeNodeLabels"
+  | "clustreeNodePalette"
+  | "clustreeNodeTextSize"
+  | "clustreePrefix"
+  | "clustreeShowAxes"
+  | "clustreeShowEdgeLegend"
+  | "clustreeSweeps";
 /** Config keys in the "Colors" category. */
 export type CXKeysColors =
   | "blindnessType"
+  | "colorLegendLabels"
+  | "colorLegendSteps"
   | "colorScheme"
   | "colorSpectrum"
   | "colorSpectrumBinned"
   | "colorSpectrumBreaks"
+  | "colorSpectrumBreaksMethod"
   | "colorSpectrumByFactor"
   | "colorSpectrumByObject"
   | "colorSpectrumZeroValue"
@@ -10703,6 +11592,7 @@ export type CXKeysConfidenceIntervals =
   | "confidenceIntervalColorCoordinate"
   | "confidenceIntervalsMax"
   | "confidenceLevel"
+  | "selectableFits"
   | "showConfidenceIntervals";
 /** Config keys in the "Context Menu" category. */
 export type CXKeysContextMenu =
@@ -10721,6 +11611,7 @@ export type CXKeysContours =
   | "contourLevelNumber"
   | "contourLevelWidth"
   | "contourLevels"
+  | "contourPoints"
   | "contourStat"
   | "contourType"
   | "isContour"
@@ -10751,6 +11642,8 @@ export type CXKeysData =
   | "dataTextMargin"
   | "dataTextRotate"
   | "dataTextScaleFontFactor"
+  | "drillBreadcrumb"
+  | "drillHierarchy"
   | "groupingFactorLevelsOrder"
   | "groupingFactors"
   | "groupingFactorsLabelsHide"
@@ -10780,6 +11673,8 @@ export type CXKeysDataCustomizer =
   | "maxDataCustomizerEntries";
 /** Config keys in the "Data Faceting" category. */
 export type CXKeysDataFaceting =
+  | "layoutSpaceFree"
+  | "segregateLevelOrder"
   | "segregateSamplesBy"
   | "segregateVariablesBy"
   | "splitSamplesBy"
@@ -10913,11 +11808,15 @@ export type CXKeysDataTable =
   | "dataTableColOrder"
   | "dataTableColPin"
   | "dataTableColProperties"
+  | "dataTableColRenderer"
   | "dataTableColWidth"
   | "dataTableColorTransparency"
   | "dataTableColored"
+  | "dataTableFitHeight"
+  | "dataTableFitWidth"
   | "dataTableGrouped"
   | "dataTableHeaderBackgroundColor"
+  | "dataTableHeaderIcons"
   | "dataTableHeaderTemplate"
   | "dataTableHeaderTextAlign"
   | "dataTableHeaderTextBaseline"
@@ -11004,7 +11903,8 @@ export type CXKeysDataUIWidgets =
   | "widgetsIconClsBColor"
   | "widgetsIconClsCColor"
   | "widgetsIconClsXColor"
-  | "widgetsStripedColor";
+  | "widgetsStripedColor"
+  | "widgetsTheme";
 /** Config keys in the "Debug" category. */
 export type CXKeysDebug =
   | "codeType"
@@ -11041,7 +11941,10 @@ export type CXKeysDecorations =
   | "decorationsWidth"
   | "showDecorations"
   | "showDecorationsBorder"
-  | "showDecorationsLegend";
+  | "showDecorationsLegend"
+  | "showStatInference"
+  | "statInference"
+  | "volcano";
 /** Config keys in the "Dendrograms" category. */
 export type CXKeysDendrograms =
   | "colorSmpDendrogramBy"
@@ -11064,6 +11967,7 @@ export type CXKeysDensityPlots =
   | "bandwidthCut"
   | "bandwidthRule"
   | "densityKernel"
+  | "densityPoints"
   | "densityPosition"
   | "showScatterDensity";
 /** Config keys in the "Dotplot Graphs" category. */
@@ -11071,6 +11975,7 @@ export type CXKeysDotplotGraphs =
   | "dotplotType";
 /** Config keys in the "Dumbbell Graphs" category. */
 export type CXKeysDumbbellGraphs =
+  | "dumbbellArrowDirection"
   | "dumbbellType";
 /** Config keys in the "Error Bars" category. */
 export type CXKeysErrorBars =
@@ -11313,6 +12218,9 @@ export type CXKeysHeatmapGraphs =
   | "heatmapCellMarkerSize"
   | "heatmapCellMarkerWidth"
   | "heatmapCellMarkers"
+  | "heatmapCellSpace"
+  | "heatmapCellText"
+  | "heatmapCellTextColorColor"
   | "heatmapCollapse"
   | "heatmapHighlightByRowCol"
   | "heatmapHighlightByRowColIntersectionColor"
@@ -11418,6 +12326,7 @@ export type CXKeysLegends =
   | "legendDirection"
   | "legendHorizontalJustification"
   | "legendInside"
+  | "legendJustifyTo"
   | "legendKeyBackgroundBorderColor"
   | "legendKeyBackgroundBorderLineType"
   | "legendKeyBackgroundBorderSize"
@@ -11428,6 +12337,7 @@ export type CXKeysLegends =
   | "legendOrder"
   | "legendOrderByCols"
   | "legendPosition"
+  | "legendPositionAuto"
   | "legendRows"
   | "legendStyleGgplot"
   | "legendTextAlign"
@@ -11467,13 +12377,15 @@ export type CXKeysLegends =
   | "showSizeLabelLegend"
   | "showSizeLegend"
   | "showSizeNodeLegend"
-  | "showVariableLegend";
+  | "showVariableLegend"
+  | "sizeLegendNested";
 /** Config keys in the "Line Graphs" category. */
 export type CXKeysLineGraphs =
   | "coordinateLineColor"
   | "lineDecoration"
   | "lineErrorType"
   | "lineType"
+  | "showLineEndLabels"
   | "tension"
   | "tensionSegments";
 /** Config keys in the "Lines" category. */
@@ -11522,16 +12434,23 @@ export type CXKeysManhattanPlots =
 /** Config keys in the "Maps" category. */
 export type CXKeysMaps =
   | "hiddenMapFeatures"
+  | "mapBubbleColor"
+  | "mapCartogramScale"
+  | "mapCartogramSilhouette"
   | "mapColor"
   | "mapConfig"
   | "mapConfigFeatures"
   | "mapId"
+  | "mapLabelColor"
+  | "mapLabelProperty"
   | "mapMarkerShape"
   | "mapMarkerShapeScaleFactor"
   | "mapOutlineColor"
   | "mapProjection"
   | "mapSmps"
+  | "mapType"
   | "mapZipCodeIds"
+  | "showMapLabels"
   | "topoJSON"
   | "visibleMapFeatures";
 /** Config keys in the "Maps Albers" category. */
@@ -11540,16 +12459,16 @@ export type CXKeysMapsAlbers =
   | "mapLatitudeOrigin"
   | "mapStandardParallel1"
   | "mapStandardParallel2";
-/** Config keys in the "Maps Leaflet" category. */
-export type CXKeysMapsLeaflet =
-  | "leafletAlpha"
-  | "leafletTileType"
-  | "leafletZoomAlphaColor"
-  | "useLeaflet";
 /** Config keys in the "Maps Orthographic" category. */
 export type CXKeysMapsOrthographic =
   | "mapGraticuleShow"
   | "mapGraticuleType";
+/** Config keys in the "Maps Tiles" category. */
+export type CXKeysMapsTiles =
+  | "showTiles"
+  | "tileAlpha"
+  | "tileType"
+  | "tileZoomAlphaColor";
 /** Config keys in the "Marginal Text" category. */
 export type CXKeysMarginalText =
   | "bottomMarginalText"
@@ -11764,6 +12683,7 @@ export type CXKeysPieCharts =
   | "pieSegmentLabels"
   | "pieSegmentPrecision"
   | "pieSegmentSeparation"
+  | "pieShape"
   | "pieType"
   | "showPieSampleLabel"
   | "showPieValues"
@@ -11771,9 +12691,12 @@ export type CXKeysPieCharts =
 /** Config keys in the "Plot Area" category. */
 export type CXKeysPlotArea =
   | "binAlignment"
+  | "binMethod"
+  | "binWidth"
   | "binned"
   | "blockContrast"
   | "dataValuesFrequency"
+  | "dataValuesHideOverlap"
   | "dataValuesPosition"
   | "dotplotOutlineThreshold"
   | "guideStyle"
@@ -11799,9 +12722,13 @@ export type CXKeysPlotDataType =
   | "isCxplot"
   | "isDataFrame"
   | "isGGMatrix"
-  | "isR";
+  | "isR"
+  | "responsiveRules";
 /** Config keys in the "Plot Mode" category. */
 export type CXKeysPlotMode =
+  | "demo"
+  | "demoAutoPlay"
+  | "demoSpeed"
   | "isEditable"
   | "isReproducibleResearch"
   | "reproduceTime"
@@ -11866,6 +12793,7 @@ export type CXKeysRAxis =
   | "rAxisLogTicksShow"
   | "rAxisLogTicksTransparency"
   | "rAxisLogTicksWidth"
+  | "rAxisNumberFormat"
   | "rAxisPercentShow"
   | "rAxisSetLabels"
   | "rAxisSetMinorValues"
@@ -11944,6 +12872,7 @@ export type CXKeysSamples =
   | "smpTextFontStyle"
   | "smpTextMargin"
   | "smpTextRotate"
+  | "smpTextRotateAuto"
   | "smpTextScaleFontFactor"
   | "smpTitle"
   | "smpTitleAlign"
@@ -11953,12 +12882,14 @@ export type CXKeysSamples =
   | "smpTitleFontStyle"
   | "smpTitleMargin"
   | "smpTitleRotate"
-  | "smpTitleScaleFontFactor";
+  | "smpTitleScaleFontFactor"
+  | "varTextRotateAuto";
 /** Config keys in the "Sankey Diagrams" category. */
 export type CXKeysSankeyDiagrams =
   | "sankeyAxes"
   | "sankeyAxesOrder"
   | "sankeyColorNodesByValue"
+  | "sankeyHide"
   | "sankeyLinkLineWidth"
   | "sankeyLinkOrder"
   | "sankeyLinksColor"
@@ -12070,6 +13001,8 @@ export type CXKeysText =
   | "align"
   | "autoScaleFont"
   | "baseline"
+  | "dataFilterNumberFormat"
+  | "dataLabelNumberFormat"
   | "fontColor"
   | "fontName"
   | "fontScaleFontFactor"
@@ -12077,8 +13010,11 @@ export type CXKeysText =
   | "fontStyle"
   | "fonts"
   | "fontsExternal"
+  | "legendNumberFormat"
   | "maxTextSize"
-  | "minTextSize";
+  | "minTextSize"
+  | "numberFormat"
+  | "tooltipNumberFormat";
 /** Config keys in the "Text Placement" category. */
 export type CXKeysTextPlacement =
   | "optimizeTextPosition"
@@ -12088,6 +13024,7 @@ export type CXKeysTextPlacement =
   | "optimizeTextPositionTemperature";
 /** Config keys in the "Titles and Subtitles" category. */
 export type CXKeysTitlesandSubtitles =
+  | "a11yDescription"
   | "subtitle"
   | "subtitleAlign"
   | "subtitleBaseline"
@@ -12145,6 +13082,7 @@ export type CXKeysUpSetPlots =
   | "upsetMatrixPlotBarRatio"
   | "upsetPointSizeFactor"
   | "upsetSetsBarColor"
+  | "upsetSetsBarRatio"
   | "upsetShadeAlpha"
   | "upsetShadeColor";
 /** Config keys in the "Variables" category. */
@@ -12171,6 +13109,30 @@ export type CXKeysVariables =
   | "varTitleMargin"
   | "varTitleRotate"
   | "varTitleScaleFontFactor";
+/** Config keys in the "Vector Field Plots" category. */
+export type CXKeysVectorFieldPlots =
+  | "mapVectorField"
+  | "streamlineColor"
+  | "streamlineSeedStride"
+  | "streamlineStepSize"
+  | "streamlineSteps"
+  | "vectorArrowSize"
+  | "vectorColorByMagnitude"
+  | "vectorColorValueColor"
+  | "vectorDensity"
+  | "vectorFieldMode"
+  | "vectorGridSize"
+  | "vectorGroupBy"
+  | "vectorGroupPalette"
+  | "vectorLineWidth"
+  | "vectorMinMagnitude"
+  | "vectorPalette"
+  | "vectorScale"
+  | "vectorShowLegend"
+  | "vectorUBy"
+  | "vectorVBy"
+  | "vectorXBy"
+  | "vectorYBy";
 /** Config keys in the "Venn Diagrams" category. */
 export type CXKeysVennDiagrams =
   | "vennColors"
@@ -12239,6 +13201,7 @@ export type CXKeysXAxis =
   | "setPanningMinX"
   | "xAxis"
   | "xAxis2"
+  | "xAxis2NumberFormat"
   | "xAxis2Rotate"
   | "xAxis2Show"
   | "xAxis2TickFormat"
@@ -12278,6 +13241,7 @@ export type CXKeysXAxis =
   | "xAxisLogTicksTransparency"
   | "xAxisLogTicksWidth"
   | "xAxisMinorTicks"
+  | "xAxisNumberFormat"
   | "xAxisRugHeight"
   | "xAxisRugPosition"
   | "xAxisRugShow"
@@ -12359,6 +13323,7 @@ export type CXKeysYAxis =
   | "yAxisLogTicksTransparency"
   | "yAxisLogTicksWidth"
   | "yAxisMinorTicks"
+  | "yAxisNumberFormat"
   | "yAxisRugHeight"
   | "yAxisRugPosition"
   | "yAxisRugShow"
@@ -12423,6 +13388,7 @@ export type CXKeysZAxis =
   | "zAxisLogTicksShow"
   | "zAxisLogTicksTransparency"
   | "zAxisLogTicksWidth"
+  | "zAxisNumberFormat"
   | "zAxisSetLabels"
   | "zAxisSetMinorValues"
   | "zAxisSetValues"
@@ -12483,19 +13449,19 @@ export interface CXGraphTypeKeys {
   "Bar": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysLollipopGraphs | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysSwimmerGraphs | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWaterfallGraphs | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "BarLine": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Boxplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBoxplotGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysViolinPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Bin": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Binplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Bin": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Binplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Bubble": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBubbleGraphs | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Bullet": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysBulletGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysLollipopGraphs | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysSwimmerGraphs | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWaterfallGraphs | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Bump": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "CDF": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Bump": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "CDF": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Chord": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysChordGraphs | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Circular": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Cleveland": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Contour": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Contour": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Correlation": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysCorrelationGraphs | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Density": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Distribution": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Density": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Distribution": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Donut": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "DotLine": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Dotplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
@@ -12504,13 +13470,13 @@ export interface CXGraphTypeKeys {
   "Gantt": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGanttCharts | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Genome": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataSelection | CXKeysDataTable | CXKeysDataUIWidgets | CXKeysDebug | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGenomeBrowser | CXKeysGenomeBrowserFeatures | CXKeysGenomeBrowserSequences | CXKeysGenomeBrowserTracks | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysWorkflowCharts | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Heatmap": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHeatmapColorIndicators | CXKeysHeatmapGraphs | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOncoprintGraphs | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysUpSetPlots | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Hex": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Hexplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Histogram": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "KaplanMeier": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Hex": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Hexplot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Histogram": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "KaplanMeier": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Line": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Lollipop": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysLollipopGraphs | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysSwimmerGraphs | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWaterfallGraphs | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Map": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMaps | CXKeysMapsAlbers | CXKeysMapsLeaflet | CXKeysMapsOrthographic | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Map": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMaps | CXKeysMapsAlbers | CXKeysMapsOrthographic | CXKeysMapsTiles | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Meter": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMeterGraphs | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Network": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataSelection | CXKeysDataTable | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysNetworkAlgorithmParameters | CXKeysNetworkColaAlgorithmParameters | CXKeysNetworkCommunities | CXKeysNetworkGraphs | CXKeysNetworkNodeandEdgeAttributes | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysWorkflowCharts | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Oncoprint": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHeatmapColorIndicators | CXKeysHeatmapGraphs | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOncoprintGraphs | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysUpSetPlots | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
@@ -12518,32 +13484,32 @@ export interface CXGraphTypeKeys {
   "ParallelCoordinates": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Pareto": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Pie": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPieCharts | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "QQ": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Quantile": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "QQ": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Quantile": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Radar": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Ribbon": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysSankeyDiagrams | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Ridgeline": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Ridgeline": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDensityPlots | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Sankey": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysSankeyDiagrams | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Scatter2D": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Scatter2D": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Scatter3D": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "ScatterBubble2D": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Spaghetti": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "SPLOM": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Spaghetti": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "SPLOM": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Stacked": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "StackedLine": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "StackedPercent": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "StackedPercentLine": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Streamgraph": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Streamgraph": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Sunburst": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCircularGraphArcSectors | CXKeysCircularGraphConnections | CXKeysCircularGraphTracks | CXKeysCircularGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysIdeograms | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRAxis | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "TagCloud": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysTagCloud | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "TimeSeries": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "TimeSeries": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Tornado": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Tree": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysTreeBracket | CXKeysTrees | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "TreeBracket": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHierarchy | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysTreeBracket | CXKeysTrees | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Treemap": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysTreemapGraphs | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Upset": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHeatmapColorIndicators | CXKeysHeatmapGraphs | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOncoprintGraphs | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysUpSetPlots | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Violin": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBoxplotGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDensityPlots | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysViolinPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
-  "Volcano": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Volcano": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Venn": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataSelection | CXKeysDataTable | CXKeysDataUIWidgets | CXKeysDebug | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVennDiagrams | CXKeysWorkflowCharts | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Waterfall": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysLollipopGraphs | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysSwimmerGraphs | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWaterfallGraphs | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "WordCloud": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysTagCloud | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;

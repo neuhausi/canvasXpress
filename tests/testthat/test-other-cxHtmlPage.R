@@ -73,7 +73,7 @@ test_that("scatterplot cxHtmlPage", {
 # ---------------------------------------------------------------------------
 
 test_that("cxHtmlPage warns and returns NULL when the placeholder is missing (0 hits)", {
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
     skip_if_no_pandoc()
 
     result <- get_scatter_chart()
@@ -97,7 +97,7 @@ test_that("cxHtmlPage warns and returns NULL when the placeholder is missing (0 
 })
 
 test_that("cxHtmlPage warns and returns NULL when the placeholder appears twice (2 hits)", {
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
     skip_if_no_pandoc()
 
     result <- get_scatter_chart()
@@ -126,7 +126,7 @@ test_that("cxHtmlPage warns and returns NULL when the placeholder appears twice 
 # ---------------------------------------------------------------------------
 
 test_that("cxHtmlPage converts a saveWidget failure into a warning and returns NULL", {
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
     skip_if_no_pandoc()
 
     result <- get_scatter_chart()
@@ -147,7 +147,7 @@ test_that("cxHtmlPage converts a saveWidget failure into a warning and returns N
 })
 
 test_that("cxHtmlPage converts an rmarkdown::render failure into a warning and returns NULL", {
-    skip_if_not_installed("testthat", "3.1.4")
+    skip_if(!exists("local_mocked_bindings", where = "package:testthat"))
     skip_if_no_pandoc()
 
     result <- get_scatter_chart()

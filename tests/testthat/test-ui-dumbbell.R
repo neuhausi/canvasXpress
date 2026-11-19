@@ -39,3 +39,41 @@ test_that("cXdumbbell7", {
 test_that("cXdumbbell8", {
     check_ui_test(cXdumbbell8())
 })
+
+test_that("cXdumbbell9", {
+    check_ui_test(cXdumbbell9())
+})
+
+test_that("cXdumbbell10", {
+    check_ui_test(cXdumbbell10())
+})
+
+test_that("cXdumbbell11", {
+    check_ui_test(cXdumbbell11())
+})
+
+test_that("cXdumbbell12", {
+    check_ui_test(cXdumbbell2())
+})
+
+test_that("cXdumbbell13", {
+    check_ui_test(cXdumbbell13())
+})
+
+test_that("cXdumbbell14", {
+    check_ui_test(cXdumbbell14())
+})
+
+test_that("cXdumbbell15", {
+    check_ui_test(cXdumbbell5())
+})
+
+test_that("cXdumbbell16", {
+    check_ui_test(cXdumbbell16())
+})
+
+test_that("cXdumbbell17", {
+    check_ui_test(cXdumbbell17())
+})
+
+

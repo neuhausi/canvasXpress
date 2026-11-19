@@ -76,6 +76,30 @@ test_that("cXbar17", {
     check_ui_test(cXbar17())
 })
 
+test_that("cXbar18", {
+    check_ui_test(cXbar18())
+})
+
+test_that("cXbar19", {
+    check_ui_test(cXbar19())
+})
+
+test_that("cXbar20", {
+    check_ui_test(cXbar20())
+})
+
+test_that("cXbar21", {
+    check_ui_test(cXbar21())
+})
+
+test_that("cXbar22", {
+    check_ui_test(cXbar22())
+})
+
+test_that("cXbar23", {
+    check_ui_test(cXbar23())
+})
+
 test_that("cXswimmer1", {
     check_ui_test(cXswimmer1())
 })
