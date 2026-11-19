@@ -1,5 +1,5 @@
 {
- "x-cx-version": "74.5",
+ "x-cx-version": "74.6",
  "generatedBy": "tools/schema/generate-rd.js",
  "count": 1811,
  "parameters": [
@@ -10623,9 +10623,9 @@
   },
   {
    "parameter": "theme",
-   "type": "string|boolean",
+   "type": "string|array|boolean|number",
    "default": "none",
-   "description": "The style for the plot or theme will control all the non-data elements of the plot including titles, legends, axes, panel and plot background colors and other stylistic elements"
+   "description": "The style for the plot or theme will control all the non-data elements of the plot including titles, legends, axes, panel and plot background colors and other stylistic elements. Accepts a single style name, or a two-member array [chartTheme, widgetsStyle] to pair a chart theme with a widgets look (for example ['economist', 'bms']); a widgets-only name fills the widgets slot alone"
   },
   {
    "parameter": "tileAlpha",
