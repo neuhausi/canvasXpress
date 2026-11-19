@@ -6560,7 +6560,10 @@ span.cX-Customizer-SearchCurrent:after {
   overflow: hidden;
   padding: 1px 12px;
   width: 200px;
-  height: 185px;
+  /* Tall enough for the set variant (Password + Re-enter + Update) once the
+     fields are lowered (.cX-Password-Container top:30px) to clear the close icon;
+     the shorter unlock variant overrides this inline in showPaswrdDiv. */
+  height: 205px;
   white-space: nowrap;
   position: relative;
   text-align: left;
@@ -6579,14 +6582,17 @@ span.cX-Customizer-SearchCurrent:after {
 .cX-Password-Container {
   box-sizing: border-box;
   background-color: var(--cx-background-widgets-color, var(--cx-ui-surface));
-  border: 1px var(--cx-border-style) var(--cx-datatable-border-color, var(--cx-ui-border-accent));
-  border-radius: 0px 0px 5px 5px;
+  /* No inner border: the dialog (.cX-Password-Dialog) already frames the widget;
+     a second border here double-framed it. */
+  border: none;
   color: var(--cx-font-color, var(--cx-ui-text));
   display: block;
   left: 0px;
   line-height: 100%;
   position: relative;
-  top: 15px;
+  /* Start the fields below the floated close icon (24px + 5px margin) so the
+     container's background never overlaps/clips the icon's circle. */
+  top: 30px;
   margin-top: 5px;
 }
 
@@ -6599,12 +6605,24 @@ span.cX-Customizer-SearchCurrent:after {
 .cX-Password-Input {
   float: left;
   margin-bottom: 5px;
+  margin-left: 5px;
   padding: 5px;
   border-radius: var(--cx-border-radius);
   border: 1px solid var(--cx-datatable-border-color, var(--cx-ui-border-accent));
   background-color: var(--cx-background-widgets-color, var(--cx-ui-surface));
   color: var(--cx-font-color, var(--cx-ui-text));
-  width: 170px;
+  width: 150px;
+  /* The field is type=search (for the native clear × button); mask the text so
+     it still reads as a password. WebKit/Chromium — the same engines that render
+     the ::-webkit-search-cancel-button clear control below. */
+  -webkit-text-security: disc;
+}
+
+/* The native clear (×) control — appears when the field has text; clicking it
+   empties just that field (pure CSS, no JS). */
+.cX-Password-Input::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+  cursor: pointer;
 }
 
 /*
@@ -9664,6 +9682,51 @@ body.has-fullscreen {
   flex-direction: column;
   width: var(--base-w);
   height: var(--base-h);
+}
+
+/* Accessibility: honour prefers-reduced-motion. The HTML chrome reveals and resizes via CSS
+   transitions (the 0.5s toolbar-edge reveal, the container resize on a view/menu change, the
+   wrapper resize, etc.). For a viewer whose OS asks for reduced motion, snap these to their
+   final state instead of animating — no slide / fade / resize. Scoped to the CanvasXpress root
+   so the host page is untouched, and only active when reduced-motion is ON (default users are
+   unaffected). It also makes the widget-chrome regression gate deterministic (that gate runs
+   reducedMotion:'reduce'): with nothing animating, a capture can never land mid-transition.
+   The engine has honoured reduced-motion for CANVAS transitions since 74.0; this extends the
+   same courtesy to the surrounding HTML widgets, which it had missed. */
+/* Motion suppression has TWO triggers that must behave identically:
+   (a) the OS asking for reduced motion — the @media block below;
+   (b) the config switch disableAnimations:true — the engine adds .cX-No-Motion to the cX-DOM
+       root (canvasXpress.viewport.js), handled by the .cX-No-Motion rules below.
+   Each selector is prefixed with .cX-DOM / .cX-No-Motion so it outranks the base rule it cancels
+   by specificity (0,2,0 vs 0,1,0) — no !important, so the UI-consistency ratchet stays flat.
+   Surface 1 = CSS transitions on the HTML chrome; surface 2 = CSS keyframe animations (the
+   magic-effects .magictime carrier: holeIn/holeOut/slideLeft/slideUp). The loading spinner
+   (02-svg.css) is intentionally left running — it is a status indicator, not chrome motion. */
+@media (prefers-reduced-motion: reduce) {
+  .cX-DOM .cX-Toolbar-Edge,
+  .cX-DOM .cX-Wrapper,
+  .cX-DOM .cX-Container,
+  .cX-DOM .cX-Container-Cell,
+  .cX-DOM .CanvasXpress,
+  .cX-DOM .cX-Version-Info-Container {
+    transition: none;
+  }
+  .cX-DOM .magictime {
+    animation: none;
+  }
+}
+
+.cX-No-Motion .cX-Toolbar-Edge,
+.cX-No-Motion .cX-Wrapper,
+.cX-No-Motion .cX-Container,
+.cX-No-Motion .cX-Container-Cell,
+.cX-No-Motion .CanvasXpress,
+.cX-No-Motion .cX-Version-Info-Container {
+  transition: none;
+}
+
+.cX-No-Motion .magictime {
+  animation: none;
 }
 
 .cX-DOM:fullscreen {

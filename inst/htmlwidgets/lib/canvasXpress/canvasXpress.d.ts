@@ -145,7 +145,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1806 keys). String enums become open literal
+ * config schema (1811 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -2523,6 +2523,14 @@ export interface CXConfig {
    */
   densityPosition?: "normal" | "stacked" | "filled" | false | (string & {});
   /**
+   * Master switch that suppresses all motion the way an operating-system
+   * prefers-reduced-motion setting does: HTML chrome transitions and keyframes, the canvas
+   * render tween, and timer-driven reveals all snap to their final state. Default false leaves
+   * every animation intact; set true for motion-free embeds
+   * @default false
+   */
+  disableAnimations?: boolean;
+  /**
    * Flag to disable beacon.
    * @default false
    */
@@ -2822,6 +2830,16 @@ export interface CXConfig {
    * @default 1
    */
   featureNameScaleFontFactor?: number | boolean;
+  /**
+   * Array of values that claim the first rows when features are staggered, in the order given.
+   * Each value is matched against a feature id, name or label and against its type, geneType
+   * or biotype, so both named features and whole classes (for example protein_coding) can be
+   * promoted. Features that match nothing keep their position by coordinate, and the rows
+   * beyond subtracksMax are the ones dropped, so this decides what survives a crowded track
+   * @graphTypes Genome
+   * @default []
+   */
+  featurePriority?: unknown[] | boolean | string | number;
   /**
    * Default size in pixels of the quality height
    * @graphTypes Genome
@@ -3214,11 +3232,39 @@ export interface CXConfig {
    */
   genomeResolution?: "low" | "medium" | "high" | false | (string & {});
   /**
-   * Number of ticks in the genome browser
+   * Target number of ticks in the genome browser. The axis algorithm picks round positions
+   * near this count, and labels that would collide are dropped, so the drawn count is
+   * approximate
    * @graphTypes Genome
-   * @default 50
+   * @default 10
    */
   genomeTicks?: number | boolean;
+  /**
+   * Where the genomic axis is drawn. bottom puts it under the whole chart; track puts it
+   * directly under the first dataframe track, so a regional plot reads its coordinates against
+   * the scatter rather than below every annotation track. The axis line itself is drawn when
+   * xAxisLineBottomShow is set, like any other graph type
+   * @graphTypes Genome
+   * @default "bottom"
+   */
+  genomeTicksPosition?: "bottom" | "track" | false | (string & {});
+  /**
+   * Unit the genome browser tick labels are expressed in. bp leaves coordinates as they are;
+   * kb and Mb divide by 1,000 and 1,000,000; auto picks Mb, kb or bp from the size of the
+   * window. Name the unit in the xAxisTitle
+   * @graphTypes Genome
+   * @default "bp"
+   */
+  genomeTicksUnit?: "bp" | "kb" | "Mb" | "auto" | false | (string & {});
+  /**
+   * Fraction of its value range by which a genome track scale is extended BELOW its lowest
+   * value, so data points do not sit on the axis line (0.05 clears them by 5%). The scale
+   * already carries headroom above; the tick values are unchanged, and a track that pins
+   * setMinY is left alone. Per track with trackPadding
+   * @graphTypes Genome
+   * @default 0
+   */
+  genomeTrackPadding?: number | boolean;
   /**
    * Perimeter-axis role for a cell of a native multi-panel matrix (ggmatrix/patchwork):
    * {yAxis:Boolean, xAxis:Boolean} — set by CanvasXpress.matrixHost from the cell (row,col) so
@@ -11369,6 +11415,7 @@ export type CXKeys3DAttributes =
   | "zRotate";
 /** Config keys in the "Animations and Visualization Transitions" category. */
 export type CXKeysAnimationsandVisualizationTransitions =
+  | "disableAnimations"
   | "showAnimation"
   | "showTransition"
   | "transitionFunction"
@@ -12084,6 +12131,9 @@ export type CXKeysGeneralOneDimensionalGraphs =
 export type CXKeysGenomeBrowser =
   | "genomeResolution"
   | "genomeTicks"
+  | "genomeTicksPosition"
+  | "genomeTicksUnit"
+  | "genomeTrackPadding"
   | "wireColor";
 /** Config keys in the "Genome Browser Features" category. */
 export type CXKeysGenomeBrowserFeatures =
@@ -12100,6 +12150,7 @@ export type CXKeysGenomeBrowserFeatures =
   | "featureNameMargin"
   | "featureNameRotate"
   | "featureNameScaleFontFactor"
+  | "featurePriority"
   | "featureQualityHeight"
   | "featureQualityShow"
   | "featureQualityValues"

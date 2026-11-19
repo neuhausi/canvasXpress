@@ -1,7 +1,7 @@
 {
- "x-cx-version": "74.4",
+ "x-cx-version": "74.5",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1806,
+ "count": 1811,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -3403,6 +3403,12 @@
    "description": "Histogram density position"
   },
   {
+   "parameter": "disableAnimations",
+   "type": "boolean",
+   "default": false,
+   "description": "Master switch that suppresses all motion the way an operating-system prefers-reduced-motion setting does: HTML chrome transitions and keyframes, the canvas render tween, and timer-driven reveals all snap to their final state. Default false leaves every animation intact; set true for motion-free embeds"
+  },
+  {
    "parameter": "disableBeacon",
    "type": "boolean",
    "default": false,
@@ -3765,6 +3771,12 @@
    "type": "number|boolean",
    "default": 1,
    "description": "Scaling factor used to increase or decrease the feature name font size in the canvas"
+  },
+  {
+   "parameter": "featurePriority",
+   "type": "array|boolean|string|number",
+   "default": [],
+   "description": "Array of values that claim the first rows when features are staggered, in the order given. Each value is matched against a feature id, name or label and against its type, geneType or biotype, so both named features and whole classes (for example protein_coding) can be promoted. Features that match nothing keep their position by coordinate, and the rows beyond subtracksMax are the ones dropped, so this decides what survives a crowded track"
   },
   {
    "parameter": "featureQualityHeight",
@@ -4290,8 +4302,38 @@
   {
    "parameter": "genomeTicks",
    "type": "integer|boolean",
-   "default": 50,
-   "description": "Number of ticks in the genome browser"
+   "default": 10,
+   "description": "Target number of ticks in the genome browser. The axis algorithm picks round positions near this count, and labels that would collide are dropped, so the drawn count is approximate"
+  },
+  {
+   "parameter": "genomeTicksPosition",
+   "type": "string|boolean",
+   "default": "bottom",
+   "options": [
+    "bottom",
+    "track",
+    false
+   ],
+   "description": "Where the genomic axis is drawn. bottom puts it under the whole chart; track puts it directly under the first dataframe track, so a regional plot reads its coordinates against the scatter rather than below every annotation track. The axis line itself is drawn when xAxisLineBottomShow is set, like any other graph type"
+  },
+  {
+   "parameter": "genomeTicksUnit",
+   "type": "string|boolean",
+   "default": "bp",
+   "options": [
+    "bp",
+    "kb",
+    "Mb",
+    "auto",
+    false
+   ],
+   "description": "Unit the genome browser tick labels are expressed in. bp leaves coordinates as they are; kb and Mb divide by 1,000 and 1,000,000; auto picks Mb, kb or bp from the size of the window. Name the unit in the xAxisTitle"
+  },
+  {
+   "parameter": "genomeTrackPadding",
+   "type": "number|boolean",
+   "default": 0,
+   "description": "Fraction of its value range by which a genome track scale is extended BELOW its lowest value, so data points do not sit on the axis line (0.05 clears them by 5%). The scale already carries headroom above; the tick values are unchanged, and a track that pins setMinY is left alone. Per track with trackPadding"
   },
   {
    "parameter": "ggMatrixRole",
