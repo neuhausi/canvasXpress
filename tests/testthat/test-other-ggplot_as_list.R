@@ -2115,3 +2115,29 @@ test_that("gg_sankey_to_alluvia converts plot with character x, missing fill map
     expect_s3_class(res$data$T1, "factor")
     expect_s3_class(res$data$T2, "factor")
 })
+
+test_that("ggplot.as.list - computed global aesthetic inherited by a self-data layer", {
+    skip_if_not_installed("ggplot2")
+
+    # Regression: a computed GLOBAL aesthetic (y = -log10(p)) is materialised into a
+    # new plot-level column (log10_p) and the global mapping repointed at it. A layer
+    # that inherits that aesthetic (inherit.aes = TRUE) but carries its OWN data frame
+    # never received the column, so ggplot_build errored "object 'log10_p' not found"
+    # (the EnhancedVolcano GeomText label-layer crash). The converter must propagate the
+    # materialised column into each inheriting self-data layer. See gg converter notes.
+    set.seed(1)
+    main <- data.frame(x = rnorm(200), p = runif(200)^3)
+    labels <- main[main$p < 0.01, ]
+    labels$name <- paste0("g", seq_len(nrow(labels)))
+
+    gplot <- ggplot(main, aes(x = x, y = -log10(p))) +
+        geom_point() +
+        geom_text(data = labels, aes(label = name))
+
+    # Guards the real bug: ggplot.as.list() ran ggplot_build() internally and threw.
+    cxplot <- expect_error(ggplot.as.list(gplot), NA)
+    expect_equal(class(cxplot), "json")
+
+    cxplot_list <- parse_json(cxplot)
+    expect_true(cxplot_list$isGGPlot)
+})

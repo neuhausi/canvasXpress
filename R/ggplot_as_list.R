@@ -639,15 +639,21 @@ gg_resolve_expr_aes <- function(o) {
                    "size", "shape", "alpha", "weight")
   resolve_map <- function(data, mapping) {
     labels <- list()
+    # name -> list(col, quo): the ORIGINAL computed quosure for each aesthetic that
+    # was materialised into a new column, so a caller can re-evaluate the same
+    # expression against a different (inheriting layer's own) data frame.
+    materialized <- list()
     if (is.null(mapping)) {
-      return(list(data = data, mapping = mapping, labels = labels))
+      return(list(data = data, mapping = mapping, labels = labels,
+                  materialized = materialized))
     }
     # A ggmatrix (GGally::ggpairs) subplot, or any layer that inherited no real
     # data frame, arrives here with `data` a waiver/non-frame, so nrow(data) is
     # NULL and `length(val) != nrow(data)` below collapses to NA -> if() crash.
     # Nothing can be materialised against a non-frame, so return it untouched.
     if (!is.data.frame(data) || nrow(data) == 0) {
-      return(list(data = data, mapping = mapping, labels = labels))
+      return(list(data = data, mapping = mapping, labels = labels,
+                  materialized = materialized))
     }
     for (name in names(mapping)) {
       if (!(name %in% process_aes)) {
@@ -683,8 +689,10 @@ gg_resolve_expr_aes <- function(o) {
       data[[col]] <- val
       mapping[[name]] <- rlang::new_quosure(rlang::sym(col), env = rlang::empty_env())
       labels[[name]] <- orig_label
+      materialized[[name]] <- list(col = col, quo = q)
     }
-    list(data = data, mapping = mapping, labels = labels)
+    list(data = data, mapping = mapping, labels = labels,
+         materialized = materialized)
   }
   apply_labels <- function(o, labels) {
     for (name in names(labels)) {
@@ -698,6 +706,44 @@ gg_resolve_expr_aes <- function(o) {
   o$data <- r$data
   o$mapping <- r$mapping
   o <- apply_labels(o, r$labels)
+  # A computed GLOBAL aesthetic (e.g. y = -log10(yvals)) was just materialised into a
+  # new column of o$data and the global mapping repointed at that column. A layer that
+  # INHERITS that aesthetic (inherit.aes != FALSE, and does not override it locally) but
+  # carries its OWN data frame never receives the new column, so ggplot_build evaluates
+  # the renamed symbol against the layer data and errors ("object '<col>' not found") --
+  # e.g. EnhancedVolcano's GeomText label layer inheriting y = -log10(yvals). Evaluate
+  # the SAME original expression against each such layer's own data and add the column
+  # under the same name, on a clone (ggproto layers are reference objects).
+  if (length(r$materialized) > 0) {
+    for (i in seq_along(o$layers)) {
+      ly <- o$layers[[i]]
+      if (isFALSE(ly$inherit.aes) || !(is.data.frame(ly$data) && nrow(ly$data) > 0)) {
+        next
+      }
+      added <- FALSE
+      for (name in names(r$materialized)) {
+        m <- r$materialized[[name]]
+        # A local override of this aesthetic means the layer does not use the global
+        # one, so the materialised column is irrelevant to it.
+        if (!is.null(ly$mapping) && !is.null(ly$mapping[[name]])) {
+          next
+        }
+        if (m$col %in% colnames(ly$data)) {
+          next
+        }
+        val <- tryCatch(rlang::eval_tidy(m$quo, data = ly$data), error = function(e) NULL)
+        if (is.null(val) || length(val) != nrow(ly$data)) {
+          next
+        }
+        if (!added) {
+          o$layers[[i]] <- unserialize(serialize(ly, NULL))
+          ly <- o$layers[[i]]
+          added <- TRUE
+        }
+        o$layers[[i]]$data[[m$col]] <- val
+      }
+    }
+  }
   for (i in seq_along(o$layers)) {
     ly <- o$layers[[i]]
     if (is.null(ly$mapping)) {

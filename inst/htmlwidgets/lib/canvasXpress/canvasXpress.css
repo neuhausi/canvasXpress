@@ -644,39 +644,39 @@ html[data-site-theme="paper"] {
 }
 
 [data-cx-ui-theme][data-site-theme="paper"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #fffdf9 !important;
-  --cx-ui-surface-alt: #f3eee6 !important;
-  --cx-ui-surface-sunken: #faf7f2 !important;
-  --cx-ui-surface-raised: #fffdf9 !important;
-  --cx-ui-chrome: #fffdf9 !important;
-  --cx-ui-chrome-border: #e4ddd2 !important;
-  --cx-ui-on-chrome: #1f1d1a !important;
-  --cx-ui-chrome-strong: #f3eee6 !important;
-  --cx-ui-on-chrome-strong: #1f1d1a !important;
-  --cx-ui-text: #3b3835 !important;
-  --cx-ui-text-muted: #7a746c !important;
-  --cx-ui-text-subtle: #a39c92 !important;
-  --cx-ui-border: #e4ddd2 !important;
-  --cx-ui-border-subtle: #e4ddd2 !important;
-  --cx-ui-divider: #e4ddd2 !important;
-  --cx-ui-border-accent: #0f766e !important;
-  --cx-ui-accent: #0f766e !important;
-  --cx-ui-accent-strong: #115e59 !important;
-  --cx-ui-accent-hover: #115e59 !important;
-  --cx-ui-accent-tint: rgba(15, 118, 110, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(15, 118, 110, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #0f766e !important;
-  --cx-ui-control-on: #0f766e !important;
-  --cx-ui-active-cell: rgba(15, 118, 110, 0.2) !important;
-  --cx-ui-scrollbar-track: #fffdf9 !important;
-  --cx-ui-scrollbar-track-alt: #f3eee6 !important;
-  --cx-ui-scrollbar-thumb: #d2c9bb !important;
-  --cx-ui-scrollbar-thumb-hover: #a39c92 !important;
-  --cx-ui-dark-accent: #0f766e !important;
-  --cx-ui-dark-accent-strong: #115e59 !important;
-  --cx-ui-dark-accent-tint: rgba(15, 118, 110, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #fffdf9;
+  --cx-ui-surface-alt: #f3eee6;
+  --cx-ui-surface-sunken: #faf7f2;
+  --cx-ui-surface-raised: #fffdf9;
+  --cx-ui-chrome: #fffdf9;
+  --cx-ui-chrome-border: #e4ddd2;
+  --cx-ui-on-chrome: #1f1d1a;
+  --cx-ui-chrome-strong: #f3eee6;
+  --cx-ui-on-chrome-strong: #1f1d1a;
+  --cx-ui-text: #3b3835;
+  --cx-ui-text-muted: #7a746c;
+  --cx-ui-text-subtle: #a39c92;
+  --cx-ui-border: #e4ddd2;
+  --cx-ui-border-subtle: #e4ddd2;
+  --cx-ui-divider: #e4ddd2;
+  --cx-ui-border-accent: #0f766e;
+  --cx-ui-accent: #0f766e;
+  --cx-ui-accent-strong: #115e59;
+  --cx-ui-accent-hover: #115e59;
+  --cx-ui-accent-tint: rgba(15, 118, 110, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(15, 118, 110, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #0f766e;
+  --cx-ui-control-on: #0f766e;
+  --cx-ui-active-cell: rgba(15, 118, 110, 0.2);
+  --cx-ui-scrollbar-track: #fffdf9;
+  --cx-ui-scrollbar-track-alt: #f3eee6;
+  --cx-ui-scrollbar-thumb: #d2c9bb;
+  --cx-ui-scrollbar-thumb-hover: #a39c92;
+  --cx-ui-dark-accent: #0f766e;
+  --cx-ui-dark-accent-strong: #115e59;
+  --cx-ui-dark-accent-tint: rgba(15, 118, 110, 0.2);
 }
 
 html[data-site-theme="paper"][data-cx-ui-theme="dark"],
@@ -802,39 +802,39 @@ html[data-site-theme="slate"] {
 }
 
 [data-cx-ui-theme][data-site-theme="slate"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #eef1f6 !important;
-  --cx-ui-surface-sunken: #f4f6fa !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e2e8f0 !important;
-  --cx-ui-on-chrome: #0f172a !important;
-  --cx-ui-chrome-strong: #eef1f6 !important;
-  --cx-ui-on-chrome-strong: #0f172a !important;
-  --cx-ui-text: #334155 !important;
-  --cx-ui-text-muted: #64748b !important;
-  --cx-ui-text-subtle: #94a3b8 !important;
-  --cx-ui-border: #e2e8f0 !important;
-  --cx-ui-border-subtle: #e2e8f0 !important;
-  --cx-ui-divider: #e2e8f0 !important;
-  --cx-ui-border-accent: #4f46e5 !important;
-  --cx-ui-accent: #4f46e5 !important;
-  --cx-ui-accent-strong: #4338ca !important;
-  --cx-ui-accent-hover: #4338ca !important;
-  --cx-ui-accent-tint: rgba(79, 70, 229, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(79, 70, 229, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #4f46e5 !important;
-  --cx-ui-control-on: #4f46e5 !important;
-  --cx-ui-active-cell: rgba(79, 70, 229, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #eef1f6 !important;
-  --cx-ui-scrollbar-thumb: #cbd5e1 !important;
-  --cx-ui-scrollbar-thumb-hover: #94a3b8 !important;
-  --cx-ui-dark-accent: #4f46e5 !important;
-  --cx-ui-dark-accent-strong: #4338ca !important;
-  --cx-ui-dark-accent-tint: rgba(79, 70, 229, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #eef1f6;
+  --cx-ui-surface-sunken: #f4f6fa;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e2e8f0;
+  --cx-ui-on-chrome: #0f172a;
+  --cx-ui-chrome-strong: #eef1f6;
+  --cx-ui-on-chrome-strong: #0f172a;
+  --cx-ui-text: #334155;
+  --cx-ui-text-muted: #64748b;
+  --cx-ui-text-subtle: #94a3b8;
+  --cx-ui-border: #e2e8f0;
+  --cx-ui-border-subtle: #e2e8f0;
+  --cx-ui-divider: #e2e8f0;
+  --cx-ui-border-accent: #4f46e5;
+  --cx-ui-accent: #4f46e5;
+  --cx-ui-accent-strong: #4338ca;
+  --cx-ui-accent-hover: #4338ca;
+  --cx-ui-accent-tint: rgba(79, 70, 229, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(79, 70, 229, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #4f46e5;
+  --cx-ui-control-on: #4f46e5;
+  --cx-ui-active-cell: rgba(79, 70, 229, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #eef1f6;
+  --cx-ui-scrollbar-thumb: #cbd5e1;
+  --cx-ui-scrollbar-thumb-hover: #94a3b8;
+  --cx-ui-dark-accent: #4f46e5;
+  --cx-ui-dark-accent-strong: #4338ca;
+  --cx-ui-dark-accent-tint: rgba(79, 70, 229, 0.2);
 }
 
 html[data-site-theme="slate"][data-cx-ui-theme="dark"],
@@ -960,39 +960,39 @@ html[data-site-theme="mono"] {
 }
 
 [data-cx-ui-theme][data-site-theme="mono"] {
-  --cx-font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f5f5f5 !important;
-  --cx-ui-surface-sunken: #ffffff !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #111111 !important;
-  --cx-ui-on-chrome: #111111 !important;
-  --cx-ui-chrome-strong: #f5f5f5 !important;
-  --cx-ui-on-chrome-strong: #111111 !important;
-  --cx-ui-text: #222222 !important;
-  --cx-ui-text-muted: #666666 !important;
-  --cx-ui-text-subtle: #999999 !important;
-  --cx-ui-border: #111111 !important;
-  --cx-ui-border-subtle: #111111 !important;
-  --cx-ui-divider: #111111 !important;
-  --cx-ui-border-accent: #111111 !important;
-  --cx-ui-accent: #111111 !important;
-  --cx-ui-accent-strong: #555555 !important;
-  --cx-ui-accent-hover: #555555 !important;
-  --cx-ui-accent-tint: rgba(17, 17, 17, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(17, 17, 17, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #111111 !important;
-  --cx-ui-control-on: #111111 !important;
-  --cx-ui-active-cell: rgba(17, 17, 17, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f5f5f5 !important;
-  --cx-ui-scrollbar-thumb: #111111 !important;
-  --cx-ui-scrollbar-thumb-hover: #999999 !important;
-  --cx-ui-dark-accent: #111111 !important;
-  --cx-ui-dark-accent-strong: #555555 !important;
-  --cx-ui-dark-accent-tint: rgba(17, 17, 17, 0.2) !important;
+  --cx-font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f5f5f5;
+  --cx-ui-surface-sunken: #ffffff;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #111111;
+  --cx-ui-on-chrome: #111111;
+  --cx-ui-chrome-strong: #f5f5f5;
+  --cx-ui-on-chrome-strong: #111111;
+  --cx-ui-text: #222222;
+  --cx-ui-text-muted: #666666;
+  --cx-ui-text-subtle: #999999;
+  --cx-ui-border: #111111;
+  --cx-ui-border-subtle: #111111;
+  --cx-ui-divider: #111111;
+  --cx-ui-border-accent: #111111;
+  --cx-ui-accent: #111111;
+  --cx-ui-accent-strong: #555555;
+  --cx-ui-accent-hover: #555555;
+  --cx-ui-accent-tint: rgba(17, 17, 17, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(17, 17, 17, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #111111;
+  --cx-ui-control-on: #111111;
+  --cx-ui-active-cell: rgba(17, 17, 17, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f5f5f5;
+  --cx-ui-scrollbar-thumb: #111111;
+  --cx-ui-scrollbar-thumb-hover: #999999;
+  --cx-ui-dark-accent: #111111;
+  --cx-ui-dark-accent-strong: #555555;
+  --cx-ui-dark-accent-tint: rgba(17, 17, 17, 0.2);
 }
 
 html[data-site-theme="mono"][data-cx-ui-theme="dark"],
@@ -1118,39 +1118,39 @@ html[data-site-theme="sunrise"] {
 }
 
 [data-cx-ui-theme][data-site-theme="sunrise"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #fff1e2 !important;
-  --cx-ui-surface-sunken: #fff8f0 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #f2dfcb !important;
-  --cx-ui-on-chrome: #2b2320 !important;
-  --cx-ui-chrome-strong: #fff1e2 !important;
-  --cx-ui-on-chrome-strong: #2b2320 !important;
-  --cx-ui-text: #4a3f36 !important;
-  --cx-ui-text-muted: #8a7b70 !important;
-  --cx-ui-text-subtle: #b3a497 !important;
-  --cx-ui-border: #f2dfcb !important;
-  --cx-ui-border-subtle: #f2dfcb !important;
-  --cx-ui-divider: #f2dfcb !important;
-  --cx-ui-border-accent: #e26e38 !important;
-  --cx-ui-accent: #e26e38 !important;
-  --cx-ui-accent-strong: #c2581f !important;
-  --cx-ui-accent-hover: #c2581f !important;
-  --cx-ui-accent-tint: rgba(226, 110, 56, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(226, 110, 56, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #e26e38 !important;
-  --cx-ui-control-on: #e26e38 !important;
-  --cx-ui-active-cell: rgba(226, 110, 56, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #fff1e2 !important;
-  --cx-ui-scrollbar-thumb: #e6ccb0 !important;
-  --cx-ui-scrollbar-thumb-hover: #b3a497 !important;
-  --cx-ui-dark-accent: #e26e38 !important;
-  --cx-ui-dark-accent-strong: #c2581f !important;
-  --cx-ui-dark-accent-tint: rgba(226, 110, 56, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #fff1e2;
+  --cx-ui-surface-sunken: #fff8f0;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #f2dfcb;
+  --cx-ui-on-chrome: #2b2320;
+  --cx-ui-chrome-strong: #fff1e2;
+  --cx-ui-on-chrome-strong: #2b2320;
+  --cx-ui-text: #4a3f36;
+  --cx-ui-text-muted: #8a7b70;
+  --cx-ui-text-subtle: #b3a497;
+  --cx-ui-border: #f2dfcb;
+  --cx-ui-border-subtle: #f2dfcb;
+  --cx-ui-divider: #f2dfcb;
+  --cx-ui-border-accent: #e26e38;
+  --cx-ui-accent: #e26e38;
+  --cx-ui-accent-strong: #c2581f;
+  --cx-ui-accent-hover: #c2581f;
+  --cx-ui-accent-tint: rgba(226, 110, 56, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(226, 110, 56, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #e26e38;
+  --cx-ui-control-on: #e26e38;
+  --cx-ui-active-cell: rgba(226, 110, 56, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #fff1e2;
+  --cx-ui-scrollbar-thumb: #e6ccb0;
+  --cx-ui-scrollbar-thumb-hover: #b3a497;
+  --cx-ui-dark-accent: #e26e38;
+  --cx-ui-dark-accent-strong: #c2581f;
+  --cx-ui-dark-accent-tint: rgba(226, 110, 56, 0.2);
 }
 
 html[data-site-theme="sunrise"][data-cx-ui-theme="dark"],
@@ -1752,39 +1752,39 @@ html[data-site-theme="cx"] {
 }
 
 [data-cx-ui-theme][data-site-theme="cx"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f8f9fa !important;
-  --cx-ui-surface-sunken: #f5f5f4 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e5e7eb !important;
-  --cx-ui-on-chrome: #2f2f2f !important;
-  --cx-ui-chrome-strong: #f8f9fa !important;
-  --cx-ui-on-chrome-strong: #212529 !important;
-  --cx-ui-text: #495057 !important;
-  --cx-ui-text-muted: #6c757d !important;
-  --cx-ui-text-subtle: #9ca3af !important;
-  --cx-ui-border: #e5e7eb !important;
-  --cx-ui-border-subtle: #e3e3e3 !important;
-  --cx-ui-divider: #e3e3e3 !important;
-  --cx-ui-border-accent: #087ad1 !important;
-  --cx-ui-accent: #087ad1 !important;
-  --cx-ui-accent-strong: #0764ad !important;
-  --cx-ui-accent-hover: #0764ad !important;
-  --cx-ui-accent-tint: rgba(8, 122, 209, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(8, 122, 209, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #087ad1 !important;
-  --cx-ui-control-on: #087ad1 !important;
-  --cx-ui-active-cell: rgba(8, 122, 209, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f8f9fa !important;
-  --cx-ui-scrollbar-thumb: #dedede !important;
-  --cx-ui-scrollbar-thumb-hover: #9ca3af !important;
-  --cx-ui-dark-accent: #087ad1 !important;
-  --cx-ui-dark-accent-strong: #0764ad !important;
-  --cx-ui-dark-accent-tint: rgba(8, 122, 209, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f8f9fa;
+  --cx-ui-surface-sunken: #f5f5f4;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e5e7eb;
+  --cx-ui-on-chrome: #2f2f2f;
+  --cx-ui-chrome-strong: #f8f9fa;
+  --cx-ui-on-chrome-strong: #212529;
+  --cx-ui-text: #495057;
+  --cx-ui-text-muted: #6c757d;
+  --cx-ui-text-subtle: #9ca3af;
+  --cx-ui-border: #e5e7eb;
+  --cx-ui-border-subtle: #e3e3e3;
+  --cx-ui-divider: #e3e3e3;
+  --cx-ui-border-accent: #087ad1;
+  --cx-ui-accent: #087ad1;
+  --cx-ui-accent-strong: #0764ad;
+  --cx-ui-accent-hover: #0764ad;
+  --cx-ui-accent-tint: rgba(8, 122, 209, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(8, 122, 209, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #087ad1;
+  --cx-ui-control-on: #087ad1;
+  --cx-ui-active-cell: rgba(8, 122, 209, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f8f9fa;
+  --cx-ui-scrollbar-thumb: #dedede;
+  --cx-ui-scrollbar-thumb-hover: #9ca3af;
+  --cx-ui-dark-accent: #087ad1;
+  --cx-ui-dark-accent-strong: #0764ad;
+  --cx-ui-dark-accent-tint: rgba(8, 122, 209, 0.2);
 }
 
 html[data-site-theme="cx"][data-cx-ui-theme="dark"],
@@ -1910,39 +1910,39 @@ html[data-site-theme="bms"] {
 }
 
 [data-cx-ui-theme][data-site-theme="bms"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f8f9fa !important;
-  --cx-ui-surface-sunken: #f5f5f4 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e5e7eb !important;
-  --cx-ui-on-chrome: #2f2f2f !important;
-  --cx-ui-chrome-strong: #f8f9fa !important;
-  --cx-ui-on-chrome-strong: #212529 !important;
-  --cx-ui-text: #495057 !important;
-  --cx-ui-text-muted: #6c757d !important;
-  --cx-ui-text-subtle: #9ca3af !important;
-  --cx-ui-border: #e5e7eb !important;
-  --cx-ui-border-subtle: #e3e3e3 !important;
-  --cx-ui-divider: #e3e3e3 !important;
-  --cx-ui-border-accent: #bf2bff !important;
-  --cx-ui-accent: #bf2bff !important;
-  --cx-ui-accent-strong: #a325da !important;
-  --cx-ui-accent-hover: #a325da !important;
-  --cx-ui-accent-tint: rgba(191, 43, 255, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(191, 43, 255, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #bf2bff !important;
-  --cx-ui-control-on: #bf2bff !important;
-  --cx-ui-active-cell: rgba(191, 43, 255, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f8f9fa !important;
-  --cx-ui-scrollbar-thumb: #dedede !important;
-  --cx-ui-scrollbar-thumb-hover: #9ca3af !important;
-  --cx-ui-dark-accent: #bf2bff !important;
-  --cx-ui-dark-accent-strong: #a325da !important;
-  --cx-ui-dark-accent-tint: rgba(191, 43, 255, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f8f9fa;
+  --cx-ui-surface-sunken: #f5f5f4;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e5e7eb;
+  --cx-ui-on-chrome: #2f2f2f;
+  --cx-ui-chrome-strong: #f8f9fa;
+  --cx-ui-on-chrome-strong: #212529;
+  --cx-ui-text: #495057;
+  --cx-ui-text-muted: #6c757d;
+  --cx-ui-text-subtle: #9ca3af;
+  --cx-ui-border: #e5e7eb;
+  --cx-ui-border-subtle: #e3e3e3;
+  --cx-ui-divider: #e3e3e3;
+  --cx-ui-border-accent: #bf2bff;
+  --cx-ui-accent: #bf2bff;
+  --cx-ui-accent-strong: #a325da;
+  --cx-ui-accent-hover: #a325da;
+  --cx-ui-accent-tint: rgba(191, 43, 255, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(191, 43, 255, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #bf2bff;
+  --cx-ui-control-on: #bf2bff;
+  --cx-ui-active-cell: rgba(191, 43, 255, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f8f9fa;
+  --cx-ui-scrollbar-thumb: #dedede;
+  --cx-ui-scrollbar-thumb-hover: #9ca3af;
+  --cx-ui-dark-accent: #bf2bff;
+  --cx-ui-dark-accent-strong: #a325da;
+  --cx-ui-dark-accent-tint: rgba(191, 43, 255, 0.2);
 }
 
 html[data-site-theme="bms"][data-cx-ui-theme="dark"],
@@ -2068,39 +2068,39 @@ html[data-site-theme="colorful"] {
 }
 
 [data-cx-ui-theme][data-site-theme="colorful"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f8f9fa !important;
-  --cx-ui-surface-sunken: #f5f5f4 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e5e7eb !important;
-  --cx-ui-on-chrome: #2f2f2f !important;
-  --cx-ui-chrome-strong: #f8f9fa !important;
-  --cx-ui-on-chrome-strong: #212529 !important;
-  --cx-ui-text: #495057 !important;
-  --cx-ui-text-muted: #6c757d !important;
-  --cx-ui-text-subtle: #9ca3af !important;
-  --cx-ui-border: #e5e7eb !important;
-  --cx-ui-border-subtle: #e3e3e3 !important;
-  --cx-ui-divider: #e3e3e3 !important;
-  --cx-ui-border-accent: #1565c0 !important;
-  --cx-ui-accent: #1565c0 !important;
-  --cx-ui-accent-strong: #1256a3 !important;
-  --cx-ui-accent-hover: #1256a3 !important;
-  --cx-ui-accent-tint: rgba(21, 101, 192, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(21, 101, 192, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #1565c0 !important;
-  --cx-ui-control-on: #1565c0 !important;
-  --cx-ui-active-cell: rgba(21, 101, 192, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f8f9fa !important;
-  --cx-ui-scrollbar-thumb: #dedede !important;
-  --cx-ui-scrollbar-thumb-hover: #9ca3af !important;
-  --cx-ui-dark-accent: #1565c0 !important;
-  --cx-ui-dark-accent-strong: #1256a3 !important;
-  --cx-ui-dark-accent-tint: rgba(21, 101, 192, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f8f9fa;
+  --cx-ui-surface-sunken: #f5f5f4;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e5e7eb;
+  --cx-ui-on-chrome: #2f2f2f;
+  --cx-ui-chrome-strong: #f8f9fa;
+  --cx-ui-on-chrome-strong: #212529;
+  --cx-ui-text: #495057;
+  --cx-ui-text-muted: #6c757d;
+  --cx-ui-text-subtle: #9ca3af;
+  --cx-ui-border: #e5e7eb;
+  --cx-ui-border-subtle: #e3e3e3;
+  --cx-ui-divider: #e3e3e3;
+  --cx-ui-border-accent: #1565c0;
+  --cx-ui-accent: #1565c0;
+  --cx-ui-accent-strong: #1256a3;
+  --cx-ui-accent-hover: #1256a3;
+  --cx-ui-accent-tint: rgba(21, 101, 192, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(21, 101, 192, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #1565c0;
+  --cx-ui-control-on: #1565c0;
+  --cx-ui-active-cell: rgba(21, 101, 192, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f8f9fa;
+  --cx-ui-scrollbar-thumb: #dedede;
+  --cx-ui-scrollbar-thumb-hover: #9ca3af;
+  --cx-ui-dark-accent: #1565c0;
+  --cx-ui-dark-accent-strong: #1256a3;
+  --cx-ui-dark-accent-tint: rgba(21, 101, 192, 0.2);
 }
 
 html[data-site-theme="colorful"][data-cx-ui-theme="dark"],
@@ -2226,39 +2226,39 @@ html[data-site-theme="rdc"] {
 }
 
 [data-cx-ui-theme][data-site-theme="rdc"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f8f9fa !important;
-  --cx-ui-surface-sunken: #f5f5f4 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e5e7eb !important;
-  --cx-ui-on-chrome: #2f2f2f !important;
-  --cx-ui-chrome-strong: #f8f9fa !important;
-  --cx-ui-on-chrome-strong: #212529 !important;
-  --cx-ui-text: #495057 !important;
-  --cx-ui-text-muted: #6c757d !important;
-  --cx-ui-text-subtle: #9ca3af !important;
-  --cx-ui-border: #e5e7eb !important;
-  --cx-ui-border-subtle: #e3e3e3 !important;
-  --cx-ui-divider: #e3e3e3 !important;
-  --cx-ui-border-accent: #7b7b7b !important;
-  --cx-ui-accent: #7b7b7b !important;
-  --cx-ui-accent-strong: #636363 !important;
-  --cx-ui-accent-hover: #636363 !important;
-  --cx-ui-accent-tint: rgba(123, 123, 123, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(123, 123, 123, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #7b7b7b !important;
-  --cx-ui-control-on: #7b7b7b !important;
-  --cx-ui-active-cell: rgba(123, 123, 123, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f8f9fa !important;
-  --cx-ui-scrollbar-thumb: #dedede !important;
-  --cx-ui-scrollbar-thumb-hover: #9ca3af !important;
-  --cx-ui-dark-accent: #7b7b7b !important;
-  --cx-ui-dark-accent-strong: #636363 !important;
-  --cx-ui-dark-accent-tint: rgba(123, 123, 123, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f8f9fa;
+  --cx-ui-surface-sunken: #f5f5f4;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e5e7eb;
+  --cx-ui-on-chrome: #2f2f2f;
+  --cx-ui-chrome-strong: #f8f9fa;
+  --cx-ui-on-chrome-strong: #212529;
+  --cx-ui-text: #495057;
+  --cx-ui-text-muted: #6c757d;
+  --cx-ui-text-subtle: #9ca3af;
+  --cx-ui-border: #e5e7eb;
+  --cx-ui-border-subtle: #e3e3e3;
+  --cx-ui-divider: #e3e3e3;
+  --cx-ui-border-accent: #7b7b7b;
+  --cx-ui-accent: #7b7b7b;
+  --cx-ui-accent-strong: #636363;
+  --cx-ui-accent-hover: #636363;
+  --cx-ui-accent-tint: rgba(123, 123, 123, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(123, 123, 123, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #7b7b7b;
+  --cx-ui-control-on: #7b7b7b;
+  --cx-ui-active-cell: rgba(123, 123, 123, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f8f9fa;
+  --cx-ui-scrollbar-thumb: #dedede;
+  --cx-ui-scrollbar-thumb-hover: #9ca3af;
+  --cx-ui-dark-accent: #7b7b7b;
+  --cx-ui-dark-accent-strong: #636363;
+  --cx-ui-dark-accent-tint: rgba(123, 123, 123, 0.2);
 }
 
 html[data-site-theme="rdc"][data-cx-ui-theme="dark"],
@@ -2384,39 +2384,39 @@ html[data-site-theme="ngs360"] {
 }
 
 [data-cx-ui-theme][data-site-theme="ngs360"] {
-  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
-  --cx-ui-surface: #ffffff !important;
-  --cx-ui-surface-alt: #f8f9fa !important;
-  --cx-ui-surface-sunken: #f5f5f4 !important;
-  --cx-ui-surface-raised: #ffffff !important;
-  --cx-ui-chrome: #ffffff !important;
-  --cx-ui-chrome-border: #e5e7eb !important;
-  --cx-ui-on-chrome: #2f2f2f !important;
-  --cx-ui-chrome-strong: #f8f9fa !important;
-  --cx-ui-on-chrome-strong: #212529 !important;
-  --cx-ui-text: #495057 !important;
-  --cx-ui-text-muted: #6c757d !important;
-  --cx-ui-text-subtle: #9ca3af !important;
-  --cx-ui-border: #e5e7eb !important;
-  --cx-ui-border-subtle: #e3e3e3 !important;
-  --cx-ui-divider: #e3e3e3 !important;
-  --cx-ui-border-accent: #2a6bdc !important;
-  --cx-ui-accent: #2a6bdc !important;
-  --cx-ui-accent-strong: #245bbb !important;
-  --cx-ui-accent-hover: #245bbb !important;
-  --cx-ui-accent-tint: rgba(42, 107, 220, 0.2) !important;
-  --cx-ui-accent-tint-subtle: rgba(42, 107, 220, 0.1) !important;
-  --cx-ui-on-accent: #ffffff !important;
-  --cx-ui-focus: #2a6bdc !important;
-  --cx-ui-control-on: #2a6bdc !important;
-  --cx-ui-active-cell: rgba(42, 107, 220, 0.2) !important;
-  --cx-ui-scrollbar-track: #ffffff !important;
-  --cx-ui-scrollbar-track-alt: #f8f9fa !important;
-  --cx-ui-scrollbar-thumb: #dedede !important;
-  --cx-ui-scrollbar-thumb-hover: #9ca3af !important;
-  --cx-ui-dark-accent: #2a6bdc !important;
-  --cx-ui-dark-accent-strong: #245bbb !important;
-  --cx-ui-dark-accent-tint: rgba(42, 107, 220, 0.2) !important;
+  --cx-font-sans: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cx-ui-surface: #ffffff;
+  --cx-ui-surface-alt: #f8f9fa;
+  --cx-ui-surface-sunken: #f5f5f4;
+  --cx-ui-surface-raised: #ffffff;
+  --cx-ui-chrome: #ffffff;
+  --cx-ui-chrome-border: #e5e7eb;
+  --cx-ui-on-chrome: #2f2f2f;
+  --cx-ui-chrome-strong: #f8f9fa;
+  --cx-ui-on-chrome-strong: #212529;
+  --cx-ui-text: #495057;
+  --cx-ui-text-muted: #6c757d;
+  --cx-ui-text-subtle: #9ca3af;
+  --cx-ui-border: #e5e7eb;
+  --cx-ui-border-subtle: #e3e3e3;
+  --cx-ui-divider: #e3e3e3;
+  --cx-ui-border-accent: #2a6bdc;
+  --cx-ui-accent: #2a6bdc;
+  --cx-ui-accent-strong: #245bbb;
+  --cx-ui-accent-hover: #245bbb;
+  --cx-ui-accent-tint: rgba(42, 107, 220, 0.2);
+  --cx-ui-accent-tint-subtle: rgba(42, 107, 220, 0.1);
+  --cx-ui-on-accent: #ffffff;
+  --cx-ui-focus: #2a6bdc;
+  --cx-ui-control-on: #2a6bdc;
+  --cx-ui-active-cell: rgba(42, 107, 220, 0.2);
+  --cx-ui-scrollbar-track: #ffffff;
+  --cx-ui-scrollbar-track-alt: #f8f9fa;
+  --cx-ui-scrollbar-thumb: #dedede;
+  --cx-ui-scrollbar-thumb-hover: #9ca3af;
+  --cx-ui-dark-accent: #2a6bdc;
+  --cx-ui-dark-accent-strong: #245bbb;
+  --cx-ui-dark-accent-tint: rgba(42, 107, 220, 0.2);
 }
 
 html[data-site-theme="ngs360"][data-cx-ui-theme="dark"],
@@ -6800,6 +6800,12 @@ div.CanvasXpressDragLayout {
   height: 30px !important;
   padding: 3px !important;
   margin: 4px auto !important;
+}
+
+/* The Options graph-type grid (24 types, 4 x 6): larger icons than the other grids */
+.cX-Customizer-Compact .cX-Customizer-RightItemImagesGroup.cX-Customizer-RightItemImagesGroupLarge svg {
+  width: 40px !important;
+  height: 40px !important;
 }
 
 /* Icon-over-label tiles (Sort - getCustomizerRightItem) */
