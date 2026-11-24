@@ -113,12 +113,24 @@ HTMLWidgets.widget({
                 var v = x.data.y.data[i][j];
                 var n = v === null || v === undefined ? true : !isNaN(parseFloat(v)) && isFinite(v);
                 if (!n) {
-                  for (var ii = 0; ii < x.data.y.data.length; ii++) {
-                    x.data.y.data[ii].unshift(x.data.y.vars[ii]);
+                  // Build a fresh data-frame matrix instead of mutating x.data.y.data in
+                  // place. On re-render (Shiny renderUI re-create) the engine has already
+                  // deep-frozen this.data, so the same y.data rows come back non-extensible
+                  // and the old unshift() threw "Cannot add property N, object is not
+                  // extensible" (issue #342). Copying leaves the frozen source untouched.
+                  var header = [''];
+                  for (var s = 0; s < x.data.y.smps.length; s++) {
+                    header.push(x.data.y.smps[s]);
                   }
-                  x.data.y.data.unshift(x.data.y.smps);
-                  x.data.y.data[0].unshift('');
-                  x.data = x.data.y.data;
+                  var frame = [header];
+                  for (var r = 0; r < x.data.y.data.length; r++) {
+                    var row = [x.data.y.vars[r]];
+                    for (var k = 0; k < x.data.y.data[r].length; k++) {
+                      row.push(x.data.y.data[r][k]);
+                    }
+                    frame.push(row);
+                  }
+                  x.data = frame;
                   if (x.hasOwnProperty('config')) {
                     x.config.isDataFrame = true;
                   }
