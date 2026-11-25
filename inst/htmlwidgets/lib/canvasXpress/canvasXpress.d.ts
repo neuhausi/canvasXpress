@@ -66,7 +66,7 @@ export interface CXEvents {
 export type CXAfterRender = Array<[string, ...unknown[]]>;
 
 /**
- * Every accepted `graphType` (70 values, aliases and internal
+ * Every accepted `graphType` (74 values, aliases and internal
  * render targets included — e.g. "Volcano" renders as "Scatter2D"), so this count
  * exceeds the ~40+ distinct user-facing chart types quoted on the website. This
  * union is CLOSED so a misspelled graph type fails to type-check.
@@ -123,6 +123,7 @@ export type CXGraphType =
   | "Scatter3D"
   | "ScatterBubble2D"
   | "Spaghetti"
+  | "Sparklines"
   | "SPLOM"
   | "Stacked"
   | "StackedLine"
@@ -141,11 +142,14 @@ export type CXGraphType =
   | "Volcano"
   | "Venn"
   | "Waterfall"
-  | "WordCloud";
+  | "WordCloud"
+  | "StripPlot"
+  | "Slope"
+  | "Pyramid";
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1823 keys). String enums become open literal
+ * config schema (1830 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -201,7 +205,7 @@ export interface CXConfig {
   /**
    * Array containing additional data files to append to networks. Useful for loading KEGG and
    * Wikipatways to decorate the nodes and the edges
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   appendNetworkData?: unknown[] | boolean | string | number;
@@ -277,7 +281,7 @@ export interface CXConfig {
    * factor (move from y to x object). This parameter accomplishes the same as the function
    * switchVarToAnnotation at load time. It can be used in conjunction with the parameter
    * stringSampleFactors to be treated as a string. TO DO: write example
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   asSampleFactors?: unknown[] | boolean | string | number;
@@ -286,7 +290,7 @@ export interface CXConfig {
    * variable factor (move from y to z object). This parameter accomplishes the same as the
    * function switchSmpToAnnotation at load time. It can be used in conjunction with the
    * parameter stringVariableFactors to be treated as a string. TO DO: write example
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   asVariableFactors?: unknown[] | boolean | string | number;
@@ -315,27 +319,27 @@ export interface CXConfig {
   /**
    * Algorithm used to position tick labels on axes. See An Extension of Wilkinson Algorithm
    * for Positioning Tick Labels on Axes. Justin Talbot, Sharon Lin, Pat Hanrahan
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rPretty"
    */
   axisAlgorithm?: "heckbert" | "wilkinson" | "wilkinsonExtended" | "rPretty" | false | (string & {});
   /**
    * Flag to coordinate xAxis and xAxis2 in *-Line combination plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   axisCoordinate?: boolean;
   /**
    * Percentage to extend the values of the data to ensure all the data points are plotted
    * inside and not over the edges of the graph
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0.1
    */
   axisExtension?: number | boolean;
   /**
    * Flag to indicate whether to use loose positioning when using the wilkinson algorithm to
    * position the labels on the axis. There will not be a difference most of the times
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   axisWilkinsonLoose?: boolean;
@@ -1148,7 +1152,7 @@ export interface CXConfig {
   /**
    * Name of a variable annotation or a sample name or the string variable to color the
    * variables
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   colorBy?: string | boolean;
@@ -1156,7 +1160,7 @@ export interface CXConfig {
    * String that identify the object containing a two dimensional array with discrete values
    * used to color data points when drawing a multidimensional Heatmap. It must be located
    * within the data.y object (for example: data.y.data2)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   colorByData?: string | boolean;
@@ -1176,13 +1180,13 @@ export interface CXConfig {
    * the object. CanvasXpress will handle string and numeric annotation approprietly. However,
    * if an object is specified like that one in number (3) the annotation will be treated as
    * categorical even if the annotation is numeric
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   colorKey?: Record<string, unknown> | boolean;
   /**
    * Name of the variable annotation to color the labels in Scatter2D plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   colorLabelBy?: string | boolean;
@@ -1203,7 +1207,7 @@ export interface CXConfig {
   colorLegendSteps?: "auto" | "proportional" | "equal" | false | (string & {});
   /**
    * Title for the color legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   colorLegendTitle?: string | boolean;
@@ -1294,7 +1298,7 @@ export interface CXConfig {
   colors?: unknown[] | boolean | string | number;
   /**
    * Name of a variable annotation to color the confidence intervals
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   confidenceBy?: string | boolean;
@@ -1326,20 +1330,20 @@ export interface CXConfig {
   confidenceLevel?: number | boolean;
   /**
    * Name of a variable annotation to connect the variables
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   connectBy?: string | boolean;
   /**
    * Color for the connectBy lines
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204,204,204)"
    */
   connectByColor?: string | boolean;
   /**
    * Flag to prevent coloring the lines by the connectBy annotation. Usefull when connectBy is
    * used along with colorBy to avoid confusion of colors
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   connectByNoColor?: boolean;
@@ -1348,13 +1352,13 @@ export interface CXConfig {
    * a paired boxplot connector colored by an up/down aesthetic) instead of by the connectBy
    * annotation. Set by the ggplot geom_line-over-boxplot path so a saved chart reloads with
    * the same per-connector colours
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   connectByPointColor?: boolean;
   /**
    * Width for the line of the connectBy line
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 2
    */
   connectByWidth?: number | boolean;
@@ -1363,7 +1367,7 @@ export interface CXConfig {
    * included in the data object. The key of the object is the name of an annotation in the
    * data.x object. A default connect will be assigned to a data point whose value was not
    * included the object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   connectKey?: Record<string, unknown> | boolean;
@@ -1685,7 +1689,7 @@ export interface CXConfig {
    * (log2/log10/-log2/-log10/exp2/exp10/sqrt); {op:"arrange", by, desc}; {op:"select",
    * cols:[...]}. Applied left-to-right like the dplyr pipe; mutating the recipe changes the
    * rendered data (generative). Equivalent of dplyr filter/mutate/arrange/select.
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   dataPipeline?: unknown[] | boolean | string | number;
@@ -2265,19 +2269,19 @@ export interface CXConfig {
   dataTableZeroHeader?: string | boolean;
   /**
    * Alignment (or position) for the data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   dataTextAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   dataTextBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   dataTextColor?: string | boolean;
@@ -2285,31 +2289,31 @@ export interface CXConfig {
    * Font size for the text in data labels. Be aware that auto scaling font must be turned off
    * for this property to take effect. A more convenient way to modify the size is to use the
    * dataTextScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 10
    */
   dataTextFontSize?: number | boolean;
   /**
    * Font style for the data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   dataTextFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   dataTextMargin?: number | boolean;
   /**
    * Rotation in degrees for the data labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   dataTextRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the data labels font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   dataTextScaleFontFactor?: number | boolean;
@@ -2369,85 +2373,85 @@ export interface CXConfig {
    * one-dimensional line: {line: [{value: 5, color: "#ff0000", width: 2, label: "Threshold",
    * align: "right"}]}, or for a scatter plot linear fit: {linear: [{x: 1, y: 2, x2: 3, y2: 4,
    * color: "#ff0000", width: 2, label: "Threshold", align: "right"}]}
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
   decorations?: Record<string, unknown> | unknown[] | boolean | string | number;
   /**
    * Color for the border in decoration legends background
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "rgb(204,204,204)"
    */
   decorationsBackgroundBorderColor?: string | boolean;
   /**
    * Type of line for the border in decoration legends background
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   decorationsBackgroundBorderLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Size for the border line in decoration legends background
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 0.5
    */
   decorationsBackgroundBorderSize?: number | boolean;
   /**
    * Color for the decoration legends background
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "rgba(255,255,255,0)"
    */
   decorationsBackgroundColor?: string | boolean;
   /**
    * Flag to clip decorations to the x,y area of the plot.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default true
    */
   decorationsClipped?: boolean;
   /**
    * Array of colors used for the decorations. Only applicable to Network graphs
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default []
    */
   decorationsColors?: unknown[] | boolean | string | number;
   /**
    * Length in pixels of the height for the decorations. Only applicable to Network graphs.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 40
    */
   decorationsHeight?: number | boolean;
   /**
    * Flag to draw decorations after drawing the data. Not applicable to Network graphs
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default true
    */
   decorationsOnTop?: boolean;
   /**
    * Position for the the decorations
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "bottom"
    */
   decorationsPosition?: "topRight" | "right" | "bottomRight" | "bottom" | "bottomLeft" | "left" | "topLeft" | "top" | false | (string & {});
   /**
    * Object to assign properties like color, position, etc. Only applicable to Network graphs
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default {}
    */
   decorationsProperties?: Record<string, unknown> | boolean;
   /**
    * Alignment (or position) for the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "center"
    */
   decorationsTextAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   decorationsTextBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   decorationsTextColor?: string | boolean;
@@ -2455,57 +2459,57 @@ export interface CXConfig {
    * Font size for the text in decoration legends. Be aware that auto scaling font must be
    * turned off for this property to take effect. A more convenient way to modify the size is
    * to use the decorationsTextScaleFontFactor
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 10
    */
   decorationsTextFontSize?: number | boolean;
   /**
    * Font style for the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default ""
    */
   decorationsTextFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 5
    */
   decorationsTextMargin?: number | boolean;
   /**
    * Rotation in degrees for the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 0
    */
   decorationsTextRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the decoration legends font size in the canvas
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 1
    */
   decorationsTextScaleFontFactor?: number | boolean;
   /**
    * Flag to transform the data in decorations produced in Cxplot. Not applicable to Network
    * graphs
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default true
    */
   decorationsTransform?: boolean;
   /**
    * Transparency for range decorations type only. Also, it is not applicable to Network graphs
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 0.2
    */
   decorationsTransparency?: number | boolean;
   /**
    * Type for the decorations and only applicable to Network graphs. The types stacked and
    * stackedpercent must be two dimensional. Heatmap could be one or two dimensional
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default "bar"
    */
   decorationsType?: "pie" | "bar" | "heatmap" | "stacked" | "stackedpercent" | false | (string & {});
   /**
    * Length in pixels of the width for the decorations. Only applicable to Network graphs.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default 20
    */
   decorationsWidth?: number | boolean;
@@ -2680,7 +2684,7 @@ export interface CXConfig {
   disableWindow?: boolean;
   /**
    * Name of a sample annotation to dodge the samples of each variable in Bar graphs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   dodgeBy?: string | boolean;
@@ -2705,7 +2709,7 @@ export interface CXConfig {
   /**
    * Flag to show the drill-down breadcrumb strip in the viewport when a drillHierarchy is
    * active and the chart has been drilled. Set false for API-only drill control
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   drillBreadcrumb?: boolean;
@@ -2714,7 +2718,7 @@ export interface CXConfig {
    * defining a drill-down hierarchy. When set, clicking a mark filters to the clicked level
    * value and regroups by the next finer annotation; a breadcrumb walks back. Each entry must
    * be a category in the data.x object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   drillHierarchy?: unknown[] | boolean | string | number;
@@ -2745,32 +2749,32 @@ export interface CXConfig {
   edgeSeparationFactor?: number | boolean;
   /**
    * Utility to create error ellipses in Scatter plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ellipseBy?: string | boolean;
   /**
    * Color for the error bars in dotplots and barplots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   errorBarsColor?: string | boolean;
   /**
    * Thickness for the error bars in dotplots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 3
    */
   errorBarsThickness?: number | boolean;
   /**
    * Type of error bars
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "confidenceInterval95"
    */
   errorBarsType?: "standardDeviation" | "standardErrorMean" | "confidenceInterval95" | false | (string & {});
   /**
    * Minimum size of the bar in pixels to determine to show or hide error bar ends in the
    * graphs when available
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 2
    */
   errorBarsWidth?: number | boolean;
@@ -3342,7 +3346,7 @@ export interface CXConfig {
    * Object to specify custom order for the levels in each grouping. The key of the object is
    * the name of a valid sample or variable annotation included in the data object. The value
    * for element is an array with the levels for the corresponding factor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   groupingFactorLevelsOrder?: Record<string, unknown> | boolean;
@@ -3357,14 +3361,14 @@ export interface CXConfig {
   /**
    * An array that holds the group names used for grouping the data. It must be a category in
    * the data.x object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   groupingFactors?: unknown[] | boolean | string | number;
   /**
    * An array that holds the group names used for grouping the data to hide the labels in the
    * graph. It must be a category in the data.x object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   groupingFactorsLabelsHide?: unknown[] | boolean | string | number;
@@ -3649,13 +3653,13 @@ export interface CXConfig {
   highlightNode?: unknown[] | boolean | string | number;
   /**
    * Name of samples to highlight
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   highlightSmp?: unknown[] | boolean | string | number;
   /**
    * Name of variables to highlight
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   highlightVar?: unknown[] | boolean | string | number;
@@ -4035,7 +4039,7 @@ export interface CXConfig {
    * Flag to indicate if the data is a time series so there is no need to plot every time
    * interval. It is boolean in one dimensional plots or a string indicating the axis which is
    * timed x, y or z
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   isGraphTime?: boolean;
@@ -4055,6 +4059,13 @@ export interface CXConfig {
    * @default true
    */
   isReproducibleResearch?: boolean;
+  /**
+   * Flag to create a Slope chart (a Line chart emphasising change between two groups, with
+   * end-point value labels)
+   * @graphTypes Area, AreaLine, BarLine, DotLine, Line, ParallelCoordinates … (9 types; see CXGraphTypeKeys)
+   * @default false
+   */
+  isSlopePlot?: boolean;
   /**
    * Flag to jitter the data points in dotplots, boxplots and scatter2D plots
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bullet … (31 types; see CXGraphTypeKeys)
@@ -4142,7 +4153,7 @@ export interface CXConfig {
   kmeansVarClusters?: number | boolean;
   /**
    * Name of the variable annotation to use labels in Scatter2D plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   labelBy?: string | boolean;
@@ -4157,7 +4168,7 @@ export interface CXConfig {
    * properties. Supports flat rule arrays (combined via labelSelectLogic) or recursive nested
    * arrays for complex AND / OR logic. Example: [["x", ">", 5]] or ["AND", ["x", ">", 5],
    * ["y", "<", 0]]
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   labelSelect?: unknown[] | boolean | string | number;
@@ -4540,7 +4551,7 @@ export interface CXConfig {
   legendVerticalJustification?: number | boolean;
   /**
    * Name of a sample annotation to stack the samples of each variable in Line graphs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   lineBy?: string | boolean;
@@ -4567,7 +4578,7 @@ export interface CXConfig {
    * the levels of a Network edge attribute used with lineEdgeBy. The key of the object is a
    * value of the attribute; a default line style will be assigned to any value not included in
    * the object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   lineKey?: Record<string, unknown> | boolean;
@@ -4751,6 +4762,13 @@ export interface CXConfig {
    */
   manhattanColors?: unknown[] | boolean | string | number;
   /**
+   * Colors for the alternating chromosomes of the bottom (mirrored) track in a Miami plot
+   * (scatterType miami). Defaults distinct from manhattanColors so the two studies read apart
+   * @graphTypes Scatter2D
+   * @default ["rgb(90,90,90)","rgb(70,130,180)"]
+   */
+  manhattanColorsBottom?: unknown[] | boolean | string | number;
+  /**
    * Manhattan contrast color
    * @graphTypes Scatter2D
    * @default "rgba(0,0,0,0.1)"
@@ -4768,6 +4786,14 @@ export interface CXConfig {
    * @default false
    */
   manhattanMarkerLogPValue?: string | boolean;
+  /**
+   * Sample name included in the data.y.smps object used to map to the negative log 10 p value
+   * of the SECOND (bottom) study in a Miami plot (scatterType miami). Required for scatterType
+   * miami
+   * @graphTypes Scatter2D
+   * @default false
+   */
+  manhattanMarkerLogPValueBottom?: string | boolean;
   /**
    * Sample name included in the data.y.smps object used to map to the position in base pairs
    * @graphTypes Scatter2D
@@ -4975,7 +5001,7 @@ export interface CXConfig {
   /**
    * Utility to create dynamic markers in Map. It must have a latitude and longitude metadata
    * too
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   markerBy?: string | boolean;
@@ -5025,7 +5051,7 @@ export interface CXConfig {
   /**
    * Maximum length in characters a sample label or description can have so anything above is
    * truncated
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 25
    */
   maxSmpStringLen?: number | boolean;
@@ -5042,7 +5068,7 @@ export interface CXConfig {
   /**
    * Maximum length in characters a variable label or description can have so anything above is
    * truncated
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 25
    */
   maxVarStringLen?: number | boolean;
@@ -5165,13 +5191,13 @@ export interface CXConfig {
   minTextSize?: number | boolean;
   /**
    * Color for the missing data
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(245,245,245)"
    */
   missingDataColor?: string | boolean;
   /**
    * String value use to specify missing data
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "NA"
    */
   missingDataValue?: string | boolean;
@@ -5189,7 +5215,7 @@ export interface CXConfig {
   nUpSets?: number | boolean;
   /**
    * Flag to omit NaN values in log transformation
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   nanOmit?: boolean;
@@ -5492,7 +5518,7 @@ export interface CXConfig {
   /**
    * Sort group keys numerically (type-aware: plain integers, range labels, composite keys)
    * instead of lexicographically
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   numericGroupSort?: boolean;
@@ -5696,7 +5722,7 @@ export interface CXConfig {
   outline3DColor?: string | boolean;
   /**
    * Name of the annotation for the outline when drawing a multidimensional Heatmap
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   outlineBy?: string | boolean;
@@ -5704,7 +5730,7 @@ export interface CXConfig {
    * String that identify the object containing a two dimensional array with values used to
    * color the outline data points when drawing a multidimensional Heatmap. It must be located
    * within the data.y object (for example: data.y.data4)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   outlineByData?: string | boolean;
@@ -5854,7 +5880,7 @@ export interface CXConfig {
   /**
    * Name of a variable annotation or a sample name or the string variable to pattern the
    * variables. When patternByData is specified patternBy is used for the title in the legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   patternBy?: string | boolean;
@@ -5862,7 +5888,7 @@ export interface CXConfig {
    * String that identify the object containing a two dimensional array with values used to
    * pattern the data points when drawing a multidimensional Heatmap. It must be located within
    * the data.y object (for example: data.y.data4)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   patternByData?: string | boolean;
@@ -5876,7 +5902,7 @@ export interface CXConfig {
    * in the data object. The key of the object is the name of an annotation in the data.x
    * object or the name of an annotation in the data.z object. A default pattern will be
    * assigned to a data point whose value was not included the object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   patternKey?: Record<string, unknown> | boolean;
@@ -5917,7 +5943,7 @@ export interface CXConfig {
   perspectiveFactor?: number | boolean;
   /**
    * Utility to create pie with a sample annotation
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   pieBy?: string | boolean;
@@ -5974,7 +6000,7 @@ export interface CXConfig {
   pieType?: "separated" | "solid" | "parliament" | false | (string & {});
   /**
    * Utility to pivot data with a sample annotation
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   pivotBy?: string | boolean;
@@ -6473,28 +6499,28 @@ export interface CXConfig {
   /**
    * Name of the group used in ratio transformation. Almost private parameters used within the
    * different CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ratioGroupReference?: string | boolean;
   /**
    * Name of the level used in ratio transformation. Almost private parameters used within the
    * different CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ratioLevelReference?: string | boolean;
   /**
    * Default index of sample used in ratio transformation. Almost private parameters used
    * within the different CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   ratioReference?: number | boolean;
   /**
    * Name of the sample used in ratio transformation. Almost private parameters used within the
    * different CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ratioSampleReference?: string | boolean;
@@ -6563,19 +6589,19 @@ export interface CXConfig {
    * annotations are passed then, it will be used as upper and lower confidence intervals.
    * Alternatively it could be a pair of arrays witht the actual data. Works in coordination
    * with the lineBy parameter
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ribbonBy?: string | unknown[] | boolean | number;
   /**
    * Type of ribbon to create
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "line"
    */
   ribbonByType?: "line" | "area" | false | (string & {});
   /**
    * Utility to create ridgelines in Scatter2D plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   ridgeBy?: string | boolean;
@@ -7355,13 +7381,13 @@ export interface CXConfig {
   setMaxR?: number | boolean;
   /**
    * Set the maximum value for data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setMaxX?: number | boolean;
   /**
    * Set the maximum value for data in the second X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setMaxX2?: number | boolean;
@@ -7385,13 +7411,13 @@ export interface CXConfig {
   setMinR?: number | boolean;
   /**
    * Set the minimum value for data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setMinX?: number | boolean;
   /**
    * Set the minimum value for data in the second X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setMinX2?: number | boolean;
@@ -7409,7 +7435,7 @@ export interface CXConfig {
   setMinZ?: number | boolean;
   /**
    * Set the maximum value allowed to pann the data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setPanningMaxX?: number | boolean;
@@ -7421,7 +7447,7 @@ export interface CXConfig {
   setPanningMaxY?: number | boolean;
   /**
    * Set the minimum value allowed to pann the data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   setPanningMinX?: number | boolean;
@@ -7478,14 +7504,14 @@ export interface CXConfig {
   /**
    * Name of a variable annotation or a sample name or the string variable to shape the
    * variables. When shapeByData is specified shapeBy is used for the title in the legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeBy?: string | boolean;
   /**
    * Flag to use pie shapes with continuous data as opposed to by binning the data and show
    * regular shapes
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeByContinuous?: boolean;
@@ -7493,14 +7519,14 @@ export interface CXConfig {
    * String that identify the object containing a two dimensional array with values used to
    * shape data points when drawing a multidimensional Heatmap. It must be located within the
    * data.y object (for example: data.y.data2)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeByData?: string | boolean;
   /**
    * String that identify the shape to use in regular and multidimensional heatmaps.
    * shapeByData will take precedence over this property
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeByShape?: string | boolean;
@@ -7509,13 +7535,13 @@ export interface CXConfig {
    * the data object. The key of the object is the name of an annotation in the data.x object
    * or the name of an annotation in the data.z object. A default shape will be assigned to a
    * data point whose value was not included the object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeKey?: Record<string, unknown> | boolean;
   /**
    * Title for the shape legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   shapeLegendTitle?: string | boolean;
@@ -7661,25 +7687,25 @@ export interface CXConfig {
   showDataValues?: boolean;
   /**
    * Flag to show/hide the decorations
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default true
    */
   showDecorations?: boolean;
   /**
    * Flag to show/hide the the decoration legends border
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
   showDecorationsBorder?: boolean;
   /**
    * Flag to show/hide the decoration legends
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default true
    */
   showDecorationsLegend?: boolean;
   /**
    * Flag to show/hide the error bars in graphs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   showErrorBars?: boolean;
@@ -7955,7 +7981,7 @@ export interface CXConfig {
   showSampleLegend?: boolean;
   /**
    * Flag to show/hide the sample names
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   showSampleNames?: boolean;
@@ -8035,7 +8061,7 @@ export interface CXConfig {
    * Opt-in flag to render the statInference block (pairwise significance brackets +
    * p-value/stars) on one-dimensional group charts (Boxplot, Violin, Bar). Off by default so
    * non-stat charts are unaffected.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
   showStatInference?: boolean;
@@ -8082,7 +8108,7 @@ export interface CXConfig {
   showVariableLegend?: boolean;
   /**
    * Flag to show/hide the variable names
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   showVariableNames?: boolean;
@@ -8118,13 +8144,13 @@ export interface CXConfig {
   /**
    * Name of a variable annotation or a sample name or the string variable to size the
    * variables. When sizeByData is specified sizeBy is used for the title in the legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeBy?: string | boolean;
   /**
    * Flag to show the size data continuously as opposed to by binning the sizes
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeByContinuous?: boolean;
@@ -8132,7 +8158,7 @@ export interface CXConfig {
    * String that identify the object containing a two dimensional array with values used to
    * size data points when drawing a multidimensional Heatmap. It must be located within the
    * data.y object (for example: data.y.data3)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeByData?: string | boolean;
@@ -8147,13 +8173,13 @@ export interface CXConfig {
    * the data object. The key of the object is the name of an annotation in the data.x object
    * or the name of an annotation in the data.z object. A default size will be assigned to a
    * data point whose value was not included the object
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeKey?: Record<string, unknown> | boolean;
   /**
    * Name of the variable annotation to size the labels in Scatter2D plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeLabelBy?: string | boolean;
@@ -8168,7 +8194,7 @@ export interface CXConfig {
   sizeLegendNested?: boolean;
   /**
    * Title for the size legend
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sizeLegendTitle?: string | boolean;
@@ -8229,14 +8255,14 @@ export interface CXConfig {
   /**
    * Color for the DEPRECATED (use highlightColor): color for highlighted samples; inherits
    * highlightColor when not set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpHighlightColor?: string | boolean;
   /**
    * Flag to use best position for sample labels depending on the location of them. It will
    * align them right when placed in the left of the graphs and viceversa
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   smpLabelAutoAlignPosition?: boolean;
@@ -8247,25 +8273,25 @@ export interface CXConfig {
    * to nice calendar boundaries -- placement stays driven by smpLabelInterval -- so it suits
    * bar charts, which keep a label on every n-th bar. Ignored when the sample names are not
    * dates or when isGraphTime is set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpLabelDateAuto?: boolean;
   /**
    * Flag to use images as sample labels when possible
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpLabelImage?: boolean;
   /**
    * Flag to use round images as sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpLabelImageRound?: boolean;
   /**
    * Interval for the sample labels in one dimensional and circular plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   smpLabelInterval?: number | boolean;
@@ -8273,7 +8299,7 @@ export interface CXConfig {
    * Flag to pick the sample label draw interval from the available band width instead of a
    * fixed smpLabelInterval, thinning crowded sample-axis labels so neighbouring labels no
    * longer overlap. Ignored when smpLabelInterval is set above 1
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpLabelIntervalAuto?: boolean;
@@ -8282,7 +8308,7 @@ export interface CXConfig {
    * (years, quarters, months) on an evenly-spaced categorical sample axis in one dimensional
    * plots, the way a time axis selects ticks, without repositioning the points. Ignored when
    * the sample names are not dates or when isGraphTime is set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpLabelTimeAuto?: boolean;
@@ -8308,19 +8334,19 @@ export interface CXConfig {
   smpOverlaysLegendColumns?: number | boolean;
   /**
    * Alignment (or position) for the sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "right"
    */
   smpTextAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   smpTextBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(77,77,77)"
    */
   smpTextColor?: string | boolean;
@@ -8328,25 +8354,25 @@ export interface CXConfig {
    * Font size for the text in sample labels. Be aware that auto scaling font must be turned
    * off for this property to take effect. A more convenient way to modify the size is to use
    * the smpTextScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 10
    */
   smpTextFontSize?: number | boolean;
   /**
    * Font style for the sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   smpTextFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   smpTextMargin?: number | boolean;
   /**
    * Rotation in degrees for the sample labels
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   smpTextRotate?: number | boolean;
@@ -8354,13 +8380,13 @@ export interface CXConfig {
    * Flag to automatically keep the sample (or grouping-factor) labels of vertical
    * one-dimensional plots horizontal when the longest label fits its band, falling back to
    * smpTextRotate otherwise. Re-evaluated on resize
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   smpTextRotateAuto?: boolean;
   /**
    * Scaling factor used to increase or decrease the sample labels font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   smpTextScaleFontFactor?: number | boolean;
@@ -8370,31 +8396,31 @@ export interface CXConfig {
    * render as uneven pixel gaps) instead of at an evenly-spaced categorical slot. Combine with
    * smpLabelTimeAuto for evenly-spaced date labels. Ignored for other graph types, for
    * non-date samples, or when isGraphTime is set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpTimeScale?: boolean;
   /**
    * Title for the sample axis in one dimensional plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpTitle?: string | boolean;
   /**
    * Alignment (or position) for the sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   smpTitleAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   smpTitleBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   smpTitleColor?: string | boolean;
@@ -8402,13 +8428,13 @@ export interface CXConfig {
    * Font size for the text in sample title. Be aware that auto scaling font must be turned off
    * for this property to take effect. A more convenient way to modify the size is to use the
    * smpTitleScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 10
    */
   smpTitleFontSize?: number | boolean;
   /**
    * Font style for the sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   smpTitleFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
@@ -8420,19 +8446,19 @@ export interface CXConfig {
   smpTitleLabelPosition?: "left" | "right" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   smpTitleMargin?: number | boolean;
   /**
    * Rotation in degrees for the sample title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   smpTitleRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the sample title font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   smpTitleScaleFontFactor?: number | boolean;
@@ -8442,14 +8468,14 @@ export interface CXConfig {
    * gaps render as uneven pixel gaps) and the axis is labelled with nice round ticks instead
    * of printing every sample name at an evenly-spaced categorical slot. Ignored for other
    * graph types, for non-numeric samples, or when isGraphTime is set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   smpValueScale?: boolean;
   /**
    * Flag to use case sensitive in ascii sorting. Almost private parameters used within the
    * different CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sortCaseSensitive?: boolean;
@@ -8466,26 +8492,26 @@ export interface CXConfig {
    * Sort the samples by the value of the Variable1 [ [cat, smp, samples] ] : Sort the samples
    * by their name. Important!!!! This parameter will clean the data and remove any variables
    * not used in the dataset at load time
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   sortData?: unknown[] | boolean | string | number;
   /**
    * Default direction for data sorting. Almost private parameters used within the different
    * CanvasXpress UIs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "ascending"
    */
   sortDir?: "ascending" | "descending" | false | (string & {});
   /**
    * Flag to include empty groups when sorting
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   sortIncludeEmpty?: boolean;
   /**
    * Sort the name of the groups after sample grouping.
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   sortOnGrouping?: string | boolean;
@@ -8501,6 +8527,34 @@ export interface CXConfig {
    * @default false
    */
   sourceUrl?: string | boolean;
+  /**
+   * Value label at the right edge of each Sparklines strip: none, the series mean, median, or
+   * last value. Mirrors a sparkline table summary column as a per-panel annotation.
+   * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
+   * @default "none"
+   */
+  sparklineAggregate?: "none" | "mean" | "median" | "last" | false | (string & {});
+  /**
+   * Reference line drawn behind each Sparklines strip: none, the series mean, the series
+   * median, or a true zero baseline. Each rule is scoped to its own panel.
+   * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
+   * @default "none"
+   */
+  sparklineBaseline?: "none" | "mean" | "median" | "zero" | false | (string & {});
+  /**
+   * Emphasis dots on each Sparklines strip: none, the first and last points (endpoints), the
+   * lowest and highest points (minmax), or all of them.
+   * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
+   * @default "none"
+   */
+  sparklineMarkers?: "none" | "endpoints" | "minmax" | "all" | false | (string & {});
+  /**
+   * Mark used for each Sparklines strip: a trend line, bars, a filled area, or a win/loss row
+   * of equal-height up/down bars.
+   * @graphTypes Bin, Binplot, Bump, CDF, Contour, Density … (22 types; see CXGraphTypeKeys)
+   * @default "line"
+   */
+  sparklineType?: "line" | "bar" | "area" | "winloss" | false | (string & {});
   /**
    * Factor (in the x data object) used to split the samples ala split in a complex heatmap.
    * Unlike segregateSamplesBy, the split keeps a single full-width plot and only inserts a
@@ -8523,14 +8577,14 @@ export interface CXConfig {
   splitVariablesBy?: string | boolean;
   /**
    * Name of a sample annotation to stack the samples of each variable in Bar graphs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   stackBy?: string | boolean;
   /**
    * Type of Standard Deviation. biased uses n as denominator and unbiased uses (n - 1) as
    * denominator where n is the number of values
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "unbiased"
    */
   standardDeviationType?: "biased" | "unbiased" | false | (string & {});
@@ -8550,7 +8604,7 @@ export interface CXConfig {
    * corrected p (raw p when no correction applies) is above it. Test statistics are computed
    * upstream (R/Python); only correction and star derivation run in the engine. Requires
    * showStatInference:true.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
   statInference?: Record<string, unknown> | unknown[] | boolean | string | number;
@@ -8604,7 +8658,7 @@ export interface CXConfig {
    * Array containing edge attributes. The numeric edge attributes will be treated as strings.
    * This parameter accomplishes the same as the function switchNumericToString for edges at
    * load time
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   stringEdgeAttributes?: unknown[] | boolean | string | number;
@@ -8612,7 +8666,7 @@ export interface CXConfig {
    * Array containing node attributes. The numeric node attributes will be treated as strings.
    * This parameter accomplishes the same as the function switchNumericToString for nodes at
    * load time
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   stringNodeAttributes?: unknown[] | boolean | string | number;
@@ -8621,7 +8675,7 @@ export interface CXConfig {
    * This parameter accomplishes the same as the function switchNumericToString for samples at
    * load time. It can be used in conjunction with the parameter asSampleFactors. TO DO: write
    * example
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   stringSampleFactors?: unknown[] | boolean | string | number;
@@ -8630,7 +8684,7 @@ export interface CXConfig {
    * strings. This parameter accomplishes the same as the function switchNumericToString for
    * variables at load time. It can be used in conjunction with the parameter
    * asVariableFactors. TO DO: write example
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   stringVariableFactors?: unknown[] | boolean | string | number;
@@ -8772,7 +8826,7 @@ export interface CXConfig {
   subtracksMaxDefault?: number | boolean;
   /**
    * Summary type for the data when grouping
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   summaryType?: string | boolean;
@@ -8887,7 +8941,7 @@ export interface CXConfig {
   tileZoomAlphaColor?: number | boolean;
   /**
    * Time Format according to date.format.js Steven Levithan <stevenlevithan.com>
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "isoDate"
    */
   timeFormat?: "default" | "shortDate" | "mediumDate" | "longDate" | "fullDate" | "shortTime" | "mediumTime" | "longTime" | "isoDate" | "isoTime" | "isoDateTime" | "isoUtcDateTime" | "year" | "month" | "day" | "hour" | "minute" | "second" | false | (string & {});
@@ -9120,7 +9174,7 @@ export interface CXConfig {
   /**
    * Default axis to use to transform the data when either z-score or ratio transformation is
    * used
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "samples"
    */
   transformAxis?: "samples" | "variables" | false | (string & {});
@@ -9128,7 +9182,7 @@ export interface CXConfig {
    * Default transformation type for ALL the data. Data can also be transformed by axis (x,y,z)
    * to give more flexibility. false, save, reset and undo are NOT real transformations. They
    * are only used in the canvasXpress UIs to save the transformed data
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   transformData?: string | boolean;
@@ -9173,7 +9227,7 @@ export interface CXConfig {
   /**
    * Flag to transpose data as a parameter. This parameter accomplishes the same as the
    * function transpose at load time
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   transposeData?: boolean;
@@ -9252,7 +9306,7 @@ export interface CXConfig {
   /**
    * Array of sample annotations to treemap the variables. The array may also include sample to
    * use as last level
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   treemapBy?: unknown[] | boolean | string | number;
@@ -9364,7 +9418,7 @@ export interface CXConfig {
   /**
    * Color for the DEPRECATED (use highlightColor): color for highlighted variables; inherits
    * highlightColor when not set
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   varHighlightColor?: string | boolean;
@@ -9373,13 +9427,13 @@ export interface CXConfig {
    * the year at its first shown occurrence and the short month name otherwise, the way a time
    * axis reads. The variable-axis twin of smpLabelDateAuto; placement stays driven by
    * varLabelInterval. Ignored when the variable names are not dates
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   varLabelDateAuto?: boolean;
   /**
    * Interval for the variable labels in heatmaps
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   varLabelInterval?: number | boolean;
@@ -9388,7 +9442,7 @@ export interface CXConfig {
    * fixed varLabelInterval, thinning crowded variable-axis labels so neighbouring labels no
    * longer overlap. The variable-axis twin of smpLabelIntervalAuto. Ignored when
    * varLabelInterval is set above 1
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   varLabelIntervalAuto?: boolean;
@@ -9414,19 +9468,19 @@ export interface CXConfig {
   varOverlaysLegendColumns?: number | boolean;
   /**
    * Alignment (or position) for the variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   varTextAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   varTextBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(77,77,77)"
    */
   varTextColor?: string | boolean;
@@ -9434,25 +9488,25 @@ export interface CXConfig {
    * Font size for the text in variable text. Be aware that auto scaling font must be turned
    * off for this property to take effect. A more convenient way to modify the size is to use
    * the varTextScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 10
    */
   varTextFontSize?: number | boolean;
   /**
    * Font style for the variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   varTextFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   varTextMargin?: number | boolean;
   /**
    * Rotation in degrees for the variable text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   varTextRotate?: number | boolean;
@@ -9460,37 +9514,37 @@ export interface CXConfig {
    * Flag to automatically keep the variable labels along the bottom of a horizontal heatmap
    * horizontal when the longest label fits its column band, falling back to varTextRotate
    * otherwise. Re-evaluated on resize
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   varTextRotateAuto?: boolean;
   /**
    * Scaling factor used to increase or decrease the variable text font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   varTextScaleFontFactor?: number | boolean;
   /**
    * Title for the variables in hetamap plots
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   varTitle?: string | boolean;
   /**
    * Alignment (or position) for the variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   varTitleAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   varTitleBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   varTitleColor?: string | boolean;
@@ -9498,13 +9552,13 @@ export interface CXConfig {
    * Font size for the text in variable title. Be aware that auto scaling font must be turned
    * off for this property to take effect. A more convenient way to modify the size is to use
    * the varTitleScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 10
    */
   varTitleFontSize?: number | boolean;
   /**
    * Font style for the variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   varTitleFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
@@ -9516,19 +9570,19 @@ export interface CXConfig {
   varTitleLabelPosition?: "bottom" | "top" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   varTitleMargin?: number | boolean;
   /**
    * Rotation in degrees for the variable title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   varTitleRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the variable title font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   varTitleScaleFontFactor?: number | boolean;
@@ -9785,7 +9839,7 @@ export interface CXConfig {
    * scale>, foldChangeColor, fdrColor, width}. Draws vertical rules at +/- foldChange and a
    * horizontal rule at -log10(fdr) using the scatter decoration path. Omit to keep the plain
    * Volcano alias.
-   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (41 types; see CXGraphTypeKeys)
+   * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
   volcano?: Record<string, unknown> | boolean;
@@ -9813,7 +9867,7 @@ export interface CXConfig {
    * (selected/total by weight) and pieBy slices. Default false weighs every sample 1, a plain
    * count. The dual of grouping: it expands one sample into many without materializing them (R
    * count(wt=), ggplot aes(weight=))
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   weightBy?: string | boolean;
@@ -9945,7 +9999,7 @@ export interface CXConfig {
    * through a timeline widget (play/stop and a draggable scrubber). Each level filters the
    * data to that frame and the graph tweens between frames via showTransition. Supported in
    * Scatter, Bar, Map, Fish and line-based graphs
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   workflowBy?: string | boolean;
@@ -10071,13 +10125,13 @@ export interface CXConfig {
   x3DRatio?: number | boolean;
   /**
    * Name of the samples, groups or variables to be displayed in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   xAxis?: unknown[] | boolean | string | number;
   /**
    * Name of the samples, groups or variables to be displayed in the second X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   xAxis2?: unknown[] | boolean | string | number;
@@ -10088,19 +10142,19 @@ export interface CXConfig {
    * format string, or an object, i.e. {"locale": "en-US", "style":
    * "decimal|percent|currency|compact", "currency": "USD", "decimals": 1, "grouping": true,
    * "prefix": "", "suffix": ""}
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxis2NumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Flag to rotate 180 degrees the direction of the X axis on the top
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxis2Rotate?: boolean;
   /**
    * Flag to show/hide the X axis on the top
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxis2Show?: boolean;
@@ -10109,19 +10163,19 @@ export interface CXConfig {
    * sprintf format or an array where the first parameter is the sprintf format and the second
    * parameter is a modification applied to the value before is passed to the sprintf function,
    * i.e. ("/1000", "+ 100", etc.)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxis2TickFormat?: string | unknown[] | boolean | number;
   /**
    * Approx number of tick lines in the second X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   xAxis2Ticks?: number | boolean;
   /**
    * X axis2 title on the top
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxis2Title?: string | boolean;
@@ -10135,206 +10189,206 @@ export interface CXConfig {
   xAxis3DTicks?: number | boolean;
   /**
    * Value to ceil the data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   xAxisCeilValue?: number | boolean;
   /**
    * Sample id that is currently displayed in the X axis. Important when there are more that
    * one series displayed in the graph
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   xAxisCurrent?: number | boolean;
   /**
    * Flag to force exact values in X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisExact?: boolean;
   /**
    * Value to factor the data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   xAxisFactorValue?: number | boolean;
   /**
    * Value to floor the data in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   xAxisFloorValue?: number | boolean;
   /**
    * Color for the major grid lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204, 204, 204)"
    */
   xAxisGridMajorColor?: string | boolean;
   /**
    * Type of line for the major grid lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisGridMajorLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the major grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   xAxisGridMajorShow?: boolean;
   /**
    * Transparency for the color of the major grid lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisGridMajorTransparency?: number | boolean;
   /**
    * Width for the major grid lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisGridMajorWidth?: number | boolean;
   /**
    * Color for the minor grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204, 204, 204)"
    */
   xAxisGridMinorColor?: string | boolean;
   /**
    * Type of line for the minor grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisGridMinorLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the minor grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   xAxisGridMinorShow?: boolean;
   /**
    * Transparency for the color of the minor grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisGridMinorTransparency?: number | boolean;
   /**
    * Width for the minor grid lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0.5
    */
   xAxisGridMinorWidth?: number | boolean;
   /**
    * Size in pixels for the histogram in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 80
    */
   xAxisHistogramHeight?: number | boolean;
   /**
    * Flag to show/hide the histogram in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisHistogramShow?: boolean;
   /**
    * Color for the bottom line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204, 204, 204)"
    */
   xAxisLineBottomColor?: string | boolean;
   /**
    * Type of line for the bottom line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisLineBottomLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the line in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisLineBottomShow?: boolean;
   /**
    * Transparency for the color of the bottom line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLineBottomTransparency?: number | boolean;
   /**
    * Width for the bottom line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLineBottomWidth?: number | boolean;
   /**
    * Color for the top line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204, 204, 204)"
    */
   xAxisLineTopColor?: string | boolean;
   /**
    * Type of line for the top line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisLineTopLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the line in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisLineTopShow?: boolean;
   /**
    * Transparency for the color of the top line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLineTopTransparency?: number | boolean;
   /**
    * Width for the top line across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLineTopWidth?: number | boolean;
   /**
    * Color for the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   xAxisLogTicksColor?: string | boolean;
   /**
    * Length for the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 8
    */
   xAxisLogTicksLength?: number | boolean;
   /**
    * Type of line for the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisLogTicksLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisLogTicksShow?: boolean;
   /**
    * Transparency for the color of the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLogTicksTransparency?: number | boolean;
   /**
    * Width for the log tick lines in the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisLogTicksWidth?: number | boolean;
   /**
    * Number of minor ticks between major ticks in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 2
    */
   xAxisMinorTicks?: number | boolean;
@@ -10344,67 +10398,67 @@ export interface CXConfig {
    * (comma, percent, dollar, euro, pound, yen, compact, auto), a sprintf format string, or an
    * object, i.e. {"locale": "en-US", "style": "decimal|percent|currency|compact|auto",
    * "currency": "USD", "decimals": 1, "grouping": true, "prefix": "", "suffix": ""}
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisNumberFormat?: string | Record<string, unknown> | boolean;
   /**
    * Size in pixels for the data rug in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 15
    */
   xAxisRugHeight?: number | boolean;
   /**
    * Position for the data rug in theX axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "bottom"
    */
   xAxisRugPosition?: "bottom" | "top" | "both" | false | (string & {});
   /**
    * Flag to show/hide a data rug in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisRugShow?: boolean;
   /**
    * Set the tick labels paired one-to-one with xAxisSetValues in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   xAxisSetLabels?: unknown[] | boolean | string | number;
   /**
    * Set the minor values for the axis in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   xAxisSetMinorValues?: unknown[] | boolean | string | number;
   /**
    * Set the values for the axis in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default []
    */
   xAxisSetValues?: unknown[] | boolean | string | number;
   /**
    * Flag to show/hide the X axis on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   xAxisShow?: boolean;
   /**
    * Alignment (or position) for the axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   xAxisTextAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   xAxisTextBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   xAxisTextColor?: string | boolean;
@@ -10412,31 +10466,31 @@ export interface CXConfig {
    * Font size for the text in axis text. Be aware that auto scaling font must be turned off
    * for this property to take effect. A more convenient way to modify the size is to use the
    * xAxisTextScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 8
    */
   xAxisTextFontSize?: number | boolean;
   /**
    * Font style for the axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   xAxisTextFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   xAxisTextMargin?: number | boolean;
   /**
    * Rotation in degrees for the axis text
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   xAxisTextRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the axis text font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisTextScaleFontFactor?: number | boolean;
@@ -10445,85 +10499,85 @@ export interface CXConfig {
    * format or an array where the first parameter is the sprintf format and the second
    * parameter is a modification applied to the value before is passed to the sprintf function,
    * i.e. ("/1000", "+ 100", etc.)
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTickFormat?: string | unknown[] | boolean | number;
   /**
    * Approx number of tick lines in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   xAxisTicks?: number | boolean;
   /**
    * Color for the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(204, 204, 204)"
    */
   xAxisTicksColor?: string | boolean;
   /**
    * Length for the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default null
    */
   xAxisTicksLength?: number | boolean;
   /**
    * Type of line for the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "solid"
    */
   xAxisTicksLineType?: "rect" | "solid" | "spline" | "dotted" | "dashed" | "dotdash" | "longdash" | "twodash" | false | (string & {});
   /**
    * Flag to show/hide the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default true
    */
   xAxisTicksShow?: boolean;
   /**
    * Transparency for the color of the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisTicksTransparency?: number | boolean;
   /**
    * Width for the marker lines across the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisTicksWidth?: number | boolean;
   /**
    * Flag to force date format in X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTime?: boolean;
   /**
    * X axis title on the bottom
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTitle?: string | boolean;
   /**
    * Alignment (or position) for the axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "center"
    */
   xAxisTitleAlign?: "left" | "center" | "right" | false | (string & {});
   /**
    * Baseline (or reference line) for the axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "middle"
    */
   xAxisTitleBaseline?: "top" | "middle" | "bottom" | false | (string & {});
   /**
    * Color for the text in axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default "rgb(0,0,0)"
    */
   xAxisTitleColor?: string | boolean;
   /**
    * Set the title for the X axis dynamically as it changes when configured by the user
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTitleDynamic?: boolean;
@@ -10531,49 +10585,49 @@ export interface CXConfig {
    * Font size for the text in axis title. Be aware that auto scaling font must be turned off
    * for this property to take effect. A more convenient way to modify the size is to use the
    * xAxisTitleScaleFontFactor
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 8
    */
   xAxisTitleFontSize?: number | boolean;
   /**
    * Font style for the axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default ""
    */
   xAxisTitleFontStyle?: "" | "bold" | "italic" | "bold italic" | false | (string & {});
   /**
    * Margin to pad or separate the characters in the axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 5
    */
   xAxisTitleMargin?: number | boolean;
   /**
    * Rotation in degrees for the axis title
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 0
    */
   xAxisTitleRotate?: number | boolean;
   /**
    * Scaling factor used to increase or decrease the axis title font size in the canvas
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default 1
    */
   xAxisTitleScaleFontFactor?: number | boolean;
   /**
    * Type of transformation for values in X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTransform?: string | boolean;
   /**
    * Flag to transform the values of the ticks back to linear scale in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTransformLinearTicks?: boolean;
   /**
    * Flag to transform the values of the ticks in the X axis
-   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (65 types; see CXGraphTypeKeys)
+   * @graphTypes Alluvial, Area, AreaLine, Bar, BarLine, Boxplot … (66 types; see CXGraphTypeKeys)
    * @default false
    */
   xAxisTransformTicks?: boolean;
@@ -12542,6 +12596,7 @@ export type CXKeysLegends =
 export type CXKeysLineGraphs =
   | "connectNullData"
   | "coordinateLineColor"
+  | "isSlopePlot"
   | "lineDecoration"
   | "lineErrorType"
   | "lineType"
@@ -12583,9 +12638,11 @@ export type CXKeysManhattanPlots =
   | "chromosomeLengths"
   | "manhattanCNV"
   | "manhattanColors"
+  | "manhattanColorsBottom"
   | "manhattanContrastColor"
   | "manhattanMarkerChromosomeNumber"
   | "manhattanMarkerLogPValue"
+  | "manhattanMarkerLogPValueBottom"
   | "manhattanMarkerPosition"
   | "manhattanRangeEnd"
   | "manhattanRangeLineWidth"
@@ -13114,7 +13171,11 @@ export type CXKeysScatterPlots =
   | "scatterPointAlpha"
   | "scatterType"
   | "showDataLabels"
-  | "showScatterLineOriginalData";
+  | "showScatterLineOriginalData"
+  | "sparklineAggregate"
+  | "sparklineBaseline"
+  | "sparklineMarkers"
+  | "sparklineType";
 /** Config keys in the "Scrollbar" category. */
 export type CXKeysScrollbar =
   | "scrollbarAltBackgroundColor"
@@ -13662,6 +13723,7 @@ export interface CXGraphTypeKeys {
   "Scatter3D": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "ScatterBubble2D": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Spaghetti": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Sparklines": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "SPLOM": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBinPlots | CXKeysCitationsorReferences | CXKeysClustreePlots | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysConfidenceIntervals | CXKeysContextMenu | CXKeysContours | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysErrorBars | CXKeysEvents | CXKeysFitLines | CXKeysForecast | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysHistograms | CXKeysImages | CXKeysKaplanMeierPlots | CXKeysLLM | CXKeysLines | CXKeysLoess | CXKeysManhattanPlots | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysQuantileRegressionPlots | CXKeysR | CXKeysRandom | CXKeysRegression | CXKeysRidgelinePlots | CXKeysSamples | CXKeysScatterPlotMatrix | CXKeysScatterPlots | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysStreamPlots | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysVectorFieldPlots | CXKeysVisiumPlots | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysYAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Stacked": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "StackedLine": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
@@ -13681,6 +13743,9 @@ export interface CXGraphTypeKeys {
   "Venn": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataSelection | CXKeysDataTable | CXKeysDataUIWidgets | CXKeysDebug | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVennDiagrams | CXKeysWorkflowCharts | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "Waterfall": CXKeys3DAttributes | CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysBarGraphs | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysLollipopGraphs | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysRanges | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysSwimmerGraphs | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWaterfallGraphs | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
   "WordCloud": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysTagCloud | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "StripPlot": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysDotplotGraphs | CXKeysDumbbellGraphs | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Slope": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLineGraphs | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
+  "Pyramid": CXKeysAnimationsandVisualizationTransitions | CXKeysAspectRatioSpaceandWidth | CXKeysAxis | CXKeysCitationsorReferences | CXKeysClustering | CXKeysColors | CXKeysCombinationPlotStrips | CXKeysCombinationPlots | CXKeysContextMenu | CXKeysDOE | CXKeysData | CXKeysDataContext | CXKeysDataCustomizer | CXKeysDataFaceting | CXKeysDataFilters | CXKeysDataPointAttributes | CXKeysDataRatioReference | CXKeysDataSelection | CXKeysDataSorting | CXKeysDataTable | CXKeysDataTimeSeries | CXKeysDataTransformation | CXKeysDataUIWidgets | CXKeysDebug | CXKeysDecorations | CXKeysDendrograms | CXKeysErrorBars | CXKeysEvents | CXKeysForegroundandBackground | CXKeysGeneral | CXKeysGeneralAttributes | CXKeysGeneralOneDimensionalGraphs | CXKeysGradients | CXKeysGraphMetadata | CXKeysGreyOut | CXKeysHTMLWidgets | CXKeysImages | CXKeysLLM | CXKeysLegends | CXKeysLines | CXKeysMarginalText | CXKeysMargins | CXKeysMissingData | CXKeysOverlays | CXKeysPlotArea | CXKeysPlotDataType | CXKeysPlotMode | CXKeysPlotPerformance | CXKeysPlotView | CXKeysPlotandPanelAreas | CXKeysPrint | CXKeysR | CXKeysRandom | CXKeysSamples | CXKeysScrollbar | CXKeysShadows | CXKeysShapes | CXKeysSizes | CXKeysText | CXKeysTextPlacement | CXKeysTitlesandSubtitles | CXKeysTooltip | CXKeysTransparency | CXKeysVariables | CXKeysWorkflowCharts | CXKeysXAxis | CXKeysZoomingPanningandResizing | CXKeyscxplot;
 }
 
 /**

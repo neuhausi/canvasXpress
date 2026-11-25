@@ -1,7 +1,7 @@
 {
- "x-cx-version": "74.7",
+ "x-cx-version": "74.8",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1823,
+ "count": 1830,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -4467,6 +4467,7 @@
     "Scatter3D",
     "ScatterBubble2D",
     "Spaghetti",
+    "Sparklines",
     "SPLOM",
     "Stacked",
     "StackedLine",
@@ -4485,7 +4486,10 @@
     "Volcano",
     "Venn",
     "Waterfall",
-    "WordCloud"
+    "WordCloud",
+    "StripPlot",
+    "Slope",
+    "Pyramid"
    ],
    "description": "Specifies the type of graph to be rendered"
   },
@@ -5282,6 +5286,12 @@
    "type": "boolean",
    "default": true,
    "description": "Flag to track user modifications for Reproducible Research"
+  },
+  {
+   "parameter": "isSlopePlot",
+   "type": "boolean",
+   "default": false,
+   "description": "Flag to create a Slope chart (a Line chart emphasising change between two groups, with end-point value labels)"
   },
   {
    "parameter": "jitter",
@@ -6146,6 +6156,15 @@
    "description": "Colors for the manhattan plots alternative chromosomes"
   },
   {
+   "parameter": "manhattanColorsBottom",
+   "type": "array|boolean|string|number",
+   "default": [
+    "rgb(90,90,90)",
+    "rgb(70,130,180)"
+   ],
+   "description": "Colors for the alternating chromosomes of the bottom (mirrored) track in a Miami plot (scatterType miami). Defaults distinct from manhattanColors so the two studies read apart"
+  },
+  {
    "parameter": "manhattanContrastColor",
    "type": "array|boolean|string|number",
    "default": "rgba(0,0,0,0.1)",
@@ -6162,6 +6181,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "Sample name included in the data.y.smps object used to map to the negative log 10 p value"
+  },
+  {
+   "parameter": "manhattanMarkerLogPValueBottom",
+   "type": "string|boolean",
+   "default": false,
+   "description": "Sample name included in the data.y.smps object used to map to the negative log 10 p value of the SECOND (bottom) study in a Miami plot (scatterType miami). Required for scatterType miami"
   },
   {
    "parameter": "manhattanMarkerPosition",
@@ -10275,6 +10300,58 @@
    "type": "string|boolean",
    "default": false,
    "description": "URL for the footer data source. When set with source, the \"Source: ...\" footer text becomes a clickable link (exports still include the text)"
+  },
+  {
+   "parameter": "sparklineAggregate",
+   "type": "string|boolean",
+   "default": "none",
+   "options": [
+    "none",
+    "mean",
+    "median",
+    "last",
+    false
+   ],
+   "description": "Value label at the right edge of each Sparklines strip: none, the series mean, median, or last value. Mirrors a sparkline table summary column as a per-panel annotation."
+  },
+  {
+   "parameter": "sparklineBaseline",
+   "type": "string|boolean",
+   "default": "none",
+   "options": [
+    "none",
+    "mean",
+    "median",
+    "zero",
+    false
+   ],
+   "description": "Reference line drawn behind each Sparklines strip: none, the series mean, the series median, or a true zero baseline. Each rule is scoped to its own panel."
+  },
+  {
+   "parameter": "sparklineMarkers",
+   "type": "string|boolean",
+   "default": "none",
+   "options": [
+    "none",
+    "endpoints",
+    "minmax",
+    "all",
+    false
+   ],
+   "description": "Emphasis dots on each Sparklines strip: none, the first and last points (endpoints), the lowest and highest points (minmax), or all of them."
+  },
+  {
+   "parameter": "sparklineType",
+   "type": "string|boolean",
+   "default": "line",
+   "options": [
+    "line",
+    "bar",
+    "area",
+    "winloss",
+    false
+   ],
+   "description": "Mark used for each Sparklines strip: a trend line, bars, a filled area, or a win/loss row of equal-height up/down bars."
   },
   {
    "parameter": "splitSamplesBy",
