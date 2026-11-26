@@ -149,7 +149,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1830 keys). String enums become open literal
+ * config schema (1832 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -309,6 +309,19 @@ export interface CXConfig {
    * @default "square"
    */
   attractiveForceFunction?: "square" | "cubic" | "log" | "pow" | "sqrt" | false | (string & {});
+  /**
+   * Flag to apply data-driven presentation defaults automatically: a sign-aware colour
+   * spectrum (sequential ramp for a one-signed colorBy range, diverging when it spans zero), a
+   * proportional time scale for date sample axes of Line/Area plots, a nested size legend for
+   * numeric size channels, a continuous colour spectrum when a chart has more than 16 colour
+   * series, a Viridis sequential ramp for a rank colour series (see colorRankBy), an automatic
+   * switch of a Scatter2D with one categorical and one continuous axis to a jittered strip
+   * plot, the Kaplan-Meier p-value and at-risk table, and the Volcano fold-change / p-value
+   * cut-off lines. Each sub-default is applied only when the user did not set it explicitly,
+   * so explicit config always wins. Default off keeps existing charts byte-identical
+   * @default false
+   */
+  autoDefaults?: boolean;
   /**
    * Flag to adjust the font size in many visualization. Please be aware that scaling factors
    * can still modify the font size. This flag needs to be false for the text to accept the
@@ -1224,6 +1237,15 @@ export interface CXConfig {
    * @default false
    */
   colorPaletteExtend?: boolean;
+  /**
+   * Flag to treat the colour series as an ordinal rank: under autoDefaults, when the user left
+   * colorScheme at its default, the chart is coloured with a Viridis sequential perceptual
+   * ramp (colorScheme ColorSpectrum, colorSpectrum Viridis) following the colour series order,
+   * instead of a qualitative palette. Use for ranked categories whose order carries meaning.
+   * Ignored unless autoDefaults is on
+   * @default false
+   */
+  colorRankBy?: boolean;
   /**
    * Color schemes can be user defined which will take the colors in the color property or one
    * provided in canvasXpress. The order of the colors will be used to sequentially select when
@@ -2368,11 +2390,14 @@ export interface CXConfig {
    * is an object with primary keys like line, range, point, text, marker, or error; and for
    * scatter plots, it is an object with primary keys such as linear, exponential, logarithmic,
    * power, polynomial, nonlinearfit, regression, normal, line, text, label, point, range,
-   * image, or polygon. In the latter two cases, the value for each primary key is an array of
-   * objects, where each object specifies the properties of a decoration, for example, for a
-   * one-dimensional line: {line: [{value: 5, color: "#ff0000", width: 2, label: "Threshold",
-   * align: "right"}]}, or for a scatter plot linear fit: {linear: [{x: 1, y: 2, x2: 3, y2: 4,
-   * color: "#ff0000", width: 2, label: "Threshold", align: "right"}]}
+   * segment, image, or polygon. In the latter two cases, the value for each primary key is an
+   * array of objects, where each object specifies the properties of a decoration, for example,
+   * for a one-dimensional line: {line: [{value: 5, color: "#ff0000", width: 2, label:
+   * "Threshold", align: "right"}]}, or for a scatter plot linear fit: {linear: [{x: 1, y: 2,
+   * x2: 3, y2: 4, color: "#ff0000", width: 2, label: "Threshold", align: "right"}]}, or for a
+   * two-point segment (a free-coordinate line from (x,y) to (x2,y2), optionally a capped error
+   * bar with an anchor point): {segment: [{x: 1, y: 2, x2: 1, y2: 4, cap: true, point: true,
+   * color: "#ff0000", width: 2}]}
    * @graphTypes Area, AreaLine, Bar, BarLine, Boxplot, Bin … (42 types; see CXGraphTypeKeys)
    * @default false
    */
@@ -11755,6 +11780,7 @@ export type CXKeysColors =
   | "colorLegendLabels"
   | "colorLegendSteps"
   | "colorPaletteExtend"
+  | "colorRankBy"
   | "colorScheme"
   | "colorSpectrum"
   | "colorSpectrumAuto"
@@ -12279,6 +12305,7 @@ export type CXKeysGanttCharts =
   | "ganttStart";
 /** Config keys in the "General" category. */
 export type CXKeysGeneral =
+  | "autoDefaults"
   | "graphType"
   | "theme"
   | "yieldingRender";
