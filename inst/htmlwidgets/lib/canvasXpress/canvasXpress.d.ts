@@ -149,7 +149,7 @@ export type CXGraphType =
 
 /**
  * Full chart configuration — one property per parameter in the CanvasXpress
- * config schema (1832 keys). String enums become open literal
+ * config schema (1834 keys). String enums become open literal
  * unions (except `graphType`, which is closed); `@graphTypes` in a key's JSDoc
  * lists the graph types it applies to (absent = all). The index signature keeps
  * obfuscation aliases and any newer key valid. See `CXConfigFor<G>` for the
@@ -6600,6 +6600,15 @@ export interface CXConfig {
    */
   resizableY?: boolean;
   /**
+   * Opt-in preset that applies sensible narrow-canvas overrides (legend to the bottom,
+   * slightly smaller fonts) through the responsiveRules machinery, so authors do not have to
+   * hand-write responsiveRules for phones or narrow dashboard panels. Matches canvas width
+   * (not device); any explicit responsiveRules win on conflicting keys. Default off, so
+   * existing charts are byte-identical
+   * @default false
+   */
+  responsiveNarrow?: boolean;
+  /**
    * Width-based config overrides applied on render/resize, i.e. [{"maxWidth": 480, "config":
    * {"legendPosition": "bottom", "fontScaleFontFactor": 0.8}}]. A rule matches when the canvas
    * width is <= maxWidth and >= minWidth (either bound optional); later rules win on
@@ -9134,6 +9143,13 @@ export interface CXConfig {
    * @default false
    */
   topoJSON?: string | boolean;
+  /**
+   * Flag to enable touch gestures on the chart canvas (tap, double-tap, one-finger
+   * pan/rotate/move and two-finger pinch-zoom) via the mobile touch module. Default on; set
+   * false to opt out of touch handling
+   * @default true
+   */
+  touchGestures?: boolean;
   /**
    * Color for the strand direction of the tracks in the genome browser
    * @graphTypes Genome
@@ -12264,7 +12280,8 @@ export type CXKeysEvents =
   | "toolbarFonts"
   | "toolbarItems"
   | "toolbarSchemes"
-  | "toolbarSize";
+  | "toolbarSize"
+  | "touchGestures";
 /** Config keys in the "Fish Graphs" category. */
 export type CXKeysFishGraphs =
   | "fishAxis"
@@ -12967,6 +12984,7 @@ export type CXKeysPlotDataType =
   | "isDataFrame"
   | "isGGMatrix"
   | "isR"
+  | "responsiveNarrow"
   | "responsiveRules";
 /** Config keys in the "Plot Mode" category. */
 export type CXKeysPlotMode =

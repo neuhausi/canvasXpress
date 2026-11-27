@@ -1,7 +1,7 @@
 {
- "x-cx-version": "75",
+ "x-cx-version": "75.1",
  "generatedBy": "tools/schema/generate-rd.js",
- "count": 1832,
+ "count": 1834,
  "parameters": [
   {
    "parameter": "Rdataset",
@@ -8276,6 +8276,12 @@
    "description": "Flag to disable resizing the height of canvas by dragging the mouse over the edges"
   },
   {
+   "parameter": "responsiveNarrow",
+   "type": "boolean",
+   "default": false,
+   "description": "Opt-in preset that applies sensible narrow-canvas overrides (legend to the bottom, slightly smaller fonts) through the responsiveRules machinery, so authors do not have to hand-write responsiveRules for phones or narrow dashboard panels. Matches canvas width (not device); any explicit responsiveRules win on conflicting keys. Default off, so existing charts are byte-identical"
+  },
+  {
    "parameter": "responsiveRules",
    "type": "array|boolean|string|number",
    "default": [],
@@ -11057,6 +11063,12 @@
    "type": "string|boolean",
    "default": false,
    "description": "TopoJSON map string"
+  },
+  {
+   "parameter": "touchGestures",
+   "type": "boolean",
+   "default": true,
+   "description": "Flag to enable touch gestures on the chart canvas (tap, double-tap, one-finger pan/rotate/move and two-finger pinch-zoom) via the mobile touch module. Default on; set false to opt out of touch handling"
   },
   {
    "parameter": "trackDirColor",

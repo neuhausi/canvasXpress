@@ -9784,6 +9784,14 @@ body.has-fullscreen {
   transition: width var(--cx-transition-speed) ease, height var(--cx-transition-speed) ease;
 }
 
+/* The touch gesture recognizer (canvasXpress.touch.js) owns pan/pinch on the
+   chart canvas, so disable the browser's own touch behaviors (double-tap zoom,
+   pan) on the canvas only. Scoped to the canvas element so the surrounding
+   page/dashboard container keeps scrolling. */
+canvas.CanvasXpress {
+  touch-action: none;
+}
+
 .cX-Wrapper.fullscreen-mode {
   position: fixed !important;
   top: 0 !important;
